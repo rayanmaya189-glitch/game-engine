@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package gameengine.common.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+
+option go_package = "gen/go/common/v1;commonv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.common.v1";
+
+// Extended timestamp helpers
+message TimestampRange {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}
+
+// Date range
+message DateRange {
+  string start_date = 1;
+  string end_date = 2;
+}
+
+// Time of day
+message TimeOfDay {
+  int32 hours = 1;
+  int32 minutes = 2;
+  int32 seconds = 3;
+}
+
+// Time range
+message TimeRange {
+  TimeOfDay start = 1;
+  TimeOfDay end = 2;
+}
+
+// Timestamp with timezone
+message Timestamped {
+  google.protobuf.Timestamp timestamp = 1;
+  string timezone = 2;
+  string local_time = 3;
+  int32 utc_offset = 4;
+}
+
+// Duration with additional metadata
+message Duration {
+  google.protobuf.Duration duration = 1;
+  string display = 2;
+  int64 seconds = 3;
+  int64 milliseconds = 4;
+}
+
+// Age verification
+message AgeVerification {
+  google.protobuf.Timestamp date_of_birth = 1;
+  int32 minimum_age = 2;
+  bool is_verified = 3;
+  google.protobuf.Timestamp verified_at = 4;
+}
+
+// Expiration info
+message ExpirationInfo {
+  google.protobuf.Timestamp expires_at = 1;
+  bool is_expired = 2;
+  google.protobuf.Duration time_remaining = 3;
+  google.protobuf.Duration warning_threshold = 4;
+  bool should_warn = 5;
+}

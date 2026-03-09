@@ -1,0 +1,204 @@
+syntax = "proto3";
+
+package gameengine.auth.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "gameengine/common/v1/enums.proto";
+
+option go_package = "gen/go/auth/v1;authv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.auth.v1";
+
+// Auth Service - handles user authentication, registration, and session management
+service AuthService {
+  // Register new user
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  
+  // Login with credentials
+  rpc Login(LoginRequest) returns (LoginResponse);
+  
+  // Refresh token
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  
+  // Logout
+  rpc Logout(LogoutRequest) returns (google.protobuf.Empty);
+  
+  // Verify email
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
+  
+  // Verify phone
+  rpc VerifyPhone(VerifyPhoneRequest) returns (VerifyPhoneResponse);
+  
+  // Enable 2FA
+  rpc Enable2FA(Enable2FARequest) returns (Enable2FAResponse);
+  
+  // Verify 2FA
+  rpc Verify2FA(Verify2FARequest) returns (Verify2FAResponse);
+  
+  // Reset password
+  rpc ResetPassword(ResetPasswordRequest) returns (google.protobuf.Empty);
+  
+  // Confirm reset password
+  rpc ConfirmResetPassword(ConfirmResetPasswordRequest) returns (google.protobuf.Empty);
+  
+  // Validate token (internal)
+  rpc ValidateToken(ValidateTokenRequest) returns (ValidateTokenResponse);
+  
+  // Change password
+  rpc ChangePassword(ChangePasswordRequest) returns (google.protobuf.Empty);
+}
+
+// Requests/Responses
+message RegisterRequest {
+  string identifier = 1;
+  string password = 2;
+  string confirm_password = 3;
+  string country = 4;
+  common.v1.Language language = 5;
+  string currency = 6;
+  string referral_code = 7;
+  DeviceInfo device_info = 8;
+  bool marketing_consent = 9;
+  bool accept_terms = 10;
+}
+
+message RegisterResponse {
+  string user_id = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  google.protobuf.Timestamp expires_at = 4;
+  bool email_verification_required = 5;
+  bool phone_verification_required = 6;
+  string message = 7;
+}
+
+message LoginRequest {
+  string identifier = 1;
+  string password = 2;
+  DeviceInfo device_info = 3;
+  bool remember_me = 4;
+}
+
+message LoginResponse {
+  string user_id = 1;
+  string access_token = 2;
+  string refresh_token = 3;
+  google.protobuf.Timestamp expires_at = 4;
+  bool requires_2fa = 5;
+  string session_id = 6;
+  common.v1.Status user_status = 7;
+  string message = 8;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1;
+  DeviceInfo device_info = 2;
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  google.protobuf.Timestamp expires_at = 3;
+  string session_id = 4;
+}
+
+message LogoutRequest {
+  string session_id = 1;
+  bool all_sessions = 2;
+}
+
+message VerifyEmailRequest {
+  string user_id = 1;
+  string code = 2;
+}
+
+message VerifyEmailResponse {
+  bool success = 1;
+  string message = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+}
+
+message VerifyPhoneRequest {
+  string user_id = 1;
+  string code = 2;
+}
+
+message VerifyPhoneResponse {
+  bool success = 1;
+  string message = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+}
+
+message Enable2FARequest {
+  string user_id = 1;
+  string password = 2;
+}
+
+message Enable2FAResponse {
+  string secret = 1;
+  string qr_code_url = 2;
+  repeated string backup_codes = 3;
+}
+
+message Verify2FARequest {
+  string user_id = 1;
+  string code = 2;
+  bool is_backup_code = 3;
+}
+
+message Verify2FAResponse {
+  bool success = 1;
+  string message = 2;
+  string access_token = 3;
+  string refresh_token = 4;
+  google.protobuf.Timestamp expires_at = 5;
+}
+
+message ResetPasswordRequest {
+  string identifier = 1;
+}
+
+message ConfirmResetPasswordRequest {
+  string identifier = 1;
+  string token = 2;
+  string new_password = 3;
+  string confirm_password = 4;
+}
+
+message ValidateTokenRequest {
+  string token = 1;
+  string expected_type = 2;
+}
+
+message ValidateTokenResponse {
+  bool valid = 1;
+  string user_id = 2;
+  string session_id = 3;
+  string token_type = 4;
+  google.protobuf.Timestamp expires_at = 5;
+  repeated common.v1.UserRole roles = 6;
+}
+
+message ChangePasswordRequest {
+  string user_id = 1;
+  string current_password = 2;
+  string new_password = 3;
+  string confirm_password = 4;
+}
+
+// Data models
+message DeviceInfo {
+  common.v1.DeviceType device_type = 1;
+  common.v1.OSType os_type = 2;
+  common.v1.BrowserType browser_type = 3;
+  string device_id = 4;
+  string device_name = 5;
+  string ip_address = 6;
+  string user_agent = 7;
+  string country = 8;
+  string city = 9;
+  string timezone = 10;
+}

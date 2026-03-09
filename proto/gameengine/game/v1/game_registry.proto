@@ -1,0 +1,235 @@
+syntax = "proto3";
+
+package gameengine.game.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "gameengine/common/v1/enums.proto";
+import "gameengine/common/v1/pagination.proto";
+import "gameengine/common/v1/money.proto";
+
+option go_package = "gen/go/game/v1;gamesv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.game.v1";
+
+// Game Registry Service - manages game catalog, categories, and game configurations
+service GameRegistryService {
+  rpc ListGames(ListGamesRequest) returns (ListGamesResponse);
+  rpc GetGame(GetGameRequest) returns (GetGameResponse);
+  rpc GetGameConfig(GetGameConfigRequest) returns (GetGameConfigResponse);
+  rpc GetGameURL(GetGameURLRequest) returns (GetGameURLResponse);
+  rpc GetCategories(GetCategoriesRequest) returns (GetCategoriesResponse);
+  rpc GetProviders(GetProvidersRequest) returns (GetProvidersResponse);
+  rpc SearchGames(SearchGamesRequest) returns (SearchGamesResponse);
+  rpc GetFeaturedGames(GetFeaturedGamesRequest) returns (GetFeaturedGamesResponse);
+  rpc GetPopularGames(GetPopularGamesRequest) returns (GetPopularGamesResponse);
+  rpc GetNewGames(GetNewGamesRequest) returns (GetNewGamesResponse);
+}
+
+// Requests/Responses
+message ListGamesRequest {
+  string category_id = 1;
+  string provider_id = 2;
+  repeated common.v1.GameCategory categories = 3;
+  repeated common.v1.GameProvider providers = 4;
+  common.v1.Status status = 5;
+  bool mobile_supported = 6;
+  bool desktop_supported = 7;
+  bool is_featured = 8;
+  bool is_jackpot = 9;
+  common.v1.PaginationRequest pagination = 10;
+  string sort_by = 11;
+  string query = 12;
+}
+
+message ListGamesResponse {
+  repeated GameSummary games = 1;
+  common.v1.PaginationResponse pagination = 2;
+}
+
+message GetGameRequest {
+  string game_id = 1;
+}
+
+message GetGameResponse {
+  Game game = 1;
+}
+
+message GetGameConfigRequest {
+  string game_id = 1;
+  string user_id = 2;
+  common.v1.DeviceType device_type = 3;
+  common.v1.Language language = 4;
+  string currency = 5;
+  string session_id = 6;
+}
+
+message GetGameConfigResponse {
+  GameConfig config = 1;
+  string game_url = 2;
+  string session_token = 3;
+  common.v1.Money balance = 4;
+}
+
+message GetGameURLRequest {
+  string game_id = 1;
+  string user_id = 2;
+  common.v1.DeviceType device_type = 3;
+  string session_id = 4;
+  common.v1.Language language = 5;
+  string currency = 6;
+}
+
+message GetGameURLResponse {
+  string game_url = 1;
+  string session_token = 2;
+  GameSummary game = 3;
+  google.protobuf.Timestamp expires_at = 4;
+}
+
+message GetCategoriesRequest {
+  bool include_games_count = 1;
+}
+
+message GetCategoriesResponse {
+  repeated GameCategory categories = 1;
+}
+
+message GetProvidersRequest {
+  bool active_only = 1;
+}
+
+message GetProvidersResponse {
+  repeated GameProvider providers = 1;
+}
+
+message SearchGamesRequest {
+  string query = 1;
+  int32 limit = 2;
+  string category_id = 3;
+}
+
+message SearchGamesResponse {
+  repeated GameSummary games = 1;
+  int32 total_count = 2;
+}
+
+message GetFeaturedGamesRequest {
+  int32 limit = 1;
+  string category_id = 2;
+}
+
+message GetFeaturedGamesResponse {
+  repeated GameSummary games = 1;
+}
+
+message GetPopularGamesRequest {
+  int32 limit = 1;
+  string category_id = 2;
+}
+
+message GetPopularGamesResponse {
+  repeated GameSummary games = 1;
+}
+
+message GetNewGamesRequest {
+  int32 limit = 1;
+  string category_id = 2;
+}
+
+message GetNewGamesResponse {
+  repeated GameSummary games = 1;
+}
+
+// Data models
+message GameSummary {
+  string game_id = 1;
+  string name = 2;
+  string provider_id = 3;
+  string provider_name = 4;
+  string category_id = 5;
+  string category_name = 6;
+  common.v1.GameCategory type = 7;
+  common.v1.Status status = 8;
+  string thumbnail_url = 9;
+  string banner_url = 10;
+  double rtp = 11;
+  string volatility = 12;
+  common.v1.Money min_bet = 13;
+  common.v1.Money max_bet = 14;
+  string max_win = 15;
+  repeated common.v1.DeviceType supported_devices = 16;
+  bool is_featured = 17;
+  bool is_new = 18;
+  bool is_popular = 19;
+  bool is_jackpot = 20;
+  string launch_url = 21;
+  int32 popularity_score = 22;
+}
+
+message Game {
+  string game_id = 1;
+  string name = 2;
+  string description = 3;
+  string provider_id = 4;
+  string provider_name = 5;
+  string category_id = 6;
+  string category_name = 7;
+  common.v1.GameCategory type = 8;
+  common.v1.Status status = 9;
+  string thumbnail_url = 10;
+  string banner_url = 11;
+  double rtp = 12;
+  string volatility = 13;
+  common.v1.Money min_bet = 14;
+  common.v1.Money max_bet = 15;
+  string max_win = 16;
+  int32 paylines = 17;
+  int32 reels = 18;
+  repeated string features = 19;
+  repeated common.v1.DeviceType supported_devices = 20;
+  repeated common.v1.Language supported_languages = 21;
+  bool is_featured = 22;
+  bool is_new = 23;
+  bool is_popular = 24;
+  bool is_jackpot = 25;
+  string launch_url = 26;
+  google.protobuf.Timestamp release_date = 27;
+}
+
+message GameConfig {
+  string game_id = 1;
+  string session_token = 2;
+  string game_url = 3;
+  string player_id = 4;
+  common.v1.Money balance = 5;
+  string currency = 6;
+  common.v1.Language language = 7;
+}
+
+message GameCategory {
+  string category_id = 1;
+  string name = 2;
+  string description = 3;
+  string icon_url = 4;
+  string banner_url = 5;
+  string parent_id = 6;
+  int32 sort_order = 7;
+  common.v1.Status status = 8;
+  bool is_featured = 9;
+  int32 games_count = 10;
+  string slug = 11;
+}
+
+message GameProvider {
+  string provider_id = 1;
+  string name = 2;
+  string description = 3;
+  string logo_url = 4;
+  string website_url = 5;
+  common.v1.Status status = 6;
+  int32 games_count = 7;
+  string license = 8;
+  int32 established = 9;
+  bool is_featured = 10;
+}

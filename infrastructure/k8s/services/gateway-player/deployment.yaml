@@ -1,0 +1,288 @@
+# =============================================================================
+# Player API Gateway Deployment
+# =============================================================================
+# Main entry point for player-facing API
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-player
+  namespace: game-engine
+  labels:
+    app: gateway-player
+    version: v1
+    component: api-gateway
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: gateway-player
+  template:
+    metadata:
+      labels:
+        app: gateway-player
+        version: v1
+        component: api-gateway
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: gateway-player
+      terminationGracePeriodSeconds: 10
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: gateway
+          image: registry.game-engine.local:5000/gateway-player:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: GRPC_PORT
+              value: "9090"
+            - name: ENVIRONMENT
+              value: "production"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: GATEWAY_TYPE
+              value: "player"
+            # Service URLs
+            - name: AUTH_SERVICE_URL
+              value: "http://auth-service.game-engine.svc.cluster.local"
+            - name: USER_SERVICE_URL
+              value: "http://user-service.game-engine.svc.cluster.local"
+            - name: WALLET_SERVICE_URL
+              value: "http://wallet-service.game-engine.svc.cluster.local"
+            - name: GAME_SERVICE_URL
+              value: "http://game-service.game-services.svc.cluster.local"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: gateway-player-config
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: gateway-player
+                topologyKey: kubernetes.io/hostname
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node-group
+                    operator: In
+                    values:
+                      - api-gateways
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-player
+  namespace: game-engine
+  labels:
+    app: gateway-player
+    component: api-gateway
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: grpc
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: gateway-player
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: gateway-player-config
+  namespace: game-engine
+data:
+  config.yaml: |
+    server:
+      port: 8080
+      grpc_port: 9090
+      read_timeout: 30s
+      write_timeout: 30s
+      idle_timeout: 120s
+
+    gateway:
+      type: player
+      version: 1.0.0
+
+    rate_limit:
+      enabled: true
+      global:
+        requests_per_second: 1000
+        burst: 2000
+      per_ip:
+        requests_per_minute: 100
+        burst: 200
+      per_user:
+        requests_per_minute: 500
+        burst: 1000
+
+    circuit_breaker:
+      enabled: true
+      failure_threshold: 5
+      success_threshold: 2
+      timeout: 30s
+
+    retry:
+      max_attempts: 3
+      backoff: exponential
+      initial_interval: 100ms
+      max_interval: 1s
+
+    cors:
+      enabled: true
+      allowed_origins:
+        - "https://player.game-engine.com"
+        - "https://www.game-engine.com"
+        - "https://m.game-engine.com"
+      allowed_methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+        - PATCH
+      allowed_headers:
+        - Authorization
+        - Content-Type
+        - X-Request-ID
+        - X-Correlation-ID
+        - X-Forwarded-For
+        - X-Real-IP
+      exposed_headers:
+        - X-Request-ID
+      allow_credentials: true
+      max_age: 86400
+
+    routes:
+      /api/v1/auth:
+        service: auth-service
+        timeout: 10s
+        strip_prefix: true
+      /api/v1/users:
+        service: user-service
+        timeout: 10s
+        strip_prefix: true
+      /api/v1/wallet:
+        service: wallet-service
+        timeout: 15s
+        strip_prefix: true
+      /api/v1/games:
+        service: game-service
+        timeout: 30s
+        strip_prefix: true
+
+    auth:
+      jwt_enabled: true
+      jwt_issuer: game-engine
+      jwt_audience: game-engine-api
+      token_header: Authorization
+      token_prefix: Bearer
+
+    logging:
+      format: json
+      level: info
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: gateway-player
+  namespace: game-engine
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gateway-player
+  minReplicas: 5
+  maxReplicas: 50
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Pods
+      pods:
+        metric:
+          name: http_requests_per_second
+        target:
+          type: AverageValue
+          averageValue: "1000"
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 25
+          periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
+        - type: Pods
+          value: 10
+          periodSeconds: 15

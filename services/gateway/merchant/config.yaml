@@ -1,0 +1,17 @@
+server:
+  port: 8082
+  host: "0.0.0.0"
+  read_timeout: 30
+  write_timeout: 30
+
+redis:
+  addr: "redis:6379"
+  password: ""
+  db: 0
+
+services:
+  user_service: "user-service:50051"
+  wallet_service: "wallet-service:50051"
+
+rate_limit:
+  requests_per_minute: 500

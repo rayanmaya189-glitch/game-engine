@@ -1,0 +1,167 @@
+# ===========================================
+# Game Engine Casino - Docker Compose
+# Local Development Environment
+# ===========================================
+
+services:
+  # ===========================================
+  # Gateway Service (Hertz)
+  # ===========================================
+  gateway:
+    build:
+      context: ./services/gateway
+      dockerfile: Dockerfile
+    container_name: game-engine-gateway
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - NODE_ENV=development
+      - SERVICE_NAME=gateway
+    depends_on:
+      - auth-service
+      - user-service
+      - wallet-service
+      - game-registry
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Auth Service (Kratos)
+  # ===========================================
+  auth-service:
+    build:
+      context: ./services/auth-service
+      dockerfile: Dockerfile
+    container_name: game-engine-auth-service
+    ports:
+      - "4433:4433"
+      - "4434:4434"
+    environment:
+      - SERVICE_NAME=auth-service
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=auth_service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      - postgres
+      - redis
+      - nats
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # User Service (Kratos)
+  # ===========================================
+  user-service:
+    build:
+      context: ./services/user-service
+      dockerfile: Dockerfile
+    container_name: game-engine-user-service
+    ports:
+      - "4435:4435"
+      - "4436:4436"
+    environment:
+      - SERVICE_NAME=user-service
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=user_service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      - postgres
+      - redis
+      - nats
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Wallet Service (Kratos)
+  # ===========================================
+  wallet-service:
+    build:
+      context: ./services/wallet-service
+      dockerfile: Dockerfile
+    container_name: game-engine-wallet-service
+    ports:
+      - "4437:4437"
+      - "4438:4438"
+    environment:
+      - SERVICE_NAME=wallet-service
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=wallet_service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+      - TIMESCALEDB_HOST=timescaledb
+      - TIMESCALEDB_PORT=5433
+    depends_on:
+      - postgres
+      - redis
+      - nats
+      - timescaledb
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Game Registry Service
+  # ===========================================
+  game-registry:
+    build:
+      context: ./services/game-registry
+      dockerfile: Dockerfile
+    container_name: game-engine-game-registry
+    ports:
+      - "4439:4439"
+      - "4440:4440"
+    environment:
+      - SERVICE_NAME=game-registry
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=game_registry
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+# ===========================================
+# Networks
+# ===========================================
+networks:
+  game-engine-network:
+    driver: bridge
+    name: game-engine-network
+
+# ===========================================
+# Volumes
+# ===========================================
+volumes:
+  postgres-data:
+    driver: local
+  redis-data:
+    driver: local
+  timescaledb-data:
+    driver: local

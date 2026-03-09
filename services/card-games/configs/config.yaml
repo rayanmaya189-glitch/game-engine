@@ -1,0 +1,66 @@
+server:
+  grpc_port: 9011
+  http_port: 8011
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  password: ""
+  db: 0
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "card-games"
+
+rng_service:
+  address: "rng-service:9010"
+  timeout: 5s
+
+game:
+  # Number of decks used in games
+  default_deck_count: 1
+  max_deck_count: 8
+  
+  # Shuffle configuration
+  shuffle:
+    # Cards remaining before reshuffle
+    reshuffle_threshold: 15
+  
+  # Blackjack specific
+  blackjack:
+    allow_surrender: true
+    allow_late_surrender: true
+    dealer_stands_on_soft_17: false
+    max_splits: 4
+    blackjack_payout: 1.5
+  
+  # Baccarat specific
+  baccarat:
+    commission: 0.05
+    max_players: 8
+    shoe_size: 8
+  
+  # Poker specific
+  poker:
+    min_players: 2
+    max_players: 10
+    blind_structure: "standard"
+    time_bank_seconds: 30
+  
+  # Andar Bahar specific
+  andar_bahar:
+    side_to_deal_first: "andar"
+    max_community_cards: 15
+  
+  # Teen Patti specific
+  teen_patti:
+    variant: "classic"
+    min_players: 2
+    max_players: 8
+    show_order: "highest_first"
+
+logging:
+  level: "info"
+  format: "json"

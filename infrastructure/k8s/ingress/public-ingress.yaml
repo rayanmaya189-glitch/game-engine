@@ -1,0 +1,186 @@
+# =============================================================================
+# Public API Ingress Configuration
+# =============================================================================
+# Public-facing ingress for player, merchant, and agent gateways
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: public-api
+  namespace: game-engine
+  labels:
+    app: public-api
+    component: ingress
+  annotations:
+    # NGINX Ingress Controller annotations
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "30"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-buffering: "on"
+    nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
+    
+    # Rate limiting
+    nginx.ingress.kubernetes.io/limit-rps: "1000"
+    nginx.ingress.kubernetes.io/limit-connections: "100"
+    nginx.ingress.kubernetes.io/limit-rpm: "10000"
+    
+    # CORS
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://player.game-engine.com,https://www.game-engine.com"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS, PATCH"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type, X-Request-ID, X-Correlation-ID"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "X-Request-ID"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/cors-max-age: "86400"
+    
+    # Session affinity
+    nginx.ingress.kubernetes.io/affinity: "cookie"
+    nginx.ingress.kubernetes.io/session-cookie-name: "gameengine_session"
+    nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
+    nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
+    nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
+    
+    # Custom timeouts for game connections
+    nginx.ingress.kubernetes.io/proxy-next-upstream: "error timeout invalid_header http_502 http_503 http_504"
+    nginx.ingress.kubernetes.io/proxy-next-upstream-tries: "3"
+    nginx.ingress.kubernetes.io/proxy-next-upstream-timeout: "30"
+    
+    # Security headers
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options "SAMEORIGIN" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+      add_header Content-Security-Policy "default-src 'self' https: data:; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:;" always;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+      
+    # Custom error pages
+    nginx.ingress.kubernetes.io/custom-http-errors: "401,403,404,500,502,503,504"
+    
+    # WebSocket support
+    nginx.ingress.kubernetes.io/proxy-http-version: "1.1"
+    nginx.ingress.kubernetes.io/upstream-hash-by: "$request_uri"
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - api.game-engine.com
+        - player.game-engine.com
+        - merchant.game-engine.com
+        - agent.game-engine.com
+      secretName: tls-secret
+  rules:
+    # Player API
+    - host: player.game-engine.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-player
+                port:
+                  number: 80
+    # Generic API
+    - host: api.game-engine.com
+      http:
+        paths:
+          - path: /player
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-player
+                port:
+                  number: 80
+          - path: /merchant
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-merchant
+                port:
+                  number: 80
+          - path: /agent
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-agent
+                port:
+                  number: 80
+          - path: /health
+            pathType: Exact
+            backend:
+              service:
+                name: gateway-player
+                port:
+                  number: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: admin-api
+  namespace: game-engine
+  labels:
+    app: admin-api
+    component: ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+    nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "300"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "300"
+    
+    # Strict rate limiting for admin
+    nginx.ingress.kubernetes.io/limit-rps: "100"
+    nginx.ingress.kubernetes.io/limit-connections: "20"
+    
+    # IP restriction (configure specific admin IPs)
+    # nginx.ingress.kubernetes.io/whitelist-source-range: "10.0.0.0/8,172.16.0.0/12"
+    
+    # Basic auth for admin
+    # nginx.ingress.kubernetes.io/auth-type: "basic"
+    # nginx.ingress.kubernetes.io/auth-secret: "admin-auth"
+    
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      add_header X-Frame-Options "DENY" always;
+      add_header X-Content-Type-Options "nosniff" always;
+      add_header X-XSS-Protection "1; mode=block" always;
+      add_header Referrer-Policy "no-referrer" always;
+      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - admin.game-engine.com
+        - internal.game-engine.com
+      secretName: tls-admin-secret
+  rules:
+    - host: admin.game-engine.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gateway-admin
+                port:
+                  number: 80
+
+---
+# TLS Secret (self-signed for development, use cert-manager for production)
+apiVersion: v1
+kind: Secret
+metadata:
+  name: tls-secret
+  namespace: game-engine
+type: kubernetes.io/tls
+data:
+  # Replace with actual certificates in production
+  # Use: echo -n | openssl s_client -connect example.com:443 -servername example.com 2>/dev/null | openssl x509
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURQekNDQWllZ0F3SUJBZ0lVVzVGUld4eVJTZG80K2xKTHJYRkZ4N0RBTkJna3FoVm9yV0dzd0RRWUoKS3pFaGZHb1FJRVFnTUIwR0ExVUVDaE1PYjNKbk1CNHhIREFhQmdOVkJBTU1ES1M1aGNIQXVaWGhoYlhCc1pDMApSVzVuZFd4aGNpNXNiMk5oY0RFTE1Ba0dBMVVFQmhNQ1ZWTXgK
+  tls.key: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCnBsYWNlaG9sZGVyLXNlY3JldC1rZXkK

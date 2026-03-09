@@ -1,0 +1,54 @@
+server:
+  grpc_port: 9001
+  http_port: 8001
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  username: "auth_user"
+  password: "auth_password"
+  name: "auth_db"
+  ssl_mode: "disable"
+  max_open_conns: 25
+  max_idle_conns: 5
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  password: ""
+  db: 0
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "auth-service"
+
+jwt:
+  access_token_expiry: 15m
+  refresh_token_expiry: 168h
+  issuer: "gameengine-auth"
+  audience: "gameengine"
+
+password:
+  min_length: 8
+  require_uppercase: true
+  require_lowercase: true
+  require_number: true
+  require_special: true
+  bcrypt_cost: 12
+
+rate_limiting:
+  max_login_attempts: 5
+  window_duration: 15m
+  lockout_duration: 30m
+
+token_expiry:
+  email_verification: 24h
+  password_reset: 1h
+  totp: 30s
+
+totp:
+  issuer: "GameEngine"
+  digits: 6
+  period: 30

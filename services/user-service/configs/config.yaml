@@ -1,0 +1,45 @@
+server:
+  grpc_port: 9002
+  http_port: 8002
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  username: "user_user"
+  password: "user_password"
+  name: "user_db"
+  ssl_mode: "disable"
+  max_open_conns: 25
+  max_idle_conns: 5
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  password: ""
+  db: 0
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "user-service"
+
+cache:
+  profile_ttl: 300
+  kyc_status_ttl: 60
+
+rate_limiting:
+  profile_update_window: 1m
+  profile_update_max: 5
+
+kyc:
+  provider_url: ""
+  provider_api_key: ""
+  auto_approve_basic: false
+
+responsible_gaming:
+  default_daily_limit: 10000
+  default_weekly_limit: 50000
+  default_monthly_limit: 100000
+  self_exclusion_min_days: 1
+  self_exclusion_max_days: 365

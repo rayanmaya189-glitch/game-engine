@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package gameengine.common.v1;
+
+option go_package = "gen/go/common/v1;commonv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.common.v1";
+
+// Pagination request for list endpoints
+message PaginationRequest {
+  // Page number (1-indexed). Defaults to 1.
+  int32 page = 1;
+  
+  // Number of items per page. Defaults to 20. Max 100.
+  int32 page_size = 2;
+  
+  // Sorting field (optional)
+  string sort_by = 3;
+  
+  // Sort direction: ASC or DESC. Defaults to ASC.
+  string sort_order = 4;
+  
+  // Search/filter query (optional)
+  string query = 5;
+}
+
+// Pagination response for list endpoints
+message PaginationResponse {
+  // Current page number
+  int32 page = 1;
+  
+  // Number of items per page
+  int32 page_size = 2;
+  
+  // Total number of items
+  int32 total_items = 3;
+  
+  // Total number of pages
+  int32 total_pages = 4;
+  
+  // Whether there is a next page
+  bool has_next = 5;
+  
+  // Whether there is a previous page
+  bool has_previous = 6;
+  
+  // Cursor for next page (for cursor-based pagination)
+  string next_cursor = 7;
+  
+  // Cursor for previous page
+  string prev_cursor = 8;
+}
+
+// Cursor-based pagination request
+message CursorPaginationRequest {
+  // Cursor from previous response
+  string cursor = 1;
+  
+  // Number of items per page. Defaults to 20. Max 100.
+  int32 page_size = 2;
+  
+  // Sorting field (optional)
+  string sort_by = 3;
+  
+  // Sort direction: ASC or DESC. Defaults to ASC.
+  string sort_order = 4;
+  
+  // Search/filter query (optional)
+  string query = 5;
+}
+
+// Cursor-based pagination response
+message CursorPaginationResponse {
+  // List of items
+  repeated bytes items = 1;
+  
+  // Cursor for next page
+  string next_cursor = 2;
+  
+  // Whether there are more items
+  bool has_more = 3;
+  
+  // Total count (optional, may not be available for large datasets)
+  int32 total_count = 4;
+}

@@ -1,0 +1,74 @@
+syntax = "proto3";
+
+package gameengine.common.v1;
+
+import "gameengine/common/v1/enums.proto";
+
+option go_package = "gen/go/common/v1;commonv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.common.v1";
+
+// Money type representing an amount with currency
+message Money {
+  // Amount in smallest currency unit
+  int64 amount = 1;
+  
+  // Currency code (ISO 4217)
+  Currency currency = 2;
+  
+  // Optional: Display amount
+  string display_amount = 3;
+  
+  // Exchange rate used
+  string exchange_rate = 4;
+  
+  // Converted amount in target currency
+  Money converted_amount = 5;
+}
+
+// Money range for min/max amounts
+message MoneyRange {
+  Money min_amount = 1;
+  Money max_amount = 2;
+  Money default_amount = 3;
+  Money step_amount = 4;
+}
+
+// Money with bonus breakdown
+message MoneyWithBonus {
+  Money total = 1;
+  Money real_money = 2;
+  Money bonus_money = 3;
+  Money pending_bonus = 4;
+  WageringRequirement wagering_requirement = 5;
+}
+
+// Wagering requirement for bonuses
+message WageringRequirement {
+  int32 multiplier = 1;
+  Money amount_wagered = 2;
+  Money amount_remaining = 3;
+  string deadline = 4;
+  repeated string contributing_categories = 5;
+  map<string, int32> contribution_percentages = 6;
+}
+
+// Transaction amount details
+message TransactionAmount {
+  Money requested = 1;
+  Money approved = 2;
+  Money bonus = 3;
+  Money fee = 4;
+  Money net = 5;
+  Money converted = 6;
+}
+
+// Balance entry for wallet
+message BalanceEntry {
+  BalanceType balance_type = 1;
+  Money amount = 2;
+  Money locked_amount = 3;
+  Money available_amount = 4;
+  Money bonus_amount = 5;
+  string last_updated = 6;
+}

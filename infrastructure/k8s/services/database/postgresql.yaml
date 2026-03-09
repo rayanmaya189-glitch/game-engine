@@ -1,0 +1,64 @@
+# =============================================================================
+# PostgreSQL Service Configuration
+# =============================================================================
+# For on-premises deployment with external database
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgresql
+  namespace: game-engine
+  labels:
+    app: postgresql
+    component: database
+spec:
+  type: ClusterIP
+  ports:
+    - name: postgres
+      port: 5432
+      targetPort: 5432
+      protocol: TCP
+  selector:
+    app: postgresql
+
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: postgresql
+  namespace: game-engine
+  labels:
+    app: postgresql
+subsets:
+  - addresses:
+      - ip: 10.0.10.10  # db-primary IP
+    ports:
+      - port: 5432
+        name: postgres
+
+---
+# PostgreSQL Client Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgresql-credentials
+  namespace: game-engine
+type: Opaque
+stringData:
+  username: postgres
+  password: ChangeMePostgres123!
+  replication_password: ChangeMeReplication123!
+
+---
+# PostgreSQL Connection ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgresql-config
+  namespace: game-engine
+data:
+  database_url: "postgres://postgres:ChangeMePostgres123!@10.0.10.10:5432/"
+  auth_db_url: "postgres://auth_user:ChangeMeAuthPass123!@10.0.10.10:5432/auth_db"
+  user_db_url: "postgres://user_user:ChangeMeUserPass123!@10.0.10.10:5432/user_db"
+  wallet_db_url: "postgres://wallet_user:ChangeMeWalletPass123!@10.0.10.10:5432/wallet_db"

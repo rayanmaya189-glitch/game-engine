@@ -1,0 +1,153 @@
+# ===========================================
+# Game Engine Casino - EditorConfig
+# Consistent coding styles across editors
+# ===========================================
+
+# ===========================================
+# General Settings
+# ===========================================
+root = true
+
+# ===========================================
+# UTF-8 Encoding
+# ===========================================
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# ===========================================
+# Markdown Files
+# ===========================================
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# ===========================================
+# YAML Files
+# ===========================================
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# JSON Files
+# ===========================================
+[*.json]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# Go Files
+# ===========================================
+[*.go]
+indent_style = tab
+indent_size = 4
+max_line_length = 120
+
+# ===========================================
+# Python Files
+# ===========================================
+[*.py]
+indent_style = space
+indent_size = 4
+max_line_length = 120
+
+# ===========================================
+# JavaScript / TypeScript Files
+# ===========================================
+[*.{js,jsx,ts,tsx}]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+
+# ===========================================
+# Vue Files
+# ===========================================
+[*.vue]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# CSS / SCSS / Less
+# ===========================================
+[*.{css,scss,less}]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# HTML Files
+# ===========================================
+[*.{html,htm}]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# Shell Scripts
+# ===========================================
+[*.sh]
+indent_style = space
+indent_size = 2
+shell_variant = bash
+
+# ===========================================
+# Makefiles
+# ===========================================
+[Makefile]
+indent_style = tab
+
+# ===========================================
+# Terraform Files
+# ===========================================
+[*.tf]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# Docker Files
+# ===========================================
+[Dockerfile]
+indent_style = space
+indent_size = 4
+
+# ===========================================
+# Protocol Buffer Files
+# ===========================================
+[*.proto]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# XML Files
+# ===========================================
+[*.{xml,xsl,xslt}]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# SQL Files
+# ===========================================
+[*.sql]
+indent_style = space
+indent_size = 4
+
+# ===========================================
+# Configuration Files
+# ===========================================
+[.{eslintrc,prettierrc}]
+indent_style = space
+indent_size = 2
+
+# ===========================================
+# Git Files
+# ===========================================
+[.gitignore]
+charset = utf-8
+
+# ===========================================
+# Environment Files
+# ===========================================
+[.env*]
+charset = utf-8
+trim_trailing_whitespace = false

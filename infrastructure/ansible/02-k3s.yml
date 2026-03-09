@@ -1,0 +1,341 @@
+# =============================================================================
+# Ansible Playbook: K3s Kubernetes Cluster Installation
+# =============================================================================
+# This playbook installs k3s Kubernetes cluster
+# Run: ansible-playbook -i inventory.ini 02-k3s.yml
+
+- name: Install K3s Kubernetes Cluster
+  hosts: kube_control_plane, kube_nodes
+  become: yes
+  gather_facts: yes
+  vars:
+    k3s_version: "v1.28.4+k3s2"
+    k3s_install_url: "https://get.k3s.io"
+    cluster_init: false
+    k3s_token_file: "/var/lib/rancher/k3s/server/agent-token"
+    k3s_api_server_port: 6443
+    k3s_flannel_backend: "wireguard"
+    k3s_service_cidr: "10.43.0.0/16"
+    k3s_cluster_cidr: "10.42.0.0/16"
+    k3s_service_dns: "cluster.local"
+    k3s_cluster_domain: "cluster.local"
+
+  tasks:
+    # -------------------------------------------------------------------------
+    # Prepare directories
+    # -------------------------------------------------------------------------
+    - name: Create K3s directories
+      ansible.builtin.file:
+        path: "{{ item }}"
+        state: directory
+        mode: '0755'
+      loop:
+        - /etc/rancher/k3s
+        - /var/lib/rancher/k3s
+        - /var/lib/rancher/k3s/server
+        - /var/lib/rancher/k3s/agent
+
+    # -------------------------------------------------------------------------
+    # Check if K3s is already installed
+    # -------------------------------------------------------------------------
+    - name: Check if K3s is installed
+      command: k3s --version
+      register: k3s_check
+      changed_when: false
+      failed_when: false
+
+    # -------------------------------------------------------------------------
+    # Install K3s on Control Plane Nodes
+    # -------------------------------------------------------------------------
+    - name: Download K3s installation script
+      ansible.builtin.get_url:
+        url: "{{ k3s_install_url }}"
+        dest: /tmp/k3s-install.sh
+        mode: '0755'
+      when: k3s_check.rc != 0
+
+    - name: Initialize K3s master (first node)
+      shell: |
+        INSTALL_K3S_SKIP_START=true \
+        INSTALL_K3S_VERSION={{ k3s_version }} \
+        K3S_DATASTORE_ENDPOINT='mysql://username:password@tcp(hostname:3306)/k3s?tls=skip-verify' \
+        sh /tmp/k3s-install.sh server \
+          --bind-address={{ ansible_host }} \
+          --https-listen-port={{ k3s_api_server_port }} \
+          --advertise-address={{ ansible_host }} \
+          --advertise-port={{ k3s_api_server_port }} \
+          --flannel-backend={{ k3s_flannel_backend }} \
+          --service-cidr={{ k3s_service_cidr }} \
+          --cluster-cidr={{ k3s_cluster_cidr }} \
+          --service-domain={{ k3s_service_dns }} \
+          --cluster-domain={{ k3s_cluster_domain }} \
+          --write-kubeconfig-mode 644 \
+          --disable traefik \
+          --disable servicelb \
+          --disable metrics-server \
+          --disable-cloud-provider \
+          --disable-network-policy \
+          --token-file=/etc/rancher/k3s/k3s-token \
+          --disable-agent
+      args:
+        creates: /etc/rancher/k3s/k3s.yaml
+      when: 
+        - k3s_check.rc != 0
+        - inventory_hostname == groups['kube_control_plane'][0]
+      ignore_errors: yes
+
+    - name: Get K3s token from first master
+      fetch:
+        src: /etc/rancher/k3s/k3s-token
+        dest: /tmp/k3s-token
+        flat: yes
+      when: 
+        - inventory_hostname == groups['kube_control_plane'][0]
+      run_once: true
+      ignore_errors: yes
+
+    - name: Copy K3s token to other masters
+      copy:
+        content: "{{ lookup('file', '/tmp/k3s-token') }}"
+        dest: /etc/rancher/k3s/k3s-token
+        mode: '0600'
+      when: 
+        - k3s_check.rc != 0
+        - inventory_hostname != groups['kube_control_plane'][0]
+      ignore_errors: yes
+
+    - name: Join additional control plane nodes
+      shell: |
+        INSTALL_K3S_SKIP_START=true \
+        INSTALL_K3S_VERSION={{ k3s_version }} \
+        K3S_DATASTORE_ENDPOINT='mysql://username:password@tcp(hostname:3306)/k3s?tls=skip-verify' \
+        sh /tmp/k3s-install.sh server \
+          --bind-address={{ ansible_host }} \
+          --https-listen-port={{ k3s_api_server_port }} \
+          --advertise-address={{ ansible_host }} \
+          --advertise-port={{ k3s_api_server_port }} \
+          --flannel-backend={{ k3s_flannel_backend }} \
+          --service-cidr={{ k3s_service_cidr }} \
+          --cluster-cidr={{ k3s_cluster_cidr }} \
+          --service-domain={{ k3s_service_dns }} \
+          --cluster-domain={{ k3s_cluster_domain }} \
+          --write-kubeconfig-mode 644 \
+          --server https://{{ groups['kube_control_plane'][0] }}:{{ k3s_api_server_port }} \
+          --token-file=/etc/rancher/k3s/k3s-token \
+          --disable traefik \
+          --disable servicelb \
+          --disable metrics-server \
+          --disable-cloud-provider \
+          --disable-network-policy \
+          --disable-agent
+      when: 
+        - k3s_check.rc != 0
+        - inventory_hostname != groups['kube_control_plane'][0]
+        - inventory_hostname in groups['kube_control_plane']
+      ignore_errors: yes
+      register: k3s_join
+
+    # -------------------------------------------------------------------------
+    # Install K3s Agent on Worker Nodes
+    # -------------------------------------------------------------------------
+    - name: Get K3s node token from first master
+      fetch:
+        src: /var/lib/rancher/k3s/server/agent-token
+        dest: /tmp/k3s-agent-token
+        flat: yes
+      run_once: true
+      when: inventory_hostname in groups['kube_nodes']
+      ignore_errors: yes
+
+    - name: Copy agent token to worker nodes
+      copy:
+        content: "{{ lookup('file', '/tmp/k3s-agent-token') }}"
+        dest: /var/lib/rancher/k3s/server/agent-token
+        mode: '0600'
+      when: 
+        - inventory_hostname in groups['kube_nodes']
+        - k3s_check.rc != 0
+      ignore_errors: yes
+
+    - name: Install K3s agent on worker nodes
+      shell: |
+        INSTALL_K3S_SKIP_START=true \
+        INSTALL_K3S_VERSION={{ k3s_version }} \
+        sh /tmp/k3s-install.sh agent \
+          --server https://{{ groups['kube_control_plane'][0] }}:{{ k3s_api_server_port }} \
+          --token-file=/var/lib/rancher/k3s/server/agent-token \
+          --flannel-backend={{ k3s_flannel_backend }} \
+          --node-name={{ inventory_hostname }} \
+          --data-dir=/var/lib/rancher/k3s/agent \
+          --disable-cloud-provider \
+          --disable-network-policy
+      when: 
+        - k3s_check.rc != 0
+        - inventory_hostname in groups['kube_nodes']
+      ignore_errors: yes
+      register: k3s_agent_install
+
+    # -------------------------------------------------------------------------
+    # Configure K3s service
+    # -------------------------------------------------------------------------
+    - name: Create K3s service file for master
+      copy:
+        dest: /etc/systemd/system/k3s.service
+        content: |
+          [Unit]
+          Description=Lightweight Kubernetes
+          After=network-online.target
+          Wants=network-online.target
+
+          [Service]
+          Type=notify
+          ExecStart=/usr/local/bin/k3s server \
+            --bind-address={{ ansible_host }} \
+            --https-listen-port={{ k3s_api_server_port }} \
+            --advertise-address={{ ansible_host }} \
+            --advertise-port={{ k3s_api_server_port }} \
+            --flannel-backend={{ k3s_flannel_backend }} \
+            --service-cidr={{ k3s_service_cidr }} \
+            --cluster-cidr={{ k3s_cluster_cidr }} \
+            --service-domain={{ k3s_service_dns }} \
+            --cluster-domain={{ k3s_cluster_domain }} \
+            --write-kubeconfig-mode 644 \
+            --disable traefik \
+            --disable servicelb \
+            --disable metrics-server \
+            --disable-cloud-provider \
+            --disable-network-policy
+          Restart=always
+          RestartSec=10s
+          LimitNOFILE=infinity
+          LimitNPROC=infinity
+          LimitCORE=infinity
+          TasksMax=infinity
+
+          [Install]
+          WantedBy=multi-user.target
+      when: 
+        - inventory_hostname in groups['kube_control_plane']
+        - k3s_check.rc != 0
+      ignore_errors: yes
+
+    - name: Create K3s service file for agent
+      copy:
+        dest: /etc/systemd/system/k3s.service
+        content: |
+          [Unit]
+          Description=Lightweight Kubernetes Agent
+          After=network-online.target
+          Wants=network-online.target
+
+          [Service]
+          Type=notify
+          ExecStart=/usr/local/bin/k3s agent \
+            --server https://{{ groups['kube_control_plane'][0] }}:{{ k3s_api_server_port }} \
+            --token-file=/var/lib/rancher/k3s/server/agent-token \
+            --flannel-backend={{ k3s_flannel_backend }} \
+            --node-name={{ inventory_hostname }} \
+            --data-dir=/var/lib/rancher/k3s/agent \
+            --disable-cloud-provider \
+            --disable-network-policy
+          Restart=always
+          RestartSec=10s
+          LimitNOFILE=infinity
+          LimitNPROC=infinity
+          LimitCORE=infinity
+          TasksMax=infinity
+
+          [Install]
+          WantedBy=multi-user.target
+      when: 
+        - inventory_hostname in groups['kube_nodes']
+        - k3s_check.rc != 0
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Start K3s service
+    # -------------------------------------------------------------------------
+    - name: Enable and start K3s
+      systemd:
+        name: k3s
+        state: started
+        enabled: yes
+        daemon_reload: yes
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Configure kubectl
+    # -------------------------------------------------------------------------
+    - name: Get kubeconfig from first master
+      fetch:
+        src: /etc/rancher/k3s/k3s.yaml
+        dest: /tmp/kubeconfig-{{ inventory_hostname }}
+        flat: yes
+      run_once: true
+      when: inventory_hostname == groups['kube_control_plane'][0]
+      ignore_errors: yes
+
+    - name: Setup kubectl config for local
+      copy:
+        content: "{{ lookup('file', '/tmp/kubeconfig-' + groups['kube_control_plane'][0]) }}"
+        dest: ~/.kube/config
+        mode: '0600'
+      run_once: true
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Wait for K3s to be ready
+    # -------------------------------------------------------------------------
+    - name: Wait for K3s API to be available
+      wait_for:
+        port: 6443
+        host: "{{ groups['kube_control_plane'][0] }}"
+        delay: 10
+        timeout: 300
+      ignore_errors: yes
+      run_once: true
+
+    # -------------------------------------------------------------------------
+    # Install kubectl on control plane nodes
+    # -------------------------------------------------------------------------
+    - name: Download kubectl
+      get_url:
+        url: "https://dl.k8s.io/release/v1.28.0/bin/linux/amd64/kubectl"
+        dest: /usr/local/bin/kubectl
+        mode: '0755'
+      when: inventory_hostname in groups['kube_control_plane']
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Label nodes
+    # -------------------------------------------------------------------------
+    - name: Add labels to game service nodes
+      shell: |
+        kubectl --kubeconfig=/etc/rancher/k3s/k3s.yaml label nodes {{ inventory_hostname }} node-group=game-services --overwrite
+      when: inventory_hostname in groups['kube_worker_game']
+      ignore_errors: yes
+
+    - name: Add labels to API gateway nodes
+      shell: |
+        kubectl --kubeconfig=/etc/rancher/k3s/k3s.yaml label nodes {{ inventory_hostname }} node-group=api-gateways --overwrite
+      when: inventory_hostname in groups['kube_worker_api']
+      ignore_errors: yes
+
+    - name: Add labels to internal service nodes
+      shell: |
+        kubectl --kubeconfig=/etc/rancher/k3s/k3s.yaml label nodes {{ inventory_hostname }} node-group=internal-services --overwrite
+      when: inventory_hostname in groups['kube_worker_internal']
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Install Helm
+    # -------------------------------------------------------------------------
+    - name: Download and install Helm
+      shell: |
+        curl -fsSL https://get.helm.sh/helm-v3.13.0-linux-amd64.tar.gz | tar -xz -C /tmp/
+        mv /tmp/linux-amd64/helm /usr/local/bin/helm
+        chmod +x /usr/local/bin/helm
+      args:
+        creates: /usr/local/bin/helm
+      when: inventory_hostname == groups['kube_control_plane'][0]
+      ignore_errors: yes

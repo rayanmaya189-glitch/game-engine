@@ -1,0 +1,20 @@
+server:
+  port: 8083
+  host: "0.0.0.0"
+  read_timeout: 30
+  write_timeout: 30
+
+jwt:
+  secret: "your-secret-key-change-in-production"
+  expiration_hours: 24
+
+redis:
+  addr: "redis:6379"
+  password: ""
+  db: 0
+
+services:
+  user_service: "user-service:50051"
+
+rate_limit:
+  requests_per_minute: 300

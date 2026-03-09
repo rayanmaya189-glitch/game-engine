@@ -1,0 +1,64 @@
+server:
+  grpc_port: 9003
+  http_port: 8003
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  username: "wallet_user"
+  password: "wallet_password"
+  name: "wallet_db"
+  ssl_mode: "disable"
+  max_open_conns: 25
+  max_idle_conns: 5
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  password: ""
+  db: 0
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "wallet-service"
+
+cache:
+  balance_ttl: 300
+  transaction_ttl: 60
+  bet_lock_ttl: 30
+  bonus_ttl: 3600
+
+rate_limiting:
+  transaction_window: 1m
+  transaction_max: 100
+  bet_window: 1m
+  bet_max: 50
+
+betting:
+  max_bet_amount: 100000
+  min_bet_amount: 10
+  max_win_amount: 1000000
+  bet_lock_timeout: 30
+  auto_settle_delay: 300
+
+withdrawal:
+  min_withdrawal_amount: 100
+  max_withdrawal_amount: 50000
+  daily_withdrawal_limit: 100000
+  weekly_withdrawal_limit: 500000
+  monthly_withdrawal_limit: 2000000
+  approval_required: true
+
+bonus:
+  max_bonus_amount: 10000
+  min_deposit_for_bonus: 100
+  default_wagering_multiplier: 30
+  bonus_expiry_days: 30
+
+payment:
+  provider_url: ""
+  provider_api_key: ""
+  deposit_timeout: 1800
+  withdrawal_timeout: 3600

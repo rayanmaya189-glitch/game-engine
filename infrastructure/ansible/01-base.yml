@@ -1,0 +1,328 @@
+# =============================================================================
+# Ansible Playbook: Base OS Configuration
+# =============================================================================
+# This playbook prepares the base OS for Kubernetes and database deployment
+# Run: ansible-playbook -i inventory.ini 01-base.yml
+
+- name: Configure Base OS for Casino Game Engine
+  hosts: all_servers
+  become: yes
+  gather_facts: yes
+  vars:
+    timezone: "UTC"
+    kernel_modules:
+      - overlay
+      - br_netfilter
+    sysctl_params:
+      net.bridge.bridge-nf-call-iptables: 1
+      net.bridge.bridge-nf-call-ip6tables: 1
+      net.ipv4.ip_forward: 1
+      net.ipv4.conf.all.forwarding: 1
+      net.ipv4.conf.default.forwarding: 1
+    disable_firewall: false
+    enable_monitoring: true
+
+  tasks:
+    # -------------------------------------------------------------------------
+    # Timezone Configuration
+    # -------------------------------------------------------------------------
+    - name: Set timezone
+      community.general.timezone:
+        name: "{{ timezone }}"
+      when: timezone is defined
+
+    # -------------------------------------------------------------------------
+    # hosts file configuration
+    # -------------------------------------------------------------------------
+    - name: Configure /etc/hosts
+      blockinfile:
+        path: /etc/hosts
+        marker: "# {mark} ANSIBLE MANAGED BLOCK - CASINO GAME ENGINE"
+        block: |
+          # Kubernetes Control Plane
+          10.0.1.10 k8s-master-01
+          10.0.1.11 k8s-master-02
+          10.0.1.12 k8s-master-03
+          # Game Service Nodes
+          10.0.2.10 k8s-game-01
+          10.0.2.11 k8s-game-02
+          10.0.2.12 k8s-game-03
+          10.0.2.13 k8s-game-04
+          10.0.2.14 k8s-game-05
+          10.0.2.15 k8s-game-06
+          # API Gateway Nodes
+          10.0.3.10 k8s-api-01
+          10.0.3.11 k8s-api-02
+          10.0.3.12 k8s-api-03
+          10.0.3.13 k8s-api-04
+          # Internal Service Nodes
+          10.0.4.10 k8s-internal-01
+          10.0.4.11 k8s-internal-02
+          10.0.4.12 k8s-internal-03
+          # Database Nodes
+          10.0.10.10 db-primary
+          10.0.10.11 db-replica-01
+          10.0.10.12 db-replica-02
+          10.0.10.20 db-timescale
+          # Cache Nodes
+          10.0.11.10 redis-01
+          10.0.11.11 redis-02
+          10.0.11.12 redis-03
+          10.0.12.10 memcached-01
+          10.0.12.11 memcached-02
+          10.0.12.12 memcached-03
+          # Messaging
+          10.0.13.10 nats-01
+          10.0.13.11 nats-02
+          10.0.13.12 nats-03
+          # Infrastructure
+          10.0.20.10 monitoring-01
+          10.0.21.10 registry-01
+          10.0.22.10 build-01
+
+    # -------------------------------------------------------------------------
+    # Kernel Modules
+    # -------------------------------------------------------------------------
+    - name: Load kernel modules
+      community.general.modprobe:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ kernel_modules }}"
+      ignore_errors: yes
+
+    - name: Configure kernel modules to load on boot
+      ansible.builtin.copy:
+        content: |
+          {{ kernel_modules | join('\n') }}
+        dest: /etc/modules-load.d/k8s.conf
+        mode: '0644'
+
+    # -------------------------------------------------------------------------
+    # Sysctl Configuration
+    # -------------------------------------------------------------------------
+    - name: Configure sysctl parameters
+      ansible.posix.sysctl:
+        name: "{{ item.key }}"
+        value: "{{ item.value }}"
+        state: present
+        reload: yes
+        sysctl_file: /etc/sysctl.d/99-kubernetes.conf
+      loop: "{{ sysctl_params | dict2items }}"
+
+    # -------------------------------------------------------------------------
+    # Disable Swap
+    # -------------------------------------------------------------------------
+    - name: Disable swap
+      ansible.builtin.command: swapoff -a
+      changed_when: false
+      failed_when: false
+
+    - name: Remove swap entries from fstab
+      ansible.builtin.lineinfile:
+        path: /etc/fstab
+        regexp: '^[^#].*\sswap\s'
+        state: absent
+
+    # -------------------------------------------------------------------------
+    # Install Base Packages
+    # -------------------------------------------------------------------------
+    - name: Update apt cache (Debian/Ubuntu)
+      ansible.builtin.apt:
+        update_cache: yes
+        cache_valid_time: 3600
+      when: ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Install base packages
+      ansible.builtin.package:
+        name:
+          - curl
+          - wget
+          - vim
+          - git
+          - htop
+          - net-tools
+          - jq
+          - rsync
+          - unzip
+          - gnupg2
+          - ca-certificates
+          - software-properties-common
+          - apt-transport-https
+        state: present
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Install Docker (for containerd)
+    # -------------------------------------------------------------------------
+    - name: Check if Docker is installed
+      command: docker --version
+      register: docker_check
+      changed_when: false
+      failed_when: false
+
+    - name: Add Docker GPG key
+      ansible.builtin.apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+      when: docker_check.rc != 0 and ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Add Docker repository
+      ansible.builtin.apt_repository:
+        repo: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+        state: present
+      when: docker_check.rc != 0 and ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Install Docker and containerd
+      ansible.builtin.apt:
+        name:
+          - docker.io
+          - docker-compose
+          - containerd.io
+        state: present
+        update_cache: yes
+      when: docker_check.rc != 0 and ansible_os_family == "Debian"
+      ignore_errors: yes
+
+    - name: Configure Docker daemon
+      ansible.builtin.copy:
+        dest: /etc/docker/daemon.json
+        content: |
+          {
+            "exec-opts": ["native.cgroupdriver=systemd"],
+            "log-driver": "json-file",
+            "log-opts": {
+              "max-size": "100m",
+              "max-file": "3"
+            },
+            "storage-driver": "overlay2",
+            "registry-mirrors": [],
+            "insecure-registries": [],
+            "metrics-addr": "0.0.0.0:9323",
+            "experimental": true
+          }
+        mode: '0644'
+      notify: Restart Docker
+      ignore_errors: yes
+
+    - name: Ensure Docker service is running
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: yes
+      ignore_errors: yes
+
+    - name: Add deploy user to docker group
+      ansible.builtin.user:
+        name: deploy
+        groups: docker
+        append: yes
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Setup Node Exporter (for monitoring)
+    # -------------------------------------------------------------------------
+    - name: Download Node Exporter
+      ansible.builtin.get_url:
+        url: "https://github.com/prometheus/node_exporter/releases/download/v1.6.1/node_exporter-1.6.1.linux-amd64.tar.gz"
+        dest: /tmp/node_exporter.tar.gz
+        mode: '0644'
+      when: enable_monitoring | bool
+
+    - name: Extract Node Exporter
+      ansible.builtin.unarchive:
+        src: /tmp/node_exporter.tar.gz
+        dest: /usr/local/bin/
+        remote_src: yes
+        creates: /usr/local/bin/node_exporter
+      when: enable_monitoring | bool
+
+    - name: Create Node Exporter user
+      ansible.builtin.user:
+        name: node_exporter
+        shell: /bin/false
+        system: yes
+      when: enable_monitoring | bool
+      ignore_errors: yes
+
+    - name: Create Node Exporter service
+      ansible.builtin.copy:
+        dest: /etc/systemd/system/node_exporter.service
+        content: |
+          [Unit]
+          Description=Node Exporter
+          After=network.target
+
+          [Service]
+          User=node_exporter
+          ExecStart=/usr/local/bin/node_exporter
+          Restart=always
+
+          [Install]
+          WantedBy=multi-user.target
+        mode: '0644'
+      when: enable_monitoring | bool
+      notify: Reload systemd
+
+    - name: Enable and start Node Exporter
+      ansible.builtin.service:
+        name: node_exporter
+        state: started
+        enabled: yes
+      when: enable_monitoring | bool
+      ignore_errors: yes
+
+    # -------------------------------------------------------------------------
+    # Configure System Limits
+    # -------------------------------------------------------------------------
+    - name: Configure system limits
+      ansible.builtin.copy:
+        dest: /etc/security/limits.d/99-game-engine.conf
+        content: |
+          * soft nofile 655360
+          * hard nofile 655360
+          * soft nproc 65536
+          * hard nproc 65536
+          * soft memlock unlimited
+          * hard memlock unlimited
+        mode: '0644'
+
+    # -------------------------------------------------------------------------
+    # Setup SSH Key Authentication
+    # -------------------------------------------------------------------------
+    - name: Ensure .ssh directory exists
+      ansible.builtin.file:
+        path: "/home/{{ ansible_user }}/.ssh"
+        state: directory
+        owner: "{{ ansible_user }}"
+        mode: '0700'
+      ignore_errors: yes
+
+    - name: Disable password authentication
+      ansible.builtin.lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: 'PasswordAuthentication no'
+        validate: 'sshd -t -f %s'
+      notify: Restart SSH
+      ignore_errors: yes
+
+  handlers:
+    - name: Restart Docker
+      ansible.builtin.service:
+        name: docker
+        state: restarted
+      ignore_errors: yes
+
+    - name: Reload systemd
+      ansible.builtin.systemd:
+        daemon_reload: yes
+      ignore_errors: yes
+
+    - name: Restart SSH
+      ansible.builtin.service:
+        name: sshd
+        state: restarted
+      ignore_errors: yes

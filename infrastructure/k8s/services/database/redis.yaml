@@ -1,0 +1,177 @@
+# =============================================================================
+# Redis Service Configuration
+# =============================================================================
+# For on-premises deployment with external Redis
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: game-engine
+  labels:
+    app: redis
+    component: cache
+spec:
+  type: ClusterIP
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: 6379
+      protocol: TCP
+  selector:
+    app: redis
+
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: redis
+  namespace: game-engine
+  labels:
+    app: redis
+subsets:
+  - addresses:
+      - ip: 10.0.11.10  # redis-01 master IP
+    ports:
+      - port: 6379
+        name: redis
+  - addresses:
+      - ip: 10.0.11.11  # redis-02 replica IP
+    ports:
+      - port: 6379
+        name: redis
+  - addresses:
+      - ip: 10.0.11.12  # redis-03 replica IP
+    ports:
+      - port: 6379
+        name: redis
+
+---
+# Redis Sentinel Service (for automatic failover)
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-sentinel
+  namespace: game-engine
+  labels:
+    app: redis-sentinel
+    component: cache
+spec:
+  type: ClusterIP
+  ports:
+    - name: sentinel
+      port: 26379
+      targetPort: 26379
+      protocol: TCP
+  selector:
+    app: redis-sentinel
+
+---
+# Redis Credentials Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis-credentials
+  namespace: game-engine
+type: Opaque
+stringData:
+  password: ChangeMeRedis123!
+
+---
+# Redis Connection ConfigMap
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: redis-config
+  namespace: game-engine
+data:
+  redis_url: "redis://:ChangeMeRedis123!@redis.game-engine.svc.cluster.local:6379"
+  redis_master_name: "mymaster"
+  redis_sentinel_url: "redis-sentinel.game-engine.svc.cluster.local:26379"
+
+---
+# Memcached Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: memcached
+  namespace: game-engine
+  labels:
+    app: memcached
+    component: cache
+spec:
+  type: ClusterIP
+  ports:
+    - name: memcached
+      port: 11211
+      targetPort: 11211
+      protocol: TCP
+  selector:
+    app: memcached
+
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: memcached
+  namespace: game-engine
+  labels:
+    app: memcached
+subsets:
+  - addresses:
+      - ip: 10.0.12.10  # memcached-01 IP
+      - ip: 10.0.12.11  # memcached-02 IP
+      - ip: 10.0.12.12  # memcached-03 IP
+    ports:
+      - port: 11211
+        name: memcached
+
+---
+# NATS Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nats
+  namespace: game-engine
+  labels:
+    app: nats
+    component: messaging
+spec:
+  type: ClusterIP
+  ports:
+    - name: nats
+      port: 4222
+      targetPort: 4222
+      protocol: TCP
+    - name: monitoring
+      port: 8222
+      targetPort: 8222
+      protocol: TCP
+    - name: cluster
+      port: 6222
+      targetPort: 6222
+      protocol: TCP
+  selector:
+    app: nats
+
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: nats
+  namespace: game-engine
+  labels:
+    app: nats
+subsets:
+  - addresses:
+      - ip: 10.0.13.10  # nats-01 IP
+      - ip: 10.0.13.11  # nats-02 IP
+      - ip: 10.0.13.12  # nats-03 IP
+    ports:
+      - port: 4222
+        name: nats
+      - port: 8222
+        name: monitoring
+      - port: 6222
+        name: cluster

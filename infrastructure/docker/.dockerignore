@@ -1,0 +1,66 @@
+# =============================================================================
+# Docker Ignore File for Services
+# =============================================================================
+
+# Git
+.git
+.gitignore
+
+# Documentation
+*.md
+docs/
+LICENSE
+
+# Development files
+.env
+.env.*
+docker-compose*.yml
+docker-compose*.yaml
+*.dev.yml
+
+# IDE and editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+bin/
+dist/
+build/
+target/
+
+# Test files
+*_test.go
+*_test.yaml
+*_test.yml
+test/
+tests/
+coverage/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Kubernetes files (not needed in image)
+infrastructure/
+*.kubeconfig
+*.kube.yaml
+
+# Terraform files
+*.tf
+*.tfstate
+.terraform/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+Jenkinsfile

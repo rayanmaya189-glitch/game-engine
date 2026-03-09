@@ -1,0 +1,29 @@
+server:
+  port: 8081
+  host: "0.0.0.0"
+  read_timeout: 30
+  write_timeout: 30
+
+jwt:
+  secret: "your-secret-key-change-in-production"
+  expiration_hours: 24
+  refresh_days: 7
+
+redis:
+  addr: "redis:6379"
+  password: ""
+  db: 0
+
+services:
+  auth_service: "auth-service:50051"
+  user_service: "user-service:50051"
+  wallet_service: "wallet-service:50051"
+  game_service: "game-registry:50051"
+
+admin:
+  allowed_ips:
+    - "admin.example.com"
+    - "127.0.0.1"
+
+rate_limit:
+  requests_per_minute: 1000

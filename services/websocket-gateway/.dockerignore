@@ -1,0 +1,43 @@
+# Elixir/OTP
+/.elixir/
+/_deps/
+/_build/
+/erl_crash.dump
+*.ez
+
+# Phoenix
+/node_modules/
+/priv/static/
+/priv/cache/
+
+# IDE
+/.idea/
+/.vscode/
+*.swp
+*.swo
+*~
+
+# Git
+/.git/
+
+# Docker
+/docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# Testing
+/conftest/
+/cover/
+/test/
+/tmp/
+
+# Documentation
+/doc/
+/*.md
+
+# Development
+/config/dev.exs
+/config/test.exs
+
+# Release
+/rel/

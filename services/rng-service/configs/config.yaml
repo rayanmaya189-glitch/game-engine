@@ -1,0 +1,54 @@
+server:
+  grpc_port: 9010
+  http_port: 8010
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  password: ""
+  db: 0
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "rng-service"
+
+rng:
+  # Hardware RNG configuration
+  hardware_rng:
+    enabled: true
+    # Use AWS Nitro when running on Nitro instances
+    aws_nitro: true
+    fallback_to_software: true
+  
+  # Software RNG fallback (for testing/dev)
+  software_rng:
+    # Seed source for software RNG
+    seed_source: "entropy"
+  
+  # Seed generation for provably fair gaming
+  seed_generation:
+    server_seed_length: 32
+    client_seed_length: 16
+    nonce_increment: true
+  
+  # Randomness certification
+  certification:
+    enabled: true
+    # Certificate validity duration
+    validity_period: 24h
+    # Verify every N generations
+    verification_interval: 1000
+
+  # Random number generation limits
+  limits:
+    max_int: 1000000
+    max_float: 1.0
+    max_deck_size: 8
+    max_dice_count: 6
+    max_slot_reels: 12
+
+logging:
+  level: "info"
+  format: "json"

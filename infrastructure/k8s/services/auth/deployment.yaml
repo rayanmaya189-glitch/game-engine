@@ -1,0 +1,316 @@
+# =============================================================================
+# Auth Service Deployment
+# =============================================================================
+# Authentication and authorization service
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-service
+  namespace: game-engine
+  labels:
+    app: auth-service
+    version: v1
+    component: service
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: auth-service
+  template:
+    metadata:
+      labels:
+        app: auth-service
+        version: v1
+        component: service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: auth-service
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: auth-service
+          image: registry.game-engine.local:5000/auth-service:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+            - name: metrics
+              containerPort: 8081
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: GRPC_PORT
+              value: "9090"
+            - name: DATABASE_HOST
+              value: "postgresql.game-engine.svc.cluster.local"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: "auth_db"
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: password
+            - name: REDIS_HOST
+              value: "redis.game-engine.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: password
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: secret
+            - name: JWT_EXPIRY
+              value: "24h"
+            - name: JWT_REFRESH_EXPIRY
+              value: "168h"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: ENVIRONMENT
+              value: "production"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: auth-service-config
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: auth-service
+                topologyKey: kubernetes.io/hostname
+        nodeAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              preference:
+                matchExpressions:
+                  - key: node-group
+                    operator: In
+                    values:
+                      - internal-services
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-service
+  namespace: game-engine
+  labels:
+    app: auth-service
+    component: service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: grpc
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: auth-service
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: auth-service-config
+  namespace: game-engine
+data:
+  config.yaml: |
+    server:
+      port: 8080
+      grpc_port: 9090
+      read_timeout: 30s
+      write_timeout: 30s
+      idle_timeout: 120s
+
+    database:
+      max_open_conns: 25
+      max_idle_conns: 10
+      conn_max_lifetime: 5m
+      conn_max_idle_time: 1m
+
+    redis:
+      pool_size: 10
+      min_idle_conns: 5
+      dial_timeout: 5s
+      read_timeout: 3s
+      write_timeout: 3s
+
+    jwt:
+      algorithm: RS256
+      issuer: game-engine
+      audience: game-engine-api
+
+    session:
+      type: redis
+      timeout: 24h
+      refresh_enabled: true
+      refresh_window: 168h
+
+    rate_limit:
+      enabled: true
+      requests_per_minute: 100
+      burst: 20
+
+    cors:
+      enabled: true
+      allowed_origins:
+        - "https://player.game-engine.com"
+        - "https://admin.game-engine.com"
+        - "https://merchant.game-engine.com"
+        - "https://agent.game-engine.com"
+      allowed_methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      allowed_headers:
+        - Authorization
+        - Content-Type
+        - X-Request-ID
+        - X-Correlation-ID
+
+    logging:
+      format: json
+      level: info
+      output: stdout
+
+    monitoring:
+      enabled: true
+      metrics_port: 8081
+      health_check_path: /health
+      readiness_check_path: /ready
+
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: auth-service
+  namespace: game-engine
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: auth-service
+  minReplicas: 3
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+      selectPolicy: Max
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: database-credentials
+  namespace: game-engine
+type: Opaque
+stringData:
+  username: auth_user
+  password: ChangeMeAuthPass123!
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: redis-credentials
+  namespace: game-engine
+type: Opaque
+stringData:
+  password: ChangeMeRedis123!
+
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: jwt-secret
+  namespace: game-engine
+type: Opaque
+stringData:
+  secret: ChangeMeJWTSecretKey12345678901234567890!
