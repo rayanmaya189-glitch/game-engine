@@ -1,0 +1,70 @@
+server:
+  grpc_port: 9020
+  http_port: 8020
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  db: 0
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "tournament"
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  user: "gameengine"
+  password: "gameengine"
+  name: "tournament"
+  ssl_mode: "disable"
+
+tournament:
+  default_min_players: 2
+  default_max_players: 1000
+  default_start_delay: 300 # seconds
+  auto_start_enabled: true
+  rebuy_enabled: false
+  addon_enabled: false
+  
+  # Tournament types configuration
+  types:
+    sit_and_go:
+      min_players: 2
+      max_players: 10
+      start_delay: 10
+    scheduled:
+      min_players: 2
+      max_players: 1000
+      start_delay: 300
+    knockout:
+      min_players: 4
+      max_players: 100
+      bounty_enabled: true
+    freeroll:
+      min_players: 2
+      max_players: 1000
+      entry_fee: 0
+
+  # Prize distribution presets
+  prize_distribution:
+    standard:
+      - 50
+      - 30
+      - 20
+    top_three:
+      - 60
+      - 30
+      - 10
+    top_five:
+      - 50
+      - 25
+      - 15
+      - 7
+      - 3
+
+logging:
+  level: "info"
+  format: "json"

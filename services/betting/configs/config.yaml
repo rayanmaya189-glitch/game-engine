@@ -1,0 +1,23 @@
+server:
+  grpc_port: 9014
+  http_port: 8014
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "betting"
+
+betting:
+  min_bet: 1
+  max_bet: 100000
+  platform_rake: 0.05
+  default_odds: decimal
+
+logging:
+  level: "info"
+  format: "json"

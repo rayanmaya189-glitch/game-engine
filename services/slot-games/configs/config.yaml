@@ -1,0 +1,22 @@
+server:
+  grpc_port: 9013
+  http_port: 8013
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "slot-games"
+
+game:
+  max_reels: 12
+  min_bet: 1
+  max_bet: 10000
+
+logging:
+  level: "info"
+  format: "json"

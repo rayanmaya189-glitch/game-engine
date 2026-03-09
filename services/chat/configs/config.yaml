@@ -1,0 +1,57 @@
+server:
+  grpc_port: 9022
+  http_port: 8022
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  db: 2
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "chat"
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  user: "gameengine"
+  password: "gameengine"
+  name: "chat"
+  ssl_mode: "disable"
+
+chat:
+  max_message_length: 500
+  max_messages_per_room: 1000
+  message_retention_days: 30
+  rate_limit_per_minute: 20
+  
+  # Room types
+  room_types:
+    public:
+      enabled: true
+      max_users: 1000
+    private:
+      enabled: true
+      max_users: 100
+    table:
+      enabled: true
+      max_users: 10
+
+  # Profanity filter
+  profanity_filter:
+    enabled: true
+    replacement_char: "*"
+    filter_level: "medium" # low, medium, high
+
+  # Moderation
+  moderation:
+    auto_mute_threshold: 5
+    mute_duration_minutes: 30
+    ban_duration_hours: 24
+    requires_moderator: false
+
+logging:
+  level: "info"
+  format: "json"

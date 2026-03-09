@@ -1,0 +1,51 @@
+server:
+  grpc_port: 9021
+  http_port: 8021
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  db: 1
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "multiplayer"
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  user: "gameengine"
+  password: "gameengine"
+  name: "multiplayer"
+  ssl_mode: "disable"
+
+multiplayer:
+  default_min_players: 2
+  default_max_players: 6
+  default_max_tables: 1000
+  table_timeout: 3600 # seconds
+  idle_timeout: 300 # seconds
+  max_spectators: 100
+  auto_disconnect: true
+  
+  # Table configurations
+  table_types:
+    public:
+      min_players: 2
+      max_players: 6
+      buy_in_min: 0
+      buy_in_max: 1000000
+    private:
+      min_players: 2
+      max_players: 6
+      invite_only: true
+    tournament:
+      min_players: 2
+      max_players: 10
+      tournament_id: ""
+
+logging:
+  level: "info"
+  format: "json"
