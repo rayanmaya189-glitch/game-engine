@@ -6,10 +6,10 @@ import {
   Button, Chip, IconButton, Tooltip, Dialog, DialogTitle, DialogContent,
   DialogActions, FormControl, InputLabel, Select, MenuItem, Switch, FormControlLabel
 } from '@mui/material';
-import { Search, Add, Edit, Block, CheckCircle, MoreVert } from '@mui/icons-material';
+import { Search, Add, Edit, Block, CheckCircle } from '@mui/icons-material';
 import { useAppDispatch } from '../../store/hooks';
 import { showSnackbar } from '../../store/slices/uiSlice';
-import { merchantsAPI } from '../../services/merchantsApi';
+import { merchantsAPI } from '../../services/api';
 
 const Merchants = () => {
   const dispatch = useAppDispatch();
@@ -104,7 +104,7 @@ const Merchants = () => {
                 merchants.map((merchant: any) => (
                   <TableRow key={merchant.id} hover>
                     <TableCell>{merchant.id}</TableCell>
-                    <TableCell fontWeight="500">{merchant.name}</TableCell>
+                    <TableCell variant='head'>{merchant.name}</TableCell>
                     <TableCell>{merchant.email}</TableCell>
                     <TableCell>{merchant.commissionRate}%</TableCell>
                     <TableCell>{merchant.playerCount || 0}</TableCell>
