@@ -14,6 +14,40 @@ defmodule WebsocketGateway.NATS.Client do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
+  @doc """
+  Publish a message to a NATS subject.
+  """
+  def publish(subject, payload) do
+    case :gnat.pub(:websocket_gateway_nats, subject, Jason.encode!(payload)) do
+      :ok -> {:ok, "published"}
+      error -> {:error, error}
+    end
+  end
+
+  @doc """
+  Request a response from a NATS subject (request-reply pattern).
+  Returns {:ok, response_map} or {:error, reason}
+  """
+  def request(subject, payload, timeout \\ 5000) do
+    encoded = Jason.encode!(payload)
+
+    case :gnat.req(:websocket_gateway_nats, subject, encoded, request_timeout: timeout) do
+      {:ok, %{body: body}} ->
+        case Jason.decode(body) do
+          {:ok, response} -> {:ok, response}
+          {:error, _} -> {:error, :decode_error}
+        end
+      {:error, :timeout} ->
+        {:error, :timeout}
+      {:error, reason} ->
+        {:error, reason}
+    end
+  rescue
+    e in Jason.EncodeError -> {:error, :encode_error}
+    e in ArgumentError -> {:error, :invalid_request}
+    _ -> {:error, :unknown}
+  end
+
   @impl true
   def init(opts) do
     config = Application.get_env(:websocket_gateway, :nats, [])

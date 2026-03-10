@@ -22,6 +22,11 @@ type RouterConfig struct {
 	UserClient            *client.UserClient
 	WalletClient          *client.WalletClient
 	GameClient            *client.GameClient
+	CommissionClient      *client.CommissionClient
+	BonusClient           *client.BonusClient
+	TournamentClient      *client.TournamentClient
+	JackpotClient         *client.JackpotClient
+	PaymentClient         *client.PaymentClient
 	AllowedIPs            []string
 }
 

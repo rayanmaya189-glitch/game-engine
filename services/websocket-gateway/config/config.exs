@@ -50,13 +50,13 @@ config :websocket_gateway, :websocket,
   # Port configuration
   ws_port: String.to_integer(System.get_env("WS_PORT") || "8084"),
   wss_port: String.to_integer(System.get_env("WSS_PORT") || "8085"),
-  
+
   # Connection limits
   max_connections: 1_000_000,
   max_messages_per_second: 100,
   heartbeat_interval: 30_000, # 30 seconds
   connection_timeout: 60_000, # 60 seconds
-  
+
   # SSL configuration
   ssl_enabled: System.get_env("WSS_ENABLED", "false") == "true",
   ssl_certfile: System.get_env("SSL_CERTFILE"),
@@ -80,6 +80,14 @@ config :websocket_gateway, :nats,
     "jackpot.events.*"
   ]
 
+# Service endpoints configuration
+config :websocket_gateway, :services,
+  wallet_service: System.get_env("WALLET_SERVICE_URL") || "http://localhost:8081",
+  game_service: System.get_env("GAME_SERVICE_URL") || "http://localhost:8082",
+  tournament_service: System.get_env("TOURNAMENT_SERVICE_URL") || "http://localhost:8083",
+  jackpot_service: System.get_env("JACKPOT_SERVICE_URL") || "http://localhost:8084",
+  auth_service: System.get_env("AUTH_SERVICE_URL") || "http://localhost:8080"
+
 # Phoenix channels configuration
 config :websocket_gateway, :channels,
   # Game channel
@@ -88,7 +96,7 @@ config :websocket_gateway, :channels,
     broadcast_timeout: 5_000,
     state_sync_interval: 100
   ],
-  
+
   # Chat channel
   chat: [
     max_message_length: 1000,
@@ -96,13 +104,13 @@ config :websocket_gateway, :channels,
     mute_duration: 300, # seconds
     ban_duration: 86400 # 24 hours
   ],
-  
+
   # Tournament channel
   tournament: [
     max_participants: 1000,
     leaderboard_update_interval: 5_000
   ],
-  
+
   # Lobby channel
   lobby: [
     featured_games_count: 10,

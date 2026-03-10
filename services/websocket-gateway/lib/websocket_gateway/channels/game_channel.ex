@@ -194,7 +194,24 @@ defmodule WebsocketGateway.Channels.GameChannel do
   defp validate_bet_type(bet_type) when is_binary(bet_type), do: :ok
   defp validate_bet_type(_), do: {:error, "Invalid bet type"}
 
-  defp check_balance(_amount, _socket), do: :ok  # TODO: Check with wallet service
+  # Check balance via NATS request to wallet service
+  defp check_balance(amount, socket) do
+    user_id = socket.assigns.user_id
+
+    # Send request to wallet service via NATS
+    case WebsocketGateway.NATS.Client.request("wallet.balance.check", %{user_id: user_id, amount: amount}, 5_000) do
+      {:ok, response} ->
+        if response["success"] == true and response["has_sufficient_balance"] == true do
+          :ok
+        else
+          {:error, response["error"] || "Insufficient balance"}
+        end
+      {:error, reason} ->
+        # Fail closed - deny the bet if we can't verify balance
+        Logger.error("Failed to check balance: #{inspect(reason)}")
+        {:error, "Unable to verify balance. Please try again."}
+    end
+  end
 
   defp validate_action(action, socket) do
     allowed_actions = ~w(hit stand double surrender split fold bet raise call check)
