@@ -1,0 +1,63 @@
+server:
+  grpc_port: 9023
+  http_port: 8023
+
+redis:
+  host: "10.100.1.11"
+  port: 6379
+  db: 3
+
+nats:
+  urls:
+    - "nats://10.100.1.12:4222"
+  cluster_id: "gameengine"
+  client_id: "notification"
+
+database:
+  host: "10.100.1.10"
+  port: 5432
+  user: "gameengine"
+  password: "gameengine"
+  name: "notification"
+  ssl_mode: "disable"
+
+notification:
+  # Push notifications
+  push:
+    enabled: true
+    provider: "fcm" # fcm, apns
+    timeout: 30
+  
+  # Email notifications  
+  email:
+    enabled: true
+    smtp_host: "smtp.example.com"
+    smtp_port: 587
+    smtp_user: "notifications@example.com"
+    smtp_password: "password"
+    from_address: "notifications@example.com"
+    from_name: "Game Engine"
+  
+  # SMS notifications
+  sms:
+    enabled: false
+    provider: "twilio"
+    account_sid: ""
+    auth_token: ""
+    from_number: ""
+  
+  # In-app notifications
+  in_app:
+    enabled: true
+    max_per_user: 100
+    retention_days: 30
+  
+  # Batch notifications
+  batch:
+    enabled: true
+    max_batch_size: 1000
+    retry_attempts: 3
+
+logging:
+  level: "info"
+  format: "json"

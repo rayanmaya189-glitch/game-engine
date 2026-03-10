@@ -22,6 +22,7 @@ type RouterConfig struct {
 	UserClient            *client.UserClient
 	WalletClient          *client.WalletClient
 	GameClient            *client.GameClient
+	CommissionClient      *client.CommissionClient
 }
 
 func NewRouter(cfg *RouterConfig) *router.Router {
@@ -78,6 +79,34 @@ func NewRouter(cfg *RouterConfig) *router.Router {
 			games.GET("/categories", cfg.GetCategories)
 			games.GET("/featured", cfg.GetFeaturedGames)
 			games.GET("/popular", cfg.GetPopularGames)
+		}
+
+		// Claims routes
+		claims := protected.Group("/claims")
+		{
+			// Commission claims
+			claims.POST("/commission", cfg.SubmitCommissionClaim)
+			claims.GET("/commission", cfg.GetUserCommissionClaims)
+			claims.GET("/commission/status/:status", cfg.GetCommissionClaimsByStatus)
+			claims.POST("/commission/:id/claim", cfg.ClaimRebet)
+
+			// Rebet claims
+			claims.POST("/rebet", cfg.CreateRebetClaim)
+			claims.GET("/rebet", cfg.GetUserRebetClaims)
+			claims.GET("/rebet/claimable", cfg.GetClaimableRebets)
+			claims.POST("/rebet/:id/claim", cfg.ClaimRebet)
+
+			// Insurance claims
+			claims.POST("/insurance", cfg.SubmitInsuranceClaim)
+			claims.GET("/insurance", cfg.GetUserInsuranceClaims)
+
+			// Settlements
+			claims.GET("/settlements", cfg.GetUserSettlements)
+			claims.GET("/settlements/:id", cfg.GetSettlementById)
+
+			// Totals
+			claims.GET("/total-pending", cfg.GetUserTotalPending)
+			claims.GET("/total-settled", cfg.GetUserTotalSettled)
 		}
 	}
 
@@ -271,5 +300,228 @@ func (cfg *RouterConfig) GetFeaturedGames(ctx context.Context, c *app.RequestCon
 func (cfg *RouterConfig) GetPopularGames(ctx context.Context, c *app.RequestContext) {
 	handler.SendSuccess(c, map[string]interface{}{
 		"games": []interface{}{},
+	})
+}
+
+// SubmitCommissionClaim handles submitting a commission claim
+func (cfg *RouterConfig) SubmitCommissionClaim(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	var req struct {
+		AffiliateID  string `json:"affiliateId"`
+		CommissionID string `json:"commissionId"`
+		Amount       string `json:"amount"`
+		ClaimReason  string `json:"claimReason"`
+	}
+
+	if err := c.Bind(&req); err != nil {
+		handler.SendErrorResponse(c, 400, handler.ErrCodeBadRequest, "Invalid request body", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"message":  "Commission claim submitted",
+		"claim_id": "claim_123",
+		"status":   "PENDING",
+	})
+}
+
+// GetUserCommissionClaims handles getting user's commission claims
+func (cfg *RouterConfig) GetUserCommissionClaims(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"claims": []interface{}{},
+	})
+}
+
+// GetCommissionClaimsByStatus handles getting commission claims by status
+func (cfg *RouterConfig) GetCommissionClaimsByStatus(ctx context.Context, c *app.RequestContext) {
+	status := c.Param("status")
+	handler.SendSuccess(c, map[string]interface{}{
+		"claims": []interface{}{},
+		"status": status,
+	})
+}
+
+// CreateRebetClaim handles creating a rebet claim
+func (cfg *RouterConfig) CreateRebetClaim(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	var req struct {
+		BonusID          string `json:"bonusId"`
+		BonusCode        string `json:"bonusCode"`
+		BonusAmount      string `json:"bonusAmount"`
+		RebetRequirement string `json:"rebetRequirement"`
+		GameID           string `json:"gameId"`
+		BetID            string `json:"betId"`
+	}
+
+	if err := c.Bind(&req); err != nil {
+		handler.SendErrorResponse(c, 400, handler.ErrCodeBadRequest, "Invalid request body", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"message":           "Rebet claim created",
+		"rebet_id":          "rebet_123",
+		"status":            "IN_PROGRESS",
+		"rebet_requirement": req.RebetRequirement,
+		"current_rebet":     "0",
+	})
+}
+
+// GetUserRebetClaims handles getting user's rebet claims
+func (cfg *RouterConfig) GetUserRebetClaims(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"claims": []interface{}{},
+	})
+}
+
+// GetClaimableRebets handles getting claimable rebet bonuses
+func (cfg *RouterConfig) GetClaimableRebets(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"claims": []interface{}{},
+	})
+}
+
+// ClaimRebet handles claiming a rebet bonus
+func (cfg *RouterConfig) ClaimRebet(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	rebetID := c.Param("id")
+	handler.SendSuccess(c, map[string]interface{}{
+		"message":        "Rebet bonus claimed",
+		"rebet_id":       rebetID,
+		"amount":         "100.00",
+		"transaction_id": "txn_rebet_123",
+	})
+}
+
+// SubmitInsuranceClaim handles submitting an insurance claim
+func (cfg *RouterConfig) SubmitInsuranceClaim(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	var req struct {
+		GameID            string `json:"gameId"`
+		BetID             string `json:"betId"`
+		InsurancePolicyID string `json:"insurancePolicyId"`
+		ClaimType         string `json:"claimType"`
+		InsuredAmount     string `json:"insuredAmount"`
+		LossAmount        string `json:"lossAmount"`
+		ClaimReason       string `json:"claimReason"`
+		EvidenceDetails   string `json:"evidenceDetails"`
+	}
+
+	if err := c.Bind(&req); err != nil {
+		handler.SendErrorResponse(c, 400, handler.ErrCodeBadRequest, "Invalid request body", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"message":  "Insurance claim submitted",
+		"claim_id": "insurance_123",
+		"status":   "PENDING",
+	})
+}
+
+// GetUserInsuranceClaims handles getting user's insurance claims
+func (cfg *RouterConfig) GetUserInsuranceClaims(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"claims": []interface{}{},
+	})
+}
+
+// GetUserSettlements handles getting user's settlements
+func (cfg *RouterConfig) GetUserSettlements(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"settlements": []interface{}{},
+	})
+}
+
+// GetSettlementById handles getting settlement by ID
+func (cfg *RouterConfig) GetSettlementById(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	settlementID := c.Param("id")
+	handler.SendSuccess(c, map[string]interface{}{
+		"settlement_id": settlementID,
+		"amount":        "100.00",
+		"type":          "COMMISSION",
+		"status":        "COMPLETED",
+	})
+}
+
+// GetUserTotalPending handles getting user's total pending claims
+func (cfg *RouterConfig) GetUserTotalPending(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"totalPending": "500.00",
+	})
+}
+
+// GetUserTotalSettled handles getting user's total settled claims
+func (cfg *RouterConfig) GetUserTotalSettled(ctx context.Context, c *app.RequestContext) {
+	userID := c.GetString("user_id")
+	if userID == "" {
+		handler.SendErrorResponse(c, 401, handler.ErrCodeUnauthorized, "Not authenticated", nil)
+		return
+	}
+
+	handler.SendSuccess(c, map[string]interface{}{
+		"totalSettled": "1500.00",
 	})
 }

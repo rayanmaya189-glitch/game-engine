@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#FF6B35</color>
+    <color name="primary_variant">#E85A24</color>
+    <color name="on_primary">#FFFFFF</color>
+    
+    <!-- Secondary Colors -->
+    <color name="secondary">#1A1A2E</color>
+    <color name="secondary_variant">#16213E</color>
+    <color name="on_secondary">#FFFFFF</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#0F0F23</color>
+    <color name="surface">#1A1A2E</color>
+    <color name="on_background">#FFFFFF</color>
+    <color name="on_surface">#FFFFFF</color>
+    
+    <!-- Error Colors -->
+    <color name="error">#FF5252</color>
+    <color name="on_error">#FFFFFF</color>
+    
+    <!-- Success Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="on_success">#FFFFFF</color>
+    
+    <!-- Warning Colors -->
+    <color name="warning">#FFC107</color>
+    <color name="on_warning">#000000</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B0B0B0</color>
+    <color name="text_hint">#757575</color>
+    
+    <!-- Card Colors -->
+    <color name="card_background">#1E1E3F</color>
+    <color name="card_stroke">#2D2D5A</color>
+    
+    <!-- Gradient Colors -->
+    <color name="gradient_start">#FF6B35</color>
+    <color name="gradient_end">#FF8E53</color>
+    
+    <!-- Gold/Jackpot -->
+    <color name="gold">#FFD700</color>
+    <color name="gold_dark">#DAA520</color>
+    
+    <!-- Status Colors -->
+    <color name="status_online">#4CAF50</color>
+    <color name="status_offline">#9E9E9E</color>
+    
+    <!-- Game Category Colors -->
+    <color name="category_slots">#9C27B0</color>
+    <color name="category_cards">#2196F3</color>
+    <color name="category_dice">#FF9800</color>
+    <color name="category_table">#E91E63</color>
+    <color name="category_live">#F44336</color>
+</resources>

@@ -1,0 +1,10 @@
+server:
+  port: 9035
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/commission_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update

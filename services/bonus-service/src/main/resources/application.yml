@@ -1,0 +1,17 @@
+server:
+  port: 9034
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bonus_db
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health

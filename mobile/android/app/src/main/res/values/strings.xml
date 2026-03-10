@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Casino Game</string>
+    
+    <!-- Authentication -->
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="login_with_biometric">Login with Biometric</string>
+    <string name="biometric_prompt_title">Biometric Login</string>
+    <string name="biometric_prompt_subtitle">Use your fingerprint or face to login</string>
+    <string name="biometric_prompt_negative">Use Password</string>
+    <string name="dont_have_account">Don\'t have an account?</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="logout">Logout</string>
+    <string name="username">Username</string>
+    <string name="phone">Phone</string>
+    
+    <!-- Home -->
+    <string name="home">Home</string>
+    <string name="featured_games">Featured Games</string>
+    <string name="popular_games">Popular Games</string>
+    <string name="recent_games">Recent Games</string>
+    <string name="jackpot">Jackpot</string>
+    <string name="promotions">Promotions</string>
+    <string name="view_all">View All</string>
+    
+    <!-- Games -->
+    <string name="games">Games</string>
+    <string name="search_games">Search games</string>
+    <string name="all_games">All Games</string>
+    <string name="slots">Slots</string>
+    <string name="card_games">Card Games</string>
+    <string name="dice">Dice</string>
+    <string name="table_games">Table Games</string>
+    <string name="live_casino">Live Casino</string>
+    <string name="game_details">Game Details</string>
+    <string name="rtp">RTP</string>
+    <string name="min_bet">Min Bet</string>
+    <string name="max_bet">Max Bet</string>
+    <string name="play_now">Play Now</string>
+    <string name="fun_play">Fun Play</string>
+    
+    <!-- Wallet -->
+    <string name="wallet">Wallet</string>
+    <string name="balance">Balance</string>
+    <string name="deposit">Deposit</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="transaction_history">Transaction History</string>
+    <string name="deposit_methods">Deposit Methods</string>
+    <string name="withdraw_methods">Withdraw Methods</string>
+    <string name="amount">Amount</string>
+    <string name="submit">Submit</string>
+    <string name="cancel">Cancel</string>
+    <string name="success">Success</string>
+    <string name="failed">Failed</string>
+    <string name="pending">Pending</string>
+    <string name="completed">Completed</string>
+    
+    <!-- Profile -->
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="my_bonuses">My Bonuses</string>
+    <string name="kyc_verification">KYC Verification</string>
+    <string name="responsible_gaming">Responsible Gaming</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="currency">Currency</string>
+    <string name="save">Save</string>
+    <string name="verify">Verify</string>
+    <string name="verified">Verified</string>
+    <string name="not_verified">Not Verified</string>
+    
+    <!-- General -->
+    <string name="loading">Loading…</string>
+    <string name="error">Error</string>
+    <string name="retry">Retry</string>
+    <string name="ok">OK</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="close">Close</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="please_wait">Please wait…</string>
+</resources>

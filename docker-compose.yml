@@ -147,6 +147,102 @@ services:
       - game-engine-network
     restart: unless-stopped
 
+  # ===========================================
+  # Tournament Service
+  # ===========================================
+  tournament-service:
+    build:
+      context: ./services/tournament
+      dockerfile: Dockerfile
+    container_name: game-engine-tournament-service
+    ports:
+      - "9020:9020"
+      - "8020:8020"
+    environment:
+      - SERVICE_NAME=tournament-service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      - redis
+      - nats
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Multiplayer Service
+  # ===========================================
+  multiplayer-service:
+    build:
+      context: ./services/multiplayer
+      dockerfile: Dockerfile
+    container_name: game-engine-multiplayer-service
+    ports:
+      - "9021:9021"
+      - "8021:8021"
+    environment:
+      - SERVICE_NAME=multiplayer-service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      - redis
+      - nats
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Chat Service
+  # ===========================================
+  chat-service:
+    build:
+      context: ./services/chat
+      dockerfile: Dockerfile
+    container_name: game-engine-chat-service
+    ports:
+      - "9022:9022"
+      - "8022:8022"
+    environment:
+      - SERVICE_NAME=chat-service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      - redis
+      - nats
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Notification Service
+  # ===========================================
+  notification-service:
+    build:
+      context: ./services/notification
+      dockerfile: Dockerfile
+    container_name: game-engine-notification-service
+    ports:
+      - "9023:9023"
+      - "8023:8023"
+    environment:
+      - SERVICE_NAME=notification-service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      - redis
+      - nats
+    networks:
+      - game-engine-network
+    restart: unless-stopped
+
 # ===========================================
 # Networks
 # ===========================================
