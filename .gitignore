@@ -275,3 +275,7 @@ coverage.html
 
 # Protoc output
 proto-gen/
+
+# Generated protobuf code
+proto/gen/java/
+proto/gen/python/

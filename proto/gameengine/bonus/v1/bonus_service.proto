@@ -1,0 +1,182 @@
+syntax = "proto3";
+
+package gameengine.bonus.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gameengine/common/v1/pagination.proto";
+
+option go_package = "gen/go/bonus/v1;bonusv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.bonus.v1";
+
+service BonusService {
+  // List available bonuses
+  rpc ListBonuses(ListBonusesRequest) returns (ListBonusesResponse);
+  
+  // Get bonus details
+  rpc GetBonus(GetBonusRequest) returns (GetBonusResponse);
+  
+  // Claim a bonus
+  rpc ClaimBonus(ClaimBonusRequest) returns (ClaimBonusResponse);
+  
+  // Get user's claimed bonuses
+  rpc GetUserBonuses(GetUserBonusesRequest) returns (GetUserBonusesResponse);
+  
+  // Rebet claim operations
+  rpc CreateRebetClaim(CreateRebetClaimRequest) returns (CreateRebetClaimResponse);
+  rpc GetUserRebetClaims(GetUserRebetClaimsRequest) returns (GetUserRebetClaimsResponse);
+  rpc GetClaimableRebets(GetClaimableRebetsRequest) returns (GetClaimableRebetsResponse);
+  rpc ClaimRebet(ClaimRebetRequest) returns (ClaimRebetResponse);
+  
+  // Insurance claim operations
+  rpc SubmitInsuranceClaim(SubmitInsuranceClaimRequest) returns (SubmitInsuranceClaimResponse);
+  rpc GetUserInsuranceClaims(GetUserInsuranceClaimsRequest) returns (GetUserInsuranceClaimsResponse);
+}
+
+message ListBonusesRequest {
+  string status = 1;
+  string category = 2;
+}
+
+message ListBonusesResponse {
+  repeated Bonus bonuses = 1;
+}
+
+message Bonus {
+  string bonus_id = 1;
+  string name = 2;
+  string description = 3;
+  string bonus_type = 4;
+  double amount = 5;
+  double min_deposit = 6;
+  double max_bonus = 7;
+  double wagering_requirement = 8;
+  int64 expires_at = 9;
+  string status = 10;
+}
+
+message GetBonusRequest {
+  string bonus_id = 1;
+}
+
+message GetBonusResponse {
+  Bonus bonus = 1;
+}
+
+message ClaimBonusRequest {
+  string bonus_id = 1;
+  string user_id = 2;
+}
+
+message ClaimBonusResponse {
+  bool success = 1;
+  double bonus_amount = 2;
+  string expires_at = 3;
+}
+
+message GetUserBonusesRequest {
+  string user_id = 1;
+}
+
+message GetUserBonusesResponse {
+  repeated UserBonus bonuses = 1;
+}
+
+message UserBonus {
+  string bonus_id = 1;
+  string name = 2;
+  double amount = 3;
+  double wagered = 4;
+  double remaining = 5;
+  string status = 6;
+}
+
+message CreateRebetClaimRequest {
+  string user_id = 1;
+  string bonus_id = 2;
+  string bonus_code = 3;
+  double bonus_amount = 4;
+  double rebet_requirement = 5;
+  string game_id = 6;
+  string bet_id = 7;
+}
+
+message CreateRebetClaimResponse {
+  string rebet_id = 1;
+  string status = 2;
+  double current_rebet = 3;
+}
+
+message GetUserRebetClaimsRequest {
+  string user_id = 1;
+}
+
+message GetUserRebetClaimsResponse {
+  repeated RebetClaim claims = 1;
+}
+
+message RebetClaim {
+  string rebet_id = 1;
+  double bonus_amount = 2;
+  double rebet_requirement = 3;
+  double current_rebet = 4;
+  string status = 5;
+}
+
+message GetClaimableRebetsRequest {
+  string user_id = 1;
+}
+
+message GetClaimableRebetsResponse {
+  repeated ClaimableRebet claims = 1;
+}
+
+message ClaimableRebet {
+  string rebet_id = 1;
+  double amount = 2;
+  string game_id = 3;
+}
+
+message ClaimRebetRequest {
+  string rebet_id = 1;
+  string user_id = 2;
+}
+
+message ClaimRebetResponse {
+  bool success = 1;
+  double amount = 2;
+  string transaction_id = 3;
+}
+
+message SubmitInsuranceClaimRequest {
+  string user_id = 1;
+  string game_id = 2;
+  string bet_id = 3;
+  string insurance_policy_id = 4;
+  string claim_type = 5;
+  double insured_amount = 6;
+  double loss_amount = 7;
+  string claim_reason = 8;
+  string evidence_details = 9;
+}
+
+message SubmitInsuranceClaimResponse {
+  string claim_id = 1;
+  string status = 2;
+}
+
+message GetUserInsuranceClaimsRequest {
+  string user_id = 1;
+}
+
+message GetUserInsuranceClaimsResponse {
+  repeated InsuranceClaim claims = 1;
+}
+
+message InsuranceClaim {
+  string claim_id = 1;
+  double insured_amount = 2;
+  double loss_amount = 3;
+  string status = 4;
+  int64 created_at = 5;
+}

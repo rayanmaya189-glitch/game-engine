@@ -1,0 +1,160 @@
+syntax = "proto3";
+
+package gameengine.commission.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gameengine/common/v1/pagination.proto";
+
+option go_package = "gen/go/commission/v1;commissionv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.commission.v1";
+
+service CommissionService {
+  // Commission claims
+  rpc SubmitClaim(SubmitClaimRequest) returns (SubmitClaimResponse);
+  rpc GetUserClaims(GetUserClaimsRequest) returns (GetUserClaimsResponse);
+  rpc GetClaimsByStatus(GetClaimsByStatusRequest) returns (GetClaimsByStatusResponse);
+  rpc ClaimCommission(ClaimCommissionRequest) returns (ClaimCommissionResponse);
+  
+  // Settlements
+  rpc GetUserSettlements(GetUserSettlementsRequest) returns (GetUserSettlementsResponse);
+  rpc GetSettlementById(GetSettlementByIdRequest) returns (GetSettlementByIdResponse);
+  
+  // Totals
+  rpc GetTotalPending(GetTotalPendingRequest) returns (GetTotalPendingResponse);
+  rpc GetTotalSettled(GetTotalSettledRequest) returns (GetTotalSettledResponse);
+  
+  // Agent commissions
+  rpc GetAgentCommissions(GetAgentCommissionsRequest) returns (GetAgentCommissionsResponse);
+  rpc GetPendingCommissions(GetPendingCommissionsRequest) returns (GetPendingCommissionsResponse);
+  rpc GetCommissionHistory(GetCommissionHistoryRequest) returns (GetCommissionHistoryResponse);
+}
+
+message SubmitClaimRequest {
+  string user_id = 1;
+  string affiliate_id = 2;
+  string commission_id = 3;
+  double amount = 4;
+  string claim_reason = 5;
+}
+
+message SubmitClaimResponse {
+  string claim_id = 1;
+  string status = 2;
+}
+
+message GetUserClaimsRequest {
+  string user_id = 1;
+}
+
+message GetUserClaimsResponse {
+  repeated CommissionClaim claims = 1;
+}
+
+message GetClaimsByStatusRequest {
+  string user_id = 1;
+  string status = 2;
+}
+
+message GetClaimsByStatusResponse {
+  repeated CommissionClaim claims = 1;
+  string status = 2;
+}
+
+message CommissionClaim {
+  string claim_id = 1;
+  double amount = 2;
+  string status = 3;
+  string reason = 4;
+  int64 created_at = 5;
+  int64 updated_at = 6;
+}
+
+message ClaimCommissionRequest {
+  string claim_id = 1;
+  string user_id = 2;
+}
+
+message ClaimCommissionResponse {
+  double amount = 1;
+  string transaction_id = 2;
+}
+
+message GetUserSettlementsRequest {
+  string user_id = 1;
+}
+
+message GetUserSettlementsResponse {
+  repeated Settlement settlements = 1;
+}
+
+message GetSettlementByIdRequest {
+  string settlement_id = 1;
+  string user_id = 2;
+}
+
+message GetSettlementByIdResponse {
+  Settlement settlement = 1;
+}
+
+message Settlement {
+  string settlement_id = 1;
+  double amount = 2;
+  string type = 3;
+  string status = 4;
+  int64 created_at = 5;
+}
+
+message GetTotalPendingRequest {
+  string user_id = 1;
+}
+
+message GetTotalPendingResponse {
+  double total_pending = 1;
+}
+
+message GetTotalSettledRequest {
+  string user_id = 1;
+}
+
+message GetTotalSettledResponse {
+  double total_settled = 1;
+}
+
+message GetAgentCommissionsRequest {
+  string agent_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+
+message GetAgentCommissionsResponse {
+  repeated Commission commissions = 1;
+  double total = 2;
+}
+
+message Commission {
+  string commission_id = 1;
+  double amount = 2;
+  string type = 3;
+  string status = 4;
+  int64 created_at = 5;
+}
+
+message GetPendingCommissionsRequest {
+  string agent_id = 1;
+}
+
+message GetPendingCommissionsResponse {
+  double pending = 1;
+}
+
+message GetCommissionHistoryRequest {
+  string agent_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message GetCommissionHistoryResponse {
+  repeated Commission history = 1;
+  int32 total = 2;
+}

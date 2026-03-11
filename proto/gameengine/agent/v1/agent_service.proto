@@ -1,0 +1,81 @@
+syntax = "proto3";
+
+package gameengine.agent.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gameengine/common/v1/pagination.proto";
+
+option go_package = "gen/go/agent/v1;agentv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.agent.v1";
+
+service AgentService {
+  // List downline players
+  rpc ListPlayers(ListPlayersRequest) returns (ListPlayersResponse);
+  
+  // Get player details
+  rpc GetPlayer(GetPlayerRequest) returns (GetPlayerResponse);
+  
+  // Update player limits
+  rpc UpdatePlayerLimit(UpdatePlayerLimitRequest) returns (UpdatePlayerLimitResponse);
+  
+  // Get agent dashboard
+  rpc GetDashboard(GetDashboardRequest) returns (GetDashboardResponse);
+}
+
+message ListPlayersRequest {
+  string agent_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string search = 4;
+  string status = 5;
+}
+
+message ListPlayersResponse {
+  repeated Player players = 1;
+  int32 total = 2;
+  int32 page = 3;
+}
+
+message Player {
+  string player_id = 1;
+  string username = 2;
+  string email = 3;
+  string status = 4;
+  double total_deposits = 5;
+  double total_bets = 6;
+  double balance = 7;
+  int64 created_at = 8;
+}
+
+message GetPlayerRequest {
+  string agent_id = 1;
+  string player_id = 2;
+}
+
+message GetPlayerResponse {
+  Player player = 1;
+}
+
+message UpdatePlayerLimitRequest {
+  string agent_id = 1;
+  string player_id = 2;
+  double deposit_limit = 3;
+  double bet_limit = 4;
+}
+
+message UpdatePlayerLimitResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetDashboardRequest {
+  string agent_id = 1;
+}
+
+message GetDashboardResponse {
+  int32 total_players = 1;
+  int32 active_players = 2;
+  double total_commission = 3;
+  double pending_commission = 4;
+}

@@ -1,0 +1,118 @@
+syntax = "proto3";
+
+package gameengine.payment.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gameengine/common/v1/pagination.proto";
+
+option go_package = "gen/go/payment/v1;paymentv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.payment.v1";
+
+service PaymentService {
+  // Payment operations
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
+  rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse);
+  rpc ApprovePayment(ApprovePaymentRequest) returns (ApprovePaymentResponse);
+  rpc RejectPayment(RejectPaymentRequest) returns (RejectPaymentResponse);
+  rpc ProcessPayment(ProcessPaymentRequest) returns (ProcessPaymentResponse);
+  
+  // List and methods
+  rpc ListPayments(ListPaymentsRequest) returns (ListPaymentsResponse);
+  rpc GetPaymentMethods(GetPaymentMethodsRequest) returns (GetPaymentMethodsResponse);
+}
+
+message CreatePaymentRequest {
+  string user_id = 1;
+  double amount = 2;
+  string currency = 3;
+  string payment_method = 4;
+  string payment_type = 5;
+  map<string, string> metadata = 6;
+}
+
+message CreatePaymentResponse {
+  string payment_id = 1;
+  string status = 2;
+  string payment_url = 3;
+}
+
+message GetPaymentRequest {
+  string payment_id = 1;
+}
+
+message GetPaymentResponse {
+  Payment payment = 1;
+}
+
+message Payment {
+  string payment_id = 1;
+  string user_id = 2;
+  double amount = 3;
+  string currency = 4;
+  string payment_method = 5;
+  string payment_type = 6;
+  string status = 7;
+  int64 created_at = 8;
+  int64 updated_at = 9;
+}
+
+message ApprovePaymentRequest {
+  string payment_id = 1;
+  string approved_by = 2;
+}
+
+message ApprovePaymentResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message RejectPaymentRequest {
+  string payment_id = 1;
+  string rejected_by = 2;
+  string reason = 3;
+}
+
+message RejectPaymentResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ProcessPaymentRequest {
+  string payment_id = 1;
+}
+
+message ProcessPaymentResponse {
+  bool success = 1;
+  string transaction_id = 2;
+}
+
+message ListPaymentsRequest {
+  string user_id = 1;
+  string status = 2;
+  string payment_type = 3;
+  int32 page = 4;
+  int32 limit = 5;
+}
+
+message ListPaymentsResponse {
+  repeated Payment payments = 1;
+  int32 total = 2;
+}
+
+message GetPaymentMethodsRequest {
+  string merchant_id = 1;
+}
+
+message GetPaymentMethodsResponse {
+  repeated PaymentMethod methods = 1;
+}
+
+message PaymentMethod {
+  string method_id = 1;
+  string name = 2;
+  string type = 3;
+  bool enabled = 4;
+  double min_amount = 5;
+  double max_amount = 6;
+}

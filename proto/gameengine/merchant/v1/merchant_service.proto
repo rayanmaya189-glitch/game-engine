@@ -1,0 +1,220 @@
+syntax = "proto3";
+
+package gameengine.merchant.v1;
+
+import "google/protobuf/timestamp.proto";
+import "gameengine/common/v1/pagination.proto";
+
+option go_package = "gen/go/merchant/v1;merchantv1";
+option java_multiple_files = true;
+option java_package = "com.gameengine.merchant.v1";
+
+service MerchantService {
+  // Player management
+  rpc ListPlayers(ListPlayersRequest) returns (ListPlayersResponse);
+  rpc GetPlayer(GetPlayerRequest) returns (GetPlayerResponse);
+  
+  // Reports
+  rpc GetRevenueReport(GetRevenueReportRequest) returns (GetRevenueReportResponse);
+  rpc GetPlayerReport(GetPlayerReportRequest) returns (GetPlayerReportResponse);
+  rpc GetGameReport(GetGameReportRequest) returns (GetGameReportResponse);
+  
+  // Configuration
+  rpc GetConfig(GetConfigRequest) returns (GetConfigResponse);
+  rpc UpdateConfig(UpdateConfigRequest) returns (UpdateConfigResponse);
+  
+  // Webhooks
+  rpc RegisterWebhook(RegisterWebhookRequest) returns (RegisterWebhookResponse);
+  rpc ListWebhooks(ListWebhooksRequest) returns (ListWebhooksResponse);
+  rpc DeleteWebhook(DeleteWebhookRequest) returns (DeleteWebhookResponse);
+  
+  // Agent management
+  rpc ListAgents(ListAgentsRequest) returns (ListAgentsResponse);
+  rpc GetAgent(GetAgentRequest) returns (GetAgentResponse);
+  rpc CreateAgent(CreateAgentRequest) returns (CreateAgentResponse);
+  rpc UpdateAgent(UpdateAgentRequest) returns (UpdateAgentResponse);
+  rpc UpdateAgentStatus(UpdateAgentStatusRequest) returns (UpdateAgentStatusResponse);
+}
+
+message ListPlayersRequest {
+  string merchant_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string search = 4;
+}
+
+message ListPlayersResponse {
+  repeated MerchantPlayer players = 1;
+  int32 total = 2;
+}
+
+message MerchantPlayer {
+  string player_id = 1;
+  string username = 2;
+  string email = 3;
+  string status = 4;
+}
+
+message GetPlayerRequest {
+  string merchant_id = 1;
+  string player_id = 2;
+}
+
+message GetPlayerResponse {
+  MerchantPlayer player = 1;
+}
+
+message GetRevenueReportRequest {
+  string merchant_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+
+message GetRevenueReportResponse {
+  double total_revenue = 1;
+  double total_deposits = 2;
+  double total_withdrawals = 3;
+  int32 total_players = 4;
+}
+
+message GetPlayerReportRequest {
+  string merchant_id = 1;
+  string player_id = 2;
+  string start_date = 3;
+  string end_date = 4;
+}
+
+message GetPlayerReportResponse {
+  double total_bets = 1;
+  double total_wins = 2;
+  double net_revenue = 3;
+  int32 games_played = 4;
+}
+
+message GetGameReportRequest {
+  string merchant_id = 1;
+  string game_id = 2;
+  string start_date = 3;
+  string end_date = 4;
+}
+
+message GetGameReportResponse {
+  double total_bets = 1;
+  double total_wins = 2;
+  int32 total_players = 3;
+  int32 plays = 4;
+}
+
+message GetConfigRequest {
+  string merchant_id = 1;
+}
+
+message GetConfigResponse {
+  map<string, string> config = 1;
+}
+
+message UpdateConfigRequest {
+  string merchant_id = 1;
+  map<string, string> config = 2;
+}
+
+message UpdateConfigResponse {
+  bool success = 1;
+}
+
+message RegisterWebhookRequest {
+  string merchant_id = 1;
+  string url = 2;
+  string events = 3;
+}
+
+message RegisterWebhookResponse {
+  string webhook_id = 1;
+}
+
+message ListWebhooksRequest {
+  string merchant_id = 1;
+}
+
+message ListWebhooksResponse {
+  repeated Webhook webhooks = 1;
+}
+
+message Webhook {
+  string webhook_id = 1;
+  string url = 2;
+  string events = 3;
+  string status = 4;
+}
+
+message DeleteWebhookRequest {
+  string merchant_id = 1;
+  string webhook_id = 2;
+}
+
+message DeleteWebhookResponse {
+  bool success = 1;
+}
+
+message ListAgentsRequest {
+  string merchant_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message ListAgentsResponse {
+  repeated Agent agents = 1;
+  int32 total = 2;
+}
+
+message Agent {
+  string agent_id = 1;
+  string username = 2;
+  string email = 3;
+  string status = 4;
+}
+
+message GetAgentRequest {
+  string merchant_id = 1;
+  string agent_id = 2;
+}
+
+message GetAgentResponse {
+  Agent agent = 1;
+}
+
+message CreateAgentRequest {
+  string merchant_id = 1;
+  string username = 2;
+  string email = 3;
+  // Password should be set through secure channel or invitation flow
+  // Use send_invitation=true to send setup email instead
+  bool send_invitation = 4;
+  string temporary_password = 5; // For bulk import only - will be hashed server-side
+}
+
+message CreateAgentResponse {
+  string agent_id = 1;
+  bool success = 2;
+}
+
+message UpdateAgentRequest {
+  string merchant_id = 1;
+  string agent_id = 2;
+  string username = 3;
+  string email = 4;
+}
+
+message UpdateAgentResponse {
+  bool success = 1;
+}
+
+message UpdateAgentStatusRequest {
+  string merchant_id = 1;
+  string agent_id = 2;
+  string status = 3;
+}
+
+message UpdateAgentStatusResponse {
+  bool success = 1;
+}
