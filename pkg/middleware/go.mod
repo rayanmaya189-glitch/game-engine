@@ -1,9 +1,9 @@
-module github.com/casino-game-engine/pkg/middleware
+module github.com/game-engine/middleware
 
 go 1.23
 
 require (
-	github.com/casino-game-engine/pkg/common v0.0.0
+	github.com/game-engine/common v0.0.0
 	github.com/gin-gonic/gin v1.10.0
 	github.com/go-redis/redis/v8 v8.11.5
 	github.com/google/uuid v1.6.0

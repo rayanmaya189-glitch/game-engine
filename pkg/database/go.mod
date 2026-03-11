@@ -1,9 +1,9 @@
-module github.com/casino-game-engine/pkg/database
+module github.com/game-engine/database
 
 go 1.23
 
 require (
-	github.com/casino-game-engine/pkg/common v0.0.0
+	github.com/game-engine/common v0.0.0
 	github.com/jackc/pgx/v5 v5.6.0
 	github.com/pressly/goose/v3 v3.23.0
 	gopkg.in/yaml.v3 v3.0.1

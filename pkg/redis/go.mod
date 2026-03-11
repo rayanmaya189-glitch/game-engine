@@ -1,9 +1,9 @@
-module github.com/casino-game-engine/pkg/redis
+module github.com/game-engine/redis
 
 go 1.23
 
 require (
-	github.com/casino-game-engine/pkg/common v0.0.0
+	github.com/game-engine/common v0.0.0
 	github.com/go-redis/redis/v8 v8.11.5
 )
 

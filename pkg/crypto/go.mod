@@ -1,9 +1,9 @@
-module github.com/casino-game-engine/pkg/crypto
+module github.com/game-engine/crypto
 
 go 1.23
 
 require (
-	github.com/casino-game-engine/pkg/common v0.0.0
+	github.com/game-engine/common v0.0.0
 	golang.org/x/crypto v0.27.0
 )
 

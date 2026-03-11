@@ -6,10 +6,17 @@ class APIClient {
     
     static let shared = APIClient()
     
-    private let baseURL = "https://api.casino-game.engine/v1/"
+    private let baseURL: String
     private let session: Session
     
     private init() {
+        // Use environment configuration for API base URL
+        #if DEBUG
+        baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "https://sandbox.api.casino-game.engine/v1/"
+        #else
+        baseURL = ProcessInfo.processInfo.environment["API_BASE_URL"] ?? "https://api.casino-game.engine/v1/"
+        #endif
+        
         let interceptor = AuthInterceptor()
         session = Session(interceptor: interceptor)
     }

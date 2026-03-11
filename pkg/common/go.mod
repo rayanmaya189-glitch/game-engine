@@ -1,4 +1,4 @@
-module github.com/casino-game-engine/pkg/common
+module github.com/game-engine/common
 
 go 1.23
 
