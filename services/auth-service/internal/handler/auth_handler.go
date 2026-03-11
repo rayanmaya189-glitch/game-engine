@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"time"
 
+	authv1 "github.com/gameengine/gen/go/gameengine/auth/v1"
+
 	"github.com/gameengine/auth-service/internal/model"
 	"github.com/gameengine/auth-service/internal/service"
 	"github.com/google/uuid"
@@ -16,6 +18,7 @@ import (
 
 // AuthHandler handles gRPC requests for authentication
 type AuthHandler struct {
+	authv1.UnimplementedAuthServiceServer
 	authService *service.AuthService
 }
 
@@ -25,29 +28,29 @@ func NewAuthHandler(authService *service.AuthService) *AuthHandler {
 }
 
 // Register handles user registration
-func (h *AuthHandler) Register(ctx context.Context, req *RegisterRequest) (*RegisterResponse, error) {
+func (h *AuthHandler) Register(ctx context.Context, req *authv1.RegisterRequest) (*authv1.RegisterResponse, error) {
 	// Validate email format
-	if err := h.authService.ValidateEmail(req.Identifier); err != nil {
+	if err := h.authService.ValidateEmail(req.GetIdentifier()); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid email: %v", err)
 	}
 
 	// Validate password
-	if err := h.authService.ValidatePassword(req.Password); err != nil {
+	if err := h.authService.ValidatePassword(req.GetPassword()); err != nil {
 		return nil, status.Errorf(codes.InvalidArgument, "invalid password: %v", err)
 	}
 
 	// Check password match
-	if req.Password != req.ConfirmPassword {
+	if req.GetPassword() != req.GetConfirmPassword() {
 		return nil, status.Errorf(codes.InvalidArgument, "passwords do not match")
 	}
 
 	// Check terms acceptance
-	if !req.AcceptTerms {
+	if !req.GetAcceptTerms() {
 		return nil, status.Errorf(codes.InvalidArgument, "terms must be accepted")
 	}
 
 	// Check if user exists
-	exists, err := h.authService.CheckUserExists(ctx, req.Identifier)
+	exists, err := h.authService.CheckUserExists(ctx, req.GetIdentifier())
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to check user: %v", err)
 	}
@@ -56,7 +59,7 @@ func (h *AuthHandler) Register(ctx context.Context, req *RegisterRequest) (*Regi
 	}
 
 	// Hash password
-	hash, err := h.authService.HashPassword(req.Password)
+	hash, err := h.authService.HashPassword(req.GetPassword())
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to hash password: %v", err)
 	}
@@ -64,17 +67,17 @@ func (h *AuthHandler) Register(ctx context.Context, req *RegisterRequest) (*Regi
 	// Create user
 	user := &model.User{
 		ID:               uuid.New(),
-		Email:            req.Identifier,
+		Email:            req.GetIdentifier(),
 		PasswordHash:     hash,
-		Country:          req.Country,
-		Language:         req.Language.String(),
-		Currency:         req.Currency,
+		Country:          req.GetCountry(),
+		Language:         req.GetLanguage().String(),
+		Currency:         req.GetCurrency(),
 		Status:           model.UserStatusActive,
 		EmailVerified:    false,
 		PhoneVerified:    false,
 		TwoFactorEnabled: false,
-		MarketingConsent: req.MarketingConsent,
-		AcceptTerms:      req.AcceptTerms,
+		MarketingConsent: req.GetMarketingConsent(),
+		AcceptTerms:      req.GetAcceptTerms(),
 		ReferralCode:     generateReferralCode(),
 		CreatedAt:        time.Now(),
 		UpdatedAt:        time.Now(),
@@ -103,7 +106,7 @@ func (h *AuthHandler) Register(ctx context.Context, req *RegisterRequest) (*Regi
 	}
 
 	// Store refresh token
-	deviceID := getDeviceID(req.DeviceInfo)
+	deviceID := getDeviceID(req.GetDeviceInfo())
 	if err := h.authService.StoreRefreshToken(ctx, user.ID, sessionID, refreshToken, deviceID); err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to store refresh token: %v", err)
 	}
@@ -118,7 +121,7 @@ func (h *AuthHandler) Register(ctx context.Context, req *RegisterRequest) (*Regi
 
 	_ = verificationToken // Would be sent via email in production
 
-	return &RegisterResponse{
+	return &authv1.RegisterResponse{
 		UserId:                    user.ID.String(),
 		AccessToken:               accessToken,
 		RefreshToken:              refreshToken,
@@ -668,11 +671,11 @@ func generateReferralCode() string {
 	return fmt.Sprintf("GE%d", time.Now().UnixNano()%100000)
 }
 
-func getDeviceID(info *DeviceInfo) string {
+func getDeviceID(info *authv1.DeviceInfo) string {
 	if info == nil {
 		return ""
 	}
-	return info.DeviceId
+	return info.GetDeviceId()
 }
 
 func convertStatus(status model.UserStatus) Status {
@@ -703,36 +706,22 @@ func convertRoles(roles []model.UserRole) []UserRole {
 	return result
 }
 
-func convertDeviceInfo(info *DeviceInfo) model.DeviceInfo {
+func convertDeviceInfo(info *authv1.DeviceInfo) model.DeviceInfo {
 	if info == nil {
 		return model.DeviceInfo{}
 	}
 	return model.DeviceInfo{
-		DeviceType:  info.DeviceType.String(),
-		OSType:      info.OsType.String(),
-		BrowserType: info.BrowserType.String(),
-		DeviceID:    info.DeviceId,
-		DeviceName:  info.DeviceName,
-		IPAddress:   info.IpAddress,
-		UserAgent:   info.UserAgent,
-		Country:     info.Country,
-		City:        info.City,
-		Timezone:    info.Timezone,
+		DeviceType:  info.GetDeviceType().String(),
+		OSType:      info.GetOsType().String(),
+		BrowserType: info.GetBrowserType().String(),
+		DeviceID:    info.GetDeviceId(),
+		DeviceName:  info.GetDeviceName(),
+		IPAddress:   info.GetIpAddress(),
+		UserAgent:   info.GetUserAgent(),
+		Country:     info.GetCountry(),
+		City:        info.GetCity(),
+		Timezone:    info.GetTimezone(),
 	}
-}
-
-// Request/Response types (would normally be generated from proto)
-type RegisterRequest struct {
-	Identifier       string
-	Password         string
-	ConfirmPassword  string
-	Country          string
-	Language         string
-	Currency         string
-	ReferralCode     string
-	DeviceInfo       *DeviceInfo
-	MarketingConsent bool
-	AcceptTerms      bool
 }
 
 type RegisterResponse struct {
@@ -744,7 +733,6 @@ type RegisterResponse struct {
 	PhoneVerificationRequired bool
 	Message                   string
 }
-
 type LoginRequest struct {
 	Identifier string
 	Password   string

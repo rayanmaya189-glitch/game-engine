@@ -9,16 +9,17 @@ import (
 	"os/signal"
 	"syscall"
 
+	authv1 "github.com/gameengine/gen/go/gameengine/auth/v1"
+
 	"github.com/gameengine/auth-service/internal/config"
 	"github.com/gameengine/auth-service/internal/handler"
 	"github.com/gameengine/auth-service/internal/middleware"
 	"github.com/gameengine/auth-service/internal/repository"
 	"github.com/gameengine/auth-service/internal/service"
 	_ "github.com/lib/pq"
+	"github.com/redis/go-redis/v9"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-
-	_ "github.com/redis/go-redis/v9"
 )
 
 func main() {
@@ -82,8 +83,8 @@ func main() {
 		grpc.UnaryInterceptor(authMiddleware.AuthInterceptor()),
 	)
 
-	// Register auth service (in production, this would use generated protobuf code)
-	// authv1.RegisterAuthServiceServer(grpcServer, authHandler)
+	// Register auth service
+	authv1.RegisterAuthServiceServer(grpcServer, authHandler)
 
 	// Register reflection for development
 	reflection.Register(grpcServer)

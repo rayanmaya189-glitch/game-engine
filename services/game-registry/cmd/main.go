@@ -12,6 +12,8 @@ import (
 	"syscall"
 	"time"
 
+	gamesv1 "github.com/gameengine/gen/go/gameengine/game/v1"
+
 	"github.com/gameengine/game-registry/internal/config"
 	"github.com/gameengine/game-registry/internal/handler"
 	"github.com/gameengine/game-registry/internal/repository"
@@ -83,8 +85,8 @@ func main() {
 	grpcAddr := fmt.Sprintf(":%d", cfg.App.GRPCPort)
 	grpcServer := grpc.NewServer()
 
-	// Register gRPC server (would need to implement protobuf service here)
-	// For now, just start the servers
+	// Register gRPC service
+	gamesv1.RegisterGameRegistryServiceServer(grpcServer, gameHandler)
 
 	go func() {
 		log.Printf("Starting HTTP server on %s", httpAddr)
