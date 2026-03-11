@@ -1,148 +1,83 @@
 package main
 
 import (
-	"context"
-	"encoding/json"
+	"fmt"
 	"log"
-	"net/http"
+	"net"
 	"os"
 	"os/signal"
-	"strconv"
 	"syscall"
-	"time"
 
 	"github.com/game-engine/loyalty-service/internal/config"
-	"github.com/game-engine/loyalty-service/internal/handler"
 	"github.com/game-engine/loyalty-service/internal/repository"
 	"github.com/game-engine/loyalty-service/internal/service"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
+	// Load configuration
 	cfg, err := config.Load()
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
+	// Connect to PostgreSQL
 	db, err := repository.NewPostgresDB(cfg.Database)
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 	defer db.Close()
 
+	// Connect to Redis
 	redisClient, err := repository.NewRedisClient(cfg.Redis)
 	if err != nil {
 		log.Fatalf("Failed to connect to Redis: %v", err)
 	}
 	defer redisClient.Close()
 
+	// Initialize repository
 	repo := repository.NewLoyaltyRepository(db, redisClient)
+
+	// Initialize service
 	loyaltyService := service.NewLoyaltyService(repo, cfg)
-	loyaltyHandler := handler.NewLoyaltyHandler(loyaltyService)
 
-	// Set up HTTP server with routes
-	mux := http.NewServeMux()
-	setupRoutes(mux, loyaltyHandler)
+	// Initialize handler - uncomment when proto is generated
+	// loyaltyHandler := handler.NewLoyaltyHandler(loyaltyService)
+	_ = loyaltyService // Keep service to avoid unused error
 
-	server := &http.Server{
-		Addr:         ":8081",
-		Handler:      mux,
-		ReadTimeout:  15 * time.Second,
-		WriteTimeout: 15 * time.Second,
+	// Create gRPC server
+	grpcServer := grpc.NewServer()
+
+	// Register loyalty service (in production, this would use generated protobuf code)
+	// loyaltyv1.RegisterLoyaltyServiceServer(grpcServer, loyaltyHandler)
+
+	// Register reflection for development
+	reflection.Register(grpcServer)
+
+	// Start gRPC server
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", cfg.GRPC.Port))
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
 	}
 
-	// Use HTTP port from config if available, otherwise default
-	if cfg.HTTP.Port > 0 {
-		server.Addr = ":" + strconv.Itoa(cfg.HTTP.Port)
-	}
+	log.Printf("Starting Loyalty Service gRPC server on port %d", cfg.GRPC.Port)
 
+	// Graceful shutdown
 	go func() {
-		log.Printf("Loyalty Service starting on %s", server.Addr)
-		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("Failed to start server: %v", err)
-		}
+		sigCh := make(chan os.Signal, 1)
+		signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
+		<-sigCh
+
+		log.Println("Shutting down Loyalty Service...")
+		grpcServer.GracefulStop()
 	}()
 
-	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
-	<-quit
-
-	log.Println("Shutting down Loyalty Service...")
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
-	defer cancel()
-
-	if err := server.Shutdown(ctx); err != nil {
-		log.Fatalf("Server forced to shutdown: %v", err)
+	if err := grpcServer.Serve(lis); err != nil {
+		log.Fatalf("Failed to serve: %v", err)
 	}
-
-	db.Close()
-	redisClient.Close()
-	log.Println("Loyalty Service stopped")
 }
 
-func setupRoutes(mux *http.ServeMux, h *handler.LoyaltyHandler) {
-	// Health check
-	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-		json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
-	})
-
-	// Loyalty endpoints
-	mux.HandleFunc("/api/v1/loyalty/member/", func(w http.ResponseWriter, r *http.Request) {
-		userID := r.URL.Query().Get("user_id")
-		if userID == "" {
-			http.Error(w, "user_id required", http.StatusBadRequest)
-			return
-		}
-		ctx := context.Background()
-		resp, err := h.GetMember(ctx, userID)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/loyalty/points/history", func(w http.ResponseWriter, r *http.Request) {
-		userID := r.URL.Query().Get("user_id")
-		if userID == "" {
-			http.Error(w, "user_id required", http.StatusBadRequest)
-			return
-		}
-		ctx := context.Background()
-		resp, err := h.GetPointsHistory(ctx, userID, 50, 0)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/loyalty/tiers", func(w http.ResponseWriter, r *http.Request) {
-		ctx := context.Background()
-		resp, err := h.GetTiers(ctx)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/loyalty/rewards", func(w http.ResponseWriter, r *http.Request) {
-		ctx := context.Background()
-		resp, err := h.GetRewards(ctx)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/loyalty/leaderboard", func(w http.ResponseWriter, r *http.Request) {
-		ctx := context.Background()
-		resp, err := h.GetLeaderboard(ctx, 100)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-}
+// Keep service reference
+var _ = func() {}

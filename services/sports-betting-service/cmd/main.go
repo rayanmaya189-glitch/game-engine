@@ -1,167 +1,80 @@
 package main
 
 import (
-	"context"
-	"encoding/json"
+	"fmt"
 	"log"
-	"net/http"
+	"net"
 	"os"
 	"os/signal"
-	"strconv"
 	"syscall"
-	"time"
 
 	"github.com/game-engine/sports-betting-service/internal/config"
-	"github.com/game-engine/sports-betting-service/internal/handler"
 	"github.com/game-engine/sports-betting-service/internal/repository"
 	"github.com/game-engine/sports-betting-service/internal/service"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
+	// Load configuration
 	cfg, err := config.Load()
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
+	// Connect to PostgreSQL
 	db, err := repository.NewPostgresDB(cfg.Database)
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
 	defer db.Close()
 
+	// Connect to Redis
 	redisClient, err := repository.NewRedisClient(cfg.Redis)
 	if err != nil {
 		log.Fatalf("Failed to connect to Redis: %v", err)
 	}
 	defer redisClient.Close()
 
+	// Initialize repository
 	repo := repository.NewSportsRepository(db, redisClient)
+
+	// Initialize service
 	sportsService := service.NewSportsService(repo, cfg)
-	sportsHandler := handler.NewSportsHandler(sportsService)
 
-	// Set up HTTP server with routes
-	mux := http.NewServeMux()
-	setupRoutes(mux, sportsHandler)
+	// Initialize handler - uncomment when proto is generated
+	// sportsHandler := handler.NewSportsHandler(sportsService)
+	_ = sportsService // Keep service to avoid unused error
 
-	server := &http.Server{
-		Addr:         ":8082",
-		Handler:      mux,
-		ReadTimeout:  15 * time.Second,
-		WriteTimeout: 15 * time.Second,
+	// Create gRPC server
+	grpcServer := grpc.NewServer()
+
+	// Register sports betting service (in production, this would use generated protobuf code)
+	// sportsv1.RegisterSportsBettingServiceServer(grpcServer, sportsHandler)
+
+	// Register reflection for development
+	reflection.Register(grpcServer)
+
+	// Start gRPC server
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", cfg.GRPC.Port))
+	if err != nil {
+		log.Fatalf("Failed to listen: %v", err)
 	}
 
-	// Use HTTP port from config if available, otherwise default
-	if cfg.HTTP.Port > 0 {
-		server.Addr = ":" + strconv.Itoa(cfg.HTTP.Port)
-	}
+	log.Printf("Starting Sports Betting Service gRPC server on port %d", cfg.GRPC.Port)
 
+	// Graceful shutdown
 	go func() {
-		log.Printf("Sports Betting Service starting on %s", server.Addr)
-		if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("Failed to start server: %v", err)
-		}
+		sigCh := make(chan os.Signal, 1)
+		signal.Notify(sigCh, syscall.SIGINT, syscall.SIGTERM)
+		<-sigCh
+
+		log.Println("Shutting down Sports Betting Service...")
+		grpcServer.GracefulStop()
 	}()
 
-	quit := make(chan os.Signal, 1)
-	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
-	<-quit
-
-	log.Println("Shutting down Sports Betting Service...")
-	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
-	defer cancel()
-
-	if err := server.Shutdown(ctx); err != nil {
-		log.Fatalf("Server forced to shutdown: %v", err)
+	if err := grpcServer.Serve(lis); err != nil {
+		log.Fatalf("Failed to serve: %v", err)
 	}
-
-	db.Close()
-	redisClient.Close()
-	log.Println("Sports Betting Service stopped")
-}
-
-func setupRoutes(mux *http.ServeMux, h *handler.SportsHandler) {
-	// Health check
-	mux.HandleFunc("/health", func(w http.ResponseWriter, r *http.Request) {
-		json.NewEncoder(w).Encode(map[string]string{"status": "ok"})
-	})
-
-	// Sports endpoints
-	mux.HandleFunc("/api/v1/sports", func(w http.ResponseWriter, r *http.Request) {
-		ctx := context.Background()
-		resp, err := h.GetSports(ctx)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/sports/live", func(w http.ResponseWriter, r *http.Request) {
-		ctx := context.Background()
-		resp, err := h.GetLiveEvents(ctx)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/sports/upcoming", func(w http.ResponseWriter, r *http.Request) {
-		sportID := r.URL.Query().Get("sport_id")
-		ctx := context.Background()
-		resp, err := h.GetUpcomingEvents(ctx, sportID, 50)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/sports/markets", func(w http.ResponseWriter, r *http.Request) {
-		eventID := r.URL.Query().Get("event_id")
-		if eventID == "" {
-			http.Error(w, "event_id required", http.StatusBadRequest)
-			return
-		}
-		ctx := context.Background()
-		resp, err := h.GetMarkets(ctx, eventID)
-		if err != nil {
-			http.Error(w, err.Error(), http.StatusInternalServerError)
-			return
-		}
-		json.NewEncoder(w).Encode(resp)
-	})
-
-	mux.HandleFunc("/api/v1/bets", func(w http.ResponseWriter, r *http.Request) {
-		if r.Method == "POST" {
-			// Place bet
-			userID := r.URL.Query().Get("user_id")
-			eventID := r.URL.Query().Get("event_id")
-			marketID := r.URL.Query().Get("market_id")
-			selection := r.URL.Query().Get("selection")
-			stakeStr := r.URL.Query().Get("stake")
-			oddsStr := r.URL.Query().Get("odds")
-
-			stake, _ := strconv.ParseFloat(stakeStr, 64)
-			odds, _ := strconv.ParseFloat(oddsStr, 64)
-
-			ctx := context.Background()
-			resp, err := h.PlaceBet(ctx, userID, eventID, marketID, selection, stake, odds)
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
-			}
-			json.NewEncoder(w).Encode(resp)
-		} else {
-			// Get user bets
-			userID := r.URL.Query().Get("user_id")
-			ctx := context.Background()
-			resp, err := h.GetUserBets(ctx, userID, 1, 50)
-			if err != nil {
-				http.Error(w, err.Error(), http.StatusInternalServerError)
-				return
-			}
-			json.NewEncoder(w).Encode(resp)
-		}
-	})
 }

@@ -8,15 +8,10 @@ import (
 )
 
 type Config struct {
-	HTTP     HTTPConfig     `yaml:"http"`
 	GRPC     GRPCConfig     `yaml:"grpc"`
 	Database DatabaseConfig `yaml:"database"`
 	Redis    RedisConfig    `yaml:"redis"`
 	Sports   SportsConfig   `yaml:"sports"`
-}
-
-type HTTPConfig struct {
-	Port int `yaml:"port"`
 }
 
 type GRPCConfig struct {
