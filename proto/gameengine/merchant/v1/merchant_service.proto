@@ -187,10 +187,9 @@ message CreateAgentRequest {
   string merchant_id = 1;
   string username = 2;
   string email = 3;
-  // Password should be set through secure channel or invitation flow
-  // Use send_invitation=true to send setup email instead
+  // Set to true to send an invitation email with setup link
+  // instead of including a password
   bool send_invitation = 4;
-  string temporary_password = 5; // For bulk import only - will be hashed server-side
 }
 
 message CreateAgentResponse {
