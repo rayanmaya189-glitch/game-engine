@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.agent.v1.agent_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\027com.game-engine.agent.v1P\001Z\027gen/go/agent/v1;agentv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\027com.game_engine.agent.v1P\001Z\027gen/go/agent/v1;agentv1'
   _globals['_LISTPLAYERSREQUEST']._serialized_start=137
   _globals['_LISTPLAYERSREQUEST']._serialized_end=274
   _globals['_LISTPLAYERSRESPONSE']._serialized_start=276

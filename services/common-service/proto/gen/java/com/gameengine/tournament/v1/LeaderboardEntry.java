@@ -2,7 +2,7 @@
 // source: game-engine/tournament/v1/tournament_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 /**
  * Protobuf type {@code game-engine.tournament.v1.LeaderboardEntry}
@@ -30,15 +30,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_descriptor;
+    return com.game_engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_fieldAccessorTable
+    return com.game_engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.tournament.v1.LeaderboardEntry.class, com.game-engine.tournament.v1.LeaderboardEntry.Builder.class);
+            com.game_engine.tournament.v1.LeaderboardEntry.class, com.game_engine.tournament.v1.LeaderboardEntry.Builder.class);
   }
 
   public static final int USER_ID_FIELD_NUMBER = 1;
@@ -218,10 +218,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.tournament.v1.LeaderboardEntry)) {
+    if (!(obj instanceof com.game_engine.tournament.v1.LeaderboardEntry)) {
       return super.equals(obj);
     }
-    com.game-engine.tournament.v1.LeaderboardEntry other = (com.game-engine.tournament.v1.LeaderboardEntry) obj;
+    com.game_engine.tournament.v1.LeaderboardEntry other = (com.game_engine.tournament.v1.LeaderboardEntry) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -261,44 +261,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(byte[] data)
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(java.io.InputStream input)
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -306,26 +306,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseDelimitedFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.tournament.v1.LeaderboardEntry parseFrom(
+  public static com.game_engine.tournament.v1.LeaderboardEntry parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -338,7 +338,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.tournament.v1.LeaderboardEntry prototype) {
+  public static Builder newBuilder(com.game_engine.tournament.v1.LeaderboardEntry prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -359,21 +359,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.tournament.v1.LeaderboardEntry)
-      com.game-engine.tournament.v1.LeaderboardEntryOrBuilder {
+      com.game_engine.tournament.v1.LeaderboardEntryOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_descriptor;
+      return com.game_engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_fieldAccessorTable
+      return com.game_engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.tournament.v1.LeaderboardEntry.class, com.game-engine.tournament.v1.LeaderboardEntry.Builder.class);
+              com.game_engine.tournament.v1.LeaderboardEntry.class, com.game_engine.tournament.v1.LeaderboardEntry.Builder.class);
     }
 
-    // Construct using com.game-engine.tournament.v1.LeaderboardEntry.newBuilder()
+    // Construct using com.game_engine.tournament.v1.LeaderboardEntry.newBuilder()
     private Builder() {
 
     }
@@ -398,17 +398,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_descriptor;
+      return com.game_engine.tournament.v1.TournamentServiceOuterClass.internal_static_game-engine_tournament_v1_LeaderboardEntry_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.tournament.v1.LeaderboardEntry getDefaultInstanceForType() {
-      return com.game-engine.tournament.v1.LeaderboardEntry.getDefaultInstance();
+    public com.game_engine.tournament.v1.LeaderboardEntry getDefaultInstanceForType() {
+      return com.game_engine.tournament.v1.LeaderboardEntry.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.tournament.v1.LeaderboardEntry build() {
-      com.game-engine.tournament.v1.LeaderboardEntry result = buildPartial();
+    public com.game_engine.tournament.v1.LeaderboardEntry build() {
+      com.game_engine.tournament.v1.LeaderboardEntry result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -416,14 +416,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.tournament.v1.LeaderboardEntry buildPartial() {
-      com.game-engine.tournament.v1.LeaderboardEntry result = new com.game-engine.tournament.v1.LeaderboardEntry(this);
+    public com.game_engine.tournament.v1.LeaderboardEntry buildPartial() {
+      com.game_engine.tournament.v1.LeaderboardEntry result = new com.game_engine.tournament.v1.LeaderboardEntry(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.tournament.v1.LeaderboardEntry result) {
+    private void buildPartial0(com.game_engine.tournament.v1.LeaderboardEntry result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -476,16 +476,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.tournament.v1.LeaderboardEntry) {
-        return mergeFrom((com.game-engine.tournament.v1.LeaderboardEntry)other);
+      if (other instanceof com.game_engine.tournament.v1.LeaderboardEntry) {
+        return mergeFrom((com.game_engine.tournament.v1.LeaderboardEntry)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.tournament.v1.LeaderboardEntry other) {
-      if (other == com.game-engine.tournament.v1.LeaderboardEntry.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.tournament.v1.LeaderboardEntry other) {
+      if (other == com.game_engine.tournament.v1.LeaderboardEntry.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -829,12 +829,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.tournament.v1.LeaderboardEntry)
-  private static final com.game-engine.tournament.v1.LeaderboardEntry DEFAULT_INSTANCE;
+  private static final com.game_engine.tournament.v1.LeaderboardEntry DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.tournament.v1.LeaderboardEntry();
+    DEFAULT_INSTANCE = new com.game_engine.tournament.v1.LeaderboardEntry();
   }
 
-  public static com.game-engine.tournament.v1.LeaderboardEntry getDefaultInstance() {
+  public static com.game_engine.tournament.v1.LeaderboardEntry getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -870,7 +870,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.tournament.v1.LeaderboardEntry getDefaultInstanceForType() {
+  public com.game_engine.tournament.v1.LeaderboardEntry getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

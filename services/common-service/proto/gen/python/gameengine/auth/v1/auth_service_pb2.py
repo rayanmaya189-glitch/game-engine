@@ -24,7 +24,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.auth.v1.auth_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.game-engine.auth.v1P\001Z\025gen/go/auth/v1;authv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.game_engine.auth.v1P\001Z\025gen/go/auth/v1;authv1'
   _globals['_REGISTERREQUEST']._serialized_start=158
   _globals['_REGISTERREQUEST']._serialized_end=574
   _globals['_REGISTERRESPONSE']._serialized_start=577

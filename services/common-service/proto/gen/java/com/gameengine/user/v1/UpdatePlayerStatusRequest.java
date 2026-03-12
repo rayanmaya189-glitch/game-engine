@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.UpdatePlayerStatusRequest}
@@ -31,15 +31,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.UpdatePlayerStatusRequest.class, com.game-engine.user.v1.UpdatePlayerStatusRequest.Builder.class);
+            com.game_engine.user.v1.UpdatePlayerStatusRequest.class, com.game_engine.user.v1.UpdatePlayerStatusRequest.Builder.class);
   }
 
   public static final int USER_ID_FIELD_NUMBER = 1;
@@ -94,9 +94,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.Status status = 2 [json_name = "status"];</code>
    * @return The status.
    */
-  @java.lang.Override public com.game-engine.common.v1.Status getStatus() {
-    com.game-engine.common.v1.Status result = com.game-engine.common.v1.Status.forNumber(status_);
-    return result == null ? com.game-engine.common.v1.Status.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.Status getStatus() {
+    com.game_engine.common.v1.Status result = com.game_engine.common.v1.Status.forNumber(status_);
+    return result == null ? com.game_engine.common.v1.Status.UNRECOGNIZED : result;
   }
 
   public static final int REASON_FIELD_NUMBER = 3;
@@ -155,7 +155,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userId_);
     }
-    if (status_ != com.game-engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
+    if (status_ != com.game_engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
       output.writeEnum(2, status_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(reason_)) {
@@ -173,7 +173,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userId_);
     }
-    if (status_ != com.game-engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
+    if (status_ != com.game_engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, status_);
     }
@@ -190,10 +190,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.UpdatePlayerStatusRequest)) {
+    if (!(obj instanceof com.game_engine.user.v1.UpdatePlayerStatusRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.UpdatePlayerStatusRequest other = (com.game-engine.user.v1.UpdatePlayerStatusRequest) obj;
+    com.game_engine.user.v1.UpdatePlayerStatusRequest other = (com.game_engine.user.v1.UpdatePlayerStatusRequest) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -222,44 +222,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(byte[] data)
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -267,26 +267,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseDelimitedFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest parseFrom(
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -299,7 +299,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.UpdatePlayerStatusRequest prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.UpdatePlayerStatusRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -320,21 +320,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.UpdatePlayerStatusRequest)
-      com.game-engine.user.v1.UpdatePlayerStatusRequestOrBuilder {
+      com.game_engine.user.v1.UpdatePlayerStatusRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.UpdatePlayerStatusRequest.class, com.game-engine.user.v1.UpdatePlayerStatusRequest.Builder.class);
+              com.game_engine.user.v1.UpdatePlayerStatusRequest.class, com.game_engine.user.v1.UpdatePlayerStatusRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.UpdatePlayerStatusRequest.newBuilder()
+    // Construct using com.game_engine.user.v1.UpdatePlayerStatusRequest.newBuilder()
     private Builder() {
 
     }
@@ -357,17 +357,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdatePlayerStatusRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.UpdatePlayerStatusRequest getDefaultInstanceForType() {
-      return com.game-engine.user.v1.UpdatePlayerStatusRequest.getDefaultInstance();
+    public com.game_engine.user.v1.UpdatePlayerStatusRequest getDefaultInstanceForType() {
+      return com.game_engine.user.v1.UpdatePlayerStatusRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.UpdatePlayerStatusRequest build() {
-      com.game-engine.user.v1.UpdatePlayerStatusRequest result = buildPartial();
+    public com.game_engine.user.v1.UpdatePlayerStatusRequest build() {
+      com.game_engine.user.v1.UpdatePlayerStatusRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -375,14 +375,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.UpdatePlayerStatusRequest buildPartial() {
-      com.game-engine.user.v1.UpdatePlayerStatusRequest result = new com.game-engine.user.v1.UpdatePlayerStatusRequest(this);
+    public com.game_engine.user.v1.UpdatePlayerStatusRequest buildPartial() {
+      com.game_engine.user.v1.UpdatePlayerStatusRequest result = new com.game_engine.user.v1.UpdatePlayerStatusRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.UpdatePlayerStatusRequest result) {
+    private void buildPartial0(com.game_engine.user.v1.UpdatePlayerStatusRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -429,16 +429,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.UpdatePlayerStatusRequest) {
-        return mergeFrom((com.game-engine.user.v1.UpdatePlayerStatusRequest)other);
+      if (other instanceof com.game_engine.user.v1.UpdatePlayerStatusRequest) {
+        return mergeFrom((com.game_engine.user.v1.UpdatePlayerStatusRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.UpdatePlayerStatusRequest other) {
-      if (other == com.game-engine.user.v1.UpdatePlayerStatusRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.UpdatePlayerStatusRequest other) {
+      if (other == com.game_engine.user.v1.UpdatePlayerStatusRequest.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -606,16 +606,16 @@ private static final long serialVersionUID = 0L;
      * @return The status.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.Status getStatus() {
-      com.game-engine.common.v1.Status result = com.game-engine.common.v1.Status.forNumber(status_);
-      return result == null ? com.game-engine.common.v1.Status.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.Status getStatus() {
+      com.game_engine.common.v1.Status result = com.game_engine.common.v1.Status.forNumber(status_);
+      return result == null ? com.game_engine.common.v1.Status.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.Status status = 2 [json_name = "status"];</code>
      * @param value The status to set.
      * @return This builder for chaining.
      */
-    public Builder setStatus(com.game-engine.common.v1.Status value) {
+    public Builder setStatus(com.game_engine.common.v1.Status value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -723,12 +723,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.UpdatePlayerStatusRequest)
-  private static final com.game-engine.user.v1.UpdatePlayerStatusRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.UpdatePlayerStatusRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.UpdatePlayerStatusRequest();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.UpdatePlayerStatusRequest();
   }
 
-  public static com.game-engine.user.v1.UpdatePlayerStatusRequest getDefaultInstance() {
+  public static com.game_engine.user.v1.UpdatePlayerStatusRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -764,7 +764,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.UpdatePlayerStatusRequest getDefaultInstanceForType() {
+  public com.game_engine.user.v1.UpdatePlayerStatusRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

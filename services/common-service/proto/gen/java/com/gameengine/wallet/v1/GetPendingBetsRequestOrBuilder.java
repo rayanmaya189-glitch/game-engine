@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetPendingBetsRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetPendingBetsRequest)
@@ -41,9 +41,9 @@ public interface GetPendingBetsRequestOrBuilder extends
    * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationRequest getPagination();
+  com.game_engine.common.v1.PaginationRequest getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
 }

@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 public interface CreateAffiliateLinkResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.affiliate.v1.CreateAffiliateLinkResponse)

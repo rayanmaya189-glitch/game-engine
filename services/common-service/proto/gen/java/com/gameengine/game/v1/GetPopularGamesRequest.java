@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 /**
  * Protobuf type {@code game-engine.game.v1.GetPopularGamesRequest}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_descriptor;
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_fieldAccessorTable
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.game.v1.GetPopularGamesRequest.class, com.game-engine.game.v1.GetPopularGamesRequest.Builder.class);
+            com.game_engine.game.v1.GetPopularGamesRequest.class, com.game_engine.game.v1.GetPopularGamesRequest.Builder.class);
   }
 
   public static final int LIMIT_FIELD_NUMBER = 1;
@@ -136,10 +136,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.game.v1.GetPopularGamesRequest)) {
+    if (!(obj instanceof com.game_engine.game.v1.GetPopularGamesRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.game.v1.GetPopularGamesRequest other = (com.game-engine.game.v1.GetPopularGamesRequest) obj;
+    com.game_engine.game.v1.GetPopularGamesRequest other = (com.game_engine.game.v1.GetPopularGamesRequest) obj;
 
     if (getLimit()
         != other.getLimit()) return false;
@@ -165,44 +165,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(byte[] data)
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -210,26 +210,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseDelimitedFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetPopularGamesRequest parseFrom(
+  public static com.game_engine.game.v1.GetPopularGamesRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -242,7 +242,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.game.v1.GetPopularGamesRequest prototype) {
+  public static Builder newBuilder(com.game_engine.game.v1.GetPopularGamesRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -263,21 +263,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.game.v1.GetPopularGamesRequest)
-      com.game-engine.game.v1.GetPopularGamesRequestOrBuilder {
+      com.game_engine.game.v1.GetPopularGamesRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_fieldAccessorTable
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.game.v1.GetPopularGamesRequest.class, com.game-engine.game.v1.GetPopularGamesRequest.Builder.class);
+              com.game_engine.game.v1.GetPopularGamesRequest.class, com.game_engine.game.v1.GetPopularGamesRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.game.v1.GetPopularGamesRequest.newBuilder()
+    // Construct using com.game_engine.game.v1.GetPopularGamesRequest.newBuilder()
     private Builder() {
 
     }
@@ -299,17 +299,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetPopularGamesRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetPopularGamesRequest getDefaultInstanceForType() {
-      return com.game-engine.game.v1.GetPopularGamesRequest.getDefaultInstance();
+    public com.game_engine.game.v1.GetPopularGamesRequest getDefaultInstanceForType() {
+      return com.game_engine.game.v1.GetPopularGamesRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetPopularGamesRequest build() {
-      com.game-engine.game.v1.GetPopularGamesRequest result = buildPartial();
+    public com.game_engine.game.v1.GetPopularGamesRequest build() {
+      com.game_engine.game.v1.GetPopularGamesRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -317,14 +317,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetPopularGamesRequest buildPartial() {
-      com.game-engine.game.v1.GetPopularGamesRequest result = new com.game-engine.game.v1.GetPopularGamesRequest(this);
+    public com.game_engine.game.v1.GetPopularGamesRequest buildPartial() {
+      com.game_engine.game.v1.GetPopularGamesRequest result = new com.game_engine.game.v1.GetPopularGamesRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.game.v1.GetPopularGamesRequest result) {
+    private void buildPartial0(com.game_engine.game.v1.GetPopularGamesRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.limit_ = limit_;
@@ -368,16 +368,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.game.v1.GetPopularGamesRequest) {
-        return mergeFrom((com.game-engine.game.v1.GetPopularGamesRequest)other);
+      if (other instanceof com.game_engine.game.v1.GetPopularGamesRequest) {
+        return mergeFrom((com.game_engine.game.v1.GetPopularGamesRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.game.v1.GetPopularGamesRequest other) {
-      if (other == com.game-engine.game.v1.GetPopularGamesRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.game.v1.GetPopularGamesRequest other) {
+      if (other == com.game_engine.game.v1.GetPopularGamesRequest.getDefaultInstance()) return this;
       if (other.getLimit() != 0) {
         setLimit(other.getLimit());
       }
@@ -559,12 +559,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.game.v1.GetPopularGamesRequest)
-  private static final com.game-engine.game.v1.GetPopularGamesRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.game.v1.GetPopularGamesRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.game.v1.GetPopularGamesRequest();
+    DEFAULT_INSTANCE = new com.game_engine.game.v1.GetPopularGamesRequest();
   }
 
-  public static com.game-engine.game.v1.GetPopularGamesRequest getDefaultInstance() {
+  public static com.game_engine.game.v1.GetPopularGamesRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -600,7 +600,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.game.v1.GetPopularGamesRequest getDefaultInstanceForType() {
+  public com.game_engine.game.v1.GetPopularGamesRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

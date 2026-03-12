@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface TransactionOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.Transaction)
@@ -41,7 +41,7 @@ public interface TransactionOrBuilder extends
    * <code>.game-engine.common.v1.TransactionType type = 3 [json_name = "type"];</code>
    * @return The type.
    */
-  com.game-engine.common.v1.TransactionType getType();
+  com.game_engine.common.v1.TransactionType getType();
 
   /**
    * <code>.game-engine.common.v1.TransactionStatus status = 4 [json_name = "status"];</code>
@@ -52,7 +52,7 @@ public interface TransactionOrBuilder extends
    * <code>.game-engine.common.v1.TransactionStatus status = 4 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.TransactionStatus getStatus();
+  com.game_engine.common.v1.TransactionStatus getStatus();
 
   /**
    * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
@@ -63,11 +63,11 @@ public interface TransactionOrBuilder extends
    * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
    * @return The amount.
    */
-  com.game-engine.common.v1.TransactionAmount getAmount();
+  com.game_engine.common.v1.TransactionAmount getAmount();
   /**
    * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
    */
-  com.game-engine.common.v1.TransactionAmountOrBuilder getAmountOrBuilder();
+  com.game_engine.common.v1.TransactionAmountOrBuilder getAmountOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.PaymentMethod payment_method = 6 [json_name = "paymentMethod"];</code>
@@ -78,7 +78,7 @@ public interface TransactionOrBuilder extends
    * <code>.game-engine.common.v1.PaymentMethod payment_method = 6 [json_name = "paymentMethod"];</code>
    * @return The paymentMethod.
    */
-  com.game-engine.common.v1.PaymentMethod getPaymentMethod();
+  com.game_engine.common.v1.PaymentMethod getPaymentMethod();
 
   /**
    * <code>string payment_provider = 7 [json_name = "paymentProvider"];</code>

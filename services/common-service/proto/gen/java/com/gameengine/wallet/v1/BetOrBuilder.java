@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface BetOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.Bet)
@@ -89,11 +89,11 @@ public interface BetOrBuilder extends
    * <code>.game-engine.common.v1.Money stake = 7 [json_name = "stake"];</code>
    * @return The stake.
    */
-  com.game-engine.common.v1.Money getStake();
+  com.game_engine.common.v1.Money getStake();
   /**
    * <code>.game-engine.common.v1.Money stake = 7 [json_name = "stake"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getStakeOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getStakeOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money potential_win = 8 [json_name = "potentialWin"];</code>
@@ -104,11 +104,11 @@ public interface BetOrBuilder extends
    * <code>.game-engine.common.v1.Money potential_win = 8 [json_name = "potentialWin"];</code>
    * @return The potentialWin.
    */
-  com.game-engine.common.v1.Money getPotentialWin();
+  com.game_engine.common.v1.Money getPotentialWin();
   /**
    * <code>.game-engine.common.v1.Money potential_win = 8 [json_name = "potentialWin"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getPotentialWinOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getPotentialWinOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money actual_win = 9 [json_name = "actualWin"];</code>
@@ -119,11 +119,11 @@ public interface BetOrBuilder extends
    * <code>.game-engine.common.v1.Money actual_win = 9 [json_name = "actualWin"];</code>
    * @return The actualWin.
    */
-  com.game-engine.common.v1.Money getActualWin();
+  com.game_engine.common.v1.Money getActualWin();
   /**
    * <code>.game-engine.common.v1.Money actual_win = 9 [json_name = "actualWin"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getActualWinOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getActualWinOrBuilder();
 
   /**
    * <code>.game-engine.wallet.v1.BetSettlementType settlement_type = 10 [json_name = "settlementType"];</code>
@@ -134,7 +134,7 @@ public interface BetOrBuilder extends
    * <code>.game-engine.wallet.v1.BetSettlementType settlement_type = 10 [json_name = "settlementType"];</code>
    * @return The settlementType.
    */
-  com.game-engine.wallet.v1.BetSettlementType getSettlementType();
+  com.game_engine.wallet.v1.BetSettlementType getSettlementType();
 
   /**
    * <code>.game-engine.common.v1.TransactionStatus status = 11 [json_name = "status"];</code>
@@ -145,7 +145,7 @@ public interface BetOrBuilder extends
    * <code>.game-engine.common.v1.TransactionStatus status = 11 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.TransactionStatus getStatus();
+  com.game_engine.common.v1.TransactionStatus getStatus();
 
   /**
    * <code>.google.protobuf.Timestamp placed_at = 12 [json_name = "placedAt"];</code>

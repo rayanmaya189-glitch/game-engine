@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface AccountStatusOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.AccountStatus)
@@ -17,7 +17,7 @@ public interface AccountStatusOrBuilder extends
    * <code>.game-engine.common.v1.Status status = 1 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.Status getStatus();
+  com.game_engine.common.v1.Status getStatus();
 
   /**
    * <code>bool email_verified = 2 [json_name = "emailVerified"];</code>

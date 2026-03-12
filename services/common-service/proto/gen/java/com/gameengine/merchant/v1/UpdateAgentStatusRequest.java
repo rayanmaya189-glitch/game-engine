@@ -2,7 +2,7 @@
 // source: game-engine/merchant/v1/merchant_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.merchant.v1;
+package com.game_engine.merchant.v1;
 
 /**
  * Protobuf type {@code game-engine.merchant.v1.UpdateAgentStatusRequest}
@@ -31,15 +31,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_descriptor;
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_fieldAccessorTable
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.merchant.v1.UpdateAgentStatusRequest.class, com.game-engine.merchant.v1.UpdateAgentStatusRequest.Builder.class);
+            com.game_engine.merchant.v1.UpdateAgentStatusRequest.class, com.game_engine.merchant.v1.UpdateAgentStatusRequest.Builder.class);
   }
 
   public static final int MERCHANT_ID_FIELD_NUMBER = 1;
@@ -210,10 +210,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.merchant.v1.UpdateAgentStatusRequest)) {
+    if (!(obj instanceof com.game_engine.merchant.v1.UpdateAgentStatusRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.merchant.v1.UpdateAgentStatusRequest other = (com.game-engine.merchant.v1.UpdateAgentStatusRequest) obj;
+    com.game_engine.merchant.v1.UpdateAgentStatusRequest other = (com.game_engine.merchant.v1.UpdateAgentStatusRequest) obj;
 
     if (!getMerchantId()
         .equals(other.getMerchantId())) return false;
@@ -243,44 +243,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(byte[] data)
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -288,26 +288,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseDelimitedFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -320,7 +320,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.merchant.v1.UpdateAgentStatusRequest prototype) {
+  public static Builder newBuilder(com.game_engine.merchant.v1.UpdateAgentStatusRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -341,21 +341,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.merchant.v1.UpdateAgentStatusRequest)
-      com.game-engine.merchant.v1.UpdateAgentStatusRequestOrBuilder {
+      com.game_engine.merchant.v1.UpdateAgentStatusRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_fieldAccessorTable
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.merchant.v1.UpdateAgentStatusRequest.class, com.game-engine.merchant.v1.UpdateAgentStatusRequest.Builder.class);
+              com.game_engine.merchant.v1.UpdateAgentStatusRequest.class, com.game_engine.merchant.v1.UpdateAgentStatusRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.merchant.v1.UpdateAgentStatusRequest.newBuilder()
+    // Construct using com.game_engine.merchant.v1.UpdateAgentStatusRequest.newBuilder()
     private Builder() {
 
     }
@@ -378,17 +378,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateAgentStatusRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.UpdateAgentStatusRequest getDefaultInstanceForType() {
-      return com.game-engine.merchant.v1.UpdateAgentStatusRequest.getDefaultInstance();
+    public com.game_engine.merchant.v1.UpdateAgentStatusRequest getDefaultInstanceForType() {
+      return com.game_engine.merchant.v1.UpdateAgentStatusRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.UpdateAgentStatusRequest build() {
-      com.game-engine.merchant.v1.UpdateAgentStatusRequest result = buildPartial();
+    public com.game_engine.merchant.v1.UpdateAgentStatusRequest build() {
+      com.game_engine.merchant.v1.UpdateAgentStatusRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -396,14 +396,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.UpdateAgentStatusRequest buildPartial() {
-      com.game-engine.merchant.v1.UpdateAgentStatusRequest result = new com.game-engine.merchant.v1.UpdateAgentStatusRequest(this);
+    public com.game_engine.merchant.v1.UpdateAgentStatusRequest buildPartial() {
+      com.game_engine.merchant.v1.UpdateAgentStatusRequest result = new com.game_engine.merchant.v1.UpdateAgentStatusRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.merchant.v1.UpdateAgentStatusRequest result) {
+    private void buildPartial0(com.game_engine.merchant.v1.UpdateAgentStatusRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.merchantId_ = merchantId_;
@@ -450,16 +450,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.merchant.v1.UpdateAgentStatusRequest) {
-        return mergeFrom((com.game-engine.merchant.v1.UpdateAgentStatusRequest)other);
+      if (other instanceof com.game_engine.merchant.v1.UpdateAgentStatusRequest) {
+        return mergeFrom((com.game_engine.merchant.v1.UpdateAgentStatusRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.merchant.v1.UpdateAgentStatusRequest other) {
-      if (other == com.game-engine.merchant.v1.UpdateAgentStatusRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.merchant.v1.UpdateAgentStatusRequest other) {
+      if (other == com.game_engine.merchant.v1.UpdateAgentStatusRequest.getDefaultInstance()) return this;
       if (!other.getMerchantId().isEmpty()) {
         merchantId_ = other.merchantId_;
         bitField0_ |= 0x00000001;
@@ -765,12 +765,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.merchant.v1.UpdateAgentStatusRequest)
-  private static final com.game-engine.merchant.v1.UpdateAgentStatusRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.merchant.v1.UpdateAgentStatusRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.merchant.v1.UpdateAgentStatusRequest();
+    DEFAULT_INSTANCE = new com.game_engine.merchant.v1.UpdateAgentStatusRequest();
   }
 
-  public static com.game-engine.merchant.v1.UpdateAgentStatusRequest getDefaultInstance() {
+  public static com.game_engine.merchant.v1.UpdateAgentStatusRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -806,7 +806,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.merchant.v1.UpdateAgentStatusRequest getDefaultInstanceForType() {
+  public com.game_engine.merchant.v1.UpdateAgentStatusRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

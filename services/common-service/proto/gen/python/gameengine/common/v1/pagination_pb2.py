@@ -21,7 +21,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.common.v1.pagination_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game-engine.common.v1P\001Z\031gen/go/common/v1;commonv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game_engine.common.v1P\001Z\031gen/go/common/v1;commonv1'
   _globals['_PAGINATIONREQUEST']._serialized_start=64
   _globals['_PAGINATIONREQUEST']._serialized_end=210
   _globals['_PAGINATIONRESPONSE']._serialized_start=213

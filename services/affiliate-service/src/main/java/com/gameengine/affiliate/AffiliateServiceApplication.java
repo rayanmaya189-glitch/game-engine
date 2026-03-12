@@ -1,4 +1,4 @@
-package com.game-engine.affiliate;
+package com.game_engine.affiliate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

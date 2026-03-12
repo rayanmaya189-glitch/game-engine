@@ -1,9 +1,9 @@
-package com.game-engine.affiliate.service;
+package com.game_engine.affiliate.service;
 
-import com.game-engine.affiliate.model.Affiliate;
-import com.game-engine.affiliate.model.Referral;
-import com.game-engine.affiliate.repository.AffiliateRepository;
-import com.game-engine.affiliate.repository.ReferralRepository;
+import com.game_engine.affiliate.model.Affiliate;
+import com.game_engine.affiliate.model.Referral;
+import com.game_engine.affiliate.repository.AffiliateRepository;
+import com.game_engine.affiliate.repository.ReferralRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

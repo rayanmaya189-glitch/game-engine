@@ -2,7 +2,7 @@
 // source: game-engine/common/v1/money.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.common.v1;
+package com.game_engine.common.v1;
 
 /**
  * <pre>
@@ -35,7 +35,7 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_descriptor;
+    return com.game_engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_descriptor;
   }
 
   @SuppressWarnings({"rawtypes"})
@@ -53,9 +53,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_fieldAccessorTable
+    return com.game_engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.common.v1.WageringRequirement.class, com.game-engine.common.v1.WageringRequirement.Builder.class);
+            com.game_engine.common.v1.WageringRequirement.class, com.game_engine.common.v1.WageringRequirement.Builder.class);
   }
 
   private int bitField0_;
@@ -71,7 +71,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int AMOUNT_WAGERED_FIELD_NUMBER = 2;
-  private com.game-engine.common.v1.Money amountWagered_;
+  private com.game_engine.common.v1.Money amountWagered_;
   /**
    * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
    * @return Whether the amountWagered field is set.
@@ -85,19 +85,19 @@ private static final long serialVersionUID = 0L;
    * @return The amountWagered.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.Money getAmountWagered() {
-    return amountWagered_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : amountWagered_;
+  public com.game_engine.common.v1.Money getAmountWagered() {
+    return amountWagered_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : amountWagered_;
   }
   /**
    * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.MoneyOrBuilder getAmountWageredOrBuilder() {
-    return amountWagered_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : amountWagered_;
+  public com.game_engine.common.v1.MoneyOrBuilder getAmountWageredOrBuilder() {
+    return amountWagered_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : amountWagered_;
   }
 
   public static final int AMOUNT_REMAINING_FIELD_NUMBER = 3;
-  private com.game-engine.common.v1.Money amountRemaining_;
+  private com.game_engine.common.v1.Money amountRemaining_;
   /**
    * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
    * @return Whether the amountRemaining field is set.
@@ -111,15 +111,15 @@ private static final long serialVersionUID = 0L;
    * @return The amountRemaining.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.Money getAmountRemaining() {
-    return amountRemaining_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
+  public com.game_engine.common.v1.Money getAmountRemaining() {
+    return amountRemaining_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
   }
   /**
    * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.MoneyOrBuilder getAmountRemainingOrBuilder() {
-    return amountRemaining_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
+  public com.game_engine.common.v1.MoneyOrBuilder getAmountRemainingOrBuilder() {
+    return amountRemaining_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
   }
 
   public static final int DEADLINE_FIELD_NUMBER = 4;
@@ -204,7 +204,7 @@ private static final long serialVersionUID = 0L;
         java.lang.String, java.lang.Integer> defaultEntry =
             com.google.protobuf.MapEntry
             .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                com.game-engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_ContributionPercentagesEntry_descriptor, 
+                com.game_engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_ContributionPercentagesEntry_descriptor, 
                 com.google.protobuf.WireFormat.FieldType.STRING,
                 "",
                 com.google.protobuf.WireFormat.FieldType.INT32,
@@ -362,10 +362,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.common.v1.WageringRequirement)) {
+    if (!(obj instanceof com.game_engine.common.v1.WageringRequirement)) {
       return super.equals(obj);
     }
-    com.game-engine.common.v1.WageringRequirement other = (com.game-engine.common.v1.WageringRequirement) obj;
+    com.game_engine.common.v1.WageringRequirement other = (com.game_engine.common.v1.WageringRequirement) obj;
 
     if (getMultiplier()
         != other.getMultiplier()) return false;
@@ -421,44 +421,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(byte[] data)
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(java.io.InputStream input)
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -466,26 +466,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.common.v1.WageringRequirement parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.common.v1.WageringRequirement parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.common.v1.WageringRequirement parseDelimitedFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.common.v1.WageringRequirement parseFrom(
+  public static com.game_engine.common.v1.WageringRequirement parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -498,7 +498,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.common.v1.WageringRequirement prototype) {
+  public static Builder newBuilder(com.game_engine.common.v1.WageringRequirement prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -523,10 +523,10 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.common.v1.WageringRequirement)
-      com.game-engine.common.v1.WageringRequirementOrBuilder {
+      com.game_engine.common.v1.WageringRequirementOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_descriptor;
+      return com.game_engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -554,12 +554,12 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_fieldAccessorTable
+      return com.game_engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.common.v1.WageringRequirement.class, com.game-engine.common.v1.WageringRequirement.Builder.class);
+              com.game_engine.common.v1.WageringRequirement.class, com.game_engine.common.v1.WageringRequirement.Builder.class);
     }
 
-    // Construct using com.game-engine.common.v1.WageringRequirement.newBuilder()
+    // Construct using com.game_engine.common.v1.WageringRequirement.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -601,17 +601,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_descriptor;
+      return com.game_engine.common.v1.MoneyOuterClass.internal_static_game-engine_common_v1_WageringRequirement_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.common.v1.WageringRequirement getDefaultInstanceForType() {
-      return com.game-engine.common.v1.WageringRequirement.getDefaultInstance();
+    public com.game_engine.common.v1.WageringRequirement getDefaultInstanceForType() {
+      return com.game_engine.common.v1.WageringRequirement.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.common.v1.WageringRequirement build() {
-      com.game-engine.common.v1.WageringRequirement result = buildPartial();
+    public com.game_engine.common.v1.WageringRequirement build() {
+      com.game_engine.common.v1.WageringRequirement result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -619,14 +619,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.common.v1.WageringRequirement buildPartial() {
-      com.game-engine.common.v1.WageringRequirement result = new com.game-engine.common.v1.WageringRequirement(this);
+    public com.game_engine.common.v1.WageringRequirement buildPartial() {
+      com.game_engine.common.v1.WageringRequirement result = new com.game_engine.common.v1.WageringRequirement(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.common.v1.WageringRequirement result) {
+    private void buildPartial0(com.game_engine.common.v1.WageringRequirement result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.multiplier_ = multiplier_;
@@ -692,16 +692,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.common.v1.WageringRequirement) {
-        return mergeFrom((com.game-engine.common.v1.WageringRequirement)other);
+      if (other instanceof com.game_engine.common.v1.WageringRequirement) {
+        return mergeFrom((com.game_engine.common.v1.WageringRequirement)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.common.v1.WageringRequirement other) {
-      if (other == com.game-engine.common.v1.WageringRequirement.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.common.v1.WageringRequirement other) {
+      if (other == com.game_engine.common.v1.WageringRequirement.getDefaultInstance()) return this;
       if (other.getMultiplier() != 0) {
         setMultiplier(other.getMultiplier());
       }
@@ -843,9 +843,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.common.v1.Money amountWagered_;
+    private com.game_engine.common.v1.Money amountWagered_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> amountWageredBuilder_;
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> amountWageredBuilder_;
     /**
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      * @return Whether the amountWagered field is set.
@@ -857,9 +857,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      * @return The amountWagered.
      */
-    public com.game-engine.common.v1.Money getAmountWagered() {
+    public com.game_engine.common.v1.Money getAmountWagered() {
       if (amountWageredBuilder_ == null) {
-        return amountWagered_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : amountWagered_;
+        return amountWagered_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : amountWagered_;
       } else {
         return amountWageredBuilder_.getMessage();
       }
@@ -867,7 +867,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      */
-    public Builder setAmountWagered(com.game-engine.common.v1.Money value) {
+    public Builder setAmountWagered(com.game_engine.common.v1.Money value) {
       if (amountWageredBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -884,7 +884,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      */
     public Builder setAmountWagered(
-        com.game-engine.common.v1.Money.Builder builderForValue) {
+        com.game_engine.common.v1.Money.Builder builderForValue) {
       if (amountWageredBuilder_ == null) {
         amountWagered_ = builderForValue.build();
       } else {
@@ -897,11 +897,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      */
-    public Builder mergeAmountWagered(com.game-engine.common.v1.Money value) {
+    public Builder mergeAmountWagered(com.game_engine.common.v1.Money value) {
       if (amountWageredBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0) &&
           amountWagered_ != null &&
-          amountWagered_ != com.game-engine.common.v1.Money.getDefaultInstance()) {
+          amountWagered_ != com.game_engine.common.v1.Money.getDefaultInstance()) {
           getAmountWageredBuilder().mergeFrom(value);
         } else {
           amountWagered_ = value;
@@ -931,7 +931,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      */
-    public com.game-engine.common.v1.Money.Builder getAmountWageredBuilder() {
+    public com.game_engine.common.v1.Money.Builder getAmountWageredBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getAmountWageredFieldBuilder().getBuilder();
@@ -939,23 +939,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      */
-    public com.game-engine.common.v1.MoneyOrBuilder getAmountWageredOrBuilder() {
+    public com.game_engine.common.v1.MoneyOrBuilder getAmountWageredOrBuilder() {
       if (amountWageredBuilder_ != null) {
         return amountWageredBuilder_.getMessageOrBuilder();
       } else {
         return amountWagered_ == null ?
-            com.game-engine.common.v1.Money.getDefaultInstance() : amountWagered_;
+            com.game_engine.common.v1.Money.getDefaultInstance() : amountWagered_;
       }
     }
     /**
      * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> 
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> 
         getAmountWageredFieldBuilder() {
       if (amountWageredBuilder_ == null) {
         amountWageredBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder>(
+            com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder>(
                 getAmountWagered(),
                 getParentForChildren(),
                 isClean());
@@ -964,9 +964,9 @@ private static final long serialVersionUID = 0L;
       return amountWageredBuilder_;
     }
 
-    private com.game-engine.common.v1.Money amountRemaining_;
+    private com.game_engine.common.v1.Money amountRemaining_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> amountRemainingBuilder_;
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> amountRemainingBuilder_;
     /**
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      * @return Whether the amountRemaining field is set.
@@ -978,9 +978,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      * @return The amountRemaining.
      */
-    public com.game-engine.common.v1.Money getAmountRemaining() {
+    public com.game_engine.common.v1.Money getAmountRemaining() {
       if (amountRemainingBuilder_ == null) {
-        return amountRemaining_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
+        return amountRemaining_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
       } else {
         return amountRemainingBuilder_.getMessage();
       }
@@ -988,7 +988,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      */
-    public Builder setAmountRemaining(com.game-engine.common.v1.Money value) {
+    public Builder setAmountRemaining(com.game_engine.common.v1.Money value) {
       if (amountRemainingBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1005,7 +1005,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      */
     public Builder setAmountRemaining(
-        com.game-engine.common.v1.Money.Builder builderForValue) {
+        com.game_engine.common.v1.Money.Builder builderForValue) {
       if (amountRemainingBuilder_ == null) {
         amountRemaining_ = builderForValue.build();
       } else {
@@ -1018,11 +1018,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      */
-    public Builder mergeAmountRemaining(com.game-engine.common.v1.Money value) {
+    public Builder mergeAmountRemaining(com.game_engine.common.v1.Money value) {
       if (amountRemainingBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0) &&
           amountRemaining_ != null &&
-          amountRemaining_ != com.game-engine.common.v1.Money.getDefaultInstance()) {
+          amountRemaining_ != com.game_engine.common.v1.Money.getDefaultInstance()) {
           getAmountRemainingBuilder().mergeFrom(value);
         } else {
           amountRemaining_ = value;
@@ -1052,7 +1052,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      */
-    public com.game-engine.common.v1.Money.Builder getAmountRemainingBuilder() {
+    public com.game_engine.common.v1.Money.Builder getAmountRemainingBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getAmountRemainingFieldBuilder().getBuilder();
@@ -1060,23 +1060,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      */
-    public com.game-engine.common.v1.MoneyOrBuilder getAmountRemainingOrBuilder() {
+    public com.game_engine.common.v1.MoneyOrBuilder getAmountRemainingOrBuilder() {
       if (amountRemainingBuilder_ != null) {
         return amountRemainingBuilder_.getMessageOrBuilder();
       } else {
         return amountRemaining_ == null ?
-            com.game-engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
+            com.game_engine.common.v1.Money.getDefaultInstance() : amountRemaining_;
       }
     }
     /**
      * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> 
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> 
         getAmountRemainingFieldBuilder() {
       if (amountRemainingBuilder_ == null) {
         amountRemainingBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder>(
+            com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder>(
                 getAmountRemaining(),
                 getParentForChildren(),
                 isClean());
@@ -1409,12 +1409,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.common.v1.WageringRequirement)
-  private static final com.game-engine.common.v1.WageringRequirement DEFAULT_INSTANCE;
+  private static final com.game_engine.common.v1.WageringRequirement DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.common.v1.WageringRequirement();
+    DEFAULT_INSTANCE = new com.game_engine.common.v1.WageringRequirement();
   }
 
-  public static com.game-engine.common.v1.WageringRequirement getDefaultInstance() {
+  public static com.game_engine.common.v1.WageringRequirement getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1450,7 +1450,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.common.v1.WageringRequirement getDefaultInstanceForType() {
+  public com.game_engine.common.v1.WageringRequirement getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

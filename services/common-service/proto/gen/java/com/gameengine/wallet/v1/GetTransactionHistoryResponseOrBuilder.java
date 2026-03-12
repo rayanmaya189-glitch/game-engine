@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetTransactionHistoryResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetTransactionHistoryResponse)
@@ -11,12 +11,12 @@ public interface GetTransactionHistoryResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.wallet.v1.Transaction transactions = 1 [json_name = "transactions"];</code>
    */
-  java.util.List<com.game-engine.wallet.v1.Transaction> 
+  java.util.List<com.game_engine.wallet.v1.Transaction> 
       getTransactionsList();
   /**
    * <code>repeated .game-engine.wallet.v1.Transaction transactions = 1 [json_name = "transactions"];</code>
    */
-  com.game-engine.wallet.v1.Transaction getTransactions(int index);
+  com.game_engine.wallet.v1.Transaction getTransactions(int index);
   /**
    * <code>repeated .game-engine.wallet.v1.Transaction transactions = 1 [json_name = "transactions"];</code>
    */
@@ -24,12 +24,12 @@ public interface GetTransactionHistoryResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.wallet.v1.Transaction transactions = 1 [json_name = "transactions"];</code>
    */
-  java.util.List<? extends com.game-engine.wallet.v1.TransactionOrBuilder> 
+  java.util.List<? extends com.game_engine.wallet.v1.TransactionOrBuilder> 
       getTransactionsOrBuilderList();
   /**
    * <code>repeated .game-engine.wallet.v1.Transaction transactions = 1 [json_name = "transactions"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getTransactionsOrBuilder(
+  com.game_engine.wallet.v1.TransactionOrBuilder getTransactionsOrBuilder(
       int index);
 
   /**
@@ -41,9 +41,9 @@ public interface GetTransactionHistoryResponseOrBuilder extends
    * <code>.game-engine.common.v1.PaginationResponse pagination = 2 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationResponse getPagination();
+  com.game_engine.common.v1.PaginationResponse getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationResponse pagination = 2 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationResponseOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationResponseOrBuilder getPaginationOrBuilder();
 }

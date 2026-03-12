@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetTransactionHistoryRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetTransactionHistoryRequest)
@@ -24,7 +24,7 @@ public interface GetTransactionHistoryRequestOrBuilder extends
    * <code>repeated .game-engine.common.v1.TransactionType types = 2 [json_name = "types"];</code>
    * @return A list containing the types.
    */
-  java.util.List<com.game-engine.common.v1.TransactionType> getTypesList();
+  java.util.List<com.game_engine.common.v1.TransactionType> getTypesList();
   /**
    * <code>repeated .game-engine.common.v1.TransactionType types = 2 [json_name = "types"];</code>
    * @return The count of types.
@@ -35,7 +35,7 @@ public interface GetTransactionHistoryRequestOrBuilder extends
    * @param index The index of the element to return.
    * @return The types at the given index.
    */
-  com.game-engine.common.v1.TransactionType getTypes(int index);
+  com.game_engine.common.v1.TransactionType getTypes(int index);
   /**
    * <code>repeated .game-engine.common.v1.TransactionType types = 2 [json_name = "types"];</code>
    * @return A list containing the enum numeric values on the wire for types.
@@ -53,7 +53,7 @@ public interface GetTransactionHistoryRequestOrBuilder extends
    * <code>repeated .game-engine.common.v1.TransactionStatus statuses = 3 [json_name = "statuses"];</code>
    * @return A list containing the statuses.
    */
-  java.util.List<com.game-engine.common.v1.TransactionStatus> getStatusesList();
+  java.util.List<com.game_engine.common.v1.TransactionStatus> getStatusesList();
   /**
    * <code>repeated .game-engine.common.v1.TransactionStatus statuses = 3 [json_name = "statuses"];</code>
    * @return The count of statuses.
@@ -64,7 +64,7 @@ public interface GetTransactionHistoryRequestOrBuilder extends
    * @param index The index of the element to return.
    * @return The statuses at the given index.
    */
-  com.game-engine.common.v1.TransactionStatus getStatuses(int index);
+  com.game_engine.common.v1.TransactionStatus getStatuses(int index);
   /**
    * <code>repeated .game-engine.common.v1.TransactionStatus statuses = 3 [json_name = "statuses"];</code>
    * @return A list containing the enum numeric values on the wire for statuses.
@@ -117,9 +117,9 @@ public interface GetTransactionHistoryRequestOrBuilder extends
    * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationRequest getPagination();
+  com.game_engine.common.v1.PaginationRequest getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
 }

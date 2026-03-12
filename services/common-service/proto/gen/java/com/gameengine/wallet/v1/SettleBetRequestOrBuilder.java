@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface SettleBetRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.SettleBetRequest)
@@ -29,7 +29,7 @@ public interface SettleBetRequestOrBuilder extends
    * <code>.game-engine.wallet.v1.BetSettlementType settlement_type = 2 [json_name = "settlementType"];</code>
    * @return The settlementType.
    */
-  com.game-engine.wallet.v1.BetSettlementType getSettlementType();
+  com.game_engine.wallet.v1.BetSettlementType getSettlementType();
 
   /**
    * <code>.game-engine.common.v1.Money win_amount = 3 [json_name = "winAmount"];</code>
@@ -40,11 +40,11 @@ public interface SettleBetRequestOrBuilder extends
    * <code>.game-engine.common.v1.Money win_amount = 3 [json_name = "winAmount"];</code>
    * @return The winAmount.
    */
-  com.game-engine.common.v1.Money getWinAmount();
+  com.game_engine.common.v1.Money getWinAmount();
   /**
    * <code>.game-engine.common.v1.Money win_amount = 3 [json_name = "winAmount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getWinAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getWinAmountOrBuilder();
 
   /**
    * <code>string result = 4 [json_name = "result"];</code>

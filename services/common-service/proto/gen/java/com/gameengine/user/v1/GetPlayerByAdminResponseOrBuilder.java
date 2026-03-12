@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface GetPlayerByAdminResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.GetPlayerByAdminResponse)
@@ -17,11 +17,11 @@ public interface GetPlayerByAdminResponseOrBuilder extends
    * <code>.game-engine.user.v1.UserProfile profile = 1 [json_name = "profile"];</code>
    * @return The profile.
    */
-  com.game-engine.user.v1.UserProfile getProfile();
+  com.game_engine.user.v1.UserProfile getProfile();
   /**
    * <code>.game-engine.user.v1.UserProfile profile = 1 [json_name = "profile"];</code>
    */
-  com.game-engine.user.v1.UserProfileOrBuilder getProfileOrBuilder();
+  com.game_engine.user.v1.UserProfileOrBuilder getProfileOrBuilder();
 
   /**
    * <code>.game-engine.user.v1.AccountStatus account_status = 2 [json_name = "accountStatus"];</code>
@@ -32,11 +32,11 @@ public interface GetPlayerByAdminResponseOrBuilder extends
    * <code>.game-engine.user.v1.AccountStatus account_status = 2 [json_name = "accountStatus"];</code>
    * @return The accountStatus.
    */
-  com.game-engine.user.v1.AccountStatus getAccountStatus();
+  com.game_engine.user.v1.AccountStatus getAccountStatus();
   /**
    * <code>.game-engine.user.v1.AccountStatus account_status = 2 [json_name = "accountStatus"];</code>
    */
-  com.game-engine.user.v1.AccountStatusOrBuilder getAccountStatusOrBuilder();
+  com.game_engine.user.v1.AccountStatusOrBuilder getAccountStatusOrBuilder();
 
   /**
    * <code>.game-engine.user.v1.KYCStatus kyc_status = 3 [json_name = "kycStatus"];</code>
@@ -47,9 +47,9 @@ public interface GetPlayerByAdminResponseOrBuilder extends
    * <code>.game-engine.user.v1.KYCStatus kyc_status = 3 [json_name = "kycStatus"];</code>
    * @return The kycStatus.
    */
-  com.game-engine.user.v1.KYCStatus getKycStatus();
+  com.game_engine.user.v1.KYCStatus getKycStatus();
   /**
    * <code>.game-engine.user.v1.KYCStatus kyc_status = 3 [json_name = "kycStatus"];</code>
    */
-  com.game-engine.user.v1.KYCStatusOrBuilder getKycStatusOrBuilder();
+  com.game_engine.user.v1.KYCStatusOrBuilder getKycStatusOrBuilder();
 }

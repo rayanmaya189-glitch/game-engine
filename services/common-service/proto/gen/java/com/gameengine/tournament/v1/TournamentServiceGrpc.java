@@ -1,4 +1,4 @@
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -12,29 +12,29 @@ public final class TournamentServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "game-engine.tournament.v1.TournamentService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.ListTournamentsRequest,
-      com.game-engine.tournament.v1.ListTournamentsResponse> getListTournamentsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.ListTournamentsRequest,
+      com.game_engine.tournament.v1.ListTournamentsResponse> getListTournamentsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListTournaments",
-      requestType = com.game-engine.tournament.v1.ListTournamentsRequest.class,
-      responseType = com.game-engine.tournament.v1.ListTournamentsResponse.class,
+      requestType = com.game_engine.tournament.v1.ListTournamentsRequest.class,
+      responseType = com.game_engine.tournament.v1.ListTournamentsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.ListTournamentsRequest,
-      com.game-engine.tournament.v1.ListTournamentsResponse> getListTournamentsMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.ListTournamentsRequest, com.game-engine.tournament.v1.ListTournamentsResponse> getListTournamentsMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.ListTournamentsRequest,
+      com.game_engine.tournament.v1.ListTournamentsResponse> getListTournamentsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.ListTournamentsRequest, com.game_engine.tournament.v1.ListTournamentsResponse> getListTournamentsMethod;
     if ((getListTournamentsMethod = TournamentServiceGrpc.getListTournamentsMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getListTournamentsMethod = TournamentServiceGrpc.getListTournamentsMethod) == null) {
           TournamentServiceGrpc.getListTournamentsMethod = getListTournamentsMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.ListTournamentsRequest, com.game-engine.tournament.v1.ListTournamentsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.ListTournamentsRequest, com.game_engine.tournament.v1.ListTournamentsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListTournaments"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.ListTournamentsRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.ListTournamentsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.ListTournamentsResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.ListTournamentsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("ListTournaments"))
               .build();
         }
@@ -43,29 +43,29 @@ public final class TournamentServiceGrpc {
     return getListTournamentsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetTournamentRequest,
-      com.game-engine.tournament.v1.GetTournamentResponse> getGetTournamentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetTournamentRequest,
+      com.game_engine.tournament.v1.GetTournamentResponse> getGetTournamentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetTournament",
-      requestType = com.game-engine.tournament.v1.GetTournamentRequest.class,
-      responseType = com.game-engine.tournament.v1.GetTournamentResponse.class,
+      requestType = com.game_engine.tournament.v1.GetTournamentRequest.class,
+      responseType = com.game_engine.tournament.v1.GetTournamentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetTournamentRequest,
-      com.game-engine.tournament.v1.GetTournamentResponse> getGetTournamentMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetTournamentRequest, com.game-engine.tournament.v1.GetTournamentResponse> getGetTournamentMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetTournamentRequest,
+      com.game_engine.tournament.v1.GetTournamentResponse> getGetTournamentMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetTournamentRequest, com.game_engine.tournament.v1.GetTournamentResponse> getGetTournamentMethod;
     if ((getGetTournamentMethod = TournamentServiceGrpc.getGetTournamentMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getGetTournamentMethod = TournamentServiceGrpc.getGetTournamentMethod) == null) {
           TournamentServiceGrpc.getGetTournamentMethod = getGetTournamentMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.GetTournamentRequest, com.game-engine.tournament.v1.GetTournamentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.GetTournamentRequest, com.game_engine.tournament.v1.GetTournamentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTournament"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.GetTournamentRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.GetTournamentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.GetTournamentResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.GetTournamentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("GetTournament"))
               .build();
         }
@@ -74,29 +74,29 @@ public final class TournamentServiceGrpc {
     return getGetTournamentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.JoinTournamentRequest,
-      com.game-engine.tournament.v1.JoinTournamentResponse> getJoinTournamentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.JoinTournamentRequest,
+      com.game_engine.tournament.v1.JoinTournamentResponse> getJoinTournamentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "JoinTournament",
-      requestType = com.game-engine.tournament.v1.JoinTournamentRequest.class,
-      responseType = com.game-engine.tournament.v1.JoinTournamentResponse.class,
+      requestType = com.game_engine.tournament.v1.JoinTournamentRequest.class,
+      responseType = com.game_engine.tournament.v1.JoinTournamentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.JoinTournamentRequest,
-      com.game-engine.tournament.v1.JoinTournamentResponse> getJoinTournamentMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.JoinTournamentRequest, com.game-engine.tournament.v1.JoinTournamentResponse> getJoinTournamentMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.JoinTournamentRequest,
+      com.game_engine.tournament.v1.JoinTournamentResponse> getJoinTournamentMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.JoinTournamentRequest, com.game_engine.tournament.v1.JoinTournamentResponse> getJoinTournamentMethod;
     if ((getJoinTournamentMethod = TournamentServiceGrpc.getJoinTournamentMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getJoinTournamentMethod = TournamentServiceGrpc.getJoinTournamentMethod) == null) {
           TournamentServiceGrpc.getJoinTournamentMethod = getJoinTournamentMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.JoinTournamentRequest, com.game-engine.tournament.v1.JoinTournamentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.JoinTournamentRequest, com.game_engine.tournament.v1.JoinTournamentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "JoinTournament"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.JoinTournamentRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.JoinTournamentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.JoinTournamentResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.JoinTournamentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("JoinTournament"))
               .build();
         }
@@ -105,29 +105,29 @@ public final class TournamentServiceGrpc {
     return getJoinTournamentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.LeaveTournamentRequest,
-      com.game-engine.tournament.v1.LeaveTournamentResponse> getLeaveTournamentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.LeaveTournamentRequest,
+      com.game_engine.tournament.v1.LeaveTournamentResponse> getLeaveTournamentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "LeaveTournament",
-      requestType = com.game-engine.tournament.v1.LeaveTournamentRequest.class,
-      responseType = com.game-engine.tournament.v1.LeaveTournamentResponse.class,
+      requestType = com.game_engine.tournament.v1.LeaveTournamentRequest.class,
+      responseType = com.game_engine.tournament.v1.LeaveTournamentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.LeaveTournamentRequest,
-      com.game-engine.tournament.v1.LeaveTournamentResponse> getLeaveTournamentMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.LeaveTournamentRequest, com.game-engine.tournament.v1.LeaveTournamentResponse> getLeaveTournamentMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.LeaveTournamentRequest,
+      com.game_engine.tournament.v1.LeaveTournamentResponse> getLeaveTournamentMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.LeaveTournamentRequest, com.game_engine.tournament.v1.LeaveTournamentResponse> getLeaveTournamentMethod;
     if ((getLeaveTournamentMethod = TournamentServiceGrpc.getLeaveTournamentMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getLeaveTournamentMethod = TournamentServiceGrpc.getLeaveTournamentMethod) == null) {
           TournamentServiceGrpc.getLeaveTournamentMethod = getLeaveTournamentMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.LeaveTournamentRequest, com.game-engine.tournament.v1.LeaveTournamentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.LeaveTournamentRequest, com.game_engine.tournament.v1.LeaveTournamentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "LeaveTournament"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.LeaveTournamentRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.LeaveTournamentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.LeaveTournamentResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.LeaveTournamentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("LeaveTournament"))
               .build();
         }
@@ -136,29 +136,29 @@ public final class TournamentServiceGrpc {
     return getLeaveTournamentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetLeaderboardRequest,
-      com.game-engine.tournament.v1.GetLeaderboardResponse> getGetLeaderboardMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetLeaderboardRequest,
+      com.game_engine.tournament.v1.GetLeaderboardResponse> getGetLeaderboardMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetLeaderboard",
-      requestType = com.game-engine.tournament.v1.GetLeaderboardRequest.class,
-      responseType = com.game-engine.tournament.v1.GetLeaderboardResponse.class,
+      requestType = com.game_engine.tournament.v1.GetLeaderboardRequest.class,
+      responseType = com.game_engine.tournament.v1.GetLeaderboardResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetLeaderboardRequest,
-      com.game-engine.tournament.v1.GetLeaderboardResponse> getGetLeaderboardMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetLeaderboardRequest, com.game-engine.tournament.v1.GetLeaderboardResponse> getGetLeaderboardMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetLeaderboardRequest,
+      com.game_engine.tournament.v1.GetLeaderboardResponse> getGetLeaderboardMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetLeaderboardRequest, com.game_engine.tournament.v1.GetLeaderboardResponse> getGetLeaderboardMethod;
     if ((getGetLeaderboardMethod = TournamentServiceGrpc.getGetLeaderboardMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getGetLeaderboardMethod = TournamentServiceGrpc.getGetLeaderboardMethod) == null) {
           TournamentServiceGrpc.getGetLeaderboardMethod = getGetLeaderboardMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.GetLeaderboardRequest, com.game-engine.tournament.v1.GetLeaderboardResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.GetLeaderboardRequest, com.game_engine.tournament.v1.GetLeaderboardResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetLeaderboard"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.GetLeaderboardRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.GetLeaderboardRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.GetLeaderboardResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.GetLeaderboardResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("GetLeaderboard"))
               .build();
         }
@@ -167,29 +167,29 @@ public final class TournamentServiceGrpc {
     return getGetLeaderboardMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.UpdateScoreRequest,
-      com.game-engine.tournament.v1.UpdateScoreResponse> getUpdateScoreMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.UpdateScoreRequest,
+      com.game_engine.tournament.v1.UpdateScoreResponse> getUpdateScoreMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdateScore",
-      requestType = com.game-engine.tournament.v1.UpdateScoreRequest.class,
-      responseType = com.game-engine.tournament.v1.UpdateScoreResponse.class,
+      requestType = com.game_engine.tournament.v1.UpdateScoreRequest.class,
+      responseType = com.game_engine.tournament.v1.UpdateScoreResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.UpdateScoreRequest,
-      com.game-engine.tournament.v1.UpdateScoreResponse> getUpdateScoreMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.UpdateScoreRequest, com.game-engine.tournament.v1.UpdateScoreResponse> getUpdateScoreMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.UpdateScoreRequest,
+      com.game_engine.tournament.v1.UpdateScoreResponse> getUpdateScoreMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.UpdateScoreRequest, com.game_engine.tournament.v1.UpdateScoreResponse> getUpdateScoreMethod;
     if ((getUpdateScoreMethod = TournamentServiceGrpc.getUpdateScoreMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getUpdateScoreMethod = TournamentServiceGrpc.getUpdateScoreMethod) == null) {
           TournamentServiceGrpc.getUpdateScoreMethod = getUpdateScoreMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.UpdateScoreRequest, com.game-engine.tournament.v1.UpdateScoreResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.UpdateScoreRequest, com.game_engine.tournament.v1.UpdateScoreResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateScore"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.UpdateScoreRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.UpdateScoreRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.UpdateScoreResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.UpdateScoreResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("UpdateScore"))
               .build();
         }
@@ -198,29 +198,29 @@ public final class TournamentServiceGrpc {
     return getUpdateScoreMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetMyTournamentsRequest,
-      com.game-engine.tournament.v1.GetMyTournamentsResponse> getGetMyTournamentsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetMyTournamentsRequest,
+      com.game_engine.tournament.v1.GetMyTournamentsResponse> getGetMyTournamentsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetMyTournaments",
-      requestType = com.game-engine.tournament.v1.GetMyTournamentsRequest.class,
-      responseType = com.game-engine.tournament.v1.GetMyTournamentsResponse.class,
+      requestType = com.game_engine.tournament.v1.GetMyTournamentsRequest.class,
+      responseType = com.game_engine.tournament.v1.GetMyTournamentsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetMyTournamentsRequest,
-      com.game-engine.tournament.v1.GetMyTournamentsResponse> getGetMyTournamentsMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.tournament.v1.GetMyTournamentsRequest, com.game-engine.tournament.v1.GetMyTournamentsResponse> getGetMyTournamentsMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetMyTournamentsRequest,
+      com.game_engine.tournament.v1.GetMyTournamentsResponse> getGetMyTournamentsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.tournament.v1.GetMyTournamentsRequest, com.game_engine.tournament.v1.GetMyTournamentsResponse> getGetMyTournamentsMethod;
     if ((getGetMyTournamentsMethod = TournamentServiceGrpc.getGetMyTournamentsMethod) == null) {
       synchronized (TournamentServiceGrpc.class) {
         if ((getGetMyTournamentsMethod = TournamentServiceGrpc.getGetMyTournamentsMethod) == null) {
           TournamentServiceGrpc.getGetMyTournamentsMethod = getGetMyTournamentsMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.tournament.v1.GetMyTournamentsRequest, com.game-engine.tournament.v1.GetMyTournamentsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.tournament.v1.GetMyTournamentsRequest, com.game_engine.tournament.v1.GetMyTournamentsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetMyTournaments"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.GetMyTournamentsRequest.getDefaultInstance()))
+                  com.game_engine.tournament.v1.GetMyTournamentsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.tournament.v1.GetMyTournamentsResponse.getDefaultInstance()))
+                  com.game_engine.tournament.v1.GetMyTournamentsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new TournamentServiceMethodDescriptorSupplier("GetMyTournaments"))
               .build();
         }
@@ -297,29 +297,29 @@ public final class TournamentServiceGrpc {
      * Tournament operations
      * </pre>
      */
-    default void listTournaments(com.game-engine.tournament.v1.ListTournamentsRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.ListTournamentsResponse> responseObserver) {
+    default void listTournaments(com.game_engine.tournament.v1.ListTournamentsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.ListTournamentsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListTournamentsMethod(), responseObserver);
     }
 
     /**
      */
-    default void getTournament(com.game-engine.tournament.v1.GetTournamentRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetTournamentResponse> responseObserver) {
+    default void getTournament(com.game_engine.tournament.v1.GetTournamentRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetTournamentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTournamentMethod(), responseObserver);
     }
 
     /**
      */
-    default void joinTournament(com.game-engine.tournament.v1.JoinTournamentRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.JoinTournamentResponse> responseObserver) {
+    default void joinTournament(com.game_engine.tournament.v1.JoinTournamentRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.JoinTournamentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getJoinTournamentMethod(), responseObserver);
     }
 
     /**
      */
-    default void leaveTournament(com.game-engine.tournament.v1.LeaveTournamentRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.LeaveTournamentResponse> responseObserver) {
+    default void leaveTournament(com.game_engine.tournament.v1.LeaveTournamentRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.LeaveTournamentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getLeaveTournamentMethod(), responseObserver);
     }
 
@@ -328,15 +328,15 @@ public final class TournamentServiceGrpc {
      * Leaderboard
      * </pre>
      */
-    default void getLeaderboard(com.game-engine.tournament.v1.GetLeaderboardRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetLeaderboardResponse> responseObserver) {
+    default void getLeaderboard(com.game_engine.tournament.v1.GetLeaderboardRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetLeaderboardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetLeaderboardMethod(), responseObserver);
     }
 
     /**
      */
-    default void updateScore(com.game-engine.tournament.v1.UpdateScoreRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.UpdateScoreResponse> responseObserver) {
+    default void updateScore(com.game_engine.tournament.v1.UpdateScoreRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.UpdateScoreResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateScoreMethod(), responseObserver);
     }
 
@@ -345,8 +345,8 @@ public final class TournamentServiceGrpc {
      * User tournaments
      * </pre>
      */
-    default void getMyTournaments(com.game-engine.tournament.v1.GetMyTournamentsRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetMyTournamentsResponse> responseObserver) {
+    default void getMyTournaments(com.game_engine.tournament.v1.GetMyTournamentsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetMyTournamentsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetMyTournamentsMethod(), responseObserver);
     }
   }
@@ -383,32 +383,32 @@ public final class TournamentServiceGrpc {
      * Tournament operations
      * </pre>
      */
-    public void listTournaments(com.game-engine.tournament.v1.ListTournamentsRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.ListTournamentsResponse> responseObserver) {
+    public void listTournaments(com.game_engine.tournament.v1.ListTournamentsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.ListTournamentsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListTournamentsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getTournament(com.game-engine.tournament.v1.GetTournamentRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetTournamentResponse> responseObserver) {
+    public void getTournament(com.game_engine.tournament.v1.GetTournamentRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetTournamentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetTournamentMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void joinTournament(com.game-engine.tournament.v1.JoinTournamentRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.JoinTournamentResponse> responseObserver) {
+    public void joinTournament(com.game_engine.tournament.v1.JoinTournamentRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.JoinTournamentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getJoinTournamentMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void leaveTournament(com.game-engine.tournament.v1.LeaveTournamentRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.LeaveTournamentResponse> responseObserver) {
+    public void leaveTournament(com.game_engine.tournament.v1.LeaveTournamentRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.LeaveTournamentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getLeaveTournamentMethod(), getCallOptions()), request, responseObserver);
     }
@@ -418,16 +418,16 @@ public final class TournamentServiceGrpc {
      * Leaderboard
      * </pre>
      */
-    public void getLeaderboard(com.game-engine.tournament.v1.GetLeaderboardRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetLeaderboardResponse> responseObserver) {
+    public void getLeaderboard(com.game_engine.tournament.v1.GetLeaderboardRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetLeaderboardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetLeaderboardMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updateScore(com.game-engine.tournament.v1.UpdateScoreRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.UpdateScoreResponse> responseObserver) {
+    public void updateScore(com.game_engine.tournament.v1.UpdateScoreRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.UpdateScoreResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdateScoreMethod(), getCallOptions()), request, responseObserver);
     }
@@ -437,8 +437,8 @@ public final class TournamentServiceGrpc {
      * User tournaments
      * </pre>
      */
-    public void getMyTournaments(com.game-engine.tournament.v1.GetMyTournamentsRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetMyTournamentsResponse> responseObserver) {
+    public void getMyTournaments(com.game_engine.tournament.v1.GetMyTournamentsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetMyTournamentsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetMyTournamentsMethod(), getCallOptions()), request, responseObserver);
     }
@@ -465,28 +465,28 @@ public final class TournamentServiceGrpc {
      * Tournament operations
      * </pre>
      */
-    public com.game-engine.tournament.v1.ListTournamentsResponse listTournaments(com.game-engine.tournament.v1.ListTournamentsRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.ListTournamentsResponse listTournaments(com.game_engine.tournament.v1.ListTournamentsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getListTournamentsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.GetTournamentResponse getTournament(com.game-engine.tournament.v1.GetTournamentRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.GetTournamentResponse getTournament(com.game_engine.tournament.v1.GetTournamentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetTournamentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.JoinTournamentResponse joinTournament(com.game-engine.tournament.v1.JoinTournamentRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.JoinTournamentResponse joinTournament(com.game_engine.tournament.v1.JoinTournamentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getJoinTournamentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.LeaveTournamentResponse leaveTournament(com.game-engine.tournament.v1.LeaveTournamentRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.LeaveTournamentResponse leaveTournament(com.game_engine.tournament.v1.LeaveTournamentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getLeaveTournamentMethod(), getCallOptions(), request);
     }
@@ -496,14 +496,14 @@ public final class TournamentServiceGrpc {
      * Leaderboard
      * </pre>
      */
-    public com.game-engine.tournament.v1.GetLeaderboardResponse getLeaderboard(com.game-engine.tournament.v1.GetLeaderboardRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.GetLeaderboardResponse getLeaderboard(com.game_engine.tournament.v1.GetLeaderboardRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetLeaderboardMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.UpdateScoreResponse updateScore(com.game-engine.tournament.v1.UpdateScoreRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.UpdateScoreResponse updateScore(com.game_engine.tournament.v1.UpdateScoreRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getUpdateScoreMethod(), getCallOptions(), request);
     }
@@ -513,7 +513,7 @@ public final class TournamentServiceGrpc {
      * User tournaments
      * </pre>
      */
-    public com.game-engine.tournament.v1.GetMyTournamentsResponse getMyTournaments(com.game-engine.tournament.v1.GetMyTournamentsRequest request) throws io.grpc.StatusException {
+    public com.game_engine.tournament.v1.GetMyTournamentsResponse getMyTournaments(com.game_engine.tournament.v1.GetMyTournamentsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetMyTournamentsMethod(), getCallOptions(), request);
     }
@@ -540,28 +540,28 @@ public final class TournamentServiceGrpc {
      * Tournament operations
      * </pre>
      */
-    public com.game-engine.tournament.v1.ListTournamentsResponse listTournaments(com.game-engine.tournament.v1.ListTournamentsRequest request) {
+    public com.game_engine.tournament.v1.ListTournamentsResponse listTournaments(com.game_engine.tournament.v1.ListTournamentsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListTournamentsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.GetTournamentResponse getTournament(com.game-engine.tournament.v1.GetTournamentRequest request) {
+    public com.game_engine.tournament.v1.GetTournamentResponse getTournament(com.game_engine.tournament.v1.GetTournamentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetTournamentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.JoinTournamentResponse joinTournament(com.game-engine.tournament.v1.JoinTournamentRequest request) {
+    public com.game_engine.tournament.v1.JoinTournamentResponse joinTournament(com.game_engine.tournament.v1.JoinTournamentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getJoinTournamentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.LeaveTournamentResponse leaveTournament(com.game-engine.tournament.v1.LeaveTournamentRequest request) {
+    public com.game_engine.tournament.v1.LeaveTournamentResponse leaveTournament(com.game_engine.tournament.v1.LeaveTournamentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getLeaveTournamentMethod(), getCallOptions(), request);
     }
@@ -571,14 +571,14 @@ public final class TournamentServiceGrpc {
      * Leaderboard
      * </pre>
      */
-    public com.game-engine.tournament.v1.GetLeaderboardResponse getLeaderboard(com.game-engine.tournament.v1.GetLeaderboardRequest request) {
+    public com.game_engine.tournament.v1.GetLeaderboardResponse getLeaderboard(com.game_engine.tournament.v1.GetLeaderboardRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetLeaderboardMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game-engine.tournament.v1.UpdateScoreResponse updateScore(com.game-engine.tournament.v1.UpdateScoreRequest request) {
+    public com.game_engine.tournament.v1.UpdateScoreResponse updateScore(com.game_engine.tournament.v1.UpdateScoreRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdateScoreMethod(), getCallOptions(), request);
     }
@@ -588,7 +588,7 @@ public final class TournamentServiceGrpc {
      * User tournaments
      * </pre>
      */
-    public com.game-engine.tournament.v1.GetMyTournamentsResponse getMyTournaments(com.game-engine.tournament.v1.GetMyTournamentsRequest request) {
+    public com.game_engine.tournament.v1.GetMyTournamentsResponse getMyTournaments(com.game_engine.tournament.v1.GetMyTournamentsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetMyTournamentsMethod(), getCallOptions(), request);
     }
@@ -615,32 +615,32 @@ public final class TournamentServiceGrpc {
      * Tournament operations
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.ListTournamentsResponse> listTournaments(
-        com.game-engine.tournament.v1.ListTournamentsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.ListTournamentsResponse> listTournaments(
+        com.game_engine.tournament.v1.ListTournamentsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListTournamentsMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.GetTournamentResponse> getTournament(
-        com.game-engine.tournament.v1.GetTournamentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.GetTournamentResponse> getTournament(
+        com.game_engine.tournament.v1.GetTournamentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetTournamentMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.JoinTournamentResponse> joinTournament(
-        com.game-engine.tournament.v1.JoinTournamentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.JoinTournamentResponse> joinTournament(
+        com.game_engine.tournament.v1.JoinTournamentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getJoinTournamentMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.LeaveTournamentResponse> leaveTournament(
-        com.game-engine.tournament.v1.LeaveTournamentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.LeaveTournamentResponse> leaveTournament(
+        com.game_engine.tournament.v1.LeaveTournamentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getLeaveTournamentMethod(), getCallOptions()), request);
     }
@@ -650,16 +650,16 @@ public final class TournamentServiceGrpc {
      * Leaderboard
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.GetLeaderboardResponse> getLeaderboard(
-        com.game-engine.tournament.v1.GetLeaderboardRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.GetLeaderboardResponse> getLeaderboard(
+        com.game_engine.tournament.v1.GetLeaderboardRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetLeaderboardMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.UpdateScoreResponse> updateScore(
-        com.game-engine.tournament.v1.UpdateScoreRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.UpdateScoreResponse> updateScore(
+        com.game_engine.tournament.v1.UpdateScoreRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdateScoreMethod(), getCallOptions()), request);
     }
@@ -669,8 +669,8 @@ public final class TournamentServiceGrpc {
      * User tournaments
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.tournament.v1.GetMyTournamentsResponse> getMyTournaments(
-        com.game-engine.tournament.v1.GetMyTournamentsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.tournament.v1.GetMyTournamentsResponse> getMyTournaments(
+        com.game_engine.tournament.v1.GetMyTournamentsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetMyTournamentsMethod(), getCallOptions()), request);
     }
@@ -702,32 +702,32 @@ public final class TournamentServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LIST_TOURNAMENTS:
-          serviceImpl.listTournaments((com.game-engine.tournament.v1.ListTournamentsRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.ListTournamentsResponse>) responseObserver);
+          serviceImpl.listTournaments((com.game_engine.tournament.v1.ListTournamentsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.ListTournamentsResponse>) responseObserver);
           break;
         case METHODID_GET_TOURNAMENT:
-          serviceImpl.getTournament((com.game-engine.tournament.v1.GetTournamentRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetTournamentResponse>) responseObserver);
+          serviceImpl.getTournament((com.game_engine.tournament.v1.GetTournamentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetTournamentResponse>) responseObserver);
           break;
         case METHODID_JOIN_TOURNAMENT:
-          serviceImpl.joinTournament((com.game-engine.tournament.v1.JoinTournamentRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.JoinTournamentResponse>) responseObserver);
+          serviceImpl.joinTournament((com.game_engine.tournament.v1.JoinTournamentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.JoinTournamentResponse>) responseObserver);
           break;
         case METHODID_LEAVE_TOURNAMENT:
-          serviceImpl.leaveTournament((com.game-engine.tournament.v1.LeaveTournamentRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.LeaveTournamentResponse>) responseObserver);
+          serviceImpl.leaveTournament((com.game_engine.tournament.v1.LeaveTournamentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.LeaveTournamentResponse>) responseObserver);
           break;
         case METHODID_GET_LEADERBOARD:
-          serviceImpl.getLeaderboard((com.game-engine.tournament.v1.GetLeaderboardRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetLeaderboardResponse>) responseObserver);
+          serviceImpl.getLeaderboard((com.game_engine.tournament.v1.GetLeaderboardRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetLeaderboardResponse>) responseObserver);
           break;
         case METHODID_UPDATE_SCORE:
-          serviceImpl.updateScore((com.game-engine.tournament.v1.UpdateScoreRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.UpdateScoreResponse>) responseObserver);
+          serviceImpl.updateScore((com.game_engine.tournament.v1.UpdateScoreRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.UpdateScoreResponse>) responseObserver);
           break;
         case METHODID_GET_MY_TOURNAMENTS:
-          serviceImpl.getMyTournaments((com.game-engine.tournament.v1.GetMyTournamentsRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.tournament.v1.GetMyTournamentsResponse>) responseObserver);
+          serviceImpl.getMyTournaments((com.game_engine.tournament.v1.GetMyTournamentsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.tournament.v1.GetMyTournamentsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -751,50 +751,50 @@ public final class TournamentServiceGrpc {
           getListTournamentsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.ListTournamentsRequest,
-              com.game-engine.tournament.v1.ListTournamentsResponse>(
+              com.game_engine.tournament.v1.ListTournamentsRequest,
+              com.game_engine.tournament.v1.ListTournamentsResponse>(
                 service, METHODID_LIST_TOURNAMENTS)))
         .addMethod(
           getGetTournamentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.GetTournamentRequest,
-              com.game-engine.tournament.v1.GetTournamentResponse>(
+              com.game_engine.tournament.v1.GetTournamentRequest,
+              com.game_engine.tournament.v1.GetTournamentResponse>(
                 service, METHODID_GET_TOURNAMENT)))
         .addMethod(
           getJoinTournamentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.JoinTournamentRequest,
-              com.game-engine.tournament.v1.JoinTournamentResponse>(
+              com.game_engine.tournament.v1.JoinTournamentRequest,
+              com.game_engine.tournament.v1.JoinTournamentResponse>(
                 service, METHODID_JOIN_TOURNAMENT)))
         .addMethod(
           getLeaveTournamentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.LeaveTournamentRequest,
-              com.game-engine.tournament.v1.LeaveTournamentResponse>(
+              com.game_engine.tournament.v1.LeaveTournamentRequest,
+              com.game_engine.tournament.v1.LeaveTournamentResponse>(
                 service, METHODID_LEAVE_TOURNAMENT)))
         .addMethod(
           getGetLeaderboardMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.GetLeaderboardRequest,
-              com.game-engine.tournament.v1.GetLeaderboardResponse>(
+              com.game_engine.tournament.v1.GetLeaderboardRequest,
+              com.game_engine.tournament.v1.GetLeaderboardResponse>(
                 service, METHODID_GET_LEADERBOARD)))
         .addMethod(
           getUpdateScoreMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.UpdateScoreRequest,
-              com.game-engine.tournament.v1.UpdateScoreResponse>(
+              com.game_engine.tournament.v1.UpdateScoreRequest,
+              com.game_engine.tournament.v1.UpdateScoreResponse>(
                 service, METHODID_UPDATE_SCORE)))
         .addMethod(
           getGetMyTournamentsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.tournament.v1.GetMyTournamentsRequest,
-              com.game-engine.tournament.v1.GetMyTournamentsResponse>(
+              com.game_engine.tournament.v1.GetMyTournamentsRequest,
+              com.game_engine.tournament.v1.GetMyTournamentsResponse>(
                 service, METHODID_GET_MY_TOURNAMENTS)))
         .build();
   }
@@ -805,7 +805,7 @@ public final class TournamentServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.game-engine.tournament.v1.TournamentServiceOuterClass.getDescriptor();
+      return com.game_engine.tournament.v1.TournamentServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override

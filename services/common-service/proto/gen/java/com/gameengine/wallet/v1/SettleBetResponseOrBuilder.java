@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface SettleBetResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.SettleBetResponse)
@@ -23,11 +23,11 @@ public interface SettleBetResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction bet = 2 [json_name = "bet"];</code>
    * @return The bet.
    */
-  com.game-engine.wallet.v1.Transaction getBet();
+  com.game_engine.wallet.v1.Transaction getBet();
   /**
    * <code>.game-engine.wallet.v1.Transaction bet = 2 [json_name = "bet"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getBetOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getBetOrBuilder();
 
   /**
    * <code>.game-engine.wallet.v1.Transaction win = 3 [json_name = "win"];</code>
@@ -38,11 +38,11 @@ public interface SettleBetResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction win = 3 [json_name = "win"];</code>
    * @return The win.
    */
-  com.game-engine.wallet.v1.Transaction getWin();
+  com.game_engine.wallet.v1.Transaction getWin();
   /**
    * <code>.game-engine.wallet.v1.Transaction win = 3 [json_name = "win"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getWinOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getWinOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money new_balance = 4 [json_name = "newBalance"];</code>
@@ -53,11 +53,11 @@ public interface SettleBetResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money new_balance = 4 [json_name = "newBalance"];</code>
    * @return The newBalance.
    */
-  com.game-engine.common.v1.Money getNewBalance();
+  com.game_engine.common.v1.Money getNewBalance();
   /**
    * <code>.game-engine.common.v1.Money new_balance = 4 [json_name = "newBalance"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder();
 
   /**
    * <code>string message = 5 [json_name = "message"];</code>

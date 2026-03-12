@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.jackpot.v1.jackpot_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\031com.game-engine.jackpot.v1P\001Z\033gen/go/jackpot/v1;jackpotv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\031com.game_engine.jackpot.v1P\001Z\033gen/go/jackpot/v1;jackpotv1'
   _globals['_LISTJACKPOTSREQUEST']._serialized_start=142
   _globals['_LISTJACKPOTSREQUEST']._serialized_end=187
   _globals['_LISTJACKPOTSRESPONSE']._serialized_start=189

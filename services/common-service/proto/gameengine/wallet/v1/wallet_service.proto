@@ -10,7 +10,7 @@ import "game-engine/common/v1/money.proto";
 
 option go_package = "gen/go/wallet/v1;walletsv1";
 option java_multiple_files = true;
-option java_package = "com.game-engine.wallet.v1";
+option java_package = "com.game_engine.wallet.v1";
 
 // Wallet Service - handles player balances, deposits, withdrawals, and betting
 service WalletService {

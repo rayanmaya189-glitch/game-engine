@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 public interface GetPaymentMethodsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.payment.v1.GetPaymentMethodsResponse)
@@ -11,12 +11,12 @@ public interface GetPaymentMethodsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.payment.v1.PaymentMethod methods = 1 [json_name = "methods"];</code>
    */
-  java.util.List<com.game-engine.payment.v1.PaymentMethod> 
+  java.util.List<com.game_engine.payment.v1.PaymentMethod> 
       getMethodsList();
   /**
    * <code>repeated .game-engine.payment.v1.PaymentMethod methods = 1 [json_name = "methods"];</code>
    */
-  com.game-engine.payment.v1.PaymentMethod getMethods(int index);
+  com.game_engine.payment.v1.PaymentMethod getMethods(int index);
   /**
    * <code>repeated .game-engine.payment.v1.PaymentMethod methods = 1 [json_name = "methods"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetPaymentMethodsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.payment.v1.PaymentMethod methods = 1 [json_name = "methods"];</code>
    */
-  java.util.List<? extends com.game-engine.payment.v1.PaymentMethodOrBuilder> 
+  java.util.List<? extends com.game_engine.payment.v1.PaymentMethodOrBuilder> 
       getMethodsOrBuilderList();
   /**
    * <code>repeated .game-engine.payment.v1.PaymentMethod methods = 1 [json_name = "methods"];</code>
    */
-  com.game-engine.payment.v1.PaymentMethodOrBuilder getMethodsOrBuilder(
+  com.game_engine.payment.v1.PaymentMethodOrBuilder getMethodsOrBuilder(
       int index);
 }

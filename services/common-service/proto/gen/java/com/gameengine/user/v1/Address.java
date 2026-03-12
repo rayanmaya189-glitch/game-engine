@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.Address}
@@ -33,15 +33,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.Address.class, com.game-engine.user.v1.Address.Builder.class);
+            com.game_engine.user.v1.Address.class, com.game_engine.user.v1.Address.Builder.class);
   }
 
   public static final int STREET_FIELD_NUMBER = 1;
@@ -302,10 +302,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.Address)) {
+    if (!(obj instanceof com.game_engine.user.v1.Address)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.Address other = (com.game-engine.user.v1.Address) obj;
+    com.game_engine.user.v1.Address other = (com.game_engine.user.v1.Address) obj;
 
     if (!getStreet()
         .equals(other.getStreet())) return false;
@@ -343,44 +343,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.Address parseFrom(byte[] data)
+  public static com.game_engine.user.v1.Address parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.Address parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.Address parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -388,26 +388,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.Address parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.Address parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.Address parseDelimitedFrom(
+  public static com.game_engine.user.v1.Address parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.Address parseFrom(
+  public static com.game_engine.user.v1.Address parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -420,7 +420,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.Address prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.Address prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -441,21 +441,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.Address)
-      com.game-engine.user.v1.AddressOrBuilder {
+      com.game_engine.user.v1.AddressOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.Address.class, com.game-engine.user.v1.Address.Builder.class);
+              com.game_engine.user.v1.Address.class, com.game_engine.user.v1.Address.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.Address.newBuilder()
+    // Construct using com.game_engine.user.v1.Address.newBuilder()
     private Builder() {
 
     }
@@ -480,17 +480,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_Address_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.Address getDefaultInstanceForType() {
-      return com.game-engine.user.v1.Address.getDefaultInstance();
+    public com.game_engine.user.v1.Address getDefaultInstanceForType() {
+      return com.game_engine.user.v1.Address.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.Address build() {
-      com.game-engine.user.v1.Address result = buildPartial();
+    public com.game_engine.user.v1.Address build() {
+      com.game_engine.user.v1.Address result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -498,14 +498,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.Address buildPartial() {
-      com.game-engine.user.v1.Address result = new com.game-engine.user.v1.Address(this);
+    public com.game_engine.user.v1.Address buildPartial() {
+      com.game_engine.user.v1.Address result = new com.game_engine.user.v1.Address(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.Address result) {
+    private void buildPartial0(com.game_engine.user.v1.Address result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.street_ = street_;
@@ -558,16 +558,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.Address) {
-        return mergeFrom((com.game-engine.user.v1.Address)other);
+      if (other instanceof com.game_engine.user.v1.Address) {
+        return mergeFrom((com.game_engine.user.v1.Address)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.Address other) {
-      if (other == com.game-engine.user.v1.Address.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.Address other) {
+      if (other == com.game_engine.user.v1.Address.getDefaultInstance()) return this;
       if (!other.getStreet().isEmpty()) {
         street_ = other.street_;
         bitField0_ |= 0x00000001;
@@ -1037,12 +1037,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.Address)
-  private static final com.game-engine.user.v1.Address DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.Address DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.Address();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.Address();
   }
 
-  public static com.game-engine.user.v1.Address getDefaultInstance() {
+  public static com.game_engine.user.v1.Address getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1078,7 +1078,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.Address getDefaultInstanceForType() {
+  public com.game_engine.user.v1.Address getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

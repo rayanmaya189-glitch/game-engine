@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GameOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.Game)
@@ -101,7 +101,7 @@ public interface GameOrBuilder extends
    * <code>.game-engine.common.v1.GameCategory type = 8 [json_name = "type"];</code>
    * @return The type.
    */
-  com.game-engine.common.v1.GameCategory getType();
+  com.game_engine.common.v1.GameCategory getType();
 
   /**
    * <code>.game-engine.common.v1.Status status = 9 [json_name = "status"];</code>
@@ -112,7 +112,7 @@ public interface GameOrBuilder extends
    * <code>.game-engine.common.v1.Status status = 9 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.Status getStatus();
+  com.game_engine.common.v1.Status getStatus();
 
   /**
    * <code>string thumbnail_url = 10 [json_name = "thumbnailUrl"];</code>
@@ -165,11 +165,11 @@ public interface GameOrBuilder extends
    * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
    * @return The minBet.
    */
-  com.game-engine.common.v1.Money getMinBet();
+  com.game_engine.common.v1.Money getMinBet();
   /**
    * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getMinBetOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getMinBetOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
@@ -180,11 +180,11 @@ public interface GameOrBuilder extends
    * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
    * @return The maxBet.
    */
-  com.game-engine.common.v1.Money getMaxBet();
+  com.game_engine.common.v1.Money getMaxBet();
   /**
    * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getMaxBetOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getMaxBetOrBuilder();
 
   /**
    * <code>string max_win = 16 [json_name = "maxWin"];</code>
@@ -239,7 +239,7 @@ public interface GameOrBuilder extends
    * <code>repeated .game-engine.common.v1.DeviceType supported_devices = 20 [json_name = "supportedDevices"];</code>
    * @return A list containing the supportedDevices.
    */
-  java.util.List<com.game-engine.common.v1.DeviceType> getSupportedDevicesList();
+  java.util.List<com.game_engine.common.v1.DeviceType> getSupportedDevicesList();
   /**
    * <code>repeated .game-engine.common.v1.DeviceType supported_devices = 20 [json_name = "supportedDevices"];</code>
    * @return The count of supportedDevices.
@@ -250,7 +250,7 @@ public interface GameOrBuilder extends
    * @param index The index of the element to return.
    * @return The supportedDevices at the given index.
    */
-  com.game-engine.common.v1.DeviceType getSupportedDevices(int index);
+  com.game_engine.common.v1.DeviceType getSupportedDevices(int index);
   /**
    * <code>repeated .game-engine.common.v1.DeviceType supported_devices = 20 [json_name = "supportedDevices"];</code>
    * @return A list containing the enum numeric values on the wire for supportedDevices.
@@ -268,7 +268,7 @@ public interface GameOrBuilder extends
    * <code>repeated .game-engine.common.v1.Language supported_languages = 21 [json_name = "supportedLanguages"];</code>
    * @return A list containing the supportedLanguages.
    */
-  java.util.List<com.game-engine.common.v1.Language> getSupportedLanguagesList();
+  java.util.List<com.game_engine.common.v1.Language> getSupportedLanguagesList();
   /**
    * <code>repeated .game-engine.common.v1.Language supported_languages = 21 [json_name = "supportedLanguages"];</code>
    * @return The count of supportedLanguages.
@@ -279,7 +279,7 @@ public interface GameOrBuilder extends
    * @param index The index of the element to return.
    * @return The supportedLanguages at the given index.
    */
-  com.game-engine.common.v1.Language getSupportedLanguages(int index);
+  com.game_engine.common.v1.Language getSupportedLanguages(int index);
   /**
    * <code>repeated .game-engine.common.v1.Language supported_languages = 21 [json_name = "supportedLanguages"];</code>
    * @return A list containing the enum numeric values on the wire for supportedLanguages.

@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 /**
  * Protobuf type {@code game-engine.affiliate.v1.GetPerformanceReportResponse}
@@ -28,15 +28,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
+    return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_fieldAccessorTable
+    return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.affiliate.v1.GetPerformanceReportResponse.class, com.game-engine.affiliate.v1.GetPerformanceReportResponse.Builder.class);
+            com.game_engine.affiliate.v1.GetPerformanceReportResponse.class, com.game_engine.affiliate.v1.GetPerformanceReportResponse.Builder.class);
   }
 
   public static final int TOTAL_CLICKS_FIELD_NUMBER = 1;
@@ -162,10 +162,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.affiliate.v1.GetPerformanceReportResponse)) {
+    if (!(obj instanceof com.game_engine.affiliate.v1.GetPerformanceReportResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.affiliate.v1.GetPerformanceReportResponse other = (com.game-engine.affiliate.v1.GetPerformanceReportResponse) obj;
+    com.game_engine.affiliate.v1.GetPerformanceReportResponse other = (com.game_engine.affiliate.v1.GetPerformanceReportResponse) obj;
 
     if (getTotalClicks()
         != other.getTotalClicks()) return false;
@@ -211,44 +211,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(byte[] data)
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -256,26 +256,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseDelimitedFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -288,7 +288,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.affiliate.v1.GetPerformanceReportResponse prototype) {
+  public static Builder newBuilder(com.game_engine.affiliate.v1.GetPerformanceReportResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -309,21 +309,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.affiliate.v1.GetPerformanceReportResponse)
-      com.game-engine.affiliate.v1.GetPerformanceReportResponseOrBuilder {
+      com.game_engine.affiliate.v1.GetPerformanceReportResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_fieldAccessorTable
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.affiliate.v1.GetPerformanceReportResponse.class, com.game-engine.affiliate.v1.GetPerformanceReportResponse.Builder.class);
+              com.game_engine.affiliate.v1.GetPerformanceReportResponse.class, com.game_engine.affiliate.v1.GetPerformanceReportResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.affiliate.v1.GetPerformanceReportResponse.newBuilder()
+    // Construct using com.game_engine.affiliate.v1.GetPerformanceReportResponse.newBuilder()
     private Builder() {
 
     }
@@ -348,17 +348,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.GetPerformanceReportResponse getDefaultInstanceForType() {
-      return com.game-engine.affiliate.v1.GetPerformanceReportResponse.getDefaultInstance();
+    public com.game_engine.affiliate.v1.GetPerformanceReportResponse getDefaultInstanceForType() {
+      return com.game_engine.affiliate.v1.GetPerformanceReportResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.GetPerformanceReportResponse build() {
-      com.game-engine.affiliate.v1.GetPerformanceReportResponse result = buildPartial();
+    public com.game_engine.affiliate.v1.GetPerformanceReportResponse build() {
+      com.game_engine.affiliate.v1.GetPerformanceReportResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -366,14 +366,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.GetPerformanceReportResponse buildPartial() {
-      com.game-engine.affiliate.v1.GetPerformanceReportResponse result = new com.game-engine.affiliate.v1.GetPerformanceReportResponse(this);
+    public com.game_engine.affiliate.v1.GetPerformanceReportResponse buildPartial() {
+      com.game_engine.affiliate.v1.GetPerformanceReportResponse result = new com.game_engine.affiliate.v1.GetPerformanceReportResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.affiliate.v1.GetPerformanceReportResponse result) {
+    private void buildPartial0(com.game_engine.affiliate.v1.GetPerformanceReportResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.totalClicks_ = totalClicks_;
@@ -426,16 +426,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.affiliate.v1.GetPerformanceReportResponse) {
-        return mergeFrom((com.game-engine.affiliate.v1.GetPerformanceReportResponse)other);
+      if (other instanceof com.game_engine.affiliate.v1.GetPerformanceReportResponse) {
+        return mergeFrom((com.game_engine.affiliate.v1.GetPerformanceReportResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.affiliate.v1.GetPerformanceReportResponse other) {
-      if (other == com.game-engine.affiliate.v1.GetPerformanceReportResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.affiliate.v1.GetPerformanceReportResponse other) {
+      if (other == com.game_engine.affiliate.v1.GetPerformanceReportResponse.getDefaultInstance()) return this;
       if (other.getTotalClicks() != 0L) {
         setTotalClicks(other.getTotalClicks());
       }
@@ -695,12 +695,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.affiliate.v1.GetPerformanceReportResponse)
-  private static final com.game-engine.affiliate.v1.GetPerformanceReportResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.affiliate.v1.GetPerformanceReportResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.affiliate.v1.GetPerformanceReportResponse();
+    DEFAULT_INSTANCE = new com.game_engine.affiliate.v1.GetPerformanceReportResponse();
   }
 
-  public static com.game-engine.affiliate.v1.GetPerformanceReportResponse getDefaultInstance() {
+  public static com.game_engine.affiliate.v1.GetPerformanceReportResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -736,7 +736,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.affiliate.v1.GetPerformanceReportResponse getDefaultInstanceForType() {
+  public com.game_engine.affiliate.v1.GetPerformanceReportResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

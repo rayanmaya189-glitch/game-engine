@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetBalanceRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetBalanceRequest)
@@ -29,5 +29,5 @@ public interface GetBalanceRequestOrBuilder extends
    * <code>.game-engine.common.v1.BalanceType balance_type = 2 [json_name = "balanceType"];</code>
    * @return The balanceType.
    */
-  com.game-engine.common.v1.BalanceType getBalanceType();
+  com.game_engine.common.v1.BalanceType getBalanceType();
 }

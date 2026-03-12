@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface RegisterRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.RegisterRequest)
@@ -65,7 +65,7 @@ public interface RegisterRequestOrBuilder extends
    * <code>.game-engine.common.v1.Language language = 5 [json_name = "language"];</code>
    * @return The language.
    */
-  com.game-engine.common.v1.Language getLanguage();
+  com.game_engine.common.v1.Language getLanguage();
 
   /**
    * <code>string currency = 6 [json_name = "currency"];</code>
@@ -100,11 +100,11 @@ public interface RegisterRequestOrBuilder extends
    * <code>.game-engine.auth.v1.DeviceInfo device_info = 8 [json_name = "deviceInfo"];</code>
    * @return The deviceInfo.
    */
-  com.game-engine.auth.v1.DeviceInfo getDeviceInfo();
+  com.game_engine.auth.v1.DeviceInfo getDeviceInfo();
   /**
    * <code>.game-engine.auth.v1.DeviceInfo device_info = 8 [json_name = "deviceInfo"];</code>
    */
-  com.game-engine.auth.v1.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
+  com.game_engine.auth.v1.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
 
   /**
    * <code>bool marketing_consent = 9 [json_name = "marketingConsent"];</code>

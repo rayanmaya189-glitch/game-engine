@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.UpdateProfileRequest}
@@ -34,15 +34,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.UpdateProfileRequest.class, com.game-engine.user.v1.UpdateProfileRequest.Builder.class);
+            com.game_engine.user.v1.UpdateProfileRequest.class, com.game_engine.user.v1.UpdateProfileRequest.Builder.class);
   }
 
   private int bitField0_;
@@ -163,13 +163,13 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.Gender gender = 4 [json_name = "gender"];</code>
    * @return The gender.
    */
-  @java.lang.Override public com.game-engine.common.v1.Gender getGender() {
-    com.game-engine.common.v1.Gender result = com.game-engine.common.v1.Gender.forNumber(gender_);
-    return result == null ? com.game-engine.common.v1.Gender.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.Gender getGender() {
+    com.game_engine.common.v1.Gender result = com.game_engine.common.v1.Gender.forNumber(gender_);
+    return result == null ? com.game_engine.common.v1.Gender.UNRECOGNIZED : result;
   }
 
   public static final int ADDRESS_FIELD_NUMBER = 5;
-  private com.game-engine.user.v1.Address address_;
+  private com.game_engine.user.v1.Address address_;
   /**
    * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
    * @return Whether the address field is set.
@@ -183,15 +183,15 @@ private static final long serialVersionUID = 0L;
    * @return The address.
    */
   @java.lang.Override
-  public com.game-engine.user.v1.Address getAddress() {
-    return address_ == null ? com.game-engine.user.v1.Address.getDefaultInstance() : address_;
+  public com.game_engine.user.v1.Address getAddress() {
+    return address_ == null ? com.game_engine.user.v1.Address.getDefaultInstance() : address_;
   }
   /**
    * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
    */
   @java.lang.Override
-  public com.game-engine.user.v1.AddressOrBuilder getAddressOrBuilder() {
-    return address_ == null ? com.game-engine.user.v1.Address.getDefaultInstance() : address_;
+  public com.game_engine.user.v1.AddressOrBuilder getAddressOrBuilder() {
+    return address_ == null ? com.game_engine.user.v1.Address.getDefaultInstance() : address_;
   }
 
   public static final int LANGUAGE_FIELD_NUMBER = 6;
@@ -207,9 +207,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.Language language = 6 [json_name = "language"];</code>
    * @return The language.
    */
-  @java.lang.Override public com.game-engine.common.v1.Language getLanguage() {
-    com.game-engine.common.v1.Language result = com.game-engine.common.v1.Language.forNumber(language_);
-    return result == null ? com.game-engine.common.v1.Language.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.Language getLanguage() {
+    com.game_engine.common.v1.Language result = com.game_engine.common.v1.Language.forNumber(language_);
+    return result == null ? com.game_engine.common.v1.Language.UNRECOGNIZED : result;
   }
 
   public static final int TIMEZONE_FIELD_NUMBER = 7;
@@ -313,13 +313,13 @@ private static final long serialVersionUID = 0L;
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(3, getDateOfBirth());
     }
-    if (gender_ != com.game-engine.common.v1.Gender.GENDER_UNSPECIFIED.getNumber()) {
+    if (gender_ != com.game_engine.common.v1.Gender.GENDER_UNSPECIFIED.getNumber()) {
       output.writeEnum(4, gender_);
     }
     if (((bitField0_ & 0x00000002) != 0)) {
       output.writeMessage(5, getAddress());
     }
-    if (language_ != com.game-engine.common.v1.Language.LANGUAGE_UNSPECIFIED.getNumber()) {
+    if (language_ != com.game_engine.common.v1.Language.LANGUAGE_UNSPECIFIED.getNumber()) {
       output.writeEnum(6, language_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(timezone_)) {
@@ -347,7 +347,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(3, getDateOfBirth());
     }
-    if (gender_ != com.game-engine.common.v1.Gender.GENDER_UNSPECIFIED.getNumber()) {
+    if (gender_ != com.game_engine.common.v1.Gender.GENDER_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(4, gender_);
     }
@@ -355,7 +355,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getAddress());
     }
-    if (language_ != com.game-engine.common.v1.Language.LANGUAGE_UNSPECIFIED.getNumber()) {
+    if (language_ != com.game_engine.common.v1.Language.LANGUAGE_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(6, language_);
     }
@@ -375,10 +375,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.UpdateProfileRequest)) {
+    if (!(obj instanceof com.game_engine.user.v1.UpdateProfileRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.UpdateProfileRequest other = (com.game-engine.user.v1.UpdateProfileRequest) obj;
+    com.game_engine.user.v1.UpdateProfileRequest other = (com.game_engine.user.v1.UpdateProfileRequest) obj;
 
     if (!getFirstName()
         .equals(other.getFirstName())) return false;
@@ -436,44 +436,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(byte[] data)
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -481,26 +481,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.UpdateProfileRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.UpdateProfileRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.UpdateProfileRequest parseDelimitedFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.UpdateProfileRequest parseFrom(
+  public static com.game_engine.user.v1.UpdateProfileRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -513,7 +513,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.UpdateProfileRequest prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.UpdateProfileRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -534,21 +534,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.UpdateProfileRequest)
-      com.game-engine.user.v1.UpdateProfileRequestOrBuilder {
+      com.game_engine.user.v1.UpdateProfileRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.UpdateProfileRequest.class, com.game-engine.user.v1.UpdateProfileRequest.Builder.class);
+              com.game_engine.user.v1.UpdateProfileRequest.class, com.game_engine.user.v1.UpdateProfileRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.UpdateProfileRequest.newBuilder()
+    // Construct using com.game_engine.user.v1.UpdateProfileRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -591,17 +591,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_UpdateProfileRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.UpdateProfileRequest getDefaultInstanceForType() {
-      return com.game-engine.user.v1.UpdateProfileRequest.getDefaultInstance();
+    public com.game_engine.user.v1.UpdateProfileRequest getDefaultInstanceForType() {
+      return com.game_engine.user.v1.UpdateProfileRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.UpdateProfileRequest build() {
-      com.game-engine.user.v1.UpdateProfileRequest result = buildPartial();
+    public com.game_engine.user.v1.UpdateProfileRequest build() {
+      com.game_engine.user.v1.UpdateProfileRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -609,14 +609,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.UpdateProfileRequest buildPartial() {
-      com.game-engine.user.v1.UpdateProfileRequest result = new com.game-engine.user.v1.UpdateProfileRequest(this);
+    public com.game_engine.user.v1.UpdateProfileRequest buildPartial() {
+      com.game_engine.user.v1.UpdateProfileRequest result = new com.game_engine.user.v1.UpdateProfileRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.UpdateProfileRequest result) {
+    private void buildPartial0(com.game_engine.user.v1.UpdateProfileRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.firstName_ = firstName_;
@@ -686,16 +686,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.UpdateProfileRequest) {
-        return mergeFrom((com.game-engine.user.v1.UpdateProfileRequest)other);
+      if (other instanceof com.game_engine.user.v1.UpdateProfileRequest) {
+        return mergeFrom((com.game_engine.user.v1.UpdateProfileRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.UpdateProfileRequest other) {
-      if (other == com.game-engine.user.v1.UpdateProfileRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.UpdateProfileRequest other) {
+      if (other == com.game_engine.user.v1.UpdateProfileRequest.getDefaultInstance()) return this;
       if (!other.getFirstName().isEmpty()) {
         firstName_ = other.firstName_;
         bitField0_ |= 0x00000001;
@@ -1104,16 +1104,16 @@ private static final long serialVersionUID = 0L;
      * @return The gender.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.Gender getGender() {
-      com.game-engine.common.v1.Gender result = com.game-engine.common.v1.Gender.forNumber(gender_);
-      return result == null ? com.game-engine.common.v1.Gender.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.Gender getGender() {
+      com.game_engine.common.v1.Gender result = com.game_engine.common.v1.Gender.forNumber(gender_);
+      return result == null ? com.game_engine.common.v1.Gender.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.Gender gender = 4 [json_name = "gender"];</code>
      * @param value The gender to set.
      * @return This builder for chaining.
      */
-    public Builder setGender(com.game-engine.common.v1.Gender value) {
+    public Builder setGender(com.game_engine.common.v1.Gender value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1133,9 +1133,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.user.v1.Address address_;
+    private com.game_engine.user.v1.Address address_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.user.v1.Address, com.game-engine.user.v1.Address.Builder, com.game-engine.user.v1.AddressOrBuilder> addressBuilder_;
+        com.game_engine.user.v1.Address, com.game_engine.user.v1.Address.Builder, com.game_engine.user.v1.AddressOrBuilder> addressBuilder_;
     /**
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      * @return Whether the address field is set.
@@ -1147,9 +1147,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      * @return The address.
      */
-    public com.game-engine.user.v1.Address getAddress() {
+    public com.game_engine.user.v1.Address getAddress() {
       if (addressBuilder_ == null) {
-        return address_ == null ? com.game-engine.user.v1.Address.getDefaultInstance() : address_;
+        return address_ == null ? com.game_engine.user.v1.Address.getDefaultInstance() : address_;
       } else {
         return addressBuilder_.getMessage();
       }
@@ -1157,7 +1157,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      */
-    public Builder setAddress(com.game-engine.user.v1.Address value) {
+    public Builder setAddress(com.game_engine.user.v1.Address value) {
       if (addressBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1174,7 +1174,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      */
     public Builder setAddress(
-        com.game-engine.user.v1.Address.Builder builderForValue) {
+        com.game_engine.user.v1.Address.Builder builderForValue) {
       if (addressBuilder_ == null) {
         address_ = builderForValue.build();
       } else {
@@ -1187,11 +1187,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      */
-    public Builder mergeAddress(com.game-engine.user.v1.Address value) {
+    public Builder mergeAddress(com.game_engine.user.v1.Address value) {
       if (addressBuilder_ == null) {
         if (((bitField0_ & 0x00000010) != 0) &&
           address_ != null &&
-          address_ != com.game-engine.user.v1.Address.getDefaultInstance()) {
+          address_ != com.game_engine.user.v1.Address.getDefaultInstance()) {
           getAddressBuilder().mergeFrom(value);
         } else {
           address_ = value;
@@ -1221,7 +1221,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      */
-    public com.game-engine.user.v1.Address.Builder getAddressBuilder() {
+    public com.game_engine.user.v1.Address.Builder getAddressBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
       return getAddressFieldBuilder().getBuilder();
@@ -1229,23 +1229,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      */
-    public com.game-engine.user.v1.AddressOrBuilder getAddressOrBuilder() {
+    public com.game_engine.user.v1.AddressOrBuilder getAddressOrBuilder() {
       if (addressBuilder_ != null) {
         return addressBuilder_.getMessageOrBuilder();
       } else {
         return address_ == null ?
-            com.game-engine.user.v1.Address.getDefaultInstance() : address_;
+            com.game_engine.user.v1.Address.getDefaultInstance() : address_;
       }
     }
     /**
      * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.user.v1.Address, com.game-engine.user.v1.Address.Builder, com.game-engine.user.v1.AddressOrBuilder> 
+        com.game_engine.user.v1.Address, com.game_engine.user.v1.Address.Builder, com.game_engine.user.v1.AddressOrBuilder> 
         getAddressFieldBuilder() {
       if (addressBuilder_ == null) {
         addressBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.user.v1.Address, com.game-engine.user.v1.Address.Builder, com.game-engine.user.v1.AddressOrBuilder>(
+            com.game_engine.user.v1.Address, com.game_engine.user.v1.Address.Builder, com.game_engine.user.v1.AddressOrBuilder>(
                 getAddress(),
                 getParentForChildren(),
                 isClean());
@@ -1278,16 +1278,16 @@ private static final long serialVersionUID = 0L;
      * @return The language.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.Language getLanguage() {
-      com.game-engine.common.v1.Language result = com.game-engine.common.v1.Language.forNumber(language_);
-      return result == null ? com.game-engine.common.v1.Language.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.Language getLanguage() {
+      com.game_engine.common.v1.Language result = com.game_engine.common.v1.Language.forNumber(language_);
+      return result == null ? com.game_engine.common.v1.Language.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.Language language = 6 [json_name = "language"];</code>
      * @param value The language to set.
      * @return This builder for chaining.
      */
-    public Builder setLanguage(com.game-engine.common.v1.Language value) {
+    public Builder setLanguage(com.game_engine.common.v1.Language value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1467,12 +1467,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.UpdateProfileRequest)
-  private static final com.game-engine.user.v1.UpdateProfileRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.UpdateProfileRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.UpdateProfileRequest();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.UpdateProfileRequest();
   }
 
-  public static com.game-engine.user.v1.UpdateProfileRequest getDefaultInstance() {
+  public static com.game_engine.user.v1.UpdateProfileRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1508,7 +1508,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.UpdateProfileRequest getDefaultInstanceForType() {
+  public com.game_engine.user.v1.UpdateProfileRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

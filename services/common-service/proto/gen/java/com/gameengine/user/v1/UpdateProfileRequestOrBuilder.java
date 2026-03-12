@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface UpdateProfileRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.UpdateProfileRequest)
@@ -56,7 +56,7 @@ public interface UpdateProfileRequestOrBuilder extends
    * <code>.game-engine.common.v1.Gender gender = 4 [json_name = "gender"];</code>
    * @return The gender.
    */
-  com.game-engine.common.v1.Gender getGender();
+  com.game_engine.common.v1.Gender getGender();
 
   /**
    * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
@@ -67,11 +67,11 @@ public interface UpdateProfileRequestOrBuilder extends
    * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
    * @return The address.
    */
-  com.game-engine.user.v1.Address getAddress();
+  com.game_engine.user.v1.Address getAddress();
   /**
    * <code>.game-engine.user.v1.Address address = 5 [json_name = "address"];</code>
    */
-  com.game-engine.user.v1.AddressOrBuilder getAddressOrBuilder();
+  com.game_engine.user.v1.AddressOrBuilder getAddressOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Language language = 6 [json_name = "language"];</code>
@@ -82,7 +82,7 @@ public interface UpdateProfileRequestOrBuilder extends
    * <code>.game-engine.common.v1.Language language = 6 [json_name = "language"];</code>
    * @return The language.
    */
-  com.game-engine.common.v1.Language getLanguage();
+  com.game_engine.common.v1.Language getLanguage();
 
   /**
    * <code>string timezone = 7 [json_name = "timezone"];</code>

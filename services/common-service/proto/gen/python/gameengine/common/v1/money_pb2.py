@@ -22,7 +22,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.common.v1.money_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game-engine.common.v1P\001Z\031gen/go/common/v1;commonv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game_engine.common.v1P\001Z\031gen/go/common/v1;commonv1'
   _globals['_WAGERINGREQUIREMENT_CONTRIBUTIONPERCENTAGESENTRY']._options = None
   _globals['_WAGERINGREQUIREMENT_CONTRIBUTIONPERCENTAGESENTRY']._serialized_options = b'8\001'
   _globals['_MONEY']._serialized_start=93

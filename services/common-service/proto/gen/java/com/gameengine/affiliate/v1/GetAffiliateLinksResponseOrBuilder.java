@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 public interface GetAffiliateLinksResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.affiliate.v1.GetAffiliateLinksResponse)
@@ -11,12 +11,12 @@ public interface GetAffiliateLinksResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.affiliate.v1.AffiliateLink links = 1 [json_name = "links"];</code>
    */
-  java.util.List<com.game-engine.affiliate.v1.AffiliateLink> 
+  java.util.List<com.game_engine.affiliate.v1.AffiliateLink> 
       getLinksList();
   /**
    * <code>repeated .game-engine.affiliate.v1.AffiliateLink links = 1 [json_name = "links"];</code>
    */
-  com.game-engine.affiliate.v1.AffiliateLink getLinks(int index);
+  com.game_engine.affiliate.v1.AffiliateLink getLinks(int index);
   /**
    * <code>repeated .game-engine.affiliate.v1.AffiliateLink links = 1 [json_name = "links"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetAffiliateLinksResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.affiliate.v1.AffiliateLink links = 1 [json_name = "links"];</code>
    */
-  java.util.List<? extends com.game-engine.affiliate.v1.AffiliateLinkOrBuilder> 
+  java.util.List<? extends com.game_engine.affiliate.v1.AffiliateLinkOrBuilder> 
       getLinksOrBuilderList();
   /**
    * <code>repeated .game-engine.affiliate.v1.AffiliateLink links = 1 [json_name = "links"];</code>
    */
-  com.game-engine.affiliate.v1.AffiliateLinkOrBuilder getLinksOrBuilder(
+  com.game_engine.affiliate.v1.AffiliateLinkOrBuilder getLinksOrBuilder(
       int index);
 }

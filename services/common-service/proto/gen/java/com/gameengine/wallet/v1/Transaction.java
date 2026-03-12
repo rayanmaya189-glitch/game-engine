@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * <pre>
@@ -42,15 +42,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.Transaction.class, com.game-engine.wallet.v1.Transaction.Builder.class);
+            com.game_engine.wallet.v1.Transaction.class, com.game_engine.wallet.v1.Transaction.Builder.class);
   }
 
   private int bitField0_;
@@ -145,9 +145,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.TransactionType type = 3 [json_name = "type"];</code>
    * @return The type.
    */
-  @java.lang.Override public com.game-engine.common.v1.TransactionType getType() {
-    com.game-engine.common.v1.TransactionType result = com.game-engine.common.v1.TransactionType.forNumber(type_);
-    return result == null ? com.game-engine.common.v1.TransactionType.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.TransactionType getType() {
+    com.game_engine.common.v1.TransactionType result = com.game_engine.common.v1.TransactionType.forNumber(type_);
+    return result == null ? com.game_engine.common.v1.TransactionType.UNRECOGNIZED : result;
   }
 
   public static final int STATUS_FIELD_NUMBER = 4;
@@ -163,13 +163,13 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.TransactionStatus status = 4 [json_name = "status"];</code>
    * @return The status.
    */
-  @java.lang.Override public com.game-engine.common.v1.TransactionStatus getStatus() {
-    com.game-engine.common.v1.TransactionStatus result = com.game-engine.common.v1.TransactionStatus.forNumber(status_);
-    return result == null ? com.game-engine.common.v1.TransactionStatus.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.TransactionStatus getStatus() {
+    com.game_engine.common.v1.TransactionStatus result = com.game_engine.common.v1.TransactionStatus.forNumber(status_);
+    return result == null ? com.game_engine.common.v1.TransactionStatus.UNRECOGNIZED : result;
   }
 
   public static final int AMOUNT_FIELD_NUMBER = 5;
-  private com.game-engine.common.v1.TransactionAmount amount_;
+  private com.game_engine.common.v1.TransactionAmount amount_;
   /**
    * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
    * @return Whether the amount field is set.
@@ -183,15 +183,15 @@ private static final long serialVersionUID = 0L;
    * @return The amount.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.TransactionAmount getAmount() {
-    return amount_ == null ? com.game-engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
+  public com.game_engine.common.v1.TransactionAmount getAmount() {
+    return amount_ == null ? com.game_engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
   }
   /**
    * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.TransactionAmountOrBuilder getAmountOrBuilder() {
-    return amount_ == null ? com.game-engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
+  public com.game_engine.common.v1.TransactionAmountOrBuilder getAmountOrBuilder() {
+    return amount_ == null ? com.game_engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
   }
 
   public static final int PAYMENT_METHOD_FIELD_NUMBER = 6;
@@ -207,9 +207,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.PaymentMethod payment_method = 6 [json_name = "paymentMethod"];</code>
    * @return The paymentMethod.
    */
-  @java.lang.Override public com.game-engine.common.v1.PaymentMethod getPaymentMethod() {
-    com.game-engine.common.v1.PaymentMethod result = com.game-engine.common.v1.PaymentMethod.forNumber(paymentMethod_);
-    return result == null ? com.game-engine.common.v1.PaymentMethod.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.PaymentMethod getPaymentMethod() {
+    com.game_engine.common.v1.PaymentMethod result = com.game_engine.common.v1.PaymentMethod.forNumber(paymentMethod_);
+    return result == null ? com.game_engine.common.v1.PaymentMethod.UNRECOGNIZED : result;
   }
 
   public static final int PAYMENT_PROVIDER_FIELD_NUMBER = 7;
@@ -479,16 +479,16 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, userId_);
     }
-    if (type_ != com.game-engine.common.v1.TransactionType.TRANSACTION_TYPE_UNSPECIFIED.getNumber()) {
+    if (type_ != com.game_engine.common.v1.TransactionType.TRANSACTION_TYPE_UNSPECIFIED.getNumber()) {
       output.writeEnum(3, type_);
     }
-    if (status_ != com.game-engine.common.v1.TransactionStatus.TRANSACTION_STATUS_UNSPECIFIED.getNumber()) {
+    if (status_ != com.game_engine.common.v1.TransactionStatus.TRANSACTION_STATUS_UNSPECIFIED.getNumber()) {
       output.writeEnum(4, status_);
     }
     if (((bitField0_ & 0x00000001) != 0)) {
       output.writeMessage(5, getAmount());
     }
-    if (paymentMethod_ != com.game-engine.common.v1.PaymentMethod.PAYMENT_METHOD_UNSPECIFIED.getNumber()) {
+    if (paymentMethod_ != com.game_engine.common.v1.PaymentMethod.PAYMENT_METHOD_UNSPECIFIED.getNumber()) {
       output.writeEnum(6, paymentMethod_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(paymentProvider_)) {
@@ -527,11 +527,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, userId_);
     }
-    if (type_ != com.game-engine.common.v1.TransactionType.TRANSACTION_TYPE_UNSPECIFIED.getNumber()) {
+    if (type_ != com.game_engine.common.v1.TransactionType.TRANSACTION_TYPE_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(3, type_);
     }
-    if (status_ != com.game-engine.common.v1.TransactionStatus.TRANSACTION_STATUS_UNSPECIFIED.getNumber()) {
+    if (status_ != com.game_engine.common.v1.TransactionStatus.TRANSACTION_STATUS_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(4, status_);
     }
@@ -539,7 +539,7 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(5, getAmount());
     }
-    if (paymentMethod_ != com.game-engine.common.v1.PaymentMethod.PAYMENT_METHOD_UNSPECIFIED.getNumber()) {
+    if (paymentMethod_ != com.game_engine.common.v1.PaymentMethod.PAYMENT_METHOD_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(6, paymentMethod_);
     }
@@ -576,10 +576,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.Transaction)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.Transaction)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.Transaction other = (com.game-engine.wallet.v1.Transaction) obj;
+    com.game_engine.wallet.v1.Transaction other = (com.game_engine.wallet.v1.Transaction) obj;
 
     if (!getTransactionId()
         .equals(other.getTransactionId())) return false;
@@ -661,44 +661,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.Transaction parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.Transaction parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -706,26 +706,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.Transaction parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.Transaction parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.Transaction parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.Transaction parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.Transaction parseFrom(
+  public static com.game_engine.wallet.v1.Transaction parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -738,7 +738,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.Transaction prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.Transaction prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -763,21 +763,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.Transaction)
-      com.game-engine.wallet.v1.TransactionOrBuilder {
+      com.game_engine.wallet.v1.TransactionOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.Transaction.class, com.game-engine.wallet.v1.Transaction.Builder.class);
+              com.game_engine.wallet.v1.Transaction.class, com.game_engine.wallet.v1.Transaction.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.Transaction.newBuilder()
+    // Construct using com.game_engine.wallet.v1.Transaction.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -830,17 +830,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_Transaction_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.Transaction getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.Transaction.getDefaultInstance();
+    public com.game_engine.wallet.v1.Transaction getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.Transaction.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.Transaction build() {
-      com.game-engine.wallet.v1.Transaction result = buildPartial();
+    public com.game_engine.wallet.v1.Transaction build() {
+      com.game_engine.wallet.v1.Transaction result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -848,14 +848,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.Transaction buildPartial() {
-      com.game-engine.wallet.v1.Transaction result = new com.game-engine.wallet.v1.Transaction(this);
+    public com.game_engine.wallet.v1.Transaction buildPartial() {
+      com.game_engine.wallet.v1.Transaction result = new com.game_engine.wallet.v1.Transaction(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.Transaction result) {
+    private void buildPartial0(com.game_engine.wallet.v1.Transaction result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.transactionId_ = transactionId_;
@@ -943,16 +943,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.Transaction) {
-        return mergeFrom((com.game-engine.wallet.v1.Transaction)other);
+      if (other instanceof com.game_engine.wallet.v1.Transaction) {
+        return mergeFrom((com.game_engine.wallet.v1.Transaction)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.Transaction other) {
-      if (other == com.game-engine.wallet.v1.Transaction.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.Transaction other) {
+      if (other == com.game_engine.wallet.v1.Transaction.getDefaultInstance()) return this;
       if (!other.getTransactionId().isEmpty()) {
         transactionId_ = other.transactionId_;
         bitField0_ |= 0x00000001;
@@ -1288,16 +1288,16 @@ private static final long serialVersionUID = 0L;
      * @return The type.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.TransactionType getType() {
-      com.game-engine.common.v1.TransactionType result = com.game-engine.common.v1.TransactionType.forNumber(type_);
-      return result == null ? com.game-engine.common.v1.TransactionType.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.TransactionType getType() {
+      com.game_engine.common.v1.TransactionType result = com.game_engine.common.v1.TransactionType.forNumber(type_);
+      return result == null ? com.game_engine.common.v1.TransactionType.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.TransactionType type = 3 [json_name = "type"];</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
-    public Builder setType(com.game-engine.common.v1.TransactionType value) {
+    public Builder setType(com.game_engine.common.v1.TransactionType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1341,16 +1341,16 @@ private static final long serialVersionUID = 0L;
      * @return The status.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.TransactionStatus getStatus() {
-      com.game-engine.common.v1.TransactionStatus result = com.game-engine.common.v1.TransactionStatus.forNumber(status_);
-      return result == null ? com.game-engine.common.v1.TransactionStatus.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.TransactionStatus getStatus() {
+      com.game_engine.common.v1.TransactionStatus result = com.game_engine.common.v1.TransactionStatus.forNumber(status_);
+      return result == null ? com.game_engine.common.v1.TransactionStatus.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.TransactionStatus status = 4 [json_name = "status"];</code>
      * @param value The status to set.
      * @return This builder for chaining.
      */
-    public Builder setStatus(com.game-engine.common.v1.TransactionStatus value) {
+    public Builder setStatus(com.game_engine.common.v1.TransactionStatus value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1370,9 +1370,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.common.v1.TransactionAmount amount_;
+    private com.game_engine.common.v1.TransactionAmount amount_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.TransactionAmount, com.game-engine.common.v1.TransactionAmount.Builder, com.game-engine.common.v1.TransactionAmountOrBuilder> amountBuilder_;
+        com.game_engine.common.v1.TransactionAmount, com.game_engine.common.v1.TransactionAmount.Builder, com.game_engine.common.v1.TransactionAmountOrBuilder> amountBuilder_;
     /**
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      * @return Whether the amount field is set.
@@ -1384,9 +1384,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      * @return The amount.
      */
-    public com.game-engine.common.v1.TransactionAmount getAmount() {
+    public com.game_engine.common.v1.TransactionAmount getAmount() {
       if (amountBuilder_ == null) {
-        return amount_ == null ? com.game-engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
+        return amount_ == null ? com.game_engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
       } else {
         return amountBuilder_.getMessage();
       }
@@ -1394,7 +1394,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      */
-    public Builder setAmount(com.game-engine.common.v1.TransactionAmount value) {
+    public Builder setAmount(com.game_engine.common.v1.TransactionAmount value) {
       if (amountBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1411,7 +1411,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      */
     public Builder setAmount(
-        com.game-engine.common.v1.TransactionAmount.Builder builderForValue) {
+        com.game_engine.common.v1.TransactionAmount.Builder builderForValue) {
       if (amountBuilder_ == null) {
         amount_ = builderForValue.build();
       } else {
@@ -1424,11 +1424,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      */
-    public Builder mergeAmount(com.game-engine.common.v1.TransactionAmount value) {
+    public Builder mergeAmount(com.game_engine.common.v1.TransactionAmount value) {
       if (amountBuilder_ == null) {
         if (((bitField0_ & 0x00000010) != 0) &&
           amount_ != null &&
-          amount_ != com.game-engine.common.v1.TransactionAmount.getDefaultInstance()) {
+          amount_ != com.game_engine.common.v1.TransactionAmount.getDefaultInstance()) {
           getAmountBuilder().mergeFrom(value);
         } else {
           amount_ = value;
@@ -1458,7 +1458,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      */
-    public com.game-engine.common.v1.TransactionAmount.Builder getAmountBuilder() {
+    public com.game_engine.common.v1.TransactionAmount.Builder getAmountBuilder() {
       bitField0_ |= 0x00000010;
       onChanged();
       return getAmountFieldBuilder().getBuilder();
@@ -1466,23 +1466,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      */
-    public com.game-engine.common.v1.TransactionAmountOrBuilder getAmountOrBuilder() {
+    public com.game_engine.common.v1.TransactionAmountOrBuilder getAmountOrBuilder() {
       if (amountBuilder_ != null) {
         return amountBuilder_.getMessageOrBuilder();
       } else {
         return amount_ == null ?
-            com.game-engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
+            com.game_engine.common.v1.TransactionAmount.getDefaultInstance() : amount_;
       }
     }
     /**
      * <code>.game-engine.common.v1.TransactionAmount amount = 5 [json_name = "amount"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.TransactionAmount, com.game-engine.common.v1.TransactionAmount.Builder, com.game-engine.common.v1.TransactionAmountOrBuilder> 
+        com.game_engine.common.v1.TransactionAmount, com.game_engine.common.v1.TransactionAmount.Builder, com.game_engine.common.v1.TransactionAmountOrBuilder> 
         getAmountFieldBuilder() {
       if (amountBuilder_ == null) {
         amountBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.TransactionAmount, com.game-engine.common.v1.TransactionAmount.Builder, com.game-engine.common.v1.TransactionAmountOrBuilder>(
+            com.game_engine.common.v1.TransactionAmount, com.game_engine.common.v1.TransactionAmount.Builder, com.game_engine.common.v1.TransactionAmountOrBuilder>(
                 getAmount(),
                 getParentForChildren(),
                 isClean());
@@ -1515,16 +1515,16 @@ private static final long serialVersionUID = 0L;
      * @return The paymentMethod.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.PaymentMethod getPaymentMethod() {
-      com.game-engine.common.v1.PaymentMethod result = com.game-engine.common.v1.PaymentMethod.forNumber(paymentMethod_);
-      return result == null ? com.game-engine.common.v1.PaymentMethod.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.PaymentMethod getPaymentMethod() {
+      com.game_engine.common.v1.PaymentMethod result = com.game_engine.common.v1.PaymentMethod.forNumber(paymentMethod_);
+      return result == null ? com.game_engine.common.v1.PaymentMethod.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.PaymentMethod payment_method = 6 [json_name = "paymentMethod"];</code>
      * @param value The paymentMethod to set.
      * @return This builder for chaining.
      */
-    public Builder setPaymentMethod(com.game-engine.common.v1.PaymentMethod value) {
+    public Builder setPaymentMethod(com.game_engine.common.v1.PaymentMethod value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -2162,12 +2162,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.Transaction)
-  private static final com.game-engine.wallet.v1.Transaction DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.Transaction DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.Transaction();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.Transaction();
   }
 
-  public static com.game-engine.wallet.v1.Transaction getDefaultInstance() {
+  public static com.game_engine.wallet.v1.Transaction getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -2203,7 +2203,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.Transaction getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.Transaction getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

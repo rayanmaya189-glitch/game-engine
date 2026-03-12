@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 /**
  * Protobuf type {@code game-engine.payment.v1.ApprovePaymentRequest}
@@ -30,15 +30,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_descriptor;
+    return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_fieldAccessorTable
+    return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.payment.v1.ApprovePaymentRequest.class, com.game-engine.payment.v1.ApprovePaymentRequest.Builder.class);
+            com.game_engine.payment.v1.ApprovePaymentRequest.class, com.game_engine.payment.v1.ApprovePaymentRequest.Builder.class);
   }
 
   public static final int PAYMENT_ID_FIELD_NUMBER = 1;
@@ -164,10 +164,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.payment.v1.ApprovePaymentRequest)) {
+    if (!(obj instanceof com.game_engine.payment.v1.ApprovePaymentRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.payment.v1.ApprovePaymentRequest other = (com.game-engine.payment.v1.ApprovePaymentRequest) obj;
+    com.game_engine.payment.v1.ApprovePaymentRequest other = (com.game_engine.payment.v1.ApprovePaymentRequest) obj;
 
     if (!getPaymentId()
         .equals(other.getPaymentId())) return false;
@@ -193,44 +193,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(byte[] data)
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -238,26 +238,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseDelimitedFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.payment.v1.ApprovePaymentRequest parseFrom(
+  public static com.game_engine.payment.v1.ApprovePaymentRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -270,7 +270,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.payment.v1.ApprovePaymentRequest prototype) {
+  public static Builder newBuilder(com.game_engine.payment.v1.ApprovePaymentRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -291,21 +291,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.payment.v1.ApprovePaymentRequest)
-      com.game-engine.payment.v1.ApprovePaymentRequestOrBuilder {
+      com.game_engine.payment.v1.ApprovePaymentRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_descriptor;
+      return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_fieldAccessorTable
+      return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.payment.v1.ApprovePaymentRequest.class, com.game-engine.payment.v1.ApprovePaymentRequest.Builder.class);
+              com.game_engine.payment.v1.ApprovePaymentRequest.class, com.game_engine.payment.v1.ApprovePaymentRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.payment.v1.ApprovePaymentRequest.newBuilder()
+    // Construct using com.game_engine.payment.v1.ApprovePaymentRequest.newBuilder()
     private Builder() {
 
     }
@@ -327,17 +327,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_descriptor;
+      return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_ApprovePaymentRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.payment.v1.ApprovePaymentRequest getDefaultInstanceForType() {
-      return com.game-engine.payment.v1.ApprovePaymentRequest.getDefaultInstance();
+    public com.game_engine.payment.v1.ApprovePaymentRequest getDefaultInstanceForType() {
+      return com.game_engine.payment.v1.ApprovePaymentRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.payment.v1.ApprovePaymentRequest build() {
-      com.game-engine.payment.v1.ApprovePaymentRequest result = buildPartial();
+    public com.game_engine.payment.v1.ApprovePaymentRequest build() {
+      com.game_engine.payment.v1.ApprovePaymentRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -345,14 +345,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.payment.v1.ApprovePaymentRequest buildPartial() {
-      com.game-engine.payment.v1.ApprovePaymentRequest result = new com.game-engine.payment.v1.ApprovePaymentRequest(this);
+    public com.game_engine.payment.v1.ApprovePaymentRequest buildPartial() {
+      com.game_engine.payment.v1.ApprovePaymentRequest result = new com.game_engine.payment.v1.ApprovePaymentRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.payment.v1.ApprovePaymentRequest result) {
+    private void buildPartial0(com.game_engine.payment.v1.ApprovePaymentRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.paymentId_ = paymentId_;
@@ -396,16 +396,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.payment.v1.ApprovePaymentRequest) {
-        return mergeFrom((com.game-engine.payment.v1.ApprovePaymentRequest)other);
+      if (other instanceof com.game_engine.payment.v1.ApprovePaymentRequest) {
+        return mergeFrom((com.game_engine.payment.v1.ApprovePaymentRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.payment.v1.ApprovePaymentRequest other) {
-      if (other == com.game-engine.payment.v1.ApprovePaymentRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.payment.v1.ApprovePaymentRequest other) {
+      if (other == com.game_engine.payment.v1.ApprovePaymentRequest.getDefaultInstance()) return this;
       if (!other.getPaymentId().isEmpty()) {
         paymentId_ = other.paymentId_;
         bitField0_ |= 0x00000001;
@@ -629,12 +629,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.payment.v1.ApprovePaymentRequest)
-  private static final com.game-engine.payment.v1.ApprovePaymentRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.payment.v1.ApprovePaymentRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.payment.v1.ApprovePaymentRequest();
+    DEFAULT_INSTANCE = new com.game_engine.payment.v1.ApprovePaymentRequest();
   }
 
-  public static com.game-engine.payment.v1.ApprovePaymentRequest getDefaultInstance() {
+  public static com.game_engine.payment.v1.ApprovePaymentRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -670,7 +670,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.payment.v1.ApprovePaymentRequest getDefaultInstanceForType() {
+  public com.game_engine.payment.v1.ApprovePaymentRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

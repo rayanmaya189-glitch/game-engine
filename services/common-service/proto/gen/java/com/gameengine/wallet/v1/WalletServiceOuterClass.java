@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public final class WalletServiceOuterClass {
   private WalletServiceOuterClass() {}
@@ -360,7 +360,7 @@ public final class WalletServiceOuterClass {
       "onResponse\022k\n\016GetPendingBets\022+.gameengin" +
       "e.wallet.v1.GetPendingBetsRequest\032,.game" +
       "engine.wallet.v1.GetPendingBetsResponseB" +
-      "8\n\030com.game-engine.wallet.v1P\001Z\032gen/go/wa" +
+      "8\n\030com.game_engine.wallet.v1P\001Z\032gen/go/wa" +
       "llet/v1;walletsv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
@@ -368,9 +368,9 @@ public final class WalletServiceOuterClass {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
-          com.game-engine.common.v1.Enums.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
-          com.game-engine.common.v1.MoneyOuterClass.getDescriptor(),
+          com.game_engine.common.v1.Enums.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.MoneyOuterClass.getDescriptor(),
         });
     internal_static_game-engine_wallet_v1_GetBalanceRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -542,9 +542,9 @@ public final class WalletServiceOuterClass {
         new java.lang.String[] { "BetId", "UserId", "GameId", "BetType", "Selection", "Odds", "Stake", "PotentialWin", "ActualWin", "SettlementType", "Status", "PlacedAt", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
-    com.game-engine.common.v1.Enums.getDescriptor();
-    com.game-engine.common.v1.Pagination.getDescriptor();
-    com.game-engine.common.v1.MoneyOuterClass.getDescriptor();
+    com.game_engine.common.v1.Enums.getDescriptor();
+    com.game_engine.common.v1.Pagination.getDescriptor();
+    com.game_engine.common.v1.MoneyOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

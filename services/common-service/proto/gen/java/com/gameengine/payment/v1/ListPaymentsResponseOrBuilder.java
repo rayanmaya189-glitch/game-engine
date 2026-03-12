@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 public interface ListPaymentsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.payment.v1.ListPaymentsResponse)
@@ -11,12 +11,12 @@ public interface ListPaymentsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.payment.v1.Payment payments = 1 [json_name = "payments"];</code>
    */
-  java.util.List<com.game-engine.payment.v1.Payment> 
+  java.util.List<com.game_engine.payment.v1.Payment> 
       getPaymentsList();
   /**
    * <code>repeated .game-engine.payment.v1.Payment payments = 1 [json_name = "payments"];</code>
    */
-  com.game-engine.payment.v1.Payment getPayments(int index);
+  com.game_engine.payment.v1.Payment getPayments(int index);
   /**
    * <code>repeated .game-engine.payment.v1.Payment payments = 1 [json_name = "payments"];</code>
    */
@@ -24,12 +24,12 @@ public interface ListPaymentsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.payment.v1.Payment payments = 1 [json_name = "payments"];</code>
    */
-  java.util.List<? extends com.game-engine.payment.v1.PaymentOrBuilder> 
+  java.util.List<? extends com.game_engine.payment.v1.PaymentOrBuilder> 
       getPaymentsOrBuilderList();
   /**
    * <code>repeated .game-engine.payment.v1.Payment payments = 1 [json_name = "payments"];</code>
    */
-  com.game-engine.payment.v1.PaymentOrBuilder getPaymentsOrBuilder(
+  com.game_engine.payment.v1.PaymentOrBuilder getPaymentsOrBuilder(
       int index);
 
   /**

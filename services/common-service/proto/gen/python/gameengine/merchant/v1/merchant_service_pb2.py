@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.merchant.v1.merchant_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\032com.game-engine.merchant.v1P\001Z\035gen/go/merchant/v1;merchantv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\032com.game_engine.merchant.v1P\001Z\035gen/go/merchant/v1;merchantv1'
   _globals['_GETCONFIGRESPONSE_CONFIGENTRY']._options = None
   _globals['_GETCONFIGRESPONSE_CONFIGENTRY']._serialized_options = b'8\001'
   _globals['_UPDATECONFIGREQUEST_CONFIGENTRY']._options = None

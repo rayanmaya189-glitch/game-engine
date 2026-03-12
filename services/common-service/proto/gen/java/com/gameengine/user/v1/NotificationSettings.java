@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.NotificationSettings}
@@ -28,15 +28,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.NotificationSettings.class, com.game-engine.user.v1.NotificationSettings.Builder.class);
+            com.game_engine.user.v1.NotificationSettings.class, com.game_engine.user.v1.NotificationSettings.Builder.class);
   }
 
   public static final int EMAIL_ENABLED_FIELD_NUMBER = 1;
@@ -126,10 +126,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.NotificationSettings)) {
+    if (!(obj instanceof com.game_engine.user.v1.NotificationSettings)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.NotificationSettings other = (com.game-engine.user.v1.NotificationSettings) obj;
+    com.game_engine.user.v1.NotificationSettings other = (com.game_engine.user.v1.NotificationSettings) obj;
 
     if (getEmailEnabled()
         != other.getEmailEnabled()) return false;
@@ -162,44 +162,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(byte[] data)
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -207,26 +207,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.NotificationSettings parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.NotificationSettings parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.NotificationSettings parseDelimitedFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.NotificationSettings parseFrom(
+  public static com.game_engine.user.v1.NotificationSettings parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -239,7 +239,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.NotificationSettings prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.NotificationSettings prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -260,21 +260,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.NotificationSettings)
-      com.game-engine.user.v1.NotificationSettingsOrBuilder {
+      com.game_engine.user.v1.NotificationSettingsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.NotificationSettings.class, com.game-engine.user.v1.NotificationSettings.Builder.class);
+              com.game_engine.user.v1.NotificationSettings.class, com.game_engine.user.v1.NotificationSettings.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.NotificationSettings.newBuilder()
+    // Construct using com.game_engine.user.v1.NotificationSettings.newBuilder()
     private Builder() {
 
     }
@@ -297,17 +297,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_NotificationSettings_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.NotificationSettings getDefaultInstanceForType() {
-      return com.game-engine.user.v1.NotificationSettings.getDefaultInstance();
+    public com.game_engine.user.v1.NotificationSettings getDefaultInstanceForType() {
+      return com.game_engine.user.v1.NotificationSettings.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.NotificationSettings build() {
-      com.game-engine.user.v1.NotificationSettings result = buildPartial();
+    public com.game_engine.user.v1.NotificationSettings build() {
+      com.game_engine.user.v1.NotificationSettings result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -315,14 +315,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.NotificationSettings buildPartial() {
-      com.game-engine.user.v1.NotificationSettings result = new com.game-engine.user.v1.NotificationSettings(this);
+    public com.game_engine.user.v1.NotificationSettings buildPartial() {
+      com.game_engine.user.v1.NotificationSettings result = new com.game_engine.user.v1.NotificationSettings(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.NotificationSettings result) {
+    private void buildPartial0(com.game_engine.user.v1.NotificationSettings result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.emailEnabled_ = emailEnabled_;
@@ -369,16 +369,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.NotificationSettings) {
-        return mergeFrom((com.game-engine.user.v1.NotificationSettings)other);
+      if (other instanceof com.game_engine.user.v1.NotificationSettings) {
+        return mergeFrom((com.game_engine.user.v1.NotificationSettings)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.NotificationSettings other) {
-      if (other == com.game-engine.user.v1.NotificationSettings.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.NotificationSettings other) {
+      if (other == com.game_engine.user.v1.NotificationSettings.getDefaultInstance()) return this;
       if (other.getEmailEnabled() != false) {
         setEmailEnabled(other.getEmailEnabled());
       }
@@ -558,12 +558,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.NotificationSettings)
-  private static final com.game-engine.user.v1.NotificationSettings DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.NotificationSettings DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.NotificationSettings();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.NotificationSettings();
   }
 
-  public static com.game-engine.user.v1.NotificationSettings getDefaultInstance() {
+  public static com.game_engine.user.v1.NotificationSettings getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -599,7 +599,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.NotificationSettings getDefaultInstanceForType() {
+  public com.game_engine.user.v1.NotificationSettings getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

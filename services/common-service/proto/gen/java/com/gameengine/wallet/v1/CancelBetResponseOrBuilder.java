@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface CancelBetResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.CancelBetResponse)
@@ -23,11 +23,11 @@ public interface CancelBetResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
    * @return The refund.
    */
-  com.game-engine.wallet.v1.Transaction getRefund();
+  com.game_engine.wallet.v1.Transaction getRefund();
   /**
    * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getRefundOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getRefundOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
@@ -38,11 +38,11 @@ public interface CancelBetResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
    * @return The newBalance.
    */
-  com.game-engine.common.v1.Money getNewBalance();
+  com.game_engine.common.v1.Money getNewBalance();
   /**
    * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder();
 
   /**
    * <code>string message = 4 [json_name = "message"];</code>

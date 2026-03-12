@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface UpdateProfileResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.UpdateProfileResponse)
@@ -17,11 +17,11 @@ public interface UpdateProfileResponseOrBuilder extends
    * <code>.game-engine.user.v1.UserProfile profile = 1 [json_name = "profile"];</code>
    * @return The profile.
    */
-  com.game-engine.user.v1.UserProfile getProfile();
+  com.game_engine.user.v1.UserProfile getProfile();
   /**
    * <code>.game-engine.user.v1.UserProfile profile = 1 [json_name = "profile"];</code>
    */
-  com.game-engine.user.v1.UserProfileOrBuilder getProfileOrBuilder();
+  com.game_engine.user.v1.UserProfileOrBuilder getProfileOrBuilder();
 
   /**
    * <code>string message = 2 [json_name = "message"];</code>

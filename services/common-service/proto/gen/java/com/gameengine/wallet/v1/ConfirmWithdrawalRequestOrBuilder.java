@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface ConfirmWithdrawalRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.ConfirmWithdrawalRequest)
@@ -41,5 +41,5 @@ public interface ConfirmWithdrawalRequestOrBuilder extends
    * <code>.game-engine.common.v1.TransactionStatus status = 3 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.TransactionStatus getStatus();
+  com.game_engine.common.v1.TransactionStatus getStatus();
 }

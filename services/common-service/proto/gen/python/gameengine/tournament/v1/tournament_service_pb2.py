@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.tournament.v1.tournament_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\034com.game-engine.tournament.v1P\001Z!gen/go/tournament/v1;tournamentv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\034com.game_engine.tournament.v1P\001Z!gen/go/tournament/v1;tournamentv1'
   _globals['_LISTTOURNAMENTSREQUEST']._serialized_start=151
   _globals['_LISTTOURNAMENTSREQUEST']._serialized_end=241
   _globals['_LISTTOURNAMENTSRESPONSE']._serialized_start=243

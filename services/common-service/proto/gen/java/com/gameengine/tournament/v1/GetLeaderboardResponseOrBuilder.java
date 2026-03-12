@@ -2,7 +2,7 @@
 // source: game-engine/tournament/v1/tournament_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 public interface GetLeaderboardResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.tournament.v1.GetLeaderboardResponse)
@@ -11,12 +11,12 @@ public interface GetLeaderboardResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.tournament.v1.LeaderboardEntry entries = 1 [json_name = "entries"];</code>
    */
-  java.util.List<com.game-engine.tournament.v1.LeaderboardEntry> 
+  java.util.List<com.game_engine.tournament.v1.LeaderboardEntry> 
       getEntriesList();
   /**
    * <code>repeated .game-engine.tournament.v1.LeaderboardEntry entries = 1 [json_name = "entries"];</code>
    */
-  com.game-engine.tournament.v1.LeaderboardEntry getEntries(int index);
+  com.game_engine.tournament.v1.LeaderboardEntry getEntries(int index);
   /**
    * <code>repeated .game-engine.tournament.v1.LeaderboardEntry entries = 1 [json_name = "entries"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetLeaderboardResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.tournament.v1.LeaderboardEntry entries = 1 [json_name = "entries"];</code>
    */
-  java.util.List<? extends com.game-engine.tournament.v1.LeaderboardEntryOrBuilder> 
+  java.util.List<? extends com.game_engine.tournament.v1.LeaderboardEntryOrBuilder> 
       getEntriesOrBuilderList();
   /**
    * <code>repeated .game-engine.tournament.v1.LeaderboardEntry entries = 1 [json_name = "entries"];</code>
    */
-  com.game-engine.tournament.v1.LeaderboardEntryOrBuilder getEntriesOrBuilder(
+  com.game_engine.tournament.v1.LeaderboardEntryOrBuilder getEntriesOrBuilder(
       int index);
 }

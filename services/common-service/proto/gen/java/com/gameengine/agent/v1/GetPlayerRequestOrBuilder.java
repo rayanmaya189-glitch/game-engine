@@ -2,7 +2,7 @@
 // source: game-engine/agent/v1/agent_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.agent.v1;
+package com.game_engine.agent.v1;
 
 public interface GetPlayerRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.agent.v1.GetPlayerRequest)

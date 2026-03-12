@@ -2,7 +2,7 @@
 // source: game-engine/common/v1/timestamp.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.common.v1;
+package com.game_engine.common.v1;
 
 public interface ExpirationInfoOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.common.v1.ExpirationInfo)

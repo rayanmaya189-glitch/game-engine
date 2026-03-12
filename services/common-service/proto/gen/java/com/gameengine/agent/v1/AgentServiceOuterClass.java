@@ -2,7 +2,7 @@
 // source: game-engine/agent/v1/agent_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.agent.v1;
+package com.game_engine.agent.v1;
 
 public final class AgentServiceOuterClass {
   private AgentServiceOuterClass() {}
@@ -111,14 +111,14 @@ public final class AgentServiceOuterClass {
       "tePlayerLimitResponse\022c\n\014GetDashboard\022(." +
       "game-engine.agent.v1.GetDashboardRequest\032" +
       ").game-engine.agent.v1.GetDashboardRespon" +
-      "seB4\n\027com.game-engine.agent.v1P\001Z\027gen/go/" +
+      "seB4\n\027com.game_engine.agent.v1P\001Z\027gen/go/" +
       "agent/v1;agentv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
         });
     internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -175,7 +175,7 @@ public final class AgentServiceOuterClass {
         internal_static_game-engine_agent_v1_GetDashboardResponse_descriptor,
         new java.lang.String[] { "TotalPlayers", "ActivePlayers", "TotalCommission", "PendingCommission", });
     com.google.protobuf.TimestampProto.getDescriptor();
-    com.game-engine.common.v1.Pagination.getDescriptor();
+    com.game_engine.common.v1.Pagination.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

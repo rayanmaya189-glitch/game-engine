@@ -2,7 +2,7 @@
 // source: game-engine/merchant/v1/merchant_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.merchant.v1;
+package com.game_engine.merchant.v1;
 
 public interface UpdateConfigRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.merchant.v1.UpdateConfigRequest)

@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.CancelBetRequest}
@@ -30,15 +30,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.CancelBetRequest.class, com.game-engine.wallet.v1.CancelBetRequest.Builder.class);
+            com.game_engine.wallet.v1.CancelBetRequest.class, com.game_engine.wallet.v1.CancelBetRequest.Builder.class);
   }
 
   public static final int BET_ID_FIELD_NUMBER = 1;
@@ -164,10 +164,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.CancelBetRequest)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.CancelBetRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.CancelBetRequest other = (com.game-engine.wallet.v1.CancelBetRequest) obj;
+    com.game_engine.wallet.v1.CancelBetRequest other = (com.game_engine.wallet.v1.CancelBetRequest) obj;
 
     if (!getBetId()
         .equals(other.getBetId())) return false;
@@ -193,44 +193,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -238,26 +238,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.CancelBetRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CancelBetRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.CancelBetRequest parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CancelBetRequest parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -270,7 +270,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.CancelBetRequest prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.CancelBetRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -291,21 +291,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.CancelBetRequest)
-      com.game-engine.wallet.v1.CancelBetRequestOrBuilder {
+      com.game_engine.wallet.v1.CancelBetRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.CancelBetRequest.class, com.game-engine.wallet.v1.CancelBetRequest.Builder.class);
+              com.game_engine.wallet.v1.CancelBetRequest.class, com.game_engine.wallet.v1.CancelBetRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.CancelBetRequest.newBuilder()
+    // Construct using com.game_engine.wallet.v1.CancelBetRequest.newBuilder()
     private Builder() {
 
     }
@@ -327,17 +327,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CancelBetRequest getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.CancelBetRequest.getDefaultInstance();
+    public com.game_engine.wallet.v1.CancelBetRequest getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.CancelBetRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CancelBetRequest build() {
-      com.game-engine.wallet.v1.CancelBetRequest result = buildPartial();
+    public com.game_engine.wallet.v1.CancelBetRequest build() {
+      com.game_engine.wallet.v1.CancelBetRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -345,14 +345,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CancelBetRequest buildPartial() {
-      com.game-engine.wallet.v1.CancelBetRequest result = new com.game-engine.wallet.v1.CancelBetRequest(this);
+    public com.game_engine.wallet.v1.CancelBetRequest buildPartial() {
+      com.game_engine.wallet.v1.CancelBetRequest result = new com.game_engine.wallet.v1.CancelBetRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.CancelBetRequest result) {
+    private void buildPartial0(com.game_engine.wallet.v1.CancelBetRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.betId_ = betId_;
@@ -396,16 +396,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.CancelBetRequest) {
-        return mergeFrom((com.game-engine.wallet.v1.CancelBetRequest)other);
+      if (other instanceof com.game_engine.wallet.v1.CancelBetRequest) {
+        return mergeFrom((com.game_engine.wallet.v1.CancelBetRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.CancelBetRequest other) {
-      if (other == com.game-engine.wallet.v1.CancelBetRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.CancelBetRequest other) {
+      if (other == com.game_engine.wallet.v1.CancelBetRequest.getDefaultInstance()) return this;
       if (!other.getBetId().isEmpty()) {
         betId_ = other.betId_;
         bitField0_ |= 0x00000001;
@@ -629,12 +629,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.CancelBetRequest)
-  private static final com.game-engine.wallet.v1.CancelBetRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.CancelBetRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.CancelBetRequest();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.CancelBetRequest();
   }
 
-  public static com.game-engine.wallet.v1.CancelBetRequest getDefaultInstance() {
+  public static com.game_engine.wallet.v1.CancelBetRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -670,7 +670,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.CancelBetRequest getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.CancelBetRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

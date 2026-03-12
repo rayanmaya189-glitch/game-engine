@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface CreateWithdrawalRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.CreateWithdrawalRequest)
@@ -29,11 +29,11 @@ public interface CreateWithdrawalRequestOrBuilder extends
    * <code>.game-engine.common.v1.Money amount = 2 [json_name = "amount"];</code>
    * @return The amount.
    */
-  com.game-engine.common.v1.Money getAmount();
+  com.game_engine.common.v1.Money getAmount();
   /**
    * <code>.game-engine.common.v1.Money amount = 2 [json_name = "amount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getAmountOrBuilder();
 
   /**
    * <code>string withdrawal_method_id = 3 [json_name = "withdrawalMethodId"];</code>

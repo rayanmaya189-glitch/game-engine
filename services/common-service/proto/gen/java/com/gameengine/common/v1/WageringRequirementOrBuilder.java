@@ -2,7 +2,7 @@
 // source: game-engine/common/v1/money.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.common.v1;
+package com.game_engine.common.v1;
 
 public interface WageringRequirementOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.common.v1.WageringRequirement)
@@ -23,11 +23,11 @@ public interface WageringRequirementOrBuilder extends
    * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
    * @return The amountWagered.
    */
-  com.game-engine.common.v1.Money getAmountWagered();
+  com.game_engine.common.v1.Money getAmountWagered();
   /**
    * <code>.game-engine.common.v1.Money amount_wagered = 2 [json_name = "amountWagered"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getAmountWageredOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getAmountWageredOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
@@ -38,11 +38,11 @@ public interface WageringRequirementOrBuilder extends
    * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
    * @return The amountRemaining.
    */
-  com.game-engine.common.v1.Money getAmountRemaining();
+  com.game_engine.common.v1.Money getAmountRemaining();
   /**
    * <code>.game-engine.common.v1.Money amount_remaining = 3 [json_name = "amountRemaining"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getAmountRemainingOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getAmountRemainingOrBuilder();
 
   /**
    * <code>string deadline = 4 [json_name = "deadline"];</code>

@@ -2,7 +2,7 @@
 // source: game-engine/tournament/v1/tournament_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 public interface UserTournamentOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.tournament.v1.UserTournament)

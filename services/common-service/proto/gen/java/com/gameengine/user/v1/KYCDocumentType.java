@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf enum {@code game-engine.user.v1.KYCDocumentType}
@@ -113,7 +113,7 @@ public enum KYCDocumentType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.getDescriptor().getEnumTypes().get(0);
+    return com.game_engine.user.v1.UserServiceOuterClass.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final KYCDocumentType[] VALUES = values();

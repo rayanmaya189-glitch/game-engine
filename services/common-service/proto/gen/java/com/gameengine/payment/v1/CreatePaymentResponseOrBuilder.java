@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 public interface CreatePaymentResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.payment.v1.CreatePaymentResponse)

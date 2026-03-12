@@ -2,7 +2,7 @@
 // source: game-engine/tournament/v1/tournament_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 public interface ListTournamentsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.tournament.v1.ListTournamentsResponse)
@@ -11,12 +11,12 @@ public interface ListTournamentsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.tournament.v1.Tournament tournaments = 1 [json_name = "tournaments"];</code>
    */
-  java.util.List<com.game-engine.tournament.v1.Tournament> 
+  java.util.List<com.game_engine.tournament.v1.Tournament> 
       getTournamentsList();
   /**
    * <code>repeated .game-engine.tournament.v1.Tournament tournaments = 1 [json_name = "tournaments"];</code>
    */
-  com.game-engine.tournament.v1.Tournament getTournaments(int index);
+  com.game_engine.tournament.v1.Tournament getTournaments(int index);
   /**
    * <code>repeated .game-engine.tournament.v1.Tournament tournaments = 1 [json_name = "tournaments"];</code>
    */
@@ -24,12 +24,12 @@ public interface ListTournamentsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.tournament.v1.Tournament tournaments = 1 [json_name = "tournaments"];</code>
    */
-  java.util.List<? extends com.game-engine.tournament.v1.TournamentOrBuilder> 
+  java.util.List<? extends com.game_engine.tournament.v1.TournamentOrBuilder> 
       getTournamentsOrBuilderList();
   /**
    * <code>repeated .game-engine.tournament.v1.Tournament tournaments = 1 [json_name = "tournaments"];</code>
    */
-  com.game-engine.tournament.v1.TournamentOrBuilder getTournamentsOrBuilder(
+  com.game_engine.tournament.v1.TournamentOrBuilder getTournamentsOrBuilder(
       int index);
 
   /**

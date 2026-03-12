@@ -2,7 +2,7 @@
 // source: game-engine/agent/v1/agent_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.agent.v1;
+package com.game_engine.agent.v1;
 
 /**
  * Protobuf type {@code game-engine.agent.v1.ListPlayersRequest}
@@ -31,15 +31,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor;
+    return com.game_engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_fieldAccessorTable
+    return com.game_engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.agent.v1.ListPlayersRequest.class, com.game-engine.agent.v1.ListPlayersRequest.Builder.class);
+            com.game_engine.agent.v1.ListPlayersRequest.class, com.game_engine.agent.v1.ListPlayersRequest.Builder.class);
   }
 
   public static final int AGENT_ID_FIELD_NUMBER = 1;
@@ -246,10 +246,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.agent.v1.ListPlayersRequest)) {
+    if (!(obj instanceof com.game_engine.agent.v1.ListPlayersRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.agent.v1.ListPlayersRequest other = (com.game-engine.agent.v1.ListPlayersRequest) obj;
+    com.game_engine.agent.v1.ListPlayersRequest other = (com.game_engine.agent.v1.ListPlayersRequest) obj;
 
     if (!getAgentId()
         .equals(other.getAgentId())) return false;
@@ -287,44 +287,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(byte[] data)
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -332,26 +332,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.agent.v1.ListPlayersRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.agent.v1.ListPlayersRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.agent.v1.ListPlayersRequest parseDelimitedFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.agent.v1.ListPlayersRequest parseFrom(
+  public static com.game_engine.agent.v1.ListPlayersRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -364,7 +364,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.agent.v1.ListPlayersRequest prototype) {
+  public static Builder newBuilder(com.game_engine.agent.v1.ListPlayersRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -385,21 +385,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.agent.v1.ListPlayersRequest)
-      com.game-engine.agent.v1.ListPlayersRequestOrBuilder {
+      com.game_engine.agent.v1.ListPlayersRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor;
+      return com.game_engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_fieldAccessorTable
+      return com.game_engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.agent.v1.ListPlayersRequest.class, com.game-engine.agent.v1.ListPlayersRequest.Builder.class);
+              com.game_engine.agent.v1.ListPlayersRequest.class, com.game_engine.agent.v1.ListPlayersRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.agent.v1.ListPlayersRequest.newBuilder()
+    // Construct using com.game_engine.agent.v1.ListPlayersRequest.newBuilder()
     private Builder() {
 
     }
@@ -424,17 +424,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor;
+      return com.game_engine.agent.v1.AgentServiceOuterClass.internal_static_game-engine_agent_v1_ListPlayersRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.agent.v1.ListPlayersRequest getDefaultInstanceForType() {
-      return com.game-engine.agent.v1.ListPlayersRequest.getDefaultInstance();
+    public com.game_engine.agent.v1.ListPlayersRequest getDefaultInstanceForType() {
+      return com.game_engine.agent.v1.ListPlayersRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.agent.v1.ListPlayersRequest build() {
-      com.game-engine.agent.v1.ListPlayersRequest result = buildPartial();
+    public com.game_engine.agent.v1.ListPlayersRequest build() {
+      com.game_engine.agent.v1.ListPlayersRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -442,14 +442,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.agent.v1.ListPlayersRequest buildPartial() {
-      com.game-engine.agent.v1.ListPlayersRequest result = new com.game-engine.agent.v1.ListPlayersRequest(this);
+    public com.game_engine.agent.v1.ListPlayersRequest buildPartial() {
+      com.game_engine.agent.v1.ListPlayersRequest result = new com.game_engine.agent.v1.ListPlayersRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.agent.v1.ListPlayersRequest result) {
+    private void buildPartial0(com.game_engine.agent.v1.ListPlayersRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.agentId_ = agentId_;
@@ -502,16 +502,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.agent.v1.ListPlayersRequest) {
-        return mergeFrom((com.game-engine.agent.v1.ListPlayersRequest)other);
+      if (other instanceof com.game_engine.agent.v1.ListPlayersRequest) {
+        return mergeFrom((com.game_engine.agent.v1.ListPlayersRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.agent.v1.ListPlayersRequest other) {
-      if (other == com.game-engine.agent.v1.ListPlayersRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.agent.v1.ListPlayersRequest other) {
+      if (other == com.game_engine.agent.v1.ListPlayersRequest.getDefaultInstance()) return this;
       if (!other.getAgentId().isEmpty()) {
         agentId_ = other.agentId_;
         bitField0_ |= 0x00000001;
@@ -897,12 +897,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.agent.v1.ListPlayersRequest)
-  private static final com.game-engine.agent.v1.ListPlayersRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.agent.v1.ListPlayersRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.agent.v1.ListPlayersRequest();
+    DEFAULT_INSTANCE = new com.game_engine.agent.v1.ListPlayersRequest();
   }
 
-  public static com.game-engine.agent.v1.ListPlayersRequest getDefaultInstance() {
+  public static com.game_engine.agent.v1.ListPlayersRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -938,7 +938,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.agent.v1.ListPlayersRequest getDefaultInstanceForType() {
+  public com.game_engine.agent.v1.ListPlayersRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

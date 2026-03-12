@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetGameURLRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetGameURLRequest)
@@ -41,7 +41,7 @@ public interface GetGameURLRequestOrBuilder extends
    * <code>.game-engine.common.v1.DeviceType device_type = 3 [json_name = "deviceType"];</code>
    * @return The deviceType.
    */
-  com.game-engine.common.v1.DeviceType getDeviceType();
+  com.game_engine.common.v1.DeviceType getDeviceType();
 
   /**
    * <code>string session_id = 4 [json_name = "sessionId"];</code>
@@ -64,7 +64,7 @@ public interface GetGameURLRequestOrBuilder extends
    * <code>.game-engine.common.v1.Language language = 5 [json_name = "language"];</code>
    * @return The language.
    */
-  com.game-engine.common.v1.Language getLanguage();
+  com.game_engine.common.v1.Language getLanguage();
 
   /**
    * <code>string currency = 6 [json_name = "currency"];</code>

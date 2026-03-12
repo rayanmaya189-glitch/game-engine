@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface UserProfileOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.UserProfile)
@@ -116,7 +116,7 @@ public interface UserProfileOrBuilder extends
    * <code>.game-engine.common.v1.Gender gender = 9 [json_name = "gender"];</code>
    * @return The gender.
    */
-  com.game-engine.common.v1.Gender getGender();
+  com.game_engine.common.v1.Gender getGender();
 
   /**
    * <code>string avatar_url = 10 [json_name = "avatarUrl"];</code>
@@ -151,7 +151,7 @@ public interface UserProfileOrBuilder extends
    * <code>.game-engine.common.v1.Language language = 12 [json_name = "language"];</code>
    * @return The language.
    */
-  com.game-engine.common.v1.Language getLanguage();
+  com.game_engine.common.v1.Language getLanguage();
 
   /**
    * <code>string currency = 13 [json_name = "currency"];</code>
@@ -186,13 +186,13 @@ public interface UserProfileOrBuilder extends
    * <code>.game-engine.common.v1.Status status = 15 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.Status getStatus();
+  com.game_engine.common.v1.Status getStatus();
 
   /**
    * <code>repeated .game-engine.common.v1.UserRole roles = 16 [json_name = "roles"];</code>
    * @return A list containing the roles.
    */
-  java.util.List<com.game-engine.common.v1.UserRole> getRolesList();
+  java.util.List<com.game_engine.common.v1.UserRole> getRolesList();
   /**
    * <code>repeated .game-engine.common.v1.UserRole roles = 16 [json_name = "roles"];</code>
    * @return The count of roles.
@@ -203,7 +203,7 @@ public interface UserProfileOrBuilder extends
    * @param index The index of the element to return.
    * @return The roles at the given index.
    */
-  com.game-engine.common.v1.UserRole getRoles(int index);
+  com.game_engine.common.v1.UserRole getRoles(int index);
   /**
    * <code>repeated .game-engine.common.v1.UserRole roles = 16 [json_name = "roles"];</code>
    * @return A list containing the enum numeric values on the wire for roles.
@@ -244,7 +244,7 @@ public interface UserProfileOrBuilder extends
    * <code>.game-engine.common.v1.KYCLevel kyc_level = 20 [json_name = "kycLevel"];</code>
    * @return The kycLevel.
    */
-  com.game-engine.common.v1.KYCLevel getKycLevel();
+  com.game_engine.common.v1.KYCLevel getKycLevel();
 
   /**
    * <code>.google.protobuf.Timestamp created_at = 21 [json_name = "createdAt"];</code>
@@ -300,9 +300,9 @@ public interface UserProfileOrBuilder extends
    * <code>.game-engine.user.v1.Address address = 24 [json_name = "address"];</code>
    * @return The address.
    */
-  com.game-engine.user.v1.Address getAddress();
+  com.game_engine.user.v1.Address getAddress();
   /**
    * <code>.game-engine.user.v1.Address address = 24 [json_name = "address"];</code>
    */
-  com.game-engine.user.v1.AddressOrBuilder getAddressOrBuilder();
+  com.game_engine.user.v1.AddressOrBuilder getAddressOrBuilder();
 }

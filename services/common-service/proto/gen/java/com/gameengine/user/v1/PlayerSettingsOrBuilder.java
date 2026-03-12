@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface PlayerSettingsOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.PlayerSettings)
@@ -17,11 +17,11 @@ public interface PlayerSettingsOrBuilder extends
    * <code>.game-engine.user.v1.NotificationSettings notifications = 1 [json_name = "notifications"];</code>
    * @return The notifications.
    */
-  com.game-engine.user.v1.NotificationSettings getNotifications();
+  com.game_engine.user.v1.NotificationSettings getNotifications();
   /**
    * <code>.game-engine.user.v1.NotificationSettings notifications = 1 [json_name = "notifications"];</code>
    */
-  com.game-engine.user.v1.NotificationSettingsOrBuilder getNotificationsOrBuilder();
+  com.game_engine.user.v1.NotificationSettingsOrBuilder getNotificationsOrBuilder();
 
   /**
    * <code>.game-engine.user.v1.PrivacySettings privacy = 2 [json_name = "privacy"];</code>
@@ -32,11 +32,11 @@ public interface PlayerSettingsOrBuilder extends
    * <code>.game-engine.user.v1.PrivacySettings privacy = 2 [json_name = "privacy"];</code>
    * @return The privacy.
    */
-  com.game-engine.user.v1.PrivacySettings getPrivacy();
+  com.game_engine.user.v1.PrivacySettings getPrivacy();
   /**
    * <code>.game-engine.user.v1.PrivacySettings privacy = 2 [json_name = "privacy"];</code>
    */
-  com.game-engine.user.v1.PrivacySettingsOrBuilder getPrivacyOrBuilder();
+  com.game_engine.user.v1.PrivacySettingsOrBuilder getPrivacyOrBuilder();
 
   /**
    * <code>.game-engine.user.v1.GamingSettings gaming = 3 [json_name = "gaming"];</code>
@@ -47,9 +47,9 @@ public interface PlayerSettingsOrBuilder extends
    * <code>.game-engine.user.v1.GamingSettings gaming = 3 [json_name = "gaming"];</code>
    * @return The gaming.
    */
-  com.game-engine.user.v1.GamingSettings getGaming();
+  com.game_engine.user.v1.GamingSettings getGaming();
   /**
    * <code>.game-engine.user.v1.GamingSettings gaming = 3 [json_name = "gaming"];</code>
    */
-  com.game-engine.user.v1.GamingSettingsOrBuilder getGamingOrBuilder();
+  com.game_engine.user.v1.GamingSettingsOrBuilder getGamingOrBuilder();
 }

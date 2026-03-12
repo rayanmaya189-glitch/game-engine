@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface ListPlayersRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.ListPlayersRequest)
@@ -17,11 +17,11 @@ public interface ListPlayersRequestOrBuilder extends
    * <code>.game-engine.user.v1.PlayerFilters filters = 1 [json_name = "filters"];</code>
    * @return The filters.
    */
-  com.game-engine.user.v1.PlayerFilters getFilters();
+  com.game_engine.user.v1.PlayerFilters getFilters();
   /**
    * <code>.game-engine.user.v1.PlayerFilters filters = 1 [json_name = "filters"];</code>
    */
-  com.game-engine.user.v1.PlayerFiltersOrBuilder getFiltersOrBuilder();
+  com.game_engine.user.v1.PlayerFiltersOrBuilder getFiltersOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 2 [json_name = "pagination"];</code>
@@ -32,9 +32,9 @@ public interface ListPlayersRequestOrBuilder extends
    * <code>.game-engine.common.v1.PaginationRequest pagination = 2 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationRequest getPagination();
+  com.game_engine.common.v1.PaginationRequest getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 2 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
 }

@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 /**
  * Protobuf type {@code game-engine.affiliate.v1.CreateAffiliateLinkRequest}
@@ -31,15 +31,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
+    return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_fieldAccessorTable
+    return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.class, com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.Builder.class);
+            com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.class, com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.Builder.class);
   }
 
   public static final int AFFILIATE_ID_FIELD_NUMBER = 1;
@@ -210,10 +210,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.affiliate.v1.CreateAffiliateLinkRequest)) {
+    if (!(obj instanceof com.game_engine.affiliate.v1.CreateAffiliateLinkRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.affiliate.v1.CreateAffiliateLinkRequest other = (com.game-engine.affiliate.v1.CreateAffiliateLinkRequest) obj;
+    com.game_engine.affiliate.v1.CreateAffiliateLinkRequest other = (com.game_engine.affiliate.v1.CreateAffiliateLinkRequest) obj;
 
     if (!getAffiliateId()
         .equals(other.getAffiliateId())) return false;
@@ -243,44 +243,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(byte[] data)
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -288,26 +288,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseDelimitedFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -320,7 +320,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.affiliate.v1.CreateAffiliateLinkRequest prototype) {
+  public static Builder newBuilder(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -341,21 +341,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.affiliate.v1.CreateAffiliateLinkRequest)
-      com.game-engine.affiliate.v1.CreateAffiliateLinkRequestOrBuilder {
+      com.game_engine.affiliate.v1.CreateAffiliateLinkRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_fieldAccessorTable
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.class, com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.Builder.class);
+              com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.class, com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.newBuilder()
+    // Construct using com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.newBuilder()
     private Builder() {
 
     }
@@ -378,17 +378,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.CreateAffiliateLinkRequest getDefaultInstanceForType() {
-      return com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.getDefaultInstance();
+    public com.game_engine.affiliate.v1.CreateAffiliateLinkRequest getDefaultInstanceForType() {
+      return com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.CreateAffiliateLinkRequest build() {
-      com.game-engine.affiliate.v1.CreateAffiliateLinkRequest result = buildPartial();
+    public com.game_engine.affiliate.v1.CreateAffiliateLinkRequest build() {
+      com.game_engine.affiliate.v1.CreateAffiliateLinkRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -396,14 +396,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.CreateAffiliateLinkRequest buildPartial() {
-      com.game-engine.affiliate.v1.CreateAffiliateLinkRequest result = new com.game-engine.affiliate.v1.CreateAffiliateLinkRequest(this);
+    public com.game_engine.affiliate.v1.CreateAffiliateLinkRequest buildPartial() {
+      com.game_engine.affiliate.v1.CreateAffiliateLinkRequest result = new com.game_engine.affiliate.v1.CreateAffiliateLinkRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.affiliate.v1.CreateAffiliateLinkRequest result) {
+    private void buildPartial0(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.affiliateId_ = affiliateId_;
@@ -450,16 +450,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.affiliate.v1.CreateAffiliateLinkRequest) {
-        return mergeFrom((com.game-engine.affiliate.v1.CreateAffiliateLinkRequest)other);
+      if (other instanceof com.game_engine.affiliate.v1.CreateAffiliateLinkRequest) {
+        return mergeFrom((com.game_engine.affiliate.v1.CreateAffiliateLinkRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.affiliate.v1.CreateAffiliateLinkRequest other) {
-      if (other == com.game-engine.affiliate.v1.CreateAffiliateLinkRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest other) {
+      if (other == com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.getDefaultInstance()) return this;
       if (!other.getAffiliateId().isEmpty()) {
         affiliateId_ = other.affiliateId_;
         bitField0_ |= 0x00000001;
@@ -765,12 +765,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.affiliate.v1.CreateAffiliateLinkRequest)
-  private static final com.game-engine.affiliate.v1.CreateAffiliateLinkRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.affiliate.v1.CreateAffiliateLinkRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.affiliate.v1.CreateAffiliateLinkRequest();
+    DEFAULT_INSTANCE = new com.game_engine.affiliate.v1.CreateAffiliateLinkRequest();
   }
 
-  public static com.game-engine.affiliate.v1.CreateAffiliateLinkRequest getDefaultInstance() {
+  public static com.game_engine.affiliate.v1.CreateAffiliateLinkRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -806,7 +806,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.affiliate.v1.CreateAffiliateLinkRequest getDefaultInstanceForType() {
+  public com.game_engine.affiliate.v1.CreateAffiliateLinkRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

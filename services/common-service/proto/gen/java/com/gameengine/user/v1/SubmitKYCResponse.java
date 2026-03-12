@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.SubmitKYCResponse}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.SubmitKYCResponse.class, com.game-engine.user.v1.SubmitKYCResponse.Builder.class);
+            com.game_engine.user.v1.SubmitKYCResponse.class, com.game_engine.user.v1.SubmitKYCResponse.Builder.class);
   }
 
   public static final int SUCCESS_FIELD_NUMBER = 1;
@@ -136,10 +136,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.SubmitKYCResponse)) {
+    if (!(obj instanceof com.game_engine.user.v1.SubmitKYCResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.SubmitKYCResponse other = (com.game-engine.user.v1.SubmitKYCResponse) obj;
+    com.game_engine.user.v1.SubmitKYCResponse other = (com.game_engine.user.v1.SubmitKYCResponse) obj;
 
     if (getSuccess()
         != other.getSuccess()) return false;
@@ -166,44 +166,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(byte[] data)
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -211,26 +211,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.SubmitKYCResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.SubmitKYCResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.SubmitKYCResponse parseDelimitedFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.SubmitKYCResponse parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -243,7 +243,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.SubmitKYCResponse prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.SubmitKYCResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -264,21 +264,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.SubmitKYCResponse)
-      com.game-engine.user.v1.SubmitKYCResponseOrBuilder {
+      com.game_engine.user.v1.SubmitKYCResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.SubmitKYCResponse.class, com.game-engine.user.v1.SubmitKYCResponse.Builder.class);
+              com.game_engine.user.v1.SubmitKYCResponse.class, com.game_engine.user.v1.SubmitKYCResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.SubmitKYCResponse.newBuilder()
+    // Construct using com.game_engine.user.v1.SubmitKYCResponse.newBuilder()
     private Builder() {
 
     }
@@ -300,17 +300,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.SubmitKYCResponse getDefaultInstanceForType() {
-      return com.game-engine.user.v1.SubmitKYCResponse.getDefaultInstance();
+    public com.game_engine.user.v1.SubmitKYCResponse getDefaultInstanceForType() {
+      return com.game_engine.user.v1.SubmitKYCResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.SubmitKYCResponse build() {
-      com.game-engine.user.v1.SubmitKYCResponse result = buildPartial();
+    public com.game_engine.user.v1.SubmitKYCResponse build() {
+      com.game_engine.user.v1.SubmitKYCResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -318,14 +318,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.SubmitKYCResponse buildPartial() {
-      com.game-engine.user.v1.SubmitKYCResponse result = new com.game-engine.user.v1.SubmitKYCResponse(this);
+    public com.game_engine.user.v1.SubmitKYCResponse buildPartial() {
+      com.game_engine.user.v1.SubmitKYCResponse result = new com.game_engine.user.v1.SubmitKYCResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.SubmitKYCResponse result) {
+    private void buildPartial0(com.game_engine.user.v1.SubmitKYCResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.success_ = success_;
@@ -369,16 +369,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.SubmitKYCResponse) {
-        return mergeFrom((com.game-engine.user.v1.SubmitKYCResponse)other);
+      if (other instanceof com.game_engine.user.v1.SubmitKYCResponse) {
+        return mergeFrom((com.game_engine.user.v1.SubmitKYCResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.SubmitKYCResponse other) {
-      if (other == com.game-engine.user.v1.SubmitKYCResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.SubmitKYCResponse other) {
+      if (other == com.game_engine.user.v1.SubmitKYCResponse.getDefaultInstance()) return this;
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
@@ -560,12 +560,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.SubmitKYCResponse)
-  private static final com.game-engine.user.v1.SubmitKYCResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.SubmitKYCResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.SubmitKYCResponse();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.SubmitKYCResponse();
   }
 
-  public static com.game-engine.user.v1.SubmitKYCResponse getDefaultInstance() {
+  public static com.game_engine.user.v1.SubmitKYCResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -601,7 +601,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.SubmitKYCResponse getDefaultInstanceForType() {
+  public com.game_engine.user.v1.SubmitKYCResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

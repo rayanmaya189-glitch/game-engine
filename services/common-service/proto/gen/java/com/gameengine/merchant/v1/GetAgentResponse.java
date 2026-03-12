@@ -2,7 +2,7 @@
 // source: game-engine/merchant/v1/merchant_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.merchant.v1;
+package com.game_engine.merchant.v1;
 
 /**
  * Protobuf type {@code game-engine.merchant.v1.GetAgentResponse}
@@ -28,20 +28,20 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_descriptor;
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_fieldAccessorTable
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.merchant.v1.GetAgentResponse.class, com.game-engine.merchant.v1.GetAgentResponse.Builder.class);
+            com.game_engine.merchant.v1.GetAgentResponse.class, com.game_engine.merchant.v1.GetAgentResponse.Builder.class);
   }
 
   private int bitField0_;
   public static final int AGENT_FIELD_NUMBER = 1;
-  private com.game-engine.merchant.v1.Agent agent_;
+  private com.game_engine.merchant.v1.Agent agent_;
   /**
    * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
    * @return Whether the agent field is set.
@@ -55,15 +55,15 @@ private static final long serialVersionUID = 0L;
    * @return The agent.
    */
   @java.lang.Override
-  public com.game-engine.merchant.v1.Agent getAgent() {
-    return agent_ == null ? com.game-engine.merchant.v1.Agent.getDefaultInstance() : agent_;
+  public com.game_engine.merchant.v1.Agent getAgent() {
+    return agent_ == null ? com.game_engine.merchant.v1.Agent.getDefaultInstance() : agent_;
   }
   /**
    * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
    */
   @java.lang.Override
-  public com.game-engine.merchant.v1.AgentOrBuilder getAgentOrBuilder() {
-    return agent_ == null ? com.game-engine.merchant.v1.Agent.getDefaultInstance() : agent_;
+  public com.game_engine.merchant.v1.AgentOrBuilder getAgentOrBuilder() {
+    return agent_ == null ? com.game_engine.merchant.v1.Agent.getDefaultInstance() : agent_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -106,10 +106,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.merchant.v1.GetAgentResponse)) {
+    if (!(obj instanceof com.game_engine.merchant.v1.GetAgentResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.merchant.v1.GetAgentResponse other = (com.game-engine.merchant.v1.GetAgentResponse) obj;
+    com.game_engine.merchant.v1.GetAgentResponse other = (com.game_engine.merchant.v1.GetAgentResponse) obj;
 
     if (hasAgent() != other.hasAgent()) return false;
     if (hasAgent()) {
@@ -136,44 +136,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(byte[] data)
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -181,26 +181,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.merchant.v1.GetAgentResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.GetAgentResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.merchant.v1.GetAgentResponse parseDelimitedFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.GetAgentResponse parseFrom(
+  public static com.game_engine.merchant.v1.GetAgentResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -213,7 +213,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.merchant.v1.GetAgentResponse prototype) {
+  public static Builder newBuilder(com.game_engine.merchant.v1.GetAgentResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -234,21 +234,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.merchant.v1.GetAgentResponse)
-      com.game-engine.merchant.v1.GetAgentResponseOrBuilder {
+      com.game_engine.merchant.v1.GetAgentResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_fieldAccessorTable
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.merchant.v1.GetAgentResponse.class, com.game-engine.merchant.v1.GetAgentResponse.Builder.class);
+              com.game_engine.merchant.v1.GetAgentResponse.class, com.game_engine.merchant.v1.GetAgentResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.merchant.v1.GetAgentResponse.newBuilder()
+    // Construct using com.game_engine.merchant.v1.GetAgentResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -279,17 +279,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_GetAgentResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.GetAgentResponse getDefaultInstanceForType() {
-      return com.game-engine.merchant.v1.GetAgentResponse.getDefaultInstance();
+    public com.game_engine.merchant.v1.GetAgentResponse getDefaultInstanceForType() {
+      return com.game_engine.merchant.v1.GetAgentResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.GetAgentResponse build() {
-      com.game-engine.merchant.v1.GetAgentResponse result = buildPartial();
+    public com.game_engine.merchant.v1.GetAgentResponse build() {
+      com.game_engine.merchant.v1.GetAgentResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -297,14 +297,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.GetAgentResponse buildPartial() {
-      com.game-engine.merchant.v1.GetAgentResponse result = new com.game-engine.merchant.v1.GetAgentResponse(this);
+    public com.game_engine.merchant.v1.GetAgentResponse buildPartial() {
+      com.game_engine.merchant.v1.GetAgentResponse result = new com.game_engine.merchant.v1.GetAgentResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.merchant.v1.GetAgentResponse result) {
+    private void buildPartial0(com.game_engine.merchant.v1.GetAgentResponse result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -350,16 +350,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.merchant.v1.GetAgentResponse) {
-        return mergeFrom((com.game-engine.merchant.v1.GetAgentResponse)other);
+      if (other instanceof com.game_engine.merchant.v1.GetAgentResponse) {
+        return mergeFrom((com.game_engine.merchant.v1.GetAgentResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.merchant.v1.GetAgentResponse other) {
-      if (other == com.game-engine.merchant.v1.GetAgentResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.merchant.v1.GetAgentResponse other) {
+      if (other == com.game_engine.merchant.v1.GetAgentResponse.getDefaultInstance()) return this;
       if (other.hasAgent()) {
         mergeAgent(other.getAgent());
       }
@@ -413,9 +413,9 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.game-engine.merchant.v1.Agent agent_;
+    private com.game_engine.merchant.v1.Agent agent_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.merchant.v1.Agent, com.game-engine.merchant.v1.Agent.Builder, com.game-engine.merchant.v1.AgentOrBuilder> agentBuilder_;
+        com.game_engine.merchant.v1.Agent, com.game_engine.merchant.v1.Agent.Builder, com.game_engine.merchant.v1.AgentOrBuilder> agentBuilder_;
     /**
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      * @return Whether the agent field is set.
@@ -427,9 +427,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      * @return The agent.
      */
-    public com.game-engine.merchant.v1.Agent getAgent() {
+    public com.game_engine.merchant.v1.Agent getAgent() {
       if (agentBuilder_ == null) {
-        return agent_ == null ? com.game-engine.merchant.v1.Agent.getDefaultInstance() : agent_;
+        return agent_ == null ? com.game_engine.merchant.v1.Agent.getDefaultInstance() : agent_;
       } else {
         return agentBuilder_.getMessage();
       }
@@ -437,7 +437,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      */
-    public Builder setAgent(com.game-engine.merchant.v1.Agent value) {
+    public Builder setAgent(com.game_engine.merchant.v1.Agent value) {
       if (agentBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -454,7 +454,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      */
     public Builder setAgent(
-        com.game-engine.merchant.v1.Agent.Builder builderForValue) {
+        com.game_engine.merchant.v1.Agent.Builder builderForValue) {
       if (agentBuilder_ == null) {
         agent_ = builderForValue.build();
       } else {
@@ -467,11 +467,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      */
-    public Builder mergeAgent(com.game-engine.merchant.v1.Agent value) {
+    public Builder mergeAgent(com.game_engine.merchant.v1.Agent value) {
       if (agentBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0) &&
           agent_ != null &&
-          agent_ != com.game-engine.merchant.v1.Agent.getDefaultInstance()) {
+          agent_ != com.game_engine.merchant.v1.Agent.getDefaultInstance()) {
           getAgentBuilder().mergeFrom(value);
         } else {
           agent_ = value;
@@ -501,7 +501,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      */
-    public com.game-engine.merchant.v1.Agent.Builder getAgentBuilder() {
+    public com.game_engine.merchant.v1.Agent.Builder getAgentBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getAgentFieldBuilder().getBuilder();
@@ -509,23 +509,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      */
-    public com.game-engine.merchant.v1.AgentOrBuilder getAgentOrBuilder() {
+    public com.game_engine.merchant.v1.AgentOrBuilder getAgentOrBuilder() {
       if (agentBuilder_ != null) {
         return agentBuilder_.getMessageOrBuilder();
       } else {
         return agent_ == null ?
-            com.game-engine.merchant.v1.Agent.getDefaultInstance() : agent_;
+            com.game_engine.merchant.v1.Agent.getDefaultInstance() : agent_;
       }
     }
     /**
      * <code>.game-engine.merchant.v1.Agent agent = 1 [json_name = "agent"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.merchant.v1.Agent, com.game-engine.merchant.v1.Agent.Builder, com.game-engine.merchant.v1.AgentOrBuilder> 
+        com.game_engine.merchant.v1.Agent, com.game_engine.merchant.v1.Agent.Builder, com.game_engine.merchant.v1.AgentOrBuilder> 
         getAgentFieldBuilder() {
       if (agentBuilder_ == null) {
         agentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.merchant.v1.Agent, com.game-engine.merchant.v1.Agent.Builder, com.game-engine.merchant.v1.AgentOrBuilder>(
+            com.game_engine.merchant.v1.Agent, com.game_engine.merchant.v1.Agent.Builder, com.game_engine.merchant.v1.AgentOrBuilder>(
                 getAgent(),
                 getParentForChildren(),
                 isClean());
@@ -550,12 +550,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.merchant.v1.GetAgentResponse)
-  private static final com.game-engine.merchant.v1.GetAgentResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.merchant.v1.GetAgentResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.merchant.v1.GetAgentResponse();
+    DEFAULT_INSTANCE = new com.game_engine.merchant.v1.GetAgentResponse();
   }
 
-  public static com.game-engine.merchant.v1.GetAgentResponse getDefaultInstance() {
+  public static com.game_engine.merchant.v1.GetAgentResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -591,7 +591,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.merchant.v1.GetAgentResponse getDefaultInstanceForType() {
+  public com.game_engine.merchant.v1.GetAgentResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

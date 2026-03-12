@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetBalanceResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetBalanceResponse)
@@ -17,11 +17,11 @@ public interface GetBalanceResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money balance = 1 [json_name = "balance"];</code>
    * @return The balance.
    */
-  com.game-engine.common.v1.Money getBalance();
+  com.game_engine.common.v1.Money getBalance();
   /**
    * <code>.game-engine.common.v1.Money balance = 1 [json_name = "balance"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getBalanceOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getBalanceOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money locked_amount = 2 [json_name = "lockedAmount"];</code>
@@ -32,11 +32,11 @@ public interface GetBalanceResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money locked_amount = 2 [json_name = "lockedAmount"];</code>
    * @return The lockedAmount.
    */
-  com.game-engine.common.v1.Money getLockedAmount();
+  com.game_engine.common.v1.Money getLockedAmount();
   /**
    * <code>.game-engine.common.v1.Money locked_amount = 2 [json_name = "lockedAmount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getLockedAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getLockedAmountOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money available_amount = 3 [json_name = "availableAmount"];</code>
@@ -47,11 +47,11 @@ public interface GetBalanceResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money available_amount = 3 [json_name = "availableAmount"];</code>
    * @return The availableAmount.
    */
-  com.game-engine.common.v1.Money getAvailableAmount();
+  com.game_engine.common.v1.Money getAvailableAmount();
   /**
    * <code>.game-engine.common.v1.Money available_amount = 3 [json_name = "availableAmount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getAvailableAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getAvailableAmountOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money bonus_amount = 4 [json_name = "bonusAmount"];</code>
@@ -62,9 +62,9 @@ public interface GetBalanceResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money bonus_amount = 4 [json_name = "bonusAmount"];</code>
    * @return The bonusAmount.
    */
-  com.game-engine.common.v1.Money getBonusAmount();
+  com.game_engine.common.v1.Money getBonusAmount();
   /**
    * <code>.game-engine.common.v1.Money bonus_amount = 4 [json_name = "bonusAmount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getBonusAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getBonusAmountOrBuilder();
 }

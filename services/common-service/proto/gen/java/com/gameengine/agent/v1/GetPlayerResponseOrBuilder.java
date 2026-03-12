@@ -2,7 +2,7 @@
 // source: game-engine/agent/v1/agent_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.agent.v1;
+package com.game_engine.agent.v1;
 
 public interface GetPlayerResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.agent.v1.GetPlayerResponse)
@@ -17,9 +17,9 @@ public interface GetPlayerResponseOrBuilder extends
    * <code>.game-engine.agent.v1.Player player = 1 [json_name = "player"];</code>
    * @return The player.
    */
-  com.game-engine.agent.v1.Player getPlayer();
+  com.game_engine.agent.v1.Player getPlayer();
   /**
    * <code>.game-engine.agent.v1.Player player = 1 [json_name = "player"];</code>
    */
-  com.game-engine.agent.v1.PlayerOrBuilder getPlayerOrBuilder();
+  com.game_engine.agent.v1.PlayerOrBuilder getPlayerOrBuilder();
 }

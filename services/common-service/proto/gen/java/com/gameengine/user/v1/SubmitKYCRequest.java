@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.SubmitKYCRequest}
@@ -32,15 +32,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.SubmitKYCRequest.class, com.game-engine.user.v1.SubmitKYCRequest.Builder.class);
+            com.game_engine.user.v1.SubmitKYCRequest.class, com.game_engine.user.v1.SubmitKYCRequest.Builder.class);
   }
 
   public static final int USER_ID_FIELD_NUMBER = 1;
@@ -95,9 +95,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.user.v1.KYCDocumentType document_type = 2 [json_name = "documentType"];</code>
    * @return The documentType.
    */
-  @java.lang.Override public com.game-engine.user.v1.KYCDocumentType getDocumentType() {
-    com.game-engine.user.v1.KYCDocumentType result = com.game-engine.user.v1.KYCDocumentType.forNumber(documentType_);
-    return result == null ? com.game-engine.user.v1.KYCDocumentType.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.user.v1.KYCDocumentType getDocumentType() {
+    com.game_engine.user.v1.KYCDocumentType result = com.game_engine.user.v1.KYCDocumentType.forNumber(documentType_);
+    return result == null ? com.game_engine.user.v1.KYCDocumentType.UNRECOGNIZED : result;
   }
 
   public static final int DOCUMENT_DATA_FIELD_NUMBER = 3;
@@ -195,7 +195,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 1, userId_);
     }
-    if (documentType_ != com.game-engine.user.v1.KYCDocumentType.KYCDOC_TYPE_UNSPECIFIED.getNumber()) {
+    if (documentType_ != com.game_engine.user.v1.KYCDocumentType.KYCDOC_TYPE_UNSPECIFIED.getNumber()) {
       output.writeEnum(2, documentType_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(documentData_)) {
@@ -216,7 +216,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(userId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, userId_);
     }
-    if (documentType_ != com.game-engine.user.v1.KYCDocumentType.KYCDOC_TYPE_UNSPECIFIED.getNumber()) {
+    if (documentType_ != com.game_engine.user.v1.KYCDocumentType.KYCDOC_TYPE_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, documentType_);
     }
@@ -236,10 +236,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.SubmitKYCRequest)) {
+    if (!(obj instanceof com.game_engine.user.v1.SubmitKYCRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.SubmitKYCRequest other = (com.game-engine.user.v1.SubmitKYCRequest) obj;
+    com.game_engine.user.v1.SubmitKYCRequest other = (com.game_engine.user.v1.SubmitKYCRequest) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -272,44 +272,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(byte[] data)
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -317,26 +317,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.SubmitKYCRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.SubmitKYCRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.SubmitKYCRequest parseDelimitedFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.SubmitKYCRequest parseFrom(
+  public static com.game_engine.user.v1.SubmitKYCRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -349,7 +349,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.SubmitKYCRequest prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.SubmitKYCRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -370,21 +370,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.SubmitKYCRequest)
-      com.game-engine.user.v1.SubmitKYCRequestOrBuilder {
+      com.game_engine.user.v1.SubmitKYCRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.SubmitKYCRequest.class, com.game-engine.user.v1.SubmitKYCRequest.Builder.class);
+              com.game_engine.user.v1.SubmitKYCRequest.class, com.game_engine.user.v1.SubmitKYCRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.SubmitKYCRequest.newBuilder()
+    // Construct using com.game_engine.user.v1.SubmitKYCRequest.newBuilder()
     private Builder() {
 
     }
@@ -408,17 +408,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_SubmitKYCRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.SubmitKYCRequest getDefaultInstanceForType() {
-      return com.game-engine.user.v1.SubmitKYCRequest.getDefaultInstance();
+    public com.game_engine.user.v1.SubmitKYCRequest getDefaultInstanceForType() {
+      return com.game_engine.user.v1.SubmitKYCRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.SubmitKYCRequest build() {
-      com.game-engine.user.v1.SubmitKYCRequest result = buildPartial();
+    public com.game_engine.user.v1.SubmitKYCRequest build() {
+      com.game_engine.user.v1.SubmitKYCRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -426,14 +426,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.SubmitKYCRequest buildPartial() {
-      com.game-engine.user.v1.SubmitKYCRequest result = new com.game-engine.user.v1.SubmitKYCRequest(this);
+    public com.game_engine.user.v1.SubmitKYCRequest buildPartial() {
+      com.game_engine.user.v1.SubmitKYCRequest result = new com.game_engine.user.v1.SubmitKYCRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.SubmitKYCRequest result) {
+    private void buildPartial0(com.game_engine.user.v1.SubmitKYCRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -483,16 +483,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.SubmitKYCRequest) {
-        return mergeFrom((com.game-engine.user.v1.SubmitKYCRequest)other);
+      if (other instanceof com.game_engine.user.v1.SubmitKYCRequest) {
+        return mergeFrom((com.game_engine.user.v1.SubmitKYCRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.SubmitKYCRequest other) {
-      if (other == com.game-engine.user.v1.SubmitKYCRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.SubmitKYCRequest other) {
+      if (other == com.game_engine.user.v1.SubmitKYCRequest.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -670,16 +670,16 @@ private static final long serialVersionUID = 0L;
      * @return The documentType.
      */
     @java.lang.Override
-    public com.game-engine.user.v1.KYCDocumentType getDocumentType() {
-      com.game-engine.user.v1.KYCDocumentType result = com.game-engine.user.v1.KYCDocumentType.forNumber(documentType_);
-      return result == null ? com.game-engine.user.v1.KYCDocumentType.UNRECOGNIZED : result;
+    public com.game_engine.user.v1.KYCDocumentType getDocumentType() {
+      com.game_engine.user.v1.KYCDocumentType result = com.game_engine.user.v1.KYCDocumentType.forNumber(documentType_);
+      return result == null ? com.game_engine.user.v1.KYCDocumentType.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.user.v1.KYCDocumentType document_type = 2 [json_name = "documentType"];</code>
      * @param value The documentType to set.
      * @return This builder for chaining.
      */
-    public Builder setDocumentType(com.game-engine.user.v1.KYCDocumentType value) {
+    public Builder setDocumentType(com.game_engine.user.v1.KYCDocumentType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -859,12 +859,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.SubmitKYCRequest)
-  private static final com.game-engine.user.v1.SubmitKYCRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.SubmitKYCRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.SubmitKYCRequest();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.SubmitKYCRequest();
   }
 
-  public static com.game-engine.user.v1.SubmitKYCRequest getDefaultInstance() {
+  public static com.game_engine.user.v1.SubmitKYCRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -900,7 +900,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.SubmitKYCRequest getDefaultInstanceForType() {
+  public com.game_engine.user.v1.SubmitKYCRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

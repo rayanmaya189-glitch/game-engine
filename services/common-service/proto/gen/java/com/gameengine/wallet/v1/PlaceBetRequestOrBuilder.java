@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface PlaceBetRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.PlaceBetRequest)
@@ -41,11 +41,11 @@ public interface PlaceBetRequestOrBuilder extends
    * <code>.game-engine.common.v1.Money amount = 3 [json_name = "amount"];</code>
    * @return The amount.
    */
-  com.game-engine.common.v1.Money getAmount();
+  com.game_engine.common.v1.Money getAmount();
   /**
    * <code>.game-engine.common.v1.Money amount = 3 [json_name = "amount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getAmountOrBuilder();
 
   /**
    * <code>string bet_type = 4 [json_name = "betType"];</code>

@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.common.v1.timestamp_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game-engine.common.v1P\001Z\031gen/go/common/v1;commonv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game_engine.common.v1P\001Z\031gen/go/common/v1;commonv1'
   _globals['_TIMESTAMPRANGE']._serialized_start=127
   _globals['_TIMESTAMPRANGE']._serialized_end=239
   _globals['_DATERANGE']._serialized_start=241

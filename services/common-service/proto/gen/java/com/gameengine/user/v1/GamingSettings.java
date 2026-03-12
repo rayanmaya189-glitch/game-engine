@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * Protobuf type {@code game-engine.user.v1.GamingSettings}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.GamingSettings.class, com.game-engine.user.v1.GamingSettings.Builder.class);
+            com.game_engine.user.v1.GamingSettings.class, com.game_engine.user.v1.GamingSettings.Builder.class);
   }
 
   public static final int AUTO_PLAY_FIELD_NUMBER = 1;
@@ -154,10 +154,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.GamingSettings)) {
+    if (!(obj instanceof com.game_engine.user.v1.GamingSettings)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.GamingSettings other = (com.game-engine.user.v1.GamingSettings) obj;
+    com.game_engine.user.v1.GamingSettings other = (com.game_engine.user.v1.GamingSettings) obj;
 
     if (getAutoPlay()
         != other.getAutoPlay()) return false;
@@ -188,44 +188,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(byte[] data)
+  public static com.game_engine.user.v1.GamingSettings parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.GamingSettings parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -233,26 +233,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.GamingSettings parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.GamingSettings parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.GamingSettings parseDelimitedFrom(
+  public static com.game_engine.user.v1.GamingSettings parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.GamingSettings parseFrom(
+  public static com.game_engine.user.v1.GamingSettings parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -265,7 +265,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.GamingSettings prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.GamingSettings prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -286,21 +286,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.GamingSettings)
-      com.game-engine.user.v1.GamingSettingsOrBuilder {
+      com.game_engine.user.v1.GamingSettingsOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.GamingSettings.class, com.game-engine.user.v1.GamingSettings.Builder.class);
+              com.game_engine.user.v1.GamingSettings.class, com.game_engine.user.v1.GamingSettings.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.GamingSettings.newBuilder()
+    // Construct using com.game_engine.user.v1.GamingSettings.newBuilder()
     private Builder() {
 
     }
@@ -323,17 +323,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GamingSettings_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.GamingSettings getDefaultInstanceForType() {
-      return com.game-engine.user.v1.GamingSettings.getDefaultInstance();
+    public com.game_engine.user.v1.GamingSettings getDefaultInstanceForType() {
+      return com.game_engine.user.v1.GamingSettings.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.GamingSettings build() {
-      com.game-engine.user.v1.GamingSettings result = buildPartial();
+    public com.game_engine.user.v1.GamingSettings build() {
+      com.game_engine.user.v1.GamingSettings result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -341,14 +341,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.GamingSettings buildPartial() {
-      com.game-engine.user.v1.GamingSettings result = new com.game-engine.user.v1.GamingSettings(this);
+    public com.game_engine.user.v1.GamingSettings buildPartial() {
+      com.game_engine.user.v1.GamingSettings result = new com.game_engine.user.v1.GamingSettings(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.GamingSettings result) {
+    private void buildPartial0(com.game_engine.user.v1.GamingSettings result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.autoPlay_ = autoPlay_;
@@ -395,16 +395,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.GamingSettings) {
-        return mergeFrom((com.game-engine.user.v1.GamingSettings)other);
+      if (other instanceof com.game_engine.user.v1.GamingSettings) {
+        return mergeFrom((com.game_engine.user.v1.GamingSettings)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.GamingSettings other) {
-      if (other == com.game-engine.user.v1.GamingSettings.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.GamingSettings other) {
+      if (other == com.game_engine.user.v1.GamingSettings.getDefaultInstance()) return this;
       if (other.getAutoPlay() != false) {
         setAutoPlay(other.getAutoPlay());
       }
@@ -626,12 +626,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.GamingSettings)
-  private static final com.game-engine.user.v1.GamingSettings DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.GamingSettings DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.GamingSettings();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.GamingSettings();
   }
 
-  public static com.game-engine.user.v1.GamingSettings getDefaultInstance() {
+  public static com.game_engine.user.v1.GamingSettings getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -667,7 +667,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.GamingSettings getDefaultInstanceForType() {
+  public com.game_engine.user.v1.GamingSettings getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.payment.v1.payment_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\031com.game-engine.payment.v1P\001Z\033gen/go/payment/v1;paymentv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\031com.game_engine.payment.v1P\001Z\033gen/go/payment/v1;paymentv1'
   _globals['_CREATEPAYMENTREQUEST_METADATAENTRY']._options = None
   _globals['_CREATEPAYMENTREQUEST_METADATAENTRY']._serialized_options = b'8\001'
   _globals['_CREATEPAYMENTREQUEST']._serialized_start=143

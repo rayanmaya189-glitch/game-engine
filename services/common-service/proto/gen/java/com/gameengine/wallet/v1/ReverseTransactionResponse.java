@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.ReverseTransactionResponse}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.ReverseTransactionResponse.class, com.game-engine.wallet.v1.ReverseTransactionResponse.Builder.class);
+            com.game_engine.wallet.v1.ReverseTransactionResponse.class, com.game_engine.wallet.v1.ReverseTransactionResponse.Builder.class);
   }
 
   private int bitField0_;
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int REVERSAL_FIELD_NUMBER = 2;
-  private com.game-engine.wallet.v1.Transaction reversal_;
+  private com.game_engine.wallet.v1.Transaction reversal_;
   /**
    * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
    * @return Whether the reversal field is set.
@@ -67,15 +67,15 @@ private static final long serialVersionUID = 0L;
    * @return The reversal.
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.Transaction getReversal() {
-    return reversal_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
+  public com.game_engine.wallet.v1.Transaction getReversal() {
+    return reversal_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
   }
   /**
    * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.TransactionOrBuilder getReversalOrBuilder() {
-    return reversal_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
+  public com.game_engine.wallet.v1.TransactionOrBuilder getReversalOrBuilder() {
+    return reversal_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 3;
@@ -170,10 +170,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.ReverseTransactionResponse)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.ReverseTransactionResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.ReverseTransactionResponse other = (com.game-engine.wallet.v1.ReverseTransactionResponse) obj;
+    com.game_engine.wallet.v1.ReverseTransactionResponse other = (com.game_engine.wallet.v1.ReverseTransactionResponse) obj;
 
     if (getSuccess()
         != other.getSuccess()) return false;
@@ -209,44 +209,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,26 +254,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse parseFrom(
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -286,7 +286,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.ReverseTransactionResponse prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.ReverseTransactionResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -307,21 +307,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.ReverseTransactionResponse)
-      com.game-engine.wallet.v1.ReverseTransactionResponseOrBuilder {
+      com.game_engine.wallet.v1.ReverseTransactionResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.ReverseTransactionResponse.class, com.game-engine.wallet.v1.ReverseTransactionResponse.Builder.class);
+              com.game_engine.wallet.v1.ReverseTransactionResponse.class, com.game_engine.wallet.v1.ReverseTransactionResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.ReverseTransactionResponse.newBuilder()
+    // Construct using com.game_engine.wallet.v1.ReverseTransactionResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -354,17 +354,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_ReverseTransactionResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.ReverseTransactionResponse getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.ReverseTransactionResponse.getDefaultInstance();
+    public com.game_engine.wallet.v1.ReverseTransactionResponse getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.ReverseTransactionResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.ReverseTransactionResponse build() {
-      com.game-engine.wallet.v1.ReverseTransactionResponse result = buildPartial();
+    public com.game_engine.wallet.v1.ReverseTransactionResponse build() {
+      com.game_engine.wallet.v1.ReverseTransactionResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -372,14 +372,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.ReverseTransactionResponse buildPartial() {
-      com.game-engine.wallet.v1.ReverseTransactionResponse result = new com.game-engine.wallet.v1.ReverseTransactionResponse(this);
+    public com.game_engine.wallet.v1.ReverseTransactionResponse buildPartial() {
+      com.game_engine.wallet.v1.ReverseTransactionResponse result = new com.game_engine.wallet.v1.ReverseTransactionResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.ReverseTransactionResponse result) {
+    private void buildPartial0(com.game_engine.wallet.v1.ReverseTransactionResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.success_ = success_;
@@ -431,16 +431,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.ReverseTransactionResponse) {
-        return mergeFrom((com.game-engine.wallet.v1.ReverseTransactionResponse)other);
+      if (other instanceof com.game_engine.wallet.v1.ReverseTransactionResponse) {
+        return mergeFrom((com.game_engine.wallet.v1.ReverseTransactionResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.ReverseTransactionResponse other) {
-      if (other == com.game-engine.wallet.v1.ReverseTransactionResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.ReverseTransactionResponse other) {
+      if (other == com.game_engine.wallet.v1.ReverseTransactionResponse.getDefaultInstance()) return this;
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
@@ -544,9 +544,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.wallet.v1.Transaction reversal_;
+    private com.game_engine.wallet.v1.Transaction reversal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> reversalBuilder_;
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> reversalBuilder_;
     /**
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      * @return Whether the reversal field is set.
@@ -558,9 +558,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      * @return The reversal.
      */
-    public com.game-engine.wallet.v1.Transaction getReversal() {
+    public com.game_engine.wallet.v1.Transaction getReversal() {
       if (reversalBuilder_ == null) {
-        return reversal_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
+        return reversal_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
       } else {
         return reversalBuilder_.getMessage();
       }
@@ -568,7 +568,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      */
-    public Builder setReversal(com.game-engine.wallet.v1.Transaction value) {
+    public Builder setReversal(com.game_engine.wallet.v1.Transaction value) {
       if (reversalBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -585,7 +585,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      */
     public Builder setReversal(
-        com.game-engine.wallet.v1.Transaction.Builder builderForValue) {
+        com.game_engine.wallet.v1.Transaction.Builder builderForValue) {
       if (reversalBuilder_ == null) {
         reversal_ = builderForValue.build();
       } else {
@@ -598,11 +598,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      */
-    public Builder mergeReversal(com.game-engine.wallet.v1.Transaction value) {
+    public Builder mergeReversal(com.game_engine.wallet.v1.Transaction value) {
       if (reversalBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0) &&
           reversal_ != null &&
-          reversal_ != com.game-engine.wallet.v1.Transaction.getDefaultInstance()) {
+          reversal_ != com.game_engine.wallet.v1.Transaction.getDefaultInstance()) {
           getReversalBuilder().mergeFrom(value);
         } else {
           reversal_ = value;
@@ -632,7 +632,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      */
-    public com.game-engine.wallet.v1.Transaction.Builder getReversalBuilder() {
+    public com.game_engine.wallet.v1.Transaction.Builder getReversalBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getReversalFieldBuilder().getBuilder();
@@ -640,23 +640,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      */
-    public com.game-engine.wallet.v1.TransactionOrBuilder getReversalOrBuilder() {
+    public com.game_engine.wallet.v1.TransactionOrBuilder getReversalOrBuilder() {
       if (reversalBuilder_ != null) {
         return reversalBuilder_.getMessageOrBuilder();
       } else {
         return reversal_ == null ?
-            com.game-engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
+            com.game_engine.wallet.v1.Transaction.getDefaultInstance() : reversal_;
       }
     }
     /**
      * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> 
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> 
         getReversalFieldBuilder() {
       if (reversalBuilder_ == null) {
         reversalBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder>(
+            com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder>(
                 getReversal(),
                 getParentForChildren(),
                 isClean());
@@ -753,12 +753,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.ReverseTransactionResponse)
-  private static final com.game-engine.wallet.v1.ReverseTransactionResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.ReverseTransactionResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.ReverseTransactionResponse();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.ReverseTransactionResponse();
   }
 
-  public static com.game-engine.wallet.v1.ReverseTransactionResponse getDefaultInstance() {
+  public static com.game_engine.wallet.v1.ReverseTransactionResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -794,7 +794,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.ReverseTransactionResponse getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.ReverseTransactionResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface ListGamesRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.ListGamesRequest)
@@ -36,7 +36,7 @@ public interface ListGamesRequestOrBuilder extends
    * <code>repeated .game-engine.common.v1.GameCategory categories = 3 [json_name = "categories"];</code>
    * @return A list containing the categories.
    */
-  java.util.List<com.game-engine.common.v1.GameCategory> getCategoriesList();
+  java.util.List<com.game_engine.common.v1.GameCategory> getCategoriesList();
   /**
    * <code>repeated .game-engine.common.v1.GameCategory categories = 3 [json_name = "categories"];</code>
    * @return The count of categories.
@@ -47,7 +47,7 @@ public interface ListGamesRequestOrBuilder extends
    * @param index The index of the element to return.
    * @return The categories at the given index.
    */
-  com.game-engine.common.v1.GameCategory getCategories(int index);
+  com.game_engine.common.v1.GameCategory getCategories(int index);
   /**
    * <code>repeated .game-engine.common.v1.GameCategory categories = 3 [json_name = "categories"];</code>
    * @return A list containing the enum numeric values on the wire for categories.
@@ -65,7 +65,7 @@ public interface ListGamesRequestOrBuilder extends
    * <code>repeated .game-engine.common.v1.GameProvider providers = 4 [json_name = "providers"];</code>
    * @return A list containing the providers.
    */
-  java.util.List<com.game-engine.common.v1.GameProvider> getProvidersList();
+  java.util.List<com.game_engine.common.v1.GameProvider> getProvidersList();
   /**
    * <code>repeated .game-engine.common.v1.GameProvider providers = 4 [json_name = "providers"];</code>
    * @return The count of providers.
@@ -76,7 +76,7 @@ public interface ListGamesRequestOrBuilder extends
    * @param index The index of the element to return.
    * @return The providers at the given index.
    */
-  com.game-engine.common.v1.GameProvider getProviders(int index);
+  com.game_engine.common.v1.GameProvider getProviders(int index);
   /**
    * <code>repeated .game-engine.common.v1.GameProvider providers = 4 [json_name = "providers"];</code>
    * @return A list containing the enum numeric values on the wire for providers.
@@ -99,7 +99,7 @@ public interface ListGamesRequestOrBuilder extends
    * <code>.game-engine.common.v1.Status status = 5 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.Status getStatus();
+  com.game_engine.common.v1.Status getStatus();
 
   /**
    * <code>bool mobile_supported = 6 [json_name = "mobileSupported"];</code>
@@ -134,11 +134,11 @@ public interface ListGamesRequestOrBuilder extends
    * <code>.game-engine.common.v1.PaginationRequest pagination = 10 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationRequest getPagination();
+  com.game_engine.common.v1.PaginationRequest getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 10 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder();
 
   /**
    * <code>string sort_by = 11 [json_name = "sortBy"];</code>

@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetGameResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetGameResponse)
@@ -17,9 +17,9 @@ public interface GetGameResponseOrBuilder extends
    * <code>.game-engine.game.v1.Game game = 1 [json_name = "game"];</code>
    * @return The game.
    */
-  com.game-engine.game.v1.Game getGame();
+  com.game_engine.game.v1.Game getGame();
   /**
    * <code>.game-engine.game.v1.Game game = 1 [json_name = "game"];</code>
    */
-  com.game-engine.game.v1.GameOrBuilder getGameOrBuilder();
+  com.game_engine.game.v1.GameOrBuilder getGameOrBuilder();
 }

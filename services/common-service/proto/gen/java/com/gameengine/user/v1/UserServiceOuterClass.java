@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public final class UserServiceOuterClass {
   private UserServiceOuterClass() {}
@@ -312,7 +312,7 @@ public final class UserServiceOuterClass {
       "ayersResponse\022s\n\022UpdatePlayerStatus\022-.ga" +
       "meengine.user.v1.UpdatePlayerStatusReque" +
       "st\032..game-engine.user.v1.UpdatePlayerStat" +
-      "usResponseB1\n\026com.game-engine.user.v1P\001Z\025" +
+      "usResponseB1\n\026com.game_engine.user.v1P\001Z\025" +
       "gen/go/user/v1;userv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
@@ -320,8 +320,8 @@ public final class UserServiceOuterClass {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
-          com.game-engine.common.v1.Enums.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.Enums.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
         });
     internal_static_game-engine_user_v1_GetProfileRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -487,8 +487,8 @@ public final class UserServiceOuterClass {
         new java.lang.String[] { "Status", "KycLevel", "Country", "Search", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
-    com.game-engine.common.v1.Enums.getDescriptor();
-    com.game-engine.common.v1.Pagination.getDescriptor();
+    com.game_engine.common.v1.Enums.getDescriptor();
+    com.game_engine.common.v1.Pagination.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

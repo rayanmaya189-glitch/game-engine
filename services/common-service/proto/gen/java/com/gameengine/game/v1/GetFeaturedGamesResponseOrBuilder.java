@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetFeaturedGamesResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetFeaturedGamesResponse)
@@ -11,12 +11,12 @@ public interface GetFeaturedGamesResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.game.v1.GameSummary games = 1 [json_name = "games"];</code>
    */
-  java.util.List<com.game-engine.game.v1.GameSummary> 
+  java.util.List<com.game_engine.game.v1.GameSummary> 
       getGamesList();
   /**
    * <code>repeated .game-engine.game.v1.GameSummary games = 1 [json_name = "games"];</code>
    */
-  com.game-engine.game.v1.GameSummary getGames(int index);
+  com.game_engine.game.v1.GameSummary getGames(int index);
   /**
    * <code>repeated .game-engine.game.v1.GameSummary games = 1 [json_name = "games"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetFeaturedGamesResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.game.v1.GameSummary games = 1 [json_name = "games"];</code>
    */
-  java.util.List<? extends com.game-engine.game.v1.GameSummaryOrBuilder> 
+  java.util.List<? extends com.game_engine.game.v1.GameSummaryOrBuilder> 
       getGamesOrBuilderList();
   /**
    * <code>repeated .game-engine.game.v1.GameSummary games = 1 [json_name = "games"];</code>
    */
-  com.game-engine.game.v1.GameSummaryOrBuilder getGamesOrBuilder(
+  com.game_engine.game.v1.GameSummaryOrBuilder getGamesOrBuilder(
       int index);
 }

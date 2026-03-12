@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 /**
  * Protobuf type {@code game-engine.game.v1.GetGameURLResponse}
@@ -30,15 +30,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_descriptor;
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_fieldAccessorTable
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.game.v1.GetGameURLResponse.class, com.game-engine.game.v1.GetGameURLResponse.Builder.class);
+            com.game_engine.game.v1.GetGameURLResponse.class, com.game_engine.game.v1.GetGameURLResponse.Builder.class);
   }
 
   private int bitField0_;
@@ -121,7 +121,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int GAME_FIELD_NUMBER = 3;
-  private com.game-engine.game.v1.GameSummary game_;
+  private com.game_engine.game.v1.GameSummary game_;
   /**
    * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
    * @return Whether the game field is set.
@@ -135,15 +135,15 @@ private static final long serialVersionUID = 0L;
    * @return The game.
    */
   @java.lang.Override
-  public com.game-engine.game.v1.GameSummary getGame() {
-    return game_ == null ? com.game-engine.game.v1.GameSummary.getDefaultInstance() : game_;
+  public com.game_engine.game.v1.GameSummary getGame() {
+    return game_ == null ? com.game_engine.game.v1.GameSummary.getDefaultInstance() : game_;
   }
   /**
    * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
    */
   @java.lang.Override
-  public com.game-engine.game.v1.GameSummaryOrBuilder getGameOrBuilder() {
-    return game_ == null ? com.game-engine.game.v1.GameSummary.getDefaultInstance() : game_;
+  public com.game_engine.game.v1.GameSummaryOrBuilder getGameOrBuilder() {
+    return game_ == null ? com.game_engine.game.v1.GameSummary.getDefaultInstance() : game_;
   }
 
   public static final int EXPIRES_AT_FIELD_NUMBER = 4;
@@ -231,10 +231,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.game.v1.GetGameURLResponse)) {
+    if (!(obj instanceof com.game_engine.game.v1.GetGameURLResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.game.v1.GetGameURLResponse other = (com.game-engine.game.v1.GetGameURLResponse) obj;
+    com.game_engine.game.v1.GetGameURLResponse other = (com.game_engine.game.v1.GetGameURLResponse) obj;
 
     if (!getGameUrl()
         .equals(other.getGameUrl())) return false;
@@ -278,44 +278,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(byte[] data)
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -323,26 +323,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.game.v1.GetGameURLResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetGameURLResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.game.v1.GetGameURLResponse parseDelimitedFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetGameURLResponse parseFrom(
+  public static com.game_engine.game.v1.GetGameURLResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -355,7 +355,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.game.v1.GetGameURLResponse prototype) {
+  public static Builder newBuilder(com.game_engine.game.v1.GetGameURLResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -376,21 +376,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.game.v1.GetGameURLResponse)
-      com.game-engine.game.v1.GetGameURLResponseOrBuilder {
+      com.game_engine.game.v1.GetGameURLResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_fieldAccessorTable
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.game.v1.GetGameURLResponse.class, com.game-engine.game.v1.GetGameURLResponse.Builder.class);
+              com.game_engine.game.v1.GetGameURLResponse.class, com.game_engine.game.v1.GetGameURLResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.game.v1.GetGameURLResponse.newBuilder()
+    // Construct using com.game_engine.game.v1.GetGameURLResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -429,17 +429,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetGameURLResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetGameURLResponse getDefaultInstanceForType() {
-      return com.game-engine.game.v1.GetGameURLResponse.getDefaultInstance();
+    public com.game_engine.game.v1.GetGameURLResponse getDefaultInstanceForType() {
+      return com.game_engine.game.v1.GetGameURLResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetGameURLResponse build() {
-      com.game-engine.game.v1.GetGameURLResponse result = buildPartial();
+    public com.game_engine.game.v1.GetGameURLResponse build() {
+      com.game_engine.game.v1.GetGameURLResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -447,14 +447,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetGameURLResponse buildPartial() {
-      com.game-engine.game.v1.GetGameURLResponse result = new com.game-engine.game.v1.GetGameURLResponse(this);
+    public com.game_engine.game.v1.GetGameURLResponse buildPartial() {
+      com.game_engine.game.v1.GetGameURLResponse result = new com.game_engine.game.v1.GetGameURLResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.game.v1.GetGameURLResponse result) {
+    private void buildPartial0(com.game_engine.game.v1.GetGameURLResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.gameUrl_ = gameUrl_;
@@ -512,16 +512,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.game.v1.GetGameURLResponse) {
-        return mergeFrom((com.game-engine.game.v1.GetGameURLResponse)other);
+      if (other instanceof com.game_engine.game.v1.GetGameURLResponse) {
+        return mergeFrom((com.game_engine.game.v1.GetGameURLResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.game.v1.GetGameURLResponse other) {
-      if (other == com.game-engine.game.v1.GetGameURLResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.game.v1.GetGameURLResponse other) {
+      if (other == com.game_engine.game.v1.GetGameURLResponse.getDefaultInstance()) return this;
       if (!other.getGameUrl().isEmpty()) {
         gameUrl_ = other.gameUrl_;
         bitField0_ |= 0x00000001;
@@ -749,9 +749,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.game.v1.GameSummary game_;
+    private com.game_engine.game.v1.GameSummary game_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.game.v1.GameSummary, com.game-engine.game.v1.GameSummary.Builder, com.game-engine.game.v1.GameSummaryOrBuilder> gameBuilder_;
+        com.game_engine.game.v1.GameSummary, com.game_engine.game.v1.GameSummary.Builder, com.game_engine.game.v1.GameSummaryOrBuilder> gameBuilder_;
     /**
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      * @return Whether the game field is set.
@@ -763,9 +763,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      * @return The game.
      */
-    public com.game-engine.game.v1.GameSummary getGame() {
+    public com.game_engine.game.v1.GameSummary getGame() {
       if (gameBuilder_ == null) {
-        return game_ == null ? com.game-engine.game.v1.GameSummary.getDefaultInstance() : game_;
+        return game_ == null ? com.game_engine.game.v1.GameSummary.getDefaultInstance() : game_;
       } else {
         return gameBuilder_.getMessage();
       }
@@ -773,7 +773,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      */
-    public Builder setGame(com.game-engine.game.v1.GameSummary value) {
+    public Builder setGame(com.game_engine.game.v1.GameSummary value) {
       if (gameBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -790,7 +790,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      */
     public Builder setGame(
-        com.game-engine.game.v1.GameSummary.Builder builderForValue) {
+        com.game_engine.game.v1.GameSummary.Builder builderForValue) {
       if (gameBuilder_ == null) {
         game_ = builderForValue.build();
       } else {
@@ -803,11 +803,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      */
-    public Builder mergeGame(com.game-engine.game.v1.GameSummary value) {
+    public Builder mergeGame(com.game_engine.game.v1.GameSummary value) {
       if (gameBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0) &&
           game_ != null &&
-          game_ != com.game-engine.game.v1.GameSummary.getDefaultInstance()) {
+          game_ != com.game_engine.game.v1.GameSummary.getDefaultInstance()) {
           getGameBuilder().mergeFrom(value);
         } else {
           game_ = value;
@@ -837,7 +837,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      */
-    public com.game-engine.game.v1.GameSummary.Builder getGameBuilder() {
+    public com.game_engine.game.v1.GameSummary.Builder getGameBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getGameFieldBuilder().getBuilder();
@@ -845,23 +845,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      */
-    public com.game-engine.game.v1.GameSummaryOrBuilder getGameOrBuilder() {
+    public com.game_engine.game.v1.GameSummaryOrBuilder getGameOrBuilder() {
       if (gameBuilder_ != null) {
         return gameBuilder_.getMessageOrBuilder();
       } else {
         return game_ == null ?
-            com.game-engine.game.v1.GameSummary.getDefaultInstance() : game_;
+            com.game_engine.game.v1.GameSummary.getDefaultInstance() : game_;
       }
     }
     /**
      * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.game.v1.GameSummary, com.game-engine.game.v1.GameSummary.Builder, com.game-engine.game.v1.GameSummaryOrBuilder> 
+        com.game_engine.game.v1.GameSummary, com.game_engine.game.v1.GameSummary.Builder, com.game_engine.game.v1.GameSummaryOrBuilder> 
         getGameFieldBuilder() {
       if (gameBuilder_ == null) {
         gameBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.game.v1.GameSummary, com.game-engine.game.v1.GameSummary.Builder, com.game-engine.game.v1.GameSummaryOrBuilder>(
+            com.game_engine.game.v1.GameSummary, com.game_engine.game.v1.GameSummary.Builder, com.game_engine.game.v1.GameSummaryOrBuilder>(
                 getGame(),
                 getParentForChildren(),
                 isClean());
@@ -1007,12 +1007,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.game.v1.GetGameURLResponse)
-  private static final com.game-engine.game.v1.GetGameURLResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.game.v1.GetGameURLResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.game.v1.GetGameURLResponse();
+    DEFAULT_INSTANCE = new com.game_engine.game.v1.GetGameURLResponse();
   }
 
-  public static com.game-engine.game.v1.GetGameURLResponse getDefaultInstance() {
+  public static com.game_engine.game.v1.GetGameURLResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1048,7 +1048,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.game.v1.GetGameURLResponse getDefaultInstanceForType() {
+  public com.game_engine.game.v1.GetGameURLResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

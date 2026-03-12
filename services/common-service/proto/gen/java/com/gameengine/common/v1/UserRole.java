@@ -2,7 +2,7 @@
 // source: game-engine/common/v1/enums.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.common.v1;
+package com.game_engine.common.v1;
 
 /**
  * <pre>
@@ -171,7 +171,7 @@ public enum UserRole
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.game-engine.common.v1.Enums.getDescriptor().getEnumTypes().get(6);
+    return com.game_engine.common.v1.Enums.getDescriptor().getEnumTypes().get(6);
   }
 
   private static final UserRole[] VALUES = values();

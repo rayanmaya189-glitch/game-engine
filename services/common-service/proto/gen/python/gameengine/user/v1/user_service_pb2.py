@@ -25,7 +25,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.user.v1.user_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.game-engine.user.v1P\001Z\025gen/go/user/v1;userv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.game_engine.user.v1P\001Z\025gen/go/user/v1;userv1'
   _globals['_KYCDOCUMENTTYPE']._serialized_start=5005
   _globals['_KYCDOCUMENTTYPE']._serialized_end=5169
   _globals['_GETPROFILEREQUEST']._serialized_start=196

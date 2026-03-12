@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GameConfigOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GameConfig)
@@ -65,11 +65,11 @@ public interface GameConfigOrBuilder extends
    * <code>.game-engine.common.v1.Money balance = 5 [json_name = "balance"];</code>
    * @return The balance.
    */
-  com.game-engine.common.v1.Money getBalance();
+  com.game_engine.common.v1.Money getBalance();
   /**
    * <code>.game-engine.common.v1.Money balance = 5 [json_name = "balance"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getBalanceOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getBalanceOrBuilder();
 
   /**
    * <code>string currency = 6 [json_name = "currency"];</code>
@@ -92,5 +92,5 @@ public interface GameConfigOrBuilder extends
    * <code>.game-engine.common.v1.Language language = 7 [json_name = "language"];</code>
    * @return The language.
    */
-  com.game-engine.common.v1.Language getLanguage();
+  com.game_engine.common.v1.Language getLanguage();
 }

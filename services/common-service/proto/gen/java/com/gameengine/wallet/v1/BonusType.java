@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf enum {@code game-engine.wallet.v1.BonusType}
@@ -131,7 +131,7 @@ public enum BonusType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.getDescriptor().getEnumTypes().get(1);
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.getDescriptor().getEnumTypes().get(1);
   }
 
   private static final BonusType[] VALUES = values();

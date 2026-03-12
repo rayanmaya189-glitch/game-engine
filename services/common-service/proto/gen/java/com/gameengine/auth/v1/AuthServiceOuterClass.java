@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public final class AuthServiceOuterClass {
   private AuthServiceOuterClass() {}
@@ -261,7 +261,7 @@ public final class AuthServiceOuterClass {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
-          com.game-engine.common.v1.Enums.getDescriptor(),
+          com.game_engine.common.v1.Enums.getDescriptor(),
         });
     internal_static_game-engine_auth_v1_RegisterRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -391,7 +391,7 @@ public final class AuthServiceOuterClass {
         new java.lang.String[] { "DeviceType", "OsType", "BrowserType", "DeviceId", "DeviceName", "IpAddress", "UserAgent", "Country", "City", "Timezone", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
-    com.game-engine.common.v1.Enums.getDescriptor();
+    com.game_engine.common.v1.Enums.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

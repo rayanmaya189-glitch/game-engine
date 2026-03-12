@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface DeviceInfoOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.DeviceInfo)
@@ -17,7 +17,7 @@ public interface DeviceInfoOrBuilder extends
    * <code>.game-engine.common.v1.DeviceType device_type = 1 [json_name = "deviceType"];</code>
    * @return The deviceType.
    */
-  com.game-engine.common.v1.DeviceType getDeviceType();
+  com.game_engine.common.v1.DeviceType getDeviceType();
 
   /**
    * <code>.game-engine.common.v1.OSType os_type = 2 [json_name = "osType"];</code>
@@ -28,7 +28,7 @@ public interface DeviceInfoOrBuilder extends
    * <code>.game-engine.common.v1.OSType os_type = 2 [json_name = "osType"];</code>
    * @return The osType.
    */
-  com.game-engine.common.v1.OSType getOsType();
+  com.game_engine.common.v1.OSType getOsType();
 
   /**
    * <code>.game-engine.common.v1.BrowserType browser_type = 3 [json_name = "browserType"];</code>
@@ -39,7 +39,7 @@ public interface DeviceInfoOrBuilder extends
    * <code>.game-engine.common.v1.BrowserType browser_type = 3 [json_name = "browserType"];</code>
    * @return The browserType.
    */
-  com.game-engine.common.v1.BrowserType getBrowserType();
+  com.game_engine.common.v1.BrowserType getBrowserType();
 
   /**
    * <code>string device_id = 4 [json_name = "deviceId"];</code>

@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 public interface GetClickReportsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.affiliate.v1.GetClickReportsResponse)
@@ -11,12 +11,12 @@ public interface GetClickReportsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.affiliate.v1.ClickReport clicks = 1 [json_name = "clicks"];</code>
    */
-  java.util.List<com.game-engine.affiliate.v1.ClickReport> 
+  java.util.List<com.game_engine.affiliate.v1.ClickReport> 
       getClicksList();
   /**
    * <code>repeated .game-engine.affiliate.v1.ClickReport clicks = 1 [json_name = "clicks"];</code>
    */
-  com.game-engine.affiliate.v1.ClickReport getClicks(int index);
+  com.game_engine.affiliate.v1.ClickReport getClicks(int index);
   /**
    * <code>repeated .game-engine.affiliate.v1.ClickReport clicks = 1 [json_name = "clicks"];</code>
    */
@@ -24,12 +24,12 @@ public interface GetClickReportsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.affiliate.v1.ClickReport clicks = 1 [json_name = "clicks"];</code>
    */
-  java.util.List<? extends com.game-engine.affiliate.v1.ClickReportOrBuilder> 
+  java.util.List<? extends com.game_engine.affiliate.v1.ClickReportOrBuilder> 
       getClicksOrBuilderList();
   /**
    * <code>repeated .game-engine.affiliate.v1.ClickReport clicks = 1 [json_name = "clicks"];</code>
    */
-  com.game-engine.affiliate.v1.ClickReportOrBuilder getClicksOrBuilder(
+  com.game_engine.affiliate.v1.ClickReportOrBuilder getClicksOrBuilder(
       int index);
 
   /**

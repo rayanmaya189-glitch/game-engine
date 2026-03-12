@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface ListPlayersResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.ListPlayersResponse)
@@ -11,12 +11,12 @@ public interface ListPlayersResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.user.v1.UserProfile players = 1 [json_name = "players"];</code>
    */
-  java.util.List<com.game-engine.user.v1.UserProfile> 
+  java.util.List<com.game_engine.user.v1.UserProfile> 
       getPlayersList();
   /**
    * <code>repeated .game-engine.user.v1.UserProfile players = 1 [json_name = "players"];</code>
    */
-  com.game-engine.user.v1.UserProfile getPlayers(int index);
+  com.game_engine.user.v1.UserProfile getPlayers(int index);
   /**
    * <code>repeated .game-engine.user.v1.UserProfile players = 1 [json_name = "players"];</code>
    */
@@ -24,12 +24,12 @@ public interface ListPlayersResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.user.v1.UserProfile players = 1 [json_name = "players"];</code>
    */
-  java.util.List<? extends com.game-engine.user.v1.UserProfileOrBuilder> 
+  java.util.List<? extends com.game_engine.user.v1.UserProfileOrBuilder> 
       getPlayersOrBuilderList();
   /**
    * <code>repeated .game-engine.user.v1.UserProfile players = 1 [json_name = "players"];</code>
    */
-  com.game-engine.user.v1.UserProfileOrBuilder getPlayersOrBuilder(
+  com.game_engine.user.v1.UserProfileOrBuilder getPlayersOrBuilder(
       int index);
 
   /**
@@ -41,9 +41,9 @@ public interface ListPlayersResponseOrBuilder extends
    * <code>.game-engine.common.v1.PaginationResponse pagination = 2 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationResponse getPagination();
+  com.game_engine.common.v1.PaginationResponse getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationResponse pagination = 2 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationResponseOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationResponseOrBuilder getPaginationOrBuilder();
 }

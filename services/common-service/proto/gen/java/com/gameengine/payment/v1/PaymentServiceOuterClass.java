@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 public final class PaymentServiceOuterClass {
   private PaymentServiceOuterClass() {}
@@ -180,7 +180,7 @@ public final class PaymentServiceOuterClass {
       "stPaymentsResponse\022v\n\021GetPaymentMethods\022" +
       "/.game-engine.payment.v1.GetPaymentMethod" +
       "sRequest\0320.game-engine.payment.v1.GetPaym" +
-      "entMethodsResponseB:\n\031com.game-engine.pay" +
+      "entMethodsResponseB:\n\031com.game_engine.pay" +
       "ment.v1P\001Z\033gen/go/payment/v1;paymentv1b\006" +
       "proto3"
     };
@@ -188,7 +188,7 @@ public final class PaymentServiceOuterClass {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
         });
     internal_static_game-engine_payment_v1_CreatePaymentRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -293,7 +293,7 @@ public final class PaymentServiceOuterClass {
         internal_static_game-engine_payment_v1_PaymentMethod_descriptor,
         new java.lang.String[] { "MethodId", "Name", "Type", "Enabled", "MinAmount", "MaxAmount", });
     com.google.protobuf.TimestampProto.getDescriptor();
-    com.game-engine.common.v1.Pagination.getDescriptor();
+    com.game_engine.common.v1.Pagination.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

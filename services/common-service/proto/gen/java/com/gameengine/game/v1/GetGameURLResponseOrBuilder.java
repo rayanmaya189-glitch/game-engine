@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetGameURLResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetGameURLResponse)
@@ -41,11 +41,11 @@ public interface GetGameURLResponseOrBuilder extends
    * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
    * @return The game.
    */
-  com.game-engine.game.v1.GameSummary getGame();
+  com.game_engine.game.v1.GameSummary getGame();
   /**
    * <code>.game-engine.game.v1.GameSummary game = 3 [json_name = "game"];</code>
    */
-  com.game-engine.game.v1.GameSummaryOrBuilder getGameOrBuilder();
+  com.game_engine.game.v1.GameSummaryOrBuilder getGameOrBuilder();
 
   /**
    * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>

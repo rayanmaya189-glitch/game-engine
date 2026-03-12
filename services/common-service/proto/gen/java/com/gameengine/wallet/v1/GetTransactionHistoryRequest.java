@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.GetTransactionHistoryRequest}
@@ -31,15 +31,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.GetTransactionHistoryRequest.class, com.game-engine.wallet.v1.GetTransactionHistoryRequest.Builder.class);
+            com.game_engine.wallet.v1.GetTransactionHistoryRequest.class, com.game_engine.wallet.v1.GetTransactionHistoryRequest.Builder.class);
   }
 
   private int bitField0_;
@@ -86,12 +86,12 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private java.util.List<java.lang.Integer> types_;
   private static final com.google.protobuf.Internal.ListAdapter.Converter<
-      java.lang.Integer, com.game-engine.common.v1.TransactionType> types_converter_ =
+      java.lang.Integer, com.game_engine.common.v1.TransactionType> types_converter_ =
           new com.google.protobuf.Internal.ListAdapter.Converter<
-              java.lang.Integer, com.game-engine.common.v1.TransactionType>() {
-            public com.game-engine.common.v1.TransactionType convert(java.lang.Integer from) {
-              com.game-engine.common.v1.TransactionType result = com.game-engine.common.v1.TransactionType.forNumber(from);
-              return result == null ? com.game-engine.common.v1.TransactionType.UNRECOGNIZED : result;
+              java.lang.Integer, com.game_engine.common.v1.TransactionType>() {
+            public com.game_engine.common.v1.TransactionType convert(java.lang.Integer from) {
+              com.game_engine.common.v1.TransactionType result = com.game_engine.common.v1.TransactionType.forNumber(from);
+              return result == null ? com.game_engine.common.v1.TransactionType.UNRECOGNIZED : result;
             }
           };
   /**
@@ -99,9 +99,9 @@ private static final long serialVersionUID = 0L;
    * @return A list containing the types.
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.common.v1.TransactionType> getTypesList() {
+  public java.util.List<com.game_engine.common.v1.TransactionType> getTypesList() {
     return new com.google.protobuf.Internal.ListAdapter<
-        java.lang.Integer, com.game-engine.common.v1.TransactionType>(types_, types_converter_);
+        java.lang.Integer, com.game_engine.common.v1.TransactionType>(types_, types_converter_);
   }
   /**
    * <code>repeated .game-engine.common.v1.TransactionType types = 2 [json_name = "types"];</code>
@@ -117,7 +117,7 @@ private static final long serialVersionUID = 0L;
    * @return The types at the given index.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.TransactionType getTypes(int index) {
+  public com.game_engine.common.v1.TransactionType getTypes(int index) {
     return types_converter_.convert(types_.get(index));
   }
   /**
@@ -144,12 +144,12 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private java.util.List<java.lang.Integer> statuses_;
   private static final com.google.protobuf.Internal.ListAdapter.Converter<
-      java.lang.Integer, com.game-engine.common.v1.TransactionStatus> statuses_converter_ =
+      java.lang.Integer, com.game_engine.common.v1.TransactionStatus> statuses_converter_ =
           new com.google.protobuf.Internal.ListAdapter.Converter<
-              java.lang.Integer, com.game-engine.common.v1.TransactionStatus>() {
-            public com.game-engine.common.v1.TransactionStatus convert(java.lang.Integer from) {
-              com.game-engine.common.v1.TransactionStatus result = com.game-engine.common.v1.TransactionStatus.forNumber(from);
-              return result == null ? com.game-engine.common.v1.TransactionStatus.UNRECOGNIZED : result;
+              java.lang.Integer, com.game_engine.common.v1.TransactionStatus>() {
+            public com.game_engine.common.v1.TransactionStatus convert(java.lang.Integer from) {
+              com.game_engine.common.v1.TransactionStatus result = com.game_engine.common.v1.TransactionStatus.forNumber(from);
+              return result == null ? com.game_engine.common.v1.TransactionStatus.UNRECOGNIZED : result;
             }
           };
   /**
@@ -157,9 +157,9 @@ private static final long serialVersionUID = 0L;
    * @return A list containing the statuses.
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.common.v1.TransactionStatus> getStatusesList() {
+  public java.util.List<com.game_engine.common.v1.TransactionStatus> getStatusesList() {
     return new com.google.protobuf.Internal.ListAdapter<
-        java.lang.Integer, com.game-engine.common.v1.TransactionStatus>(statuses_, statuses_converter_);
+        java.lang.Integer, com.game_engine.common.v1.TransactionStatus>(statuses_, statuses_converter_);
   }
   /**
    * <code>repeated .game-engine.common.v1.TransactionStatus statuses = 3 [json_name = "statuses"];</code>
@@ -175,7 +175,7 @@ private static final long serialVersionUID = 0L;
    * @return The statuses at the given index.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.TransactionStatus getStatuses(int index) {
+  public com.game_engine.common.v1.TransactionStatus getStatuses(int index) {
     return statuses_converter_.convert(statuses_.get(index));
   }
   /**
@@ -251,7 +251,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int PAGINATION_FIELD_NUMBER = 6;
-  private com.game-engine.common.v1.PaginationRequest pagination_;
+  private com.game_engine.common.v1.PaginationRequest pagination_;
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
    * @return Whether the pagination field is set.
@@ -265,15 +265,15 @@ private static final long serialVersionUID = 0L;
    * @return The pagination.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.PaginationRequest getPagination() {
-    return pagination_ == null ? com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+  public com.game_engine.common.v1.PaginationRequest getPagination() {
+    return pagination_ == null ? com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
   }
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
-    return pagination_ == null ? com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+  public com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
+    return pagination_ == null ? com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -375,10 +375,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.GetTransactionHistoryRequest)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.GetTransactionHistoryRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.GetTransactionHistoryRequest other = (com.game-engine.wallet.v1.GetTransactionHistoryRequest) obj;
+    com.game_engine.wallet.v1.GetTransactionHistoryRequest other = (com.game_engine.wallet.v1.GetTransactionHistoryRequest) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -437,44 +437,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -482,26 +482,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -514,7 +514,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.GetTransactionHistoryRequest prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.GetTransactionHistoryRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -535,21 +535,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.GetTransactionHistoryRequest)
-      com.game-engine.wallet.v1.GetTransactionHistoryRequestOrBuilder {
+      com.game_engine.wallet.v1.GetTransactionHistoryRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.GetTransactionHistoryRequest.class, com.game-engine.wallet.v1.GetTransactionHistoryRequest.Builder.class);
+              com.game_engine.wallet.v1.GetTransactionHistoryRequest.class, com.game_engine.wallet.v1.GetTransactionHistoryRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.GetTransactionHistoryRequest.newBuilder()
+    // Construct using com.game_engine.wallet.v1.GetTransactionHistoryRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -597,17 +597,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetTransactionHistoryRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.GetTransactionHistoryRequest getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.GetTransactionHistoryRequest.getDefaultInstance();
+    public com.game_engine.wallet.v1.GetTransactionHistoryRequest getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.GetTransactionHistoryRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.GetTransactionHistoryRequest build() {
-      com.game-engine.wallet.v1.GetTransactionHistoryRequest result = buildPartial();
+    public com.game_engine.wallet.v1.GetTransactionHistoryRequest build() {
+      com.game_engine.wallet.v1.GetTransactionHistoryRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -615,15 +615,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.GetTransactionHistoryRequest buildPartial() {
-      com.game-engine.wallet.v1.GetTransactionHistoryRequest result = new com.game-engine.wallet.v1.GetTransactionHistoryRequest(this);
+    public com.game_engine.wallet.v1.GetTransactionHistoryRequest buildPartial() {
+      com.game_engine.wallet.v1.GetTransactionHistoryRequest result = new com.game_engine.wallet.v1.GetTransactionHistoryRequest(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(com.game-engine.wallet.v1.GetTransactionHistoryRequest result) {
+    private void buildPartialRepeatedFields(com.game_engine.wallet.v1.GetTransactionHistoryRequest result) {
       if (((bitField0_ & 0x00000002) != 0)) {
         types_ = java.util.Collections.unmodifiableList(types_);
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -636,7 +636,7 @@ private static final long serialVersionUID = 0L;
       result.statuses_ = statuses_;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.GetTransactionHistoryRequest result) {
+    private void buildPartial0(com.game_engine.wallet.v1.GetTransactionHistoryRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -697,16 +697,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.GetTransactionHistoryRequest) {
-        return mergeFrom((com.game-engine.wallet.v1.GetTransactionHistoryRequest)other);
+      if (other instanceof com.game_engine.wallet.v1.GetTransactionHistoryRequest) {
+        return mergeFrom((com.game_engine.wallet.v1.GetTransactionHistoryRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.GetTransactionHistoryRequest other) {
-      if (other == com.game-engine.wallet.v1.GetTransactionHistoryRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.GetTransactionHistoryRequest other) {
+      if (other == com.game_engine.wallet.v1.GetTransactionHistoryRequest.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -928,9 +928,9 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.common.v1.TransactionType types = 2 [json_name = "types"];</code>
      * @return A list containing the types.
      */
-    public java.util.List<com.game-engine.common.v1.TransactionType> getTypesList() {
+    public java.util.List<com.game_engine.common.v1.TransactionType> getTypesList() {
       return new com.google.protobuf.Internal.ListAdapter<
-          java.lang.Integer, com.game-engine.common.v1.TransactionType>(types_, types_converter_);
+          java.lang.Integer, com.game_engine.common.v1.TransactionType>(types_, types_converter_);
     }
     /**
      * <code>repeated .game-engine.common.v1.TransactionType types = 2 [json_name = "types"];</code>
@@ -944,7 +944,7 @@ private static final long serialVersionUID = 0L;
      * @param index The index of the element to return.
      * @return The types at the given index.
      */
-    public com.game-engine.common.v1.TransactionType getTypes(int index) {
+    public com.game_engine.common.v1.TransactionType getTypes(int index) {
       return types_converter_.convert(types_.get(index));
     }
     /**
@@ -954,7 +954,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setTypes(
-        int index, com.game-engine.common.v1.TransactionType value) {
+        int index, com.game_engine.common.v1.TransactionType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -968,7 +968,7 @@ private static final long serialVersionUID = 0L;
      * @param value The types to add.
      * @return This builder for chaining.
      */
-    public Builder addTypes(com.game-engine.common.v1.TransactionType value) {
+    public Builder addTypes(com.game_engine.common.v1.TransactionType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -983,9 +983,9 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder addAllTypes(
-        java.lang.Iterable<? extends com.game-engine.common.v1.TransactionType> values) {
+        java.lang.Iterable<? extends com.game_engine.common.v1.TransactionType> values) {
       ensureTypesIsMutable();
-      for (com.game-engine.common.v1.TransactionType value : values) {
+      for (com.game_engine.common.v1.TransactionType value : values) {
         types_.add(value.getNumber());
       }
       onChanged();
@@ -1068,9 +1068,9 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.common.v1.TransactionStatus statuses = 3 [json_name = "statuses"];</code>
      * @return A list containing the statuses.
      */
-    public java.util.List<com.game-engine.common.v1.TransactionStatus> getStatusesList() {
+    public java.util.List<com.game_engine.common.v1.TransactionStatus> getStatusesList() {
       return new com.google.protobuf.Internal.ListAdapter<
-          java.lang.Integer, com.game-engine.common.v1.TransactionStatus>(statuses_, statuses_converter_);
+          java.lang.Integer, com.game_engine.common.v1.TransactionStatus>(statuses_, statuses_converter_);
     }
     /**
      * <code>repeated .game-engine.common.v1.TransactionStatus statuses = 3 [json_name = "statuses"];</code>
@@ -1084,7 +1084,7 @@ private static final long serialVersionUID = 0L;
      * @param index The index of the element to return.
      * @return The statuses at the given index.
      */
-    public com.game-engine.common.v1.TransactionStatus getStatuses(int index) {
+    public com.game_engine.common.v1.TransactionStatus getStatuses(int index) {
       return statuses_converter_.convert(statuses_.get(index));
     }
     /**
@@ -1094,7 +1094,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setStatuses(
-        int index, com.game-engine.common.v1.TransactionStatus value) {
+        int index, com.game_engine.common.v1.TransactionStatus value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1108,7 +1108,7 @@ private static final long serialVersionUID = 0L;
      * @param value The statuses to add.
      * @return This builder for chaining.
      */
-    public Builder addStatuses(com.game-engine.common.v1.TransactionStatus value) {
+    public Builder addStatuses(com.game_engine.common.v1.TransactionStatus value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1123,9 +1123,9 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder addAllStatuses(
-        java.lang.Iterable<? extends com.game-engine.common.v1.TransactionStatus> values) {
+        java.lang.Iterable<? extends com.game_engine.common.v1.TransactionStatus> values) {
       ensureStatusesIsMutable();
-      for (com.game-engine.common.v1.TransactionStatus value : values) {
+      for (com.game_engine.common.v1.TransactionStatus value : values) {
         statuses_.add(value.getNumber());
       }
       onChanged();
@@ -1438,9 +1438,9 @@ private static final long serialVersionUID = 0L;
       return endDateBuilder_;
     }
 
-    private com.game-engine.common.v1.PaginationRequest pagination_;
+    private com.game_engine.common.v1.PaginationRequest pagination_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.PaginationRequest, com.game-engine.common.v1.PaginationRequest.Builder, com.game-engine.common.v1.PaginationRequestOrBuilder> paginationBuilder_;
+        com.game_engine.common.v1.PaginationRequest, com.game_engine.common.v1.PaginationRequest.Builder, com.game_engine.common.v1.PaginationRequestOrBuilder> paginationBuilder_;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      * @return Whether the pagination field is set.
@@ -1452,9 +1452,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      * @return The pagination.
      */
-    public com.game-engine.common.v1.PaginationRequest getPagination() {
+    public com.game_engine.common.v1.PaginationRequest getPagination() {
       if (paginationBuilder_ == null) {
-        return pagination_ == null ? com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+        return pagination_ == null ? com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
       } else {
         return paginationBuilder_.getMessage();
       }
@@ -1462,7 +1462,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      */
-    public Builder setPagination(com.game-engine.common.v1.PaginationRequest value) {
+    public Builder setPagination(com.game_engine.common.v1.PaginationRequest value) {
       if (paginationBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -1479,7 +1479,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      */
     public Builder setPagination(
-        com.game-engine.common.v1.PaginationRequest.Builder builderForValue) {
+        com.game_engine.common.v1.PaginationRequest.Builder builderForValue) {
       if (paginationBuilder_ == null) {
         pagination_ = builderForValue.build();
       } else {
@@ -1492,11 +1492,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      */
-    public Builder mergePagination(com.game-engine.common.v1.PaginationRequest value) {
+    public Builder mergePagination(com.game_engine.common.v1.PaginationRequest value) {
       if (paginationBuilder_ == null) {
         if (((bitField0_ & 0x00000020) != 0) &&
           pagination_ != null &&
-          pagination_ != com.game-engine.common.v1.PaginationRequest.getDefaultInstance()) {
+          pagination_ != com.game_engine.common.v1.PaginationRequest.getDefaultInstance()) {
           getPaginationBuilder().mergeFrom(value);
         } else {
           pagination_ = value;
@@ -1526,7 +1526,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      */
-    public com.game-engine.common.v1.PaginationRequest.Builder getPaginationBuilder() {
+    public com.game_engine.common.v1.PaginationRequest.Builder getPaginationBuilder() {
       bitField0_ |= 0x00000020;
       onChanged();
       return getPaginationFieldBuilder().getBuilder();
@@ -1534,23 +1534,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      */
-    public com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
+    public com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
       if (paginationBuilder_ != null) {
         return paginationBuilder_.getMessageOrBuilder();
       } else {
         return pagination_ == null ?
-            com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+            com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
       }
     }
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 6 [json_name = "pagination"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.PaginationRequest, com.game-engine.common.v1.PaginationRequest.Builder, com.game-engine.common.v1.PaginationRequestOrBuilder> 
+        com.game_engine.common.v1.PaginationRequest, com.game_engine.common.v1.PaginationRequest.Builder, com.game_engine.common.v1.PaginationRequestOrBuilder> 
         getPaginationFieldBuilder() {
       if (paginationBuilder_ == null) {
         paginationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.PaginationRequest, com.game-engine.common.v1.PaginationRequest.Builder, com.game-engine.common.v1.PaginationRequestOrBuilder>(
+            com.game_engine.common.v1.PaginationRequest, com.game_engine.common.v1.PaginationRequest.Builder, com.game_engine.common.v1.PaginationRequestOrBuilder>(
                 getPagination(),
                 getParentForChildren(),
                 isClean());
@@ -1575,12 +1575,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.GetTransactionHistoryRequest)
-  private static final com.game-engine.wallet.v1.GetTransactionHistoryRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.GetTransactionHistoryRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.GetTransactionHistoryRequest();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.GetTransactionHistoryRequest();
   }
 
-  public static com.game-engine.wallet.v1.GetTransactionHistoryRequest getDefaultInstance() {
+  public static com.game_engine.wallet.v1.GetTransactionHistoryRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1616,7 +1616,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.GetTransactionHistoryRequest getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.GetTransactionHistoryRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

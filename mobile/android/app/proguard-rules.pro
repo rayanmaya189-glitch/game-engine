@@ -31,8 +31,8 @@
 -keep class * implements com.google.gson.JsonDeserializer
 
 # Keep data classes
--keep class com.game-engine.casino.data.model.** { *; }
--keep class com.game-engine.casino.domain.model.** { *; }
+-keep class com.game_engine.casino.data.model.** { *; }
+-keep class com.game_engine.casino.domain.model.** { *; }
 
 # Keep Room
 -keep class * extends androidx.room.RoomDatabase

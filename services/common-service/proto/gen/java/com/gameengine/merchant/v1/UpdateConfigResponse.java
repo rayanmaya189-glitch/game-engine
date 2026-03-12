@@ -2,7 +2,7 @@
 // source: game-engine/merchant/v1/merchant_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.merchant.v1;
+package com.game_engine.merchant.v1;
 
 /**
  * Protobuf type {@code game-engine.merchant.v1.UpdateConfigResponse}
@@ -28,15 +28,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_descriptor;
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_fieldAccessorTable
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.merchant.v1.UpdateConfigResponse.class, com.game-engine.merchant.v1.UpdateConfigResponse.Builder.class);
+            com.game_engine.merchant.v1.UpdateConfigResponse.class, com.game_engine.merchant.v1.UpdateConfigResponse.Builder.class);
   }
 
   public static final int SUCCESS_FIELD_NUMBER = 1;
@@ -90,10 +90,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.merchant.v1.UpdateConfigResponse)) {
+    if (!(obj instanceof com.game_engine.merchant.v1.UpdateConfigResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.merchant.v1.UpdateConfigResponse other = (com.game-engine.merchant.v1.UpdateConfigResponse) obj;
+    com.game_engine.merchant.v1.UpdateConfigResponse other = (com.game_engine.merchant.v1.UpdateConfigResponse) obj;
 
     if (getSuccess()
         != other.getSuccess()) return false;
@@ -116,44 +116,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(byte[] data)
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -161,26 +161,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseDelimitedFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.UpdateConfigResponse parseFrom(
+  public static com.game_engine.merchant.v1.UpdateConfigResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -193,7 +193,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.merchant.v1.UpdateConfigResponse prototype) {
+  public static Builder newBuilder(com.game_engine.merchant.v1.UpdateConfigResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -214,21 +214,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.merchant.v1.UpdateConfigResponse)
-      com.game-engine.merchant.v1.UpdateConfigResponseOrBuilder {
+      com.game_engine.merchant.v1.UpdateConfigResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_fieldAccessorTable
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.merchant.v1.UpdateConfigResponse.class, com.game-engine.merchant.v1.UpdateConfigResponse.Builder.class);
+              com.game_engine.merchant.v1.UpdateConfigResponse.class, com.game_engine.merchant.v1.UpdateConfigResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.merchant.v1.UpdateConfigResponse.newBuilder()
+    // Construct using com.game_engine.merchant.v1.UpdateConfigResponse.newBuilder()
     private Builder() {
 
     }
@@ -249,17 +249,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_UpdateConfigResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.UpdateConfigResponse getDefaultInstanceForType() {
-      return com.game-engine.merchant.v1.UpdateConfigResponse.getDefaultInstance();
+    public com.game_engine.merchant.v1.UpdateConfigResponse getDefaultInstanceForType() {
+      return com.game_engine.merchant.v1.UpdateConfigResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.UpdateConfigResponse build() {
-      com.game-engine.merchant.v1.UpdateConfigResponse result = buildPartial();
+    public com.game_engine.merchant.v1.UpdateConfigResponse build() {
+      com.game_engine.merchant.v1.UpdateConfigResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -267,14 +267,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.UpdateConfigResponse buildPartial() {
-      com.game-engine.merchant.v1.UpdateConfigResponse result = new com.game-engine.merchant.v1.UpdateConfigResponse(this);
+    public com.game_engine.merchant.v1.UpdateConfigResponse buildPartial() {
+      com.game_engine.merchant.v1.UpdateConfigResponse result = new com.game_engine.merchant.v1.UpdateConfigResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.merchant.v1.UpdateConfigResponse result) {
+    private void buildPartial0(com.game_engine.merchant.v1.UpdateConfigResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.success_ = success_;
@@ -315,16 +315,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.merchant.v1.UpdateConfigResponse) {
-        return mergeFrom((com.game-engine.merchant.v1.UpdateConfigResponse)other);
+      if (other instanceof com.game_engine.merchant.v1.UpdateConfigResponse) {
+        return mergeFrom((com.game_engine.merchant.v1.UpdateConfigResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.merchant.v1.UpdateConfigResponse other) {
-      if (other == com.game-engine.merchant.v1.UpdateConfigResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.merchant.v1.UpdateConfigResponse other) {
+      if (other == com.game_engine.merchant.v1.UpdateConfigResponse.getDefaultInstance()) return this;
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
@@ -424,12 +424,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.merchant.v1.UpdateConfigResponse)
-  private static final com.game-engine.merchant.v1.UpdateConfigResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.merchant.v1.UpdateConfigResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.merchant.v1.UpdateConfigResponse();
+    DEFAULT_INSTANCE = new com.game_engine.merchant.v1.UpdateConfigResponse();
   }
 
-  public static com.game-engine.merchant.v1.UpdateConfigResponse getDefaultInstance() {
+  public static com.game_engine.merchant.v1.UpdateConfigResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -465,7 +465,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.merchant.v1.UpdateConfigResponse getDefaultInstanceForType() {
+  public com.game_engine.merchant.v1.UpdateConfigResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

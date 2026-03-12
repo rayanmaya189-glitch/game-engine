@@ -1,4 +1,4 @@
-package com.game-engine.agent.v1;
+package com.game_engine.agent.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -12,29 +12,29 @@ public final class AgentServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "game-engine.agent.v1.AgentService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.agent.v1.ListPlayersRequest,
-      com.game-engine.agent.v1.ListPlayersResponse> getListPlayersMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.agent.v1.ListPlayersRequest,
+      com.game_engine.agent.v1.ListPlayersResponse> getListPlayersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListPlayers",
-      requestType = com.game-engine.agent.v1.ListPlayersRequest.class,
-      responseType = com.game-engine.agent.v1.ListPlayersResponse.class,
+      requestType = com.game_engine.agent.v1.ListPlayersRequest.class,
+      responseType = com.game_engine.agent.v1.ListPlayersResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.agent.v1.ListPlayersRequest,
-      com.game-engine.agent.v1.ListPlayersResponse> getListPlayersMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.agent.v1.ListPlayersRequest, com.game-engine.agent.v1.ListPlayersResponse> getListPlayersMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.agent.v1.ListPlayersRequest,
+      com.game_engine.agent.v1.ListPlayersResponse> getListPlayersMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.agent.v1.ListPlayersRequest, com.game_engine.agent.v1.ListPlayersResponse> getListPlayersMethod;
     if ((getListPlayersMethod = AgentServiceGrpc.getListPlayersMethod) == null) {
       synchronized (AgentServiceGrpc.class) {
         if ((getListPlayersMethod = AgentServiceGrpc.getListPlayersMethod) == null) {
           AgentServiceGrpc.getListPlayersMethod = getListPlayersMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.agent.v1.ListPlayersRequest, com.game-engine.agent.v1.ListPlayersResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.agent.v1.ListPlayersRequest, com.game_engine.agent.v1.ListPlayersResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListPlayers"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.ListPlayersRequest.getDefaultInstance()))
+                  com.game_engine.agent.v1.ListPlayersRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.ListPlayersResponse.getDefaultInstance()))
+                  com.game_engine.agent.v1.ListPlayersResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AgentServiceMethodDescriptorSupplier("ListPlayers"))
               .build();
         }
@@ -43,29 +43,29 @@ public final class AgentServiceGrpc {
     return getListPlayersMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.agent.v1.GetPlayerRequest,
-      com.game-engine.agent.v1.GetPlayerResponse> getGetPlayerMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.agent.v1.GetPlayerRequest,
+      com.game_engine.agent.v1.GetPlayerResponse> getGetPlayerMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetPlayer",
-      requestType = com.game-engine.agent.v1.GetPlayerRequest.class,
-      responseType = com.game-engine.agent.v1.GetPlayerResponse.class,
+      requestType = com.game_engine.agent.v1.GetPlayerRequest.class,
+      responseType = com.game_engine.agent.v1.GetPlayerResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.agent.v1.GetPlayerRequest,
-      com.game-engine.agent.v1.GetPlayerResponse> getGetPlayerMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.agent.v1.GetPlayerRequest, com.game-engine.agent.v1.GetPlayerResponse> getGetPlayerMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.agent.v1.GetPlayerRequest,
+      com.game_engine.agent.v1.GetPlayerResponse> getGetPlayerMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.agent.v1.GetPlayerRequest, com.game_engine.agent.v1.GetPlayerResponse> getGetPlayerMethod;
     if ((getGetPlayerMethod = AgentServiceGrpc.getGetPlayerMethod) == null) {
       synchronized (AgentServiceGrpc.class) {
         if ((getGetPlayerMethod = AgentServiceGrpc.getGetPlayerMethod) == null) {
           AgentServiceGrpc.getGetPlayerMethod = getGetPlayerMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.agent.v1.GetPlayerRequest, com.game-engine.agent.v1.GetPlayerResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.agent.v1.GetPlayerRequest, com.game_engine.agent.v1.GetPlayerResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPlayer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.GetPlayerRequest.getDefaultInstance()))
+                  com.game_engine.agent.v1.GetPlayerRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.GetPlayerResponse.getDefaultInstance()))
+                  com.game_engine.agent.v1.GetPlayerResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AgentServiceMethodDescriptorSupplier("GetPlayer"))
               .build();
         }
@@ -74,29 +74,29 @@ public final class AgentServiceGrpc {
     return getGetPlayerMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.agent.v1.UpdatePlayerLimitRequest,
-      com.game-engine.agent.v1.UpdatePlayerLimitResponse> getUpdatePlayerLimitMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.agent.v1.UpdatePlayerLimitRequest,
+      com.game_engine.agent.v1.UpdatePlayerLimitResponse> getUpdatePlayerLimitMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdatePlayerLimit",
-      requestType = com.game-engine.agent.v1.UpdatePlayerLimitRequest.class,
-      responseType = com.game-engine.agent.v1.UpdatePlayerLimitResponse.class,
+      requestType = com.game_engine.agent.v1.UpdatePlayerLimitRequest.class,
+      responseType = com.game_engine.agent.v1.UpdatePlayerLimitResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.agent.v1.UpdatePlayerLimitRequest,
-      com.game-engine.agent.v1.UpdatePlayerLimitResponse> getUpdatePlayerLimitMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.agent.v1.UpdatePlayerLimitRequest, com.game-engine.agent.v1.UpdatePlayerLimitResponse> getUpdatePlayerLimitMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.agent.v1.UpdatePlayerLimitRequest,
+      com.game_engine.agent.v1.UpdatePlayerLimitResponse> getUpdatePlayerLimitMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.agent.v1.UpdatePlayerLimitRequest, com.game_engine.agent.v1.UpdatePlayerLimitResponse> getUpdatePlayerLimitMethod;
     if ((getUpdatePlayerLimitMethod = AgentServiceGrpc.getUpdatePlayerLimitMethod) == null) {
       synchronized (AgentServiceGrpc.class) {
         if ((getUpdatePlayerLimitMethod = AgentServiceGrpc.getUpdatePlayerLimitMethod) == null) {
           AgentServiceGrpc.getUpdatePlayerLimitMethod = getUpdatePlayerLimitMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.agent.v1.UpdatePlayerLimitRequest, com.game-engine.agent.v1.UpdatePlayerLimitResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.agent.v1.UpdatePlayerLimitRequest, com.game_engine.agent.v1.UpdatePlayerLimitResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePlayerLimit"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.UpdatePlayerLimitRequest.getDefaultInstance()))
+                  com.game_engine.agent.v1.UpdatePlayerLimitRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.UpdatePlayerLimitResponse.getDefaultInstance()))
+                  com.game_engine.agent.v1.UpdatePlayerLimitResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AgentServiceMethodDescriptorSupplier("UpdatePlayerLimit"))
               .build();
         }
@@ -105,29 +105,29 @@ public final class AgentServiceGrpc {
     return getUpdatePlayerLimitMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game-engine.agent.v1.GetDashboardRequest,
-      com.game-engine.agent.v1.GetDashboardResponse> getGetDashboardMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.agent.v1.GetDashboardRequest,
+      com.game_engine.agent.v1.GetDashboardResponse> getGetDashboardMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetDashboard",
-      requestType = com.game-engine.agent.v1.GetDashboardRequest.class,
-      responseType = com.game-engine.agent.v1.GetDashboardResponse.class,
+      requestType = com.game_engine.agent.v1.GetDashboardRequest.class,
+      responseType = com.game_engine.agent.v1.GetDashboardResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game-engine.agent.v1.GetDashboardRequest,
-      com.game-engine.agent.v1.GetDashboardResponse> getGetDashboardMethod() {
-    io.grpc.MethodDescriptor<com.game-engine.agent.v1.GetDashboardRequest, com.game-engine.agent.v1.GetDashboardResponse> getGetDashboardMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.agent.v1.GetDashboardRequest,
+      com.game_engine.agent.v1.GetDashboardResponse> getGetDashboardMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.agent.v1.GetDashboardRequest, com.game_engine.agent.v1.GetDashboardResponse> getGetDashboardMethod;
     if ((getGetDashboardMethod = AgentServiceGrpc.getGetDashboardMethod) == null) {
       synchronized (AgentServiceGrpc.class) {
         if ((getGetDashboardMethod = AgentServiceGrpc.getGetDashboardMethod) == null) {
           AgentServiceGrpc.getGetDashboardMethod = getGetDashboardMethod =
-              io.grpc.MethodDescriptor.<com.game-engine.agent.v1.GetDashboardRequest, com.game-engine.agent.v1.GetDashboardResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.agent.v1.GetDashboardRequest, com.game_engine.agent.v1.GetDashboardResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetDashboard"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.GetDashboardRequest.getDefaultInstance()))
+                  com.game_engine.agent.v1.GetDashboardRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game-engine.agent.v1.GetDashboardResponse.getDefaultInstance()))
+                  com.game_engine.agent.v1.GetDashboardResponse.getDefaultInstance()))
               .setSchemaDescriptor(new AgentServiceMethodDescriptorSupplier("GetDashboard"))
               .build();
         }
@@ -204,8 +204,8 @@ public final class AgentServiceGrpc {
      * List downline players
      * </pre>
      */
-    default void listPlayers(com.game-engine.agent.v1.ListPlayersRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.ListPlayersResponse> responseObserver) {
+    default void listPlayers(com.game_engine.agent.v1.ListPlayersRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.ListPlayersResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListPlayersMethod(), responseObserver);
     }
 
@@ -214,8 +214,8 @@ public final class AgentServiceGrpc {
      * Get player details
      * </pre>
      */
-    default void getPlayer(com.game-engine.agent.v1.GetPlayerRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.GetPlayerResponse> responseObserver) {
+    default void getPlayer(com.game_engine.agent.v1.GetPlayerRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.GetPlayerResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPlayerMethod(), responseObserver);
     }
 
@@ -224,8 +224,8 @@ public final class AgentServiceGrpc {
      * Update player limits
      * </pre>
      */
-    default void updatePlayerLimit(com.game-engine.agent.v1.UpdatePlayerLimitRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.UpdatePlayerLimitResponse> responseObserver) {
+    default void updatePlayerLimit(com.game_engine.agent.v1.UpdatePlayerLimitRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.UpdatePlayerLimitResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdatePlayerLimitMethod(), responseObserver);
     }
 
@@ -234,8 +234,8 @@ public final class AgentServiceGrpc {
      * Get agent dashboard
      * </pre>
      */
-    default void getDashboard(com.game-engine.agent.v1.GetDashboardRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.GetDashboardResponse> responseObserver) {
+    default void getDashboard(com.game_engine.agent.v1.GetDashboardRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.GetDashboardResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetDashboardMethod(), responseObserver);
     }
   }
@@ -272,8 +272,8 @@ public final class AgentServiceGrpc {
      * List downline players
      * </pre>
      */
-    public void listPlayers(com.game-engine.agent.v1.ListPlayersRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.ListPlayersResponse> responseObserver) {
+    public void listPlayers(com.game_engine.agent.v1.ListPlayersRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.ListPlayersResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListPlayersMethod(), getCallOptions()), request, responseObserver);
     }
@@ -283,8 +283,8 @@ public final class AgentServiceGrpc {
      * Get player details
      * </pre>
      */
-    public void getPlayer(com.game-engine.agent.v1.GetPlayerRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.GetPlayerResponse> responseObserver) {
+    public void getPlayer(com.game_engine.agent.v1.GetPlayerRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.GetPlayerResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPlayerMethod(), getCallOptions()), request, responseObserver);
     }
@@ -294,8 +294,8 @@ public final class AgentServiceGrpc {
      * Update player limits
      * </pre>
      */
-    public void updatePlayerLimit(com.game-engine.agent.v1.UpdatePlayerLimitRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.UpdatePlayerLimitResponse> responseObserver) {
+    public void updatePlayerLimit(com.game_engine.agent.v1.UpdatePlayerLimitRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.UpdatePlayerLimitResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdatePlayerLimitMethod(), getCallOptions()), request, responseObserver);
     }
@@ -305,8 +305,8 @@ public final class AgentServiceGrpc {
      * Get agent dashboard
      * </pre>
      */
-    public void getDashboard(com.game-engine.agent.v1.GetDashboardRequest request,
-        io.grpc.stub.StreamObserver<com.game-engine.agent.v1.GetDashboardResponse> responseObserver) {
+    public void getDashboard(com.game_engine.agent.v1.GetDashboardRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.agent.v1.GetDashboardResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetDashboardMethod(), getCallOptions()), request, responseObserver);
     }
@@ -333,7 +333,7 @@ public final class AgentServiceGrpc {
      * List downline players
      * </pre>
      */
-    public com.game-engine.agent.v1.ListPlayersResponse listPlayers(com.game-engine.agent.v1.ListPlayersRequest request) throws io.grpc.StatusException {
+    public com.game_engine.agent.v1.ListPlayersResponse listPlayers(com.game_engine.agent.v1.ListPlayersRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getListPlayersMethod(), getCallOptions(), request);
     }
@@ -343,7 +343,7 @@ public final class AgentServiceGrpc {
      * Get player details
      * </pre>
      */
-    public com.game-engine.agent.v1.GetPlayerResponse getPlayer(com.game-engine.agent.v1.GetPlayerRequest request) throws io.grpc.StatusException {
+    public com.game_engine.agent.v1.GetPlayerResponse getPlayer(com.game_engine.agent.v1.GetPlayerRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPlayerMethod(), getCallOptions(), request);
     }
@@ -353,7 +353,7 @@ public final class AgentServiceGrpc {
      * Update player limits
      * </pre>
      */
-    public com.game-engine.agent.v1.UpdatePlayerLimitResponse updatePlayerLimit(com.game-engine.agent.v1.UpdatePlayerLimitRequest request) throws io.grpc.StatusException {
+    public com.game_engine.agent.v1.UpdatePlayerLimitResponse updatePlayerLimit(com.game_engine.agent.v1.UpdatePlayerLimitRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getUpdatePlayerLimitMethod(), getCallOptions(), request);
     }
@@ -363,7 +363,7 @@ public final class AgentServiceGrpc {
      * Get agent dashboard
      * </pre>
      */
-    public com.game-engine.agent.v1.GetDashboardResponse getDashboard(com.game-engine.agent.v1.GetDashboardRequest request) throws io.grpc.StatusException {
+    public com.game_engine.agent.v1.GetDashboardResponse getDashboard(com.game_engine.agent.v1.GetDashboardRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetDashboardMethod(), getCallOptions(), request);
     }
@@ -390,7 +390,7 @@ public final class AgentServiceGrpc {
      * List downline players
      * </pre>
      */
-    public com.game-engine.agent.v1.ListPlayersResponse listPlayers(com.game-engine.agent.v1.ListPlayersRequest request) {
+    public com.game_engine.agent.v1.ListPlayersResponse listPlayers(com.game_engine.agent.v1.ListPlayersRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListPlayersMethod(), getCallOptions(), request);
     }
@@ -400,7 +400,7 @@ public final class AgentServiceGrpc {
      * Get player details
      * </pre>
      */
-    public com.game-engine.agent.v1.GetPlayerResponse getPlayer(com.game-engine.agent.v1.GetPlayerRequest request) {
+    public com.game_engine.agent.v1.GetPlayerResponse getPlayer(com.game_engine.agent.v1.GetPlayerRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPlayerMethod(), getCallOptions(), request);
     }
@@ -410,7 +410,7 @@ public final class AgentServiceGrpc {
      * Update player limits
      * </pre>
      */
-    public com.game-engine.agent.v1.UpdatePlayerLimitResponse updatePlayerLimit(com.game-engine.agent.v1.UpdatePlayerLimitRequest request) {
+    public com.game_engine.agent.v1.UpdatePlayerLimitResponse updatePlayerLimit(com.game_engine.agent.v1.UpdatePlayerLimitRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdatePlayerLimitMethod(), getCallOptions(), request);
     }
@@ -420,7 +420,7 @@ public final class AgentServiceGrpc {
      * Get agent dashboard
      * </pre>
      */
-    public com.game-engine.agent.v1.GetDashboardResponse getDashboard(com.game-engine.agent.v1.GetDashboardRequest request) {
+    public com.game_engine.agent.v1.GetDashboardResponse getDashboard(com.game_engine.agent.v1.GetDashboardRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetDashboardMethod(), getCallOptions(), request);
     }
@@ -447,8 +447,8 @@ public final class AgentServiceGrpc {
      * List downline players
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.agent.v1.ListPlayersResponse> listPlayers(
-        com.game-engine.agent.v1.ListPlayersRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.agent.v1.ListPlayersResponse> listPlayers(
+        com.game_engine.agent.v1.ListPlayersRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListPlayersMethod(), getCallOptions()), request);
     }
@@ -458,8 +458,8 @@ public final class AgentServiceGrpc {
      * Get player details
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.agent.v1.GetPlayerResponse> getPlayer(
-        com.game-engine.agent.v1.GetPlayerRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.agent.v1.GetPlayerResponse> getPlayer(
+        com.game_engine.agent.v1.GetPlayerRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPlayerMethod(), getCallOptions()), request);
     }
@@ -469,8 +469,8 @@ public final class AgentServiceGrpc {
      * Update player limits
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.agent.v1.UpdatePlayerLimitResponse> updatePlayerLimit(
-        com.game-engine.agent.v1.UpdatePlayerLimitRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.agent.v1.UpdatePlayerLimitResponse> updatePlayerLimit(
+        com.game_engine.agent.v1.UpdatePlayerLimitRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdatePlayerLimitMethod(), getCallOptions()), request);
     }
@@ -480,8 +480,8 @@ public final class AgentServiceGrpc {
      * Get agent dashboard
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.agent.v1.GetDashboardResponse> getDashboard(
-        com.game-engine.agent.v1.GetDashboardRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.agent.v1.GetDashboardResponse> getDashboard(
+        com.game_engine.agent.v1.GetDashboardRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetDashboardMethod(), getCallOptions()), request);
     }
@@ -510,20 +510,20 @@ public final class AgentServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LIST_PLAYERS:
-          serviceImpl.listPlayers((com.game-engine.agent.v1.ListPlayersRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.agent.v1.ListPlayersResponse>) responseObserver);
+          serviceImpl.listPlayers((com.game_engine.agent.v1.ListPlayersRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.agent.v1.ListPlayersResponse>) responseObserver);
           break;
         case METHODID_GET_PLAYER:
-          serviceImpl.getPlayer((com.game-engine.agent.v1.GetPlayerRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.agent.v1.GetPlayerResponse>) responseObserver);
+          serviceImpl.getPlayer((com.game_engine.agent.v1.GetPlayerRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.agent.v1.GetPlayerResponse>) responseObserver);
           break;
         case METHODID_UPDATE_PLAYER_LIMIT:
-          serviceImpl.updatePlayerLimit((com.game-engine.agent.v1.UpdatePlayerLimitRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.agent.v1.UpdatePlayerLimitResponse>) responseObserver);
+          serviceImpl.updatePlayerLimit((com.game_engine.agent.v1.UpdatePlayerLimitRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.agent.v1.UpdatePlayerLimitResponse>) responseObserver);
           break;
         case METHODID_GET_DASHBOARD:
-          serviceImpl.getDashboard((com.game-engine.agent.v1.GetDashboardRequest) request,
-              (io.grpc.stub.StreamObserver<com.game-engine.agent.v1.GetDashboardResponse>) responseObserver);
+          serviceImpl.getDashboard((com.game_engine.agent.v1.GetDashboardRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.agent.v1.GetDashboardResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -547,29 +547,29 @@ public final class AgentServiceGrpc {
           getListPlayersMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.agent.v1.ListPlayersRequest,
-              com.game-engine.agent.v1.ListPlayersResponse>(
+              com.game_engine.agent.v1.ListPlayersRequest,
+              com.game_engine.agent.v1.ListPlayersResponse>(
                 service, METHODID_LIST_PLAYERS)))
         .addMethod(
           getGetPlayerMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.agent.v1.GetPlayerRequest,
-              com.game-engine.agent.v1.GetPlayerResponse>(
+              com.game_engine.agent.v1.GetPlayerRequest,
+              com.game_engine.agent.v1.GetPlayerResponse>(
                 service, METHODID_GET_PLAYER)))
         .addMethod(
           getUpdatePlayerLimitMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.agent.v1.UpdatePlayerLimitRequest,
-              com.game-engine.agent.v1.UpdatePlayerLimitResponse>(
+              com.game_engine.agent.v1.UpdatePlayerLimitRequest,
+              com.game_engine.agent.v1.UpdatePlayerLimitResponse>(
                 service, METHODID_UPDATE_PLAYER_LIMIT)))
         .addMethod(
           getGetDashboardMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game-engine.agent.v1.GetDashboardRequest,
-              com.game-engine.agent.v1.GetDashboardResponse>(
+              com.game_engine.agent.v1.GetDashboardRequest,
+              com.game_engine.agent.v1.GetDashboardResponse>(
                 service, METHODID_GET_DASHBOARD)))
         .build();
   }
@@ -580,7 +580,7 @@ public final class AgentServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.game-engine.agent.v1.AgentServiceOuterClass.getDescriptor();
+      return com.game_engine.agent.v1.AgentServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override

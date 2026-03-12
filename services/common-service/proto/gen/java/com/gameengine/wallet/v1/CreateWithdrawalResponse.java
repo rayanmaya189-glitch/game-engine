@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.CreateWithdrawalResponse}
@@ -29,20 +29,20 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.CreateWithdrawalResponse.class, com.game-engine.wallet.v1.CreateWithdrawalResponse.Builder.class);
+            com.game_engine.wallet.v1.CreateWithdrawalResponse.class, com.game_engine.wallet.v1.CreateWithdrawalResponse.Builder.class);
   }
 
   private int bitField0_;
   public static final int WITHDRAWAL_FIELD_NUMBER = 1;
-  private com.game-engine.wallet.v1.Transaction withdrawal_;
+  private com.game_engine.wallet.v1.Transaction withdrawal_;
   /**
    * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
    * @return Whether the withdrawal field is set.
@@ -56,15 +56,15 @@ private static final long serialVersionUID = 0L;
    * @return The withdrawal.
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.Transaction getWithdrawal() {
-    return withdrawal_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
+  public com.game_engine.wallet.v1.Transaction getWithdrawal() {
+    return withdrawal_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
   }
   /**
    * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.TransactionOrBuilder getWithdrawalOrBuilder() {
-    return withdrawal_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
+  public com.game_engine.wallet.v1.TransactionOrBuilder getWithdrawalOrBuilder() {
+    return withdrawal_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
   }
 
   public static final int APPROVAL_REQUIRED_FIELD_NUMBER = 2;
@@ -170,10 +170,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.CreateWithdrawalResponse)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.CreateWithdrawalResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.CreateWithdrawalResponse other = (com.game-engine.wallet.v1.CreateWithdrawalResponse) obj;
+    com.game_engine.wallet.v1.CreateWithdrawalResponse other = (com.game_engine.wallet.v1.CreateWithdrawalResponse) obj;
 
     if (hasWithdrawal() != other.hasWithdrawal()) return false;
     if (hasWithdrawal()) {
@@ -209,44 +209,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,26 +254,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -286,7 +286,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.CreateWithdrawalResponse prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.CreateWithdrawalResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -307,21 +307,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.CreateWithdrawalResponse)
-      com.game-engine.wallet.v1.CreateWithdrawalResponseOrBuilder {
+      com.game_engine.wallet.v1.CreateWithdrawalResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.CreateWithdrawalResponse.class, com.game-engine.wallet.v1.CreateWithdrawalResponse.Builder.class);
+              com.game_engine.wallet.v1.CreateWithdrawalResponse.class, com.game_engine.wallet.v1.CreateWithdrawalResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.CreateWithdrawalResponse.newBuilder()
+    // Construct using com.game_engine.wallet.v1.CreateWithdrawalResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -354,17 +354,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateWithdrawalResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CreateWithdrawalResponse getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.CreateWithdrawalResponse.getDefaultInstance();
+    public com.game_engine.wallet.v1.CreateWithdrawalResponse getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.CreateWithdrawalResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CreateWithdrawalResponse build() {
-      com.game-engine.wallet.v1.CreateWithdrawalResponse result = buildPartial();
+    public com.game_engine.wallet.v1.CreateWithdrawalResponse build() {
+      com.game_engine.wallet.v1.CreateWithdrawalResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -372,14 +372,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CreateWithdrawalResponse buildPartial() {
-      com.game-engine.wallet.v1.CreateWithdrawalResponse result = new com.game-engine.wallet.v1.CreateWithdrawalResponse(this);
+    public com.game_engine.wallet.v1.CreateWithdrawalResponse buildPartial() {
+      com.game_engine.wallet.v1.CreateWithdrawalResponse result = new com.game_engine.wallet.v1.CreateWithdrawalResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.CreateWithdrawalResponse result) {
+    private void buildPartial0(com.game_engine.wallet.v1.CreateWithdrawalResponse result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -431,16 +431,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.CreateWithdrawalResponse) {
-        return mergeFrom((com.game-engine.wallet.v1.CreateWithdrawalResponse)other);
+      if (other instanceof com.game_engine.wallet.v1.CreateWithdrawalResponse) {
+        return mergeFrom((com.game_engine.wallet.v1.CreateWithdrawalResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.CreateWithdrawalResponse other) {
-      if (other == com.game-engine.wallet.v1.CreateWithdrawalResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.CreateWithdrawalResponse other) {
+      if (other == com.game_engine.wallet.v1.CreateWithdrawalResponse.getDefaultInstance()) return this;
       if (other.hasWithdrawal()) {
         mergeWithdrawal(other.getWithdrawal());
       }
@@ -512,9 +512,9 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.game-engine.wallet.v1.Transaction withdrawal_;
+    private com.game_engine.wallet.v1.Transaction withdrawal_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> withdrawalBuilder_;
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> withdrawalBuilder_;
     /**
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      * @return Whether the withdrawal field is set.
@@ -526,9 +526,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      * @return The withdrawal.
      */
-    public com.game-engine.wallet.v1.Transaction getWithdrawal() {
+    public com.game_engine.wallet.v1.Transaction getWithdrawal() {
       if (withdrawalBuilder_ == null) {
-        return withdrawal_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
+        return withdrawal_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
       } else {
         return withdrawalBuilder_.getMessage();
       }
@@ -536,7 +536,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      */
-    public Builder setWithdrawal(com.game-engine.wallet.v1.Transaction value) {
+    public Builder setWithdrawal(com.game_engine.wallet.v1.Transaction value) {
       if (withdrawalBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -553,7 +553,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      */
     public Builder setWithdrawal(
-        com.game-engine.wallet.v1.Transaction.Builder builderForValue) {
+        com.game_engine.wallet.v1.Transaction.Builder builderForValue) {
       if (withdrawalBuilder_ == null) {
         withdrawal_ = builderForValue.build();
       } else {
@@ -566,11 +566,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      */
-    public Builder mergeWithdrawal(com.game-engine.wallet.v1.Transaction value) {
+    public Builder mergeWithdrawal(com.game_engine.wallet.v1.Transaction value) {
       if (withdrawalBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0) &&
           withdrawal_ != null &&
-          withdrawal_ != com.game-engine.wallet.v1.Transaction.getDefaultInstance()) {
+          withdrawal_ != com.game_engine.wallet.v1.Transaction.getDefaultInstance()) {
           getWithdrawalBuilder().mergeFrom(value);
         } else {
           withdrawal_ = value;
@@ -600,7 +600,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      */
-    public com.game-engine.wallet.v1.Transaction.Builder getWithdrawalBuilder() {
+    public com.game_engine.wallet.v1.Transaction.Builder getWithdrawalBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getWithdrawalFieldBuilder().getBuilder();
@@ -608,23 +608,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      */
-    public com.game-engine.wallet.v1.TransactionOrBuilder getWithdrawalOrBuilder() {
+    public com.game_engine.wallet.v1.TransactionOrBuilder getWithdrawalOrBuilder() {
       if (withdrawalBuilder_ != null) {
         return withdrawalBuilder_.getMessageOrBuilder();
       } else {
         return withdrawal_ == null ?
-            com.game-engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
+            com.game_engine.wallet.v1.Transaction.getDefaultInstance() : withdrawal_;
       }
     }
     /**
      * <code>.game-engine.wallet.v1.Transaction withdrawal = 1 [json_name = "withdrawal"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> 
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> 
         getWithdrawalFieldBuilder() {
       if (withdrawalBuilder_ == null) {
         withdrawalBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder>(
+            com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder>(
                 getWithdrawal(),
                 getParentForChildren(),
                 isClean());
@@ -753,12 +753,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.CreateWithdrawalResponse)
-  private static final com.game-engine.wallet.v1.CreateWithdrawalResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.CreateWithdrawalResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.CreateWithdrawalResponse();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.CreateWithdrawalResponse();
   }
 
-  public static com.game-engine.wallet.v1.CreateWithdrawalResponse getDefaultInstance() {
+  public static com.game_engine.wallet.v1.CreateWithdrawalResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -794,7 +794,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.CreateWithdrawalResponse getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.CreateWithdrawalResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

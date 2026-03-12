@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetPendingBetsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetPendingBetsResponse)
@@ -11,12 +11,12 @@ public interface GetPendingBetsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.wallet.v1.Bet bets = 1 [json_name = "bets"];</code>
    */
-  java.util.List<com.game-engine.wallet.v1.Bet> 
+  java.util.List<com.game_engine.wallet.v1.Bet> 
       getBetsList();
   /**
    * <code>repeated .game-engine.wallet.v1.Bet bets = 1 [json_name = "bets"];</code>
    */
-  com.game-engine.wallet.v1.Bet getBets(int index);
+  com.game_engine.wallet.v1.Bet getBets(int index);
   /**
    * <code>repeated .game-engine.wallet.v1.Bet bets = 1 [json_name = "bets"];</code>
    */
@@ -24,12 +24,12 @@ public interface GetPendingBetsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.wallet.v1.Bet bets = 1 [json_name = "bets"];</code>
    */
-  java.util.List<? extends com.game-engine.wallet.v1.BetOrBuilder> 
+  java.util.List<? extends com.game_engine.wallet.v1.BetOrBuilder> 
       getBetsOrBuilderList();
   /**
    * <code>repeated .game-engine.wallet.v1.Bet bets = 1 [json_name = "bets"];</code>
    */
-  com.game-engine.wallet.v1.BetOrBuilder getBetsOrBuilder(
+  com.game_engine.wallet.v1.BetOrBuilder getBetsOrBuilder(
       int index);
 
   /**
@@ -41,9 +41,9 @@ public interface GetPendingBetsResponseOrBuilder extends
    * <code>.game-engine.common.v1.PaginationResponse pagination = 2 [json_name = "pagination"];</code>
    * @return The pagination.
    */
-  com.game-engine.common.v1.PaginationResponse getPagination();
+  com.game_engine.common.v1.PaginationResponse getPagination();
   /**
    * <code>.game-engine.common.v1.PaginationResponse pagination = 2 [json_name = "pagination"];</code>
    */
-  com.game-engine.common.v1.PaginationResponseOrBuilder getPaginationOrBuilder();
+  com.game_engine.common.v1.PaginationResponseOrBuilder getPaginationOrBuilder();
 }

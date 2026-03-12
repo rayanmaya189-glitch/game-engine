@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface CreateBonusCreditResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.CreateBonusCreditResponse)
@@ -23,11 +23,11 @@ public interface CreateBonusCreditResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
    * @return The bonus.
    */
-  com.game-engine.wallet.v1.Transaction getBonus();
+  com.game_engine.wallet.v1.Transaction getBonus();
   /**
    * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getBonusOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getBonusOrBuilder();
 
   /**
    * <code>string message = 3 [json_name = "message"];</code>

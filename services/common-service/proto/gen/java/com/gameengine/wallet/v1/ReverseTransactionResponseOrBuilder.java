@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface ReverseTransactionResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.ReverseTransactionResponse)
@@ -23,11 +23,11 @@ public interface ReverseTransactionResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
    * @return The reversal.
    */
-  com.game-engine.wallet.v1.Transaction getReversal();
+  com.game_engine.wallet.v1.Transaction getReversal();
   /**
    * <code>.game-engine.wallet.v1.Transaction reversal = 2 [json_name = "reversal"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getReversalOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getReversalOrBuilder();
 
   /**
    * <code>string message = 3 [json_name = "message"];</code>

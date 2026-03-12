@@ -2,7 +2,7 @@
 // source: game-engine/common/v1/pagination.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.common.v1;
+package com.game_engine.common.v1;
 
 public interface PaginationResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.common.v1.PaginationResponse)

@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 public final class AffiliateServiceOuterClass {
   private AffiliateServiceOuterClass() {}
@@ -180,7 +180,7 @@ public final class AffiliateServiceOuterClass {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
         });
     internal_static_game-engine_affiliate_v1_TrackClickRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);

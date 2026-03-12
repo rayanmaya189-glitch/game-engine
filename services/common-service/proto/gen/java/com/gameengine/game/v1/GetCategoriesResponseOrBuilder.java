@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetCategoriesResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetCategoriesResponse)
@@ -11,12 +11,12 @@ public interface GetCategoriesResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
-  java.util.List<com.game-engine.game.v1.GameCategory> 
+  java.util.List<com.game_engine.game.v1.GameCategory> 
       getCategoriesList();
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
-  com.game-engine.game.v1.GameCategory getCategories(int index);
+  com.game_engine.game.v1.GameCategory getCategories(int index);
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetCategoriesResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
-  java.util.List<? extends com.game-engine.game.v1.GameCategoryOrBuilder> 
+  java.util.List<? extends com.game_engine.game.v1.GameCategoryOrBuilder> 
       getCategoriesOrBuilderList();
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
-  com.game-engine.game.v1.GameCategoryOrBuilder getCategoriesOrBuilder(
+  com.game_engine.game.v1.GameCategoryOrBuilder getCategoriesOrBuilder(
       int index);
 }

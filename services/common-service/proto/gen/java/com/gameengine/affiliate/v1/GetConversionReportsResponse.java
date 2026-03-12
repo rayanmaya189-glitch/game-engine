@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 /**
  * Protobuf type {@code game-engine.affiliate.v1.GetConversionReportsResponse}
@@ -29,32 +29,32 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_descriptor;
+    return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_fieldAccessorTable
+    return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.affiliate.v1.GetConversionReportsResponse.class, com.game-engine.affiliate.v1.GetConversionReportsResponse.Builder.class);
+            com.game_engine.affiliate.v1.GetConversionReportsResponse.class, com.game_engine.affiliate.v1.GetConversionReportsResponse.Builder.class);
   }
 
   public static final int CONVERSIONS_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private java.util.List<com.game-engine.affiliate.v1.ConversionReport> conversions_;
+  private java.util.List<com.game_engine.affiliate.v1.ConversionReport> conversions_;
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.affiliate.v1.ConversionReport> getConversionsList() {
+  public java.util.List<com.game_engine.affiliate.v1.ConversionReport> getConversionsList() {
     return conversions_;
   }
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.game-engine.affiliate.v1.ConversionReportOrBuilder> 
+  public java.util.List<? extends com.game_engine.affiliate.v1.ConversionReportOrBuilder> 
       getConversionsOrBuilderList() {
     return conversions_;
   }
@@ -69,14 +69,14 @@ private static final long serialVersionUID = 0L;
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
   @java.lang.Override
-  public com.game-engine.affiliate.v1.ConversionReport getConversions(int index) {
+  public com.game_engine.affiliate.v1.ConversionReport getConversions(int index) {
     return conversions_.get(index);
   }
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
   @java.lang.Override
-  public com.game-engine.affiliate.v1.ConversionReportOrBuilder getConversionsOrBuilder(
+  public com.game_engine.affiliate.v1.ConversionReportOrBuilder getConversionsOrBuilder(
       int index) {
     return conversions_.get(index);
   }
@@ -139,10 +139,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.affiliate.v1.GetConversionReportsResponse)) {
+    if (!(obj instanceof com.game_engine.affiliate.v1.GetConversionReportsResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.affiliate.v1.GetConversionReportsResponse other = (com.game-engine.affiliate.v1.GetConversionReportsResponse) obj;
+    com.game_engine.affiliate.v1.GetConversionReportsResponse other = (com.game_engine.affiliate.v1.GetConversionReportsResponse) obj;
 
     if (!getConversionsList()
         .equals(other.getConversionsList())) return false;
@@ -170,44 +170,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(byte[] data)
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -215,26 +215,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseDelimitedFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse parseFrom(
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -247,7 +247,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.affiliate.v1.GetConversionReportsResponse prototype) {
+  public static Builder newBuilder(com.game_engine.affiliate.v1.GetConversionReportsResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -268,21 +268,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.affiliate.v1.GetConversionReportsResponse)
-      com.game-engine.affiliate.v1.GetConversionReportsResponseOrBuilder {
+      com.game_engine.affiliate.v1.GetConversionReportsResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_descriptor;
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_fieldAccessorTable
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.affiliate.v1.GetConversionReportsResponse.class, com.game-engine.affiliate.v1.GetConversionReportsResponse.Builder.class);
+              com.game_engine.affiliate.v1.GetConversionReportsResponse.class, com.game_engine.affiliate.v1.GetConversionReportsResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.affiliate.v1.GetConversionReportsResponse.newBuilder()
+    // Construct using com.game_engine.affiliate.v1.GetConversionReportsResponse.newBuilder()
     private Builder() {
 
     }
@@ -310,17 +310,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_descriptor;
+      return com.game_engine.affiliate.v1.AffiliateServiceOuterClass.internal_static_game-engine_affiliate_v1_GetConversionReportsResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.GetConversionReportsResponse getDefaultInstanceForType() {
-      return com.game-engine.affiliate.v1.GetConversionReportsResponse.getDefaultInstance();
+    public com.game_engine.affiliate.v1.GetConversionReportsResponse getDefaultInstanceForType() {
+      return com.game_engine.affiliate.v1.GetConversionReportsResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.GetConversionReportsResponse build() {
-      com.game-engine.affiliate.v1.GetConversionReportsResponse result = buildPartial();
+    public com.game_engine.affiliate.v1.GetConversionReportsResponse build() {
+      com.game_engine.affiliate.v1.GetConversionReportsResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -328,15 +328,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.affiliate.v1.GetConversionReportsResponse buildPartial() {
-      com.game-engine.affiliate.v1.GetConversionReportsResponse result = new com.game-engine.affiliate.v1.GetConversionReportsResponse(this);
+    public com.game_engine.affiliate.v1.GetConversionReportsResponse buildPartial() {
+      com.game_engine.affiliate.v1.GetConversionReportsResponse result = new com.game_engine.affiliate.v1.GetConversionReportsResponse(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(com.game-engine.affiliate.v1.GetConversionReportsResponse result) {
+    private void buildPartialRepeatedFields(com.game_engine.affiliate.v1.GetConversionReportsResponse result) {
       if (conversionsBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           conversions_ = java.util.Collections.unmodifiableList(conversions_);
@@ -348,7 +348,7 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    private void buildPartial0(com.game-engine.affiliate.v1.GetConversionReportsResponse result) {
+    private void buildPartial0(com.game_engine.affiliate.v1.GetConversionReportsResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.total_ = total_;
@@ -389,16 +389,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.affiliate.v1.GetConversionReportsResponse) {
-        return mergeFrom((com.game-engine.affiliate.v1.GetConversionReportsResponse)other);
+      if (other instanceof com.game_engine.affiliate.v1.GetConversionReportsResponse) {
+        return mergeFrom((com.game_engine.affiliate.v1.GetConversionReportsResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.affiliate.v1.GetConversionReportsResponse other) {
-      if (other == com.game-engine.affiliate.v1.GetConversionReportsResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.affiliate.v1.GetConversionReportsResponse other) {
+      if (other == com.game_engine.affiliate.v1.GetConversionReportsResponse.getDefaultInstance()) return this;
       if (conversionsBuilder_ == null) {
         if (!other.conversions_.isEmpty()) {
           if (conversions_.isEmpty()) {
@@ -455,9 +455,9 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              com.game-engine.affiliate.v1.ConversionReport m =
+              com.game_engine.affiliate.v1.ConversionReport m =
                   input.readMessage(
-                      com.game-engine.affiliate.v1.ConversionReport.parser(),
+                      com.game_engine.affiliate.v1.ConversionReport.parser(),
                       extensionRegistry);
               if (conversionsBuilder_ == null) {
                 ensureConversionsIsMutable();
@@ -489,22 +489,22 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<com.game-engine.affiliate.v1.ConversionReport> conversions_ =
+    private java.util.List<com.game_engine.affiliate.v1.ConversionReport> conversions_ =
       java.util.Collections.emptyList();
     private void ensureConversionsIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        conversions_ = new java.util.ArrayList<com.game-engine.affiliate.v1.ConversionReport>(conversions_);
+        conversions_ = new java.util.ArrayList<com.game_engine.affiliate.v1.ConversionReport>(conversions_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.game-engine.affiliate.v1.ConversionReport, com.game-engine.affiliate.v1.ConversionReport.Builder, com.game-engine.affiliate.v1.ConversionReportOrBuilder> conversionsBuilder_;
+        com.game_engine.affiliate.v1.ConversionReport, com.game_engine.affiliate.v1.ConversionReport.Builder, com.game_engine.affiliate.v1.ConversionReportOrBuilder> conversionsBuilder_;
 
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public java.util.List<com.game-engine.affiliate.v1.ConversionReport> getConversionsList() {
+    public java.util.List<com.game_engine.affiliate.v1.ConversionReport> getConversionsList() {
       if (conversionsBuilder_ == null) {
         return java.util.Collections.unmodifiableList(conversions_);
       } else {
@@ -524,7 +524,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public com.game-engine.affiliate.v1.ConversionReport getConversions(int index) {
+    public com.game_engine.affiliate.v1.ConversionReport getConversions(int index) {
       if (conversionsBuilder_ == null) {
         return conversions_.get(index);
       } else {
@@ -535,7 +535,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
     public Builder setConversions(
-        int index, com.game-engine.affiliate.v1.ConversionReport value) {
+        int index, com.game_engine.affiliate.v1.ConversionReport value) {
       if (conversionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -552,7 +552,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
     public Builder setConversions(
-        int index, com.game-engine.affiliate.v1.ConversionReport.Builder builderForValue) {
+        int index, com.game_engine.affiliate.v1.ConversionReport.Builder builderForValue) {
       if (conversionsBuilder_ == null) {
         ensureConversionsIsMutable();
         conversions_.set(index, builderForValue.build());
@@ -565,7 +565,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public Builder addConversions(com.game-engine.affiliate.v1.ConversionReport value) {
+    public Builder addConversions(com.game_engine.affiliate.v1.ConversionReport value) {
       if (conversionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -582,7 +582,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
     public Builder addConversions(
-        int index, com.game-engine.affiliate.v1.ConversionReport value) {
+        int index, com.game_engine.affiliate.v1.ConversionReport value) {
       if (conversionsBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -599,7 +599,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
     public Builder addConversions(
-        com.game-engine.affiliate.v1.ConversionReport.Builder builderForValue) {
+        com.game_engine.affiliate.v1.ConversionReport.Builder builderForValue) {
       if (conversionsBuilder_ == null) {
         ensureConversionsIsMutable();
         conversions_.add(builderForValue.build());
@@ -613,7 +613,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
     public Builder addConversions(
-        int index, com.game-engine.affiliate.v1.ConversionReport.Builder builderForValue) {
+        int index, com.game_engine.affiliate.v1.ConversionReport.Builder builderForValue) {
       if (conversionsBuilder_ == null) {
         ensureConversionsIsMutable();
         conversions_.add(index, builderForValue.build());
@@ -627,7 +627,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
     public Builder addAllConversions(
-        java.lang.Iterable<? extends com.game-engine.affiliate.v1.ConversionReport> values) {
+        java.lang.Iterable<? extends com.game_engine.affiliate.v1.ConversionReport> values) {
       if (conversionsBuilder_ == null) {
         ensureConversionsIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -667,14 +667,14 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public com.game-engine.affiliate.v1.ConversionReport.Builder getConversionsBuilder(
+    public com.game_engine.affiliate.v1.ConversionReport.Builder getConversionsBuilder(
         int index) {
       return getConversionsFieldBuilder().getBuilder(index);
     }
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public com.game-engine.affiliate.v1.ConversionReportOrBuilder getConversionsOrBuilder(
+    public com.game_engine.affiliate.v1.ConversionReportOrBuilder getConversionsOrBuilder(
         int index) {
       if (conversionsBuilder_ == null) {
         return conversions_.get(index);  } else {
@@ -684,7 +684,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public java.util.List<? extends com.game-engine.affiliate.v1.ConversionReportOrBuilder> 
+    public java.util.List<? extends com.game_engine.affiliate.v1.ConversionReportOrBuilder> 
          getConversionsOrBuilderList() {
       if (conversionsBuilder_ != null) {
         return conversionsBuilder_.getMessageOrBuilderList();
@@ -695,31 +695,31 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public com.game-engine.affiliate.v1.ConversionReport.Builder addConversionsBuilder() {
+    public com.game_engine.affiliate.v1.ConversionReport.Builder addConversionsBuilder() {
       return getConversionsFieldBuilder().addBuilder(
-          com.game-engine.affiliate.v1.ConversionReport.getDefaultInstance());
+          com.game_engine.affiliate.v1.ConversionReport.getDefaultInstance());
     }
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public com.game-engine.affiliate.v1.ConversionReport.Builder addConversionsBuilder(
+    public com.game_engine.affiliate.v1.ConversionReport.Builder addConversionsBuilder(
         int index) {
       return getConversionsFieldBuilder().addBuilder(
-          index, com.game-engine.affiliate.v1.ConversionReport.getDefaultInstance());
+          index, com.game_engine.affiliate.v1.ConversionReport.getDefaultInstance());
     }
     /**
      * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
      */
-    public java.util.List<com.game-engine.affiliate.v1.ConversionReport.Builder> 
+    public java.util.List<com.game_engine.affiliate.v1.ConversionReport.Builder> 
          getConversionsBuilderList() {
       return getConversionsFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.game-engine.affiliate.v1.ConversionReport, com.game-engine.affiliate.v1.ConversionReport.Builder, com.game-engine.affiliate.v1.ConversionReportOrBuilder> 
+        com.game_engine.affiliate.v1.ConversionReport, com.game_engine.affiliate.v1.ConversionReport.Builder, com.game_engine.affiliate.v1.ConversionReportOrBuilder> 
         getConversionsFieldBuilder() {
       if (conversionsBuilder_ == null) {
         conversionsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.game-engine.affiliate.v1.ConversionReport, com.game-engine.affiliate.v1.ConversionReport.Builder, com.game-engine.affiliate.v1.ConversionReportOrBuilder>(
+            com.game_engine.affiliate.v1.ConversionReport, com.game_engine.affiliate.v1.ConversionReport.Builder, com.game_engine.affiliate.v1.ConversionReportOrBuilder>(
                 conversions_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
@@ -777,12 +777,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.affiliate.v1.GetConversionReportsResponse)
-  private static final com.game-engine.affiliate.v1.GetConversionReportsResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.affiliate.v1.GetConversionReportsResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.affiliate.v1.GetConversionReportsResponse();
+    DEFAULT_INSTANCE = new com.game_engine.affiliate.v1.GetConversionReportsResponse();
   }
 
-  public static com.game-engine.affiliate.v1.GetConversionReportsResponse getDefaultInstance() {
+  public static com.game_engine.affiliate.v1.GetConversionReportsResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -818,7 +818,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.affiliate.v1.GetConversionReportsResponse getDefaultInstanceForType() {
+  public com.game_engine.affiliate.v1.GetConversionReportsResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

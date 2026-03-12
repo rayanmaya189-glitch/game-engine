@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.affiliate.v1.affiliate_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\033com.game-engine.affiliate.v1P\001Z\037gen/go/affiliate/v1;affiliatev1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\033com.game_engine.affiliate.v1P\001Z\037gen/go/affiliate/v1;affiliatev1'
   _globals['_TRACKCLICKREQUEST']._serialized_start=149
   _globals['_TRACKCLICKREQUEST']._serialized_end=297
   _globals['_TRACKCLICKRESPONSE']._serialized_start=299

@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface SubmitKYCRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.SubmitKYCRequest)
@@ -29,7 +29,7 @@ public interface SubmitKYCRequestOrBuilder extends
    * <code>.game-engine.user.v1.KYCDocumentType document_type = 2 [json_name = "documentType"];</code>
    * @return The documentType.
    */
-  com.game-engine.user.v1.KYCDocumentType getDocumentType();
+  com.game_engine.user.v1.KYCDocumentType getDocumentType();
 
   /**
    * <code>string document_data = 3 [json_name = "documentData"];</code>

@@ -2,7 +2,7 @@
 // source: game-engine/tournament/v1/tournament_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 public final class TournamentServiceOuterClass {
   private TournamentServiceOuterClass() {}
@@ -179,7 +179,7 @@ public final class TournamentServiceOuterClass {
       "dateScoreResponse\022y\n\020GetMyTournaments\0221." +
       "game-engine.tournament.v1.GetMyTournament" +
       "sRequest\0322.game-engine.tournament.v1.GetM" +
-      "yTournamentsResponseBC\n\034com.game-engine.t" +
+      "yTournamentsResponseBC\n\034com.game_engine.t" +
       "ournament.v1P\001Z!gen/go/tournament/v1;tou" +
       "rnamentv1b\006proto3"
     };
@@ -187,7 +187,7 @@ public final class TournamentServiceOuterClass {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
         });
     internal_static_game-engine_tournament_v1_ListTournamentsRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -292,7 +292,7 @@ public final class TournamentServiceOuterClass {
         internal_static_game-engine_tournament_v1_UserTournament_descriptor,
         new java.lang.String[] { "TournamentId", "Name", "Rank", "Score", "Status", });
     com.google.protobuf.TimestampProto.getDescriptor();
-    com.game-engine.common.v1.Pagination.getDescriptor();
+    com.game_engine.common.v1.Pagination.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

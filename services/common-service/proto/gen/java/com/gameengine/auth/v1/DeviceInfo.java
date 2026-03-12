@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 /**
  * <pre>
@@ -42,15 +42,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_descriptor;
+    return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_fieldAccessorTable
+    return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.auth.v1.DeviceInfo.class, com.game-engine.auth.v1.DeviceInfo.Builder.class);
+            com.game_engine.auth.v1.DeviceInfo.class, com.game_engine.auth.v1.DeviceInfo.Builder.class);
   }
 
   public static final int DEVICE_TYPE_FIELD_NUMBER = 1;
@@ -66,9 +66,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.DeviceType device_type = 1 [json_name = "deviceType"];</code>
    * @return The deviceType.
    */
-  @java.lang.Override public com.game-engine.common.v1.DeviceType getDeviceType() {
-    com.game-engine.common.v1.DeviceType result = com.game-engine.common.v1.DeviceType.forNumber(deviceType_);
-    return result == null ? com.game-engine.common.v1.DeviceType.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.DeviceType getDeviceType() {
+    com.game_engine.common.v1.DeviceType result = com.game_engine.common.v1.DeviceType.forNumber(deviceType_);
+    return result == null ? com.game_engine.common.v1.DeviceType.UNRECOGNIZED : result;
   }
 
   public static final int OS_TYPE_FIELD_NUMBER = 2;
@@ -84,9 +84,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.OSType os_type = 2 [json_name = "osType"];</code>
    * @return The osType.
    */
-  @java.lang.Override public com.game-engine.common.v1.OSType getOsType() {
-    com.game-engine.common.v1.OSType result = com.game-engine.common.v1.OSType.forNumber(osType_);
-    return result == null ? com.game-engine.common.v1.OSType.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.OSType getOsType() {
+    com.game_engine.common.v1.OSType result = com.game_engine.common.v1.OSType.forNumber(osType_);
+    return result == null ? com.game_engine.common.v1.OSType.UNRECOGNIZED : result;
   }
 
   public static final int BROWSER_TYPE_FIELD_NUMBER = 3;
@@ -102,9 +102,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.BrowserType browser_type = 3 [json_name = "browserType"];</code>
    * @return The browserType.
    */
-  @java.lang.Override public com.game-engine.common.v1.BrowserType getBrowserType() {
-    com.game-engine.common.v1.BrowserType result = com.game-engine.common.v1.BrowserType.forNumber(browserType_);
-    return result == null ? com.game-engine.common.v1.BrowserType.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.BrowserType getBrowserType() {
+    com.game_engine.common.v1.BrowserType result = com.game_engine.common.v1.BrowserType.forNumber(browserType_);
+    return result == null ? com.game_engine.common.v1.BrowserType.UNRECOGNIZED : result;
   }
 
   public static final int DEVICE_ID_FIELD_NUMBER = 4;
@@ -394,13 +394,13 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (deviceType_ != com.game-engine.common.v1.DeviceType.DEVICE_TYPE_UNSPECIFIED.getNumber()) {
+    if (deviceType_ != com.game_engine.common.v1.DeviceType.DEVICE_TYPE_UNSPECIFIED.getNumber()) {
       output.writeEnum(1, deviceType_);
     }
-    if (osType_ != com.game-engine.common.v1.OSType.OS_TYPE_UNSPECIFIED.getNumber()) {
+    if (osType_ != com.game_engine.common.v1.OSType.OS_TYPE_UNSPECIFIED.getNumber()) {
       output.writeEnum(2, osType_);
     }
-    if (browserType_ != com.game-engine.common.v1.BrowserType.BROWSER_TYPE_UNSPECIFIED.getNumber()) {
+    if (browserType_ != com.game_engine.common.v1.BrowserType.BROWSER_TYPE_UNSPECIFIED.getNumber()) {
       output.writeEnum(3, browserType_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(deviceId_)) {
@@ -433,15 +433,15 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (deviceType_ != com.game-engine.common.v1.DeviceType.DEVICE_TYPE_UNSPECIFIED.getNumber()) {
+    if (deviceType_ != com.game_engine.common.v1.DeviceType.DEVICE_TYPE_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(1, deviceType_);
     }
-    if (osType_ != com.game-engine.common.v1.OSType.OS_TYPE_UNSPECIFIED.getNumber()) {
+    if (osType_ != com.game_engine.common.v1.OSType.OS_TYPE_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(2, osType_);
     }
-    if (browserType_ != com.game-engine.common.v1.BrowserType.BROWSER_TYPE_UNSPECIFIED.getNumber()) {
+    if (browserType_ != com.game_engine.common.v1.BrowserType.BROWSER_TYPE_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(3, browserType_);
     }
@@ -476,10 +476,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.auth.v1.DeviceInfo)) {
+    if (!(obj instanceof com.game_engine.auth.v1.DeviceInfo)) {
       return super.equals(obj);
     }
-    com.game-engine.auth.v1.DeviceInfo other = (com.game-engine.auth.v1.DeviceInfo) obj;
+    com.game_engine.auth.v1.DeviceInfo other = (com.game_engine.auth.v1.DeviceInfo) obj;
 
     if (deviceType_ != other.deviceType_) return false;
     if (osType_ != other.osType_) return false;
@@ -534,44 +534,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(byte[] data)
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(java.io.InputStream input)
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -579,26 +579,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.auth.v1.DeviceInfo parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.auth.v1.DeviceInfo parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.auth.v1.DeviceInfo parseDelimitedFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.auth.v1.DeviceInfo parseFrom(
+  public static com.game_engine.auth.v1.DeviceInfo parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -611,7 +611,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.auth.v1.DeviceInfo prototype) {
+  public static Builder newBuilder(com.game_engine.auth.v1.DeviceInfo prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -636,21 +636,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.auth.v1.DeviceInfo)
-      com.game-engine.auth.v1.DeviceInfoOrBuilder {
+      com.game_engine.auth.v1.DeviceInfoOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_descriptor;
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_fieldAccessorTable
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.auth.v1.DeviceInfo.class, com.game-engine.auth.v1.DeviceInfo.Builder.class);
+              com.game_engine.auth.v1.DeviceInfo.class, com.game_engine.auth.v1.DeviceInfo.Builder.class);
     }
 
-    // Construct using com.game-engine.auth.v1.DeviceInfo.newBuilder()
+    // Construct using com.game_engine.auth.v1.DeviceInfo.newBuilder()
     private Builder() {
 
     }
@@ -680,17 +680,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_descriptor;
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_DeviceInfo_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.DeviceInfo getDefaultInstanceForType() {
-      return com.game-engine.auth.v1.DeviceInfo.getDefaultInstance();
+    public com.game_engine.auth.v1.DeviceInfo getDefaultInstanceForType() {
+      return com.game_engine.auth.v1.DeviceInfo.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.DeviceInfo build() {
-      com.game-engine.auth.v1.DeviceInfo result = buildPartial();
+    public com.game_engine.auth.v1.DeviceInfo build() {
+      com.game_engine.auth.v1.DeviceInfo result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -698,14 +698,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.DeviceInfo buildPartial() {
-      com.game-engine.auth.v1.DeviceInfo result = new com.game-engine.auth.v1.DeviceInfo(this);
+    public com.game_engine.auth.v1.DeviceInfo buildPartial() {
+      com.game_engine.auth.v1.DeviceInfo result = new com.game_engine.auth.v1.DeviceInfo(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.auth.v1.DeviceInfo result) {
+    private void buildPartial0(com.game_engine.auth.v1.DeviceInfo result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.deviceType_ = deviceType_;
@@ -773,16 +773,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.auth.v1.DeviceInfo) {
-        return mergeFrom((com.game-engine.auth.v1.DeviceInfo)other);
+      if (other instanceof com.game_engine.auth.v1.DeviceInfo) {
+        return mergeFrom((com.game_engine.auth.v1.DeviceInfo)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.auth.v1.DeviceInfo other) {
-      if (other == com.game-engine.auth.v1.DeviceInfo.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.auth.v1.DeviceInfo other) {
+      if (other == com.game_engine.auth.v1.DeviceInfo.getDefaultInstance()) return this;
       if (other.deviceType_ != 0) {
         setDeviceTypeValue(other.getDeviceTypeValue());
       }
@@ -944,16 +944,16 @@ private static final long serialVersionUID = 0L;
      * @return The deviceType.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.DeviceType getDeviceType() {
-      com.game-engine.common.v1.DeviceType result = com.game-engine.common.v1.DeviceType.forNumber(deviceType_);
-      return result == null ? com.game-engine.common.v1.DeviceType.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.DeviceType getDeviceType() {
+      com.game_engine.common.v1.DeviceType result = com.game_engine.common.v1.DeviceType.forNumber(deviceType_);
+      return result == null ? com.game_engine.common.v1.DeviceType.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.DeviceType device_type = 1 [json_name = "deviceType"];</code>
      * @param value The deviceType to set.
      * @return This builder for chaining.
      */
-    public Builder setDeviceType(com.game-engine.common.v1.DeviceType value) {
+    public Builder setDeviceType(com.game_engine.common.v1.DeviceType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -997,16 +997,16 @@ private static final long serialVersionUID = 0L;
      * @return The osType.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.OSType getOsType() {
-      com.game-engine.common.v1.OSType result = com.game-engine.common.v1.OSType.forNumber(osType_);
-      return result == null ? com.game-engine.common.v1.OSType.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.OSType getOsType() {
+      com.game_engine.common.v1.OSType result = com.game_engine.common.v1.OSType.forNumber(osType_);
+      return result == null ? com.game_engine.common.v1.OSType.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.OSType os_type = 2 [json_name = "osType"];</code>
      * @param value The osType to set.
      * @return This builder for chaining.
      */
-    public Builder setOsType(com.game-engine.common.v1.OSType value) {
+    public Builder setOsType(com.game_engine.common.v1.OSType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1050,16 +1050,16 @@ private static final long serialVersionUID = 0L;
      * @return The browserType.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.BrowserType getBrowserType() {
-      com.game-engine.common.v1.BrowserType result = com.game-engine.common.v1.BrowserType.forNumber(browserType_);
-      return result == null ? com.game-engine.common.v1.BrowserType.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.BrowserType getBrowserType() {
+      com.game_engine.common.v1.BrowserType result = com.game_engine.common.v1.BrowserType.forNumber(browserType_);
+      return result == null ? com.game_engine.common.v1.BrowserType.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.BrowserType browser_type = 3 [json_name = "browserType"];</code>
      * @param value The browserType to set.
      * @return This builder for chaining.
      */
-    public Builder setBrowserType(com.game-engine.common.v1.BrowserType value) {
+    public Builder setBrowserType(com.game_engine.common.v1.BrowserType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1599,12 +1599,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.auth.v1.DeviceInfo)
-  private static final com.game-engine.auth.v1.DeviceInfo DEFAULT_INSTANCE;
+  private static final com.game_engine.auth.v1.DeviceInfo DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.auth.v1.DeviceInfo();
+    DEFAULT_INSTANCE = new com.game_engine.auth.v1.DeviceInfo();
   }
 
-  public static com.game-engine.auth.v1.DeviceInfo getDefaultInstance() {
+  public static com.game_engine.auth.v1.DeviceInfo getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1640,7 +1640,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.auth.v1.DeviceInfo getDefaultInstanceForType() {
+  public com.game_engine.auth.v1.DeviceInfo getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

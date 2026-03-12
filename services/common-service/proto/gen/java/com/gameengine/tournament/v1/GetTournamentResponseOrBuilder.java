@@ -2,7 +2,7 @@
 // source: game-engine/tournament/v1/tournament_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.tournament.v1;
+package com.game_engine.tournament.v1;
 
 public interface GetTournamentResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.tournament.v1.GetTournamentResponse)
@@ -17,9 +17,9 @@ public interface GetTournamentResponseOrBuilder extends
    * <code>.game-engine.tournament.v1.Tournament tournament = 1 [json_name = "tournament"];</code>
    * @return The tournament.
    */
-  com.game-engine.tournament.v1.Tournament getTournament();
+  com.game_engine.tournament.v1.Tournament getTournament();
   /**
    * <code>.game-engine.tournament.v1.Tournament tournament = 1 [json_name = "tournament"];</code>
    */
-  com.game-engine.tournament.v1.TournamentOrBuilder getTournamentOrBuilder();
+  com.game_engine.tournament.v1.TournamentOrBuilder getTournamentOrBuilder();
 }

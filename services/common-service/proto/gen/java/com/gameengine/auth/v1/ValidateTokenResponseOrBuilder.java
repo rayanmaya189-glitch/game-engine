@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface ValidateTokenResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.ValidateTokenResponse)
@@ -69,7 +69,7 @@ public interface ValidateTokenResponseOrBuilder extends
    * <code>repeated .game-engine.common.v1.UserRole roles = 6 [json_name = "roles"];</code>
    * @return A list containing the roles.
    */
-  java.util.List<com.game-engine.common.v1.UserRole> getRolesList();
+  java.util.List<com.game_engine.common.v1.UserRole> getRolesList();
   /**
    * <code>repeated .game-engine.common.v1.UserRole roles = 6 [json_name = "roles"];</code>
    * @return The count of roles.
@@ -80,7 +80,7 @@ public interface ValidateTokenResponseOrBuilder extends
    * @param index The index of the element to return.
    * @return The roles at the given index.
    */
-  com.game-engine.common.v1.UserRole getRoles(int index);
+  com.game_engine.common.v1.UserRole getRoles(int index);
   /**
    * <code>repeated .game-engine.common.v1.UserRole roles = 6 [json_name = "roles"];</code>
    * @return A list containing the enum numeric values on the wire for roles.

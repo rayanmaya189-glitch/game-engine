@@ -23,7 +23,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.commission.v1.commission_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\034com.game-engine.commission.v1P\001Z!gen/go/commission/v1;commissionv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\034com.game_engine.commission.v1P\001Z!gen/go/commission/v1;commissionv1'
   _globals['_SUBMITCLAIMREQUEST']._serialized_start=152
   _globals['_SUBMITCLAIMREQUEST']._serialized_end=328
   _globals['_SUBMITCLAIMRESPONSE']._serialized_start=330

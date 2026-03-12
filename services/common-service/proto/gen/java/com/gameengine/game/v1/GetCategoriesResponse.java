@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 /**
  * Protobuf type {@code game-engine.game.v1.GetCategoriesResponse}
@@ -29,32 +29,32 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_descriptor;
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_fieldAccessorTable
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.game.v1.GetCategoriesResponse.class, com.game-engine.game.v1.GetCategoriesResponse.Builder.class);
+            com.game_engine.game.v1.GetCategoriesResponse.class, com.game_engine.game.v1.GetCategoriesResponse.Builder.class);
   }
 
   public static final int CATEGORIES_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private java.util.List<com.game-engine.game.v1.GameCategory> categories_;
+  private java.util.List<com.game_engine.game.v1.GameCategory> categories_;
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.game.v1.GameCategory> getCategoriesList() {
+  public java.util.List<com.game_engine.game.v1.GameCategory> getCategoriesList() {
     return categories_;
   }
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.game-engine.game.v1.GameCategoryOrBuilder> 
+  public java.util.List<? extends com.game_engine.game.v1.GameCategoryOrBuilder> 
       getCategoriesOrBuilderList() {
     return categories_;
   }
@@ -69,14 +69,14 @@ private static final long serialVersionUID = 0L;
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
   @java.lang.Override
-  public com.game-engine.game.v1.GameCategory getCategories(int index) {
+  public com.game_engine.game.v1.GameCategory getCategories(int index) {
     return categories_.get(index);
   }
   /**
    * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
    */
   @java.lang.Override
-  public com.game-engine.game.v1.GameCategoryOrBuilder getCategoriesOrBuilder(
+  public com.game_engine.game.v1.GameCategoryOrBuilder getCategoriesOrBuilder(
       int index) {
     return categories_.get(index);
   }
@@ -121,10 +121,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.game.v1.GetCategoriesResponse)) {
+    if (!(obj instanceof com.game_engine.game.v1.GetCategoriesResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.game.v1.GetCategoriesResponse other = (com.game-engine.game.v1.GetCategoriesResponse) obj;
+    com.game_engine.game.v1.GetCategoriesResponse other = (com.game_engine.game.v1.GetCategoriesResponse) obj;
 
     if (!getCategoriesList()
         .equals(other.getCategoriesList())) return false;
@@ -148,44 +148,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(byte[] data)
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -193,26 +193,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.game.v1.GetCategoriesResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetCategoriesResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.game.v1.GetCategoriesResponse parseDelimitedFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetCategoriesResponse parseFrom(
+  public static com.game_engine.game.v1.GetCategoriesResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -225,7 +225,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.game.v1.GetCategoriesResponse prototype) {
+  public static Builder newBuilder(com.game_engine.game.v1.GetCategoriesResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -246,21 +246,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.game.v1.GetCategoriesResponse)
-      com.game-engine.game.v1.GetCategoriesResponseOrBuilder {
+      com.game_engine.game.v1.GetCategoriesResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_fieldAccessorTable
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.game.v1.GetCategoriesResponse.class, com.game-engine.game.v1.GetCategoriesResponse.Builder.class);
+              com.game_engine.game.v1.GetCategoriesResponse.class, com.game_engine.game.v1.GetCategoriesResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.game.v1.GetCategoriesResponse.newBuilder()
+    // Construct using com.game_engine.game.v1.GetCategoriesResponse.newBuilder()
     private Builder() {
 
     }
@@ -287,17 +287,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetCategoriesResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetCategoriesResponse getDefaultInstanceForType() {
-      return com.game-engine.game.v1.GetCategoriesResponse.getDefaultInstance();
+    public com.game_engine.game.v1.GetCategoriesResponse getDefaultInstanceForType() {
+      return com.game_engine.game.v1.GetCategoriesResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetCategoriesResponse build() {
-      com.game-engine.game.v1.GetCategoriesResponse result = buildPartial();
+    public com.game_engine.game.v1.GetCategoriesResponse build() {
+      com.game_engine.game.v1.GetCategoriesResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -305,15 +305,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetCategoriesResponse buildPartial() {
-      com.game-engine.game.v1.GetCategoriesResponse result = new com.game-engine.game.v1.GetCategoriesResponse(this);
+    public com.game_engine.game.v1.GetCategoriesResponse buildPartial() {
+      com.game_engine.game.v1.GetCategoriesResponse result = new com.game_engine.game.v1.GetCategoriesResponse(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(com.game-engine.game.v1.GetCategoriesResponse result) {
+    private void buildPartialRepeatedFields(com.game_engine.game.v1.GetCategoriesResponse result) {
       if (categoriesBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           categories_ = java.util.Collections.unmodifiableList(categories_);
@@ -325,7 +325,7 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    private void buildPartial0(com.game-engine.game.v1.GetCategoriesResponse result) {
+    private void buildPartial0(com.game_engine.game.v1.GetCategoriesResponse result) {
       int from_bitField0_ = bitField0_;
     }
 
@@ -363,16 +363,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.game.v1.GetCategoriesResponse) {
-        return mergeFrom((com.game-engine.game.v1.GetCategoriesResponse)other);
+      if (other instanceof com.game_engine.game.v1.GetCategoriesResponse) {
+        return mergeFrom((com.game_engine.game.v1.GetCategoriesResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.game.v1.GetCategoriesResponse other) {
-      if (other == com.game-engine.game.v1.GetCategoriesResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.game.v1.GetCategoriesResponse other) {
+      if (other == com.game_engine.game.v1.GetCategoriesResponse.getDefaultInstance()) return this;
       if (categoriesBuilder_ == null) {
         if (!other.categories_.isEmpty()) {
           if (categories_.isEmpty()) {
@@ -426,9 +426,9 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              com.game-engine.game.v1.GameCategory m =
+              com.game_engine.game.v1.GameCategory m =
                   input.readMessage(
-                      com.game-engine.game.v1.GameCategory.parser(),
+                      com.game_engine.game.v1.GameCategory.parser(),
                       extensionRegistry);
               if (categoriesBuilder_ == null) {
                 ensureCategoriesIsMutable();
@@ -455,22 +455,22 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<com.game-engine.game.v1.GameCategory> categories_ =
+    private java.util.List<com.game_engine.game.v1.GameCategory> categories_ =
       java.util.Collections.emptyList();
     private void ensureCategoriesIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        categories_ = new java.util.ArrayList<com.game-engine.game.v1.GameCategory>(categories_);
+        categories_ = new java.util.ArrayList<com.game_engine.game.v1.GameCategory>(categories_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.game-engine.game.v1.GameCategory, com.game-engine.game.v1.GameCategory.Builder, com.game-engine.game.v1.GameCategoryOrBuilder> categoriesBuilder_;
+        com.game_engine.game.v1.GameCategory, com.game_engine.game.v1.GameCategory.Builder, com.game_engine.game.v1.GameCategoryOrBuilder> categoriesBuilder_;
 
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public java.util.List<com.game-engine.game.v1.GameCategory> getCategoriesList() {
+    public java.util.List<com.game_engine.game.v1.GameCategory> getCategoriesList() {
       if (categoriesBuilder_ == null) {
         return java.util.Collections.unmodifiableList(categories_);
       } else {
@@ -490,7 +490,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public com.game-engine.game.v1.GameCategory getCategories(int index) {
+    public com.game_engine.game.v1.GameCategory getCategories(int index) {
       if (categoriesBuilder_ == null) {
         return categories_.get(index);
       } else {
@@ -501,7 +501,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
     public Builder setCategories(
-        int index, com.game-engine.game.v1.GameCategory value) {
+        int index, com.game_engine.game.v1.GameCategory value) {
       if (categoriesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -518,7 +518,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
     public Builder setCategories(
-        int index, com.game-engine.game.v1.GameCategory.Builder builderForValue) {
+        int index, com.game_engine.game.v1.GameCategory.Builder builderForValue) {
       if (categoriesBuilder_ == null) {
         ensureCategoriesIsMutable();
         categories_.set(index, builderForValue.build());
@@ -531,7 +531,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public Builder addCategories(com.game-engine.game.v1.GameCategory value) {
+    public Builder addCategories(com.game_engine.game.v1.GameCategory value) {
       if (categoriesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -548,7 +548,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
     public Builder addCategories(
-        int index, com.game-engine.game.v1.GameCategory value) {
+        int index, com.game_engine.game.v1.GameCategory value) {
       if (categoriesBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -565,7 +565,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
     public Builder addCategories(
-        com.game-engine.game.v1.GameCategory.Builder builderForValue) {
+        com.game_engine.game.v1.GameCategory.Builder builderForValue) {
       if (categoriesBuilder_ == null) {
         ensureCategoriesIsMutable();
         categories_.add(builderForValue.build());
@@ -579,7 +579,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
     public Builder addCategories(
-        int index, com.game-engine.game.v1.GameCategory.Builder builderForValue) {
+        int index, com.game_engine.game.v1.GameCategory.Builder builderForValue) {
       if (categoriesBuilder_ == null) {
         ensureCategoriesIsMutable();
         categories_.add(index, builderForValue.build());
@@ -593,7 +593,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
     public Builder addAllCategories(
-        java.lang.Iterable<? extends com.game-engine.game.v1.GameCategory> values) {
+        java.lang.Iterable<? extends com.game_engine.game.v1.GameCategory> values) {
       if (categoriesBuilder_ == null) {
         ensureCategoriesIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -633,14 +633,14 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public com.game-engine.game.v1.GameCategory.Builder getCategoriesBuilder(
+    public com.game_engine.game.v1.GameCategory.Builder getCategoriesBuilder(
         int index) {
       return getCategoriesFieldBuilder().getBuilder(index);
     }
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public com.game-engine.game.v1.GameCategoryOrBuilder getCategoriesOrBuilder(
+    public com.game_engine.game.v1.GameCategoryOrBuilder getCategoriesOrBuilder(
         int index) {
       if (categoriesBuilder_ == null) {
         return categories_.get(index);  } else {
@@ -650,7 +650,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public java.util.List<? extends com.game-engine.game.v1.GameCategoryOrBuilder> 
+    public java.util.List<? extends com.game_engine.game.v1.GameCategoryOrBuilder> 
          getCategoriesOrBuilderList() {
       if (categoriesBuilder_ != null) {
         return categoriesBuilder_.getMessageOrBuilderList();
@@ -661,31 +661,31 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public com.game-engine.game.v1.GameCategory.Builder addCategoriesBuilder() {
+    public com.game_engine.game.v1.GameCategory.Builder addCategoriesBuilder() {
       return getCategoriesFieldBuilder().addBuilder(
-          com.game-engine.game.v1.GameCategory.getDefaultInstance());
+          com.game_engine.game.v1.GameCategory.getDefaultInstance());
     }
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public com.game-engine.game.v1.GameCategory.Builder addCategoriesBuilder(
+    public com.game_engine.game.v1.GameCategory.Builder addCategoriesBuilder(
         int index) {
       return getCategoriesFieldBuilder().addBuilder(
-          index, com.game-engine.game.v1.GameCategory.getDefaultInstance());
+          index, com.game_engine.game.v1.GameCategory.getDefaultInstance());
     }
     /**
      * <code>repeated .game-engine.game.v1.GameCategory categories = 1 [json_name = "categories"];</code>
      */
-    public java.util.List<com.game-engine.game.v1.GameCategory.Builder> 
+    public java.util.List<com.game_engine.game.v1.GameCategory.Builder> 
          getCategoriesBuilderList() {
       return getCategoriesFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.game-engine.game.v1.GameCategory, com.game-engine.game.v1.GameCategory.Builder, com.game-engine.game.v1.GameCategoryOrBuilder> 
+        com.game_engine.game.v1.GameCategory, com.game_engine.game.v1.GameCategory.Builder, com.game_engine.game.v1.GameCategoryOrBuilder> 
         getCategoriesFieldBuilder() {
       if (categoriesBuilder_ == null) {
         categoriesBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.game-engine.game.v1.GameCategory, com.game-engine.game.v1.GameCategory.Builder, com.game-engine.game.v1.GameCategoryOrBuilder>(
+            com.game_engine.game.v1.GameCategory, com.game_engine.game.v1.GameCategory.Builder, com.game_engine.game.v1.GameCategoryOrBuilder>(
                 categories_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
@@ -711,12 +711,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.game.v1.GetCategoriesResponse)
-  private static final com.game-engine.game.v1.GetCategoriesResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.game.v1.GetCategoriesResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.game.v1.GetCategoriesResponse();
+    DEFAULT_INSTANCE = new com.game_engine.game.v1.GetCategoriesResponse();
   }
 
-  public static com.game-engine.game.v1.GetCategoriesResponse getDefaultInstance() {
+  public static com.game_engine.game.v1.GetCategoriesResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -752,7 +752,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.game.v1.GetCategoriesResponse getDefaultInstanceForType() {
+  public com.game_engine.game.v1.GetCategoriesResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

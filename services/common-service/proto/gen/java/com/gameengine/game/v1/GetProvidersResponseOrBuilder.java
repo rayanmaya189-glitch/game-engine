@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetProvidersResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetProvidersResponse)
@@ -11,12 +11,12 @@ public interface GetProvidersResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
-  java.util.List<com.game-engine.game.v1.GameProvider> 
+  java.util.List<com.game_engine.game.v1.GameProvider> 
       getProvidersList();
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
-  com.game-engine.game.v1.GameProvider getProviders(int index);
+  com.game_engine.game.v1.GameProvider getProviders(int index);
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetProvidersResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
-  java.util.List<? extends com.game-engine.game.v1.GameProviderOrBuilder> 
+  java.util.List<? extends com.game_engine.game.v1.GameProviderOrBuilder> 
       getProvidersOrBuilderList();
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
-  com.game-engine.game.v1.GameProviderOrBuilder getProvidersOrBuilder(
+  com.game_engine.game.v1.GameProviderOrBuilder getProvidersOrBuilder(
       int index);
 }

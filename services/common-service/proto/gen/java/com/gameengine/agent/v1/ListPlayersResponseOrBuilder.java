@@ -2,7 +2,7 @@
 // source: game-engine/agent/v1/agent_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.agent.v1;
+package com.game_engine.agent.v1;
 
 public interface ListPlayersResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.agent.v1.ListPlayersResponse)
@@ -11,12 +11,12 @@ public interface ListPlayersResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.agent.v1.Player players = 1 [json_name = "players"];</code>
    */
-  java.util.List<com.game-engine.agent.v1.Player> 
+  java.util.List<com.game_engine.agent.v1.Player> 
       getPlayersList();
   /**
    * <code>repeated .game-engine.agent.v1.Player players = 1 [json_name = "players"];</code>
    */
-  com.game-engine.agent.v1.Player getPlayers(int index);
+  com.game_engine.agent.v1.Player getPlayers(int index);
   /**
    * <code>repeated .game-engine.agent.v1.Player players = 1 [json_name = "players"];</code>
    */
@@ -24,12 +24,12 @@ public interface ListPlayersResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.agent.v1.Player players = 1 [json_name = "players"];</code>
    */
-  java.util.List<? extends com.game-engine.agent.v1.PlayerOrBuilder> 
+  java.util.List<? extends com.game_engine.agent.v1.PlayerOrBuilder> 
       getPlayersOrBuilderList();
   /**
    * <code>repeated .game-engine.agent.v1.Player players = 1 [json_name = "players"];</code>
    */
-  com.game-engine.agent.v1.PlayerOrBuilder getPlayersOrBuilder(
+  com.game_engine.agent.v1.PlayerOrBuilder getPlayersOrBuilder(
       int index);
 
   /**

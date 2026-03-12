@@ -2,7 +2,7 @@
 // source: game-engine/merchant/v1/merchant_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.merchant.v1;
+package com.game_engine.merchant.v1;
 
 /**
  * Protobuf type {@code game-engine.merchant.v1.Webhook}
@@ -32,15 +32,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_descriptor;
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_fieldAccessorTable
+    return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.merchant.v1.Webhook.class, com.game-engine.merchant.v1.Webhook.Builder.class);
+            com.game_engine.merchant.v1.Webhook.class, com.game_engine.merchant.v1.Webhook.Builder.class);
   }
 
   public static final int WEBHOOK_ID_FIELD_NUMBER = 1;
@@ -256,10 +256,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.merchant.v1.Webhook)) {
+    if (!(obj instanceof com.game_engine.merchant.v1.Webhook)) {
       return super.equals(obj);
     }
-    com.game-engine.merchant.v1.Webhook other = (com.game-engine.merchant.v1.Webhook) obj;
+    com.game_engine.merchant.v1.Webhook other = (com.game_engine.merchant.v1.Webhook) obj;
 
     if (!getWebhookId()
         .equals(other.getWebhookId())) return false;
@@ -293,44 +293,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(byte[] data)
+  public static com.game_engine.merchant.v1.Webhook parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.Webhook parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -338,26 +338,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.merchant.v1.Webhook parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.merchant.v1.Webhook parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.merchant.v1.Webhook parseDelimitedFrom(
+  public static com.game_engine.merchant.v1.Webhook parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.merchant.v1.Webhook parseFrom(
+  public static com.game_engine.merchant.v1.Webhook parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -370,7 +370,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.merchant.v1.Webhook prototype) {
+  public static Builder newBuilder(com.game_engine.merchant.v1.Webhook prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -391,21 +391,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.merchant.v1.Webhook)
-      com.game-engine.merchant.v1.WebhookOrBuilder {
+      com.game_engine.merchant.v1.WebhookOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_fieldAccessorTable
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.merchant.v1.Webhook.class, com.game-engine.merchant.v1.Webhook.Builder.class);
+              com.game_engine.merchant.v1.Webhook.class, com.game_engine.merchant.v1.Webhook.Builder.class);
     }
 
-    // Construct using com.game-engine.merchant.v1.Webhook.newBuilder()
+    // Construct using com.game_engine.merchant.v1.Webhook.newBuilder()
     private Builder() {
 
     }
@@ -429,17 +429,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_descriptor;
+      return com.game_engine.merchant.v1.MerchantServiceOuterClass.internal_static_game-engine_merchant_v1_Webhook_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.Webhook getDefaultInstanceForType() {
-      return com.game-engine.merchant.v1.Webhook.getDefaultInstance();
+    public com.game_engine.merchant.v1.Webhook getDefaultInstanceForType() {
+      return com.game_engine.merchant.v1.Webhook.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.Webhook build() {
-      com.game-engine.merchant.v1.Webhook result = buildPartial();
+    public com.game_engine.merchant.v1.Webhook build() {
+      com.game_engine.merchant.v1.Webhook result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -447,14 +447,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.merchant.v1.Webhook buildPartial() {
-      com.game-engine.merchant.v1.Webhook result = new com.game-engine.merchant.v1.Webhook(this);
+    public com.game_engine.merchant.v1.Webhook buildPartial() {
+      com.game_engine.merchant.v1.Webhook result = new com.game_engine.merchant.v1.Webhook(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.merchant.v1.Webhook result) {
+    private void buildPartial0(com.game_engine.merchant.v1.Webhook result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.webhookId_ = webhookId_;
@@ -504,16 +504,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.merchant.v1.Webhook) {
-        return mergeFrom((com.game-engine.merchant.v1.Webhook)other);
+      if (other instanceof com.game_engine.merchant.v1.Webhook) {
+        return mergeFrom((com.game_engine.merchant.v1.Webhook)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.merchant.v1.Webhook other) {
-      if (other == com.game-engine.merchant.v1.Webhook.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.merchant.v1.Webhook other) {
+      if (other == com.game_engine.merchant.v1.Webhook.getDefaultInstance()) return this;
       if (!other.getWebhookId().isEmpty()) {
         webhookId_ = other.webhookId_;
         bitField0_ |= 0x00000001;
@@ -901,12 +901,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.merchant.v1.Webhook)
-  private static final com.game-engine.merchant.v1.Webhook DEFAULT_INSTANCE;
+  private static final com.game_engine.merchant.v1.Webhook DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.merchant.v1.Webhook();
+    DEFAULT_INSTANCE = new com.game_engine.merchant.v1.Webhook();
   }
 
-  public static com.game-engine.merchant.v1.Webhook getDefaultInstance() {
+  public static com.game_engine.merchant.v1.Webhook getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -942,7 +942,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.merchant.v1.Webhook getDefaultInstanceForType() {
+  public com.game_engine.merchant.v1.Webhook getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

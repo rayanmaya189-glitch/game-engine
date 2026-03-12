@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 /**
  * Protobuf type {@code game-engine.game.v1.GetProvidersResponse}
@@ -29,32 +29,32 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_descriptor;
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_fieldAccessorTable
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.game.v1.GetProvidersResponse.class, com.game-engine.game.v1.GetProvidersResponse.Builder.class);
+            com.game_engine.game.v1.GetProvidersResponse.class, com.game_engine.game.v1.GetProvidersResponse.Builder.class);
   }
 
   public static final int PROVIDERS_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private java.util.List<com.game-engine.game.v1.GameProvider> providers_;
+  private java.util.List<com.game_engine.game.v1.GameProvider> providers_;
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.game.v1.GameProvider> getProvidersList() {
+  public java.util.List<com.game_engine.game.v1.GameProvider> getProvidersList() {
     return providers_;
   }
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
   @java.lang.Override
-  public java.util.List<? extends com.game-engine.game.v1.GameProviderOrBuilder> 
+  public java.util.List<? extends com.game_engine.game.v1.GameProviderOrBuilder> 
       getProvidersOrBuilderList() {
     return providers_;
   }
@@ -69,14 +69,14 @@ private static final long serialVersionUID = 0L;
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
   @java.lang.Override
-  public com.game-engine.game.v1.GameProvider getProviders(int index) {
+  public com.game_engine.game.v1.GameProvider getProviders(int index) {
     return providers_.get(index);
   }
   /**
    * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
    */
   @java.lang.Override
-  public com.game-engine.game.v1.GameProviderOrBuilder getProvidersOrBuilder(
+  public com.game_engine.game.v1.GameProviderOrBuilder getProvidersOrBuilder(
       int index) {
     return providers_.get(index);
   }
@@ -121,10 +121,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.game.v1.GetProvidersResponse)) {
+    if (!(obj instanceof com.game_engine.game.v1.GetProvidersResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.game.v1.GetProvidersResponse other = (com.game-engine.game.v1.GetProvidersResponse) obj;
+    com.game_engine.game.v1.GetProvidersResponse other = (com.game_engine.game.v1.GetProvidersResponse) obj;
 
     if (!getProvidersList()
         .equals(other.getProvidersList())) return false;
@@ -148,44 +148,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(byte[] data)
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -193,26 +193,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.game.v1.GetProvidersResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.GetProvidersResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.game.v1.GetProvidersResponse parseDelimitedFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.GetProvidersResponse parseFrom(
+  public static com.game_engine.game.v1.GetProvidersResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -225,7 +225,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.game.v1.GetProvidersResponse prototype) {
+  public static Builder newBuilder(com.game_engine.game.v1.GetProvidersResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -246,21 +246,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.game.v1.GetProvidersResponse)
-      com.game-engine.game.v1.GetProvidersResponseOrBuilder {
+      com.game_engine.game.v1.GetProvidersResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_fieldAccessorTable
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.game.v1.GetProvidersResponse.class, com.game-engine.game.v1.GetProvidersResponse.Builder.class);
+              com.game_engine.game.v1.GetProvidersResponse.class, com.game_engine.game.v1.GetProvidersResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.game.v1.GetProvidersResponse.newBuilder()
+    // Construct using com.game_engine.game.v1.GetProvidersResponse.newBuilder()
     private Builder() {
 
     }
@@ -287,17 +287,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_GetProvidersResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetProvidersResponse getDefaultInstanceForType() {
-      return com.game-engine.game.v1.GetProvidersResponse.getDefaultInstance();
+    public com.game_engine.game.v1.GetProvidersResponse getDefaultInstanceForType() {
+      return com.game_engine.game.v1.GetProvidersResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetProvidersResponse build() {
-      com.game-engine.game.v1.GetProvidersResponse result = buildPartial();
+    public com.game_engine.game.v1.GetProvidersResponse build() {
+      com.game_engine.game.v1.GetProvidersResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -305,15 +305,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.GetProvidersResponse buildPartial() {
-      com.game-engine.game.v1.GetProvidersResponse result = new com.game-engine.game.v1.GetProvidersResponse(this);
+    public com.game_engine.game.v1.GetProvidersResponse buildPartial() {
+      com.game_engine.game.v1.GetProvidersResponse result = new com.game_engine.game.v1.GetProvidersResponse(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(com.game-engine.game.v1.GetProvidersResponse result) {
+    private void buildPartialRepeatedFields(com.game_engine.game.v1.GetProvidersResponse result) {
       if (providersBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0)) {
           providers_ = java.util.Collections.unmodifiableList(providers_);
@@ -325,7 +325,7 @@ private static final long serialVersionUID = 0L;
       }
     }
 
-    private void buildPartial0(com.game-engine.game.v1.GetProvidersResponse result) {
+    private void buildPartial0(com.game_engine.game.v1.GetProvidersResponse result) {
       int from_bitField0_ = bitField0_;
     }
 
@@ -363,16 +363,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.game.v1.GetProvidersResponse) {
-        return mergeFrom((com.game-engine.game.v1.GetProvidersResponse)other);
+      if (other instanceof com.game_engine.game.v1.GetProvidersResponse) {
+        return mergeFrom((com.game_engine.game.v1.GetProvidersResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.game.v1.GetProvidersResponse other) {
-      if (other == com.game-engine.game.v1.GetProvidersResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.game.v1.GetProvidersResponse other) {
+      if (other == com.game_engine.game.v1.GetProvidersResponse.getDefaultInstance()) return this;
       if (providersBuilder_ == null) {
         if (!other.providers_.isEmpty()) {
           if (providers_.isEmpty()) {
@@ -426,9 +426,9 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              com.game-engine.game.v1.GameProvider m =
+              com.game_engine.game.v1.GameProvider m =
                   input.readMessage(
-                      com.game-engine.game.v1.GameProvider.parser(),
+                      com.game_engine.game.v1.GameProvider.parser(),
                       extensionRegistry);
               if (providersBuilder_ == null) {
                 ensureProvidersIsMutable();
@@ -455,22 +455,22 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.util.List<com.game-engine.game.v1.GameProvider> providers_ =
+    private java.util.List<com.game_engine.game.v1.GameProvider> providers_ =
       java.util.Collections.emptyList();
     private void ensureProvidersIsMutable() {
       if (!((bitField0_ & 0x00000001) != 0)) {
-        providers_ = new java.util.ArrayList<com.game-engine.game.v1.GameProvider>(providers_);
+        providers_ = new java.util.ArrayList<com.game_engine.game.v1.GameProvider>(providers_);
         bitField0_ |= 0x00000001;
        }
     }
 
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.game-engine.game.v1.GameProvider, com.game-engine.game.v1.GameProvider.Builder, com.game-engine.game.v1.GameProviderOrBuilder> providersBuilder_;
+        com.game_engine.game.v1.GameProvider, com.game_engine.game.v1.GameProvider.Builder, com.game_engine.game.v1.GameProviderOrBuilder> providersBuilder_;
 
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public java.util.List<com.game-engine.game.v1.GameProvider> getProvidersList() {
+    public java.util.List<com.game_engine.game.v1.GameProvider> getProvidersList() {
       if (providersBuilder_ == null) {
         return java.util.Collections.unmodifiableList(providers_);
       } else {
@@ -490,7 +490,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public com.game-engine.game.v1.GameProvider getProviders(int index) {
+    public com.game_engine.game.v1.GameProvider getProviders(int index) {
       if (providersBuilder_ == null) {
         return providers_.get(index);
       } else {
@@ -501,7 +501,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
     public Builder setProviders(
-        int index, com.game-engine.game.v1.GameProvider value) {
+        int index, com.game_engine.game.v1.GameProvider value) {
       if (providersBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -518,7 +518,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
     public Builder setProviders(
-        int index, com.game-engine.game.v1.GameProvider.Builder builderForValue) {
+        int index, com.game_engine.game.v1.GameProvider.Builder builderForValue) {
       if (providersBuilder_ == null) {
         ensureProvidersIsMutable();
         providers_.set(index, builderForValue.build());
@@ -531,7 +531,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public Builder addProviders(com.game-engine.game.v1.GameProvider value) {
+    public Builder addProviders(com.game_engine.game.v1.GameProvider value) {
       if (providersBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -548,7 +548,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
     public Builder addProviders(
-        int index, com.game-engine.game.v1.GameProvider value) {
+        int index, com.game_engine.game.v1.GameProvider value) {
       if (providersBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -565,7 +565,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
     public Builder addProviders(
-        com.game-engine.game.v1.GameProvider.Builder builderForValue) {
+        com.game_engine.game.v1.GameProvider.Builder builderForValue) {
       if (providersBuilder_ == null) {
         ensureProvidersIsMutable();
         providers_.add(builderForValue.build());
@@ -579,7 +579,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
     public Builder addProviders(
-        int index, com.game-engine.game.v1.GameProvider.Builder builderForValue) {
+        int index, com.game_engine.game.v1.GameProvider.Builder builderForValue) {
       if (providersBuilder_ == null) {
         ensureProvidersIsMutable();
         providers_.add(index, builderForValue.build());
@@ -593,7 +593,7 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
     public Builder addAllProviders(
-        java.lang.Iterable<? extends com.game-engine.game.v1.GameProvider> values) {
+        java.lang.Iterable<? extends com.game_engine.game.v1.GameProvider> values) {
       if (providersBuilder_ == null) {
         ensureProvidersIsMutable();
         com.google.protobuf.AbstractMessageLite.Builder.addAll(
@@ -633,14 +633,14 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public com.game-engine.game.v1.GameProvider.Builder getProvidersBuilder(
+    public com.game_engine.game.v1.GameProvider.Builder getProvidersBuilder(
         int index) {
       return getProvidersFieldBuilder().getBuilder(index);
     }
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public com.game-engine.game.v1.GameProviderOrBuilder getProvidersOrBuilder(
+    public com.game_engine.game.v1.GameProviderOrBuilder getProvidersOrBuilder(
         int index) {
       if (providersBuilder_ == null) {
         return providers_.get(index);  } else {
@@ -650,7 +650,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public java.util.List<? extends com.game-engine.game.v1.GameProviderOrBuilder> 
+    public java.util.List<? extends com.game_engine.game.v1.GameProviderOrBuilder> 
          getProvidersOrBuilderList() {
       if (providersBuilder_ != null) {
         return providersBuilder_.getMessageOrBuilderList();
@@ -661,31 +661,31 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public com.game-engine.game.v1.GameProvider.Builder addProvidersBuilder() {
+    public com.game_engine.game.v1.GameProvider.Builder addProvidersBuilder() {
       return getProvidersFieldBuilder().addBuilder(
-          com.game-engine.game.v1.GameProvider.getDefaultInstance());
+          com.game_engine.game.v1.GameProvider.getDefaultInstance());
     }
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public com.game-engine.game.v1.GameProvider.Builder addProvidersBuilder(
+    public com.game_engine.game.v1.GameProvider.Builder addProvidersBuilder(
         int index) {
       return getProvidersFieldBuilder().addBuilder(
-          index, com.game-engine.game.v1.GameProvider.getDefaultInstance());
+          index, com.game_engine.game.v1.GameProvider.getDefaultInstance());
     }
     /**
      * <code>repeated .game-engine.game.v1.GameProvider providers = 1 [json_name = "providers"];</code>
      */
-    public java.util.List<com.game-engine.game.v1.GameProvider.Builder> 
+    public java.util.List<com.game_engine.game.v1.GameProvider.Builder> 
          getProvidersBuilderList() {
       return getProvidersFieldBuilder().getBuilderList();
     }
     private com.google.protobuf.RepeatedFieldBuilderV3<
-        com.game-engine.game.v1.GameProvider, com.game-engine.game.v1.GameProvider.Builder, com.game-engine.game.v1.GameProviderOrBuilder> 
+        com.game_engine.game.v1.GameProvider, com.game_engine.game.v1.GameProvider.Builder, com.game_engine.game.v1.GameProviderOrBuilder> 
         getProvidersFieldBuilder() {
       if (providersBuilder_ == null) {
         providersBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
-            com.game-engine.game.v1.GameProvider, com.game-engine.game.v1.GameProvider.Builder, com.game-engine.game.v1.GameProviderOrBuilder>(
+            com.game_engine.game.v1.GameProvider, com.game_engine.game.v1.GameProvider.Builder, com.game_engine.game.v1.GameProviderOrBuilder>(
                 providers_,
                 ((bitField0_ & 0x00000001) != 0),
                 getParentForChildren(),
@@ -711,12 +711,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.game.v1.GetProvidersResponse)
-  private static final com.game-engine.game.v1.GetProvidersResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.game.v1.GetProvidersResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.game.v1.GetProvidersResponse();
+    DEFAULT_INSTANCE = new com.game_engine.game.v1.GetProvidersResponse();
   }
 
-  public static com.game-engine.game.v1.GetProvidersResponse getDefaultInstance() {
+  public static com.game_engine.game.v1.GetProvidersResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -752,7 +752,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.game.v1.GetProvidersResponse getDefaultInstanceForType() {
+  public com.game_engine.game.v1.GetProvidersResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

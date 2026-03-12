@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.GetPendingBetsRequest}
@@ -30,15 +30,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.GetPendingBetsRequest.class, com.game-engine.wallet.v1.GetPendingBetsRequest.Builder.class);
+            com.game_engine.wallet.v1.GetPendingBetsRequest.class, com.game_engine.wallet.v1.GetPendingBetsRequest.Builder.class);
   }
 
   private int bitField0_;
@@ -121,7 +121,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int PAGINATION_FIELD_NUMBER = 3;
-  private com.game-engine.common.v1.PaginationRequest pagination_;
+  private com.game_engine.common.v1.PaginationRequest pagination_;
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
    * @return Whether the pagination field is set.
@@ -135,15 +135,15 @@ private static final long serialVersionUID = 0L;
    * @return The pagination.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.PaginationRequest getPagination() {
-    return pagination_ == null ? com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+  public com.game_engine.common.v1.PaginationRequest getPagination() {
+    return pagination_ == null ? com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
   }
   /**
    * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
-    return pagination_ == null ? com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+  public com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
+    return pagination_ == null ? com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -198,10 +198,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.GetPendingBetsRequest)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.GetPendingBetsRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.GetPendingBetsRequest other = (com.game-engine.wallet.v1.GetPendingBetsRequest) obj;
+    com.game_engine.wallet.v1.GetPendingBetsRequest other = (com.game_engine.wallet.v1.GetPendingBetsRequest) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -236,44 +236,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -281,26 +281,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest parseFrom(
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -313,7 +313,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.GetPendingBetsRequest prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.GetPendingBetsRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -334,21 +334,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.GetPendingBetsRequest)
-      com.game-engine.wallet.v1.GetPendingBetsRequestOrBuilder {
+      com.game_engine.wallet.v1.GetPendingBetsRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.GetPendingBetsRequest.class, com.game-engine.wallet.v1.GetPendingBetsRequest.Builder.class);
+              com.game_engine.wallet.v1.GetPendingBetsRequest.class, com.game_engine.wallet.v1.GetPendingBetsRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.GetPendingBetsRequest.newBuilder()
+    // Construct using com.game_engine.wallet.v1.GetPendingBetsRequest.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -381,17 +381,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_GetPendingBetsRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.GetPendingBetsRequest getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.GetPendingBetsRequest.getDefaultInstance();
+    public com.game_engine.wallet.v1.GetPendingBetsRequest getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.GetPendingBetsRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.GetPendingBetsRequest build() {
-      com.game-engine.wallet.v1.GetPendingBetsRequest result = buildPartial();
+    public com.game_engine.wallet.v1.GetPendingBetsRequest build() {
+      com.game_engine.wallet.v1.GetPendingBetsRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -399,14 +399,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.GetPendingBetsRequest buildPartial() {
-      com.game-engine.wallet.v1.GetPendingBetsRequest result = new com.game-engine.wallet.v1.GetPendingBetsRequest(this);
+    public com.game_engine.wallet.v1.GetPendingBetsRequest buildPartial() {
+      com.game_engine.wallet.v1.GetPendingBetsRequest result = new com.game_engine.wallet.v1.GetPendingBetsRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.GetPendingBetsRequest result) {
+    private void buildPartial0(com.game_engine.wallet.v1.GetPendingBetsRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -458,16 +458,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.GetPendingBetsRequest) {
-        return mergeFrom((com.game-engine.wallet.v1.GetPendingBetsRequest)other);
+      if (other instanceof com.game_engine.wallet.v1.GetPendingBetsRequest) {
+        return mergeFrom((com.game_engine.wallet.v1.GetPendingBetsRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.GetPendingBetsRequest other) {
-      if (other == com.game-engine.wallet.v1.GetPendingBetsRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.GetPendingBetsRequest other) {
+      if (other == com.game_engine.wallet.v1.GetPendingBetsRequest.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -685,9 +685,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.common.v1.PaginationRequest pagination_;
+    private com.game_engine.common.v1.PaginationRequest pagination_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.PaginationRequest, com.game-engine.common.v1.PaginationRequest.Builder, com.game-engine.common.v1.PaginationRequestOrBuilder> paginationBuilder_;
+        com.game_engine.common.v1.PaginationRequest, com.game_engine.common.v1.PaginationRequest.Builder, com.game_engine.common.v1.PaginationRequestOrBuilder> paginationBuilder_;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      * @return Whether the pagination field is set.
@@ -699,9 +699,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      * @return The pagination.
      */
-    public com.game-engine.common.v1.PaginationRequest getPagination() {
+    public com.game_engine.common.v1.PaginationRequest getPagination() {
       if (paginationBuilder_ == null) {
-        return pagination_ == null ? com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+        return pagination_ == null ? com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
       } else {
         return paginationBuilder_.getMessage();
       }
@@ -709,7 +709,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      */
-    public Builder setPagination(com.game-engine.common.v1.PaginationRequest value) {
+    public Builder setPagination(com.game_engine.common.v1.PaginationRequest value) {
       if (paginationBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -726,7 +726,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      */
     public Builder setPagination(
-        com.game-engine.common.v1.PaginationRequest.Builder builderForValue) {
+        com.game_engine.common.v1.PaginationRequest.Builder builderForValue) {
       if (paginationBuilder_ == null) {
         pagination_ = builderForValue.build();
       } else {
@@ -739,11 +739,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      */
-    public Builder mergePagination(com.game-engine.common.v1.PaginationRequest value) {
+    public Builder mergePagination(com.game_engine.common.v1.PaginationRequest value) {
       if (paginationBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0) &&
           pagination_ != null &&
-          pagination_ != com.game-engine.common.v1.PaginationRequest.getDefaultInstance()) {
+          pagination_ != com.game_engine.common.v1.PaginationRequest.getDefaultInstance()) {
           getPaginationBuilder().mergeFrom(value);
         } else {
           pagination_ = value;
@@ -773,7 +773,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      */
-    public com.game-engine.common.v1.PaginationRequest.Builder getPaginationBuilder() {
+    public com.game_engine.common.v1.PaginationRequest.Builder getPaginationBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getPaginationFieldBuilder().getBuilder();
@@ -781,23 +781,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      */
-    public com.game-engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
+    public com.game_engine.common.v1.PaginationRequestOrBuilder getPaginationOrBuilder() {
       if (paginationBuilder_ != null) {
         return paginationBuilder_.getMessageOrBuilder();
       } else {
         return pagination_ == null ?
-            com.game-engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
+            com.game_engine.common.v1.PaginationRequest.getDefaultInstance() : pagination_;
       }
     }
     /**
      * <code>.game-engine.common.v1.PaginationRequest pagination = 3 [json_name = "pagination"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.PaginationRequest, com.game-engine.common.v1.PaginationRequest.Builder, com.game-engine.common.v1.PaginationRequestOrBuilder> 
+        com.game_engine.common.v1.PaginationRequest, com.game_engine.common.v1.PaginationRequest.Builder, com.game_engine.common.v1.PaginationRequestOrBuilder> 
         getPaginationFieldBuilder() {
       if (paginationBuilder_ == null) {
         paginationBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.PaginationRequest, com.game-engine.common.v1.PaginationRequest.Builder, com.game-engine.common.v1.PaginationRequestOrBuilder>(
+            com.game_engine.common.v1.PaginationRequest, com.game_engine.common.v1.PaginationRequest.Builder, com.game_engine.common.v1.PaginationRequestOrBuilder>(
                 getPagination(),
                 getParentForChildren(),
                 isClean());
@@ -822,12 +822,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.GetPendingBetsRequest)
-  private static final com.game-engine.wallet.v1.GetPendingBetsRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.GetPendingBetsRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.GetPendingBetsRequest();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.GetPendingBetsRequest();
   }
 
-  public static com.game-engine.wallet.v1.GetPendingBetsRequest getDefaultInstance() {
+  public static com.game_engine.wallet.v1.GetPendingBetsRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -863,7 +863,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.GetPendingBetsRequest getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.GetPendingBetsRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface CreateDepositResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.CreateDepositResponse)
@@ -17,11 +17,11 @@ public interface CreateDepositResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction deposit = 1 [json_name = "deposit"];</code>
    * @return The deposit.
    */
-  com.game-engine.wallet.v1.Transaction getDeposit();
+  com.game_engine.wallet.v1.Transaction getDeposit();
   /**
    * <code>.game-engine.wallet.v1.Transaction deposit = 1 [json_name = "deposit"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getDepositOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getDepositOrBuilder();
 
   /**
    * <code>string payment_url = 2 [json_name = "paymentUrl"];</code>

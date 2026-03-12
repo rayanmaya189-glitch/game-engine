@@ -26,7 +26,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.game.v1.game_registry_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.game-engine.game.v1P\001Z\026gen/go/game/v1;gamesv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\026com.game_engine.game.v1P\001Z\026gen/go/game/v1;gamesv1'
   _globals['_LISTGAMESREQUEST']._serialized_start=232
   _globals['_LISTGAMESREQUEST']._serialized_end=776
   _globals['_LISTGAMESRESPONSE']._serialized_start=779

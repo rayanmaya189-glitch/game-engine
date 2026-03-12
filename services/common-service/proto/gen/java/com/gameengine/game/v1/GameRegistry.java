@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public final class GameRegistry {
   private GameRegistry() {}
@@ -319,7 +319,7 @@ public final class GameRegistry {
       "ngine.game.v1.GetPopularGamesResponse\022^\n" +
       "\013GetNewGames\022&.game-engine.game.v1.GetNew" +
       "GamesRequest\032\'.game-engine.game.v1.GetNew" +
-      "GamesResponseB2\n\026com.game-engine.game.v1P" +
+      "GamesResponseB2\n\026com.game_engine.game.v1P" +
       "\001Z\026gen/go/game/v1;gamesv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
@@ -327,9 +327,9 @@ public final class GameRegistry {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.google.protobuf.EmptyProto.getDescriptor(),
-          com.game-engine.common.v1.Enums.getDescriptor(),
-          com.game-engine.common.v1.Pagination.getDescriptor(),
-          com.game-engine.common.v1.MoneyOuterClass.getDescriptor(),
+          com.game_engine.common.v1.Enums.getDescriptor(),
+          com.game_engine.common.v1.Pagination.getDescriptor(),
+          com.game_engine.common.v1.MoneyOuterClass.getDescriptor(),
         });
     internal_static_game-engine_game_v1_ListGamesRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
@@ -483,9 +483,9 @@ public final class GameRegistry {
         new java.lang.String[] { "ProviderId", "Name", "Description", "LogoUrl", "WebsiteUrl", "Status", "GamesCount", "License", "Established", "IsFeatured", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
-    com.game-engine.common.v1.Enums.getDescriptor();
-    com.game-engine.common.v1.Pagination.getDescriptor();
-    com.game-engine.common.v1.MoneyOuterClass.getDescriptor();
+    com.game_engine.common.v1.Enums.getDescriptor();
+    com.game_engine.common.v1.Pagination.getDescriptor();
+    com.game_engine.common.v1.MoneyOuterClass.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

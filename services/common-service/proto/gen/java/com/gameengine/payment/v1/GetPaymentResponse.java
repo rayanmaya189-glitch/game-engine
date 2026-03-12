@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 /**
  * Protobuf type {@code game-engine.payment.v1.GetPaymentResponse}
@@ -28,20 +28,20 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_descriptor;
+    return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_fieldAccessorTable
+    return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.payment.v1.GetPaymentResponse.class, com.game-engine.payment.v1.GetPaymentResponse.Builder.class);
+            com.game_engine.payment.v1.GetPaymentResponse.class, com.game_engine.payment.v1.GetPaymentResponse.Builder.class);
   }
 
   private int bitField0_;
   public static final int PAYMENT_FIELD_NUMBER = 1;
-  private com.game-engine.payment.v1.Payment payment_;
+  private com.game_engine.payment.v1.Payment payment_;
   /**
    * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
    * @return Whether the payment field is set.
@@ -55,15 +55,15 @@ private static final long serialVersionUID = 0L;
    * @return The payment.
    */
   @java.lang.Override
-  public com.game-engine.payment.v1.Payment getPayment() {
-    return payment_ == null ? com.game-engine.payment.v1.Payment.getDefaultInstance() : payment_;
+  public com.game_engine.payment.v1.Payment getPayment() {
+    return payment_ == null ? com.game_engine.payment.v1.Payment.getDefaultInstance() : payment_;
   }
   /**
    * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
    */
   @java.lang.Override
-  public com.game-engine.payment.v1.PaymentOrBuilder getPaymentOrBuilder() {
-    return payment_ == null ? com.game-engine.payment.v1.Payment.getDefaultInstance() : payment_;
+  public com.game_engine.payment.v1.PaymentOrBuilder getPaymentOrBuilder() {
+    return payment_ == null ? com.game_engine.payment.v1.Payment.getDefaultInstance() : payment_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -106,10 +106,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.payment.v1.GetPaymentResponse)) {
+    if (!(obj instanceof com.game_engine.payment.v1.GetPaymentResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.payment.v1.GetPaymentResponse other = (com.game-engine.payment.v1.GetPaymentResponse) obj;
+    com.game_engine.payment.v1.GetPaymentResponse other = (com.game_engine.payment.v1.GetPaymentResponse) obj;
 
     if (hasPayment() != other.hasPayment()) return false;
     if (hasPayment()) {
@@ -136,44 +136,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(byte[] data)
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -181,26 +181,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.payment.v1.GetPaymentResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.payment.v1.GetPaymentResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.payment.v1.GetPaymentResponse parseDelimitedFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.payment.v1.GetPaymentResponse parseFrom(
+  public static com.game_engine.payment.v1.GetPaymentResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -213,7 +213,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.payment.v1.GetPaymentResponse prototype) {
+  public static Builder newBuilder(com.game_engine.payment.v1.GetPaymentResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -234,21 +234,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.payment.v1.GetPaymentResponse)
-      com.game-engine.payment.v1.GetPaymentResponseOrBuilder {
+      com.game_engine.payment.v1.GetPaymentResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_descriptor;
+      return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_fieldAccessorTable
+      return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.payment.v1.GetPaymentResponse.class, com.game-engine.payment.v1.GetPaymentResponse.Builder.class);
+              com.game_engine.payment.v1.GetPaymentResponse.class, com.game_engine.payment.v1.GetPaymentResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.payment.v1.GetPaymentResponse.newBuilder()
+    // Construct using com.game_engine.payment.v1.GetPaymentResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -279,17 +279,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_descriptor;
+      return com.game_engine.payment.v1.PaymentServiceOuterClass.internal_static_game-engine_payment_v1_GetPaymentResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.payment.v1.GetPaymentResponse getDefaultInstanceForType() {
-      return com.game-engine.payment.v1.GetPaymentResponse.getDefaultInstance();
+    public com.game_engine.payment.v1.GetPaymentResponse getDefaultInstanceForType() {
+      return com.game_engine.payment.v1.GetPaymentResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.payment.v1.GetPaymentResponse build() {
-      com.game-engine.payment.v1.GetPaymentResponse result = buildPartial();
+    public com.game_engine.payment.v1.GetPaymentResponse build() {
+      com.game_engine.payment.v1.GetPaymentResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -297,14 +297,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.payment.v1.GetPaymentResponse buildPartial() {
-      com.game-engine.payment.v1.GetPaymentResponse result = new com.game-engine.payment.v1.GetPaymentResponse(this);
+    public com.game_engine.payment.v1.GetPaymentResponse buildPartial() {
+      com.game_engine.payment.v1.GetPaymentResponse result = new com.game_engine.payment.v1.GetPaymentResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.payment.v1.GetPaymentResponse result) {
+    private void buildPartial0(com.game_engine.payment.v1.GetPaymentResponse result) {
       int from_bitField0_ = bitField0_;
       int to_bitField0_ = 0;
       if (((from_bitField0_ & 0x00000001) != 0)) {
@@ -350,16 +350,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.payment.v1.GetPaymentResponse) {
-        return mergeFrom((com.game-engine.payment.v1.GetPaymentResponse)other);
+      if (other instanceof com.game_engine.payment.v1.GetPaymentResponse) {
+        return mergeFrom((com.game_engine.payment.v1.GetPaymentResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.payment.v1.GetPaymentResponse other) {
-      if (other == com.game-engine.payment.v1.GetPaymentResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.payment.v1.GetPaymentResponse other) {
+      if (other == com.game_engine.payment.v1.GetPaymentResponse.getDefaultInstance()) return this;
       if (other.hasPayment()) {
         mergePayment(other.getPayment());
       }
@@ -413,9 +413,9 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private com.game-engine.payment.v1.Payment payment_;
+    private com.game_engine.payment.v1.Payment payment_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.payment.v1.Payment, com.game-engine.payment.v1.Payment.Builder, com.game-engine.payment.v1.PaymentOrBuilder> paymentBuilder_;
+        com.game_engine.payment.v1.Payment, com.game_engine.payment.v1.Payment.Builder, com.game_engine.payment.v1.PaymentOrBuilder> paymentBuilder_;
     /**
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      * @return Whether the payment field is set.
@@ -427,9 +427,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      * @return The payment.
      */
-    public com.game-engine.payment.v1.Payment getPayment() {
+    public com.game_engine.payment.v1.Payment getPayment() {
       if (paymentBuilder_ == null) {
-        return payment_ == null ? com.game-engine.payment.v1.Payment.getDefaultInstance() : payment_;
+        return payment_ == null ? com.game_engine.payment.v1.Payment.getDefaultInstance() : payment_;
       } else {
         return paymentBuilder_.getMessage();
       }
@@ -437,7 +437,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      */
-    public Builder setPayment(com.game-engine.payment.v1.Payment value) {
+    public Builder setPayment(com.game_engine.payment.v1.Payment value) {
       if (paymentBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -454,7 +454,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      */
     public Builder setPayment(
-        com.game-engine.payment.v1.Payment.Builder builderForValue) {
+        com.game_engine.payment.v1.Payment.Builder builderForValue) {
       if (paymentBuilder_ == null) {
         payment_ = builderForValue.build();
       } else {
@@ -467,11 +467,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      */
-    public Builder mergePayment(com.game-engine.payment.v1.Payment value) {
+    public Builder mergePayment(com.game_engine.payment.v1.Payment value) {
       if (paymentBuilder_ == null) {
         if (((bitField0_ & 0x00000001) != 0) &&
           payment_ != null &&
-          payment_ != com.game-engine.payment.v1.Payment.getDefaultInstance()) {
+          payment_ != com.game_engine.payment.v1.Payment.getDefaultInstance()) {
           getPaymentBuilder().mergeFrom(value);
         } else {
           payment_ = value;
@@ -501,7 +501,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      */
-    public com.game-engine.payment.v1.Payment.Builder getPaymentBuilder() {
+    public com.game_engine.payment.v1.Payment.Builder getPaymentBuilder() {
       bitField0_ |= 0x00000001;
       onChanged();
       return getPaymentFieldBuilder().getBuilder();
@@ -509,23 +509,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      */
-    public com.game-engine.payment.v1.PaymentOrBuilder getPaymentOrBuilder() {
+    public com.game_engine.payment.v1.PaymentOrBuilder getPaymentOrBuilder() {
       if (paymentBuilder_ != null) {
         return paymentBuilder_.getMessageOrBuilder();
       } else {
         return payment_ == null ?
-            com.game-engine.payment.v1.Payment.getDefaultInstance() : payment_;
+            com.game_engine.payment.v1.Payment.getDefaultInstance() : payment_;
       }
     }
     /**
      * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.payment.v1.Payment, com.game-engine.payment.v1.Payment.Builder, com.game-engine.payment.v1.PaymentOrBuilder> 
+        com.game_engine.payment.v1.Payment, com.game_engine.payment.v1.Payment.Builder, com.game_engine.payment.v1.PaymentOrBuilder> 
         getPaymentFieldBuilder() {
       if (paymentBuilder_ == null) {
         paymentBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.payment.v1.Payment, com.game-engine.payment.v1.Payment.Builder, com.game-engine.payment.v1.PaymentOrBuilder>(
+            com.game_engine.payment.v1.Payment, com.game_engine.payment.v1.Payment.Builder, com.game_engine.payment.v1.PaymentOrBuilder>(
                 getPayment(),
                 getParentForChildren(),
                 isClean());
@@ -550,12 +550,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.payment.v1.GetPaymentResponse)
-  private static final com.game-engine.payment.v1.GetPaymentResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.payment.v1.GetPaymentResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.payment.v1.GetPaymentResponse();
+    DEFAULT_INSTANCE = new com.game_engine.payment.v1.GetPaymentResponse();
   }
 
-  public static com.game-engine.payment.v1.GetPaymentResponse getDefaultInstance() {
+  public static com.game_engine.payment.v1.GetPaymentResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -591,7 +591,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.payment.v1.GetPaymentResponse getDefaultInstanceForType() {
+  public com.game_engine.payment.v1.GetPaymentResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

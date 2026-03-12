@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface ConfirmDepositRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.ConfirmDepositRequest)

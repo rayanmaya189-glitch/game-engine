@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 /**
  * Protobuf type {@code game-engine.game.v1.Game}
@@ -46,15 +46,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_descriptor;
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_fieldAccessorTable
+    return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.game.v1.Game.class, com.game-engine.game.v1.Game.Builder.class);
+            com.game_engine.game.v1.Game.class, com.game_engine.game.v1.Game.Builder.class);
   }
 
   private int bitField0_;
@@ -344,9 +344,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.GameCategory type = 8 [json_name = "type"];</code>
    * @return The type.
    */
-  @java.lang.Override public com.game-engine.common.v1.GameCategory getType() {
-    com.game-engine.common.v1.GameCategory result = com.game-engine.common.v1.GameCategory.forNumber(type_);
-    return result == null ? com.game-engine.common.v1.GameCategory.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.GameCategory getType() {
+    com.game_engine.common.v1.GameCategory result = com.game_engine.common.v1.GameCategory.forNumber(type_);
+    return result == null ? com.game_engine.common.v1.GameCategory.UNRECOGNIZED : result;
   }
 
   public static final int STATUS_FIELD_NUMBER = 9;
@@ -362,9 +362,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.Status status = 9 [json_name = "status"];</code>
    * @return The status.
    */
-  @java.lang.Override public com.game-engine.common.v1.Status getStatus() {
-    com.game-engine.common.v1.Status result = com.game-engine.common.v1.Status.forNumber(status_);
-    return result == null ? com.game-engine.common.v1.Status.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.Status getStatus() {
+    com.game_engine.common.v1.Status result = com.game_engine.common.v1.Status.forNumber(status_);
+    return result == null ? com.game_engine.common.v1.Status.UNRECOGNIZED : result;
   }
 
   public static final int THUMBNAIL_URL_FIELD_NUMBER = 10;
@@ -496,7 +496,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int MIN_BET_FIELD_NUMBER = 14;
-  private com.game-engine.common.v1.Money minBet_;
+  private com.game_engine.common.v1.Money minBet_;
   /**
    * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
    * @return Whether the minBet field is set.
@@ -510,19 +510,19 @@ private static final long serialVersionUID = 0L;
    * @return The minBet.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.Money getMinBet() {
-    return minBet_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : minBet_;
+  public com.game_engine.common.v1.Money getMinBet() {
+    return minBet_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : minBet_;
   }
   /**
    * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.MoneyOrBuilder getMinBetOrBuilder() {
-    return minBet_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : minBet_;
+  public com.game_engine.common.v1.MoneyOrBuilder getMinBetOrBuilder() {
+    return minBet_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : minBet_;
   }
 
   public static final int MAX_BET_FIELD_NUMBER = 15;
-  private com.game-engine.common.v1.Money maxBet_;
+  private com.game_engine.common.v1.Money maxBet_;
   /**
    * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
    * @return Whether the maxBet field is set.
@@ -536,15 +536,15 @@ private static final long serialVersionUID = 0L;
    * @return The maxBet.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.Money getMaxBet() {
-    return maxBet_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : maxBet_;
+  public com.game_engine.common.v1.Money getMaxBet() {
+    return maxBet_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : maxBet_;
   }
   /**
    * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.MoneyOrBuilder getMaxBetOrBuilder() {
-    return maxBet_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : maxBet_;
+  public com.game_engine.common.v1.MoneyOrBuilder getMaxBetOrBuilder() {
+    return maxBet_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : maxBet_;
   }
 
   public static final int MAX_WIN_FIELD_NUMBER = 16;
@@ -649,12 +649,12 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private java.util.List<java.lang.Integer> supportedDevices_;
   private static final com.google.protobuf.Internal.ListAdapter.Converter<
-      java.lang.Integer, com.game-engine.common.v1.DeviceType> supportedDevices_converter_ =
+      java.lang.Integer, com.game_engine.common.v1.DeviceType> supportedDevices_converter_ =
           new com.google.protobuf.Internal.ListAdapter.Converter<
-              java.lang.Integer, com.game-engine.common.v1.DeviceType>() {
-            public com.game-engine.common.v1.DeviceType convert(java.lang.Integer from) {
-              com.game-engine.common.v1.DeviceType result = com.game-engine.common.v1.DeviceType.forNumber(from);
-              return result == null ? com.game-engine.common.v1.DeviceType.UNRECOGNIZED : result;
+              java.lang.Integer, com.game_engine.common.v1.DeviceType>() {
+            public com.game_engine.common.v1.DeviceType convert(java.lang.Integer from) {
+              com.game_engine.common.v1.DeviceType result = com.game_engine.common.v1.DeviceType.forNumber(from);
+              return result == null ? com.game_engine.common.v1.DeviceType.UNRECOGNIZED : result;
             }
           };
   /**
@@ -662,9 +662,9 @@ private static final long serialVersionUID = 0L;
    * @return A list containing the supportedDevices.
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.common.v1.DeviceType> getSupportedDevicesList() {
+  public java.util.List<com.game_engine.common.v1.DeviceType> getSupportedDevicesList() {
     return new com.google.protobuf.Internal.ListAdapter<
-        java.lang.Integer, com.game-engine.common.v1.DeviceType>(supportedDevices_, supportedDevices_converter_);
+        java.lang.Integer, com.game_engine.common.v1.DeviceType>(supportedDevices_, supportedDevices_converter_);
   }
   /**
    * <code>repeated .game-engine.common.v1.DeviceType supported_devices = 20 [json_name = "supportedDevices"];</code>
@@ -680,7 +680,7 @@ private static final long serialVersionUID = 0L;
    * @return The supportedDevices at the given index.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.DeviceType getSupportedDevices(int index) {
+  public com.game_engine.common.v1.DeviceType getSupportedDevices(int index) {
     return supportedDevices_converter_.convert(supportedDevices_.get(index));
   }
   /**
@@ -707,12 +707,12 @@ private static final long serialVersionUID = 0L;
   @SuppressWarnings("serial")
   private java.util.List<java.lang.Integer> supportedLanguages_;
   private static final com.google.protobuf.Internal.ListAdapter.Converter<
-      java.lang.Integer, com.game-engine.common.v1.Language> supportedLanguages_converter_ =
+      java.lang.Integer, com.game_engine.common.v1.Language> supportedLanguages_converter_ =
           new com.google.protobuf.Internal.ListAdapter.Converter<
-              java.lang.Integer, com.game-engine.common.v1.Language>() {
-            public com.game-engine.common.v1.Language convert(java.lang.Integer from) {
-              com.game-engine.common.v1.Language result = com.game-engine.common.v1.Language.forNumber(from);
-              return result == null ? com.game-engine.common.v1.Language.UNRECOGNIZED : result;
+              java.lang.Integer, com.game_engine.common.v1.Language>() {
+            public com.game_engine.common.v1.Language convert(java.lang.Integer from) {
+              com.game_engine.common.v1.Language result = com.game_engine.common.v1.Language.forNumber(from);
+              return result == null ? com.game_engine.common.v1.Language.UNRECOGNIZED : result;
             }
           };
   /**
@@ -720,9 +720,9 @@ private static final long serialVersionUID = 0L;
    * @return A list containing the supportedLanguages.
    */
   @java.lang.Override
-  public java.util.List<com.game-engine.common.v1.Language> getSupportedLanguagesList() {
+  public java.util.List<com.game_engine.common.v1.Language> getSupportedLanguagesList() {
     return new com.google.protobuf.Internal.ListAdapter<
-        java.lang.Integer, com.game-engine.common.v1.Language>(supportedLanguages_, supportedLanguages_converter_);
+        java.lang.Integer, com.game_engine.common.v1.Language>(supportedLanguages_, supportedLanguages_converter_);
   }
   /**
    * <code>repeated .game-engine.common.v1.Language supported_languages = 21 [json_name = "supportedLanguages"];</code>
@@ -738,7 +738,7 @@ private static final long serialVersionUID = 0L;
    * @return The supportedLanguages at the given index.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.Language getSupportedLanguages(int index) {
+  public com.game_engine.common.v1.Language getSupportedLanguages(int index) {
     return supportedLanguages_converter_.convert(supportedLanguages_.get(index));
   }
   /**
@@ -906,10 +906,10 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(categoryName_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 7, categoryName_);
     }
-    if (type_ != com.game-engine.common.v1.GameCategory.GAME_CATEGORY_UNSPECIFIED.getNumber()) {
+    if (type_ != com.game_engine.common.v1.GameCategory.GAME_CATEGORY_UNSPECIFIED.getNumber()) {
       output.writeEnum(8, type_);
     }
-    if (status_ != com.game-engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
+    if (status_ != com.game_engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
       output.writeEnum(9, status_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(thumbnailUrl_)) {
@@ -1004,11 +1004,11 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(categoryName_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, categoryName_);
     }
-    if (type_ != com.game-engine.common.v1.GameCategory.GAME_CATEGORY_UNSPECIFIED.getNumber()) {
+    if (type_ != com.game_engine.common.v1.GameCategory.GAME_CATEGORY_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(8, type_);
     }
-    if (status_ != com.game-engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
+    if (status_ != com.game_engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(9, status_);
     }
@@ -1109,10 +1109,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.game.v1.Game)) {
+    if (!(obj instanceof com.game_engine.game.v1.Game)) {
       return super.equals(obj);
     }
-    com.game-engine.game.v1.Game other = (com.game-engine.game.v1.Game) obj;
+    com.game_engine.game.v1.Game other = (com.game_engine.game.v1.Game) obj;
 
     if (!getGameId()
         .equals(other.getGameId())) return false;
@@ -1261,44 +1261,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.Game parseFrom(byte[] data)
+  public static com.game_engine.game.v1.Game parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.game.v1.Game parseFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.Game parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -1306,26 +1306,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.game.v1.Game parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.game.v1.Game parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.game.v1.Game parseDelimitedFrom(
+  public static com.game_engine.game.v1.Game parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.game.v1.Game parseFrom(
+  public static com.game_engine.game.v1.Game parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -1338,7 +1338,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.game.v1.Game prototype) {
+  public static Builder newBuilder(com.game_engine.game.v1.Game prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -1359,21 +1359,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.game.v1.Game)
-      com.game-engine.game.v1.GameOrBuilder {
+      com.game_engine.game.v1.GameOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_fieldAccessorTable
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.game.v1.Game.class, com.game-engine.game.v1.Game.Builder.class);
+              com.game_engine.game.v1.Game.class, com.game_engine.game.v1.Game.Builder.class);
     }
 
-    // Construct using com.game-engine.game.v1.Game.newBuilder()
+    // Construct using com.game_engine.game.v1.Game.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -1443,17 +1443,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_descriptor;
+      return com.game_engine.game.v1.GameRegistry.internal_static_game-engine_game_v1_Game_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.Game getDefaultInstanceForType() {
-      return com.game-engine.game.v1.Game.getDefaultInstance();
+    public com.game_engine.game.v1.Game getDefaultInstanceForType() {
+      return com.game_engine.game.v1.Game.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.Game build() {
-      com.game-engine.game.v1.Game result = buildPartial();
+    public com.game_engine.game.v1.Game build() {
+      com.game_engine.game.v1.Game result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -1461,15 +1461,15 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.game.v1.Game buildPartial() {
-      com.game-engine.game.v1.Game result = new com.game-engine.game.v1.Game(this);
+    public com.game_engine.game.v1.Game buildPartial() {
+      com.game_engine.game.v1.Game result = new com.game_engine.game.v1.Game(this);
       buildPartialRepeatedFields(result);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartialRepeatedFields(com.game-engine.game.v1.Game result) {
+    private void buildPartialRepeatedFields(com.game_engine.game.v1.Game result) {
       if (((bitField0_ & 0x00080000) != 0)) {
         supportedDevices_ = java.util.Collections.unmodifiableList(supportedDevices_);
         bitField0_ = (bitField0_ & ~0x00080000);
@@ -1482,7 +1482,7 @@ private static final long serialVersionUID = 0L;
       result.supportedLanguages_ = supportedLanguages_;
     }
 
-    private void buildPartial0(com.game-engine.game.v1.Game result) {
+    private void buildPartial0(com.game_engine.game.v1.Game result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.gameId_ = gameId_;
@@ -1607,16 +1607,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.game.v1.Game) {
-        return mergeFrom((com.game-engine.game.v1.Game)other);
+      if (other instanceof com.game_engine.game.v1.Game) {
+        return mergeFrom((com.game_engine.game.v1.Game)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.game.v1.Game other) {
-      if (other == com.game-engine.game.v1.Game.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.game.v1.Game other) {
+      if (other == com.game_engine.game.v1.Game.getDefaultInstance()) return this;
       if (!other.getGameId().isEmpty()) {
         gameId_ = other.gameId_;
         bitField0_ |= 0x00000001;
@@ -2480,16 +2480,16 @@ private static final long serialVersionUID = 0L;
      * @return The type.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.GameCategory getType() {
-      com.game-engine.common.v1.GameCategory result = com.game-engine.common.v1.GameCategory.forNumber(type_);
-      return result == null ? com.game-engine.common.v1.GameCategory.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.GameCategory getType() {
+      com.game_engine.common.v1.GameCategory result = com.game_engine.common.v1.GameCategory.forNumber(type_);
+      return result == null ? com.game_engine.common.v1.GameCategory.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.GameCategory type = 8 [json_name = "type"];</code>
      * @param value The type to set.
      * @return This builder for chaining.
      */
-    public Builder setType(com.game-engine.common.v1.GameCategory value) {
+    public Builder setType(com.game_engine.common.v1.GameCategory value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -2533,16 +2533,16 @@ private static final long serialVersionUID = 0L;
      * @return The status.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.Status getStatus() {
-      com.game-engine.common.v1.Status result = com.game-engine.common.v1.Status.forNumber(status_);
-      return result == null ? com.game-engine.common.v1.Status.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.Status getStatus() {
+      com.game_engine.common.v1.Status result = com.game_engine.common.v1.Status.forNumber(status_);
+      return result == null ? com.game_engine.common.v1.Status.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.Status status = 9 [json_name = "status"];</code>
      * @param value The status to set.
      * @return This builder for chaining.
      */
-    public Builder setStatus(com.game-engine.common.v1.Status value) {
+    public Builder setStatus(com.game_engine.common.v1.Status value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -2810,9 +2810,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.common.v1.Money minBet_;
+    private com.game_engine.common.v1.Money minBet_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> minBetBuilder_;
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> minBetBuilder_;
     /**
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      * @return Whether the minBet field is set.
@@ -2824,9 +2824,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      * @return The minBet.
      */
-    public com.game-engine.common.v1.Money getMinBet() {
+    public com.game_engine.common.v1.Money getMinBet() {
       if (minBetBuilder_ == null) {
-        return minBet_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : minBet_;
+        return minBet_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : minBet_;
       } else {
         return minBetBuilder_.getMessage();
       }
@@ -2834,7 +2834,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      */
-    public Builder setMinBet(com.game-engine.common.v1.Money value) {
+    public Builder setMinBet(com.game_engine.common.v1.Money value) {
       if (minBetBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2851,7 +2851,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      */
     public Builder setMinBet(
-        com.game-engine.common.v1.Money.Builder builderForValue) {
+        com.game_engine.common.v1.Money.Builder builderForValue) {
       if (minBetBuilder_ == null) {
         minBet_ = builderForValue.build();
       } else {
@@ -2864,11 +2864,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      */
-    public Builder mergeMinBet(com.game-engine.common.v1.Money value) {
+    public Builder mergeMinBet(com.game_engine.common.v1.Money value) {
       if (minBetBuilder_ == null) {
         if (((bitField0_ & 0x00002000) != 0) &&
           minBet_ != null &&
-          minBet_ != com.game-engine.common.v1.Money.getDefaultInstance()) {
+          minBet_ != com.game_engine.common.v1.Money.getDefaultInstance()) {
           getMinBetBuilder().mergeFrom(value);
         } else {
           minBet_ = value;
@@ -2898,7 +2898,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      */
-    public com.game-engine.common.v1.Money.Builder getMinBetBuilder() {
+    public com.game_engine.common.v1.Money.Builder getMinBetBuilder() {
       bitField0_ |= 0x00002000;
       onChanged();
       return getMinBetFieldBuilder().getBuilder();
@@ -2906,23 +2906,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      */
-    public com.game-engine.common.v1.MoneyOrBuilder getMinBetOrBuilder() {
+    public com.game_engine.common.v1.MoneyOrBuilder getMinBetOrBuilder() {
       if (minBetBuilder_ != null) {
         return minBetBuilder_.getMessageOrBuilder();
       } else {
         return minBet_ == null ?
-            com.game-engine.common.v1.Money.getDefaultInstance() : minBet_;
+            com.game_engine.common.v1.Money.getDefaultInstance() : minBet_;
       }
     }
     /**
      * <code>.game-engine.common.v1.Money min_bet = 14 [json_name = "minBet"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> 
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> 
         getMinBetFieldBuilder() {
       if (minBetBuilder_ == null) {
         minBetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder>(
+            com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder>(
                 getMinBet(),
                 getParentForChildren(),
                 isClean());
@@ -2931,9 +2931,9 @@ private static final long serialVersionUID = 0L;
       return minBetBuilder_;
     }
 
-    private com.game-engine.common.v1.Money maxBet_;
+    private com.game_engine.common.v1.Money maxBet_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> maxBetBuilder_;
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> maxBetBuilder_;
     /**
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      * @return Whether the maxBet field is set.
@@ -2945,9 +2945,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      * @return The maxBet.
      */
-    public com.game-engine.common.v1.Money getMaxBet() {
+    public com.game_engine.common.v1.Money getMaxBet() {
       if (maxBetBuilder_ == null) {
-        return maxBet_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : maxBet_;
+        return maxBet_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : maxBet_;
       } else {
         return maxBetBuilder_.getMessage();
       }
@@ -2955,7 +2955,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      */
-    public Builder setMaxBet(com.game-engine.common.v1.Money value) {
+    public Builder setMaxBet(com.game_engine.common.v1.Money value) {
       if (maxBetBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -2972,7 +2972,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      */
     public Builder setMaxBet(
-        com.game-engine.common.v1.Money.Builder builderForValue) {
+        com.game_engine.common.v1.Money.Builder builderForValue) {
       if (maxBetBuilder_ == null) {
         maxBet_ = builderForValue.build();
       } else {
@@ -2985,11 +2985,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      */
-    public Builder mergeMaxBet(com.game-engine.common.v1.Money value) {
+    public Builder mergeMaxBet(com.game_engine.common.v1.Money value) {
       if (maxBetBuilder_ == null) {
         if (((bitField0_ & 0x00004000) != 0) &&
           maxBet_ != null &&
-          maxBet_ != com.game-engine.common.v1.Money.getDefaultInstance()) {
+          maxBet_ != com.game_engine.common.v1.Money.getDefaultInstance()) {
           getMaxBetBuilder().mergeFrom(value);
         } else {
           maxBet_ = value;
@@ -3019,7 +3019,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      */
-    public com.game-engine.common.v1.Money.Builder getMaxBetBuilder() {
+    public com.game_engine.common.v1.Money.Builder getMaxBetBuilder() {
       bitField0_ |= 0x00004000;
       onChanged();
       return getMaxBetFieldBuilder().getBuilder();
@@ -3027,23 +3027,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      */
-    public com.game-engine.common.v1.MoneyOrBuilder getMaxBetOrBuilder() {
+    public com.game_engine.common.v1.MoneyOrBuilder getMaxBetOrBuilder() {
       if (maxBetBuilder_ != null) {
         return maxBetBuilder_.getMessageOrBuilder();
       } else {
         return maxBet_ == null ?
-            com.game-engine.common.v1.Money.getDefaultInstance() : maxBet_;
+            com.game_engine.common.v1.Money.getDefaultInstance() : maxBet_;
       }
     }
     /**
      * <code>.game-engine.common.v1.Money max_bet = 15 [json_name = "maxBet"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> 
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> 
         getMaxBetFieldBuilder() {
       if (maxBetBuilder_ == null) {
         maxBetBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder>(
+            com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder>(
                 getMaxBet(),
                 getParentForChildren(),
                 isClean());
@@ -3311,9 +3311,9 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.common.v1.DeviceType supported_devices = 20 [json_name = "supportedDevices"];</code>
      * @return A list containing the supportedDevices.
      */
-    public java.util.List<com.game-engine.common.v1.DeviceType> getSupportedDevicesList() {
+    public java.util.List<com.game_engine.common.v1.DeviceType> getSupportedDevicesList() {
       return new com.google.protobuf.Internal.ListAdapter<
-          java.lang.Integer, com.game-engine.common.v1.DeviceType>(supportedDevices_, supportedDevices_converter_);
+          java.lang.Integer, com.game_engine.common.v1.DeviceType>(supportedDevices_, supportedDevices_converter_);
     }
     /**
      * <code>repeated .game-engine.common.v1.DeviceType supported_devices = 20 [json_name = "supportedDevices"];</code>
@@ -3327,7 +3327,7 @@ private static final long serialVersionUID = 0L;
      * @param index The index of the element to return.
      * @return The supportedDevices at the given index.
      */
-    public com.game-engine.common.v1.DeviceType getSupportedDevices(int index) {
+    public com.game_engine.common.v1.DeviceType getSupportedDevices(int index) {
       return supportedDevices_converter_.convert(supportedDevices_.get(index));
     }
     /**
@@ -3337,7 +3337,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setSupportedDevices(
-        int index, com.game-engine.common.v1.DeviceType value) {
+        int index, com.game_engine.common.v1.DeviceType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -3351,7 +3351,7 @@ private static final long serialVersionUID = 0L;
      * @param value The supportedDevices to add.
      * @return This builder for chaining.
      */
-    public Builder addSupportedDevices(com.game-engine.common.v1.DeviceType value) {
+    public Builder addSupportedDevices(com.game_engine.common.v1.DeviceType value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -3366,9 +3366,9 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder addAllSupportedDevices(
-        java.lang.Iterable<? extends com.game-engine.common.v1.DeviceType> values) {
+        java.lang.Iterable<? extends com.game_engine.common.v1.DeviceType> values) {
       ensureSupportedDevicesIsMutable();
-      for (com.game-engine.common.v1.DeviceType value : values) {
+      for (com.game_engine.common.v1.DeviceType value : values) {
         supportedDevices_.add(value.getNumber());
       }
       onChanged();
@@ -3451,9 +3451,9 @@ private static final long serialVersionUID = 0L;
      * <code>repeated .game-engine.common.v1.Language supported_languages = 21 [json_name = "supportedLanguages"];</code>
      * @return A list containing the supportedLanguages.
      */
-    public java.util.List<com.game-engine.common.v1.Language> getSupportedLanguagesList() {
+    public java.util.List<com.game_engine.common.v1.Language> getSupportedLanguagesList() {
       return new com.google.protobuf.Internal.ListAdapter<
-          java.lang.Integer, com.game-engine.common.v1.Language>(supportedLanguages_, supportedLanguages_converter_);
+          java.lang.Integer, com.game_engine.common.v1.Language>(supportedLanguages_, supportedLanguages_converter_);
     }
     /**
      * <code>repeated .game-engine.common.v1.Language supported_languages = 21 [json_name = "supportedLanguages"];</code>
@@ -3467,7 +3467,7 @@ private static final long serialVersionUID = 0L;
      * @param index The index of the element to return.
      * @return The supportedLanguages at the given index.
      */
-    public com.game-engine.common.v1.Language getSupportedLanguages(int index) {
+    public com.game_engine.common.v1.Language getSupportedLanguages(int index) {
       return supportedLanguages_converter_.convert(supportedLanguages_.get(index));
     }
     /**
@@ -3477,7 +3477,7 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder setSupportedLanguages(
-        int index, com.game-engine.common.v1.Language value) {
+        int index, com.game_engine.common.v1.Language value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -3491,7 +3491,7 @@ private static final long serialVersionUID = 0L;
      * @param value The supportedLanguages to add.
      * @return This builder for chaining.
      */
-    public Builder addSupportedLanguages(com.game-engine.common.v1.Language value) {
+    public Builder addSupportedLanguages(com.game_engine.common.v1.Language value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -3506,9 +3506,9 @@ private static final long serialVersionUID = 0L;
      * @return This builder for chaining.
      */
     public Builder addAllSupportedLanguages(
-        java.lang.Iterable<? extends com.game-engine.common.v1.Language> values) {
+        java.lang.Iterable<? extends com.game_engine.common.v1.Language> values) {
       ensureSupportedLanguagesIsMutable();
-      for (com.game-engine.common.v1.Language value : values) {
+      for (com.game_engine.common.v1.Language value : values) {
         supportedLanguages_.add(value.getNumber());
       }
       onChanged();
@@ -3916,12 +3916,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.game.v1.Game)
-  private static final com.game-engine.game.v1.Game DEFAULT_INSTANCE;
+  private static final com.game_engine.game.v1.Game DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.game.v1.Game();
+    DEFAULT_INSTANCE = new com.game_engine.game.v1.Game();
   }
 
-  public static com.game-engine.game.v1.Game getDefaultInstance() {
+  public static com.game_engine.game.v1.Game getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -3957,7 +3957,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.game.v1.Game getDefaultInstanceForType() {
+  public com.game_engine.game.v1.Game getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GameProviderOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GameProvider)
@@ -77,7 +77,7 @@ public interface GameProviderOrBuilder extends
    * <code>.game-engine.common.v1.Status status = 6 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.Status getStatus();
+  com.game_engine.common.v1.Status getStatus();
 
   /**
    * <code>int32 games_count = 7 [json_name = "gamesCount"];</code>

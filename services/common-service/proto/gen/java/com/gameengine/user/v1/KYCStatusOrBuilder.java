@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface KYCStatusOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.KYCStatus)
@@ -17,7 +17,7 @@ public interface KYCStatusOrBuilder extends
    * <code>.game-engine.common.v1.VerificationStatus status = 1 [json_name = "status"];</code>
    * @return The status.
    */
-  com.game-engine.common.v1.VerificationStatus getStatus();
+  com.game_engine.common.v1.VerificationStatus getStatus();
 
   /**
    * <code>.game-engine.common.v1.KYCLevel level = 2 [json_name = "level"];</code>
@@ -28,7 +28,7 @@ public interface KYCStatusOrBuilder extends
    * <code>.game-engine.common.v1.KYCLevel level = 2 [json_name = "level"];</code>
    * @return The level.
    */
-  com.game-engine.common.v1.KYCLevel getLevel();
+  com.game_engine.common.v1.KYCLevel getLevel();
 
   /**
    * <code>.google.protobuf.Timestamp submitted_at = 3 [json_name = "submittedAt"];</code>

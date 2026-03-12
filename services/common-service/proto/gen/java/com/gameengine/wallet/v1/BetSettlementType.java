@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf enum {@code game-engine.wallet.v1.BetSettlementType}
@@ -113,7 +113,7 @@ public enum BetSettlementType
   }
   public static final com.google.protobuf.Descriptors.EnumDescriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.getDescriptor().getEnumTypes().get(0);
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.getDescriptor().getEnumTypes().get(0);
   }
 
   private static final BetSettlementType[] VALUES = values();

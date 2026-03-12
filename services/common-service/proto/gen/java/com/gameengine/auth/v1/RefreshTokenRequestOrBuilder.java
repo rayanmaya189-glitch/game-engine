@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface RefreshTokenRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.RefreshTokenRequest)
@@ -29,9 +29,9 @@ public interface RefreshTokenRequestOrBuilder extends
    * <code>.game-engine.auth.v1.DeviceInfo device_info = 2 [json_name = "deviceInfo"];</code>
    * @return The deviceInfo.
    */
-  com.game-engine.auth.v1.DeviceInfo getDeviceInfo();
+  com.game_engine.auth.v1.DeviceInfo getDeviceInfo();
   /**
    * <code>.game-engine.auth.v1.DeviceInfo device_info = 2 [json_name = "deviceInfo"];</code>
    */
-  com.game-engine.auth.v1.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
+  com.game_engine.auth.v1.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
 }

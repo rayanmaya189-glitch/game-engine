@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface PlaceBetResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.PlaceBetResponse)
@@ -17,11 +17,11 @@ public interface PlaceBetResponseOrBuilder extends
    * <code>.game-engine.wallet.v1.Transaction bet = 1 [json_name = "bet"];</code>
    * @return The bet.
    */
-  com.game-engine.wallet.v1.Transaction getBet();
+  com.game_engine.wallet.v1.Transaction getBet();
   /**
    * <code>.game-engine.wallet.v1.Transaction bet = 1 [json_name = "bet"];</code>
    */
-  com.game-engine.wallet.v1.TransactionOrBuilder getBetOrBuilder();
+  com.game_engine.wallet.v1.TransactionOrBuilder getBetOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money new_balance = 2 [json_name = "newBalance"];</code>
@@ -32,11 +32,11 @@ public interface PlaceBetResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money new_balance = 2 [json_name = "newBalance"];</code>
    * @return The newBalance.
    */
-  com.game-engine.common.v1.Money getNewBalance();
+  com.game_engine.common.v1.Money getNewBalance();
   /**
    * <code>.game-engine.common.v1.Money new_balance = 2 [json_name = "newBalance"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder();
 
   /**
    * <code>.game-engine.common.v1.Money locked_amount = 3 [json_name = "lockedAmount"];</code>
@@ -47,11 +47,11 @@ public interface PlaceBetResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money locked_amount = 3 [json_name = "lockedAmount"];</code>
    * @return The lockedAmount.
    */
-  com.game-engine.common.v1.Money getLockedAmount();
+  com.game_engine.common.v1.Money getLockedAmount();
   /**
    * <code>.game-engine.common.v1.Money locked_amount = 3 [json_name = "lockedAmount"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getLockedAmountOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getLockedAmountOrBuilder();
 
   /**
    * <code>string bet_id = 4 [json_name = "betId"];</code>

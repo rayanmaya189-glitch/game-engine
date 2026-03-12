@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 /**
  * Protobuf type {@code game-engine.auth.v1.ResetPasswordRequest}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_descriptor;
+    return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_fieldAccessorTable
+    return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.auth.v1.ResetPasswordRequest.class, com.game-engine.auth.v1.ResetPasswordRequest.Builder.class);
+            com.game_engine.auth.v1.ResetPasswordRequest.class, com.game_engine.auth.v1.ResetPasswordRequest.Builder.class);
   }
 
   public static final int IDENTIFIER_FIELD_NUMBER = 1;
@@ -118,10 +118,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.auth.v1.ResetPasswordRequest)) {
+    if (!(obj instanceof com.game_engine.auth.v1.ResetPasswordRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.auth.v1.ResetPasswordRequest other = (com.game-engine.auth.v1.ResetPasswordRequest) obj;
+    com.game_engine.auth.v1.ResetPasswordRequest other = (com.game_engine.auth.v1.ResetPasswordRequest) obj;
 
     if (!getIdentifier()
         .equals(other.getIdentifier())) return false;
@@ -143,44 +143,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(byte[] data)
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -188,26 +188,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseDelimitedFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.auth.v1.ResetPasswordRequest parseFrom(
+  public static com.game_engine.auth.v1.ResetPasswordRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -220,7 +220,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.auth.v1.ResetPasswordRequest prototype) {
+  public static Builder newBuilder(com.game_engine.auth.v1.ResetPasswordRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -241,21 +241,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.auth.v1.ResetPasswordRequest)
-      com.game-engine.auth.v1.ResetPasswordRequestOrBuilder {
+      com.game_engine.auth.v1.ResetPasswordRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_descriptor;
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_fieldAccessorTable
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.auth.v1.ResetPasswordRequest.class, com.game-engine.auth.v1.ResetPasswordRequest.Builder.class);
+              com.game_engine.auth.v1.ResetPasswordRequest.class, com.game_engine.auth.v1.ResetPasswordRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.auth.v1.ResetPasswordRequest.newBuilder()
+    // Construct using com.game_engine.auth.v1.ResetPasswordRequest.newBuilder()
     private Builder() {
 
     }
@@ -276,17 +276,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_descriptor;
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_ResetPasswordRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.ResetPasswordRequest getDefaultInstanceForType() {
-      return com.game-engine.auth.v1.ResetPasswordRequest.getDefaultInstance();
+    public com.game_engine.auth.v1.ResetPasswordRequest getDefaultInstanceForType() {
+      return com.game_engine.auth.v1.ResetPasswordRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.ResetPasswordRequest build() {
-      com.game-engine.auth.v1.ResetPasswordRequest result = buildPartial();
+    public com.game_engine.auth.v1.ResetPasswordRequest build() {
+      com.game_engine.auth.v1.ResetPasswordRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -294,14 +294,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.ResetPasswordRequest buildPartial() {
-      com.game-engine.auth.v1.ResetPasswordRequest result = new com.game-engine.auth.v1.ResetPasswordRequest(this);
+    public com.game_engine.auth.v1.ResetPasswordRequest buildPartial() {
+      com.game_engine.auth.v1.ResetPasswordRequest result = new com.game_engine.auth.v1.ResetPasswordRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.auth.v1.ResetPasswordRequest result) {
+    private void buildPartial0(com.game_engine.auth.v1.ResetPasswordRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.identifier_ = identifier_;
@@ -342,16 +342,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.auth.v1.ResetPasswordRequest) {
-        return mergeFrom((com.game-engine.auth.v1.ResetPasswordRequest)other);
+      if (other instanceof com.game_engine.auth.v1.ResetPasswordRequest) {
+        return mergeFrom((com.game_engine.auth.v1.ResetPasswordRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.auth.v1.ResetPasswordRequest other) {
-      if (other == com.game-engine.auth.v1.ResetPasswordRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.auth.v1.ResetPasswordRequest other) {
+      if (other == com.game_engine.auth.v1.ResetPasswordRequest.getDefaultInstance()) return this;
       if (!other.getIdentifier().isEmpty()) {
         identifier_ = other.identifier_;
         bitField0_ |= 0x00000001;
@@ -493,12 +493,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.auth.v1.ResetPasswordRequest)
-  private static final com.game-engine.auth.v1.ResetPasswordRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.auth.v1.ResetPasswordRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.auth.v1.ResetPasswordRequest();
+    DEFAULT_INSTANCE = new com.game_engine.auth.v1.ResetPasswordRequest();
   }
 
-  public static com.game-engine.auth.v1.ResetPasswordRequest getDefaultInstance() {
+  public static com.game_engine.auth.v1.ResetPasswordRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -534,7 +534,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.auth.v1.ResetPasswordRequest getDefaultInstanceForType() {
+  public com.game_engine.auth.v1.ResetPasswordRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

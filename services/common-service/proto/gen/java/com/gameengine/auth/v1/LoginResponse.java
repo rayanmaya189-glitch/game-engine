@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 /**
  * Protobuf type {@code game-engine.auth.v1.LoginResponse}
@@ -34,15 +34,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_descriptor;
+    return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_fieldAccessorTable
+    return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.auth.v1.LoginResponse.class, com.game-engine.auth.v1.LoginResponse.Builder.class);
+            com.game_engine.auth.v1.LoginResponse.class, com.game_engine.auth.v1.LoginResponse.Builder.class);
   }
 
   private int bitField0_;
@@ -252,9 +252,9 @@ private static final long serialVersionUID = 0L;
    * <code>.game-engine.common.v1.Status user_status = 7 [json_name = "userStatus"];</code>
    * @return The userStatus.
    */
-  @java.lang.Override public com.game-engine.common.v1.Status getUserStatus() {
-    com.game-engine.common.v1.Status result = com.game-engine.common.v1.Status.forNumber(userStatus_);
-    return result == null ? com.game-engine.common.v1.Status.UNRECOGNIZED : result;
+  @java.lang.Override public com.game_engine.common.v1.Status getUserStatus() {
+    com.game_engine.common.v1.Status result = com.game_engine.common.v1.Status.forNumber(userStatus_);
+    return result == null ? com.game_engine.common.v1.Status.UNRECOGNIZED : result;
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 8;
@@ -328,7 +328,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionId_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 6, sessionId_);
     }
-    if (userStatus_ != com.game-engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
+    if (userStatus_ != com.game_engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
       output.writeEnum(7, userStatus_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
@@ -363,7 +363,7 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(sessionId_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, sessionId_);
     }
-    if (userStatus_ != com.game-engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
+    if (userStatus_ != com.game_engine.common.v1.Status.STATUS_UNSPECIFIED.getNumber()) {
       size += com.google.protobuf.CodedOutputStream
         .computeEnumSize(7, userStatus_);
     }
@@ -380,10 +380,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.auth.v1.LoginResponse)) {
+    if (!(obj instanceof com.game_engine.auth.v1.LoginResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.auth.v1.LoginResponse other = (com.game-engine.auth.v1.LoginResponse) obj;
+    com.game_engine.auth.v1.LoginResponse other = (com.game_engine.auth.v1.LoginResponse) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -438,44 +438,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(byte[] data)
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -483,26 +483,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.auth.v1.LoginResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.auth.v1.LoginResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.auth.v1.LoginResponse parseDelimitedFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.auth.v1.LoginResponse parseFrom(
+  public static com.game_engine.auth.v1.LoginResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -515,7 +515,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.auth.v1.LoginResponse prototype) {
+  public static Builder newBuilder(com.game_engine.auth.v1.LoginResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -536,21 +536,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.auth.v1.LoginResponse)
-      com.game-engine.auth.v1.LoginResponseOrBuilder {
+      com.game_engine.auth.v1.LoginResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_descriptor;
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_fieldAccessorTable
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.auth.v1.LoginResponse.class, com.game-engine.auth.v1.LoginResponse.Builder.class);
+              com.game_engine.auth.v1.LoginResponse.class, com.game_engine.auth.v1.LoginResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.auth.v1.LoginResponse.newBuilder()
+    // Construct using com.game_engine.auth.v1.LoginResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -588,17 +588,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_descriptor;
+      return com.game_engine.auth.v1.AuthServiceOuterClass.internal_static_game-engine_auth_v1_LoginResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.LoginResponse getDefaultInstanceForType() {
-      return com.game-engine.auth.v1.LoginResponse.getDefaultInstance();
+    public com.game_engine.auth.v1.LoginResponse getDefaultInstanceForType() {
+      return com.game_engine.auth.v1.LoginResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.LoginResponse build() {
-      com.game-engine.auth.v1.LoginResponse result = buildPartial();
+    public com.game_engine.auth.v1.LoginResponse build() {
+      com.game_engine.auth.v1.LoginResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -606,14 +606,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.auth.v1.LoginResponse buildPartial() {
-      com.game-engine.auth.v1.LoginResponse result = new com.game-engine.auth.v1.LoginResponse(this);
+    public com.game_engine.auth.v1.LoginResponse buildPartial() {
+      com.game_engine.auth.v1.LoginResponse result = new com.game_engine.auth.v1.LoginResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.auth.v1.LoginResponse result) {
+    private void buildPartial0(com.game_engine.auth.v1.LoginResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -680,16 +680,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.auth.v1.LoginResponse) {
-        return mergeFrom((com.game-engine.auth.v1.LoginResponse)other);
+      if (other instanceof com.game_engine.auth.v1.LoginResponse) {
+        return mergeFrom((com.game_engine.auth.v1.LoginResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.auth.v1.LoginResponse other) {
-      if (other == com.game-engine.auth.v1.LoginResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.auth.v1.LoginResponse other) {
+      if (other == com.game_engine.auth.v1.LoginResponse.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -1274,16 +1274,16 @@ private static final long serialVersionUID = 0L;
      * @return The userStatus.
      */
     @java.lang.Override
-    public com.game-engine.common.v1.Status getUserStatus() {
-      com.game-engine.common.v1.Status result = com.game-engine.common.v1.Status.forNumber(userStatus_);
-      return result == null ? com.game-engine.common.v1.Status.UNRECOGNIZED : result;
+    public com.game_engine.common.v1.Status getUserStatus() {
+      com.game_engine.common.v1.Status result = com.game_engine.common.v1.Status.forNumber(userStatus_);
+      return result == null ? com.game_engine.common.v1.Status.UNRECOGNIZED : result;
     }
     /**
      * <code>.game-engine.common.v1.Status user_status = 7 [json_name = "userStatus"];</code>
      * @param value The userStatus to set.
      * @return This builder for chaining.
      */
-    public Builder setUserStatus(com.game-engine.common.v1.Status value) {
+    public Builder setUserStatus(com.game_engine.common.v1.Status value) {
       if (value == null) {
         throw new NullPointerException();
       }
@@ -1391,12 +1391,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.auth.v1.LoginResponse)
-  private static final com.game-engine.auth.v1.LoginResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.auth.v1.LoginResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.auth.v1.LoginResponse();
+    DEFAULT_INSTANCE = new com.game_engine.auth.v1.LoginResponse();
   }
 
-  public static com.game-engine.auth.v1.LoginResponse getDefaultInstance() {
+  public static com.game_engine.auth.v1.LoginResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -1432,7 +1432,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.auth.v1.LoginResponse getDefaultInstanceForType() {
+  public com.game_engine.auth.v1.LoginResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

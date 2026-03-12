@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface Verify2FARequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.Verify2FARequest)

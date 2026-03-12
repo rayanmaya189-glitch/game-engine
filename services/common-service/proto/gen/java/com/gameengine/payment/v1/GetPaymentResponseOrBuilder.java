@@ -2,7 +2,7 @@
 // source: game-engine/payment/v1/payment_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.payment.v1;
+package com.game_engine.payment.v1;
 
 public interface GetPaymentResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.payment.v1.GetPaymentResponse)
@@ -17,9 +17,9 @@ public interface GetPaymentResponseOrBuilder extends
    * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
    * @return The payment.
    */
-  com.game-engine.payment.v1.Payment getPayment();
+  com.game_engine.payment.v1.Payment getPayment();
   /**
    * <code>.game-engine.payment.v1.Payment payment = 1 [json_name = "payment"];</code>
    */
-  com.game-engine.payment.v1.PaymentOrBuilder getPaymentOrBuilder();
+  com.game_engine.payment.v1.PaymentOrBuilder getPaymentOrBuilder();
 }

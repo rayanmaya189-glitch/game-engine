@@ -2,7 +2,7 @@
 // source: game-engine/game/v1/game_registry.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.game.v1;
+package com.game_engine.game.v1;
 
 public interface GetGameConfigResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.game.v1.GetGameConfigResponse)
@@ -17,11 +17,11 @@ public interface GetGameConfigResponseOrBuilder extends
    * <code>.game-engine.game.v1.GameConfig config = 1 [json_name = "config"];</code>
    * @return The config.
    */
-  com.game-engine.game.v1.GameConfig getConfig();
+  com.game_engine.game.v1.GameConfig getConfig();
   /**
    * <code>.game-engine.game.v1.GameConfig config = 1 [json_name = "config"];</code>
    */
-  com.game-engine.game.v1.GameConfigOrBuilder getConfigOrBuilder();
+  com.game_engine.game.v1.GameConfigOrBuilder getConfigOrBuilder();
 
   /**
    * <code>string game_url = 2 [json_name = "gameUrl"];</code>
@@ -56,9 +56,9 @@ public interface GetGameConfigResponseOrBuilder extends
    * <code>.game-engine.common.v1.Money balance = 4 [json_name = "balance"];</code>
    * @return The balance.
    */
-  com.game-engine.common.v1.Money getBalance();
+  com.game_engine.common.v1.Money getBalance();
   /**
    * <code>.game-engine.common.v1.Money balance = 4 [json_name = "balance"];</code>
    */
-  com.game-engine.common.v1.MoneyOrBuilder getBalanceOrBuilder();
+  com.game_engine.common.v1.MoneyOrBuilder getBalanceOrBuilder();
 }

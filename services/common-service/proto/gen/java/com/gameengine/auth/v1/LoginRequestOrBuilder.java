@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface LoginRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.LoginRequest)
@@ -41,11 +41,11 @@ public interface LoginRequestOrBuilder extends
    * <code>.game-engine.auth.v1.DeviceInfo device_info = 3 [json_name = "deviceInfo"];</code>
    * @return The deviceInfo.
    */
-  com.game-engine.auth.v1.DeviceInfo getDeviceInfo();
+  com.game_engine.auth.v1.DeviceInfo getDeviceInfo();
   /**
    * <code>.game-engine.auth.v1.DeviceInfo device_info = 3 [json_name = "deviceInfo"];</code>
    */
-  com.game-engine.auth.v1.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
+  com.game_engine.auth.v1.DeviceInfoOrBuilder getDeviceInfoOrBuilder();
 
   /**
    * <code>bool remember_me = 4 [json_name = "rememberMe"];</code>

@@ -26,7 +26,7 @@ _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'game-engine.wallet.v1.wallet_service_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['DESCRIPTOR']._options = None
-  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game-engine.wallet.v1P\001Z\032gen/go/wallet/v1;walletsv1'
+  _globals['DESCRIPTOR']._serialized_options = b'\n\030com.game_engine.wallet.v1P\001Z\032gen/go/wallet/v1;walletsv1'
   _globals['_BETSETTLEMENTTYPE']._serialized_start=6033
   _globals['_BETSETTLEMENTTYPE']._serialized_end=6216
   _globals['_BONUSTYPE']._serialized_start=6219

@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 /**
  * <pre>
@@ -33,15 +33,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_descriptor;
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_fieldAccessorTable
+    return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.user.v1.GetProfileRequest.class, com.game-engine.user.v1.GetProfileRequest.Builder.class);
+            com.game_engine.user.v1.GetProfileRequest.class, com.game_engine.user.v1.GetProfileRequest.Builder.class);
   }
 
   public static final int USER_ID_FIELD_NUMBER = 1;
@@ -122,10 +122,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.user.v1.GetProfileRequest)) {
+    if (!(obj instanceof com.game_engine.user.v1.GetProfileRequest)) {
       return super.equals(obj);
     }
-    com.game-engine.user.v1.GetProfileRequest other = (com.game-engine.user.v1.GetProfileRequest) obj;
+    com.game_engine.user.v1.GetProfileRequest other = (com.game_engine.user.v1.GetProfileRequest) obj;
 
     if (!getUserId()
         .equals(other.getUserId())) return false;
@@ -147,44 +147,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(byte[] data)
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -192,26 +192,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.user.v1.GetProfileRequest parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.user.v1.GetProfileRequest parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.user.v1.GetProfileRequest parseDelimitedFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.user.v1.GetProfileRequest parseFrom(
+  public static com.game_engine.user.v1.GetProfileRequest parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -224,7 +224,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.user.v1.GetProfileRequest prototype) {
+  public static Builder newBuilder(com.game_engine.user.v1.GetProfileRequest prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -249,21 +249,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.user.v1.GetProfileRequest)
-      com.game-engine.user.v1.GetProfileRequestOrBuilder {
+      com.game_engine.user.v1.GetProfileRequestOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_fieldAccessorTable
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.user.v1.GetProfileRequest.class, com.game-engine.user.v1.GetProfileRequest.Builder.class);
+              com.game_engine.user.v1.GetProfileRequest.class, com.game_engine.user.v1.GetProfileRequest.Builder.class);
     }
 
-    // Construct using com.game-engine.user.v1.GetProfileRequest.newBuilder()
+    // Construct using com.game_engine.user.v1.GetProfileRequest.newBuilder()
     private Builder() {
 
     }
@@ -284,17 +284,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_descriptor;
+      return com.game_engine.user.v1.UserServiceOuterClass.internal_static_game-engine_user_v1_GetProfileRequest_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.GetProfileRequest getDefaultInstanceForType() {
-      return com.game-engine.user.v1.GetProfileRequest.getDefaultInstance();
+    public com.game_engine.user.v1.GetProfileRequest getDefaultInstanceForType() {
+      return com.game_engine.user.v1.GetProfileRequest.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.GetProfileRequest build() {
-      com.game-engine.user.v1.GetProfileRequest result = buildPartial();
+    public com.game_engine.user.v1.GetProfileRequest build() {
+      com.game_engine.user.v1.GetProfileRequest result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -302,14 +302,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.user.v1.GetProfileRequest buildPartial() {
-      com.game-engine.user.v1.GetProfileRequest result = new com.game-engine.user.v1.GetProfileRequest(this);
+    public com.game_engine.user.v1.GetProfileRequest buildPartial() {
+      com.game_engine.user.v1.GetProfileRequest result = new com.game_engine.user.v1.GetProfileRequest(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.user.v1.GetProfileRequest result) {
+    private void buildPartial0(com.game_engine.user.v1.GetProfileRequest result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.userId_ = userId_;
@@ -350,16 +350,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.user.v1.GetProfileRequest) {
-        return mergeFrom((com.game-engine.user.v1.GetProfileRequest)other);
+      if (other instanceof com.game_engine.user.v1.GetProfileRequest) {
+        return mergeFrom((com.game_engine.user.v1.GetProfileRequest)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.user.v1.GetProfileRequest other) {
-      if (other == com.game-engine.user.v1.GetProfileRequest.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.user.v1.GetProfileRequest other) {
+      if (other == com.game_engine.user.v1.GetProfileRequest.getDefaultInstance()) return this;
       if (!other.getUserId().isEmpty()) {
         userId_ = other.userId_;
         bitField0_ |= 0x00000001;
@@ -501,12 +501,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.user.v1.GetProfileRequest)
-  private static final com.game-engine.user.v1.GetProfileRequest DEFAULT_INSTANCE;
+  private static final com.game_engine.user.v1.GetProfileRequest DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.user.v1.GetProfileRequest();
+    DEFAULT_INSTANCE = new com.game_engine.user.v1.GetProfileRequest();
   }
 
-  public static com.game-engine.user.v1.GetProfileRequest getDefaultInstance() {
+  public static com.game_engine.user.v1.GetProfileRequest getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -542,7 +542,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.user.v1.GetProfileRequest getDefaultInstanceForType() {
+  public com.game_engine.user.v1.GetProfileRequest getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

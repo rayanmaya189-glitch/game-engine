@@ -2,7 +2,7 @@
 // source: game-engine/affiliate/v1/affiliate_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.affiliate.v1;
+package com.game_engine.affiliate.v1;
 
 public interface GetConversionReportsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.affiliate.v1.GetConversionReportsResponse)
@@ -11,12 +11,12 @@ public interface GetConversionReportsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
-  java.util.List<com.game-engine.affiliate.v1.ConversionReport> 
+  java.util.List<com.game_engine.affiliate.v1.ConversionReport> 
       getConversionsList();
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
-  com.game-engine.affiliate.v1.ConversionReport getConversions(int index);
+  com.game_engine.affiliate.v1.ConversionReport getConversions(int index);
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
@@ -24,12 +24,12 @@ public interface GetConversionReportsResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
-  java.util.List<? extends com.game-engine.affiliate.v1.ConversionReportOrBuilder> 
+  java.util.List<? extends com.game_engine.affiliate.v1.ConversionReportOrBuilder> 
       getConversionsOrBuilderList();
   /**
    * <code>repeated .game-engine.affiliate.v1.ConversionReport conversions = 1 [json_name = "conversions"];</code>
    */
-  com.game-engine.affiliate.v1.ConversionReportOrBuilder getConversionsOrBuilder(
+  com.game_engine.affiliate.v1.ConversionReportOrBuilder getConversionsOrBuilder(
       int index);
 
   /**

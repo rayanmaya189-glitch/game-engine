@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 public interface GetAllBalancesResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.wallet.v1.GetAllBalancesResponse)
@@ -11,12 +11,12 @@ public interface GetAllBalancesResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.common.v1.BalanceEntry balances = 1 [json_name = "balances"];</code>
    */
-  java.util.List<com.game-engine.common.v1.BalanceEntry> 
+  java.util.List<com.game_engine.common.v1.BalanceEntry> 
       getBalancesList();
   /**
    * <code>repeated .game-engine.common.v1.BalanceEntry balances = 1 [json_name = "balances"];</code>
    */
-  com.game-engine.common.v1.BalanceEntry getBalances(int index);
+  com.game_engine.common.v1.BalanceEntry getBalances(int index);
   /**
    * <code>repeated .game-engine.common.v1.BalanceEntry balances = 1 [json_name = "balances"];</code>
    */
@@ -24,11 +24,11 @@ public interface GetAllBalancesResponseOrBuilder extends
   /**
    * <code>repeated .game-engine.common.v1.BalanceEntry balances = 1 [json_name = "balances"];</code>
    */
-  java.util.List<? extends com.game-engine.common.v1.BalanceEntryOrBuilder> 
+  java.util.List<? extends com.game_engine.common.v1.BalanceEntryOrBuilder> 
       getBalancesOrBuilderList();
   /**
    * <code>repeated .game-engine.common.v1.BalanceEntry balances = 1 [json_name = "balances"];</code>
    */
-  com.game-engine.common.v1.BalanceEntryOrBuilder getBalancesOrBuilder(
+  com.game_engine.common.v1.BalanceEntryOrBuilder getBalancesOrBuilder(
       int index);
 }

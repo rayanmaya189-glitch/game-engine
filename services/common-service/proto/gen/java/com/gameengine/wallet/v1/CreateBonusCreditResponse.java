@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.CreateBonusCreditResponse}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.CreateBonusCreditResponse.class, com.game-engine.wallet.v1.CreateBonusCreditResponse.Builder.class);
+            com.game_engine.wallet.v1.CreateBonusCreditResponse.class, com.game_engine.wallet.v1.CreateBonusCreditResponse.Builder.class);
   }
 
   private int bitField0_;
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int BONUS_FIELD_NUMBER = 2;
-  private com.game-engine.wallet.v1.Transaction bonus_;
+  private com.game_engine.wallet.v1.Transaction bonus_;
   /**
    * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
    * @return Whether the bonus field is set.
@@ -67,15 +67,15 @@ private static final long serialVersionUID = 0L;
    * @return The bonus.
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.Transaction getBonus() {
-    return bonus_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
+  public com.game_engine.wallet.v1.Transaction getBonus() {
+    return bonus_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
   }
   /**
    * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.TransactionOrBuilder getBonusOrBuilder() {
-    return bonus_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
+  public com.game_engine.wallet.v1.TransactionOrBuilder getBonusOrBuilder() {
+    return bonus_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 3;
@@ -170,10 +170,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.CreateBonusCreditResponse)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.CreateBonusCreditResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.CreateBonusCreditResponse other = (com.game-engine.wallet.v1.CreateBonusCreditResponse) obj;
+    com.game_engine.wallet.v1.CreateBonusCreditResponse other = (com.game_engine.wallet.v1.CreateBonusCreditResponse) obj;
 
     if (getSuccess()
         != other.getSuccess()) return false;
@@ -209,44 +209,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -254,26 +254,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse parseFrom(
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -286,7 +286,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.CreateBonusCreditResponse prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.CreateBonusCreditResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -307,21 +307,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.CreateBonusCreditResponse)
-      com.game-engine.wallet.v1.CreateBonusCreditResponseOrBuilder {
+      com.game_engine.wallet.v1.CreateBonusCreditResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.CreateBonusCreditResponse.class, com.game-engine.wallet.v1.CreateBonusCreditResponse.Builder.class);
+              com.game_engine.wallet.v1.CreateBonusCreditResponse.class, com.game_engine.wallet.v1.CreateBonusCreditResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.CreateBonusCreditResponse.newBuilder()
+    // Construct using com.game_engine.wallet.v1.CreateBonusCreditResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -354,17 +354,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CreateBonusCreditResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CreateBonusCreditResponse getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.CreateBonusCreditResponse.getDefaultInstance();
+    public com.game_engine.wallet.v1.CreateBonusCreditResponse getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.CreateBonusCreditResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CreateBonusCreditResponse build() {
-      com.game-engine.wallet.v1.CreateBonusCreditResponse result = buildPartial();
+    public com.game_engine.wallet.v1.CreateBonusCreditResponse build() {
+      com.game_engine.wallet.v1.CreateBonusCreditResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -372,14 +372,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CreateBonusCreditResponse buildPartial() {
-      com.game-engine.wallet.v1.CreateBonusCreditResponse result = new com.game-engine.wallet.v1.CreateBonusCreditResponse(this);
+    public com.game_engine.wallet.v1.CreateBonusCreditResponse buildPartial() {
+      com.game_engine.wallet.v1.CreateBonusCreditResponse result = new com.game_engine.wallet.v1.CreateBonusCreditResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.CreateBonusCreditResponse result) {
+    private void buildPartial0(com.game_engine.wallet.v1.CreateBonusCreditResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.success_ = success_;
@@ -431,16 +431,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.CreateBonusCreditResponse) {
-        return mergeFrom((com.game-engine.wallet.v1.CreateBonusCreditResponse)other);
+      if (other instanceof com.game_engine.wallet.v1.CreateBonusCreditResponse) {
+        return mergeFrom((com.game_engine.wallet.v1.CreateBonusCreditResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.CreateBonusCreditResponse other) {
-      if (other == com.game-engine.wallet.v1.CreateBonusCreditResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.CreateBonusCreditResponse other) {
+      if (other == com.game_engine.wallet.v1.CreateBonusCreditResponse.getDefaultInstance()) return this;
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
@@ -544,9 +544,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.wallet.v1.Transaction bonus_;
+    private com.game_engine.wallet.v1.Transaction bonus_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> bonusBuilder_;
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> bonusBuilder_;
     /**
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      * @return Whether the bonus field is set.
@@ -558,9 +558,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      * @return The bonus.
      */
-    public com.game-engine.wallet.v1.Transaction getBonus() {
+    public com.game_engine.wallet.v1.Transaction getBonus() {
       if (bonusBuilder_ == null) {
-        return bonus_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
+        return bonus_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
       } else {
         return bonusBuilder_.getMessage();
       }
@@ -568,7 +568,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      */
-    public Builder setBonus(com.game-engine.wallet.v1.Transaction value) {
+    public Builder setBonus(com.game_engine.wallet.v1.Transaction value) {
       if (bonusBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -585,7 +585,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      */
     public Builder setBonus(
-        com.game-engine.wallet.v1.Transaction.Builder builderForValue) {
+        com.game_engine.wallet.v1.Transaction.Builder builderForValue) {
       if (bonusBuilder_ == null) {
         bonus_ = builderForValue.build();
       } else {
@@ -598,11 +598,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      */
-    public Builder mergeBonus(com.game-engine.wallet.v1.Transaction value) {
+    public Builder mergeBonus(com.game_engine.wallet.v1.Transaction value) {
       if (bonusBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0) &&
           bonus_ != null &&
-          bonus_ != com.game-engine.wallet.v1.Transaction.getDefaultInstance()) {
+          bonus_ != com.game_engine.wallet.v1.Transaction.getDefaultInstance()) {
           getBonusBuilder().mergeFrom(value);
         } else {
           bonus_ = value;
@@ -632,7 +632,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      */
-    public com.game-engine.wallet.v1.Transaction.Builder getBonusBuilder() {
+    public com.game_engine.wallet.v1.Transaction.Builder getBonusBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getBonusFieldBuilder().getBuilder();
@@ -640,23 +640,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      */
-    public com.game-engine.wallet.v1.TransactionOrBuilder getBonusOrBuilder() {
+    public com.game_engine.wallet.v1.TransactionOrBuilder getBonusOrBuilder() {
       if (bonusBuilder_ != null) {
         return bonusBuilder_.getMessageOrBuilder();
       } else {
         return bonus_ == null ?
-            com.game-engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
+            com.game_engine.wallet.v1.Transaction.getDefaultInstance() : bonus_;
       }
     }
     /**
      * <code>.game-engine.wallet.v1.Transaction bonus = 2 [json_name = "bonus"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> 
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> 
         getBonusFieldBuilder() {
       if (bonusBuilder_ == null) {
         bonusBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder>(
+            com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder>(
                 getBonus(),
                 getParentForChildren(),
                 isClean());
@@ -753,12 +753,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.CreateBonusCreditResponse)
-  private static final com.game-engine.wallet.v1.CreateBonusCreditResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.CreateBonusCreditResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.CreateBonusCreditResponse();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.CreateBonusCreditResponse();
   }
 
-  public static com.game-engine.wallet.v1.CreateBonusCreditResponse getDefaultInstance() {
+  public static com.game_engine.wallet.v1.CreateBonusCreditResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -794,7 +794,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.CreateBonusCreditResponse getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.CreateBonusCreditResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

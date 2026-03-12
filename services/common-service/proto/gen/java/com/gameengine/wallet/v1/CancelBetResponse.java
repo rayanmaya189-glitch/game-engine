@@ -2,7 +2,7 @@
 // source: game-engine/wallet/v1/wallet_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.wallet.v1;
+package com.game_engine.wallet.v1;
 
 /**
  * Protobuf type {@code game-engine.wallet.v1.CancelBetResponse}
@@ -29,15 +29,15 @@ private static final long serialVersionUID = 0L;
 
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_descriptor;
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_fieldAccessorTable
+    return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.game-engine.wallet.v1.CancelBetResponse.class, com.game-engine.wallet.v1.CancelBetResponse.Builder.class);
+            com.game_engine.wallet.v1.CancelBetResponse.class, com.game_engine.wallet.v1.CancelBetResponse.Builder.class);
   }
 
   private int bitField0_;
@@ -53,7 +53,7 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int REFUND_FIELD_NUMBER = 2;
-  private com.game-engine.wallet.v1.Transaction refund_;
+  private com.game_engine.wallet.v1.Transaction refund_;
   /**
    * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
    * @return Whether the refund field is set.
@@ -67,19 +67,19 @@ private static final long serialVersionUID = 0L;
    * @return The refund.
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.Transaction getRefund() {
-    return refund_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
+  public com.game_engine.wallet.v1.Transaction getRefund() {
+    return refund_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
   }
   /**
    * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
    */
   @java.lang.Override
-  public com.game-engine.wallet.v1.TransactionOrBuilder getRefundOrBuilder() {
-    return refund_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
+  public com.game_engine.wallet.v1.TransactionOrBuilder getRefundOrBuilder() {
+    return refund_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
   }
 
   public static final int NEW_BALANCE_FIELD_NUMBER = 3;
-  private com.game-engine.common.v1.Money newBalance_;
+  private com.game_engine.common.v1.Money newBalance_;
   /**
    * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
    * @return Whether the newBalance field is set.
@@ -93,15 +93,15 @@ private static final long serialVersionUID = 0L;
    * @return The newBalance.
    */
   @java.lang.Override
-  public com.game-engine.common.v1.Money getNewBalance() {
-    return newBalance_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : newBalance_;
+  public com.game_engine.common.v1.Money getNewBalance() {
+    return newBalance_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : newBalance_;
   }
   /**
    * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
    */
   @java.lang.Override
-  public com.game-engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder() {
-    return newBalance_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : newBalance_;
+  public com.game_engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder() {
+    return newBalance_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : newBalance_;
   }
 
   public static final int MESSAGE_FIELD_NUMBER = 4;
@@ -203,10 +203,10 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.game-engine.wallet.v1.CancelBetResponse)) {
+    if (!(obj instanceof com.game_engine.wallet.v1.CancelBetResponse)) {
       return super.equals(obj);
     }
-    com.game-engine.wallet.v1.CancelBetResponse other = (com.game-engine.wallet.v1.CancelBetResponse) obj;
+    com.game_engine.wallet.v1.CancelBetResponse other = (com.game_engine.wallet.v1.CancelBetResponse) obj;
 
     if (getSuccess()
         != other.getSuccess()) return false;
@@ -251,44 +251,44 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(byte[] data)
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -296,26 +296,26 @@ private static final long serialVersionUID = 0L;
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
 
-  public static com.game-engine.wallet.v1.CancelBetResponse parseDelimitedFrom(java.io.InputStream input)
+  public static com.game_engine.wallet.v1.CancelBetResponse parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
 
-  public static com.game-engine.wallet.v1.CancelBetResponse parseDelimitedFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.game-engine.wallet.v1.CancelBetResponse parseFrom(
+  public static com.game_engine.wallet.v1.CancelBetResponse parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -328,7 +328,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.game-engine.wallet.v1.CancelBetResponse prototype) {
+  public static Builder newBuilder(com.game_engine.wallet.v1.CancelBetResponse prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -349,21 +349,21 @@ private static final long serialVersionUID = 0L;
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
       // @@protoc_insertion_point(builder_implements:game-engine.wallet.v1.CancelBetResponse)
-      com.game-engine.wallet.v1.CancelBetResponseOrBuilder {
+      com.game_engine.wallet.v1.CancelBetResponseOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_fieldAccessorTable
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.game-engine.wallet.v1.CancelBetResponse.class, com.game-engine.wallet.v1.CancelBetResponse.Builder.class);
+              com.game_engine.wallet.v1.CancelBetResponse.class, com.game_engine.wallet.v1.CancelBetResponse.Builder.class);
     }
 
-    // Construct using com.game-engine.wallet.v1.CancelBetResponse.newBuilder()
+    // Construct using com.game_engine.wallet.v1.CancelBetResponse.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -402,17 +402,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.game-engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_descriptor;
+      return com.game_engine.wallet.v1.WalletServiceOuterClass.internal_static_game-engine_wallet_v1_CancelBetResponse_descriptor;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CancelBetResponse getDefaultInstanceForType() {
-      return com.game-engine.wallet.v1.CancelBetResponse.getDefaultInstance();
+    public com.game_engine.wallet.v1.CancelBetResponse getDefaultInstanceForType() {
+      return com.game_engine.wallet.v1.CancelBetResponse.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CancelBetResponse build() {
-      com.game-engine.wallet.v1.CancelBetResponse result = buildPartial();
+    public com.game_engine.wallet.v1.CancelBetResponse build() {
+      com.game_engine.wallet.v1.CancelBetResponse result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -420,14 +420,14 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.game-engine.wallet.v1.CancelBetResponse buildPartial() {
-      com.game-engine.wallet.v1.CancelBetResponse result = new com.game-engine.wallet.v1.CancelBetResponse(this);
+    public com.game_engine.wallet.v1.CancelBetResponse buildPartial() {
+      com.game_engine.wallet.v1.CancelBetResponse result = new com.game_engine.wallet.v1.CancelBetResponse(this);
       if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
     }
 
-    private void buildPartial0(com.game-engine.wallet.v1.CancelBetResponse result) {
+    private void buildPartial0(com.game_engine.wallet.v1.CancelBetResponse result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
         result.success_ = success_;
@@ -485,16 +485,16 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.game-engine.wallet.v1.CancelBetResponse) {
-        return mergeFrom((com.game-engine.wallet.v1.CancelBetResponse)other);
+      if (other instanceof com.game_engine.wallet.v1.CancelBetResponse) {
+        return mergeFrom((com.game_engine.wallet.v1.CancelBetResponse)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.game-engine.wallet.v1.CancelBetResponse other) {
-      if (other == com.game-engine.wallet.v1.CancelBetResponse.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.game_engine.wallet.v1.CancelBetResponse other) {
+      if (other == com.game_engine.wallet.v1.CancelBetResponse.getDefaultInstance()) return this;
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
@@ -608,9 +608,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private com.game-engine.wallet.v1.Transaction refund_;
+    private com.game_engine.wallet.v1.Transaction refund_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> refundBuilder_;
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> refundBuilder_;
     /**
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      * @return Whether the refund field is set.
@@ -622,9 +622,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      * @return The refund.
      */
-    public com.game-engine.wallet.v1.Transaction getRefund() {
+    public com.game_engine.wallet.v1.Transaction getRefund() {
       if (refundBuilder_ == null) {
-        return refund_ == null ? com.game-engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
+        return refund_ == null ? com.game_engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
       } else {
         return refundBuilder_.getMessage();
       }
@@ -632,7 +632,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      */
-    public Builder setRefund(com.game-engine.wallet.v1.Transaction value) {
+    public Builder setRefund(com.game_engine.wallet.v1.Transaction value) {
       if (refundBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -649,7 +649,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      */
     public Builder setRefund(
-        com.game-engine.wallet.v1.Transaction.Builder builderForValue) {
+        com.game_engine.wallet.v1.Transaction.Builder builderForValue) {
       if (refundBuilder_ == null) {
         refund_ = builderForValue.build();
       } else {
@@ -662,11 +662,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      */
-    public Builder mergeRefund(com.game-engine.wallet.v1.Transaction value) {
+    public Builder mergeRefund(com.game_engine.wallet.v1.Transaction value) {
       if (refundBuilder_ == null) {
         if (((bitField0_ & 0x00000002) != 0) &&
           refund_ != null &&
-          refund_ != com.game-engine.wallet.v1.Transaction.getDefaultInstance()) {
+          refund_ != com.game_engine.wallet.v1.Transaction.getDefaultInstance()) {
           getRefundBuilder().mergeFrom(value);
         } else {
           refund_ = value;
@@ -696,7 +696,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      */
-    public com.game-engine.wallet.v1.Transaction.Builder getRefundBuilder() {
+    public com.game_engine.wallet.v1.Transaction.Builder getRefundBuilder() {
       bitField0_ |= 0x00000002;
       onChanged();
       return getRefundFieldBuilder().getBuilder();
@@ -704,23 +704,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      */
-    public com.game-engine.wallet.v1.TransactionOrBuilder getRefundOrBuilder() {
+    public com.game_engine.wallet.v1.TransactionOrBuilder getRefundOrBuilder() {
       if (refundBuilder_ != null) {
         return refundBuilder_.getMessageOrBuilder();
       } else {
         return refund_ == null ?
-            com.game-engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
+            com.game_engine.wallet.v1.Transaction.getDefaultInstance() : refund_;
       }
     }
     /**
      * <code>.game-engine.wallet.v1.Transaction refund = 2 [json_name = "refund"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder> 
+        com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder> 
         getRefundFieldBuilder() {
       if (refundBuilder_ == null) {
         refundBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.wallet.v1.Transaction, com.game-engine.wallet.v1.Transaction.Builder, com.game-engine.wallet.v1.TransactionOrBuilder>(
+            com.game_engine.wallet.v1.Transaction, com.game_engine.wallet.v1.Transaction.Builder, com.game_engine.wallet.v1.TransactionOrBuilder>(
                 getRefund(),
                 getParentForChildren(),
                 isClean());
@@ -729,9 +729,9 @@ private static final long serialVersionUID = 0L;
       return refundBuilder_;
     }
 
-    private com.game-engine.common.v1.Money newBalance_;
+    private com.game_engine.common.v1.Money newBalance_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> newBalanceBuilder_;
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> newBalanceBuilder_;
     /**
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      * @return Whether the newBalance field is set.
@@ -743,9 +743,9 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      * @return The newBalance.
      */
-    public com.game-engine.common.v1.Money getNewBalance() {
+    public com.game_engine.common.v1.Money getNewBalance() {
       if (newBalanceBuilder_ == null) {
-        return newBalance_ == null ? com.game-engine.common.v1.Money.getDefaultInstance() : newBalance_;
+        return newBalance_ == null ? com.game_engine.common.v1.Money.getDefaultInstance() : newBalance_;
       } else {
         return newBalanceBuilder_.getMessage();
       }
@@ -753,7 +753,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      */
-    public Builder setNewBalance(com.game-engine.common.v1.Money value) {
+    public Builder setNewBalance(com.game_engine.common.v1.Money value) {
       if (newBalanceBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
@@ -770,7 +770,7 @@ private static final long serialVersionUID = 0L;
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      */
     public Builder setNewBalance(
-        com.game-engine.common.v1.Money.Builder builderForValue) {
+        com.game_engine.common.v1.Money.Builder builderForValue) {
       if (newBalanceBuilder_ == null) {
         newBalance_ = builderForValue.build();
       } else {
@@ -783,11 +783,11 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      */
-    public Builder mergeNewBalance(com.game-engine.common.v1.Money value) {
+    public Builder mergeNewBalance(com.game_engine.common.v1.Money value) {
       if (newBalanceBuilder_ == null) {
         if (((bitField0_ & 0x00000004) != 0) &&
           newBalance_ != null &&
-          newBalance_ != com.game-engine.common.v1.Money.getDefaultInstance()) {
+          newBalance_ != com.game_engine.common.v1.Money.getDefaultInstance()) {
           getNewBalanceBuilder().mergeFrom(value);
         } else {
           newBalance_ = value;
@@ -817,7 +817,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      */
-    public com.game-engine.common.v1.Money.Builder getNewBalanceBuilder() {
+    public com.game_engine.common.v1.Money.Builder getNewBalanceBuilder() {
       bitField0_ |= 0x00000004;
       onChanged();
       return getNewBalanceFieldBuilder().getBuilder();
@@ -825,23 +825,23 @@ private static final long serialVersionUID = 0L;
     /**
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      */
-    public com.game-engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder() {
+    public com.game_engine.common.v1.MoneyOrBuilder getNewBalanceOrBuilder() {
       if (newBalanceBuilder_ != null) {
         return newBalanceBuilder_.getMessageOrBuilder();
       } else {
         return newBalance_ == null ?
-            com.game-engine.common.v1.Money.getDefaultInstance() : newBalance_;
+            com.game_engine.common.v1.Money.getDefaultInstance() : newBalance_;
       }
     }
     /**
      * <code>.game-engine.common.v1.Money new_balance = 3 [json_name = "newBalance"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
-        com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder> 
+        com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder> 
         getNewBalanceFieldBuilder() {
       if (newBalanceBuilder_ == null) {
         newBalanceBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.game-engine.common.v1.Money, com.game-engine.common.v1.Money.Builder, com.game-engine.common.v1.MoneyOrBuilder>(
+            com.game_engine.common.v1.Money, com.game_engine.common.v1.Money.Builder, com.game_engine.common.v1.MoneyOrBuilder>(
                 getNewBalance(),
                 getParentForChildren(),
                 isClean());
@@ -938,12 +938,12 @@ private static final long serialVersionUID = 0L;
   }
 
   // @@protoc_insertion_point(class_scope:game-engine.wallet.v1.CancelBetResponse)
-  private static final com.game-engine.wallet.v1.CancelBetResponse DEFAULT_INSTANCE;
+  private static final com.game_engine.wallet.v1.CancelBetResponse DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.game-engine.wallet.v1.CancelBetResponse();
+    DEFAULT_INSTANCE = new com.game_engine.wallet.v1.CancelBetResponse();
   }
 
-  public static com.game-engine.wallet.v1.CancelBetResponse getDefaultInstance() {
+  public static com.game_engine.wallet.v1.CancelBetResponse getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
@@ -979,7 +979,7 @@ private static final long serialVersionUID = 0L;
   }
 
   @java.lang.Override
-  public com.game-engine.wallet.v1.CancelBetResponse getDefaultInstanceForType() {
+  public com.game_engine.wallet.v1.CancelBetResponse getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

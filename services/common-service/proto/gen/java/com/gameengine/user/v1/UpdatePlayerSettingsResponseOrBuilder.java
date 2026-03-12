@@ -2,7 +2,7 @@
 // source: game-engine/user/v1/user_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.user.v1;
+package com.game_engine.user.v1;
 
 public interface UpdatePlayerSettingsResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.user.v1.UpdatePlayerSettingsResponse)
@@ -17,11 +17,11 @@ public interface UpdatePlayerSettingsResponseOrBuilder extends
    * <code>.game-engine.user.v1.PlayerSettings settings = 1 [json_name = "settings"];</code>
    * @return The settings.
    */
-  com.game-engine.user.v1.PlayerSettings getSettings();
+  com.game_engine.user.v1.PlayerSettings getSettings();
   /**
    * <code>.game-engine.user.v1.PlayerSettings settings = 1 [json_name = "settings"];</code>
    */
-  com.game-engine.user.v1.PlayerSettingsOrBuilder getSettingsOrBuilder();
+  com.game_engine.user.v1.PlayerSettingsOrBuilder getSettingsOrBuilder();
 
   /**
    * <code>string message = 2 [json_name = "message"];</code>

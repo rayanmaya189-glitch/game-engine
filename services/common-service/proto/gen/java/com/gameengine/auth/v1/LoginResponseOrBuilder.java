@@ -2,7 +2,7 @@
 // source: game-engine/auth/v1/auth_service.proto
 
 // Protobuf Java Version: 3.25.3
-package com.game-engine.auth.v1;
+package com.game_engine.auth.v1;
 
 public interface LoginResponseOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game-engine.auth.v1.LoginResponse)
@@ -86,7 +86,7 @@ public interface LoginResponseOrBuilder extends
    * <code>.game-engine.common.v1.Status user_status = 7 [json_name = "userStatus"];</code>
    * @return The userStatus.
    */
-  com.game-engine.common.v1.Status getUserStatus();
+  com.game_engine.common.v1.Status getUserStatus();
 
   /**
    * <code>string message = 8 [json_name = "message"];</code>
