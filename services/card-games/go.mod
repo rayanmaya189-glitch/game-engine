@@ -1,9 +1,9 @@
-module github.com/gameengine/card-games
+module github.com/game-engine/card-games
 
-go 1.21
+go 1.25
 
 require (
-	github.com/gameengine/rng-service v0.0.0
+	github.com/game-engine/rng-service v0.0.0
 	github.com/google/uuid v1.5.0
 	github.com/redis/go-redis/v9 v9.4.0
 	github.com/rs/zerolog v1.31.0

@@ -1,6 +1,6 @@
-package com.gameengine.payment.repository;
+package com.game-engine.payment.repository;
 
-import com.gameengine.payment.model.Payment;
+import com.game-engine.payment.model.Payment;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

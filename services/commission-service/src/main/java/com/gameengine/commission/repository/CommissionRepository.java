@@ -1,6 +1,6 @@
-package com.gameengine.commission.repository;
+package com.game-engine.commission.repository;
 
-import com.gameengine.commission.model.Commission;
+import com.game-engine.commission.model.Commission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

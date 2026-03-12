@@ -3,7 +3,7 @@ package andar_bahar
 import (
 	"errors"
 
-	"github.com/gameengine/card-games/internal/games/common"
+	"github.com/game-engine/card-games/internal/games/common"
 )
 
 // Game represents an Andar Bahar game

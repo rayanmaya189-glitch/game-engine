@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/gameengine/wallet-service/internal/config"
-	"github.com/gameengine/wallet-service/internal/model"
-	"github.com/gameengine/wallet-service/internal/repository"
+	"github.com/game-engine/wallet-service/internal/config"
+	"github.com/game-engine/wallet-service/internal/model"
+	"github.com/game-engine/wallet-service/internal/repository"
 	"github.com/google/uuid"
 	"github.com/nats-io/nats.go"
 	"github.com/redis/go-redis/v9"

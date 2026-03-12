@@ -1,8 +1,8 @@
-package com.gameengine.affiliate.controller;
+package com.game-engine.affiliate.controller;
 
-import com.gameengine.affiliate.model.Affiliate;
-import com.gameengine.affiliate.model.Referral;
-import com.gameengine.affiliate.service.AffiliateService;
+import com.game-engine.affiliate.model.Affiliate;
+import com.game-engine.affiliate.model.Referral;
+import com.game-engine.affiliate.service.AffiliateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

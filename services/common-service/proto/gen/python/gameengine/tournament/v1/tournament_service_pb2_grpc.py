@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from gameengine.tournament.v1 import tournament_service_pb2 as gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2
+from game-engine.tournament.v1 import tournament_service_pb2 as game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2
 
 
 class TournamentServiceStub(object):
@@ -15,39 +15,39 @@ class TournamentServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ListTournaments = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/ListTournaments',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/ListTournaments',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsResponse.FromString,
                 _registered_method=True)
         self.GetTournament = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/GetTournament',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/GetTournament',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentResponse.FromString,
                 _registered_method=True)
         self.JoinTournament = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/JoinTournament',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/JoinTournament',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentResponse.FromString,
                 _registered_method=True)
         self.LeaveTournament = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/LeaveTournament',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/LeaveTournament',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentResponse.FromString,
                 _registered_method=True)
         self.GetLeaderboard = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/GetLeaderboard',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/GetLeaderboard',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardResponse.FromString,
                 _registered_method=True)
         self.UpdateScore = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/UpdateScore',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/UpdateScore',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreResponse.FromString,
                 _registered_method=True)
         self.GetMyTournaments = channel.unary_unary(
-                '/gameengine.tournament.v1.TournamentService/GetMyTournaments',
-                request_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsResponse.FromString,
+                '/game-engine.tournament.v1.TournamentService/GetMyTournaments',
+                request_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsResponse.FromString,
                 _registered_method=True)
 
 
@@ -104,44 +104,44 @@ def add_TournamentServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ListTournaments': grpc.unary_unary_rpc_method_handler(
                     servicer.ListTournaments,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsResponse.SerializeToString,
             ),
             'GetTournament': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTournament,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentResponse.SerializeToString,
             ),
             'JoinTournament': grpc.unary_unary_rpc_method_handler(
                     servicer.JoinTournament,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentResponse.SerializeToString,
             ),
             'LeaveTournament': grpc.unary_unary_rpc_method_handler(
                     servicer.LeaveTournament,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentResponse.SerializeToString,
             ),
             'GetLeaderboard': grpc.unary_unary_rpc_method_handler(
                     servicer.GetLeaderboard,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardResponse.SerializeToString,
             ),
             'UpdateScore': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateScore,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreResponse.SerializeToString,
             ),
             'GetMyTournaments': grpc.unary_unary_rpc_method_handler(
                     servicer.GetMyTournaments,
-                    request_deserializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsRequest.FromString,
-                    response_serializer=gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsRequest.FromString,
+                    response_serializer=game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'gameengine.tournament.v1.TournamentService', rpc_method_handlers)
+            'game-engine.tournament.v1.TournamentService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('gameengine.tournament.v1.TournamentService', rpc_method_handlers)
+    server.add_registered_method_handlers('game-engine.tournament.v1.TournamentService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -162,9 +162,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/ListTournaments',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/ListTournaments',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.ListTournamentsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -189,9 +189,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/GetTournament',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/GetTournament',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetTournamentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -216,9 +216,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/JoinTournament',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/JoinTournament',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.JoinTournamentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -243,9 +243,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/LeaveTournament',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/LeaveTournament',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.LeaveTournamentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -270,9 +270,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/GetLeaderboard',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/GetLeaderboard',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetLeaderboardResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -297,9 +297,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/UpdateScore',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/UpdateScore',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.UpdateScoreResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -324,9 +324,9 @@ class TournamentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.tournament.v1.TournamentService/GetMyTournaments',
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsRequest.SerializeToString,
-            gameengine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsResponse.FromString,
+            '/game-engine.tournament.v1.TournamentService/GetMyTournaments',
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsRequest.SerializeToString,
+            game-engine_dot_tournament_dot_v1_dot_tournament__service__pb2.GetMyTournamentsResponse.FromString,
             options,
             channel_credentials,
             insecure,

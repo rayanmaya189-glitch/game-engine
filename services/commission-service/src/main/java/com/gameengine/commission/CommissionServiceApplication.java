@@ -1,4 +1,4 @@
-package com.gameengine.commission;
+package com.game-engine.commission;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

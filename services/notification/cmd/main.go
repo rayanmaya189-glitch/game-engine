@@ -13,8 +13,8 @@ import (
 	"google.golang.org/grpc/reflection"
 	"gopkg.in/yaml.v3"
 
-	"github.com/gameengine/notification/internal/handler"
-	"github.com/gameengine/notification/internal/service"
+	"github.com/game-engine/notification/internal/handler"
+	"github.com/game-engine/notification/internal/service"
 )
 
 func main() {

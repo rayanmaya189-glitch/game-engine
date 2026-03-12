@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	bonuspb "github.com/game-engine/gen/go/gameengine/bonus/v1"
+	bonuspb "github.com/game-engine/gen/go/game-engine/bonus/v1"
 )
 
 type BonusClient struct {

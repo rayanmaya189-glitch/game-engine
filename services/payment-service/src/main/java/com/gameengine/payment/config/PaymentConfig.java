@@ -1,4 +1,4 @@
-package com.gameengine.payment.config;
+package com.game-engine.payment.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

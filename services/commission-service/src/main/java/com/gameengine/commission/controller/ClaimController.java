@@ -1,7 +1,7 @@
-package com.gameengine.commission.controller;
+package com.game-engine.commission.controller;
 
-import com.gameengine.commission.model.*;
-import com.gameengine.commission.service.ClaimService;
+import com.game-engine.commission.model.*;
+import com.game-engine.commission.service.ClaimService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

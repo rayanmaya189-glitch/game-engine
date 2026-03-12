@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	affiliatepb "github.com/game-engine/gen/go/gameengine/affiliate/v1"
+	affiliatepb "github.com/game-engine/gen/go/game-engine/affiliate/v1"
 )
 
 type AffiliateClient struct {

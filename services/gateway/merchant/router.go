@@ -6,7 +6,7 @@ import (
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/router"
 
-	merchantpb "github.com/game-engine/gen/go/gameengine/merchant/v1"
+	merchantpb "github.com/game-engine/gen/go/game-engine/merchant/v1"
 
 	"common/client"
 	"common/handler"

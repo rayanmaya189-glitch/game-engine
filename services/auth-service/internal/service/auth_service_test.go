@@ -3,8 +3,8 @@ package service
 import (
 	"testing"
 
-	"github.com/gameengine/auth-service/internal/config"
-	"github.com/gameengine/auth-service/pkg/utils"
+	"github.com/game-engine/auth-service/internal/config"
+	"github.com/game-engine/auth-service/pkg/utils"
 )
 
 // TestValidatePasswordComplexity tests password validation

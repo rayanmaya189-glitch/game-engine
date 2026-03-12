@@ -1,9 +1,9 @@
 package handler
 
 import (
-	"github.com/gameengine/card-games/internal/games/baccarat"
-	"github.com/gameengine/card-games/internal/games/poker"
-	"github.com/gameengine/card-games/internal/service"
+	"github.com/game-engine/card-games/internal/games/baccarat"
+	"github.com/game-engine/card-games/internal/games/poker"
+	"github.com/game-engine/card-games/internal/service"
 )
 
 // GameHandler handles game-related requests

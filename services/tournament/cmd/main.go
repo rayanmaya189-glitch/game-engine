@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc/reflection"
 	"gopkg.in/yaml.v3"
 
-	"github.com/gameengine/tournament/internal/handler"
-	"github.com/gameengine/tournament/internal/service"
-	"github.com/gameengine/tournament/internal/tournament"
+	"github.com/game-engine/tournament/internal/handler"
+	"github.com/game-engine/tournament/internal/service"
+	"github.com/game-engine/tournament/internal/tournament"
 )
 
 func main() {

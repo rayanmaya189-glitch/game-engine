@@ -564,7 +564,7 @@ All gateways share these common features:
 - `.github/workflows/go-ci.yml`:
   - Trigger: Changes to `services/gateway/`, `services/auth-service/`, etc.
   - Steps:
-    1. Setup Go 1.22+
+    1. Setup go 1.25+
     2. Run `go vet`
     3. Run `golangci-lint`
     4. Run unit tests with coverage

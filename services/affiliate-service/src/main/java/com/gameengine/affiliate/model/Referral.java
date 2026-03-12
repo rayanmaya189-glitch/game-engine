@@ -1,4 +1,4 @@
-package com.gameengine.affiliate.model;
+package com.game-engine.affiliate.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

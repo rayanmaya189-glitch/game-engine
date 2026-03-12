@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
 
-	authpb "github.com/game-engine/gen/go/gameengine/auth/v1"
+	authpb "github.com/game-engine/gen/go/game-engine/auth/v1"
 )
 
 type AuthClient struct {

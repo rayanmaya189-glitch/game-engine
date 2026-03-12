@@ -4,7 +4,7 @@ import (
 	"context"
 	"strconv"
 
-	merchantpb "github.com/game-engine/gen/go/gameengine/merchant/v1"
+	merchantpb "github.com/game-engine/gen/go/game-engine/merchant/v1"
 	"github.com/game-engine/merchant-service/internal/config"
 	"github.com/game-engine/merchant-service/internal/repository"
 )

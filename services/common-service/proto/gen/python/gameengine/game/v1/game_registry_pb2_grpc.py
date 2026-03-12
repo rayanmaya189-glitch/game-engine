@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from gameengine.game.v1 import game_registry_pb2 as gameengine_dot_game_dot_v1_dot_game__registry__pb2
+from game-engine.game.v1 import game_registry_pb2 as game-engine_dot_game_dot_v1_dot_game__registry__pb2
 
 
 class GameRegistryServiceStub(object):
@@ -16,54 +16,54 @@ class GameRegistryServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ListGames = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/ListGames',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/ListGames',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesResponse.FromString,
                 _registered_method=True)
         self.GetGame = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetGame',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetGame',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameResponse.FromString,
                 _registered_method=True)
         self.GetGameConfig = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetGameConfig',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetGameConfig',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigResponse.FromString,
                 _registered_method=True)
         self.GetGameURL = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetGameURL',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetGameURL',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLResponse.FromString,
                 _registered_method=True)
         self.GetCategories = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetCategories',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetCategories',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesResponse.FromString,
                 _registered_method=True)
         self.GetProviders = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetProviders',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetProviders',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersResponse.FromString,
                 _registered_method=True)
         self.SearchGames = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/SearchGames',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/SearchGames',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesResponse.FromString,
                 _registered_method=True)
         self.GetFeaturedGames = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetFeaturedGames',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetFeaturedGames',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesResponse.FromString,
                 _registered_method=True)
         self.GetPopularGames = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetPopularGames',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetPopularGames',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesResponse.FromString,
                 _registered_method=True)
         self.GetNewGames = channel.unary_unary(
-                '/gameengine.game.v1.GameRegistryService/GetNewGames',
-                request_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesResponse.FromString,
+                '/game-engine.game.v1.GameRegistryService/GetNewGames',
+                request_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesResponse.FromString,
                 _registered_method=True)
 
 
@@ -136,59 +136,59 @@ def add_GameRegistryServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ListGames': grpc.unary_unary_rpc_method_handler(
                     servicer.ListGames,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesResponse.SerializeToString,
             ),
             'GetGame': grpc.unary_unary_rpc_method_handler(
                     servicer.GetGame,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameResponse.SerializeToString,
             ),
             'GetGameConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.GetGameConfig,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigResponse.SerializeToString,
             ),
             'GetGameURL': grpc.unary_unary_rpc_method_handler(
                     servicer.GetGameURL,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLResponse.SerializeToString,
             ),
             'GetCategories': grpc.unary_unary_rpc_method_handler(
                     servicer.GetCategories,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesResponse.SerializeToString,
             ),
             'GetProviders': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProviders,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersResponse.SerializeToString,
             ),
             'SearchGames': grpc.unary_unary_rpc_method_handler(
                     servicer.SearchGames,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesResponse.SerializeToString,
             ),
             'GetFeaturedGames': grpc.unary_unary_rpc_method_handler(
                     servicer.GetFeaturedGames,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesResponse.SerializeToString,
             ),
             'GetPopularGames': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPopularGames,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesResponse.SerializeToString,
             ),
             'GetNewGames': grpc.unary_unary_rpc_method_handler(
                     servicer.GetNewGames,
-                    request_deserializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesRequest.FromString,
-                    response_serializer=gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesRequest.FromString,
+                    response_serializer=game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'gameengine.game.v1.GameRegistryService', rpc_method_handlers)
+            'game-engine.game.v1.GameRegistryService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('gameengine.game.v1.GameRegistryService', rpc_method_handlers)
+    server.add_registered_method_handlers('game-engine.game.v1.GameRegistryService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -210,9 +210,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/ListGames',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/ListGames',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.ListGamesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -237,9 +237,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetGame',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetGame',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -264,9 +264,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetGameConfig',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetGameConfig',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameConfigResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -291,9 +291,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetGameURL',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetGameURL',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetGameURLResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -318,9 +318,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetCategories',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetCategories',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetCategoriesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -345,9 +345,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetProviders',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetProviders',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetProvidersResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -372,9 +372,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/SearchGames',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/SearchGames',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.SearchGamesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -399,9 +399,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetFeaturedGames',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetFeaturedGames',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetFeaturedGamesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -426,9 +426,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetPopularGames',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetPopularGames',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetPopularGamesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -453,9 +453,9 @@ class GameRegistryService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.game.v1.GameRegistryService/GetNewGames',
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesRequest.SerializeToString,
-            gameengine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesResponse.FromString,
+            '/game-engine.game.v1.GameRegistryService/GetNewGames',
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesRequest.SerializeToString,
+            game-engine_dot_game_dot_v1_dot_game__registry__pb2.GetNewGamesResponse.FromString,
             options,
             channel_credentials,
             insecure,

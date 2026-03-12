@@ -1,6 +1,6 @@
 module github.com/game-engine/merchant-service
 
-go 1.21
+go 1.25
 
 require (
 	github.com/game-engine/gen v0.0.0

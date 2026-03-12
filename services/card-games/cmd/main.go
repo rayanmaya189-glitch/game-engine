@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/gameengine/card-games/internal/config"
-	"github.com/gameengine/card-games/internal/handler"
-	"github.com/gameengine/card-games/internal/service"
+	"github.com/game-engine/card-games/internal/config"
+	"github.com/game-engine/card-games/internal/handler"
+	"github.com/game-engine/card-games/internal/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )

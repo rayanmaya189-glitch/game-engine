@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc/reflection"
 	"gopkg.in/yaml.v3"
 
-	"github.com/gameengine/multiplayer/internal/handler"
-	"github.com/gameengine/multiplayer/internal/room"
-	"github.com/gameengine/multiplayer/internal/service"
+	"github.com/game-engine/multiplayer/internal/handler"
+	"github.com/game-engine/multiplayer/internal/room"
+	"github.com/game-engine/multiplayer/internal/service"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/gameengine/notification/internal/service"
+	"github.com/game-engine/notification/internal/service"
 )
 
 // NotificationHandler handles notification-related requests

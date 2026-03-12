@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from gameengine.commission.v1 import commission_service_pb2 as gameengine_dot_commission_dot_v1_dot_commission__service__pb2
+from game-engine.commission.v1 import commission_service_pb2 as game-engine_dot_commission_dot_v1_dot_commission__service__pb2
 
 
 class CommissionServiceStub(object):
@@ -15,59 +15,59 @@ class CommissionServiceStub(object):
             channel: A grpc.Channel.
         """
         self.SubmitClaim = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/SubmitClaim',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/SubmitClaim',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.FromString,
                 _registered_method=True)
         self.GetUserClaims = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetUserClaims',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetUserClaims',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.FromString,
                 _registered_method=True)
         self.GetClaimsByStatus = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetClaimsByStatus',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetClaimsByStatus',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.FromString,
                 _registered_method=True)
         self.ClaimCommission = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/ClaimCommission',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/ClaimCommission',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.FromString,
                 _registered_method=True)
         self.GetUserSettlements = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetUserSettlements',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetUserSettlements',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsResponse.FromString,
                 _registered_method=True)
         self.GetSettlementById = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetSettlementById',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetSettlementById',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdResponse.FromString,
                 _registered_method=True)
         self.GetTotalPending = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetTotalPending',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetTotalPending',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingResponse.FromString,
                 _registered_method=True)
         self.GetTotalSettled = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetTotalSettled',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetTotalSettled',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledResponse.FromString,
                 _registered_method=True)
         self.GetAgentCommissions = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetAgentCommissions',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetAgentCommissions',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.FromString,
                 _registered_method=True)
         self.GetPendingCommissions = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetPendingCommissions',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetPendingCommissions',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsResponse.FromString,
                 _registered_method=True)
         self.GetCommissionHistory = channel.unary_unary(
-                '/gameengine.commission.v1.CommissionService/GetCommissionHistory',
-                request_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.SerializeToString,
-                response_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.FromString,
+                '/game-engine.commission.v1.CommissionService/GetCommissionHistory',
+                request_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.SerializeToString,
+                response_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.FromString,
                 _registered_method=True)
 
 
@@ -149,64 +149,64 @@ def add_CommissionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'SubmitClaim': grpc.unary_unary_rpc_method_handler(
                     servicer.SubmitClaim,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.SerializeToString,
             ),
             'GetUserClaims': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserClaims,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.SerializeToString,
             ),
             'GetClaimsByStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetClaimsByStatus,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.SerializeToString,
             ),
             'ClaimCommission': grpc.unary_unary_rpc_method_handler(
                     servicer.ClaimCommission,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.SerializeToString,
             ),
             'GetUserSettlements': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserSettlements,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsResponse.SerializeToString,
             ),
             'GetSettlementById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetSettlementById,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdResponse.SerializeToString,
             ),
             'GetTotalPending': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTotalPending,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingResponse.SerializeToString,
             ),
             'GetTotalSettled': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTotalSettled,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledResponse.SerializeToString,
             ),
             'GetAgentCommissions': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAgentCommissions,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.SerializeToString,
             ),
             'GetPendingCommissions': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPendingCommissions,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsResponse.SerializeToString,
             ),
             'GetCommissionHistory': grpc.unary_unary_rpc_method_handler(
                     servicer.GetCommissionHistory,
-                    request_deserializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.FromString,
-                    response_serializer=gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.FromString,
+                    response_serializer=game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'gameengine.commission.v1.CommissionService', rpc_method_handlers)
+            'game-engine.commission.v1.CommissionService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('gameengine.commission.v1.CommissionService', rpc_method_handlers)
+    server.add_registered_method_handlers('game-engine.commission.v1.CommissionService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -227,9 +227,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/SubmitClaim',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/SubmitClaim',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -254,9 +254,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetUserClaims',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetUserClaims',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -281,9 +281,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetClaimsByStatus',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetClaimsByStatus',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -308,9 +308,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/ClaimCommission',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/ClaimCommission',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -335,9 +335,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetUserSettlements',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetUserSettlements',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetUserSettlementsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -362,9 +362,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetSettlementById',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetSettlementById',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetSettlementByIdResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -389,9 +389,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetTotalPending',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetTotalPending',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalPendingResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -416,9 +416,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetTotalSettled',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetTotalSettled',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetTotalSettledResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -443,9 +443,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetAgentCommissions',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetAgentCommissions',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -470,9 +470,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetPendingCommissions',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetPendingCommissions',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetPendingCommissionsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -497,9 +497,9 @@ class CommissionService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.commission.v1.CommissionService/GetCommissionHistory',
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.SerializeToString,
-            gameengine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.FromString,
+            '/game-engine.commission.v1.CommissionService/GetCommissionHistory',
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.SerializeToString,
+            game-engine_dot_commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.FromString,
             options,
             channel_credentials,
             insecure,

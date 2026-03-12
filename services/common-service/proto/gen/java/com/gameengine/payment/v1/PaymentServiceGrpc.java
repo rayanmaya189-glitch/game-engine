@@ -1,4 +1,4 @@
-package com.gameengine.payment.v1;
+package com.game-engine.payment.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -9,32 +9,32 @@ public final class PaymentServiceGrpc {
 
   private PaymentServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "gameengine.payment.v1.PaymentService";
+  public static final java.lang.String SERVICE_NAME = "game-engine.payment.v1.PaymentService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.CreatePaymentRequest,
-      com.gameengine.payment.v1.CreatePaymentResponse> getCreatePaymentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.CreatePaymentRequest,
+      com.game-engine.payment.v1.CreatePaymentResponse> getCreatePaymentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "CreatePayment",
-      requestType = com.gameengine.payment.v1.CreatePaymentRequest.class,
-      responseType = com.gameengine.payment.v1.CreatePaymentResponse.class,
+      requestType = com.game-engine.payment.v1.CreatePaymentRequest.class,
+      responseType = com.game-engine.payment.v1.CreatePaymentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.CreatePaymentRequest,
-      com.gameengine.payment.v1.CreatePaymentResponse> getCreatePaymentMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.CreatePaymentRequest, com.gameengine.payment.v1.CreatePaymentResponse> getCreatePaymentMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.CreatePaymentRequest,
+      com.game-engine.payment.v1.CreatePaymentResponse> getCreatePaymentMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.CreatePaymentRequest, com.game-engine.payment.v1.CreatePaymentResponse> getCreatePaymentMethod;
     if ((getCreatePaymentMethod = PaymentServiceGrpc.getCreatePaymentMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getCreatePaymentMethod = PaymentServiceGrpc.getCreatePaymentMethod) == null) {
           PaymentServiceGrpc.getCreatePaymentMethod = getCreatePaymentMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.CreatePaymentRequest, com.gameengine.payment.v1.CreatePaymentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.CreatePaymentRequest, com.game-engine.payment.v1.CreatePaymentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreatePayment"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.CreatePaymentRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.CreatePaymentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.CreatePaymentResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.CreatePaymentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("CreatePayment"))
               .build();
         }
@@ -43,29 +43,29 @@ public final class PaymentServiceGrpc {
     return getCreatePaymentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.GetPaymentRequest,
-      com.gameengine.payment.v1.GetPaymentResponse> getGetPaymentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.GetPaymentRequest,
+      com.game-engine.payment.v1.GetPaymentResponse> getGetPaymentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetPayment",
-      requestType = com.gameengine.payment.v1.GetPaymentRequest.class,
-      responseType = com.gameengine.payment.v1.GetPaymentResponse.class,
+      requestType = com.game-engine.payment.v1.GetPaymentRequest.class,
+      responseType = com.game-engine.payment.v1.GetPaymentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.GetPaymentRequest,
-      com.gameengine.payment.v1.GetPaymentResponse> getGetPaymentMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.GetPaymentRequest, com.gameengine.payment.v1.GetPaymentResponse> getGetPaymentMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.GetPaymentRequest,
+      com.game-engine.payment.v1.GetPaymentResponse> getGetPaymentMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.GetPaymentRequest, com.game-engine.payment.v1.GetPaymentResponse> getGetPaymentMethod;
     if ((getGetPaymentMethod = PaymentServiceGrpc.getGetPaymentMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getGetPaymentMethod = PaymentServiceGrpc.getGetPaymentMethod) == null) {
           PaymentServiceGrpc.getGetPaymentMethod = getGetPaymentMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.GetPaymentRequest, com.gameengine.payment.v1.GetPaymentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.GetPaymentRequest, com.game-engine.payment.v1.GetPaymentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPayment"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.GetPaymentRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.GetPaymentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.GetPaymentResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.GetPaymentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("GetPayment"))
               .build();
         }
@@ -74,29 +74,29 @@ public final class PaymentServiceGrpc {
     return getGetPaymentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.ApprovePaymentRequest,
-      com.gameengine.payment.v1.ApprovePaymentResponse> getApprovePaymentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.ApprovePaymentRequest,
+      com.game-engine.payment.v1.ApprovePaymentResponse> getApprovePaymentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ApprovePayment",
-      requestType = com.gameengine.payment.v1.ApprovePaymentRequest.class,
-      responseType = com.gameengine.payment.v1.ApprovePaymentResponse.class,
+      requestType = com.game-engine.payment.v1.ApprovePaymentRequest.class,
+      responseType = com.game-engine.payment.v1.ApprovePaymentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.ApprovePaymentRequest,
-      com.gameengine.payment.v1.ApprovePaymentResponse> getApprovePaymentMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.ApprovePaymentRequest, com.gameengine.payment.v1.ApprovePaymentResponse> getApprovePaymentMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.ApprovePaymentRequest,
+      com.game-engine.payment.v1.ApprovePaymentResponse> getApprovePaymentMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.ApprovePaymentRequest, com.game-engine.payment.v1.ApprovePaymentResponse> getApprovePaymentMethod;
     if ((getApprovePaymentMethod = PaymentServiceGrpc.getApprovePaymentMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getApprovePaymentMethod = PaymentServiceGrpc.getApprovePaymentMethod) == null) {
           PaymentServiceGrpc.getApprovePaymentMethod = getApprovePaymentMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.ApprovePaymentRequest, com.gameengine.payment.v1.ApprovePaymentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.ApprovePaymentRequest, com.game-engine.payment.v1.ApprovePaymentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ApprovePayment"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.ApprovePaymentRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.ApprovePaymentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.ApprovePaymentResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.ApprovePaymentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("ApprovePayment"))
               .build();
         }
@@ -105,29 +105,29 @@ public final class PaymentServiceGrpc {
     return getApprovePaymentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.RejectPaymentRequest,
-      com.gameengine.payment.v1.RejectPaymentResponse> getRejectPaymentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.RejectPaymentRequest,
+      com.game-engine.payment.v1.RejectPaymentResponse> getRejectPaymentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "RejectPayment",
-      requestType = com.gameengine.payment.v1.RejectPaymentRequest.class,
-      responseType = com.gameengine.payment.v1.RejectPaymentResponse.class,
+      requestType = com.game-engine.payment.v1.RejectPaymentRequest.class,
+      responseType = com.game-engine.payment.v1.RejectPaymentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.RejectPaymentRequest,
-      com.gameengine.payment.v1.RejectPaymentResponse> getRejectPaymentMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.RejectPaymentRequest, com.gameengine.payment.v1.RejectPaymentResponse> getRejectPaymentMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.RejectPaymentRequest,
+      com.game-engine.payment.v1.RejectPaymentResponse> getRejectPaymentMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.RejectPaymentRequest, com.game-engine.payment.v1.RejectPaymentResponse> getRejectPaymentMethod;
     if ((getRejectPaymentMethod = PaymentServiceGrpc.getRejectPaymentMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getRejectPaymentMethod = PaymentServiceGrpc.getRejectPaymentMethod) == null) {
           PaymentServiceGrpc.getRejectPaymentMethod = getRejectPaymentMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.RejectPaymentRequest, com.gameengine.payment.v1.RejectPaymentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.RejectPaymentRequest, com.game-engine.payment.v1.RejectPaymentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "RejectPayment"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.RejectPaymentRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.RejectPaymentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.RejectPaymentResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.RejectPaymentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("RejectPayment"))
               .build();
         }
@@ -136,29 +136,29 @@ public final class PaymentServiceGrpc {
     return getRejectPaymentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.ProcessPaymentRequest,
-      com.gameengine.payment.v1.ProcessPaymentResponse> getProcessPaymentMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.ProcessPaymentRequest,
+      com.game-engine.payment.v1.ProcessPaymentResponse> getProcessPaymentMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ProcessPayment",
-      requestType = com.gameengine.payment.v1.ProcessPaymentRequest.class,
-      responseType = com.gameengine.payment.v1.ProcessPaymentResponse.class,
+      requestType = com.game-engine.payment.v1.ProcessPaymentRequest.class,
+      responseType = com.game-engine.payment.v1.ProcessPaymentResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.ProcessPaymentRequest,
-      com.gameengine.payment.v1.ProcessPaymentResponse> getProcessPaymentMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.ProcessPaymentRequest, com.gameengine.payment.v1.ProcessPaymentResponse> getProcessPaymentMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.ProcessPaymentRequest,
+      com.game-engine.payment.v1.ProcessPaymentResponse> getProcessPaymentMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.ProcessPaymentRequest, com.game-engine.payment.v1.ProcessPaymentResponse> getProcessPaymentMethod;
     if ((getProcessPaymentMethod = PaymentServiceGrpc.getProcessPaymentMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getProcessPaymentMethod = PaymentServiceGrpc.getProcessPaymentMethod) == null) {
           PaymentServiceGrpc.getProcessPaymentMethod = getProcessPaymentMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.ProcessPaymentRequest, com.gameengine.payment.v1.ProcessPaymentResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.ProcessPaymentRequest, com.game-engine.payment.v1.ProcessPaymentResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessPayment"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.ProcessPaymentRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.ProcessPaymentRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.ProcessPaymentResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.ProcessPaymentResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("ProcessPayment"))
               .build();
         }
@@ -167,29 +167,29 @@ public final class PaymentServiceGrpc {
     return getProcessPaymentMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.ListPaymentsRequest,
-      com.gameengine.payment.v1.ListPaymentsResponse> getListPaymentsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.ListPaymentsRequest,
+      com.game-engine.payment.v1.ListPaymentsResponse> getListPaymentsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListPayments",
-      requestType = com.gameengine.payment.v1.ListPaymentsRequest.class,
-      responseType = com.gameengine.payment.v1.ListPaymentsResponse.class,
+      requestType = com.game-engine.payment.v1.ListPaymentsRequest.class,
+      responseType = com.game-engine.payment.v1.ListPaymentsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.ListPaymentsRequest,
-      com.gameengine.payment.v1.ListPaymentsResponse> getListPaymentsMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.ListPaymentsRequest, com.gameengine.payment.v1.ListPaymentsResponse> getListPaymentsMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.ListPaymentsRequest,
+      com.game-engine.payment.v1.ListPaymentsResponse> getListPaymentsMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.ListPaymentsRequest, com.game-engine.payment.v1.ListPaymentsResponse> getListPaymentsMethod;
     if ((getListPaymentsMethod = PaymentServiceGrpc.getListPaymentsMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getListPaymentsMethod = PaymentServiceGrpc.getListPaymentsMethod) == null) {
           PaymentServiceGrpc.getListPaymentsMethod = getListPaymentsMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.ListPaymentsRequest, com.gameengine.payment.v1.ListPaymentsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.ListPaymentsRequest, com.game-engine.payment.v1.ListPaymentsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListPayments"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.ListPaymentsRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.ListPaymentsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.ListPaymentsResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.ListPaymentsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("ListPayments"))
               .build();
         }
@@ -198,29 +198,29 @@ public final class PaymentServiceGrpc {
     return getListPaymentsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.payment.v1.GetPaymentMethodsRequest,
-      com.gameengine.payment.v1.GetPaymentMethodsResponse> getGetPaymentMethodsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.payment.v1.GetPaymentMethodsRequest,
+      com.game-engine.payment.v1.GetPaymentMethodsResponse> getGetPaymentMethodsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetPaymentMethods",
-      requestType = com.gameengine.payment.v1.GetPaymentMethodsRequest.class,
-      responseType = com.gameengine.payment.v1.GetPaymentMethodsResponse.class,
+      requestType = com.game-engine.payment.v1.GetPaymentMethodsRequest.class,
+      responseType = com.game-engine.payment.v1.GetPaymentMethodsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.payment.v1.GetPaymentMethodsRequest,
-      com.gameengine.payment.v1.GetPaymentMethodsResponse> getGetPaymentMethodsMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.payment.v1.GetPaymentMethodsRequest, com.gameengine.payment.v1.GetPaymentMethodsResponse> getGetPaymentMethodsMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.payment.v1.GetPaymentMethodsRequest,
+      com.game-engine.payment.v1.GetPaymentMethodsResponse> getGetPaymentMethodsMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.payment.v1.GetPaymentMethodsRequest, com.game-engine.payment.v1.GetPaymentMethodsResponse> getGetPaymentMethodsMethod;
     if ((getGetPaymentMethodsMethod = PaymentServiceGrpc.getGetPaymentMethodsMethod) == null) {
       synchronized (PaymentServiceGrpc.class) {
         if ((getGetPaymentMethodsMethod = PaymentServiceGrpc.getGetPaymentMethodsMethod) == null) {
           PaymentServiceGrpc.getGetPaymentMethodsMethod = getGetPaymentMethodsMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.payment.v1.GetPaymentMethodsRequest, com.gameengine.payment.v1.GetPaymentMethodsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.payment.v1.GetPaymentMethodsRequest, com.game-engine.payment.v1.GetPaymentMethodsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPaymentMethods"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.GetPaymentMethodsRequest.getDefaultInstance()))
+                  com.game-engine.payment.v1.GetPaymentMethodsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.payment.v1.GetPaymentMethodsResponse.getDefaultInstance()))
+                  com.game-engine.payment.v1.GetPaymentMethodsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new PaymentServiceMethodDescriptorSupplier("GetPaymentMethods"))
               .build();
         }
@@ -297,36 +297,36 @@ public final class PaymentServiceGrpc {
      * Payment operations
      * </pre>
      */
-    default void createPayment(com.gameengine.payment.v1.CreatePaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.CreatePaymentResponse> responseObserver) {
+    default void createPayment(com.game-engine.payment.v1.CreatePaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.CreatePaymentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreatePaymentMethod(), responseObserver);
     }
 
     /**
      */
-    default void getPayment(com.gameengine.payment.v1.GetPaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.GetPaymentResponse> responseObserver) {
+    default void getPayment(com.game-engine.payment.v1.GetPaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.GetPaymentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPaymentMethod(), responseObserver);
     }
 
     /**
      */
-    default void approvePayment(com.gameengine.payment.v1.ApprovePaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ApprovePaymentResponse> responseObserver) {
+    default void approvePayment(com.game-engine.payment.v1.ApprovePaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ApprovePaymentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getApprovePaymentMethod(), responseObserver);
     }
 
     /**
      */
-    default void rejectPayment(com.gameengine.payment.v1.RejectPaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.RejectPaymentResponse> responseObserver) {
+    default void rejectPayment(com.game-engine.payment.v1.RejectPaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.RejectPaymentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRejectPaymentMethod(), responseObserver);
     }
 
     /**
      */
-    default void processPayment(com.gameengine.payment.v1.ProcessPaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ProcessPaymentResponse> responseObserver) {
+    default void processPayment(com.game-engine.payment.v1.ProcessPaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ProcessPaymentResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getProcessPaymentMethod(), responseObserver);
     }
 
@@ -335,15 +335,15 @@ public final class PaymentServiceGrpc {
      * List and methods
      * </pre>
      */
-    default void listPayments(com.gameengine.payment.v1.ListPaymentsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ListPaymentsResponse> responseObserver) {
+    default void listPayments(com.game-engine.payment.v1.ListPaymentsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ListPaymentsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListPaymentsMethod(), responseObserver);
     }
 
     /**
      */
-    default void getPaymentMethods(com.gameengine.payment.v1.GetPaymentMethodsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.GetPaymentMethodsResponse> responseObserver) {
+    default void getPaymentMethods(com.game-engine.payment.v1.GetPaymentMethodsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.GetPaymentMethodsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPaymentMethodsMethod(), responseObserver);
     }
   }
@@ -380,40 +380,40 @@ public final class PaymentServiceGrpc {
      * Payment operations
      * </pre>
      */
-    public void createPayment(com.gameengine.payment.v1.CreatePaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.CreatePaymentResponse> responseObserver) {
+    public void createPayment(com.game-engine.payment.v1.CreatePaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.CreatePaymentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getCreatePaymentMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getPayment(com.gameengine.payment.v1.GetPaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.GetPaymentResponse> responseObserver) {
+    public void getPayment(com.game-engine.payment.v1.GetPaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.GetPaymentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPaymentMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void approvePayment(com.gameengine.payment.v1.ApprovePaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ApprovePaymentResponse> responseObserver) {
+    public void approvePayment(com.game-engine.payment.v1.ApprovePaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ApprovePaymentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getApprovePaymentMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void rejectPayment(com.gameengine.payment.v1.RejectPaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.RejectPaymentResponse> responseObserver) {
+    public void rejectPayment(com.game-engine.payment.v1.RejectPaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.RejectPaymentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRejectPaymentMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void processPayment(com.gameengine.payment.v1.ProcessPaymentRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ProcessPaymentResponse> responseObserver) {
+    public void processPayment(com.game-engine.payment.v1.ProcessPaymentRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ProcessPaymentResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getProcessPaymentMethod(), getCallOptions()), request, responseObserver);
     }
@@ -423,16 +423,16 @@ public final class PaymentServiceGrpc {
      * List and methods
      * </pre>
      */
-    public void listPayments(com.gameengine.payment.v1.ListPaymentsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ListPaymentsResponse> responseObserver) {
+    public void listPayments(com.game-engine.payment.v1.ListPaymentsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ListPaymentsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListPaymentsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getPaymentMethods(com.gameengine.payment.v1.GetPaymentMethodsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.payment.v1.GetPaymentMethodsResponse> responseObserver) {
+    public void getPaymentMethods(com.game-engine.payment.v1.GetPaymentMethodsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.payment.v1.GetPaymentMethodsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPaymentMethodsMethod(), getCallOptions()), request, responseObserver);
     }
@@ -459,35 +459,35 @@ public final class PaymentServiceGrpc {
      * Payment operations
      * </pre>
      */
-    public com.gameengine.payment.v1.CreatePaymentResponse createPayment(com.gameengine.payment.v1.CreatePaymentRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.CreatePaymentResponse createPayment(com.game-engine.payment.v1.CreatePaymentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getCreatePaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.GetPaymentResponse getPayment(com.gameengine.payment.v1.GetPaymentRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.GetPaymentResponse getPayment(com.game-engine.payment.v1.GetPaymentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.ApprovePaymentResponse approvePayment(com.gameengine.payment.v1.ApprovePaymentRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.ApprovePaymentResponse approvePayment(com.game-engine.payment.v1.ApprovePaymentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getApprovePaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.RejectPaymentResponse rejectPayment(com.gameengine.payment.v1.RejectPaymentRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.RejectPaymentResponse rejectPayment(com.game-engine.payment.v1.RejectPaymentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getRejectPaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.ProcessPaymentResponse processPayment(com.gameengine.payment.v1.ProcessPaymentRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.ProcessPaymentResponse processPayment(com.game-engine.payment.v1.ProcessPaymentRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getProcessPaymentMethod(), getCallOptions(), request);
     }
@@ -497,14 +497,14 @@ public final class PaymentServiceGrpc {
      * List and methods
      * </pre>
      */
-    public com.gameengine.payment.v1.ListPaymentsResponse listPayments(com.gameengine.payment.v1.ListPaymentsRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.ListPaymentsResponse listPayments(com.game-engine.payment.v1.ListPaymentsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getListPaymentsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.GetPaymentMethodsResponse getPaymentMethods(com.gameengine.payment.v1.GetPaymentMethodsRequest request) throws io.grpc.StatusException {
+    public com.game-engine.payment.v1.GetPaymentMethodsResponse getPaymentMethods(com.game-engine.payment.v1.GetPaymentMethodsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPaymentMethodsMethod(), getCallOptions(), request);
     }
@@ -531,35 +531,35 @@ public final class PaymentServiceGrpc {
      * Payment operations
      * </pre>
      */
-    public com.gameengine.payment.v1.CreatePaymentResponse createPayment(com.gameengine.payment.v1.CreatePaymentRequest request) {
+    public com.game-engine.payment.v1.CreatePaymentResponse createPayment(com.game-engine.payment.v1.CreatePaymentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getCreatePaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.GetPaymentResponse getPayment(com.gameengine.payment.v1.GetPaymentRequest request) {
+    public com.game-engine.payment.v1.GetPaymentResponse getPayment(com.game-engine.payment.v1.GetPaymentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.ApprovePaymentResponse approvePayment(com.gameengine.payment.v1.ApprovePaymentRequest request) {
+    public com.game-engine.payment.v1.ApprovePaymentResponse approvePayment(com.game-engine.payment.v1.ApprovePaymentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getApprovePaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.RejectPaymentResponse rejectPayment(com.gameengine.payment.v1.RejectPaymentRequest request) {
+    public com.game-engine.payment.v1.RejectPaymentResponse rejectPayment(com.game-engine.payment.v1.RejectPaymentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRejectPaymentMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.ProcessPaymentResponse processPayment(com.gameengine.payment.v1.ProcessPaymentRequest request) {
+    public com.game-engine.payment.v1.ProcessPaymentResponse processPayment(com.game-engine.payment.v1.ProcessPaymentRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getProcessPaymentMethod(), getCallOptions(), request);
     }
@@ -569,14 +569,14 @@ public final class PaymentServiceGrpc {
      * List and methods
      * </pre>
      */
-    public com.gameengine.payment.v1.ListPaymentsResponse listPayments(com.gameengine.payment.v1.ListPaymentsRequest request) {
+    public com.game-engine.payment.v1.ListPaymentsResponse listPayments(com.game-engine.payment.v1.ListPaymentsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListPaymentsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.payment.v1.GetPaymentMethodsResponse getPaymentMethods(com.gameengine.payment.v1.GetPaymentMethodsRequest request) {
+    public com.game-engine.payment.v1.GetPaymentMethodsResponse getPaymentMethods(com.game-engine.payment.v1.GetPaymentMethodsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPaymentMethodsMethod(), getCallOptions(), request);
     }
@@ -603,40 +603,40 @@ public final class PaymentServiceGrpc {
      * Payment operations
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.CreatePaymentResponse> createPayment(
-        com.gameengine.payment.v1.CreatePaymentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.CreatePaymentResponse> createPayment(
+        com.game-engine.payment.v1.CreatePaymentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getCreatePaymentMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.GetPaymentResponse> getPayment(
-        com.gameengine.payment.v1.GetPaymentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.GetPaymentResponse> getPayment(
+        com.game-engine.payment.v1.GetPaymentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPaymentMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.ApprovePaymentResponse> approvePayment(
-        com.gameengine.payment.v1.ApprovePaymentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.ApprovePaymentResponse> approvePayment(
+        com.game-engine.payment.v1.ApprovePaymentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getApprovePaymentMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.RejectPaymentResponse> rejectPayment(
-        com.gameengine.payment.v1.RejectPaymentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.RejectPaymentResponse> rejectPayment(
+        com.game-engine.payment.v1.RejectPaymentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRejectPaymentMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.ProcessPaymentResponse> processPayment(
-        com.gameengine.payment.v1.ProcessPaymentRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.ProcessPaymentResponse> processPayment(
+        com.game-engine.payment.v1.ProcessPaymentRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getProcessPaymentMethod(), getCallOptions()), request);
     }
@@ -646,16 +646,16 @@ public final class PaymentServiceGrpc {
      * List and methods
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.ListPaymentsResponse> listPayments(
-        com.gameengine.payment.v1.ListPaymentsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.ListPaymentsResponse> listPayments(
+        com.game-engine.payment.v1.ListPaymentsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListPaymentsMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.payment.v1.GetPaymentMethodsResponse> getPaymentMethods(
-        com.gameengine.payment.v1.GetPaymentMethodsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.payment.v1.GetPaymentMethodsResponse> getPaymentMethods(
+        com.game-engine.payment.v1.GetPaymentMethodsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPaymentMethodsMethod(), getCallOptions()), request);
     }
@@ -687,32 +687,32 @@ public final class PaymentServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_CREATE_PAYMENT:
-          serviceImpl.createPayment((com.gameengine.payment.v1.CreatePaymentRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.CreatePaymentResponse>) responseObserver);
+          serviceImpl.createPayment((com.game-engine.payment.v1.CreatePaymentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.CreatePaymentResponse>) responseObserver);
           break;
         case METHODID_GET_PAYMENT:
-          serviceImpl.getPayment((com.gameengine.payment.v1.GetPaymentRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.GetPaymentResponse>) responseObserver);
+          serviceImpl.getPayment((com.game-engine.payment.v1.GetPaymentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.GetPaymentResponse>) responseObserver);
           break;
         case METHODID_APPROVE_PAYMENT:
-          serviceImpl.approvePayment((com.gameengine.payment.v1.ApprovePaymentRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ApprovePaymentResponse>) responseObserver);
+          serviceImpl.approvePayment((com.game-engine.payment.v1.ApprovePaymentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ApprovePaymentResponse>) responseObserver);
           break;
         case METHODID_REJECT_PAYMENT:
-          serviceImpl.rejectPayment((com.gameengine.payment.v1.RejectPaymentRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.RejectPaymentResponse>) responseObserver);
+          serviceImpl.rejectPayment((com.game-engine.payment.v1.RejectPaymentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.RejectPaymentResponse>) responseObserver);
           break;
         case METHODID_PROCESS_PAYMENT:
-          serviceImpl.processPayment((com.gameengine.payment.v1.ProcessPaymentRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ProcessPaymentResponse>) responseObserver);
+          serviceImpl.processPayment((com.game-engine.payment.v1.ProcessPaymentRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ProcessPaymentResponse>) responseObserver);
           break;
         case METHODID_LIST_PAYMENTS:
-          serviceImpl.listPayments((com.gameengine.payment.v1.ListPaymentsRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.ListPaymentsResponse>) responseObserver);
+          serviceImpl.listPayments((com.game-engine.payment.v1.ListPaymentsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.ListPaymentsResponse>) responseObserver);
           break;
         case METHODID_GET_PAYMENT_METHODS:
-          serviceImpl.getPaymentMethods((com.gameengine.payment.v1.GetPaymentMethodsRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.payment.v1.GetPaymentMethodsResponse>) responseObserver);
+          serviceImpl.getPaymentMethods((com.game-engine.payment.v1.GetPaymentMethodsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.payment.v1.GetPaymentMethodsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -736,50 +736,50 @@ public final class PaymentServiceGrpc {
           getCreatePaymentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.CreatePaymentRequest,
-              com.gameengine.payment.v1.CreatePaymentResponse>(
+              com.game-engine.payment.v1.CreatePaymentRequest,
+              com.game-engine.payment.v1.CreatePaymentResponse>(
                 service, METHODID_CREATE_PAYMENT)))
         .addMethod(
           getGetPaymentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.GetPaymentRequest,
-              com.gameengine.payment.v1.GetPaymentResponse>(
+              com.game-engine.payment.v1.GetPaymentRequest,
+              com.game-engine.payment.v1.GetPaymentResponse>(
                 service, METHODID_GET_PAYMENT)))
         .addMethod(
           getApprovePaymentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.ApprovePaymentRequest,
-              com.gameengine.payment.v1.ApprovePaymentResponse>(
+              com.game-engine.payment.v1.ApprovePaymentRequest,
+              com.game-engine.payment.v1.ApprovePaymentResponse>(
                 service, METHODID_APPROVE_PAYMENT)))
         .addMethod(
           getRejectPaymentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.RejectPaymentRequest,
-              com.gameengine.payment.v1.RejectPaymentResponse>(
+              com.game-engine.payment.v1.RejectPaymentRequest,
+              com.game-engine.payment.v1.RejectPaymentResponse>(
                 service, METHODID_REJECT_PAYMENT)))
         .addMethod(
           getProcessPaymentMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.ProcessPaymentRequest,
-              com.gameengine.payment.v1.ProcessPaymentResponse>(
+              com.game-engine.payment.v1.ProcessPaymentRequest,
+              com.game-engine.payment.v1.ProcessPaymentResponse>(
                 service, METHODID_PROCESS_PAYMENT)))
         .addMethod(
           getListPaymentsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.ListPaymentsRequest,
-              com.gameengine.payment.v1.ListPaymentsResponse>(
+              com.game-engine.payment.v1.ListPaymentsRequest,
+              com.game-engine.payment.v1.ListPaymentsResponse>(
                 service, METHODID_LIST_PAYMENTS)))
         .addMethod(
           getGetPaymentMethodsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.payment.v1.GetPaymentMethodsRequest,
-              com.gameengine.payment.v1.GetPaymentMethodsResponse>(
+              com.game-engine.payment.v1.GetPaymentMethodsRequest,
+              com.game-engine.payment.v1.GetPaymentMethodsResponse>(
                 service, METHODID_GET_PAYMENT_METHODS)))
         .build();
   }
@@ -790,7 +790,7 @@ public final class PaymentServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.gameengine.payment.v1.PaymentServiceOuterClass.getDescriptor();
+      return com.game-engine.payment.v1.PaymentServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override

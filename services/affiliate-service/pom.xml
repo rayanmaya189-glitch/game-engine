@@ -8,7 +8,7 @@
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.2.0</version>
     </parent>
-    <groupId>com.gameengine</groupId>
+    <groupId>com.game-engine</groupId>
     <artifactId>affiliate-service</artifactId>
     <version>1.0.0</version>
     <properties><java.version>17</java.version></properties>

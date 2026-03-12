@@ -1,6 +1,6 @@
 module github.com/game-engine/common
 
-go 1.23
+go 1.25
 
 require google.golang.org/grpc v1.68.1
 

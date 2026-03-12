@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/gameengine/multiplayer/internal/room"
+	"github.com/game-engine/multiplayer/internal/room"
 )
 
 // MultiplayerService provides multiplayer game logic

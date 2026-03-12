@@ -1,4 +1,4 @@
-package com.gameengine.bonus.model;
+package com.game-engine.bonus.model;
 
 import jakarta.persistence.*;
 import lombok.*;

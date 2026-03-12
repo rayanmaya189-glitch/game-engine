@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	jackpotpb "github.com/game-engine/gen/go/gameengine/jackpot/v1"
+	jackpotpb "github.com/game-engine/gen/go/game-engine/jackpot/v1"
 	"github.com/game-engine/jackpot-service/internal/config"
 	"github.com/game-engine/jackpot-service/internal/handler"
 	"github.com/game-engine/jackpot-service/internal/repository"

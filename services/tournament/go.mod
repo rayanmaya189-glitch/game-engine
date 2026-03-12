@@ -1,6 +1,6 @@
-module github.com/gameengine/tournament
+module github.com/game-engine/tournament
 
-go 1.21
+go 1.25
 
 require (
 	github.com/google/uuid v1.5.0

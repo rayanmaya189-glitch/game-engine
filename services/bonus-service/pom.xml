@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.gameengine</groupId>
+    <groupId>com.game-engine</groupId>
     <artifactId>bonus-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>

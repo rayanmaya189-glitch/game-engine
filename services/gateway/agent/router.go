@@ -6,8 +6,8 @@ import (
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/router"
 
-	affiliatepb "github.com/game-engine/gen/go/gameengine/affiliate/v1"
-	agentpb "github.com/game-engine/gen/go/gameengine/agent/v1"
+	affiliatepb "github.com/game-engine/gen/go/game-engine/affiliate/v1"
+	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
 
 	"common/client"
 	"common/handler"

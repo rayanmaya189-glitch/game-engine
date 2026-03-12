@@ -11,12 +11,12 @@ import (
 	"syscall"
 	"time"
 
-	walletsv1 "gameengine/gen/go/wallet/v1"
+	walletsv1 "game-engine/gen/go/wallet/v1"
 
-	"github.com/gameengine/wallet-service/internal/config"
-	"github.com/gameengine/wallet-service/internal/handler"
-	"github.com/gameengine/wallet-service/internal/repository"
-	"github.com/gameengine/wallet-service/internal/service"
+	"github.com/game-engine/wallet-service/internal/config"
+	"github.com/game-engine/wallet-service/internal/handler"
+	"github.com/game-engine/wallet-service/internal/repository"
+	"github.com/game-engine/wallet-service/internal/service"
 
 	_ "github.com/lib/pq"
 	"github.com/nats-io/nats.go"

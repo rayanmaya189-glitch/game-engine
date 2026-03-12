@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from gameengine.bonus.v1 import bonus_service_pb2 as gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2
+from game-engine.bonus.v1 import bonus_service_pb2 as game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2
 
 
 class BonusServiceStub(object):
@@ -15,54 +15,54 @@ class BonusServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ListBonuses = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/ListBonuses',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/ListBonuses',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.FromString,
                 _registered_method=True)
         self.GetBonus = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/GetBonus',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/GetBonus',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.FromString,
                 _registered_method=True)
         self.ClaimBonus = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/ClaimBonus',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/ClaimBonus',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.FromString,
                 _registered_method=True)
         self.GetUserBonuses = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/GetUserBonuses',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/GetUserBonuses',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.FromString,
                 _registered_method=True)
         self.CreateRebetClaim = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/CreateRebetClaim',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/CreateRebetClaim',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.FromString,
                 _registered_method=True)
         self.GetUserRebetClaims = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/GetUserRebetClaims',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/GetUserRebetClaims',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.FromString,
                 _registered_method=True)
         self.GetClaimableRebets = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/GetClaimableRebets',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/GetClaimableRebets',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.FromString,
                 _registered_method=True)
         self.ClaimRebet = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/ClaimRebet',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/ClaimRebet',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.FromString,
                 _registered_method=True)
         self.SubmitInsuranceClaim = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/SubmitInsuranceClaim',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/SubmitInsuranceClaim',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.FromString,
                 _registered_method=True)
         self.GetUserInsuranceClaims = channel.unary_unary(
-                '/gameengine.bonus.v1.BonusService/GetUserInsuranceClaims',
-                request_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.FromString,
+                '/game-engine.bonus.v1.BonusService/GetUserInsuranceClaims',
+                request_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.FromString,
                 _registered_method=True)
 
 
@@ -140,59 +140,59 @@ def add_BonusServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ListBonuses': grpc.unary_unary_rpc_method_handler(
                     servicer.ListBonuses,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.SerializeToString,
             ),
             'GetBonus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBonus,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.SerializeToString,
             ),
             'ClaimBonus': grpc.unary_unary_rpc_method_handler(
                     servicer.ClaimBonus,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.SerializeToString,
             ),
             'GetUserBonuses': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserBonuses,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.SerializeToString,
             ),
             'CreateRebetClaim': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateRebetClaim,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.SerializeToString,
             ),
             'GetUserRebetClaims': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserRebetClaims,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.SerializeToString,
             ),
             'GetClaimableRebets': grpc.unary_unary_rpc_method_handler(
                     servicer.GetClaimableRebets,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.SerializeToString,
             ),
             'ClaimRebet': grpc.unary_unary_rpc_method_handler(
                     servicer.ClaimRebet,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.SerializeToString,
             ),
             'SubmitInsuranceClaim': grpc.unary_unary_rpc_method_handler(
                     servicer.SubmitInsuranceClaim,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.SerializeToString,
             ),
             'GetUserInsuranceClaims': grpc.unary_unary_rpc_method_handler(
                     servicer.GetUserInsuranceClaims,
-                    request_deserializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.FromString,
-                    response_serializer=gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.FromString,
+                    response_serializer=game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'gameengine.bonus.v1.BonusService', rpc_method_handlers)
+            'game-engine.bonus.v1.BonusService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('gameengine.bonus.v1.BonusService', rpc_method_handlers)
+    server.add_registered_method_handlers('game-engine.bonus.v1.BonusService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -213,9 +213,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/ListBonuses',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/ListBonuses',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -240,9 +240,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/GetBonus',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/GetBonus',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -267,9 +267,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/ClaimBonus',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/ClaimBonus',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -294,9 +294,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/GetUserBonuses',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/GetUserBonuses',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -321,9 +321,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/CreateRebetClaim',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/CreateRebetClaim',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -348,9 +348,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/GetUserRebetClaims',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/GetUserRebetClaims',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -375,9 +375,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/GetClaimableRebets',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/GetClaimableRebets',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -402,9 +402,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/ClaimRebet',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/ClaimRebet',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -429,9 +429,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/SubmitInsuranceClaim',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/SubmitInsuranceClaim',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -456,9 +456,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.bonus.v1.BonusService/GetUserInsuranceClaims',
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.SerializeToString,
-            gameengine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.FromString,
+            '/game-engine.bonus.v1.BonusService/GetUserInsuranceClaims',
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.SerializeToString,
+            game-engine_dot_bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	tournamentpb "github.com/game-engine/gen/go/gameengine/tournament/v1"
+	tournamentpb "github.com/game-engine/gen/go/game-engine/tournament/v1"
 )
 
 type TournamentClient struct {

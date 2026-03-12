@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	commissionpb "github.com/game-engine/gen/go/gameengine/commission/v1"
+	commissionpb "github.com/game-engine/gen/go/game-engine/commission/v1"
 )
 
 type CommissionClient struct {

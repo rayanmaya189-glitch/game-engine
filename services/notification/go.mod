@@ -1,6 +1,6 @@
-module github.com/gameengine/notification
+module github.com/game-engine/notification
 
-go 1.21
+go 1.25
 
 require (
 	github.com/google/uuid v1.5.0

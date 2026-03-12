@@ -1,4 +1,4 @@
-package com.gameengine.game.v1;
+package com.game-engine.game.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -12,32 +12,32 @@ public final class GameRegistryServiceGrpc {
 
   private GameRegistryServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "gameengine.game.v1.GameRegistryService";
+  public static final java.lang.String SERVICE_NAME = "game-engine.game.v1.GameRegistryService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.ListGamesRequest,
-      com.gameengine.game.v1.ListGamesResponse> getListGamesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.ListGamesRequest,
+      com.game-engine.game.v1.ListGamesResponse> getListGamesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListGames",
-      requestType = com.gameengine.game.v1.ListGamesRequest.class,
-      responseType = com.gameengine.game.v1.ListGamesResponse.class,
+      requestType = com.game-engine.game.v1.ListGamesRequest.class,
+      responseType = com.game-engine.game.v1.ListGamesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.ListGamesRequest,
-      com.gameengine.game.v1.ListGamesResponse> getListGamesMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.ListGamesRequest, com.gameengine.game.v1.ListGamesResponse> getListGamesMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.ListGamesRequest,
+      com.game-engine.game.v1.ListGamesResponse> getListGamesMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.ListGamesRequest, com.game-engine.game.v1.ListGamesResponse> getListGamesMethod;
     if ((getListGamesMethod = GameRegistryServiceGrpc.getListGamesMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getListGamesMethod = GameRegistryServiceGrpc.getListGamesMethod) == null) {
           GameRegistryServiceGrpc.getListGamesMethod = getListGamesMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.ListGamesRequest, com.gameengine.game.v1.ListGamesResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.ListGamesRequest, com.game-engine.game.v1.ListGamesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListGames"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.ListGamesRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.ListGamesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.ListGamesResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.ListGamesResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("ListGames"))
               .build();
         }
@@ -46,29 +46,29 @@ public final class GameRegistryServiceGrpc {
     return getListGamesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameRequest,
-      com.gameengine.game.v1.GetGameResponse> getGetGameMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameRequest,
+      com.game-engine.game.v1.GetGameResponse> getGetGameMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetGame",
-      requestType = com.gameengine.game.v1.GetGameRequest.class,
-      responseType = com.gameengine.game.v1.GetGameResponse.class,
+      requestType = com.game-engine.game.v1.GetGameRequest.class,
+      responseType = com.game-engine.game.v1.GetGameResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameRequest,
-      com.gameengine.game.v1.GetGameResponse> getGetGameMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameRequest, com.gameengine.game.v1.GetGameResponse> getGetGameMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameRequest,
+      com.game-engine.game.v1.GetGameResponse> getGetGameMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameRequest, com.game-engine.game.v1.GetGameResponse> getGetGameMethod;
     if ((getGetGameMethod = GameRegistryServiceGrpc.getGetGameMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetGameMethod = GameRegistryServiceGrpc.getGetGameMethod) == null) {
           GameRegistryServiceGrpc.getGetGameMethod = getGetGameMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetGameRequest, com.gameengine.game.v1.GetGameResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetGameRequest, com.game-engine.game.v1.GetGameResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetGame"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetGameRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetGameRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetGameResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetGameResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetGame"))
               .build();
         }
@@ -77,29 +77,29 @@ public final class GameRegistryServiceGrpc {
     return getGetGameMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameConfigRequest,
-      com.gameengine.game.v1.GetGameConfigResponse> getGetGameConfigMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameConfigRequest,
+      com.game-engine.game.v1.GetGameConfigResponse> getGetGameConfigMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetGameConfig",
-      requestType = com.gameengine.game.v1.GetGameConfigRequest.class,
-      responseType = com.gameengine.game.v1.GetGameConfigResponse.class,
+      requestType = com.game-engine.game.v1.GetGameConfigRequest.class,
+      responseType = com.game-engine.game.v1.GetGameConfigResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameConfigRequest,
-      com.gameengine.game.v1.GetGameConfigResponse> getGetGameConfigMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameConfigRequest, com.gameengine.game.v1.GetGameConfigResponse> getGetGameConfigMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameConfigRequest,
+      com.game-engine.game.v1.GetGameConfigResponse> getGetGameConfigMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameConfigRequest, com.game-engine.game.v1.GetGameConfigResponse> getGetGameConfigMethod;
     if ((getGetGameConfigMethod = GameRegistryServiceGrpc.getGetGameConfigMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetGameConfigMethod = GameRegistryServiceGrpc.getGetGameConfigMethod) == null) {
           GameRegistryServiceGrpc.getGetGameConfigMethod = getGetGameConfigMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetGameConfigRequest, com.gameengine.game.v1.GetGameConfigResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetGameConfigRequest, com.game-engine.game.v1.GetGameConfigResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetGameConfig"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetGameConfigRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetGameConfigRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetGameConfigResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetGameConfigResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetGameConfig"))
               .build();
         }
@@ -108,29 +108,29 @@ public final class GameRegistryServiceGrpc {
     return getGetGameConfigMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameURLRequest,
-      com.gameengine.game.v1.GetGameURLResponse> getGetGameURLMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameURLRequest,
+      com.game-engine.game.v1.GetGameURLResponse> getGetGameURLMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetGameURL",
-      requestType = com.gameengine.game.v1.GetGameURLRequest.class,
-      responseType = com.gameengine.game.v1.GetGameURLResponse.class,
+      requestType = com.game-engine.game.v1.GetGameURLRequest.class,
+      responseType = com.game-engine.game.v1.GetGameURLResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameURLRequest,
-      com.gameengine.game.v1.GetGameURLResponse> getGetGameURLMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetGameURLRequest, com.gameengine.game.v1.GetGameURLResponse> getGetGameURLMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameURLRequest,
+      com.game-engine.game.v1.GetGameURLResponse> getGetGameURLMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetGameURLRequest, com.game-engine.game.v1.GetGameURLResponse> getGetGameURLMethod;
     if ((getGetGameURLMethod = GameRegistryServiceGrpc.getGetGameURLMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetGameURLMethod = GameRegistryServiceGrpc.getGetGameURLMethod) == null) {
           GameRegistryServiceGrpc.getGetGameURLMethod = getGetGameURLMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetGameURLRequest, com.gameengine.game.v1.GetGameURLResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetGameURLRequest, com.game-engine.game.v1.GetGameURLResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetGameURL"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetGameURLRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetGameURLRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetGameURLResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetGameURLResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetGameURL"))
               .build();
         }
@@ -139,29 +139,29 @@ public final class GameRegistryServiceGrpc {
     return getGetGameURLMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetCategoriesRequest,
-      com.gameengine.game.v1.GetCategoriesResponse> getGetCategoriesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetCategoriesRequest,
+      com.game-engine.game.v1.GetCategoriesResponse> getGetCategoriesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetCategories",
-      requestType = com.gameengine.game.v1.GetCategoriesRequest.class,
-      responseType = com.gameengine.game.v1.GetCategoriesResponse.class,
+      requestType = com.game-engine.game.v1.GetCategoriesRequest.class,
+      responseType = com.game-engine.game.v1.GetCategoriesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetCategoriesRequest,
-      com.gameengine.game.v1.GetCategoriesResponse> getGetCategoriesMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetCategoriesRequest, com.gameengine.game.v1.GetCategoriesResponse> getGetCategoriesMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetCategoriesRequest,
+      com.game-engine.game.v1.GetCategoriesResponse> getGetCategoriesMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetCategoriesRequest, com.game-engine.game.v1.GetCategoriesResponse> getGetCategoriesMethod;
     if ((getGetCategoriesMethod = GameRegistryServiceGrpc.getGetCategoriesMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetCategoriesMethod = GameRegistryServiceGrpc.getGetCategoriesMethod) == null) {
           GameRegistryServiceGrpc.getGetCategoriesMethod = getGetCategoriesMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetCategoriesRequest, com.gameengine.game.v1.GetCategoriesResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetCategoriesRequest, com.game-engine.game.v1.GetCategoriesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCategories"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetCategoriesRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetCategoriesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetCategoriesResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetCategoriesResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetCategories"))
               .build();
         }
@@ -170,29 +170,29 @@ public final class GameRegistryServiceGrpc {
     return getGetCategoriesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetProvidersRequest,
-      com.gameengine.game.v1.GetProvidersResponse> getGetProvidersMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetProvidersRequest,
+      com.game-engine.game.v1.GetProvidersResponse> getGetProvidersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetProviders",
-      requestType = com.gameengine.game.v1.GetProvidersRequest.class,
-      responseType = com.gameengine.game.v1.GetProvidersResponse.class,
+      requestType = com.game-engine.game.v1.GetProvidersRequest.class,
+      responseType = com.game-engine.game.v1.GetProvidersResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetProvidersRequest,
-      com.gameengine.game.v1.GetProvidersResponse> getGetProvidersMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetProvidersRequest, com.gameengine.game.v1.GetProvidersResponse> getGetProvidersMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetProvidersRequest,
+      com.game-engine.game.v1.GetProvidersResponse> getGetProvidersMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetProvidersRequest, com.game-engine.game.v1.GetProvidersResponse> getGetProvidersMethod;
     if ((getGetProvidersMethod = GameRegistryServiceGrpc.getGetProvidersMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetProvidersMethod = GameRegistryServiceGrpc.getGetProvidersMethod) == null) {
           GameRegistryServiceGrpc.getGetProvidersMethod = getGetProvidersMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetProvidersRequest, com.gameengine.game.v1.GetProvidersResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetProvidersRequest, com.game-engine.game.v1.GetProvidersResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetProviders"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetProvidersRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetProvidersRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetProvidersResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetProvidersResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetProviders"))
               .build();
         }
@@ -201,29 +201,29 @@ public final class GameRegistryServiceGrpc {
     return getGetProvidersMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.SearchGamesRequest,
-      com.gameengine.game.v1.SearchGamesResponse> getSearchGamesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.SearchGamesRequest,
+      com.game-engine.game.v1.SearchGamesResponse> getSearchGamesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SearchGames",
-      requestType = com.gameengine.game.v1.SearchGamesRequest.class,
-      responseType = com.gameengine.game.v1.SearchGamesResponse.class,
+      requestType = com.game-engine.game.v1.SearchGamesRequest.class,
+      responseType = com.game-engine.game.v1.SearchGamesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.SearchGamesRequest,
-      com.gameengine.game.v1.SearchGamesResponse> getSearchGamesMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.SearchGamesRequest, com.gameengine.game.v1.SearchGamesResponse> getSearchGamesMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.SearchGamesRequest,
+      com.game-engine.game.v1.SearchGamesResponse> getSearchGamesMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.SearchGamesRequest, com.game-engine.game.v1.SearchGamesResponse> getSearchGamesMethod;
     if ((getSearchGamesMethod = GameRegistryServiceGrpc.getSearchGamesMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getSearchGamesMethod = GameRegistryServiceGrpc.getSearchGamesMethod) == null) {
           GameRegistryServiceGrpc.getSearchGamesMethod = getSearchGamesMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.SearchGamesRequest, com.gameengine.game.v1.SearchGamesResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.SearchGamesRequest, com.game-engine.game.v1.SearchGamesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SearchGames"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.SearchGamesRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.SearchGamesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.SearchGamesResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.SearchGamesResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("SearchGames"))
               .build();
         }
@@ -232,29 +232,29 @@ public final class GameRegistryServiceGrpc {
     return getSearchGamesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetFeaturedGamesRequest,
-      com.gameengine.game.v1.GetFeaturedGamesResponse> getGetFeaturedGamesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetFeaturedGamesRequest,
+      com.game-engine.game.v1.GetFeaturedGamesResponse> getGetFeaturedGamesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetFeaturedGames",
-      requestType = com.gameengine.game.v1.GetFeaturedGamesRequest.class,
-      responseType = com.gameengine.game.v1.GetFeaturedGamesResponse.class,
+      requestType = com.game-engine.game.v1.GetFeaturedGamesRequest.class,
+      responseType = com.game-engine.game.v1.GetFeaturedGamesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetFeaturedGamesRequest,
-      com.gameengine.game.v1.GetFeaturedGamesResponse> getGetFeaturedGamesMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetFeaturedGamesRequest, com.gameengine.game.v1.GetFeaturedGamesResponse> getGetFeaturedGamesMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetFeaturedGamesRequest,
+      com.game-engine.game.v1.GetFeaturedGamesResponse> getGetFeaturedGamesMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetFeaturedGamesRequest, com.game-engine.game.v1.GetFeaturedGamesResponse> getGetFeaturedGamesMethod;
     if ((getGetFeaturedGamesMethod = GameRegistryServiceGrpc.getGetFeaturedGamesMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetFeaturedGamesMethod = GameRegistryServiceGrpc.getGetFeaturedGamesMethod) == null) {
           GameRegistryServiceGrpc.getGetFeaturedGamesMethod = getGetFeaturedGamesMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetFeaturedGamesRequest, com.gameengine.game.v1.GetFeaturedGamesResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetFeaturedGamesRequest, com.game-engine.game.v1.GetFeaturedGamesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetFeaturedGames"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetFeaturedGamesRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetFeaturedGamesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetFeaturedGamesResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetFeaturedGamesResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetFeaturedGames"))
               .build();
         }
@@ -263,29 +263,29 @@ public final class GameRegistryServiceGrpc {
     return getGetFeaturedGamesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetPopularGamesRequest,
-      com.gameengine.game.v1.GetPopularGamesResponse> getGetPopularGamesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetPopularGamesRequest,
+      com.game-engine.game.v1.GetPopularGamesResponse> getGetPopularGamesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetPopularGames",
-      requestType = com.gameengine.game.v1.GetPopularGamesRequest.class,
-      responseType = com.gameengine.game.v1.GetPopularGamesResponse.class,
+      requestType = com.game-engine.game.v1.GetPopularGamesRequest.class,
+      responseType = com.game-engine.game.v1.GetPopularGamesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetPopularGamesRequest,
-      com.gameengine.game.v1.GetPopularGamesResponse> getGetPopularGamesMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetPopularGamesRequest, com.gameengine.game.v1.GetPopularGamesResponse> getGetPopularGamesMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetPopularGamesRequest,
+      com.game-engine.game.v1.GetPopularGamesResponse> getGetPopularGamesMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetPopularGamesRequest, com.game-engine.game.v1.GetPopularGamesResponse> getGetPopularGamesMethod;
     if ((getGetPopularGamesMethod = GameRegistryServiceGrpc.getGetPopularGamesMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetPopularGamesMethod = GameRegistryServiceGrpc.getGetPopularGamesMethod) == null) {
           GameRegistryServiceGrpc.getGetPopularGamesMethod = getGetPopularGamesMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetPopularGamesRequest, com.gameengine.game.v1.GetPopularGamesResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetPopularGamesRequest, com.game-engine.game.v1.GetPopularGamesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPopularGames"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetPopularGamesRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetPopularGamesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetPopularGamesResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetPopularGamesResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetPopularGames"))
               .build();
         }
@@ -294,29 +294,29 @@ public final class GameRegistryServiceGrpc {
     return getGetPopularGamesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.game.v1.GetNewGamesRequest,
-      com.gameengine.game.v1.GetNewGamesResponse> getGetNewGamesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.game.v1.GetNewGamesRequest,
+      com.game-engine.game.v1.GetNewGamesResponse> getGetNewGamesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetNewGames",
-      requestType = com.gameengine.game.v1.GetNewGamesRequest.class,
-      responseType = com.gameengine.game.v1.GetNewGamesResponse.class,
+      requestType = com.game-engine.game.v1.GetNewGamesRequest.class,
+      responseType = com.game-engine.game.v1.GetNewGamesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.game.v1.GetNewGamesRequest,
-      com.gameengine.game.v1.GetNewGamesResponse> getGetNewGamesMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.game.v1.GetNewGamesRequest, com.gameengine.game.v1.GetNewGamesResponse> getGetNewGamesMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.game.v1.GetNewGamesRequest,
+      com.game-engine.game.v1.GetNewGamesResponse> getGetNewGamesMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.game.v1.GetNewGamesRequest, com.game-engine.game.v1.GetNewGamesResponse> getGetNewGamesMethod;
     if ((getGetNewGamesMethod = GameRegistryServiceGrpc.getGetNewGamesMethod) == null) {
       synchronized (GameRegistryServiceGrpc.class) {
         if ((getGetNewGamesMethod = GameRegistryServiceGrpc.getGetNewGamesMethod) == null) {
           GameRegistryServiceGrpc.getGetNewGamesMethod = getGetNewGamesMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.game.v1.GetNewGamesRequest, com.gameengine.game.v1.GetNewGamesResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.game.v1.GetNewGamesRequest, com.game-engine.game.v1.GetNewGamesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetNewGames"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetNewGamesRequest.getDefaultInstance()))
+                  com.game-engine.game.v1.GetNewGamesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.game.v1.GetNewGamesResponse.getDefaultInstance()))
+                  com.game-engine.game.v1.GetNewGamesResponse.getDefaultInstance()))
               .setSchemaDescriptor(new GameRegistryServiceMethodDescriptorSupplier("GetNewGames"))
               .build();
         }
@@ -393,71 +393,71 @@ public final class GameRegistryServiceGrpc {
 
     /**
      */
-    default void listGames(com.gameengine.game.v1.ListGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.ListGamesResponse> responseObserver) {
+    default void listGames(com.game-engine.game.v1.ListGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.ListGamesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListGamesMethod(), responseObserver);
     }
 
     /**
      */
-    default void getGame(com.gameengine.game.v1.GetGameRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameResponse> responseObserver) {
+    default void getGame(com.game-engine.game.v1.GetGameRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetGameMethod(), responseObserver);
     }
 
     /**
      */
-    default void getGameConfig(com.gameengine.game.v1.GetGameConfigRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameConfigResponse> responseObserver) {
+    default void getGameConfig(com.game-engine.game.v1.GetGameConfigRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameConfigResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetGameConfigMethod(), responseObserver);
     }
 
     /**
      */
-    default void getGameURL(com.gameengine.game.v1.GetGameURLRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameURLResponse> responseObserver) {
+    default void getGameURL(com.game-engine.game.v1.GetGameURLRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameURLResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetGameURLMethod(), responseObserver);
     }
 
     /**
      */
-    default void getCategories(com.gameengine.game.v1.GetCategoriesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetCategoriesResponse> responseObserver) {
+    default void getCategories(com.game-engine.game.v1.GetCategoriesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetCategoriesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetCategoriesMethod(), responseObserver);
     }
 
     /**
      */
-    default void getProviders(com.gameengine.game.v1.GetProvidersRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetProvidersResponse> responseObserver) {
+    default void getProviders(com.game-engine.game.v1.GetProvidersRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetProvidersResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetProvidersMethod(), responseObserver);
     }
 
     /**
      */
-    default void searchGames(com.gameengine.game.v1.SearchGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.SearchGamesResponse> responseObserver) {
+    default void searchGames(com.game-engine.game.v1.SearchGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.SearchGamesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSearchGamesMethod(), responseObserver);
     }
 
     /**
      */
-    default void getFeaturedGames(com.gameengine.game.v1.GetFeaturedGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetFeaturedGamesResponse> responseObserver) {
+    default void getFeaturedGames(com.game-engine.game.v1.GetFeaturedGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetFeaturedGamesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetFeaturedGamesMethod(), responseObserver);
     }
 
     /**
      */
-    default void getPopularGames(com.gameengine.game.v1.GetPopularGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetPopularGamesResponse> responseObserver) {
+    default void getPopularGames(com.game-engine.game.v1.GetPopularGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetPopularGamesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPopularGamesMethod(), responseObserver);
     }
 
     /**
      */
-    default void getNewGames(com.gameengine.game.v1.GetNewGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetNewGamesResponse> responseObserver) {
+    default void getNewGames(com.game-engine.game.v1.GetNewGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetNewGamesResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetNewGamesMethod(), responseObserver);
     }
   }
@@ -497,80 +497,80 @@ public final class GameRegistryServiceGrpc {
 
     /**
      */
-    public void listGames(com.gameengine.game.v1.ListGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.ListGamesResponse> responseObserver) {
+    public void listGames(com.game-engine.game.v1.ListGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.ListGamesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListGamesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getGame(com.gameengine.game.v1.GetGameRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameResponse> responseObserver) {
+    public void getGame(com.game-engine.game.v1.GetGameRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetGameMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getGameConfig(com.gameengine.game.v1.GetGameConfigRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameConfigResponse> responseObserver) {
+    public void getGameConfig(com.game-engine.game.v1.GetGameConfigRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameConfigResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetGameConfigMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getGameURL(com.gameengine.game.v1.GetGameURLRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameURLResponse> responseObserver) {
+    public void getGameURL(com.game-engine.game.v1.GetGameURLRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameURLResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetGameURLMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getCategories(com.gameengine.game.v1.GetCategoriesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetCategoriesResponse> responseObserver) {
+    public void getCategories(com.game-engine.game.v1.GetCategoriesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetCategoriesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetCategoriesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getProviders(com.gameengine.game.v1.GetProvidersRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetProvidersResponse> responseObserver) {
+    public void getProviders(com.game-engine.game.v1.GetProvidersRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetProvidersResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetProvidersMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void searchGames(com.gameengine.game.v1.SearchGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.SearchGamesResponse> responseObserver) {
+    public void searchGames(com.game-engine.game.v1.SearchGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.SearchGamesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSearchGamesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getFeaturedGames(com.gameengine.game.v1.GetFeaturedGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetFeaturedGamesResponse> responseObserver) {
+    public void getFeaturedGames(com.game-engine.game.v1.GetFeaturedGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetFeaturedGamesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetFeaturedGamesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getPopularGames(com.gameengine.game.v1.GetPopularGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetPopularGamesResponse> responseObserver) {
+    public void getPopularGames(com.game-engine.game.v1.GetPopularGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetPopularGamesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPopularGamesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getNewGames(com.gameengine.game.v1.GetNewGamesRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetNewGamesResponse> responseObserver) {
+    public void getNewGames(com.game-engine.game.v1.GetNewGamesRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetNewGamesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetNewGamesMethod(), getCallOptions()), request, responseObserver);
     }
@@ -597,70 +597,70 @@ public final class GameRegistryServiceGrpc {
 
     /**
      */
-    public com.gameengine.game.v1.ListGamesResponse listGames(com.gameengine.game.v1.ListGamesRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.ListGamesResponse listGames(com.game-engine.game.v1.ListGamesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getListGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetGameResponse getGame(com.gameengine.game.v1.GetGameRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetGameResponse getGame(com.game-engine.game.v1.GetGameRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetGameMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetGameConfigResponse getGameConfig(com.gameengine.game.v1.GetGameConfigRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetGameConfigResponse getGameConfig(com.game-engine.game.v1.GetGameConfigRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetGameConfigMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetGameURLResponse getGameURL(com.gameengine.game.v1.GetGameURLRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetGameURLResponse getGameURL(com.game-engine.game.v1.GetGameURLRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetGameURLMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetCategoriesResponse getCategories(com.gameengine.game.v1.GetCategoriesRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetCategoriesResponse getCategories(com.game-engine.game.v1.GetCategoriesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetCategoriesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetProvidersResponse getProviders(com.gameengine.game.v1.GetProvidersRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetProvidersResponse getProviders(com.game-engine.game.v1.GetProvidersRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetProvidersMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.SearchGamesResponse searchGames(com.gameengine.game.v1.SearchGamesRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.SearchGamesResponse searchGames(com.game-engine.game.v1.SearchGamesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getSearchGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetFeaturedGamesResponse getFeaturedGames(com.gameengine.game.v1.GetFeaturedGamesRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetFeaturedGamesResponse getFeaturedGames(com.game-engine.game.v1.GetFeaturedGamesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetFeaturedGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetPopularGamesResponse getPopularGames(com.gameengine.game.v1.GetPopularGamesRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetPopularGamesResponse getPopularGames(com.game-engine.game.v1.GetPopularGamesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPopularGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetNewGamesResponse getNewGames(com.gameengine.game.v1.GetNewGamesRequest request) throws io.grpc.StatusException {
+    public com.game-engine.game.v1.GetNewGamesResponse getNewGames(com.game-engine.game.v1.GetNewGamesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetNewGamesMethod(), getCallOptions(), request);
     }
@@ -687,70 +687,70 @@ public final class GameRegistryServiceGrpc {
 
     /**
      */
-    public com.gameengine.game.v1.ListGamesResponse listGames(com.gameengine.game.v1.ListGamesRequest request) {
+    public com.game-engine.game.v1.ListGamesResponse listGames(com.game-engine.game.v1.ListGamesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetGameResponse getGame(com.gameengine.game.v1.GetGameRequest request) {
+    public com.game-engine.game.v1.GetGameResponse getGame(com.game-engine.game.v1.GetGameRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetGameMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetGameConfigResponse getGameConfig(com.gameengine.game.v1.GetGameConfigRequest request) {
+    public com.game-engine.game.v1.GetGameConfigResponse getGameConfig(com.game-engine.game.v1.GetGameConfigRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetGameConfigMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetGameURLResponse getGameURL(com.gameengine.game.v1.GetGameURLRequest request) {
+    public com.game-engine.game.v1.GetGameURLResponse getGameURL(com.game-engine.game.v1.GetGameURLRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetGameURLMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetCategoriesResponse getCategories(com.gameengine.game.v1.GetCategoriesRequest request) {
+    public com.game-engine.game.v1.GetCategoriesResponse getCategories(com.game-engine.game.v1.GetCategoriesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetCategoriesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetProvidersResponse getProviders(com.gameengine.game.v1.GetProvidersRequest request) {
+    public com.game-engine.game.v1.GetProvidersResponse getProviders(com.game-engine.game.v1.GetProvidersRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetProvidersMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.SearchGamesResponse searchGames(com.gameengine.game.v1.SearchGamesRequest request) {
+    public com.game-engine.game.v1.SearchGamesResponse searchGames(com.game-engine.game.v1.SearchGamesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSearchGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetFeaturedGamesResponse getFeaturedGames(com.gameengine.game.v1.GetFeaturedGamesRequest request) {
+    public com.game-engine.game.v1.GetFeaturedGamesResponse getFeaturedGames(com.game-engine.game.v1.GetFeaturedGamesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetFeaturedGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetPopularGamesResponse getPopularGames(com.gameengine.game.v1.GetPopularGamesRequest request) {
+    public com.game-engine.game.v1.GetPopularGamesResponse getPopularGames(com.game-engine.game.v1.GetPopularGamesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPopularGamesMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.game.v1.GetNewGamesResponse getNewGames(com.gameengine.game.v1.GetNewGamesRequest request) {
+    public com.game-engine.game.v1.GetNewGamesResponse getNewGames(com.game-engine.game.v1.GetNewGamesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetNewGamesMethod(), getCallOptions(), request);
     }
@@ -777,80 +777,80 @@ public final class GameRegistryServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.ListGamesResponse> listGames(
-        com.gameengine.game.v1.ListGamesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.ListGamesResponse> listGames(
+        com.game-engine.game.v1.ListGamesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListGamesMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetGameResponse> getGame(
-        com.gameengine.game.v1.GetGameRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetGameResponse> getGame(
+        com.game-engine.game.v1.GetGameRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetGameMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetGameConfigResponse> getGameConfig(
-        com.gameengine.game.v1.GetGameConfigRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetGameConfigResponse> getGameConfig(
+        com.game-engine.game.v1.GetGameConfigRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetGameConfigMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetGameURLResponse> getGameURL(
-        com.gameengine.game.v1.GetGameURLRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetGameURLResponse> getGameURL(
+        com.game-engine.game.v1.GetGameURLRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetGameURLMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetCategoriesResponse> getCategories(
-        com.gameengine.game.v1.GetCategoriesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetCategoriesResponse> getCategories(
+        com.game-engine.game.v1.GetCategoriesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetCategoriesMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetProvidersResponse> getProviders(
-        com.gameengine.game.v1.GetProvidersRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetProvidersResponse> getProviders(
+        com.game-engine.game.v1.GetProvidersRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetProvidersMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.SearchGamesResponse> searchGames(
-        com.gameengine.game.v1.SearchGamesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.SearchGamesResponse> searchGames(
+        com.game-engine.game.v1.SearchGamesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSearchGamesMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetFeaturedGamesResponse> getFeaturedGames(
-        com.gameengine.game.v1.GetFeaturedGamesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetFeaturedGamesResponse> getFeaturedGames(
+        com.game-engine.game.v1.GetFeaturedGamesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetFeaturedGamesMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetPopularGamesResponse> getPopularGames(
-        com.gameengine.game.v1.GetPopularGamesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetPopularGamesResponse> getPopularGames(
+        com.game-engine.game.v1.GetPopularGamesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPopularGamesMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.game.v1.GetNewGamesResponse> getNewGames(
-        com.gameengine.game.v1.GetNewGamesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.game.v1.GetNewGamesResponse> getNewGames(
+        com.game-engine.game.v1.GetNewGamesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetNewGamesMethod(), getCallOptions()), request);
     }
@@ -885,44 +885,44 @@ public final class GameRegistryServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LIST_GAMES:
-          serviceImpl.listGames((com.gameengine.game.v1.ListGamesRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.ListGamesResponse>) responseObserver);
+          serviceImpl.listGames((com.game-engine.game.v1.ListGamesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.ListGamesResponse>) responseObserver);
           break;
         case METHODID_GET_GAME:
-          serviceImpl.getGame((com.gameengine.game.v1.GetGameRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameResponse>) responseObserver);
+          serviceImpl.getGame((com.game-engine.game.v1.GetGameRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameResponse>) responseObserver);
           break;
         case METHODID_GET_GAME_CONFIG:
-          serviceImpl.getGameConfig((com.gameengine.game.v1.GetGameConfigRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameConfigResponse>) responseObserver);
+          serviceImpl.getGameConfig((com.game-engine.game.v1.GetGameConfigRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameConfigResponse>) responseObserver);
           break;
         case METHODID_GET_GAME_URL:
-          serviceImpl.getGameURL((com.gameengine.game.v1.GetGameURLRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetGameURLResponse>) responseObserver);
+          serviceImpl.getGameURL((com.game-engine.game.v1.GetGameURLRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetGameURLResponse>) responseObserver);
           break;
         case METHODID_GET_CATEGORIES:
-          serviceImpl.getCategories((com.gameengine.game.v1.GetCategoriesRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetCategoriesResponse>) responseObserver);
+          serviceImpl.getCategories((com.game-engine.game.v1.GetCategoriesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetCategoriesResponse>) responseObserver);
           break;
         case METHODID_GET_PROVIDERS:
-          serviceImpl.getProviders((com.gameengine.game.v1.GetProvidersRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetProvidersResponse>) responseObserver);
+          serviceImpl.getProviders((com.game-engine.game.v1.GetProvidersRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetProvidersResponse>) responseObserver);
           break;
         case METHODID_SEARCH_GAMES:
-          serviceImpl.searchGames((com.gameengine.game.v1.SearchGamesRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.SearchGamesResponse>) responseObserver);
+          serviceImpl.searchGames((com.game-engine.game.v1.SearchGamesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.SearchGamesResponse>) responseObserver);
           break;
         case METHODID_GET_FEATURED_GAMES:
-          serviceImpl.getFeaturedGames((com.gameengine.game.v1.GetFeaturedGamesRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetFeaturedGamesResponse>) responseObserver);
+          serviceImpl.getFeaturedGames((com.game-engine.game.v1.GetFeaturedGamesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetFeaturedGamesResponse>) responseObserver);
           break;
         case METHODID_GET_POPULAR_GAMES:
-          serviceImpl.getPopularGames((com.gameengine.game.v1.GetPopularGamesRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetPopularGamesResponse>) responseObserver);
+          serviceImpl.getPopularGames((com.game-engine.game.v1.GetPopularGamesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetPopularGamesResponse>) responseObserver);
           break;
         case METHODID_GET_NEW_GAMES:
-          serviceImpl.getNewGames((com.gameengine.game.v1.GetNewGamesRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.game.v1.GetNewGamesResponse>) responseObserver);
+          serviceImpl.getNewGames((com.game-engine.game.v1.GetNewGamesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.game.v1.GetNewGamesResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -946,71 +946,71 @@ public final class GameRegistryServiceGrpc {
           getListGamesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.ListGamesRequest,
-              com.gameengine.game.v1.ListGamesResponse>(
+              com.game-engine.game.v1.ListGamesRequest,
+              com.game-engine.game.v1.ListGamesResponse>(
                 service, METHODID_LIST_GAMES)))
         .addMethod(
           getGetGameMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetGameRequest,
-              com.gameengine.game.v1.GetGameResponse>(
+              com.game-engine.game.v1.GetGameRequest,
+              com.game-engine.game.v1.GetGameResponse>(
                 service, METHODID_GET_GAME)))
         .addMethod(
           getGetGameConfigMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetGameConfigRequest,
-              com.gameengine.game.v1.GetGameConfigResponse>(
+              com.game-engine.game.v1.GetGameConfigRequest,
+              com.game-engine.game.v1.GetGameConfigResponse>(
                 service, METHODID_GET_GAME_CONFIG)))
         .addMethod(
           getGetGameURLMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetGameURLRequest,
-              com.gameengine.game.v1.GetGameURLResponse>(
+              com.game-engine.game.v1.GetGameURLRequest,
+              com.game-engine.game.v1.GetGameURLResponse>(
                 service, METHODID_GET_GAME_URL)))
         .addMethod(
           getGetCategoriesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetCategoriesRequest,
-              com.gameengine.game.v1.GetCategoriesResponse>(
+              com.game-engine.game.v1.GetCategoriesRequest,
+              com.game-engine.game.v1.GetCategoriesResponse>(
                 service, METHODID_GET_CATEGORIES)))
         .addMethod(
           getGetProvidersMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetProvidersRequest,
-              com.gameengine.game.v1.GetProvidersResponse>(
+              com.game-engine.game.v1.GetProvidersRequest,
+              com.game-engine.game.v1.GetProvidersResponse>(
                 service, METHODID_GET_PROVIDERS)))
         .addMethod(
           getSearchGamesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.SearchGamesRequest,
-              com.gameengine.game.v1.SearchGamesResponse>(
+              com.game-engine.game.v1.SearchGamesRequest,
+              com.game-engine.game.v1.SearchGamesResponse>(
                 service, METHODID_SEARCH_GAMES)))
         .addMethod(
           getGetFeaturedGamesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetFeaturedGamesRequest,
-              com.gameengine.game.v1.GetFeaturedGamesResponse>(
+              com.game-engine.game.v1.GetFeaturedGamesRequest,
+              com.game-engine.game.v1.GetFeaturedGamesResponse>(
                 service, METHODID_GET_FEATURED_GAMES)))
         .addMethod(
           getGetPopularGamesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetPopularGamesRequest,
-              com.gameengine.game.v1.GetPopularGamesResponse>(
+              com.game-engine.game.v1.GetPopularGamesRequest,
+              com.game-engine.game.v1.GetPopularGamesResponse>(
                 service, METHODID_GET_POPULAR_GAMES)))
         .addMethod(
           getGetNewGamesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.game.v1.GetNewGamesRequest,
-              com.gameengine.game.v1.GetNewGamesResponse>(
+              com.game-engine.game.v1.GetNewGamesRequest,
+              com.game-engine.game.v1.GetNewGamesResponse>(
                 service, METHODID_GET_NEW_GAMES)))
         .build();
   }
@@ -1021,7 +1021,7 @@ public final class GameRegistryServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.gameengine.game.v1.GameRegistry.getDescriptor();
+      return com.game-engine.game.v1.GameRegistry.getDescriptor();
     }
 
     @java.lang.Override

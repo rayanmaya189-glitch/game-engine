@@ -3,7 +3,7 @@ package moderation
 import (
 	"strings"
 
-	"github.com/gameengine/chat/internal/room"
+	"github.com/game-engine/chat/internal/room"
 )
 
 // ProfanityFilter filters inappropriate content

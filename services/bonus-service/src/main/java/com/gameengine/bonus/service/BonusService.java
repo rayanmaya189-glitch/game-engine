@@ -1,7 +1,7 @@
-package com.gameengine.bonus.service;
+package com.game-engine.bonus.service;
 
-import com.gameengine.bonus.model.Bonus;
-import com.gameengine.bonus.repository.BonusRepository;
+import com.game-engine.bonus.model.Bonus;
+import com.game-engine.bonus.repository.BonusRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

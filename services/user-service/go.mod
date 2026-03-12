@@ -1,6 +1,6 @@
-module github.com/gameengine/user-service
+module github.com/game-engine/user-service
 
-go 1.21
+go 1.25
 
 require (
 	github.com/google/uuid v1.5.0

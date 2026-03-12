@@ -1,4 +1,4 @@
-package com.gameengine.commission.model;
+package com.game-engine.commission.model;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;

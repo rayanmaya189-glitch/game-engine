@@ -13,9 +13,9 @@ import (
 	"google.golang.org/grpc/reflection"
 	"gopkg.in/yaml.v3"
 
-	"github.com/gameengine/chat/internal/handler"
-	"github.com/gameengine/chat/internal/room"
-	"github.com/gameengine/chat/internal/service"
+	"github.com/game-engine/chat/internal/handler"
+	"github.com/game-engine/chat/internal/room"
+	"github.com/game-engine/chat/internal/service"
 )
 
 func main() {

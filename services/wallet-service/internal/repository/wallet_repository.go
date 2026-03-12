@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gameengine/wallet-service/internal/model"
+	"github.com/game-engine/wallet-service/internal/model"
 	"github.com/google/uuid"
 )
 

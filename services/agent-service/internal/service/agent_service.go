@@ -5,7 +5,7 @@ import (
 
 	"github.com/game-engine/agent-service/internal/config"
 	"github.com/game-engine/agent-service/internal/repository"
-	agentpb "github.com/game-engine/gen/go/gameengine/agent/v1"
+	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
 )
 
 type AgentService struct {

@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	"github.com/gameengine/multiplayer/internal/room"
-	"github.com/gameengine/multiplayer/internal/service"
+	"github.com/game-engine/multiplayer/internal/room"
+	"github.com/game-engine/multiplayer/internal/service"
 )
 
 // MultiplayerHandler handles multiplayer-related requests

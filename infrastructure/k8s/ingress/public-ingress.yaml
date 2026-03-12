@@ -39,7 +39,7 @@ metadata:
     
     # Session affinity
     nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-name: "gameengine_session"
+    nginx.ingress.kubernetes.io/session-cookie-name: "game-engine_session"
     nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
     nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
     nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"

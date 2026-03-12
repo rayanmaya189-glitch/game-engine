@@ -1,4 +1,4 @@
-package com.gameengine.user.v1;
+package com.game-engine.user.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -12,32 +12,32 @@ public final class UserServiceGrpc {
 
   private UserServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "gameengine.user.v1.UserService";
+  public static final java.lang.String SERVICE_NAME = "game-engine.user.v1.UserService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.GetProfileRequest,
-      com.gameengine.user.v1.GetProfileResponse> getGetProfileMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.GetProfileRequest,
+      com.game-engine.user.v1.GetProfileResponse> getGetProfileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetProfile",
-      requestType = com.gameengine.user.v1.GetProfileRequest.class,
-      responseType = com.gameengine.user.v1.GetProfileResponse.class,
+      requestType = com.game-engine.user.v1.GetProfileRequest.class,
+      responseType = com.game-engine.user.v1.GetProfileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.GetProfileRequest,
-      com.gameengine.user.v1.GetProfileResponse> getGetProfileMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.GetProfileRequest, com.gameengine.user.v1.GetProfileResponse> getGetProfileMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.GetProfileRequest,
+      com.game-engine.user.v1.GetProfileResponse> getGetProfileMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.GetProfileRequest, com.game-engine.user.v1.GetProfileResponse> getGetProfileMethod;
     if ((getGetProfileMethod = UserServiceGrpc.getGetProfileMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getGetProfileMethod = UserServiceGrpc.getGetProfileMethod) == null) {
           UserServiceGrpc.getGetProfileMethod = getGetProfileMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.GetProfileRequest, com.gameengine.user.v1.GetProfileResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.GetProfileRequest, com.game-engine.user.v1.GetProfileResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetProfile"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetProfileRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.GetProfileRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetProfileResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.GetProfileResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetProfile"))
               .build();
         }
@@ -46,29 +46,29 @@ public final class UserServiceGrpc {
     return getGetProfileMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdateProfileRequest,
-      com.gameengine.user.v1.UpdateProfileResponse> getUpdateProfileMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdateProfileRequest,
+      com.game-engine.user.v1.UpdateProfileResponse> getUpdateProfileMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdateProfile",
-      requestType = com.gameengine.user.v1.UpdateProfileRequest.class,
-      responseType = com.gameengine.user.v1.UpdateProfileResponse.class,
+      requestType = com.game-engine.user.v1.UpdateProfileRequest.class,
+      responseType = com.game-engine.user.v1.UpdateProfileResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdateProfileRequest,
-      com.gameengine.user.v1.UpdateProfileResponse> getUpdateProfileMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdateProfileRequest, com.gameengine.user.v1.UpdateProfileResponse> getUpdateProfileMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdateProfileRequest,
+      com.game-engine.user.v1.UpdateProfileResponse> getUpdateProfileMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdateProfileRequest, com.game-engine.user.v1.UpdateProfileResponse> getUpdateProfileMethod;
     if ((getUpdateProfileMethod = UserServiceGrpc.getUpdateProfileMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUpdateProfileMethod = UserServiceGrpc.getUpdateProfileMethod) == null) {
           UserServiceGrpc.getUpdateProfileMethod = getUpdateProfileMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.UpdateProfileRequest, com.gameengine.user.v1.UpdateProfileResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.UpdateProfileRequest, com.game-engine.user.v1.UpdateProfileResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdateProfile"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.UpdateProfileRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.UpdateProfileRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.UpdateProfileResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.UpdateProfileResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UpdateProfile"))
               .build();
         }
@@ -77,29 +77,29 @@ public final class UserServiceGrpc {
     return getUpdateProfileMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.GetKYCStatusRequest,
-      com.gameengine.user.v1.GetKYCStatusResponse> getGetKYCStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.GetKYCStatusRequest,
+      com.game-engine.user.v1.GetKYCStatusResponse> getGetKYCStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetKYCStatus",
-      requestType = com.gameengine.user.v1.GetKYCStatusRequest.class,
-      responseType = com.gameengine.user.v1.GetKYCStatusResponse.class,
+      requestType = com.game-engine.user.v1.GetKYCStatusRequest.class,
+      responseType = com.game-engine.user.v1.GetKYCStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.GetKYCStatusRequest,
-      com.gameengine.user.v1.GetKYCStatusResponse> getGetKYCStatusMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.GetKYCStatusRequest, com.gameengine.user.v1.GetKYCStatusResponse> getGetKYCStatusMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.GetKYCStatusRequest,
+      com.game-engine.user.v1.GetKYCStatusResponse> getGetKYCStatusMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.GetKYCStatusRequest, com.game-engine.user.v1.GetKYCStatusResponse> getGetKYCStatusMethod;
     if ((getGetKYCStatusMethod = UserServiceGrpc.getGetKYCStatusMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getGetKYCStatusMethod = UserServiceGrpc.getGetKYCStatusMethod) == null) {
           UserServiceGrpc.getGetKYCStatusMethod = getGetKYCStatusMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.GetKYCStatusRequest, com.gameengine.user.v1.GetKYCStatusResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.GetKYCStatusRequest, com.game-engine.user.v1.GetKYCStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetKYCStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetKYCStatusRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.GetKYCStatusRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetKYCStatusResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.GetKYCStatusResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetKYCStatus"))
               .build();
         }
@@ -108,29 +108,29 @@ public final class UserServiceGrpc {
     return getGetKYCStatusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.SubmitKYCRequest,
-      com.gameengine.user.v1.SubmitKYCResponse> getSubmitKYCMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.SubmitKYCRequest,
+      com.game-engine.user.v1.SubmitKYCResponse> getSubmitKYCMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "SubmitKYC",
-      requestType = com.gameengine.user.v1.SubmitKYCRequest.class,
-      responseType = com.gameengine.user.v1.SubmitKYCResponse.class,
+      requestType = com.game-engine.user.v1.SubmitKYCRequest.class,
+      responseType = com.game-engine.user.v1.SubmitKYCResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.SubmitKYCRequest,
-      com.gameengine.user.v1.SubmitKYCResponse> getSubmitKYCMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.SubmitKYCRequest, com.gameengine.user.v1.SubmitKYCResponse> getSubmitKYCMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.SubmitKYCRequest,
+      com.game-engine.user.v1.SubmitKYCResponse> getSubmitKYCMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.SubmitKYCRequest, com.game-engine.user.v1.SubmitKYCResponse> getSubmitKYCMethod;
     if ((getSubmitKYCMethod = UserServiceGrpc.getSubmitKYCMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getSubmitKYCMethod = UserServiceGrpc.getSubmitKYCMethod) == null) {
           UserServiceGrpc.getSubmitKYCMethod = getSubmitKYCMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.SubmitKYCRequest, com.gameengine.user.v1.SubmitKYCResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.SubmitKYCRequest, com.game-engine.user.v1.SubmitKYCResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubmitKYC"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.SubmitKYCRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.SubmitKYCRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.SubmitKYCResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.SubmitKYCResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("SubmitKYC"))
               .build();
         }
@@ -139,29 +139,29 @@ public final class UserServiceGrpc {
     return getSubmitKYCMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.GetPlayerSettingsRequest,
-      com.gameengine.user.v1.GetPlayerSettingsResponse> getGetPlayerSettingsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.GetPlayerSettingsRequest,
+      com.game-engine.user.v1.GetPlayerSettingsResponse> getGetPlayerSettingsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetPlayerSettings",
-      requestType = com.gameengine.user.v1.GetPlayerSettingsRequest.class,
-      responseType = com.gameengine.user.v1.GetPlayerSettingsResponse.class,
+      requestType = com.game-engine.user.v1.GetPlayerSettingsRequest.class,
+      responseType = com.game-engine.user.v1.GetPlayerSettingsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.GetPlayerSettingsRequest,
-      com.gameengine.user.v1.GetPlayerSettingsResponse> getGetPlayerSettingsMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.GetPlayerSettingsRequest, com.gameengine.user.v1.GetPlayerSettingsResponse> getGetPlayerSettingsMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.GetPlayerSettingsRequest,
+      com.game-engine.user.v1.GetPlayerSettingsResponse> getGetPlayerSettingsMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.GetPlayerSettingsRequest, com.game-engine.user.v1.GetPlayerSettingsResponse> getGetPlayerSettingsMethod;
     if ((getGetPlayerSettingsMethod = UserServiceGrpc.getGetPlayerSettingsMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getGetPlayerSettingsMethod = UserServiceGrpc.getGetPlayerSettingsMethod) == null) {
           UserServiceGrpc.getGetPlayerSettingsMethod = getGetPlayerSettingsMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.GetPlayerSettingsRequest, com.gameengine.user.v1.GetPlayerSettingsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.GetPlayerSettingsRequest, com.game-engine.user.v1.GetPlayerSettingsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPlayerSettings"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetPlayerSettingsRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.GetPlayerSettingsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetPlayerSettingsResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.GetPlayerSettingsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetPlayerSettings"))
               .build();
         }
@@ -170,29 +170,29 @@ public final class UserServiceGrpc {
     return getGetPlayerSettingsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdatePlayerSettingsRequest,
-      com.gameengine.user.v1.UpdatePlayerSettingsResponse> getUpdatePlayerSettingsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdatePlayerSettingsRequest,
+      com.game-engine.user.v1.UpdatePlayerSettingsResponse> getUpdatePlayerSettingsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdatePlayerSettings",
-      requestType = com.gameengine.user.v1.UpdatePlayerSettingsRequest.class,
-      responseType = com.gameengine.user.v1.UpdatePlayerSettingsResponse.class,
+      requestType = com.game-engine.user.v1.UpdatePlayerSettingsRequest.class,
+      responseType = com.game-engine.user.v1.UpdatePlayerSettingsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdatePlayerSettingsRequest,
-      com.gameengine.user.v1.UpdatePlayerSettingsResponse> getUpdatePlayerSettingsMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdatePlayerSettingsRequest, com.gameengine.user.v1.UpdatePlayerSettingsResponse> getUpdatePlayerSettingsMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdatePlayerSettingsRequest,
+      com.game-engine.user.v1.UpdatePlayerSettingsResponse> getUpdatePlayerSettingsMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdatePlayerSettingsRequest, com.game-engine.user.v1.UpdatePlayerSettingsResponse> getUpdatePlayerSettingsMethod;
     if ((getUpdatePlayerSettingsMethod = UserServiceGrpc.getUpdatePlayerSettingsMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUpdatePlayerSettingsMethod = UserServiceGrpc.getUpdatePlayerSettingsMethod) == null) {
           UserServiceGrpc.getUpdatePlayerSettingsMethod = getUpdatePlayerSettingsMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.UpdatePlayerSettingsRequest, com.gameengine.user.v1.UpdatePlayerSettingsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.UpdatePlayerSettingsRequest, com.game-engine.user.v1.UpdatePlayerSettingsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePlayerSettings"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.UpdatePlayerSettingsRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.UpdatePlayerSettingsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.UpdatePlayerSettingsResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.UpdatePlayerSettingsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UpdatePlayerSettings"))
               .build();
         }
@@ -201,29 +201,29 @@ public final class UserServiceGrpc {
     return getUpdatePlayerSettingsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.GetPlayerByAdminRequest,
-      com.gameengine.user.v1.GetPlayerByAdminResponse> getGetPlayerByAdminMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.GetPlayerByAdminRequest,
+      com.game-engine.user.v1.GetPlayerByAdminResponse> getGetPlayerByAdminMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetPlayerByAdmin",
-      requestType = com.gameengine.user.v1.GetPlayerByAdminRequest.class,
-      responseType = com.gameengine.user.v1.GetPlayerByAdminResponse.class,
+      requestType = com.game-engine.user.v1.GetPlayerByAdminRequest.class,
+      responseType = com.game-engine.user.v1.GetPlayerByAdminResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.GetPlayerByAdminRequest,
-      com.gameengine.user.v1.GetPlayerByAdminResponse> getGetPlayerByAdminMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.GetPlayerByAdminRequest, com.gameengine.user.v1.GetPlayerByAdminResponse> getGetPlayerByAdminMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.GetPlayerByAdminRequest,
+      com.game-engine.user.v1.GetPlayerByAdminResponse> getGetPlayerByAdminMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.GetPlayerByAdminRequest, com.game-engine.user.v1.GetPlayerByAdminResponse> getGetPlayerByAdminMethod;
     if ((getGetPlayerByAdminMethod = UserServiceGrpc.getGetPlayerByAdminMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getGetPlayerByAdminMethod = UserServiceGrpc.getGetPlayerByAdminMethod) == null) {
           UserServiceGrpc.getGetPlayerByAdminMethod = getGetPlayerByAdminMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.GetPlayerByAdminRequest, com.gameengine.user.v1.GetPlayerByAdminResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.GetPlayerByAdminRequest, com.game-engine.user.v1.GetPlayerByAdminResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPlayerByAdmin"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetPlayerByAdminRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.GetPlayerByAdminRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.GetPlayerByAdminResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.GetPlayerByAdminResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("GetPlayerByAdmin"))
               .build();
         }
@@ -232,29 +232,29 @@ public final class UserServiceGrpc {
     return getGetPlayerByAdminMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.ListPlayersRequest,
-      com.gameengine.user.v1.ListPlayersResponse> getListPlayersMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.ListPlayersRequest,
+      com.game-engine.user.v1.ListPlayersResponse> getListPlayersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListPlayers",
-      requestType = com.gameengine.user.v1.ListPlayersRequest.class,
-      responseType = com.gameengine.user.v1.ListPlayersResponse.class,
+      requestType = com.game-engine.user.v1.ListPlayersRequest.class,
+      responseType = com.game-engine.user.v1.ListPlayersResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.ListPlayersRequest,
-      com.gameengine.user.v1.ListPlayersResponse> getListPlayersMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.ListPlayersRequest, com.gameengine.user.v1.ListPlayersResponse> getListPlayersMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.ListPlayersRequest,
+      com.game-engine.user.v1.ListPlayersResponse> getListPlayersMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.ListPlayersRequest, com.game-engine.user.v1.ListPlayersResponse> getListPlayersMethod;
     if ((getListPlayersMethod = UserServiceGrpc.getListPlayersMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getListPlayersMethod = UserServiceGrpc.getListPlayersMethod) == null) {
           UserServiceGrpc.getListPlayersMethod = getListPlayersMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.ListPlayersRequest, com.gameengine.user.v1.ListPlayersResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.ListPlayersRequest, com.game-engine.user.v1.ListPlayersResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListPlayers"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.ListPlayersRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.ListPlayersRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.ListPlayersResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.ListPlayersResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("ListPlayers"))
               .build();
         }
@@ -263,29 +263,29 @@ public final class UserServiceGrpc {
     return getListPlayersMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdatePlayerStatusRequest,
-      com.gameengine.user.v1.UpdatePlayerStatusResponse> getUpdatePlayerStatusMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdatePlayerStatusRequest,
+      com.game-engine.user.v1.UpdatePlayerStatusResponse> getUpdatePlayerStatusMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "UpdatePlayerStatus",
-      requestType = com.gameengine.user.v1.UpdatePlayerStatusRequest.class,
-      responseType = com.gameengine.user.v1.UpdatePlayerStatusResponse.class,
+      requestType = com.game-engine.user.v1.UpdatePlayerStatusRequest.class,
+      responseType = com.game-engine.user.v1.UpdatePlayerStatusResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdatePlayerStatusRequest,
-      com.gameengine.user.v1.UpdatePlayerStatusResponse> getUpdatePlayerStatusMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.user.v1.UpdatePlayerStatusRequest, com.gameengine.user.v1.UpdatePlayerStatusResponse> getUpdatePlayerStatusMethod;
+  public static io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdatePlayerStatusRequest,
+      com.game-engine.user.v1.UpdatePlayerStatusResponse> getUpdatePlayerStatusMethod() {
+    io.grpc.MethodDescriptor<com.game-engine.user.v1.UpdatePlayerStatusRequest, com.game-engine.user.v1.UpdatePlayerStatusResponse> getUpdatePlayerStatusMethod;
     if ((getUpdatePlayerStatusMethod = UserServiceGrpc.getUpdatePlayerStatusMethod) == null) {
       synchronized (UserServiceGrpc.class) {
         if ((getUpdatePlayerStatusMethod = UserServiceGrpc.getUpdatePlayerStatusMethod) == null) {
           UserServiceGrpc.getUpdatePlayerStatusMethod = getUpdatePlayerStatusMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.user.v1.UpdatePlayerStatusRequest, com.gameengine.user.v1.UpdatePlayerStatusResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game-engine.user.v1.UpdatePlayerStatusRequest, com.game-engine.user.v1.UpdatePlayerStatusResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "UpdatePlayerStatus"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.UpdatePlayerStatusRequest.getDefaultInstance()))
+                  com.game-engine.user.v1.UpdatePlayerStatusRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.user.v1.UpdatePlayerStatusResponse.getDefaultInstance()))
+                  com.game-engine.user.v1.UpdatePlayerStatusResponse.getDefaultInstance()))
               .setSchemaDescriptor(new UserServiceMethodDescriptorSupplier("UpdatePlayerStatus"))
               .build();
         }
@@ -362,64 +362,64 @@ public final class UserServiceGrpc {
 
     /**
      */
-    default void getProfile(com.gameengine.user.v1.GetProfileRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetProfileResponse> responseObserver) {
+    default void getProfile(com.game-engine.user.v1.GetProfileRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetProfileResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetProfileMethod(), responseObserver);
     }
 
     /**
      */
-    default void updateProfile(com.gameengine.user.v1.UpdateProfileRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdateProfileResponse> responseObserver) {
+    default void updateProfile(com.game-engine.user.v1.UpdateProfileRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdateProfileResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdateProfileMethod(), responseObserver);
     }
 
     /**
      */
-    default void getKYCStatus(com.gameengine.user.v1.GetKYCStatusRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetKYCStatusResponse> responseObserver) {
+    default void getKYCStatus(com.game-engine.user.v1.GetKYCStatusRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetKYCStatusResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetKYCStatusMethod(), responseObserver);
     }
 
     /**
      */
-    default void submitKYC(com.gameengine.user.v1.SubmitKYCRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.SubmitKYCResponse> responseObserver) {
+    default void submitKYC(com.game-engine.user.v1.SubmitKYCRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.SubmitKYCResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubmitKYCMethod(), responseObserver);
     }
 
     /**
      */
-    default void getPlayerSettings(com.gameengine.user.v1.GetPlayerSettingsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetPlayerSettingsResponse> responseObserver) {
+    default void getPlayerSettings(com.game-engine.user.v1.GetPlayerSettingsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetPlayerSettingsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPlayerSettingsMethod(), responseObserver);
     }
 
     /**
      */
-    default void updatePlayerSettings(com.gameengine.user.v1.UpdatePlayerSettingsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdatePlayerSettingsResponse> responseObserver) {
+    default void updatePlayerSettings(com.game-engine.user.v1.UpdatePlayerSettingsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdatePlayerSettingsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdatePlayerSettingsMethod(), responseObserver);
     }
 
     /**
      */
-    default void getPlayerByAdmin(com.gameengine.user.v1.GetPlayerByAdminRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetPlayerByAdminResponse> responseObserver) {
+    default void getPlayerByAdmin(com.game-engine.user.v1.GetPlayerByAdminRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetPlayerByAdminResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPlayerByAdminMethod(), responseObserver);
     }
 
     /**
      */
-    default void listPlayers(com.gameengine.user.v1.ListPlayersRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.ListPlayersResponse> responseObserver) {
+    default void listPlayers(com.game-engine.user.v1.ListPlayersRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.ListPlayersResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListPlayersMethod(), responseObserver);
     }
 
     /**
      */
-    default void updatePlayerStatus(com.gameengine.user.v1.UpdatePlayerStatusRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdatePlayerStatusResponse> responseObserver) {
+    default void updatePlayerStatus(com.game-engine.user.v1.UpdatePlayerStatusRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdatePlayerStatusResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getUpdatePlayerStatusMethod(), responseObserver);
     }
   }
@@ -459,72 +459,72 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public void getProfile(com.gameengine.user.v1.GetProfileRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetProfileResponse> responseObserver) {
+    public void getProfile(com.game-engine.user.v1.GetProfileRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetProfileResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetProfileMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updateProfile(com.gameengine.user.v1.UpdateProfileRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdateProfileResponse> responseObserver) {
+    public void updateProfile(com.game-engine.user.v1.UpdateProfileRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdateProfileResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdateProfileMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getKYCStatus(com.gameengine.user.v1.GetKYCStatusRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetKYCStatusResponse> responseObserver) {
+    public void getKYCStatus(com.game-engine.user.v1.GetKYCStatusRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetKYCStatusResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetKYCStatusMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void submitKYC(com.gameengine.user.v1.SubmitKYCRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.SubmitKYCResponse> responseObserver) {
+    public void submitKYC(com.game-engine.user.v1.SubmitKYCRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.SubmitKYCResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSubmitKYCMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getPlayerSettings(com.gameengine.user.v1.GetPlayerSettingsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetPlayerSettingsResponse> responseObserver) {
+    public void getPlayerSettings(com.game-engine.user.v1.GetPlayerSettingsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetPlayerSettingsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPlayerSettingsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updatePlayerSettings(com.gameengine.user.v1.UpdatePlayerSettingsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdatePlayerSettingsResponse> responseObserver) {
+    public void updatePlayerSettings(com.game-engine.user.v1.UpdatePlayerSettingsRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdatePlayerSettingsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdatePlayerSettingsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void getPlayerByAdmin(com.gameengine.user.v1.GetPlayerByAdminRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetPlayerByAdminResponse> responseObserver) {
+    public void getPlayerByAdmin(com.game-engine.user.v1.GetPlayerByAdminRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetPlayerByAdminResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPlayerByAdminMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void listPlayers(com.gameengine.user.v1.ListPlayersRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.ListPlayersResponse> responseObserver) {
+    public void listPlayers(com.game-engine.user.v1.ListPlayersRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.ListPlayersResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListPlayersMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void updatePlayerStatus(com.gameengine.user.v1.UpdatePlayerStatusRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdatePlayerStatusResponse> responseObserver) {
+    public void updatePlayerStatus(com.game-engine.user.v1.UpdatePlayerStatusRequest request,
+        io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdatePlayerStatusResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getUpdatePlayerStatusMethod(), getCallOptions()), request, responseObserver);
     }
@@ -551,63 +551,63 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.gameengine.user.v1.GetProfileResponse getProfile(com.gameengine.user.v1.GetProfileRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.GetProfileResponse getProfile(com.game-engine.user.v1.GetProfileRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetProfileMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.UpdateProfileResponse updateProfile(com.gameengine.user.v1.UpdateProfileRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.UpdateProfileResponse updateProfile(com.game-engine.user.v1.UpdateProfileRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getUpdateProfileMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.GetKYCStatusResponse getKYCStatus(com.gameengine.user.v1.GetKYCStatusRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.GetKYCStatusResponse getKYCStatus(com.game-engine.user.v1.GetKYCStatusRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetKYCStatusMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.SubmitKYCResponse submitKYC(com.gameengine.user.v1.SubmitKYCRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.SubmitKYCResponse submitKYC(com.game-engine.user.v1.SubmitKYCRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getSubmitKYCMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.GetPlayerSettingsResponse getPlayerSettings(com.gameengine.user.v1.GetPlayerSettingsRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.GetPlayerSettingsResponse getPlayerSettings(com.game-engine.user.v1.GetPlayerSettingsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPlayerSettingsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.UpdatePlayerSettingsResponse updatePlayerSettings(com.gameengine.user.v1.UpdatePlayerSettingsRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.UpdatePlayerSettingsResponse updatePlayerSettings(com.game-engine.user.v1.UpdatePlayerSettingsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getUpdatePlayerSettingsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.GetPlayerByAdminResponse getPlayerByAdmin(com.gameengine.user.v1.GetPlayerByAdminRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.GetPlayerByAdminResponse getPlayerByAdmin(com.game-engine.user.v1.GetPlayerByAdminRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPlayerByAdminMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.ListPlayersResponse listPlayers(com.gameengine.user.v1.ListPlayersRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.ListPlayersResponse listPlayers(com.game-engine.user.v1.ListPlayersRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getListPlayersMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.UpdatePlayerStatusResponse updatePlayerStatus(com.gameengine.user.v1.UpdatePlayerStatusRequest request) throws io.grpc.StatusException {
+    public com.game-engine.user.v1.UpdatePlayerStatusResponse updatePlayerStatus(com.game-engine.user.v1.UpdatePlayerStatusRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getUpdatePlayerStatusMethod(), getCallOptions(), request);
     }
@@ -634,63 +634,63 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.gameengine.user.v1.GetProfileResponse getProfile(com.gameengine.user.v1.GetProfileRequest request) {
+    public com.game-engine.user.v1.GetProfileResponse getProfile(com.game-engine.user.v1.GetProfileRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetProfileMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.UpdateProfileResponse updateProfile(com.gameengine.user.v1.UpdateProfileRequest request) {
+    public com.game-engine.user.v1.UpdateProfileResponse updateProfile(com.game-engine.user.v1.UpdateProfileRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdateProfileMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.GetKYCStatusResponse getKYCStatus(com.gameengine.user.v1.GetKYCStatusRequest request) {
+    public com.game-engine.user.v1.GetKYCStatusResponse getKYCStatus(com.game-engine.user.v1.GetKYCStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetKYCStatusMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.SubmitKYCResponse submitKYC(com.gameengine.user.v1.SubmitKYCRequest request) {
+    public com.game-engine.user.v1.SubmitKYCResponse submitKYC(com.game-engine.user.v1.SubmitKYCRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSubmitKYCMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.GetPlayerSettingsResponse getPlayerSettings(com.gameengine.user.v1.GetPlayerSettingsRequest request) {
+    public com.game-engine.user.v1.GetPlayerSettingsResponse getPlayerSettings(com.game-engine.user.v1.GetPlayerSettingsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPlayerSettingsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.UpdatePlayerSettingsResponse updatePlayerSettings(com.gameengine.user.v1.UpdatePlayerSettingsRequest request) {
+    public com.game-engine.user.v1.UpdatePlayerSettingsResponse updatePlayerSettings(com.game-engine.user.v1.UpdatePlayerSettingsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdatePlayerSettingsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.GetPlayerByAdminResponse getPlayerByAdmin(com.gameengine.user.v1.GetPlayerByAdminRequest request) {
+    public com.game-engine.user.v1.GetPlayerByAdminResponse getPlayerByAdmin(com.game-engine.user.v1.GetPlayerByAdminRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPlayerByAdminMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.ListPlayersResponse listPlayers(com.gameengine.user.v1.ListPlayersRequest request) {
+    public com.game-engine.user.v1.ListPlayersResponse listPlayers(com.game-engine.user.v1.ListPlayersRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListPlayersMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.gameengine.user.v1.UpdatePlayerStatusResponse updatePlayerStatus(com.gameengine.user.v1.UpdatePlayerStatusRequest request) {
+    public com.game-engine.user.v1.UpdatePlayerStatusResponse updatePlayerStatus(com.game-engine.user.v1.UpdatePlayerStatusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getUpdatePlayerStatusMethod(), getCallOptions(), request);
     }
@@ -717,72 +717,72 @@ public final class UserServiceGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.GetProfileResponse> getProfile(
-        com.gameengine.user.v1.GetProfileRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.GetProfileResponse> getProfile(
+        com.game-engine.user.v1.GetProfileRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetProfileMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.UpdateProfileResponse> updateProfile(
-        com.gameengine.user.v1.UpdateProfileRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.UpdateProfileResponse> updateProfile(
+        com.game-engine.user.v1.UpdateProfileRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdateProfileMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.GetKYCStatusResponse> getKYCStatus(
-        com.gameengine.user.v1.GetKYCStatusRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.GetKYCStatusResponse> getKYCStatus(
+        com.game-engine.user.v1.GetKYCStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetKYCStatusMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.SubmitKYCResponse> submitKYC(
-        com.gameengine.user.v1.SubmitKYCRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.SubmitKYCResponse> submitKYC(
+        com.game-engine.user.v1.SubmitKYCRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getSubmitKYCMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.GetPlayerSettingsResponse> getPlayerSettings(
-        com.gameengine.user.v1.GetPlayerSettingsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.GetPlayerSettingsResponse> getPlayerSettings(
+        com.game-engine.user.v1.GetPlayerSettingsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPlayerSettingsMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.UpdatePlayerSettingsResponse> updatePlayerSettings(
-        com.gameengine.user.v1.UpdatePlayerSettingsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.UpdatePlayerSettingsResponse> updatePlayerSettings(
+        com.game-engine.user.v1.UpdatePlayerSettingsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdatePlayerSettingsMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.GetPlayerByAdminResponse> getPlayerByAdmin(
-        com.gameengine.user.v1.GetPlayerByAdminRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.GetPlayerByAdminResponse> getPlayerByAdmin(
+        com.game-engine.user.v1.GetPlayerByAdminRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPlayerByAdminMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.ListPlayersResponse> listPlayers(
-        com.gameengine.user.v1.ListPlayersRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.ListPlayersResponse> listPlayers(
+        com.game-engine.user.v1.ListPlayersRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListPlayersMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.user.v1.UpdatePlayerStatusResponse> updatePlayerStatus(
-        com.gameengine.user.v1.UpdatePlayerStatusRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game-engine.user.v1.UpdatePlayerStatusResponse> updatePlayerStatus(
+        com.game-engine.user.v1.UpdatePlayerStatusRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getUpdatePlayerStatusMethod(), getCallOptions()), request);
     }
@@ -816,40 +816,40 @@ public final class UserServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_GET_PROFILE:
-          serviceImpl.getProfile((com.gameengine.user.v1.GetProfileRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetProfileResponse>) responseObserver);
+          serviceImpl.getProfile((com.game-engine.user.v1.GetProfileRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetProfileResponse>) responseObserver);
           break;
         case METHODID_UPDATE_PROFILE:
-          serviceImpl.updateProfile((com.gameengine.user.v1.UpdateProfileRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdateProfileResponse>) responseObserver);
+          serviceImpl.updateProfile((com.game-engine.user.v1.UpdateProfileRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdateProfileResponse>) responseObserver);
           break;
         case METHODID_GET_KYCSTATUS:
-          serviceImpl.getKYCStatus((com.gameengine.user.v1.GetKYCStatusRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetKYCStatusResponse>) responseObserver);
+          serviceImpl.getKYCStatus((com.game-engine.user.v1.GetKYCStatusRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetKYCStatusResponse>) responseObserver);
           break;
         case METHODID_SUBMIT_KYC:
-          serviceImpl.submitKYC((com.gameengine.user.v1.SubmitKYCRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.SubmitKYCResponse>) responseObserver);
+          serviceImpl.submitKYC((com.game-engine.user.v1.SubmitKYCRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.SubmitKYCResponse>) responseObserver);
           break;
         case METHODID_GET_PLAYER_SETTINGS:
-          serviceImpl.getPlayerSettings((com.gameengine.user.v1.GetPlayerSettingsRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetPlayerSettingsResponse>) responseObserver);
+          serviceImpl.getPlayerSettings((com.game-engine.user.v1.GetPlayerSettingsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetPlayerSettingsResponse>) responseObserver);
           break;
         case METHODID_UPDATE_PLAYER_SETTINGS:
-          serviceImpl.updatePlayerSettings((com.gameengine.user.v1.UpdatePlayerSettingsRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdatePlayerSettingsResponse>) responseObserver);
+          serviceImpl.updatePlayerSettings((com.game-engine.user.v1.UpdatePlayerSettingsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdatePlayerSettingsResponse>) responseObserver);
           break;
         case METHODID_GET_PLAYER_BY_ADMIN:
-          serviceImpl.getPlayerByAdmin((com.gameengine.user.v1.GetPlayerByAdminRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.GetPlayerByAdminResponse>) responseObserver);
+          serviceImpl.getPlayerByAdmin((com.game-engine.user.v1.GetPlayerByAdminRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.GetPlayerByAdminResponse>) responseObserver);
           break;
         case METHODID_LIST_PLAYERS:
-          serviceImpl.listPlayers((com.gameengine.user.v1.ListPlayersRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.ListPlayersResponse>) responseObserver);
+          serviceImpl.listPlayers((com.game-engine.user.v1.ListPlayersRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.ListPlayersResponse>) responseObserver);
           break;
         case METHODID_UPDATE_PLAYER_STATUS:
-          serviceImpl.updatePlayerStatus((com.gameengine.user.v1.UpdatePlayerStatusRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.user.v1.UpdatePlayerStatusResponse>) responseObserver);
+          serviceImpl.updatePlayerStatus((com.game-engine.user.v1.UpdatePlayerStatusRequest) request,
+              (io.grpc.stub.StreamObserver<com.game-engine.user.v1.UpdatePlayerStatusResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -873,64 +873,64 @@ public final class UserServiceGrpc {
           getGetProfileMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.GetProfileRequest,
-              com.gameengine.user.v1.GetProfileResponse>(
+              com.game-engine.user.v1.GetProfileRequest,
+              com.game-engine.user.v1.GetProfileResponse>(
                 service, METHODID_GET_PROFILE)))
         .addMethod(
           getUpdateProfileMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.UpdateProfileRequest,
-              com.gameengine.user.v1.UpdateProfileResponse>(
+              com.game-engine.user.v1.UpdateProfileRequest,
+              com.game-engine.user.v1.UpdateProfileResponse>(
                 service, METHODID_UPDATE_PROFILE)))
         .addMethod(
           getGetKYCStatusMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.GetKYCStatusRequest,
-              com.gameengine.user.v1.GetKYCStatusResponse>(
+              com.game-engine.user.v1.GetKYCStatusRequest,
+              com.game-engine.user.v1.GetKYCStatusResponse>(
                 service, METHODID_GET_KYCSTATUS)))
         .addMethod(
           getSubmitKYCMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.SubmitKYCRequest,
-              com.gameengine.user.v1.SubmitKYCResponse>(
+              com.game-engine.user.v1.SubmitKYCRequest,
+              com.game-engine.user.v1.SubmitKYCResponse>(
                 service, METHODID_SUBMIT_KYC)))
         .addMethod(
           getGetPlayerSettingsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.GetPlayerSettingsRequest,
-              com.gameengine.user.v1.GetPlayerSettingsResponse>(
+              com.game-engine.user.v1.GetPlayerSettingsRequest,
+              com.game-engine.user.v1.GetPlayerSettingsResponse>(
                 service, METHODID_GET_PLAYER_SETTINGS)))
         .addMethod(
           getUpdatePlayerSettingsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.UpdatePlayerSettingsRequest,
-              com.gameengine.user.v1.UpdatePlayerSettingsResponse>(
+              com.game-engine.user.v1.UpdatePlayerSettingsRequest,
+              com.game-engine.user.v1.UpdatePlayerSettingsResponse>(
                 service, METHODID_UPDATE_PLAYER_SETTINGS)))
         .addMethod(
           getGetPlayerByAdminMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.GetPlayerByAdminRequest,
-              com.gameengine.user.v1.GetPlayerByAdminResponse>(
+              com.game-engine.user.v1.GetPlayerByAdminRequest,
+              com.game-engine.user.v1.GetPlayerByAdminResponse>(
                 service, METHODID_GET_PLAYER_BY_ADMIN)))
         .addMethod(
           getListPlayersMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.ListPlayersRequest,
-              com.gameengine.user.v1.ListPlayersResponse>(
+              com.game-engine.user.v1.ListPlayersRequest,
+              com.game-engine.user.v1.ListPlayersResponse>(
                 service, METHODID_LIST_PLAYERS)))
         .addMethod(
           getUpdatePlayerStatusMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.user.v1.UpdatePlayerStatusRequest,
-              com.gameengine.user.v1.UpdatePlayerStatusResponse>(
+              com.game-engine.user.v1.UpdatePlayerStatusRequest,
+              com.game-engine.user.v1.UpdatePlayerStatusResponse>(
                 service, METHODID_UPDATE_PLAYER_STATUS)))
         .build();
   }
@@ -941,7 +941,7 @@ public final class UserServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.gameengine.user.v1.UserServiceOuterClass.getDescriptor();
+      return com.game-engine.user.v1.UserServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override

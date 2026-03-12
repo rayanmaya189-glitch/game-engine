@@ -12,7 +12,7 @@ import (
 	"github.com/game-engine/agent-service/internal/handler"
 	"github.com/game-engine/agent-service/internal/repository"
 	"github.com/game-engine/agent-service/internal/service"
-	agentpb "github.com/game-engine/gen/go/gameengine/agent/v1"
+	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/health"
 	"google.golang.org/grpc/health/grpc_health_v1"

@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	jackpotpb "github.com/game-engine/gen/go/gameengine/jackpot/v1"
+	jackpotpb "github.com/game-engine/gen/go/game-engine/jackpot/v1"
 )
 
 type JackpotClient struct {

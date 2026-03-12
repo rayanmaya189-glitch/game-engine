@@ -1,6 +1,6 @@
-module github.com/gameengine/game-registry
+module github.com/game-engine/game-registry
 
-go 1.22
+go 1.25
 
 require (
 	github.com/gin-gonic/gin v1.9.1

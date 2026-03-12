@@ -1,6 +1,6 @@
-module github.com/gameengine/slot-games
+module github.com/game-engine/slot-games
 
-go 1.21
+go 1.25
 
 require (
 	google.golang.org/grpc v1.60.1

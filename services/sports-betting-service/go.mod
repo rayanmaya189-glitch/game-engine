@@ -1,6 +1,6 @@
 module github.com/game-engine/sports-betting-service
 
-go 1.21
+go 1.25
 
 require (
 	github.com/game-engine/common v0.0.0

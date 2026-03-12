@@ -1,6 +1,6 @@
-package com.gameengine.affiliate.repository;
+package com.game-engine.affiliate.repository;
 
-import com.gameengine.affiliate.model.Referral;
+import com.game-engine.affiliate.model.Referral;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

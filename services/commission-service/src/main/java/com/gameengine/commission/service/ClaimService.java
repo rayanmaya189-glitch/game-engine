@@ -1,7 +1,7 @@
-package com.gameengine.commission.service;
+package com.game-engine.commission.service;
 
-import com.gameengine.commission.model.*;
-import com.gameengine.commission.repository.*;
+import com.game-engine.commission.model.*;
+import com.game-engine.commission.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

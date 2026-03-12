@@ -4,11 +4,11 @@ import (
 	"context"
 	"net/http"
 
-	gamesv1 "github.com/gameengine/gen/go/gameengine/game/v1"
+	gamesv1 "github.com/game-engine/gen/go/game-engine/game/v1"
 
-	"github.com/gameengine/game-registry/internal/enums"
-	"github.com/gameengine/game-registry/internal/model"
-	"github.com/gameengine/game-registry/internal/service"
+	"github.com/game-engine/game-registry/internal/enums"
+	"github.com/game-engine/game-registry/internal/model"
+	"github.com/game-engine/game-registry/internal/service"
 	"github.com/gin-gonic/gin"
 )
 

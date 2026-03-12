@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/gameengine/chat/internal/room"
-	"github.com/gameengine/chat/internal/service"
+	"github.com/game-engine/chat/internal/room"
+	"github.com/game-engine/chat/internal/service"
 )
 
 // ChatHandler handles chat-related requests

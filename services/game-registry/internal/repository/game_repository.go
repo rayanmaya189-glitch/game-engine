@@ -8,8 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/gameengine/game-registry/internal/enums"
-	"github.com/gameengine/game-registry/internal/model"
+	"github.com/game-engine/game-registry/internal/enums"
+	"github.com/game-engine/game-registry/internal/model"
 	"github.com/go-redis/redis/v8"
 	"github.com/google/uuid"
 	_ "github.com/lib/pq"

@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
 
-	walletpb "github.com/game-engine/gen/go/gameengine/wallet/v1"
+	walletpb "github.com/game-engine/gen/go/game-engine/wallet/v1"
 )
 
 type WalletClient struct {

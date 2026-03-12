@@ -1,6 +1,6 @@
-module github.com/gameengine/gen/go
+module github.com/game-engine/gen/go
 
-go 1.21
+go 1.25
 
 require (
 	google.golang.org/protobuf v1.32.0

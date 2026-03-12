@@ -1,6 +1,6 @@
-module github.com/gameengine/chat
+module github.com/game-engine/chat
 
-go 1.21
+go 1.25
 
 require (
 	github.com/google/uuid v1.5.0

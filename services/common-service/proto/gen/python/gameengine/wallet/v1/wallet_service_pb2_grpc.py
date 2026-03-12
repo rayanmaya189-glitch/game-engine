@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from gameengine.wallet.v1 import wallet_service_pb2 as gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2
+from game-engine.wallet.v1 import wallet_service_pb2 as game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2
 
 
 class WalletServiceStub(object):
@@ -16,69 +16,69 @@ class WalletServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetBalance = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/GetBalance',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/GetBalance',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceResponse.FromString,
                 _registered_method=True)
         self.GetAllBalances = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/GetAllBalances',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/GetAllBalances',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesResponse.FromString,
                 _registered_method=True)
         self.GetTransactionHistory = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/GetTransactionHistory',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/GetTransactionHistory',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryResponse.FromString,
                 _registered_method=True)
         self.CreateDeposit = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/CreateDeposit',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/CreateDeposit',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositResponse.FromString,
                 _registered_method=True)
         self.ConfirmDeposit = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/ConfirmDeposit',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/ConfirmDeposit',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositResponse.FromString,
                 _registered_method=True)
         self.CreateWithdrawal = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/CreateWithdrawal',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/CreateWithdrawal',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalResponse.FromString,
                 _registered_method=True)
         self.ConfirmWithdrawal = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/ConfirmWithdrawal',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/ConfirmWithdrawal',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalResponse.FromString,
                 _registered_method=True)
         self.PlaceBet = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/PlaceBet',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/PlaceBet',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetResponse.FromString,
                 _registered_method=True)
         self.SettleBet = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/SettleBet',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/SettleBet',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetResponse.FromString,
                 _registered_method=True)
         self.CancelBet = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/CancelBet',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/CancelBet',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetResponse.FromString,
                 _registered_method=True)
         self.CreateBonusCredit = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/CreateBonusCredit',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/CreateBonusCredit',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditResponse.FromString,
                 _registered_method=True)
         self.ReverseTransaction = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/ReverseTransaction',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/ReverseTransaction',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionResponse.FromString,
                 _registered_method=True)
         self.GetPendingBets = channel.unary_unary(
-                '/gameengine.wallet.v1.WalletService/GetPendingBets',
-                request_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.SerializeToString,
-                response_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.FromString,
+                '/game-engine.wallet.v1.WalletService/GetPendingBets',
+                request_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.SerializeToString,
+                response_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.FromString,
                 _registered_method=True)
 
 
@@ -169,74 +169,74 @@ def add_WalletServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetBalance': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBalance,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceResponse.SerializeToString,
             ),
             'GetAllBalances': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAllBalances,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesResponse.SerializeToString,
             ),
             'GetTransactionHistory': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTransactionHistory,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryResponse.SerializeToString,
             ),
             'CreateDeposit': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateDeposit,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositResponse.SerializeToString,
             ),
             'ConfirmDeposit': grpc.unary_unary_rpc_method_handler(
                     servicer.ConfirmDeposit,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositResponse.SerializeToString,
             ),
             'CreateWithdrawal': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateWithdrawal,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalResponse.SerializeToString,
             ),
             'ConfirmWithdrawal': grpc.unary_unary_rpc_method_handler(
                     servicer.ConfirmWithdrawal,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalResponse.SerializeToString,
             ),
             'PlaceBet': grpc.unary_unary_rpc_method_handler(
                     servicer.PlaceBet,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetResponse.SerializeToString,
             ),
             'SettleBet': grpc.unary_unary_rpc_method_handler(
                     servicer.SettleBet,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetResponse.SerializeToString,
             ),
             'CancelBet': grpc.unary_unary_rpc_method_handler(
                     servicer.CancelBet,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetResponse.SerializeToString,
             ),
             'CreateBonusCredit': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateBonusCredit,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditResponse.SerializeToString,
             ),
             'ReverseTransaction': grpc.unary_unary_rpc_method_handler(
                     servicer.ReverseTransaction,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionResponse.SerializeToString,
             ),
             'GetPendingBets': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPendingBets,
-                    request_deserializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.FromString,
-                    response_serializer=gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.SerializeToString,
+                    request_deserializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.FromString,
+                    response_serializer=game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'gameengine.wallet.v1.WalletService', rpc_method_handlers)
+            'game-engine.wallet.v1.WalletService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('gameengine.wallet.v1.WalletService', rpc_method_handlers)
+    server.add_registered_method_handlers('game-engine.wallet.v1.WalletService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -258,9 +258,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/GetBalance',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/GetBalance',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetBalanceResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -285,9 +285,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/GetAllBalances',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/GetAllBalances',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetAllBalancesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -312,9 +312,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/GetTransactionHistory',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/GetTransactionHistory',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetTransactionHistoryResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -339,9 +339,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/CreateDeposit',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/CreateDeposit',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateDepositResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -366,9 +366,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/ConfirmDeposit',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/ConfirmDeposit',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmDepositResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -393,9 +393,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/CreateWithdrawal',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/CreateWithdrawal',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateWithdrawalResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -420,9 +420,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/ConfirmWithdrawal',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/ConfirmWithdrawal',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ConfirmWithdrawalResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -447,9 +447,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/PlaceBet',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/PlaceBet',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.PlaceBetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -474,9 +474,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/SettleBet',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/SettleBet',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.SettleBetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -501,9 +501,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/CancelBet',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/CancelBet',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CancelBetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -528,9 +528,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/CreateBonusCredit',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/CreateBonusCredit',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.CreateBonusCreditResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -555,9 +555,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/ReverseTransaction',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/ReverseTransaction',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.ReverseTransactionResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -582,9 +582,9 @@ class WalletService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/gameengine.wallet.v1.WalletService/GetPendingBets',
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.SerializeToString,
-            gameengine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.FromString,
+            '/game-engine.wallet.v1.WalletService/GetPendingBets',
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.SerializeToString,
+            game-engine_dot_wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.FromString,
             options,
             channel_credentials,
             insecure,

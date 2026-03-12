@@ -1,6 +1,6 @@
-module github.com/gameengine/wallet-service
+module github.com/game-engine/wallet-service
 
-go 1.24.0
+go 1.25.0
 
 require (
 	github.com/google/uuid v1.5.0
@@ -12,4 +12,4 @@ require (
 )
 
 
-replace github.com/gameengine/gen/go => ../../proto/gen/go
+replace github.com/game-engine/gen/go => ../../proto/gen/go

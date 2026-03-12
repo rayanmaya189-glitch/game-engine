@@ -1,6 +1,6 @@
-package com.gameengine.bonus.repository;
+package com.game-engine.bonus.repository;
 
-import com.gameengine.bonus.model.Bonus;
+import com.game-engine.bonus.model.Bonus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.UUID;

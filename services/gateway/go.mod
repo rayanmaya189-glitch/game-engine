@@ -1,6 +1,6 @@
 module github.com/game-engine/gateway
 
-go 1.21
+go 1.25
 
 require (
 	github.com/cloudwego/hertz v0.10.4

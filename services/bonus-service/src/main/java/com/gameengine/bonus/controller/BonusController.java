@@ -1,7 +1,7 @@
-package com.gameengine.bonus.controller;
+package com.game-engine.bonus.controller;
 
-import com.gameengine.bonus.model.Bonus;
-import com.gameengine.bonus.service.BonusService;
+import com.game-engine.bonus.model.Bonus;
+import com.game-engine.bonus.service.BonusService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	livedlrpb "github.com/game-engine/gen/go/gameengine/livedealer/v1"
+	livedlrpb "github.com/game-engine/gen/go/game-engine/livedealer/v1"
 	"github.com/game-engine/live-dealer-service/internal/config"
 	"github.com/game-engine/live-dealer-service/internal/handler"
 	"github.com/game-engine/live-dealer-service/internal/repository"

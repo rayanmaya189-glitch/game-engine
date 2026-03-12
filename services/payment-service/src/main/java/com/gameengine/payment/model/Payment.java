@@ -1,4 +1,4 @@
-package com.gameengine.payment.model;
+package com.game-engine.payment.model;
 
 import jakarta.persistence.*;
 import lombok.*;

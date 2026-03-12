@@ -104,7 +104,7 @@ grpc:
 # Logging
 logging:
   level:
-    com.gameengine.payment: INFO
+    com.game-engine.payment: INFO
     org.springframework.web: INFO
 
 # Actuator

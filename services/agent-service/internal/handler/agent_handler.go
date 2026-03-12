@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/game-engine/agent-service/internal/service"
-	agentpb "github.com/game-engine/gen/go/gameengine/agent/v1"
+	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
 )
 
 // Ensure AgentHandler implements the server interface

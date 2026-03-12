@@ -9,7 +9,7 @@ redis:
 nats:
   urls:
     - "nats://10.100.1.12:4222"
-  cluster_id: "gameengine"
+  cluster_id: "game-engine"
   client_id: "slot-games"
 
 game:

@@ -12,12 +12,12 @@ import (
 	"syscall"
 	"time"
 
-	gamesv1 "github.com/gameengine/gen/go/gameengine/game/v1"
+	gamesv1 "github.com/game-engine/gen/go/game-engine/game/v1"
 
-	"github.com/gameengine/game-registry/internal/config"
-	"github.com/gameengine/game-registry/internal/handler"
-	"github.com/gameengine/game-registry/internal/repository"
-	"github.com/gameengine/game-registry/internal/service"
+	"github.com/game-engine/game-registry/internal/config"
+	"github.com/game-engine/game-registry/internal/handler"
+	"github.com/game-engine/game-registry/internal/repository"
+	"github.com/game-engine/game-registry/internal/service"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	_ "github.com/lib/pq"

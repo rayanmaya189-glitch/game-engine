@@ -1,7 +1,7 @@
-package com.gameengine.payment.controller;
+package com.game-engine.payment.controller;
 
-import com.gameengine.payment.model.Payment;
-import com.gameengine.payment.service.PaymentService;
+import com.game-engine.payment.model.Payment;
+import com.game-engine.payment.service.PaymentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
