@@ -12,7 +12,13 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 public class Commission {
-    
+
+    // Alias methods for backwards compatibility with CommissionService
+    public void setCommissionRate(BigDecimal rate) { setCommissionPercentage(rate); }
+    public BigDecimal getCommissionRate() { return getCommissionPercentage(); }
+    public void setNewPlayers(int players) { setCpaCount(players); }
+    public int getNewPlayers() { return getCpaCount() != null ? getCpaCount() : 0; }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -41,6 +47,14 @@ public class Commission {
     private BigDecimal cpaAmount;
     
     private Integer cpaCount;
+    
+    private BigDecimal totalDeposits;
+    
+    private Integer totalPlayers;
+    
+    private LocalDateTime rejectedAt;
+    
+    private String rejectionReason;
     
     @Column(nullable = false)
     private String period; // e.g., "2024-01" for January 2024
