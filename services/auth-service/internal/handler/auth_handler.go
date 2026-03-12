@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	authv1 "github.com/gameengine/gen/go/gameengine/auth/v1"
+	authv1 "github.com/game-engine/common/proto/gen/go/gameengine/auth/v1"
 
 	"github.com/gameengine/auth-service/internal/model"
 	"github.com/gameengine/auth-service/internal/service"
