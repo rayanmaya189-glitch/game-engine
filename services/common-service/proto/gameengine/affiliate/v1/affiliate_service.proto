@@ -1,9 +1,9 @@
 syntax = "proto3";
 
-package game-engine.affiliate.v1;
+package game_engine.affiliate.v1;
 
 import "google/protobuf/timestamp.proto";
-import "game-engine/common/v1/pagination.proto";
+import "game_engine/common/v1/pagination.proto";
 
 option go_package = "gen/go/affiliate/v1;affiliatev1";
 option java_multiple_files = true;

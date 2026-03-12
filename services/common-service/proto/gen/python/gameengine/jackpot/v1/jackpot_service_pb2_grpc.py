@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from game-engine.jackpot.v1 import jackpot_service_pb2 as game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2
+from game_engine.jackpot.v1 import jackpot_service_pb2 as game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2
 
 
 class JackpotServiceStub(object):
@@ -15,29 +15,29 @@ class JackpotServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ListJackpots = channel.unary_unary(
-                '/game-engine.jackpot.v1.JackpotService/ListJackpots',
-                request_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsResponse.FromString,
+                '/game_engine.jackpot.v1.JackpotService/ListJackpots',
+                request_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsResponse.FromString,
                 _registered_method=True)
         self.GetJackpot = channel.unary_unary(
-                '/game-engine.jackpot.v1.JackpotService/GetJackpot',
-                request_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotRequest.SerializeToString,
-                response_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotResponse.FromString,
+                '/game_engine.jackpot.v1.JackpotService/GetJackpot',
+                request_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotRequest.SerializeToString,
+                response_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotResponse.FromString,
                 _registered_method=True)
         self.GetWinners = channel.unary_unary(
-                '/game-engine.jackpot.v1.JackpotService/GetWinners',
-                request_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersRequest.SerializeToString,
-                response_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersResponse.FromString,
+                '/game_engine.jackpot.v1.JackpotService/GetWinners',
+                request_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersRequest.SerializeToString,
+                response_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersResponse.FromString,
                 _registered_method=True)
         self.JoinJackpot = channel.unary_unary(
-                '/game-engine.jackpot.v1.JackpotService/JoinJackpot',
-                request_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotRequest.SerializeToString,
-                response_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotResponse.FromString,
+                '/game_engine.jackpot.v1.JackpotService/JoinJackpot',
+                request_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotRequest.SerializeToString,
+                response_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotResponse.FromString,
                 _registered_method=True)
         self.GetJackpotHistory = channel.unary_unary(
-                '/game-engine.jackpot.v1.JackpotService/GetJackpotHistory',
-                request_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryRequest.SerializeToString,
-                response_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryResponse.FromString,
+                '/game_engine.jackpot.v1.JackpotService/GetJackpotHistory',
+                request_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryRequest.SerializeToString,
+                response_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryResponse.FromString,
                 _registered_method=True)
 
 
@@ -84,34 +84,34 @@ def add_JackpotServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ListJackpots': grpc.unary_unary_rpc_method_handler(
                     servicer.ListJackpots,
-                    request_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsRequest.FromString,
-                    response_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsRequest.FromString,
+                    response_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsResponse.SerializeToString,
             ),
             'GetJackpot': grpc.unary_unary_rpc_method_handler(
                     servicer.GetJackpot,
-                    request_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotRequest.FromString,
-                    response_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotRequest.FromString,
+                    response_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotResponse.SerializeToString,
             ),
             'GetWinners': grpc.unary_unary_rpc_method_handler(
                     servicer.GetWinners,
-                    request_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersRequest.FromString,
-                    response_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersRequest.FromString,
+                    response_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersResponse.SerializeToString,
             ),
             'JoinJackpot': grpc.unary_unary_rpc_method_handler(
                     servicer.JoinJackpot,
-                    request_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotRequest.FromString,
-                    response_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotRequest.FromString,
+                    response_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotResponse.SerializeToString,
             ),
             'GetJackpotHistory': grpc.unary_unary_rpc_method_handler(
                     servicer.GetJackpotHistory,
-                    request_deserializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryRequest.FromString,
-                    response_serializer=game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryRequest.FromString,
+                    response_serializer=game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'game-engine.jackpot.v1.JackpotService', rpc_method_handlers)
+            'game_engine.jackpot.v1.JackpotService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('game-engine.jackpot.v1.JackpotService', rpc_method_handlers)
+    server.add_registered_method_handlers('game_engine.jackpot.v1.JackpotService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -132,9 +132,9 @@ class JackpotService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.jackpot.v1.JackpotService/ListJackpots',
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsRequest.SerializeToString,
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsResponse.FromString,
+            '/game_engine.jackpot.v1.JackpotService/ListJackpots',
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsRequest.SerializeToString,
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.ListJackpotsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -159,9 +159,9 @@ class JackpotService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.jackpot.v1.JackpotService/GetJackpot',
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotRequest.SerializeToString,
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotResponse.FromString,
+            '/game_engine.jackpot.v1.JackpotService/GetJackpot',
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotRequest.SerializeToString,
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -186,9 +186,9 @@ class JackpotService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.jackpot.v1.JackpotService/GetWinners',
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersRequest.SerializeToString,
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersResponse.FromString,
+            '/game_engine.jackpot.v1.JackpotService/GetWinners',
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersRequest.SerializeToString,
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetWinnersResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -213,9 +213,9 @@ class JackpotService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.jackpot.v1.JackpotService/JoinJackpot',
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotRequest.SerializeToString,
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotResponse.FromString,
+            '/game_engine.jackpot.v1.JackpotService/JoinJackpot',
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotRequest.SerializeToString,
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.JoinJackpotResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -240,9 +240,9 @@ class JackpotService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.jackpot.v1.JackpotService/GetJackpotHistory',
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryRequest.SerializeToString,
-            game-engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryResponse.FromString,
+            '/game_engine.jackpot.v1.JackpotService/GetJackpotHistory',
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryRequest.SerializeToString,
+            game_engine_dot_jackpot_dot_v1_dot_jackpot__service__pb2.GetJackpotHistoryResponse.FromString,
             options,
             channel_credentials,
             insecure,

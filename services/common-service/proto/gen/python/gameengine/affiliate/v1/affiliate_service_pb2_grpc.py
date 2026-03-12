@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from game-engine.affiliate.v1 import affiliate_service_pb2 as game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2
+from game_engine.affiliate.v1 import affiliate_service_pb2 as game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2
 
 
 class AffiliateServiceStub(object):
@@ -15,34 +15,34 @@ class AffiliateServiceStub(object):
             channel: A grpc.Channel.
         """
         self.TrackClick = channel.unary_unary(
-                '/game-engine.affiliate.v1.AffiliateService/TrackClick',
-                request_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickRequest.SerializeToString,
-                response_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickResponse.FromString,
+                '/game_engine.affiliate.v1.AffiliateService/TrackClick',
+                request_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickRequest.SerializeToString,
+                response_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickResponse.FromString,
                 _registered_method=True)
         self.GetPerformanceReport = channel.unary_unary(
-                '/game-engine.affiliate.v1.AffiliateService/GetPerformanceReport',
-                request_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.SerializeToString,
-                response_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.FromString,
+                '/game_engine.affiliate.v1.AffiliateService/GetPerformanceReport',
+                request_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.SerializeToString,
+                response_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.FromString,
                 _registered_method=True)
         self.GetClickReports = channel.unary_unary(
-                '/game-engine.affiliate.v1.AffiliateService/GetClickReports',
-                request_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.FromString,
+                '/game_engine.affiliate.v1.AffiliateService/GetClickReports',
+                request_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.FromString,
                 _registered_method=True)
         self.GetConversionReports = channel.unary_unary(
-                '/game-engine.affiliate.v1.AffiliateService/GetConversionReports',
-                request_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.FromString,
+                '/game_engine.affiliate.v1.AffiliateService/GetConversionReports',
+                request_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.FromString,
                 _registered_method=True)
         self.GetAffiliateLinks = channel.unary_unary(
-                '/game-engine.affiliate.v1.AffiliateService/GetAffiliateLinks',
-                request_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.SerializeToString,
-                response_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.FromString,
+                '/game_engine.affiliate.v1.AffiliateService/GetAffiliateLinks',
+                request_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.SerializeToString,
+                response_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.FromString,
                 _registered_method=True)
         self.CreateAffiliateLink = channel.unary_unary(
-                '/game-engine.affiliate.v1.AffiliateService/CreateAffiliateLink',
-                request_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.SerializeToString,
-                response_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.FromString,
+                '/game_engine.affiliate.v1.AffiliateService/CreateAffiliateLink',
+                request_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.SerializeToString,
+                response_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.FromString,
                 _registered_method=True)
 
 
@@ -96,39 +96,39 @@ def add_AffiliateServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'TrackClick': grpc.unary_unary_rpc_method_handler(
                     servicer.TrackClick,
-                    request_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickRequest.FromString,
-                    response_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickRequest.FromString,
+                    response_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickResponse.SerializeToString,
             ),
             'GetPerformanceReport': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPerformanceReport,
-                    request_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.FromString,
-                    response_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.FromString,
+                    response_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.SerializeToString,
             ),
             'GetClickReports': grpc.unary_unary_rpc_method_handler(
                     servicer.GetClickReports,
-                    request_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.FromString,
-                    response_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.FromString,
+                    response_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.SerializeToString,
             ),
             'GetConversionReports': grpc.unary_unary_rpc_method_handler(
                     servicer.GetConversionReports,
-                    request_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.FromString,
-                    response_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.FromString,
+                    response_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.SerializeToString,
             ),
             'GetAffiliateLinks': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAffiliateLinks,
-                    request_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.FromString,
-                    response_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.FromString,
+                    response_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.SerializeToString,
             ),
             'CreateAffiliateLink': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAffiliateLink,
-                    request_deserializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.FromString,
-                    response_serializer=game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.FromString,
+                    response_serializer=game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'game-engine.affiliate.v1.AffiliateService', rpc_method_handlers)
+            'game_engine.affiliate.v1.AffiliateService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('game-engine.affiliate.v1.AffiliateService', rpc_method_handlers)
+    server.add_registered_method_handlers('game_engine.affiliate.v1.AffiliateService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -149,9 +149,9 @@ class AffiliateService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.affiliate.v1.AffiliateService/TrackClick',
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickRequest.SerializeToString,
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickResponse.FromString,
+            '/game_engine.affiliate.v1.AffiliateService/TrackClick',
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickRequest.SerializeToString,
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.TrackClickResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -176,9 +176,9 @@ class AffiliateService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.affiliate.v1.AffiliateService/GetPerformanceReport',
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.SerializeToString,
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.FromString,
+            '/game_engine.affiliate.v1.AffiliateService/GetPerformanceReport',
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.SerializeToString,
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -203,9 +203,9 @@ class AffiliateService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.affiliate.v1.AffiliateService/GetClickReports',
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.SerializeToString,
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.FromString,
+            '/game_engine.affiliate.v1.AffiliateService/GetClickReports',
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.SerializeToString,
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -230,9 +230,9 @@ class AffiliateService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.affiliate.v1.AffiliateService/GetConversionReports',
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.SerializeToString,
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.FromString,
+            '/game_engine.affiliate.v1.AffiliateService/GetConversionReports',
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.SerializeToString,
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -257,9 +257,9 @@ class AffiliateService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.affiliate.v1.AffiliateService/GetAffiliateLinks',
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.SerializeToString,
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.FromString,
+            '/game_engine.affiliate.v1.AffiliateService/GetAffiliateLinks',
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.SerializeToString,
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -284,9 +284,9 @@ class AffiliateService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.affiliate.v1.AffiliateService/CreateAffiliateLink',
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.SerializeToString,
-            game-engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.FromString,
+            '/game_engine.affiliate.v1.AffiliateService/CreateAffiliateLink',
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.SerializeToString,
+            game_engine_dot_affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.FromString,
             options,
             channel_credentials,
             insecure,

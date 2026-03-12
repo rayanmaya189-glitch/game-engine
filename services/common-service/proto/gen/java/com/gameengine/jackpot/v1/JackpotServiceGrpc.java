@@ -1,4 +1,4 @@
-package com.gameengine.jackpot.v1;
+package com.game_engine.jackpot.v1;
 
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
@@ -9,32 +9,32 @@ public final class JackpotServiceGrpc {
 
   private JackpotServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "gameengine.jackpot.v1.JackpotService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.jackpot.v1.JackpotService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.ListJackpotsRequest,
-      com.gameengine.jackpot.v1.ListJackpotsResponse> getListJackpotsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.ListJackpotsRequest,
+      com.game_engine.jackpot.v1.ListJackpotsResponse> getListJackpotsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "ListJackpots",
-      requestType = com.gameengine.jackpot.v1.ListJackpotsRequest.class,
-      responseType = com.gameengine.jackpot.v1.ListJackpotsResponse.class,
+      requestType = com.game_engine.jackpot.v1.ListJackpotsRequest.class,
+      responseType = com.game_engine.jackpot.v1.ListJackpotsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.ListJackpotsRequest,
-      com.gameengine.jackpot.v1.ListJackpotsResponse> getListJackpotsMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.ListJackpotsRequest, com.gameengine.jackpot.v1.ListJackpotsResponse> getListJackpotsMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.ListJackpotsRequest,
+      com.game_engine.jackpot.v1.ListJackpotsResponse> getListJackpotsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.ListJackpotsRequest, com.game_engine.jackpot.v1.ListJackpotsResponse> getListJackpotsMethod;
     if ((getListJackpotsMethod = JackpotServiceGrpc.getListJackpotsMethod) == null) {
       synchronized (JackpotServiceGrpc.class) {
         if ((getListJackpotsMethod = JackpotServiceGrpc.getListJackpotsMethod) == null) {
           JackpotServiceGrpc.getListJackpotsMethod = getListJackpotsMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.jackpot.v1.ListJackpotsRequest, com.gameengine.jackpot.v1.ListJackpotsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.jackpot.v1.ListJackpotsRequest, com.game_engine.jackpot.v1.ListJackpotsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListJackpots"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.ListJackpotsRequest.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.ListJackpotsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.ListJackpotsResponse.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.ListJackpotsResponse.getDefaultInstance()))
               .setSchemaDescriptor(new JackpotServiceMethodDescriptorSupplier("ListJackpots"))
               .build();
         }
@@ -43,29 +43,29 @@ public final class JackpotServiceGrpc {
     return getListJackpotsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetJackpotRequest,
-      com.gameengine.jackpot.v1.GetJackpotResponse> getGetJackpotMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetJackpotRequest,
+      com.game_engine.jackpot.v1.GetJackpotResponse> getGetJackpotMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetJackpot",
-      requestType = com.gameengine.jackpot.v1.GetJackpotRequest.class,
-      responseType = com.gameengine.jackpot.v1.GetJackpotResponse.class,
+      requestType = com.game_engine.jackpot.v1.GetJackpotRequest.class,
+      responseType = com.game_engine.jackpot.v1.GetJackpotResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetJackpotRequest,
-      com.gameengine.jackpot.v1.GetJackpotResponse> getGetJackpotMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetJackpotRequest, com.gameengine.jackpot.v1.GetJackpotResponse> getGetJackpotMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetJackpotRequest,
+      com.game_engine.jackpot.v1.GetJackpotResponse> getGetJackpotMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetJackpotRequest, com.game_engine.jackpot.v1.GetJackpotResponse> getGetJackpotMethod;
     if ((getGetJackpotMethod = JackpotServiceGrpc.getGetJackpotMethod) == null) {
       synchronized (JackpotServiceGrpc.class) {
         if ((getGetJackpotMethod = JackpotServiceGrpc.getGetJackpotMethod) == null) {
           JackpotServiceGrpc.getGetJackpotMethod = getGetJackpotMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.jackpot.v1.GetJackpotRequest, com.gameengine.jackpot.v1.GetJackpotResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.jackpot.v1.GetJackpotRequest, com.game_engine.jackpot.v1.GetJackpotResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetJackpot"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.GetJackpotRequest.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.GetJackpotRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.GetJackpotResponse.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.GetJackpotResponse.getDefaultInstance()))
               .setSchemaDescriptor(new JackpotServiceMethodDescriptorSupplier("GetJackpot"))
               .build();
         }
@@ -74,29 +74,29 @@ public final class JackpotServiceGrpc {
     return getGetJackpotMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetWinnersRequest,
-      com.gameengine.jackpot.v1.GetWinnersResponse> getGetWinnersMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetWinnersRequest,
+      com.game_engine.jackpot.v1.GetWinnersResponse> getGetWinnersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetWinners",
-      requestType = com.gameengine.jackpot.v1.GetWinnersRequest.class,
-      responseType = com.gameengine.jackpot.v1.GetWinnersResponse.class,
+      requestType = com.game_engine.jackpot.v1.GetWinnersRequest.class,
+      responseType = com.game_engine.jackpot.v1.GetWinnersResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetWinnersRequest,
-      com.gameengine.jackpot.v1.GetWinnersResponse> getGetWinnersMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetWinnersRequest, com.gameengine.jackpot.v1.GetWinnersResponse> getGetWinnersMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetWinnersRequest,
+      com.game_engine.jackpot.v1.GetWinnersResponse> getGetWinnersMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetWinnersRequest, com.game_engine.jackpot.v1.GetWinnersResponse> getGetWinnersMethod;
     if ((getGetWinnersMethod = JackpotServiceGrpc.getGetWinnersMethod) == null) {
       synchronized (JackpotServiceGrpc.class) {
         if ((getGetWinnersMethod = JackpotServiceGrpc.getGetWinnersMethod) == null) {
           JackpotServiceGrpc.getGetWinnersMethod = getGetWinnersMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.jackpot.v1.GetWinnersRequest, com.gameengine.jackpot.v1.GetWinnersResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.jackpot.v1.GetWinnersRequest, com.game_engine.jackpot.v1.GetWinnersResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetWinners"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.GetWinnersRequest.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.GetWinnersRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.GetWinnersResponse.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.GetWinnersResponse.getDefaultInstance()))
               .setSchemaDescriptor(new JackpotServiceMethodDescriptorSupplier("GetWinners"))
               .build();
         }
@@ -105,29 +105,29 @@ public final class JackpotServiceGrpc {
     return getGetWinnersMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.JoinJackpotRequest,
-      com.gameengine.jackpot.v1.JoinJackpotResponse> getJoinJackpotMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.JoinJackpotRequest,
+      com.game_engine.jackpot.v1.JoinJackpotResponse> getJoinJackpotMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "JoinJackpot",
-      requestType = com.gameengine.jackpot.v1.JoinJackpotRequest.class,
-      responseType = com.gameengine.jackpot.v1.JoinJackpotResponse.class,
+      requestType = com.game_engine.jackpot.v1.JoinJackpotRequest.class,
+      responseType = com.game_engine.jackpot.v1.JoinJackpotResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.JoinJackpotRequest,
-      com.gameengine.jackpot.v1.JoinJackpotResponse> getJoinJackpotMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.JoinJackpotRequest, com.gameengine.jackpot.v1.JoinJackpotResponse> getJoinJackpotMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.JoinJackpotRequest,
+      com.game_engine.jackpot.v1.JoinJackpotResponse> getJoinJackpotMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.JoinJackpotRequest, com.game_engine.jackpot.v1.JoinJackpotResponse> getJoinJackpotMethod;
     if ((getJoinJackpotMethod = JackpotServiceGrpc.getJoinJackpotMethod) == null) {
       synchronized (JackpotServiceGrpc.class) {
         if ((getJoinJackpotMethod = JackpotServiceGrpc.getJoinJackpotMethod) == null) {
           JackpotServiceGrpc.getJoinJackpotMethod = getJoinJackpotMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.jackpot.v1.JoinJackpotRequest, com.gameengine.jackpot.v1.JoinJackpotResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.jackpot.v1.JoinJackpotRequest, com.game_engine.jackpot.v1.JoinJackpotResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "JoinJackpot"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.JoinJackpotRequest.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.JoinJackpotRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.JoinJackpotResponse.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.JoinJackpotResponse.getDefaultInstance()))
               .setSchemaDescriptor(new JackpotServiceMethodDescriptorSupplier("JoinJackpot"))
               .build();
         }
@@ -136,29 +136,29 @@ public final class JackpotServiceGrpc {
     return getJoinJackpotMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetJackpotHistoryRequest,
-      com.gameengine.jackpot.v1.GetJackpotHistoryResponse> getGetJackpotHistoryMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetJackpotHistoryRequest,
+      com.game_engine.jackpot.v1.GetJackpotHistoryResponse> getGetJackpotHistoryMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "GetJackpotHistory",
-      requestType = com.gameengine.jackpot.v1.GetJackpotHistoryRequest.class,
-      responseType = com.gameengine.jackpot.v1.GetJackpotHistoryResponse.class,
+      requestType = com.game_engine.jackpot.v1.GetJackpotHistoryRequest.class,
+      responseType = com.game_engine.jackpot.v1.GetJackpotHistoryResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetJackpotHistoryRequest,
-      com.gameengine.jackpot.v1.GetJackpotHistoryResponse> getGetJackpotHistoryMethod() {
-    io.grpc.MethodDescriptor<com.gameengine.jackpot.v1.GetJackpotHistoryRequest, com.gameengine.jackpot.v1.GetJackpotHistoryResponse> getGetJackpotHistoryMethod;
+  public static io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetJackpotHistoryRequest,
+      com.game_engine.jackpot.v1.GetJackpotHistoryResponse> getGetJackpotHistoryMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.jackpot.v1.GetJackpotHistoryRequest, com.game_engine.jackpot.v1.GetJackpotHistoryResponse> getGetJackpotHistoryMethod;
     if ((getGetJackpotHistoryMethod = JackpotServiceGrpc.getGetJackpotHistoryMethod) == null) {
       synchronized (JackpotServiceGrpc.class) {
         if ((getGetJackpotHistoryMethod = JackpotServiceGrpc.getGetJackpotHistoryMethod) == null) {
           JackpotServiceGrpc.getGetJackpotHistoryMethod = getGetJackpotHistoryMethod =
-              io.grpc.MethodDescriptor.<com.gameengine.jackpot.v1.GetJackpotHistoryRequest, com.gameengine.jackpot.v1.GetJackpotHistoryResponse>newBuilder()
+              io.grpc.MethodDescriptor.<com.game_engine.jackpot.v1.GetJackpotHistoryRequest, com.game_engine.jackpot.v1.GetJackpotHistoryResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetJackpotHistory"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.GetJackpotHistoryRequest.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.GetJackpotHistoryRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.gameengine.jackpot.v1.GetJackpotHistoryResponse.getDefaultInstance()))
+                  com.game_engine.jackpot.v1.GetJackpotHistoryResponse.getDefaultInstance()))
               .setSchemaDescriptor(new JackpotServiceMethodDescriptorSupplier("GetJackpotHistory"))
               .build();
         }
@@ -235,8 +235,8 @@ public final class JackpotServiceGrpc {
      * List jackpots
      * </pre>
      */
-    default void listJackpots(com.gameengine.jackpot.v1.ListJackpotsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.ListJackpotsResponse> responseObserver) {
+    default void listJackpots(com.game_engine.jackpot.v1.ListJackpotsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.ListJackpotsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListJackpotsMethod(), responseObserver);
     }
 
@@ -245,8 +245,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot details
      * </pre>
      */
-    default void getJackpot(com.gameengine.jackpot.v1.GetJackpotRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetJackpotResponse> responseObserver) {
+    default void getJackpot(com.game_engine.jackpot.v1.GetJackpotRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetJackpotResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetJackpotMethod(), responseObserver);
     }
 
@@ -255,8 +255,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot winners
      * </pre>
      */
-    default void getWinners(com.gameengine.jackpot.v1.GetWinnersRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetWinnersResponse> responseObserver) {
+    default void getWinners(com.game_engine.jackpot.v1.GetWinnersRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetWinnersResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetWinnersMethod(), responseObserver);
     }
 
@@ -265,8 +265,8 @@ public final class JackpotServiceGrpc {
      * Join jackpot
      * </pre>
      */
-    default void joinJackpot(com.gameengine.jackpot.v1.JoinJackpotRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.JoinJackpotResponse> responseObserver) {
+    default void joinJackpot(com.game_engine.jackpot.v1.JoinJackpotRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.JoinJackpotResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getJoinJackpotMethod(), responseObserver);
     }
 
@@ -275,8 +275,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot history
      * </pre>
      */
-    default void getJackpotHistory(com.gameengine.jackpot.v1.GetJackpotHistoryRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetJackpotHistoryResponse> responseObserver) {
+    default void getJackpotHistory(com.game_engine.jackpot.v1.GetJackpotHistoryRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetJackpotHistoryResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetJackpotHistoryMethod(), responseObserver);
     }
   }
@@ -313,8 +313,8 @@ public final class JackpotServiceGrpc {
      * List jackpots
      * </pre>
      */
-    public void listJackpots(com.gameengine.jackpot.v1.ListJackpotsRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.ListJackpotsResponse> responseObserver) {
+    public void listJackpots(com.game_engine.jackpot.v1.ListJackpotsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.ListJackpotsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getListJackpotsMethod(), getCallOptions()), request, responseObserver);
     }
@@ -324,8 +324,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot details
      * </pre>
      */
-    public void getJackpot(com.gameengine.jackpot.v1.GetJackpotRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetJackpotResponse> responseObserver) {
+    public void getJackpot(com.game_engine.jackpot.v1.GetJackpotRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetJackpotResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetJackpotMethod(), getCallOptions()), request, responseObserver);
     }
@@ -335,8 +335,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot winners
      * </pre>
      */
-    public void getWinners(com.gameengine.jackpot.v1.GetWinnersRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetWinnersResponse> responseObserver) {
+    public void getWinners(com.game_engine.jackpot.v1.GetWinnersRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetWinnersResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetWinnersMethod(), getCallOptions()), request, responseObserver);
     }
@@ -346,8 +346,8 @@ public final class JackpotServiceGrpc {
      * Join jackpot
      * </pre>
      */
-    public void joinJackpot(com.gameengine.jackpot.v1.JoinJackpotRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.JoinJackpotResponse> responseObserver) {
+    public void joinJackpot(com.game_engine.jackpot.v1.JoinJackpotRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.JoinJackpotResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getJoinJackpotMethod(), getCallOptions()), request, responseObserver);
     }
@@ -357,8 +357,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot history
      * </pre>
      */
-    public void getJackpotHistory(com.gameengine.jackpot.v1.GetJackpotHistoryRequest request,
-        io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetJackpotHistoryResponse> responseObserver) {
+    public void getJackpotHistory(com.game_engine.jackpot.v1.GetJackpotHistoryRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetJackpotHistoryResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetJackpotHistoryMethod(), getCallOptions()), request, responseObserver);
     }
@@ -385,7 +385,7 @@ public final class JackpotServiceGrpc {
      * List jackpots
      * </pre>
      */
-    public com.gameengine.jackpot.v1.ListJackpotsResponse listJackpots(com.gameengine.jackpot.v1.ListJackpotsRequest request) throws io.grpc.StatusException {
+    public com.game_engine.jackpot.v1.ListJackpotsResponse listJackpots(com.game_engine.jackpot.v1.ListJackpotsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getListJackpotsMethod(), getCallOptions(), request);
     }
@@ -395,7 +395,7 @@ public final class JackpotServiceGrpc {
      * Get jackpot details
      * </pre>
      */
-    public com.gameengine.jackpot.v1.GetJackpotResponse getJackpot(com.gameengine.jackpot.v1.GetJackpotRequest request) throws io.grpc.StatusException {
+    public com.game_engine.jackpot.v1.GetJackpotResponse getJackpot(com.game_engine.jackpot.v1.GetJackpotRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetJackpotMethod(), getCallOptions(), request);
     }
@@ -405,7 +405,7 @@ public final class JackpotServiceGrpc {
      * Get jackpot winners
      * </pre>
      */
-    public com.gameengine.jackpot.v1.GetWinnersResponse getWinners(com.gameengine.jackpot.v1.GetWinnersRequest request) throws io.grpc.StatusException {
+    public com.game_engine.jackpot.v1.GetWinnersResponse getWinners(com.game_engine.jackpot.v1.GetWinnersRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetWinnersMethod(), getCallOptions(), request);
     }
@@ -415,7 +415,7 @@ public final class JackpotServiceGrpc {
      * Join jackpot
      * </pre>
      */
-    public com.gameengine.jackpot.v1.JoinJackpotResponse joinJackpot(com.gameengine.jackpot.v1.JoinJackpotRequest request) throws io.grpc.StatusException {
+    public com.game_engine.jackpot.v1.JoinJackpotResponse joinJackpot(com.game_engine.jackpot.v1.JoinJackpotRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getJoinJackpotMethod(), getCallOptions(), request);
     }
@@ -425,7 +425,7 @@ public final class JackpotServiceGrpc {
      * Get jackpot history
      * </pre>
      */
-    public com.gameengine.jackpot.v1.GetJackpotHistoryResponse getJackpotHistory(com.gameengine.jackpot.v1.GetJackpotHistoryRequest request) throws io.grpc.StatusException {
+    public com.game_engine.jackpot.v1.GetJackpotHistoryResponse getJackpotHistory(com.game_engine.jackpot.v1.GetJackpotHistoryRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetJackpotHistoryMethod(), getCallOptions(), request);
     }
@@ -452,7 +452,7 @@ public final class JackpotServiceGrpc {
      * List jackpots
      * </pre>
      */
-    public com.gameengine.jackpot.v1.ListJackpotsResponse listJackpots(com.gameengine.jackpot.v1.ListJackpotsRequest request) {
+    public com.game_engine.jackpot.v1.ListJackpotsResponse listJackpots(com.game_engine.jackpot.v1.ListJackpotsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getListJackpotsMethod(), getCallOptions(), request);
     }
@@ -462,7 +462,7 @@ public final class JackpotServiceGrpc {
      * Get jackpot details
      * </pre>
      */
-    public com.gameengine.jackpot.v1.GetJackpotResponse getJackpot(com.gameengine.jackpot.v1.GetJackpotRequest request) {
+    public com.game_engine.jackpot.v1.GetJackpotResponse getJackpot(com.game_engine.jackpot.v1.GetJackpotRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetJackpotMethod(), getCallOptions(), request);
     }
@@ -472,7 +472,7 @@ public final class JackpotServiceGrpc {
      * Get jackpot winners
      * </pre>
      */
-    public com.gameengine.jackpot.v1.GetWinnersResponse getWinners(com.gameengine.jackpot.v1.GetWinnersRequest request) {
+    public com.game_engine.jackpot.v1.GetWinnersResponse getWinners(com.game_engine.jackpot.v1.GetWinnersRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetWinnersMethod(), getCallOptions(), request);
     }
@@ -482,7 +482,7 @@ public final class JackpotServiceGrpc {
      * Join jackpot
      * </pre>
      */
-    public com.gameengine.jackpot.v1.JoinJackpotResponse joinJackpot(com.gameengine.jackpot.v1.JoinJackpotRequest request) {
+    public com.game_engine.jackpot.v1.JoinJackpotResponse joinJackpot(com.game_engine.jackpot.v1.JoinJackpotRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getJoinJackpotMethod(), getCallOptions(), request);
     }
@@ -492,7 +492,7 @@ public final class JackpotServiceGrpc {
      * Get jackpot history
      * </pre>
      */
-    public com.gameengine.jackpot.v1.GetJackpotHistoryResponse getJackpotHistory(com.gameengine.jackpot.v1.GetJackpotHistoryRequest request) {
+    public com.game_engine.jackpot.v1.GetJackpotHistoryResponse getJackpotHistory(com.game_engine.jackpot.v1.GetJackpotHistoryRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetJackpotHistoryMethod(), getCallOptions(), request);
     }
@@ -519,8 +519,8 @@ public final class JackpotServiceGrpc {
      * List jackpots
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.jackpot.v1.ListJackpotsResponse> listJackpots(
-        com.gameengine.jackpot.v1.ListJackpotsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.jackpot.v1.ListJackpotsResponse> listJackpots(
+        com.game_engine.jackpot.v1.ListJackpotsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getListJackpotsMethod(), getCallOptions()), request);
     }
@@ -530,8 +530,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot details
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.jackpot.v1.GetJackpotResponse> getJackpot(
-        com.gameengine.jackpot.v1.GetJackpotRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.jackpot.v1.GetJackpotResponse> getJackpot(
+        com.game_engine.jackpot.v1.GetJackpotRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetJackpotMethod(), getCallOptions()), request);
     }
@@ -541,8 +541,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot winners
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.jackpot.v1.GetWinnersResponse> getWinners(
-        com.gameengine.jackpot.v1.GetWinnersRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.jackpot.v1.GetWinnersResponse> getWinners(
+        com.game_engine.jackpot.v1.GetWinnersRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetWinnersMethod(), getCallOptions()), request);
     }
@@ -552,8 +552,8 @@ public final class JackpotServiceGrpc {
      * Join jackpot
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.jackpot.v1.JoinJackpotResponse> joinJackpot(
-        com.gameengine.jackpot.v1.JoinJackpotRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.jackpot.v1.JoinJackpotResponse> joinJackpot(
+        com.game_engine.jackpot.v1.JoinJackpotRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getJoinJackpotMethod(), getCallOptions()), request);
     }
@@ -563,8 +563,8 @@ public final class JackpotServiceGrpc {
      * Get jackpot history
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.gameengine.jackpot.v1.GetJackpotHistoryResponse> getJackpotHistory(
-        com.gameengine.jackpot.v1.GetJackpotHistoryRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.jackpot.v1.GetJackpotHistoryResponse> getJackpotHistory(
+        com.game_engine.jackpot.v1.GetJackpotHistoryRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetJackpotHistoryMethod(), getCallOptions()), request);
     }
@@ -594,24 +594,24 @@ public final class JackpotServiceGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_LIST_JACKPOTS:
-          serviceImpl.listJackpots((com.gameengine.jackpot.v1.ListJackpotsRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.ListJackpotsResponse>) responseObserver);
+          serviceImpl.listJackpots((com.game_engine.jackpot.v1.ListJackpotsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.ListJackpotsResponse>) responseObserver);
           break;
         case METHODID_GET_JACKPOT:
-          serviceImpl.getJackpot((com.gameengine.jackpot.v1.GetJackpotRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetJackpotResponse>) responseObserver);
+          serviceImpl.getJackpot((com.game_engine.jackpot.v1.GetJackpotRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetJackpotResponse>) responseObserver);
           break;
         case METHODID_GET_WINNERS:
-          serviceImpl.getWinners((com.gameengine.jackpot.v1.GetWinnersRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetWinnersResponse>) responseObserver);
+          serviceImpl.getWinners((com.game_engine.jackpot.v1.GetWinnersRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetWinnersResponse>) responseObserver);
           break;
         case METHODID_JOIN_JACKPOT:
-          serviceImpl.joinJackpot((com.gameengine.jackpot.v1.JoinJackpotRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.JoinJackpotResponse>) responseObserver);
+          serviceImpl.joinJackpot((com.game_engine.jackpot.v1.JoinJackpotRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.JoinJackpotResponse>) responseObserver);
           break;
         case METHODID_GET_JACKPOT_HISTORY:
-          serviceImpl.getJackpotHistory((com.gameengine.jackpot.v1.GetJackpotHistoryRequest) request,
-              (io.grpc.stub.StreamObserver<com.gameengine.jackpot.v1.GetJackpotHistoryResponse>) responseObserver);
+          serviceImpl.getJackpotHistory((com.game_engine.jackpot.v1.GetJackpotHistoryRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.jackpot.v1.GetJackpotHistoryResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -635,36 +635,36 @@ public final class JackpotServiceGrpc {
           getListJackpotsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.jackpot.v1.ListJackpotsRequest,
-              com.gameengine.jackpot.v1.ListJackpotsResponse>(
+              com.game_engine.jackpot.v1.ListJackpotsRequest,
+              com.game_engine.jackpot.v1.ListJackpotsResponse>(
                 service, METHODID_LIST_JACKPOTS)))
         .addMethod(
           getGetJackpotMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.jackpot.v1.GetJackpotRequest,
-              com.gameengine.jackpot.v1.GetJackpotResponse>(
+              com.game_engine.jackpot.v1.GetJackpotRequest,
+              com.game_engine.jackpot.v1.GetJackpotResponse>(
                 service, METHODID_GET_JACKPOT)))
         .addMethod(
           getGetWinnersMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.jackpot.v1.GetWinnersRequest,
-              com.gameengine.jackpot.v1.GetWinnersResponse>(
+              com.game_engine.jackpot.v1.GetWinnersRequest,
+              com.game_engine.jackpot.v1.GetWinnersResponse>(
                 service, METHODID_GET_WINNERS)))
         .addMethod(
           getJoinJackpotMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.jackpot.v1.JoinJackpotRequest,
-              com.gameengine.jackpot.v1.JoinJackpotResponse>(
+              com.game_engine.jackpot.v1.JoinJackpotRequest,
+              com.game_engine.jackpot.v1.JoinJackpotResponse>(
                 service, METHODID_JOIN_JACKPOT)))
         .addMethod(
           getGetJackpotHistoryMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.gameengine.jackpot.v1.GetJackpotHistoryRequest,
-              com.gameengine.jackpot.v1.GetJackpotHistoryResponse>(
+              com.game_engine.jackpot.v1.GetJackpotHistoryRequest,
+              com.game_engine.jackpot.v1.GetJackpotHistoryResponse>(
                 service, METHODID_GET_JACKPOT_HISTORY)))
         .build();
   }
@@ -675,7 +675,7 @@ public final class JackpotServiceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.gameengine.jackpot.v1.JackpotServiceOuterClass.getDescriptor();
+      return com.game_engine.jackpot.v1.JackpotServiceOuterClass.getDescriptor();
     }
 
     @java.lang.Override

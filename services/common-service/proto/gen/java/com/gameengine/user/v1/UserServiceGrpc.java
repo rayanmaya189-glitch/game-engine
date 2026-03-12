@@ -12,7 +12,7 @@ public final class UserServiceGrpc {
 
   private UserServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "game-engine.user.v1.UserService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.user.v1.UserService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.game_engine.user.v1.GetProfileRequest,

@@ -12,7 +12,7 @@ public final class AuthServiceGrpc {
 
   private AuthServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "game-engine.auth.v1.AuthService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.auth.v1.AuthService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.game_engine.auth.v1.RegisterRequest,

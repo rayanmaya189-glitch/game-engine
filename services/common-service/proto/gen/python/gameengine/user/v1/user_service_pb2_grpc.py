@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from game-engine.user.v1 import user_service_pb2 as game-engine_dot_user_dot_v1_dot_user__service__pb2
+from game_engine.user.v1 import user_service_pb2 as game_engine_dot_user_dot_v1_dot_user__service__pb2
 
 
 class UserServiceStub(object):
@@ -16,49 +16,49 @@ class UserServiceStub(object):
             channel: A grpc.Channel.
         """
         self.GetProfile = channel.unary_unary(
-                '/game-engine.user.v1.UserService/GetProfile',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileResponse.FromString,
+                '/game_engine.user.v1.UserService/GetProfile',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileResponse.FromString,
                 _registered_method=True)
         self.UpdateProfile = channel.unary_unary(
-                '/game-engine.user.v1.UserService/UpdateProfile',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileResponse.FromString,
+                '/game_engine.user.v1.UserService/UpdateProfile',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileResponse.FromString,
                 _registered_method=True)
         self.GetKYCStatus = channel.unary_unary(
-                '/game-engine.user.v1.UserService/GetKYCStatus',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusResponse.FromString,
+                '/game_engine.user.v1.UserService/GetKYCStatus',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusResponse.FromString,
                 _registered_method=True)
         self.SubmitKYC = channel.unary_unary(
-                '/game-engine.user.v1.UserService/SubmitKYC',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCResponse.FromString,
+                '/game_engine.user.v1.UserService/SubmitKYC',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCResponse.FromString,
                 _registered_method=True)
         self.GetPlayerSettings = channel.unary_unary(
-                '/game-engine.user.v1.UserService/GetPlayerSettings',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsResponse.FromString,
+                '/game_engine.user.v1.UserService/GetPlayerSettings',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsResponse.FromString,
                 _registered_method=True)
         self.UpdatePlayerSettings = channel.unary_unary(
-                '/game-engine.user.v1.UserService/UpdatePlayerSettings',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsResponse.FromString,
+                '/game_engine.user.v1.UserService/UpdatePlayerSettings',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsResponse.FromString,
                 _registered_method=True)
         self.GetPlayerByAdmin = channel.unary_unary(
-                '/game-engine.user.v1.UserService/GetPlayerByAdmin',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminResponse.FromString,
+                '/game_engine.user.v1.UserService/GetPlayerByAdmin',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminResponse.FromString,
                 _registered_method=True)
         self.ListPlayers = channel.unary_unary(
-                '/game-engine.user.v1.UserService/ListPlayers',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersResponse.FromString,
+                '/game_engine.user.v1.UserService/ListPlayers',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersResponse.FromString,
                 _registered_method=True)
         self.UpdatePlayerStatus = channel.unary_unary(
-                '/game-engine.user.v1.UserService/UpdatePlayerStatus',
-                request_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusRequest.SerializeToString,
-                response_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusResponse.FromString,
+                '/game_engine.user.v1.UserService/UpdatePlayerStatus',
+                request_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusRequest.SerializeToString,
+                response_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusResponse.FromString,
                 _registered_method=True)
 
 
@@ -125,54 +125,54 @@ def add_UserServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'GetProfile': grpc.unary_unary_rpc_method_handler(
                     servicer.GetProfile,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileResponse.SerializeToString,
             ),
             'UpdateProfile': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateProfile,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileResponse.SerializeToString,
             ),
             'GetKYCStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetKYCStatus,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusResponse.SerializeToString,
             ),
             'SubmitKYC': grpc.unary_unary_rpc_method_handler(
                     servicer.SubmitKYC,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCResponse.SerializeToString,
             ),
             'GetPlayerSettings': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPlayerSettings,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsResponse.SerializeToString,
             ),
             'UpdatePlayerSettings': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdatePlayerSettings,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsResponse.SerializeToString,
             ),
             'GetPlayerByAdmin': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPlayerByAdmin,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminResponse.SerializeToString,
             ),
             'ListPlayers': grpc.unary_unary_rpc_method_handler(
                     servicer.ListPlayers,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersResponse.SerializeToString,
             ),
             'UpdatePlayerStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdatePlayerStatus,
-                    request_deserializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusRequest.FromString,
-                    response_serializer=game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusRequest.FromString,
+                    response_serializer=game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'game-engine.user.v1.UserService', rpc_method_handlers)
+            'game_engine.user.v1.UserService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('game-engine.user.v1.UserService', rpc_method_handlers)
+    server.add_registered_method_handlers('game_engine.user.v1.UserService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -194,9 +194,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/GetProfile',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileResponse.FromString,
+            '/game_engine.user.v1.UserService/GetProfile',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetProfileResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -221,9 +221,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/UpdateProfile',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileResponse.FromString,
+            '/game_engine.user.v1.UserService/UpdateProfile',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdateProfileResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -248,9 +248,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/GetKYCStatus',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusResponse.FromString,
+            '/game_engine.user.v1.UserService/GetKYCStatus',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetKYCStatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -275,9 +275,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/SubmitKYC',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCResponse.FromString,
+            '/game_engine.user.v1.UserService/SubmitKYC',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.SubmitKYCResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -302,9 +302,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/GetPlayerSettings',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsResponse.FromString,
+            '/game_engine.user.v1.UserService/GetPlayerSettings',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerSettingsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -329,9 +329,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/UpdatePlayerSettings',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsResponse.FromString,
+            '/game_engine.user.v1.UserService/UpdatePlayerSettings',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerSettingsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -356,9 +356,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/GetPlayerByAdmin',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminResponse.FromString,
+            '/game_engine.user.v1.UserService/GetPlayerByAdmin',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.GetPlayerByAdminResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -383,9 +383,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/ListPlayers',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersResponse.FromString,
+            '/game_engine.user.v1.UserService/ListPlayers',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.ListPlayersResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -410,9 +410,9 @@ class UserService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.user.v1.UserService/UpdatePlayerStatus',
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusRequest.SerializeToString,
-            game-engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusResponse.FromString,
+            '/game_engine.user.v1.UserService/UpdatePlayerStatus',
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusRequest.SerializeToString,
+            game_engine_dot_user_dot_v1_dot_user__service__pb2.UpdatePlayerStatusResponse.FromString,
             options,
             channel_credentials,
             insecure,

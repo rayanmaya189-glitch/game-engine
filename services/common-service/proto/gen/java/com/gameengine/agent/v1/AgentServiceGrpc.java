@@ -9,7 +9,7 @@ public final class AgentServiceGrpc {
 
   private AgentServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "game-engine.agent.v1.AgentService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.agent.v1.AgentService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.game_engine.agent.v1.ListPlayersRequest,

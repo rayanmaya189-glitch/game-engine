@@ -9,7 +9,7 @@ public final class PaymentServiceGrpc {
 
   private PaymentServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "game-engine.payment.v1.PaymentService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.payment.v1.PaymentService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.game_engine.payment.v1.CreatePaymentRequest,

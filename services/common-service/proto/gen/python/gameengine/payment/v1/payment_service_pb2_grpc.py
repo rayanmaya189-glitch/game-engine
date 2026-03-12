@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from game-engine.payment.v1 import payment_service_pb2 as game-engine_dot_payment_dot_v1_dot_payment__service__pb2
+from game_engine.payment.v1 import payment_service_pb2 as game_engine_dot_payment_dot_v1_dot_payment__service__pb2
 
 
 class PaymentServiceStub(object):
@@ -15,39 +15,39 @@ class PaymentServiceStub(object):
             channel: A grpc.Channel.
         """
         self.CreatePayment = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/CreatePayment',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/CreatePayment',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentResponse.FromString,
                 _registered_method=True)
         self.GetPayment = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/GetPayment',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/GetPayment',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentResponse.FromString,
                 _registered_method=True)
         self.ApprovePayment = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/ApprovePayment',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/ApprovePayment',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentResponse.FromString,
                 _registered_method=True)
         self.RejectPayment = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/RejectPayment',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/RejectPayment',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentResponse.FromString,
                 _registered_method=True)
         self.ProcessPayment = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/ProcessPayment',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/ProcessPayment',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentResponse.FromString,
                 _registered_method=True)
         self.ListPayments = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/ListPayments',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/ListPayments',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsResponse.FromString,
                 _registered_method=True)
         self.GetPaymentMethods = channel.unary_unary(
-                '/game-engine.payment.v1.PaymentService/GetPaymentMethods',
-                request_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsResponse.FromString,
+                '/game_engine.payment.v1.PaymentService/GetPaymentMethods',
+                request_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsResponse.FromString,
                 _registered_method=True)
 
 
@@ -103,44 +103,44 @@ def add_PaymentServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'CreatePayment': grpc.unary_unary_rpc_method_handler(
                     servicer.CreatePayment,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentResponse.SerializeToString,
             ),
             'GetPayment': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPayment,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentResponse.SerializeToString,
             ),
             'ApprovePayment': grpc.unary_unary_rpc_method_handler(
                     servicer.ApprovePayment,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentResponse.SerializeToString,
             ),
             'RejectPayment': grpc.unary_unary_rpc_method_handler(
                     servicer.RejectPayment,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentResponse.SerializeToString,
             ),
             'ProcessPayment': grpc.unary_unary_rpc_method_handler(
                     servicer.ProcessPayment,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentResponse.SerializeToString,
             ),
             'ListPayments': grpc.unary_unary_rpc_method_handler(
                     servicer.ListPayments,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsResponse.SerializeToString,
             ),
             'GetPaymentMethods': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPaymentMethods,
-                    request_deserializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsRequest.FromString,
-                    response_serializer=game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsRequest.FromString,
+                    response_serializer=game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'game-engine.payment.v1.PaymentService', rpc_method_handlers)
+            'game_engine.payment.v1.PaymentService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('game-engine.payment.v1.PaymentService', rpc_method_handlers)
+    server.add_registered_method_handlers('game_engine.payment.v1.PaymentService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -161,9 +161,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/CreatePayment',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/CreatePayment',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.CreatePaymentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -188,9 +188,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/GetPayment',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/GetPayment',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -215,9 +215,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/ApprovePayment',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/ApprovePayment',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ApprovePaymentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -242,9 +242,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/RejectPayment',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/RejectPayment',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.RejectPaymentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -269,9 +269,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/ProcessPayment',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/ProcessPayment',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ProcessPaymentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -296,9 +296,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/ListPayments',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/ListPayments',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.ListPaymentsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -323,9 +323,9 @@ class PaymentService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.payment.v1.PaymentService/GetPaymentMethods',
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsRequest.SerializeToString,
-            game-engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsResponse.FromString,
+            '/game_engine.payment.v1.PaymentService/GetPaymentMethods',
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsRequest.SerializeToString,
+            game_engine_dot_payment_dot_v1_dot_payment__service__pb2.GetPaymentMethodsResponse.FromString,
             options,
             channel_credentials,
             insecure,

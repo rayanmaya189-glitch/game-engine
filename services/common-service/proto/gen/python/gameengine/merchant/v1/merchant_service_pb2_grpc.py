@@ -2,7 +2,7 @@
 """Client and server classes corresponding to protobuf-defined services."""
 import grpc
 
-from game-engine.merchant.v1 import merchant_service_pb2 as game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2
+from game_engine.merchant.v1 import merchant_service_pb2 as game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2
 
 
 class MerchantServiceStub(object):
@@ -15,79 +15,79 @@ class MerchantServiceStub(object):
             channel: A grpc.Channel.
         """
         self.ListPlayers = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/ListPlayers',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/ListPlayers',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersResponse.FromString,
                 _registered_method=True)
         self.GetPlayer = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/GetPlayer',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/GetPlayer',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerResponse.FromString,
                 _registered_method=True)
         self.GetRevenueReport = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/GetRevenueReport',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/GetRevenueReport',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportResponse.FromString,
                 _registered_method=True)
         self.GetPlayerReport = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/GetPlayerReport',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/GetPlayerReport',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportResponse.FromString,
                 _registered_method=True)
         self.GetGameReport = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/GetGameReport',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/GetGameReport',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportResponse.FromString,
                 _registered_method=True)
         self.GetConfig = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/GetConfig',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/GetConfig',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigResponse.FromString,
                 _registered_method=True)
         self.UpdateConfig = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/UpdateConfig',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/UpdateConfig',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigResponse.FromString,
                 _registered_method=True)
         self.RegisterWebhook = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/RegisterWebhook',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/RegisterWebhook',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookResponse.FromString,
                 _registered_method=True)
         self.ListWebhooks = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/ListWebhooks',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/ListWebhooks',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksResponse.FromString,
                 _registered_method=True)
         self.DeleteWebhook = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/DeleteWebhook',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/DeleteWebhook',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookResponse.FromString,
                 _registered_method=True)
         self.ListAgents = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/ListAgents',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/ListAgents',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsResponse.FromString,
                 _registered_method=True)
         self.GetAgent = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/GetAgent',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/GetAgent',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentResponse.FromString,
                 _registered_method=True)
         self.CreateAgent = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/CreateAgent',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/CreateAgent',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentResponse.FromString,
                 _registered_method=True)
         self.UpdateAgent = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/UpdateAgent',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/UpdateAgent',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentResponse.FromString,
                 _registered_method=True)
         self.UpdateAgentStatus = channel.unary_unary(
-                '/game-engine.merchant.v1.MerchantService/UpdateAgentStatus',
-                request_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusRequest.SerializeToString,
-                response_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusResponse.FromString,
+                '/game_engine.merchant.v1.MerchantService/UpdateAgentStatus',
+                request_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusRequest.SerializeToString,
+                response_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusResponse.FromString,
                 _registered_method=True)
 
 
@@ -194,84 +194,84 @@ def add_MerchantServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'ListPlayers': grpc.unary_unary_rpc_method_handler(
                     servicer.ListPlayers,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersResponse.SerializeToString,
             ),
             'GetPlayer': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPlayer,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerResponse.SerializeToString,
             ),
             'GetRevenueReport': grpc.unary_unary_rpc_method_handler(
                     servicer.GetRevenueReport,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportResponse.SerializeToString,
             ),
             'GetPlayerReport': grpc.unary_unary_rpc_method_handler(
                     servicer.GetPlayerReport,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportResponse.SerializeToString,
             ),
             'GetGameReport': grpc.unary_unary_rpc_method_handler(
                     servicer.GetGameReport,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportResponse.SerializeToString,
             ),
             'GetConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.GetConfig,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigResponse.SerializeToString,
             ),
             'UpdateConfig': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateConfig,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigResponse.SerializeToString,
             ),
             'RegisterWebhook': grpc.unary_unary_rpc_method_handler(
                     servicer.RegisterWebhook,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookResponse.SerializeToString,
             ),
             'ListWebhooks': grpc.unary_unary_rpc_method_handler(
                     servicer.ListWebhooks,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksResponse.SerializeToString,
             ),
             'DeleteWebhook': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteWebhook,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookResponse.SerializeToString,
             ),
             'ListAgents': grpc.unary_unary_rpc_method_handler(
                     servicer.ListAgents,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsResponse.SerializeToString,
             ),
             'GetAgent': grpc.unary_unary_rpc_method_handler(
                     servicer.GetAgent,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentResponse.SerializeToString,
             ),
             'CreateAgent': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateAgent,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentResponse.SerializeToString,
             ),
             'UpdateAgent': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAgent,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentResponse.SerializeToString,
             ),
             'UpdateAgentStatus': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateAgentStatus,
-                    request_deserializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusRequest.FromString,
-                    response_serializer=game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusResponse.SerializeToString,
+                    request_deserializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusRequest.FromString,
+                    response_serializer=game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'game-engine.merchant.v1.MerchantService', rpc_method_handlers)
+            'game_engine.merchant.v1.MerchantService', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('game-engine.merchant.v1.MerchantService', rpc_method_handlers)
+    server.add_registered_method_handlers('game_engine.merchant.v1.MerchantService', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
@@ -292,9 +292,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/ListPlayers',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/ListPlayers',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListPlayersResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -319,9 +319,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/GetPlayer',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/GetPlayer',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -346,9 +346,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/GetRevenueReport',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/GetRevenueReport',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetRevenueReportResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -373,9 +373,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/GetPlayerReport',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/GetPlayerReport',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetPlayerReportResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -400,9 +400,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/GetGameReport',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/GetGameReport',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetGameReportResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -427,9 +427,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/GetConfig',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/GetConfig',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetConfigResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -454,9 +454,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/UpdateConfig',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/UpdateConfig',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateConfigResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -481,9 +481,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/RegisterWebhook',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/RegisterWebhook',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.RegisterWebhookResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -508,9 +508,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/ListWebhooks',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/ListWebhooks',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListWebhooksResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -535,9 +535,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/DeleteWebhook',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/DeleteWebhook',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.DeleteWebhookResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -562,9 +562,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/ListAgents',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/ListAgents',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.ListAgentsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -589,9 +589,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/GetAgent',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/GetAgent',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.GetAgentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -616,9 +616,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/CreateAgent',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/CreateAgent',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.CreateAgentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -643,9 +643,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/UpdateAgent',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/UpdateAgent',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -670,9 +670,9 @@ class MerchantService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game-engine.merchant.v1.MerchantService/UpdateAgentStatus',
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusRequest.SerializeToString,
-            game-engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusResponse.FromString,
+            '/game_engine.merchant.v1.MerchantService/UpdateAgentStatus',
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusRequest.SerializeToString,
+            game_engine_dot_merchant_dot_v1_dot_merchant__service__pb2.UpdateAgentStatusResponse.FromString,
             options,
             channel_credentials,
             insecure,

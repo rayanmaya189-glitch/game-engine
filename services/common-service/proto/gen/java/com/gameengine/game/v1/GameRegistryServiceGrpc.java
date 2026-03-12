@@ -12,7 +12,7 @@ public final class GameRegistryServiceGrpc {
 
   private GameRegistryServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "game-engine.game.v1.GameRegistryService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.game.v1.GameRegistryService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.game_engine.game.v1.ListGamesRequest,

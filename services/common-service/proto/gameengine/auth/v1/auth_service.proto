@@ -1,14 +1,14 @@
 syntax = "proto3";
 
-package gameengine.auth.v1;
+package game_engine.auth.v1;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
-import "gameengine/common/v1/enums.proto";
+import "game_engine/common/v1/enums.proto";
 
 option go_package = "gen/go/auth/v1;authv1";
 option java_multiple_files = true;
-option java_package = "com.gameengine.auth.v1";
+option java_package = "com.game_engine.auth.v1";
 
 // Auth Service - handles user authentication, registration, and session management
 service AuthService {

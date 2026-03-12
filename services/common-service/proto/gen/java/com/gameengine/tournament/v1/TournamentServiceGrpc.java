@@ -9,7 +9,7 @@ public final class TournamentServiceGrpc {
 
   private TournamentServiceGrpc() {}
 
-  public static final java.lang.String SERVICE_NAME = "game-engine.tournament.v1.TournamentService";
+  public static final java.lang.String SERVICE_NAME = "game_engine.tournament.v1.TournamentService";
 
   // Static method descriptors that strictly reflect the proto.
   private static volatile io.grpc.MethodDescriptor<com.game_engine.tournament.v1.ListTournamentsRequest,
