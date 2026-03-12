@@ -193,7 +193,7 @@ public class PaymentService {
 
         try {
             PaymentGatewayService.PaymentGatewayResponse response = 
-                    paymentGatewayService.refundPayment(originalPayment, amount);
+                    paymentGatewayService.processRefund(originalPayment, amount);
 
             if (response.isSuccess()) {
                 refundPayment.setStatus(Payment.PaymentStatus.COMPLETED);
