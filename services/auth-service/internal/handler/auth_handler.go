@@ -5,10 +5,10 @@ import (
 	"fmt"
 	"time"
 
-	authv1 "github.com/game-engine/common/proto/gen/go/game-engine/auth/v1"
+	authv1 "github.com/game_engine/common/proto/gen/go/game_engine/auth/v1"
 
-	"github.com/game-engine/auth-service/internal/model"
-	"github.com/game-engine/auth-service/internal/service"
+	"github.com/game_engine/auth-service/internal/model"
+	"github.com/game_engine/auth-service/internal/service"
 	"github.com/google/uuid"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"

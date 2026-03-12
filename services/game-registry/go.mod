@@ -1,4 +1,4 @@
-module github.com/game-engine/game-registry
+module github.com/game_engine/game-registry
 
 go 1.25
 

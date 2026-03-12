@@ -279,7 +279,7 @@
     # -------------------------------------------------------------------------
     - name: Configure system limits
       ansible.builtin.copy:
-        dest: /etc/security/limits.d/99-game-engine.conf
+        dest: /etc/security/limits.d/99-game_engine.conf
         content: |
           * soft nofile 655360
           * hard nofile 655360

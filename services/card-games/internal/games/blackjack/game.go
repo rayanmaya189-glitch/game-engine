@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/game-engine/card-games/internal/games/common"
+	"github.com/game_engine/card-games/internal/games/common"
 )
 
 // Action represents a player's action in blackjack

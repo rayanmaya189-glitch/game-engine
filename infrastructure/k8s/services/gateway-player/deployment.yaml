@@ -8,7 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: gateway-player
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: gateway-player
     version: v1
@@ -38,7 +38,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: gateway
-          image: registry.game-engine.local:5000/gateway-player:latest
+          image: registry.game_engine.local:5000/gateway-player:latest
           imagePullPolicy: Always
           ports:
             - name: http
@@ -60,11 +60,11 @@ spec:
               value: "player"
             # Service URLs
             - name: AUTH_SERVICE_URL
-              value: "http://auth-service.game-engine.svc.cluster.local"
+              value: "http://auth-service.game_engine.svc.cluster.local"
             - name: USER_SERVICE_URL
-              value: "http://user-service.game-engine.svc.cluster.local"
+              value: "http://user-service.game_engine.svc.cluster.local"
             - name: WALLET_SERVICE_URL
-              value: "http://wallet-service.game-engine.svc.cluster.local"
+              value: "http://wallet-service.game_engine.svc.cluster.local"
             - name: GAME_SERVICE_URL
               value: "http://game-service.game-services.svc.cluster.local"
           resources:
@@ -122,7 +122,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gateway-player
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: gateway-player
     component: api-gateway
@@ -145,7 +145,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: gateway-player-config
-  namespace: game-engine
+  namespace: game_engine
 data:
   config.yaml: |
     server:
@@ -186,9 +186,9 @@ data:
     cors:
       enabled: true
       allowed_origins:
-        - "https://player.game-engine.com"
-        - "https://www.game-engine.com"
-        - "https://m.game-engine.com"
+        - "https://player.game_engine.com"
+        - "https://www.game_engine.com"
+        - "https://m.game_engine.com"
       allowed_methods:
         - GET
         - POST
@@ -228,8 +228,8 @@ data:
 
     auth:
       jwt_enabled: true
-      jwt_issuer: game-engine
-      jwt_audience: game-engine-api
+      jwt_issuer: game_engine
+      jwt_audience: game_engine-api
       token_header: Authorization
       token_prefix: Bearer
 
@@ -242,7 +242,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: gateway-player
-  namespace: game-engine
+  namespace: game_engine
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

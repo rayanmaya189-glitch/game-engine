@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/game-engine/user-service/internal/model"
+	"github.com/game_engine/user-service/internal/model"
 )
 
 // UserRepository handles database operations for users

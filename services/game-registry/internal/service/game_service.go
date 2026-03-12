@@ -6,10 +6,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/game-engine/game-registry/internal/config"
-	"github.com/game-engine/game-registry/internal/enums"
-	"github.com/game-engine/game-registry/internal/model"
-	"github.com/game-engine/game-registry/internal/repository"
+	"github.com/game_engine/game-registry/internal/config"
+	"github.com/game_engine/game-registry/internal/enums"
+	"github.com/game_engine/game-registry/internal/model"
+	"github.com/game_engine/game-registry/internal/repository"
 	"github.com/google/uuid"
 	"github.com/nats-io/nats.go"
 )

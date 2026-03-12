@@ -11,7 +11,7 @@ services:
     build:
       context: ./services/gateway
       dockerfile: Dockerfile
-    container_name: game-engine-gateway
+    container_name: game_engine-gateway
     ports:
       - "8080:8080"
       - "8081:8081"
@@ -24,7 +24,7 @@ services:
       - wallet-service
       - game-registry
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -34,7 +34,7 @@ services:
     build:
       context: ./services/websocket-gateway
       dockerfile: Dockerfile
-    container_name: game-engine-websocket-gateway
+    container_name: game_engine-websocket-gateway
     ports:
       - "8100:4000"
     environment:
@@ -44,7 +44,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -54,7 +54,7 @@ services:
     build:
       context: ./services/auth-service
       dockerfile: Dockerfile
-    container_name: game-engine-auth-service
+    container_name: game_engine-auth-service
     ports:
       - "4433:4433"
       - "4434:4434"
@@ -74,7 +74,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -84,7 +84,7 @@ services:
     build:
       context: ./services/user-service
       dockerfile: Dockerfile
-    container_name: game-engine-user-service
+    container_name: game_engine-user-service
     ports:
       - "4435:4435"
       - "4436:4436"
@@ -104,7 +104,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -114,7 +114,7 @@ services:
     build:
       context: ./services/wallet-service
       dockerfile: Dockerfile
-    container_name: game-engine-wallet-service
+    container_name: game_engine-wallet-service
     ports:
       - "4437:4437"
       - "4438:4438"
@@ -137,7 +137,7 @@ services:
       - nats
       - timescaledb
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -147,7 +147,7 @@ services:
     build:
       context: ./services/game-registry
       dockerfile: Dockerfile
-    container_name: game-engine-game-registry
+    container_name: game_engine-game-registry
     ports:
       - "4439:4439"
       - "4440:4440"
@@ -164,7 +164,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -174,7 +174,7 @@ services:
     build:
       context: ./services/card-games
       dockerfile: Dockerfile
-    container_name: game-engine-card-games
+    container_name: game_engine-card-games
     ports:
       - "8087:8087"
       - "8088:8088"
@@ -194,7 +194,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -204,7 +204,7 @@ services:
     build:
       context: ./services/dice-games
       dockerfile: Dockerfile
-    container_name: game-engine-dice-games
+    container_name: game_engine-dice-games
     ports:
       - "8089:8089"
       - "8090:8090"
@@ -221,7 +221,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -231,7 +231,7 @@ services:
     build:
       context: ./services/slot-games
       dockerfile: Dockerfile
-    container_name: game-engine-slot-games
+    container_name: game_engine-slot-games
     ports:
       - "8098:8098"
       - "8099:8099"
@@ -248,7 +248,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -258,7 +258,7 @@ services:
     build:
       context: ./services/rng-service
       dockerfile: Dockerfile
-    container_name: game-engine-rng-service
+    container_name: game_engine-rng-service
     ports:
       - "8097:8097"
       - "8098:8098"
@@ -275,7 +275,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -285,7 +285,7 @@ services:
     build:
       context: ./services/betting
       dockerfile: Dockerfile
-    container_name: game-engine-betting-service
+    container_name: game_engine-betting-service
     ports:
       - "8085:8085"
       - "8086:8086"
@@ -305,7 +305,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -315,7 +315,7 @@ services:
     build:
       context: ./services/tournament
       dockerfile: Dockerfile
-    container_name: game-engine-tournament-service
+    container_name: game_engine-tournament-service
     ports:
       - "9020:9020"
       - "8020:8020"
@@ -329,7 +329,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -339,7 +339,7 @@ services:
     build:
       context: ./services/jackpot-service
       dockerfile: Dockerfile
-    container_name: game-engine-jackpot-service
+    container_name: game_engine-jackpot-service
     ports:
       - "8091:8091"
       - "8092:8092"
@@ -359,7 +359,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -369,7 +369,7 @@ services:
     build:
       context: ./services/live-dealer-service
       dockerfile: Dockerfile
-    container_name: game-engine-live-dealer-service
+    container_name: game_engine-live-dealer-service
     ports:
       - "8093:8093"
       - "8094:8094"
@@ -389,7 +389,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -399,7 +399,7 @@ services:
     build:
       context: ./services/sports-betting-service
       dockerfile: Dockerfile
-    container_name: game-engine-sports-betting-service
+    container_name: game_engine-sports-betting-service
     ports:
       - "8099:8099"
       - "8100:8100"
@@ -419,7 +419,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -429,7 +429,7 @@ services:
     build:
       context: ./services/multiplayer
       dockerfile: Dockerfile
-    container_name: game-engine-multiplayer-service
+    container_name: game_engine-multiplayer-service
     ports:
       - "9021:9021"
       - "8021:8021"
@@ -443,7 +443,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -453,7 +453,7 @@ services:
     build:
       context: ./services/chat
       dockerfile: Dockerfile
-    container_name: game-engine-chat-service
+    container_name: game_engine-chat-service
     ports:
       - "9022:9022"
       - "8022:8022"
@@ -467,7 +467,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -477,7 +477,7 @@ services:
     build:
       context: ./services/notification
       dockerfile: Dockerfile
-    container_name: game-engine-notification-service
+    container_name: game_engine-notification-service
     ports:
       - "9023:9023"
       - "8023:8023"
@@ -491,7 +491,7 @@ services:
       - redis
       - nats
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -501,7 +501,7 @@ services:
     build:
       context: ./services/merchant-service
       dockerfile: Dockerfile
-    container_name: game-engine-merchant-service
+    container_name: game_engine-merchant-service
     ports:
       - "8095:8095"
       - "8096:8096"
@@ -518,7 +518,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -528,7 +528,7 @@ services:
     build:
       context: ./services/agent-service
       dockerfile: Dockerfile
-    container_name: game-engine-agent-service
+    container_name: game_engine-agent-service
     ports:
       - "8083:8083"
       - "8084:8084"
@@ -545,7 +545,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -555,7 +555,7 @@ services:
     build:
       context: ./services/loyalty-service
       dockerfile: Dockerfile
-    container_name: game-engine-loyalty-service
+    container_name: game_engine-loyalty-service
     ports:
       - "8094:8094"
       - "8095:8095"
@@ -572,7 +572,7 @@ services:
       - postgres
       - redis
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -582,7 +582,7 @@ services:
     build:
       context: ./services/payment-service
       dockerfile: Dockerfile
-    container_name: game-engine-payment-service
+    container_name: game_engine-payment-service
     ports:
       - "8096:8096"
       - "8097:8097"
@@ -594,7 +594,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -604,7 +604,7 @@ services:
     build:
       context: ./services/bonus-service
       dockerfile: Dockerfile
-    container_name: game-engine-bonus-service
+    container_name: game_engine-bonus-service
     ports:
       - "8086:8086"
       - "8087:8087"
@@ -616,7 +616,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -626,7 +626,7 @@ services:
     build:
       context: ./services/commission-service
       dockerfile: Dockerfile
-    container_name: game-engine-commission-service
+    container_name: game_engine-commission-service
     ports:
       - "8088:8088"
       - "8089:8089"
@@ -638,7 +638,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -648,7 +648,7 @@ services:
     build:
       context: ./services/affiliate-service
       dockerfile: Dockerfile
-    container_name: game-engine-affiliate-service
+    container_name: game_engine-affiliate-service
     ports:
       - "8082:8082"
       - "8083:8083"
@@ -660,7 +660,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -670,7 +670,7 @@ services:
     build:
       context: ./services/kyc-service
       dockerfile: Dockerfile
-    container_name: game-engine-kyc-service
+    container_name: game_engine-kyc-service
     ports:
       - "8092:8092"
       - "8093:8093"
@@ -680,7 +680,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -690,7 +690,7 @@ services:
     build:
       context: ./services/aml-service
       dockerfile: Dockerfile
-    container_name: game-engine-aml-service
+    container_name: game_engine-aml-service
     ports:
       - "8084:8084"
       - "8085:8085"
@@ -700,7 +700,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
   # ===========================================
@@ -710,7 +710,7 @@ services:
     build:
       context: ./services/fraud-service
       dockerfile: Dockerfile
-    container_name: game-engine-fraud-service
+    container_name: game_engine-fraud-service
     ports:
       - "8090:8090"
       - "8091:8091"
@@ -720,16 +720,16 @@ services:
     depends_on:
       - postgres
     networks:
-      - game-engine-network
+      - game_engine-network
     restart: unless-stopped
 
 # ===========================================
 # Networks
 # ===========================================
 networks:
-  game-engine-network:
+  game_engine-network:
     driver: bridge
-    name: game-engine-network
+    name: game_engine-network
 
 # ===========================================
 # Volumes

@@ -1,4 +1,4 @@
-module github.com/game-engine/auth-service
+module github.com/game_engine/auth-service
 
 go 1.25
 

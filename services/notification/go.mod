@@ -1,4 +1,4 @@
-module github.com/game-engine/notification
+module github.com/game_engine/notification
 
 go 1.25
 

@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/game-engine/jackpot-service/internal/config"
-	"github.com/game-engine/jackpot-service/internal/model"
+	"github.com/game_engine/jackpot-service/internal/config"
+	"github.com/game_engine/jackpot-service/internal/model"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 )

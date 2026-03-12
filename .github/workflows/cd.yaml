@@ -35,7 +35,7 @@ on:
         type: string
 
 env:
-  REGISTRY: registry.game-engine.local:5000
+  REGISTRY: registry.game_engine.local:5000
   KUBECONFIG: ${{ secrets.KUBECONFIG }}
 
 jobs:
@@ -115,9 +115,9 @@ jobs:
     if: github.event.inputs.rollback != 'true' && (github.ref == 'refs/heads/main' || github.event.inputs.environment == 'staging')
     environment: 
       name: staging
-      url: https://staging.game-engine.local
+      url: https://staging.game_engine.local
       deployment_history:
-        - url: https://staging.game-engine.local
+        - url: https://staging.game_engine.local
     needs: build-and-scan
     steps:
       - name: Checkout code
@@ -140,40 +140,40 @@ jobs:
 
       - name: Deploy auth service
         run: |
-          kubectl set image deployment/auth-service auth-service=${{ env.REGISTRY }}/auth-service:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/auth-service auth-service=${{ env.REGISTRY }}/auth-service:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy user service
         run: |
-          kubectl set image deployment/user-service user-service=${{ env.REGISTRY }}/user-service:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/user-service user-service=${{ env.REGISTRY }}/user-service:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy wallet service
         run: |
-          kubectl set image deployment/wallet-service wallet-service=${{ env.REGISTRY }}/wallet-service:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/wallet-service wallet-service=${{ env.REGISTRY }}/wallet-service:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy gateway
         run: |
-          kubectl set image deployment/gateway-player gateway=${{ env.REGISTRY }}/gateway-player:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/gateway-player gateway=${{ env.REGISTRY }}/gateway-player:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy websocket gateway
         run: |
-          kubectl set image deployment/websocket-gateway websocket-gateway=${{ env.REGISTRY }}/websocket-gateway:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/websocket-gateway websocket-gateway=${{ env.REGISTRY }}/websocket-gateway:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Wait for deployments
         run: |
-          kubectl rollout status deployment/auth-service -n game-engine --timeout=300s
-          kubectl rollout status deployment/user-service -n game-engine --timeout=300s
-          kubectl rollout status deployment/wallet-service -n game-engine --timeout=300s
-          kubectl rollout status deployment/gateway-player -n game-engine --timeout=300s
-          kubectl rollout status deployment/websocket-gateway -n game-engine --timeout=300s
+          kubectl rollout status deployment/auth-service -n game_engine --timeout=300s
+          kubectl rollout status deployment/user-service -n game_engine --timeout=300s
+          kubectl rollout status deployment/wallet-service -n game_engine --timeout=300s
+          kubectl rollout status deployment/gateway-player -n game_engine --timeout=300s
+          kubectl rollout status deployment/websocket-gateway -n game_engine --timeout=300s
 
       - name: Verify pods are running
         run: |
-          kubectl get pods -n game-engine
+          kubectl get pods -n game_engine
 
       - name: Run smoke tests
         run: |
           sleep 10
-          kubectl exec -n game-engine deploy/gateway-player -- curl -f http://localhost:8080/health || exit 1
+          kubectl exec -n game_engine deploy/gateway-player -- curl -f http://localhost:8080/health || exit 1
 
       - name: Post deployment status
         run: |
@@ -188,9 +188,9 @@ jobs:
     if: github.event.inputs.rollback != 'true' && (startsWith(github.ref, 'refs/tags/v') || github.event.inputs.environment == 'production')
     environment: 
       name: production
-      url: https://game-engine.local
+      url: https://game_engine.local
       deployment_history:
-        - url: https://game-engine.local
+        - url: https://game_engine.local
     needs: [build-and-scan, deploy-staging]
     steps:
       - name: Checkout code
@@ -215,7 +215,7 @@ jobs:
 
       - name: Create deployment namespace
         run: |
-          kubectl create namespace game-engine --dry-run=client -o yaml | kubectl apply -f -
+          kubectl create namespace game_engine --dry-run=client -o yaml | kubectl apply -f -
           kubectl create namespace game-services --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Deploy base configurations
@@ -230,48 +230,48 @@ jobs:
 
       - name: Deploy auth service
         run: |
-          kubectl set image deployment/auth-service auth-service=${{ env.REGISTRY }}/auth-service:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/auth-service auth-service=${{ env.REGISTRY }}/auth-service:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy user service
         run: |
-          kubectl set image deployment/user-service user-service=${{ env.REGISTRY }}/user-service:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/user-service user-service=${{ env.REGISTRY }}/user-service:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy wallet service
         run: |
-          kubectl set image deployment/wallet-service wallet-service=${{ env.REGISTRY }}/wallet-service:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/wallet-service wallet-service=${{ env.REGISTRY }}/wallet-service:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy gateway
         run: |
-          kubectl set image deployment/gateway-player gateway=${{ env.REGISTRY }}/gateway-player:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/gateway-player gateway=${{ env.REGISTRY }}/gateway-player:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Deploy websocket gateway
         run: |
-          kubectl set image deployment/websocket-gateway websocket-gateway=${{ env.REGISTRY }}/websocket-gateway:${{ needs.build-and-scan.outputs.version }} -n game-engine
+          kubectl set image deployment/websocket-gateway websocket-gateway=${{ env.REGISTRY }}/websocket-gateway:${{ needs.build-and-scan.outputs.version }} -n game_engine
 
       - name: Wait for deployments
         run: |
-          kubectl rollout status deployment/auth-service -n game-engine --timeout=600s
-          kubectl rollout status deployment/user-service -n game-engine --timeout=600s
-          kubectl rollout status deployment/wallet-service -n game-engine --timeout=600s
-          kubectl rollout status deployment/gateway-player -n game-engine --timeout=600s
-          kubectl rollout status deployment/websocket-gateway -n game-engine --timeout=600s
+          kubectl rollout status deployment/auth-service -n game_engine --timeout=600s
+          kubectl rollout status deployment/user-service -n game_engine --timeout=600s
+          kubectl rollout status deployment/wallet-service -n game_engine --timeout=600s
+          kubectl rollout status deployment/gateway-player -n game_engine --timeout=600s
+          kubectl rollout status deployment/websocket-gateway -n game_engine --timeout=600s
 
       - name: Run smoke tests
         run: |
           sleep 10
-          kubectl exec -n game-engine deploy/gateway-player -- curl -f http://localhost:8080/health || exit 1
+          kubectl exec -n game_engine deploy/gateway-player -- curl -f http://localhost:8080/health || exit 1
 
       - name: Verify deployment
         run: |
-          kubectl get pods,svc,ing -n game-engine
+          kubectl get pods,svc,ing -n game_engine
 
       - name: Create deployment record
         run: |
-          kubectl annotate deployment/auth-service -n game-engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
-          kubectl annotate deployment/user-service -n game-engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
-          kubectl annotate deployment/wallet-service -n game-engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
-          kubectl annotate deployment/gateway-player -n game-engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
-          kubectl annotate deployment/websocket-gateway -n game-engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
+          kubectl annotate deployment/auth-service -n game_engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
+          kubectl annotate deployment/user-service -n game_engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
+          kubectl annotate deployment/wallet-service -n game_engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
+          kubectl annotate deployment/gateway-player -n game_engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
+          kubectl annotate deployment/websocket-gateway -n game_engine kubernetes.io/change-cause="Deployed ${{ needs.build-and-scan.outputs.version }} at $(date)" --overwrite
 
   # ===========================================================================
   # Rollback
@@ -282,7 +282,7 @@ jobs:
     if: github.event.inputs.rollback == 'true'
     environment: 
       name: production
-      url: https://game-engine.local
+      url: https://game_engine.local
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -295,7 +295,7 @@ jobs:
       - name: Get previous deployment
         id: previous
         run: |
-          PREV_VERSION=$(kubectl rollout history deployment/auth-service -n game-engine | grep -v 'REVISION' | grep -v '^
+          PREV_VERSION=$(kubectl rollout history deployment/auth-service -n game_engine | grep -v 'REVISION' | grep -v '^
  | head -1 | awk '{print $1}')
           echo "Previous version: $PREV_VERSION"
           echo "previous_version=$PREV_VERSION" >> $GITHUB_OUTPUT
@@ -303,26 +303,26 @@ jobs:
       - name: Rollback deployments
         run: |
           if [ -z "${{ github.event.inputs.service }}" ]; then
-            kubectl rollout undo deployment/auth-service -n game-engine
-            kubectl rollout undo deployment/user-service -n game-engine
-            kubectl rollout undo deployment/wallet-service -n game-engine
-            kubectl rollout undo deployment/gateway-player -n game-engine
-            kubectl rollout undo deployment/websocket-gateway -n game-engine
+            kubectl rollout undo deployment/auth-service -n game_engine
+            kubectl rollout undo deployment/user-service -n game_engine
+            kubectl rollout undo deployment/wallet-service -n game_engine
+            kubectl rollout undo deployment/gateway-player -n game_engine
+            kubectl rollout undo deployment/websocket-gateway -n game_engine
           else
-            kubectl rollout undo deployment/${{ github.event.inputs.service }} -n game-engine
+            kubectl rollout undo deployment/${{ github.event.inputs.service }} -n game_engine
           fi
 
       - name: Wait for rollback
         run: |
-          kubectl rollout status deployment/auth-service -n game-engine --timeout=300s
-          kubectl rollout status deployment/user-service -n game-engine --timeout=300s
-          kubectl rollout status deployment/wallet-service -n game-engine --timeout=300s
-          kubectl rollout status deployment/gateway-player -n game-engine --timeout=300s
-          kubectl rollout status deployment/websocket-gateway -n game-engine --timeout=300s
+          kubectl rollout status deployment/auth-service -n game_engine --timeout=300s
+          kubectl rollout status deployment/user-service -n game_engine --timeout=300s
+          kubectl rollout status deployment/wallet-service -n game_engine --timeout=300s
+          kubectl rollout status deployment/gateway-player -n game_engine --timeout=300s
+          kubectl rollout status deployment/websocket-gateway -n game_engine --timeout=300s
 
       - name: Verify rollback
         run: |
-          kubectl get pods -n game-engine
+          kubectl get pods -n game_engine
 
   # ===========================================================================
   # Health Check

@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: websocket-gateway
     tier: gateway
@@ -36,7 +36,7 @@ spec:
               topologyKey: kubernetes.io/hostname
       containers:
       - name: websocket-gateway
-        image: game-engine/websocket-gateway:latest
+        image: game_engine/websocket-gateway:latest
         imagePullPolicy: Always
         ports:
         - name: ws
@@ -62,37 +62,37 @@ spec:
         - name: JWT_SECRET_KEY
           valueFrom:
             secretKeyRef:
-              name: game-engine-secrets
+              name: game_engine-secrets
               key: jwt-secret-key
         - name: SECRET_KEY_BASE
           valueFrom:
             secretKeyRef:
-              name: game-engine-secrets
+              name: game_engine-secrets
               key: secret-key-base
         - name: DB_HOST
           valueFrom:
             configMapKeyRef:
-              name: game-engine-config
+              name: game_engine-config
               key: database-host
         - name: DB_USER
           valueFrom:
             secretKeyRef:
-              name: game-engine-secrets
+              name: game_engine-secrets
               key: database-user
         - name: DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: game-engine-secrets
+              name: game_engine-secrets
               key: database-password
         - name: REDIS_HOST
           valueFrom:
             configMapKeyRef:
-              name: game-engine-config
+              name: game_engine-config
               key: redis-host
         - name: NATS_HOST
           valueFrom:
             configMapKeyRef:
-              name: game-engine-config
+              name: game_engine-config
               key: nats-host
         resources:
           requests:
@@ -129,7 +129,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: websocket-gateway
 spec:
@@ -154,7 +154,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: websocket-gateway-headless
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: websocket-gateway
 spec:
@@ -170,7 +170,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -209,7 +209,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: websocket-gateway-config
-  namespace: game-engine
+  namespace: game_engine
 data:
   app.env: |
     MIX_ENV=prod
@@ -224,13 +224,13 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
 rules:
 - apiGroups: [""]
   resources: ["pods"]
@@ -240,11 +240,11 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
 subjects:
 - kind: ServiceAccount
   name: websocket-gateway
-  namespace: game-engine
+  namespace: game_engine
 roleRef:
   kind: Role
   name: websocket-gateway

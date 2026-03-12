@@ -35,8 +35,8 @@ JWT_SECRET_KEY environment variable must be set in production
 config :websocket_gateway, :jwt,
   secret_key: jwt_secret,
   algorithm: "HS256",
-  issuer: "game-engine",
-  audience: "game-engine",
+  issuer: "game_engine",
+  audience: "game_engine",
   expiration: 86_400
 
 # WebSocket configuration for production

@@ -7,9 +7,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/game-engine/user-service/internal/config"
-	"github.com/game-engine/user-service/internal/model"
-	"github.com/game-engine/user-service/internal/repository"
+	"github.com/game_engine/user-service/internal/config"
+	"github.com/game_engine/user-service/internal/model"
+	"github.com/game_engine/user-service/internal/repository"
 	"github.com/google/uuid"
 	"github.com/nats-io/nats.go"
 	"github.com/redis/go-redis/v9"

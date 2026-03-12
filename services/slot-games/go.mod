@@ -1,4 +1,4 @@
-module github.com/game-engine/slot-games
+module github.com/game_engine/slot-games
 
 go 1.25
 

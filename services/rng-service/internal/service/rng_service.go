@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/game-engine/rng-service/internal/config"
-	"github.com/game-engine/rng-service/internal/rng"
+	"github.com/game_engine/rng-service/internal/config"
+	"github.com/game_engine/rng-service/internal/rng"
 )
 
 // RNGService provides random number generation operations

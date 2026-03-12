@@ -10,11 +10,11 @@ Phase 1 establishes the project foundation: monorepo scaffolding, shared protobu
 
 ### 1.1 Initialize Monorepo Structure
 
-- Create root `game-engine/` directory with top-level configuration
+- Create root `game_engine/` directory with top-level configuration
 - Initialize Git repository with `.gitignore` for Go, Java, Python, Node.js, Terraform
 - Create directory structure:
   ```
-  game-engine/
+  game_engine/
   ├── proto/
   ├── services/
   │   ├── gateway/

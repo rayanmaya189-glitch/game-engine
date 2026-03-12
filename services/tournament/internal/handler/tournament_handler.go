@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/game-engine/tournament/internal/service"
-	"github.com/game-engine/tournament/internal/tournament"
+	"github.com/game_engine/tournament/internal/service"
+	"github.com/game_engine/tournament/internal/tournament"
 )
 
 // TournamentHandler handles tournament-related requests

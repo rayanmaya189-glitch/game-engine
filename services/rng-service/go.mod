@@ -1,4 +1,4 @@
-module github.com/game-engine/rng-service
+module github.com/game_engine/rng-service
 
 go 1.25
 

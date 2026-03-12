@@ -54,7 +54,7 @@ const (
 	// NATS
 	NATSDefaultPort    = 4222
 	NATSMgmtPort       = 8222
-	NATSDefaultCluster = "game-engine"
+	NATSDefaultCluster = "game_engine"
 	NATSDefaultStream  = "GAME_EVENTS"
 )
 

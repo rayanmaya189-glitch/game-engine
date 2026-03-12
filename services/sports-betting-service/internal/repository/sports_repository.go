@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/game-engine/sports-betting-service/internal/config"
-	"github.com/game-engine/sports-betting-service/internal/model"
+	"github.com/game_engine/sports-betting-service/internal/config"
+	"github.com/game_engine/sports-betting-service/internal/model"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 )

@@ -1,4 +1,4 @@
-module github.com/game-engine/multiplayer
+module github.com/game_engine/multiplayer
 
 go 1.25
 

@@ -11,7 +11,7 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.game-engine</groupId>
+    <groupId>com.game_engine</groupId>
     <artifactId>payment-service</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>

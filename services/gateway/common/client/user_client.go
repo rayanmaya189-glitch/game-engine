@@ -10,7 +10,7 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
 
-	userpb "github.com/game-engine/gen/go/game-engine/user/v1"
+	userpb "github.com/game_engine/gen/go/game_engine/user/v1"
 )
 
 type UserClient struct {

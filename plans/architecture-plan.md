@@ -1820,7 +1820,7 @@ graph LR
 ## 16. Repository Structure
 
 ```
-game-engine/
+game_engine/
 ├── proto/                          # Shared protobuf definitions
 │   ├── auth/
 │   ├── user/
@@ -1833,7 +1833,7 @@ game-engine/
 │   ├── gateway/                    # Golang Hertz - API Gateway
 │   ├── auth-service/               # Golang Kratos
 │   ├── user-service/               # Golang Kratos
-│   ├── game-engine-service/        # Golang Kratos
+│   ├── game_engine-service/        # Golang Kratos
 │   ├── card-game-service/          # Golang Kratos
 │   ├── dice-game-service/          # Golang Kratos
 │   ├── slot-game-service/          # Golang Kratos

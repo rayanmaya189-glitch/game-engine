@@ -4,9 +4,9 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/game-engine/loyalty-service/internal/config"
-	"github.com/game-engine/loyalty-service/internal/model"
-	"github.com/game-engine/loyalty-service/internal/repository"
+	"github.com/game_engine/loyalty-service/internal/config"
+	"github.com/game_engine/loyalty-service/internal/model"
+	"github.com/game_engine/loyalty-service/internal/repository"
 	"github.com/google/uuid"
 )
 

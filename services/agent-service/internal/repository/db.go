@@ -7,7 +7,7 @@ import (
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 
-	"github.com/game-engine/agent-service/internal/config"
+	"github.com/game_engine/agent-service/internal/config"
 )
 
 func NewPostgresDB(cfg config.DatabaseConfig) (*pgxpool.Pool, error) {

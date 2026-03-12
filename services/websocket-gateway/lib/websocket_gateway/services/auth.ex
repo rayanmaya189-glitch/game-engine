@@ -12,8 +12,8 @@ defmodule WebsocketGateway.Services.Auth do
 
   @secret_key Keyword.get(@jwt_config, :secret_key)
   @algorithm Keyword.get(@jwt_config, :algorithm, "HS256")
-  @issuer Keyword.get(@jwt_config, :issuer, "game-engine")
-  @audience Keyword.get(@jwt_config, :audience, "game-engine")
+  @issuer Keyword.get(@jwt_config, :issuer, "game_engine")
+  @audience Keyword.get(@jwt_config, :audience, "game_engine")
   @expiration Keyword.get(@jwt_config, :expiration, 86_400)
 
   @doc """

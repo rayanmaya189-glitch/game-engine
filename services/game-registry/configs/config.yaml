@@ -23,7 +23,7 @@ redis:
 
 nats:
   url: nats://localhost:4222
-  cluster_id: game-engine
+  cluster_id: game_engine
   client_id: game-registry
   events:
     prefix: game.events

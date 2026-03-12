@@ -1,4 +1,4 @@
-module github.com/game-engine/dice-games
+module github.com/game_engine/dice-games
 
 go 1.25
 

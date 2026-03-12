@@ -1,4 +1,4 @@
-module github.com/game-engine/common
+module github.com/game_engine/common
 
 go 1.25
 

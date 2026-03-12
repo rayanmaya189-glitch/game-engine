@@ -23,8 +23,8 @@ config :websocket_gateway, :redis,
 config :websocket_gateway, :jwt,
   secret_key: "test-secret-key",
   algorithm: "HS256",
-  issuer: "game-engine-test",
-  audience: "game-engine-test",
+  issuer: "game_engine-test",
+  audience: "game_engine-test",
   expiration: 3600
 
 # WebSocket for testing

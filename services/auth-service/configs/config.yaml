@@ -21,14 +21,14 @@ redis:
 nats:
   urls:
     - "nats://10.100.1.12:4222"
-  cluster_id: "game-engine"
+  cluster_id: "game_engine"
   client_id: "auth-service"
 
 jwt:
   access_token_expiry: 15m
   refresh_token_expiry: 168h
-  issuer: "game-engine-auth"
-  audience: "game-engine"
+  issuer: "game_engine-auth"
+  audience: "game_engine"
 
 password:
   min_length: 8
@@ -49,6 +49,6 @@ token_expiry:
   totp: 30s
 
 totp:
-  issuer: "game-engine"
+  issuer: "game_engine"
   digits: 6
   period: 30

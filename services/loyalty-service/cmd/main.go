@@ -8,9 +8,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/game-engine/loyalty-service/internal/config"
-	"github.com/game-engine/loyalty-service/internal/repository"
-	"github.com/game-engine/loyalty-service/internal/service"
+	"github.com/game_engine/loyalty-service/internal/config"
+	"github.com/game_engine/loyalty-service/internal/repository"
+	"github.com/game_engine/loyalty-service/internal/service"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

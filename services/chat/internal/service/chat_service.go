@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/game-engine/chat/internal/room"
+	"github.com/game_engine/chat/internal/room"
 )
 
 // ChatService provides chat business logic

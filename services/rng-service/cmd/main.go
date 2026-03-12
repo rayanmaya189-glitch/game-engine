@@ -9,9 +9,9 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/game-engine/rng-service/internal/config"
-	"github.com/game-engine/rng-service/internal/handler"
-	"github.com/game-engine/rng-service/internal/service"
+	"github.com/game_engine/rng-service/internal/config"
+	"github.com/game_engine/rng-service/internal/handler"
+	"github.com/game_engine/rng-service/internal/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 )

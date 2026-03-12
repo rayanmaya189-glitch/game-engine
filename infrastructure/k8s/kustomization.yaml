@@ -7,11 +7,11 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 # Namespace for all resources
-namespace: game-engine
+namespace: game_engine
 
 # Common labels for all resources
 commonLabels:
-  app.kubernetes.io/name: game-engine
+  app.kubernetes.io/name: game_engine
   app.kubernetes.io/part-of: casino-gaming-platform
   app.kubernetes.io/managed-by: kustomize
 
@@ -42,11 +42,11 @@ resources:
 
 # ConfigMap generation
 configMapGenerator:
-  - name: game-engine-config
+  - name: game_engine-config
     literals:
       - ENVIRONMENT=production
       - LOG_LEVEL=info
-      - REGISTRY=registry.game-engine.local:5000
+      - REGISTRY=registry.game_engine.local:5000
 
 # Secret generation
 secretGenerator:

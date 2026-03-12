@@ -32,7 +32,7 @@ on:
       - '.github/workflows/ci.yaml'
 
 env:
-  REGISTRY: registry.game-engine.local:5000
+  REGISTRY: registry.game_engine.local:5000
   GO_VERSION: '1.21'
   ELIXIR_VERSION: '1.15'
   OTP_VERSION: '26'
@@ -438,7 +438,7 @@ jobs:
 
       - name: Create and push manifest
         run: |
-          docker manifest create ${{ env.REGISTRY }}/game-engine:latest \
+          docker manifest create ${{ env.REGISTRY }}/game_engine:latest \
             ${{ env.REGISTRY }}/auth-service:${{ github.sha }} \
             ${{ env.REGISTRY }}/user-service:${{ github.sha }} \
             ${{ env.REGISTRY }}/wallet-service:${{ github.sha }} \
@@ -446,4 +446,4 @@ jobs:
             ${{ env.REGISTRY }}/gateway-player:${{ github.sha }} \
             ${{ env.REGISTRY }}/websocket-gateway:${{ github.sha }}
 
-          docker manifest push ${{ env.REGISTRY }}/game-engine:latest
+          docker manifest push ${{ env.REGISTRY }}/game_engine:latest

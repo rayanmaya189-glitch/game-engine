@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/game-engine/rng-service/internal/rng"
-	"github.com/game-engine/rng-service/internal/service"
+	"github.com/game_engine/rng-service/internal/rng"
+	"github.com/game_engine/rng-service/internal/service"
 )
 
 // RNGHandler handles RNG-related requests

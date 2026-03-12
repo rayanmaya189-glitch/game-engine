@@ -8,7 +8,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: public-api
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: public-api
     component: ingress
@@ -30,7 +30,7 @@ metadata:
     
     # CORS
     nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://player.game-engine.com,https://www.game-engine.com"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://player.game_engine.com,https://www.game_engine.com"
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS, PATCH"
     nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Content-Type, X-Request-ID, X-Correlation-ID"
     nginx.ingress.kubernetes.io/cors-expose-headers: "X-Request-ID"
@@ -39,7 +39,7 @@ metadata:
     
     # Session affinity
     nginx.ingress.kubernetes.io/affinity: "cookie"
-    nginx.ingress.kubernetes.io/session-cookie-name: "game-engine_session"
+    nginx.ingress.kubernetes.io/session-cookie-name: "game_engine_session"
     nginx.ingress.kubernetes.io/session-cookie-hash: "sha1"
     nginx.ingress.kubernetes.io/session-cookie-expires: "86400"
     nginx.ingress.kubernetes.io/session-cookie-max-age: "86400"
@@ -68,14 +68,14 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - api.game-engine.com
-        - player.game-engine.com
-        - merchant.game-engine.com
-        - agent.game-engine.com
+        - api.game_engine.com
+        - player.game_engine.com
+        - merchant.game_engine.com
+        - agent.game_engine.com
       secretName: tls-secret
   rules:
     # Player API
-    - host: player.game-engine.com
+    - host: player.game_engine.com
       http:
         paths:
           - path: /
@@ -86,7 +86,7 @@ spec:
                 port:
                   number: 80
     # Generic API
-    - host: api.game-engine.com
+    - host: api.game_engine.com
       http:
         paths:
           - path: /player
@@ -123,7 +123,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: admin-api
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: admin-api
     component: ingress
@@ -156,11 +156,11 @@ spec:
   ingressClassName: nginx
   tls:
     - hosts:
-        - admin.game-engine.com
-        - internal.game-engine.com
+        - admin.game_engine.com
+        - internal.game_engine.com
       secretName: tls-admin-secret
   rules:
-    - host: admin.game-engine.com
+    - host: admin.game_engine.com
       http:
         paths:
           - path: /
@@ -177,7 +177,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: tls-secret
-  namespace: game-engine
+  namespace: game_engine
 type: kubernetes.io/tls
 data:
   # Replace with actual certificates in production

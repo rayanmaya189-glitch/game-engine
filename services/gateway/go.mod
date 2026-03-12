@@ -1,4 +1,4 @@
-module github.com/game-engine/gateway
+module github.com/game_engine/gateway
 
 go 1.25
 

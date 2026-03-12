@@ -11,7 +11,7 @@ Phase 2 builds the core game engine on top of the Phase 1 foundation. This inclu
 ## 1. Game Engine Service (Golang Kratos)
 
 ### 1.1 Project Setup
-- Initialize Kratos project: `kratos new game-engine-service`
+- Initialize Kratos project: `kratos new game_engine-service`
 - Configure gRPC (port 9004), HTTP (port 8004)
 - Database connection (casino_games DB)
 - Redis connection (game state cache)

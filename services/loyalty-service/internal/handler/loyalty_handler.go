@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/game-engine/loyalty-service/internal/service"
+	"github.com/game_engine/loyalty-service/internal/service"
 )
 
 type LoyaltyHandler struct {

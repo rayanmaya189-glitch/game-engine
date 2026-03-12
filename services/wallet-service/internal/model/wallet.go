@@ -3,8 +3,8 @@ package model
 import (
 	"time"
 
-	commonv1 "game-engine/gen/go/common/v1"
-	walletsv1 "game-engine/gen/go/wallet/v1"
+	commonv1 "game_engine/gen/go/common/v1"
+	walletsv1 "game_engine/gen/go/wallet/v1"
 )
 
 // Wallet represents a player's wallet (main or bonus)

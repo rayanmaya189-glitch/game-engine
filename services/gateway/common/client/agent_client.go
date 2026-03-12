@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
+	agentpb "github.com/game_engine/gen/go/game_engine/agent/v1"
 )
 
 type AgentClient struct {

@@ -9,7 +9,7 @@ services:
   # ===========================================
   postgres:
     image: postgres:16-alpine
-    container_name: game-engine-postgres
+    container_name: game_engine-postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -32,7 +32,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - ./infrastructure/docker/postgres/init:/docker-entrypoint-initdb.d
     networks:
-      - game-engine-dev
+      - game_engine-dev
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -53,7 +53,7 @@ services:
   # ===========================================
   timescaledb:
     image: timescale/timescaledb:latest-pg16
-    container_name: game-engine-timescaledb
+    container_name: game_engine-timescaledb
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
@@ -66,7 +66,7 @@ services:
     volumes:
       - timescaledb-data:/var/lib/postgresql/data
     networks:
-      - game-engine-dev
+      - game_engine-dev
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
@@ -84,7 +84,7 @@ services:
   # ===========================================
   redis:
     image: redis:7-alpine
-    container_name: game-engine-redis
+    container_name: game_engine-redis
     command: >
       redis-server
       --appendonly yes
@@ -100,7 +100,7 @@ services:
     volumes:
       - redis-data:/data
     networks:
-      - game-engine-dev
+      - game_engine-dev
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 10s
@@ -113,11 +113,11 @@ services:
   # ===========================================
   nats:
     image: nats:latest
-    container_name: game-engine-nats
+    container_name: game_engine-nats
     command: >
       nats-server
       --js
-      --cluster_name game-engine
+      --cluster_name game_engine
       --max_memory_store 256MB
       --max_file_store 1GB
       --port 4222
@@ -130,7 +130,7 @@ services:
       - nats-data:/data
       - nats-data:/tmp
     networks:
-      - game-engine-dev
+      - game_engine-dev
     healthcheck:
       test: ["CMD", "nats", "-s", "localhost:4222", "ping"]
       interval: 10s
@@ -143,9 +143,9 @@ services:
   # ===========================================
   pgadmin:
     image: dpage/pgadmin4:latest
-    container_name: game-engine-pgadmin
+    container_name: game_engine-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@game-engine.local
+      PGADMIN_DEFAULT_EMAIL: admin@game_engine.local
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_CONFIG_SERVER_MODE: "False"
       PGADMIN_CONFIG_MASTER_PASSWORD_REQUIRED: "False"
@@ -156,7 +156,7 @@ services:
       - pgadmin-data:/var/lib/pgadmin
       - ./infrastructure/docker/pgadmin/sessions:/var/lib/pgadmin/sessions
     networks:
-      - game-engine-dev
+      - game_engine-dev
     depends_on:
       - postgres
       - timescaledb
@@ -167,7 +167,7 @@ services:
   # ===========================================
   redisinsight:
     image: redislabs/redisinsight:latest
-    container_name: game-engine-redisinsight
+    container_name: game_engine-redisinsight
     environment:
       RI_ENVIRONMENT: development
     ports:
@@ -175,7 +175,7 @@ services:
     volumes:
       - redisinsight-data:/db
     networks:
-      - game-engine-dev
+      - game_engine-dev
     depends_on:
       - redis
     restart: unless-stopped
@@ -185,7 +185,7 @@ services:
   # ===========================================
   prometheus:
     image: prom/prometheus:latest
-    container_name: game-engine-prometheus
+    container_name: game_engine-prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -199,7 +199,7 @@ services:
       - prometheus-data:/prometheus
       - ./infrastructure/docker/prometheus:/etc/prometheus
     networks:
-      - game-engine-dev
+      - game_engine-dev
     restart: unless-stopped
 
   # ===========================================
@@ -207,7 +207,7 @@ services:
   # ===========================================
   grafana:
     image: grafana/grafana:latest
-    container_name: game-engine-grafana
+    container_name: game_engine-grafana
     environment:
       GF_SECURITY_ADMIN_USER: admin
       GF_SECURITY_ADMIN_PASSWORD: admin
@@ -220,7 +220,7 @@ services:
       - grafana-data:/var/lib/grafana
       - ./infrastructure/docker/grafana/provisioning:/etc/grafana/provisioning
     networks:
-      - game-engine-dev
+      - game_engine-dev
     depends_on:
       - prometheus
     restart: unless-stopped
@@ -230,7 +230,7 @@ services:
   # ===========================================
   jaeger:
     image: jaegertracing/all-in-one:latest
-    container_name: game-engine-jaeger
+    container_name: game_engine-jaeger
     environment:
       COLLECTOR_OTLP_ENABLED: "true"
       SPAN_STORAGE_TYPE: badger
@@ -245,7 +245,7 @@ services:
     volumes:
       - jaeger-data:/badger
     networks:
-      - game-engine-dev
+      - game_engine-dev
     restart: unless-stopped
 
   # ===========================================
@@ -253,11 +253,11 @@ services:
   # ===========================================
   natsbox:
     image: synadia/nats-box:latest
-    container_name: game-engine-natsbox
+    container_name: game_engine-natsbox
     ports:
       - "8223:8223"
     networks:
-      - game-engine-dev
+      - game_engine-dev
     depends_on:
       - nats
     restart: unless-stopped
@@ -266,9 +266,9 @@ services:
 # Networks
 # ===========================================
 networks:
-  game-engine-dev:
+  game_engine-dev:
     driver: bridge
-    name: game-engine-dev
+    name: game_engine-dev
 
 # ===========================================
 # Volumes

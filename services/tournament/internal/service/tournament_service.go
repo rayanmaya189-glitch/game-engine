@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/game-engine/tournament/internal/tournament"
+	"github.com/game_engine/tournament/internal/tournament"
 )
 
 // TournamentService provides tournament business logic

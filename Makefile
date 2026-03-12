@@ -78,16 +78,13 @@ ALL_SERVICES := $(GO_SERVICES) $(JAVA_SERVICES) $(PYTHON_SERVICES)
 # Docker settings
 DOCKER := docker
 DOCKER_COMPOSE := docker-compose
-IMAGE_NAME := game-engine
+IMAGE_NAME := game_engine
 IMAGE_TAG := latest
 
 # Proto settings
-PROTO_DIR := proto
-PROTO_OUT_DIR := services
-PROTOC := protoc
-PROTOC_GEN_GO :=protoc-gen-go
-PROTOC_GEN_GRPC_GO :=protoc-gen-go-grpc
-PROTO_INCLUDES := -I$(PROTO_DIR) -I$(PROTO_DIR)/common
+PROTO_DIR := services/common-service/proto
+PROTO_OUT_DIR := services/common-service/proto/gen
+PROTOSRC_DIR := services/common-service
 
 # Color codes for output
 RED := \033[0;31m
@@ -439,15 +436,42 @@ fmt:
 
 .PHONY: proto-gen
 proto-gen:
-	@echo "$(YELLOW)Generating protobuf files...$(NC)"
-	@mkdir -p $(PROTO_OUT_DIR)
-	@$(foreach protofile,$(wildcard $(PROTO_DIR)/*.proto),$(PROTOC) $(PROTO_INCLUDES) --go_out=$(PROTO_OUT_DIR) --go-grpc_out=$(PROTO_OUT_DIR) $(protofile);)
+	@echo "$(YELLOW)Generating protobuf files using buf...$(NC)"
+	@cd $(PROTO_DIR) && buf generate
 	@echo "$(GREEN)Proto generation complete!$(NC)"
+
+.PHONY: proto-gen-go
+proto-gen-go:
+	@echo "$(YELLOW)Generating Go protobuf files...$(NC)"
+	@cd $(PROTO_DIR) && buf generate
+	@echo "$(GREEN)Go proto files generated in proto/gen/go/$(NC)"
+
+.PHONY: proto-gen-java
+proto-gen-java:
+	@echo "$(YELLOW)Generating Java protobuf files...$(NC)"
+	@cd $(PROTO_DIR) && buf generate
+	@echo "$(GREEN)Java proto files generated in proto/gen/java/$(NC)"
+
+.PHONY: proto-gen-python
+proto-gen-python:
+	@echo "$(YELLOW)Generating Python protobuf files...$(NC)"
+	@cd $(PROTO_DIR) && buf generate
+	@echo "$(GREEN)Python proto files generated in proto/gen/python/$(NC)"
+
+.PHONY: proto-lint
+proto-lint:
+	@echo "$(YELLOW)Linting proto files...$(NC)"
+	@cd $(PROTO_DIR) && buf lint
+
+.PHONY: proto-breaking
+proto-breaking:
+	@echo "$(YELLOW)Checking for breaking changes...$(NC)"
+	@cd $(PROTO_DIR) && buf breaking --against .git#branch=main
 
 .PHONY: proto-gen-gateway
 proto-gen-gateway:
-	@echo "$(YELLOW)Generating gateway protobuf files...$(NC)"
-	@$(PROTOC) $(PROTO_INCLUDES) --grpc-gateway_out=logtostderr=true:$(PROTO_OUT_DIR)/gateway $(PROTO_DIR)/*.proto
+	@echo "$(YELLOW)Generating gRPC gateway files...$(NC)"
+	@echo "$(GREEN)Use buf generate for gateway stubs$(NC)"
 
 # ===========================================
 # Docker Targets
@@ -685,8 +709,12 @@ help:
 	@echo "  make fmt                - Format code"
 	@echo ""
 	@echo "$(CYAN)=== PROTO COMMANDS ===$(NC)"
-	@echo "  make proto-gen         - Generate protobuf files"
-	@echo "  make proto-gen-gateway - Generate gRPC gateway files"
+	@echo "  make proto-gen           - Generate all protobuf files (Go, Java, Python)"
+	@echo "  make proto-gen-go       - Generate Go protobuf files"
+	@echo "  make proto-gen-java     - Generate Java protobuf files"
+	@echo "  make proto-gen-python   - Generate Python protobuf files"
+	@echo "  make proto-lint         - Lint proto files"
+	@echo "  make proto-breaking     - Check for breaking changes"
 	@echo ""
 	@echo "$(CYAN)=== DOCKER COMMANDS ===$(NC)"
 	@echo "  make docker-build       - Build all Docker images"

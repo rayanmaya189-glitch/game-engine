@@ -1,4 +1,4 @@
-module github.com/game-engine/user-service
+module github.com/game_engine/user-service
 
 go 1.25
 

@@ -8,7 +8,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-service
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: user-service
     version: v1
@@ -38,7 +38,7 @@ spec:
         fsGroup: 1000
       containers:
         - name: user-service
-          image: registry.game-engine.local:5000/user-service:latest
+          image: registry.game_engine.local:5000/user-service:latest
           imagePullPolicy: Always
           ports:
             - name: http
@@ -53,7 +53,7 @@ spec:
             - name: GRPC_PORT
               value: "9090"
             - name: DATABASE_HOST
-              value: "postgresql.game-engine.svc.cluster.local"
+              value: "postgresql.game_engine.svc.cluster.local"
             - name: DATABASE_PORT
               value: "5432"
             - name: DATABASE_NAME
@@ -69,7 +69,7 @@ spec:
                   name: database-credentials
                   key: password
             - name: REDIS_HOST
-              value: "redis.game-engine.svc.cluster.local"
+              value: "redis.game_engine.svc.cluster.local"
             - name: REDIS_PORT
               value: "6379"
             - name: REDIS_PASSWORD
@@ -78,7 +78,7 @@ spec:
                   name: redis-credentials
                   key: password
             - name: AUTH_SERVICE_URL
-              value: "http://auth-service.game-engine.svc.cluster.local"
+              value: "http://auth-service.game_engine.svc.cluster.local"
             - name: LOG_LEVEL
               value: "info"
             - name: ENVIRONMENT
@@ -129,7 +129,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: user-service
-  namespace: game-engine
+  namespace: game_engine
   labels:
     app: user-service
     component: service
@@ -152,7 +152,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: user-service-config
-  namespace: game-engine
+  namespace: game_engine
 data:
   config.yaml: |
     server:
@@ -201,7 +201,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: user-service
-  namespace: game-engine
+  namespace: game_engine
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

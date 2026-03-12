@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/game-engine/sports-betting-service/internal/config"
-	"github.com/game-engine/sports-betting-service/internal/model"
-	"github.com/game-engine/sports-betting-service/internal/repository"
+	"github.com/game_engine/sports-betting-service/internal/config"
+	"github.com/game_engine/sports-betting-service/internal/model"
+	"github.com/game_engine/sports-betting-service/internal/repository"
 )
 
 type SportsService struct {

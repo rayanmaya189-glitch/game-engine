@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/game-engine/auth-service/internal/model"
+	"github.com/game_engine/auth-service/internal/model"
 	"github.com/google/uuid"
 	_ "github.com/lib/pq"
 )

@@ -4,10 +4,10 @@ import (
 	"context"
 	"time"
 
-	commonv1 "game-engine/gen/go/common/v1"
-	walletsv1 "game-engine/gen/go/wallet/v1"
+	commonv1 "game_engine/gen/go/common/v1"
+	walletsv1 "game_engine/gen/go/wallet/v1"
 
-	"github.com/game-engine/wallet-service/internal/service"
+	"github.com/game_engine/wallet-service/internal/service"
 )
 
 // WalletHandler handles gRPC requests for wallet service

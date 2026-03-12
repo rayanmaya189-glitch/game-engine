@@ -3,7 +3,7 @@ package hilo
 import (
 	"errors"
 
-	"github.com/game-engine/dice-games/internal/games/dice"
+	"github.com/game_engine/dice-games/internal/games/dice"
 )
 
 // Game represents a Hi-Lo game

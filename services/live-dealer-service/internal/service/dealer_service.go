@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/game-engine/live-dealer-service/internal/model"
+	"github.com/game_engine/live-dealer-service/internal/model"
 )
 
 type DealerService struct {

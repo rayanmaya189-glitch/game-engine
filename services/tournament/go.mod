@@ -1,4 +1,4 @@
-module github.com/game-engine/tournament
+module github.com/game_engine/tournament
 
 go 1.25
 

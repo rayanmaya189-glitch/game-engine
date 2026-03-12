@@ -7,7 +7,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/game-engine/agent-service/internal/model"
+	"github.com/game_engine/agent-service/internal/model"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 )

@@ -4,34 +4,34 @@
 # Network policies for secure microservices communication
 
 ---
-# Default deny all egress in game-engine namespace
+# Default deny all egress in game_engine namespace
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: default-deny-all-egress
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector: {}
   policyTypes:
     - Egress
 ---
-# Default deny all ingress in game-engine namespace
+# Default deny all ingress in game_engine namespace
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: default-deny-all-ingress
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector: {}
   policyTypes:
     - Ingress
 ---
-# Allow DNS resolution from game-engine namespace
+# Allow DNS resolution from game_engine namespace
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-dns-egress
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector: {}
   policyTypes:
@@ -52,7 +52,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-gateway-to-auth
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -73,7 +73,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-gateway-to-user
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -94,7 +94,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-gateway-to-wallet
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -115,7 +115,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-auth-to-postgres
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -137,7 +137,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-auth-to-redis
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -159,7 +159,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-user-to-postgres
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -181,7 +181,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-wallet-to-postgres
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -203,7 +203,7 @@ apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
   name: allow-wallet-to-redis
-  namespace: game-engine
+  namespace: game_engine
 spec:
   podSelector:
     matchLabels:
@@ -235,12 +235,12 @@ spec:
     - from:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: game-engine
+              kubernetes.io/metadata.name: game_engine
   egress:
     - to:
         - namespaceSelector:
             matchLabels:
-              kubernetes.io/metadata.name: game-engine
+              kubernetes.io/metadata.name: game_engine
     - to:
         - namespaceSelector:
             matchLabels:

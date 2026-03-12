@@ -3,7 +3,7 @@ package baccarat
 import (
 	"errors"
 
-	"github.com/game-engine/card-games/internal/games/common"
+	"github.com/game_engine/card-games/internal/games/common"
 )
 
 // BetType represents the type of bet in baccarat

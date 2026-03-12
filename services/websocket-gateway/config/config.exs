@@ -41,8 +41,8 @@ config :websocket_gateway, :redis,
 config :websocket_gateway, :jwt,
   secret_key: System.get_env("JWT_SECRET_KEY") || "your-secret-key-change-in-production",
   algorithm: "HS256",
-  issuer: "game-engine",
-  audience: "game-engine",
+  issuer: "game_engine",
+  audience: "game_engine",
   expiration: 86_400, # 24 hours in seconds
 
 # WebSocket configuration

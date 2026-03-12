@@ -3,7 +3,7 @@ package teen_patti
 import (
 	"sort"
 
-	"github.com/game-engine/card-games/internal/games/common"
+	"github.com/game_engine/card-games/internal/games/common"
 )
 
 // HandRank represents the rank of a Teen Patti hand

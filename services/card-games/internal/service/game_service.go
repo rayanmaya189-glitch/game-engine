@@ -3,13 +3,13 @@ package service
 import (
 	"sync"
 
-	"github.com/game-engine/card-games/internal/config"
-	"github.com/game-engine/card-games/internal/games/andar_bahar"
-	"github.com/game-engine/card-games/internal/games/baccarat"
-	"github.com/game-engine/card-games/internal/games/blackjack"
-	"github.com/game-engine/card-games/internal/games/common"
-	"github.com/game-engine/card-games/internal/games/poker"
-	"github.com/game-engine/card-games/internal/games/teen_patti"
+	"github.com/game_engine/card-games/internal/config"
+	"github.com/game_engine/card-games/internal/games/andar_bahar"
+	"github.com/game_engine/card-games/internal/games/baccarat"
+	"github.com/game_engine/card-games/internal/games/blackjack"
+	"github.com/game_engine/card-games/internal/games/common"
+	"github.com/game_engine/card-games/internal/games/poker"
+	"github.com/game_engine/card-games/internal/games/teen_patti"
 )
 
 // GameType represents the type of card game

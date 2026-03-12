@@ -4,7 +4,7 @@ import (
 	"context"
 	"strings"
 
-	"github.com/game-engine/auth-service/internal/service"
+	"github.com/game_engine/auth-service/internal/service"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
@@ -75,15 +75,15 @@ func extractToken(ctx context.Context) (string, error) {
 func shouldSkipAuth(method string) bool {
 	// Public methods that don't require authentication
 	publicMethods := map[string]bool{
-		"/game-engine.auth.v1.AuthService/Register":             true,
-		"/game-engine.auth.v1.AuthService/Login":                true,
-		"/game-engine.auth.v1.AuthService/ResetPassword":        true,
-		"/game-engine.auth.v1.AuthService/ConfirmResetPassword": true,
-		"/game-engine.auth.v1.AuthService/ValidateToken":        true,
-		"/game-engine.auth.v1.AuthService/VerifyEmail":          true,
-		"/game-engine.auth.v1.AuthService/VerifyPhone":          true,
-		"/game-engine.auth.v1.AuthService/Enable2FA":            true,
-		"/game-engine.auth.v1.AuthService/Verify2FA":            true,
+		"/game_engine.auth.v1.AuthService/Register":             true,
+		"/game_engine.auth.v1.AuthService/Login":                true,
+		"/game_engine.auth.v1.AuthService/ResetPassword":        true,
+		"/game_engine.auth.v1.AuthService/ConfirmResetPassword": true,
+		"/game_engine.auth.v1.AuthService/ValidateToken":        true,
+		"/game_engine.auth.v1.AuthService/VerifyEmail":          true,
+		"/game_engine.auth.v1.AuthService/VerifyPhone":          true,
+		"/game_engine.auth.v1.AuthService/Enable2FA":            true,
+		"/game_engine.auth.v1.AuthService/Verify2FA":            true,
 	}
 
 	return publicMethods[method]

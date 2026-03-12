@@ -3,9 +3,9 @@ package service
 import (
 	"context"
 
-	"github.com/game-engine/agent-service/internal/config"
-	"github.com/game-engine/agent-service/internal/repository"
-	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
+	"github.com/game_engine/agent-service/internal/config"
+	"github.com/game_engine/agent-service/internal/repository"
+	agentpb "github.com/game_engine/gen/go/game_engine/agent/v1"
 )
 
 type AgentService struct {

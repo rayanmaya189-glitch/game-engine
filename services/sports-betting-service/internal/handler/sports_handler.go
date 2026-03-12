@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	"github.com/game-engine/sports-betting-service/internal/service"
+	"github.com/game_engine/sports-betting-service/internal/service"
 )
 
 type SportsHandler struct {

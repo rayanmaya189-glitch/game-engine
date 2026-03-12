@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	jackpotpb "github.com/game-engine/gen/go/game-engine/jackpot/v1"
-	"github.com/game-engine/jackpot-service/internal/service"
+	jackpotpb "github.com/game_engine/gen/go/game_engine/jackpot/v1"
+	"github.com/game_engine/jackpot-service/internal/service"
 )
 
 var _ jackpotpb.JackpotServiceServer = (*JackpotHandler)(nil)

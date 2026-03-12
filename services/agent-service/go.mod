@@ -1,9 +1,9 @@
-module github.com/game-engine/agent-service
+module github.com/game_engine/agent-service
 
 go 1.25
 
 require (
-	github.com/game-engine/gen v0.0.0
+	github.com/game_engine/gen v0.0.0
 	github.com/gin-gonic/gin v1.9.1
 	github.com/jackc/pgx/v5 v5.5.1
 	github.com/redis/go-redis/v9 v9.3.0

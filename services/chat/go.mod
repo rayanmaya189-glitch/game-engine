@@ -1,4 +1,4 @@
-module github.com/game-engine/chat
+module github.com/game_engine/chat
 
 go 1.25
 

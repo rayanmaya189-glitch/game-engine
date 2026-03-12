@@ -1,4 +1,4 @@
-module github.com/game-engine/betting
+module github.com/game_engine/betting
 
 go 1.25
 

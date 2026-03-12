@@ -122,7 +122,7 @@ func (m *AuthMiddleware) GenerateToken(userID, username, role string) (string, e
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(m.config.JWTExpiration)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			Issuer:    "game-engine",
+			Issuer:    "game_engine",
 		},
 	}
 
@@ -137,7 +137,7 @@ func (m *AuthMiddleware) GenerateRefreshToken(userID string) (string, error) {
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(time.Now().Add(m.config.RefreshExpiration)),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),
-			Issuer:    "game-engine",
+			Issuer:    "game_engine",
 			Subject:   "refresh",
 		},
 	}

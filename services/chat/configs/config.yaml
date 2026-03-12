@@ -10,14 +10,14 @@ redis:
 nats:
   urls:
     - "nats://10.100.1.12:4222"
-  cluster_id: "game-engine"
+  cluster_id: "game_engine"
   client_id: "chat"
 
 database:
   host: "10.100.1.10"
   port: 5432
-  user: "game-engine"
-  password: "game-engine"
+  user: "game_engine"
+  password: "game_engine"
   name: "chat"
   ssl_mode: "disable"
 

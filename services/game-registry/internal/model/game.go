@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	"github.com/game-engine/game-registry/internal/enums"
+	"github.com/game_engine/game-registry/internal/enums"
 )
 
 // Game represents a game in the catalog

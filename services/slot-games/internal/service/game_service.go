@@ -3,7 +3,7 @@ package service
 import (
 	"errors"
 
-	"github.com/game-engine/slot-games/internal/games"
+	"github.com/game_engine/slot-games/internal/games"
 )
 
 // GameService manages slot games

@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	paymentpb "github.com/game-engine/gen/go/game-engine/payment/v1"
+	paymentpb "github.com/game_engine/gen/go/game_engine/payment/v1"
 )
 
 type PaymentClient struct {

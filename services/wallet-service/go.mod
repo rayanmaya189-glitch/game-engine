@@ -1,4 +1,4 @@
-module github.com/game-engine/wallet-service
+module github.com/game_engine/wallet-service
 
 go 1.25.0
 
@@ -12,4 +12,4 @@ require (
 )
 
 
-replace github.com/game-engine/gen/go => ../../proto/gen/go
+replace github.com/game_engine/gen/go => ../../proto/gen/go

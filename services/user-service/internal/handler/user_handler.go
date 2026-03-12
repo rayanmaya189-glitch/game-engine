@@ -3,10 +3,10 @@ package handler
 import (
 	"context"
 
-	userv1 "game-engine/gen/go/user/v1"
+	userv1 "game_engine/gen/go/user/v1"
 
-	"github.com/game-engine/user-service/internal/model"
-	"github.com/game-engine/user-service/internal/service"
+	"github.com/game_engine/user-service/internal/model"
+	"github.com/game_engine/user-service/internal/service"
 )
 
 // UserHandler handles gRPC requests for user service

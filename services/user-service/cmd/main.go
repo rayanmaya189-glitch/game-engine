@@ -11,12 +11,12 @@ import (
 	"syscall"
 	"time"
 
-	userv1 "game-engine/gen/go/user/v1"
+	userv1 "game_engine/gen/go/user/v1"
 
-	"github.com/game-engine/user-service/internal/config"
-	"github.com/game-engine/user-service/internal/handler"
-	"github.com/game-engine/user-service/internal/repository"
-	"github.com/game-engine/user-service/internal/service"
+	"github.com/game_engine/user-service/internal/config"
+	"github.com/game_engine/user-service/internal/handler"
+	"github.com/game_engine/user-service/internal/repository"
+	"github.com/game_engine/user-service/internal/service"
 
 	_ "github.com/lib/pq"
 	"github.com/nats-io/nats.go"

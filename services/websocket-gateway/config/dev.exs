@@ -25,8 +25,8 @@ config :websocket_gateway, :redis,
 config :websocket_gateway, :jwt,
   secret_key: "dev-secret-key-change-in-development-only",
   algorithm: "HS256",
-  issuer: "game-engine-dev",
-  audience: "game-engine-dev",
+  issuer: "game_engine-dev",
+  audience: "game_engine-dev",
   expiration: 86400
 
 # WebSocket for development

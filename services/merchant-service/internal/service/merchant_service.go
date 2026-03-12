@@ -4,9 +4,9 @@ import (
 	"context"
 	"strconv"
 
-	merchantpb "github.com/game-engine/gen/go/game-engine/merchant/v1"
-	"github.com/game-engine/merchant-service/internal/config"
-	"github.com/game-engine/merchant-service/internal/repository"
+	merchantpb "github.com/game_engine/gen/go/game_engine/merchant/v1"
+	"github.com/game_engine/merchant-service/internal/config"
+	"github.com/game_engine/merchant-service/internal/repository"
 )
 
 type MerchantService struct {

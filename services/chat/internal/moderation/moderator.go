@@ -7,7 +7,7 @@ import (
 
 	"github.com/redis/go-redis/v9"
 
-	"github.com/game-engine/chat/internal/room"
+	"github.com/game_engine/chat/internal/room"
 )
 
 // ModerationAction represents a moderation action

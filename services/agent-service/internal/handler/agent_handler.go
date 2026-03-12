@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	"github.com/game-engine/agent-service/internal/service"
-	agentpb "github.com/game-engine/gen/go/game-engine/agent/v1"
+	"github.com/game_engine/agent-service/internal/service"
+	agentpb "github.com/game_engine/gen/go/game_engine/agent/v1"
 )
 
 // Ensure AgentHandler implements the server interface
