@@ -1,20 +1,21 @@
 server:
-  port: 9030
+  port: 8081
 
 spring:
   application:
     name: payment-service
-
+  
   datasource:
-    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:payment_db}
-    username: ${DB_USER:postgres}
-    password: ${DB_PASSWORD:postgres}
+    url: jdbc:postgresql://${DATABASE_HOST:localhost}:${DATABASE_PORT:5432}/${DATABASE_NAME:casino_payments}
+    username: ${DATABASE_USER:postgres}
+    password: ${DATABASE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
     hikari:
       maximum-pool-size: 20
       minimum-idle: 5
-      connection-timeout: 30000
-
+      idle-timeout: 300000
+      connection-timeout: 20000
+  
   jpa:
     hibernate:
       ddl-auto: validate
@@ -23,96 +24,63 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
-
+  
   flyway:
     enabled: true
-    locations: classpath:db/migration
     baseline-on-migrate: true
-
+    locations: classpath:db/migration
+  
   data:
     redis:
       host: ${REDIS_HOST:localhost}
       port: ${REDIS_PORT:6379}
-      password: ${REDIS_PASSWORD:}
-      timeout: 5000ms
+      database: 0
+  
+  rabbitmq:
+    host: ${RABBITMQ_HOST:localhost}
+    port: ${RABBITMQ_PORT:5672}
+    username: ${RABBITMQ_USER:guest}
+    password: ${RABBITMQ_PASSWORD:guest}
 
-# Payment Gateway Configuration
-payment:
-  stripe:
-    api-key: ${STRIPE_API_KEY:}
-    webhook-secret: ${STRIPE_WEBHOOK_SECRET:}
-    enabled: false
-
-  paypal:
-    client-id: ${PAYPAL_CLIENT_ID:}
-    client-secret: ${PAYPAL_CLIENT_SECRET:}
-    mode: ${PAYPAL_MODE:sandbox}
-    enabled: false
-
-  skrill:
-    email: ${SKRILL_EMAIL:}
-    password: ${SKRILL_PASSWORD:}
-    enabled: false
-
-  neteller:
-    account-id: ${NETELLER_ACCOUNT_ID:}
-    api-key: ${NETELLER_API_KEY:}
-    enabled: false
-
-  crypto:
-    bitcoin:
-      wallet-address: ${BITCOIN_WALLET:}
-      api-key: ${BITCOIN_API_KEY:}
-    ethereum:
-      wallet-address: ${ETHEREUM_WALLET:}
-      rpc-url: ${ETHEREUM_RPC_URL:}
-    enabled: false
-
-# Currency Configuration
-currency:
-  default: USD
-  supported:
-    - USD
-    - EUR
-    - GBP
-    - BTC
-    - ETH
-
-# Transaction Limits
-limits:
-  min-deposit: 10.00
-  max-deposit: 50000.00
-  min-withdrawal: 20.00
-  max-withdrawal: 50000.00
-
-# AML/KYC Requirements
-compliance:
-  require-kyc-for-deposit: true
-  require-kyc-for-withdrawal: true
-  daily-deposit-limit: 100000.00
-  weekly-deposit-limit: 250000.00
-  monthly-deposit-limit: 500000.00
-
-# gRPC Configuration
 grpc:
   server:
-    port: 8030
+    port: 9012
   client:
     wallet-service:
-      address: ${WALLET_SERVICE_HOST:localhost}:${WALLET_SERVICE_PORT:8010}
+      address: ${WALLET_SERVICE_HOST:localhost}:${WALLET_SERVICE_PORT:9011}
+    risk-service:
+      address: ${RISK_SERVICE_HOST:localhost}:${RISK_SERVICE_PORT:9016}
 
-# Logging
+payment:
+  limits:
+    deposit:
+      min: 10
+      max: 10000
+    withdrawal:
+      min: 20
+      max: 50000
+      auto-approve-threshold: 1000
+  risk:
+    threshold:
+      low: 25
+      medium: 50
+      high: 75
+  gateway:
+    stripe:
+      api-key: ${STRIPE_API_KEY:}
+      webhook-secret: ${STRIPE_WEBHOOK_SECRET:}
+      auto-payout: false
+    adyen:
+      api-key: ${ADYEN_API_KEY:}
+      merchant-account: ${ADYEN_MERCHANT_ACCOUNT:}
+      environment: ${ADYEN_ENVIRONMENT:test}
+    skrill:
+      email: ${SKRILL_EMAIL:}
+      password: ${SKRILL_PASSWORD:}
+      merchant-id: ${SKRILL_MERCHANT_ID:}
+
 logging:
   level:
-    com.game_engine.payment: INFO
+    root: INFO
+    com.game_engine.payment: DEBUG
     org.springframework.web: INFO
-
-# Actuator
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,prometheus
-  endpoint:
-    health:
-      show-details: when-authorized

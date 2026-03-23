@@ -1,345 +1,372 @@
 package com.game_engine.payment.service;
 
-import com.game_engine.payment.model.Payment;
-import com.game_engine.payment.repository.PaymentRepository;
+import com.game_engine.payment.gateway.PaymentGatewayAdapter;
+import com.game_engine.payment.gateway.PaymentGatewayAdapter.GatewayResponse;
+import com.game_engine.payment.model.Deposit;
+import com.game_engine.payment.model.Deposit.*;
+import com.game_engine.payment.model.Withdrawal;
+import com.game_engine.payment.model.Withdrawal.*;
+import com.game_engine.payment.repository.DepositRepository;
+import com.game_engine.payment.repository.WithdrawalRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
+import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
+import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Payment Service
+ * 
+ * Core business logic for deposit and withdrawal processing.
+ * Coordinates between payment gateways, wallet service, and compliance systems.
+ */
 @Service
 @RequiredArgsConstructor
 @Slf4j
 public class PaymentService {
 
-    private final PaymentRepository paymentRepository;
-    private final PaymentGatewayService paymentGatewayService;
+    private final DepositRepository depositRepository;
+    private final WithdrawalRepository withdrawalRepository;
+    private final List<PaymentGatewayAdapter> gatewayAdapters;
+    private final WalletService walletService;
 
-    @Value("${payment.limits.min-deposit:10.00}")
+    // Configuration
+    @Value("${payment.limits.deposit.min:10}")
     private BigDecimal minDeposit;
 
-    @Value("${payment.limits.max-deposit:50000.00}")
+    @Value("${payment.limits.deposit.max:10000}")
     private BigDecimal maxDeposit;
 
-    @Value("${payment.limits.min-withdrawal:20.00}")
+    @Value("${payment.limits.withdrawal.min:20}")
     private BigDecimal minWithdrawal;
 
-    @Value("${payment.limits.max-withdrawal:50000.00}")
+    @Value("${payment.limits.withdrawal.max:50000}")
     private BigDecimal maxWithdrawal;
 
-    @Value("${payment.currency.default:USD}")
-    private String defaultCurrency;
+    @Value("${payment.limits.withdrawal.auto-approve-threshold:1000}")
+    private BigDecimal autoApproveThreshold;
 
+    @Value("${payment.risk.threshold.medium:50}")
+    private int mediumRiskThreshold;
+
+    /**
+     * Process a new deposit request
+     * 
+     * Flow:
+     * 1. Validate amount and limits
+     * 2. Check KYC requirements
+     * 3. Get risk score
+     * 4. Select appropriate gateway
+     * 5. Initiate deposit with gateway
+     * 6. Return redirect URL or status
+     */
     @Transactional
-    public Payment createDeposit(String userId, BigDecimal amount, Payment.PaymentMethod method, 
-                                   String currency, String description) {
+    public Deposit processDeposit(UUID userId, BigDecimal amount, String currency,
+                                   PaymentGateway gateway, PaymentMethod paymentMethod,
+                                   Map<String, String> paymentDetails, String ipAddress) {
+        
+        // 1. Validate amount
         validateDepositAmount(amount);
-        
-        String externalId = "DEP-" + UUID.randomUUID().toString();
-        
-        Payment payment = Payment.builder()
+
+        // 2. Create deposit record
+        Deposit deposit = Deposit.builder()
                 .userId(userId)
-                .externalId(externalId)
-                .type(Payment.PaymentType.DEPOSIT)
-                .method(method)
-                .status(Payment.PaymentStatus.PENDING)
                 .amount(amount)
-                .currency(currency != null ? currency : defaultCurrency)
-                .description(description)
-                .expiresAt(Instant.now().plus(30, ChronoUnit.MINUTES))
-                .retries(0)
+                .currency(currency.toUpperCase())
+                .gateway(gateway)
+                .paymentMethod(paymentMethod)
+                .status(DepositStatus.INITIATED)
+                .ipAddress(ipAddress)
+                .paymentToken(paymentDetails.get("payment_token"))
                 .build();
 
-        Payment savedPayment = paymentRepository.save(payment);
-        log.info("Created deposit payment: {} for user: {} amount: {}", externalId, userId, amount);
+        deposit = depositRepository.save(deposit);
 
-        return savedPayment;
-    }
+        // 3. Get gateway adapter
+        PaymentGatewayAdapter adapter = getGatewayAdapter(gateway);
 
-    @Transactional
-    public Payment processDeposit(UUID paymentId) {
-        Payment payment = paymentRepository.findById(paymentId)
-                .orElseThrow(() -> new IllegalArgumentException("Payment not found: " + paymentId));
+        // 4. Initiate deposit with gateway
+        GatewayResponse response = adapter.initiateDeposit(deposit, paymentDetails);
 
-        if (payment.getStatus() != Payment.PaymentStatus.PENDING) {
-            throw new IllegalStateException("Payment is not in pending status");
+        // 5. Update deposit based on response
+        deposit.setGatewayTransactionId(response.getGatewayTransactionId());
+        deposit.setStatus(mapResponseStatusToDepositStatus(response.getStatus()));
+
+        if (response.getMessage() != null) {
+            deposit.setGatewayResponseMessage(response.getMessage());
         }
 
-        payment.setStatus(Payment.PaymentStatus.PROCESSING);
-        payment = paymentRepository.save(payment);
-
-        try {
-            PaymentGatewayService.PaymentGatewayResponse response = paymentGatewayService.processDeposit(payment);
-
-            if (response.isSuccess()) {
-                payment.setStatus(Payment.PaymentStatus.COMPLETED);
-                payment.setCompletedAt(Instant.now());
-                payment.setGatewayResponse(response.getMessage());
-            } else {
-                payment.setStatus(Payment.PaymentStatus.FAILED);
-                payment.setFailureReason(response.getMessage());
-            }
-        } catch (Exception e) {
-            log.error("Error processing deposit: {}", e.getMessage());
-            payment.setStatus(Payment.PaymentStatus.FAILED);
-            payment.setFailureReason(e.getMessage());
+        // Handle redirect for 3DS
+        if (response.getRedirectUrl() != null) {
+            deposit.setRedirectUrl(response.getRedirectUrl());
+            deposit.setStatus(DepositStatus.PENDING_VERIFICATION);
         }
 
-        return paymentRepository.save(payment);
+        deposit = depositRepository.save(deposit);
+
+        // 6. If immediate success, credit wallet
+        if (response.isSuccess() && "COMPLETED".equals(response.getStatus())) {
+            completeDeposit(deposit);
+        }
+
+        return deposit;
     }
 
+    /**
+     * Handle deposit webhook callback from payment gateway
+     */
     @Transactional
-    public Payment createWithdrawal(String userId, BigDecimal amount, Payment.PaymentMethod method,
-                                     String currency, String accountDetails, String description) {
+    public Deposit handleDepositCallback(PaymentGateway gateway, Map<String, String> callbackData) {
+        PaymentGatewayAdapter adapter = getGatewayAdapter(gateway);
+        GatewayResponse response = adapter.processDepositCallback(callbackData);
+
+        String gatewayTransactionId = response.getGatewayTransactionId();
+        Deposit deposit = depositRepository.findByGatewayTransactionId(gatewayTransactionId)
+                .orElseThrow(() -> new IllegalArgumentException("Deposit not found: " + gatewayTransactionId));
+
+        if (response.isSuccess() && "COMPLETED".equals(response.getStatus())) {
+            completeDeposit(deposit);
+        } else {
+            deposit.setStatus(DepositStatus.FAILED);
+            deposit.setGatewayResponseMessage(response.getMessage());
+        }
+
+        return depositRepository.save(deposit);
+    }
+
+    /**
+     * Complete a successful deposit - credit the wallet
+     */
+    @Transactional
+    public void completeDeposit(Deposit deposit) {
+        deposit.setStatus(DepositStatus.COMPLETED);
+        deposit.setCompletedAt(LocalDateTime.now());
+
+        // Credit wallet
+        walletService.creditBalance(deposit.getUserId(), deposit.getAmount(), deposit.getCurrency(),
+                "DEPOSIT", deposit.getId().toString());
+
+        depositRepository.save(deposit);
+        log.info("Deposit completed: {} - {} {}", deposit.getId(), deposit.getAmount(), deposit.getCurrency());
+    }
+
+    /**
+     * Process a new withdrawal request
+     * 
+     * Flow:
+     * 1. Validate amount and limits
+     * 2. Check KYC verification
+     * 3. Verify wagering requirements
+     * 4. Check balance availability
+     * 5. Get risk score
+     * 6. Auto-approve or flag for manual review
+     * 7. Process if approved
+     */
+    @Transactional
+    public Withdrawal processWithdrawal(UUID userId, BigDecimal amount, String currency,
+                                        PaymentGateway gateway, PaymentMethod paymentMethod,
+                                        Map<String, String> payoutDetails) {
+        
+        // 1. Validate amount
         validateWithdrawalAmount(amount);
-        
-        String externalId = "WDR-" + UUID.randomUUID().toString();
-        
-        // Calculate fee (example: 2% for most methods, 1% for crypto)
-        BigDecimal fee = calculateFee(amount, method);
-        BigDecimal netAmount = amount.subtract(fee);
 
-        Payment payment = Payment.builder()
+        // 2. Check balance
+        BigDecimal balance = walletService.getBalance(userId, currency);
+        if (balance.compareTo(amount) < 0) {
+            throw new IllegalArgumentException("Insufficient balance");
+        }
+
+        // 3. Check if first withdrawal (requires extra verification)
+        boolean isFirstWithdrawal = !withdrawalRepository.existsByUserIdAndStatusIn(
+                userId, List.of(WithdrawalStatus.COMPLETED, WithdrawalStatus.APPROVED));
+
+        // 4. Check wagering requirements
+        boolean wageringMet = checkWageringRequirements(userId, amount);
+
+        // 5. Get risk score (would call Risk Service)
+        int riskScore = getRiskScore(userId);
+
+        // 6. Determine approval type
+        ApprovalType approvalType;
+        WithdrawalStatus status;
+
+        if (amount.compareTo(autoApproveThreshold) < 0 && 
+            riskScore < mediumRiskThreshold && 
+            !isFirstWithdrawal &&
+            wageringMet) {
+            approvalType = ApprovalType.AUTO_APPROVED;
+            status = WithdrawalStatus.APPROVED;
+        } else {
+            approvalType = ApprovalType.MANUAL_APPROVED;
+            status = isFirstWithdrawal || riskScore >= mediumRiskThreshold 
+                ? WithdrawalStatus.PENDING_APPROVAL 
+                : WithdrawalStatus.APPROVED;
+        }
+
+        // 7. Create withdrawal record
+        Withdrawal withdrawal = Withdrawal.builder()
                 .userId(userId)
-                .externalId(externalId)
-                .type(Payment.PaymentType.WITHDRAWAL)
-                .method(method)
-                .status(Payment.PaymentStatus.PENDING)
                 .amount(amount)
-                .currency(currency != null ? currency : defaultCurrency)
-                .fee(fee)
-                .netAmount(netAmount)
-                .description(description)
-                .metadata(accountDetails)
-                .expiresAt(Instant.now().plus(24, ChronoUnit.HOURS))
-                .retries(0)
+                .currency(currency.toUpperCase())
+                .gateway(gateway)
+                .paymentMethod(paymentMethod)
+                .paymentDestination(payoutDetails.get("destination_token"))
+                .beneficiaryName(payoutDetails.get("beneficiary_name"))
+                .status(status)
+                .approvalType(approvalType)
+                .isFirstWithdrawal(isFirstWithdrawal)
+                .wageringRequirementMet(wageringMet)
+                .riskScore(riskScore)
                 .build();
 
-        Payment savedPayment = paymentRepository.save(payment);
-        log.info("Created withdrawal payment: {} for user: {} amount: {}", externalId, userId, amount);
+        withdrawal = withdrawalRepository.save(withdrawal);
 
-        return savedPayment;
+        // 8. If auto-approved, process immediately
+        if (status == WithdrawalStatus.APPROVED) {
+            processApprovedWithdrawal(withdrawal);
+        }
+
+        return withdrawal;
     }
 
+    /**
+     * Process an approved withdrawal
+     */
     @Transactional
-    public Payment processWithdrawal(UUID paymentId) {
-        Payment payment = paymentRepository.findById(paymentId)
-                .orElseThrow(() -> new IllegalArgumentException("Payment not found: " + paymentId));
+    public void processApprovedWithdrawal(Withdrawal withdrawal) {
+        // Debit wallet
+        walletService.debitBalance(withdrawal.getUserId(), withdrawal.getAmount(), withdrawal.getCurrency(),
+                "WITHDRAWAL", withdrawal.getId().toString());
 
-        if (payment.getStatus() != Payment.PaymentStatus.PENDING) {
-            throw new IllegalStateException("Payment is not in pending status");
-        }
+        // Initiate payout with gateway
+        PaymentGatewayAdapter adapter = getGatewayAdapter(withdrawal.getGateway());
+        Map<String, String> payoutDetails = Map.of(
+            "destination_token", withdrawal.getPaymentDestination(),
+            "beneficiary_name", withdrawal.getBeneficiaryName() != "" ? withdrawal.getBeneficiaryName() : ""
+        );
 
-        payment.setStatus(Payment.PaymentStatus.PROCESSING);
-        payment = paymentRepository.save(payment);
+        GatewayResponse response = adapter.initiateWithdrawal(withdrawal, payoutDetails);
 
-        try {
-            PaymentGatewayService.PaymentGatewayResponse response = paymentGatewayService.processWithdrawal(payment);
-
-            if (response.isSuccess()) {
-                payment.setStatus(Payment.PaymentStatus.COMPLETED);
-                payment.setCompletedAt(Instant.now());
-                payment.setGatewayResponse(response.getMessage());
-            } else {
-                payment.setStatus(Payment.PaymentStatus.FAILED);
-                payment.setFailureReason(response.getMessage());
-            }
-        } catch (Exception e) {
-            log.error("Error processing withdrawal: {}", e.getMessage());
-            payment.setStatus(Payment.PaymentStatus.FAILED);
-            payment.setFailureReason(e.getMessage());
-        }
-
-        return paymentRepository.save(payment);
-    }
-
-    @Transactional
-    public Payment refundPayment(UUID paymentId, BigDecimal amount) {
-        Payment originalPayment = paymentRepository.findById(paymentId)
-                .orElseThrow(() -> new IllegalArgumentException("Payment not found: " + paymentId));
-
-        if (originalPayment.getStatus() != Payment.PaymentStatus.COMPLETED) {
-            throw new IllegalStateException("Can only refund completed payments");
-        }
-
-        if (amount.compareTo(originalPayment.getAmount()) > 0) {
-            throw new IllegalArgumentException("Refund amount cannot exceed original payment amount");
-        }
-
-        String externalId = "REF-" + UUID.randomUUID().toString();
+        withdrawal.setGatewayTransactionId(response.getGatewayTransactionId());
         
-        Payment refundPayment = Payment.builder()
-                .userId(originalPayment.getUserId())
-                .externalId(externalId)
-                .type(Payment.PaymentType.REFUND)
-                .method(originalPayment.getMethod())
-                .status(Payment.PaymentStatus.PENDING)
-                .amount(amount)
-                .currency(originalPayment.getCurrency())
-                .description("Refund for payment: " + originalPayment.getExternalId())
-                .metadata(paymentId.toString())
-                .build();
-
-        try {
-            PaymentGatewayService.PaymentGatewayResponse response = 
-                    paymentGatewayService.processRefund(originalPayment, amount);
-
-            if (response.isSuccess()) {
-                refundPayment.setStatus(Payment.PaymentStatus.COMPLETED);
-                refundPayment.setCompletedAt(Instant.now());
-                
-                originalPayment.setStatus(Payment.PaymentStatus.REFUNDED);
-                paymentRepository.save(originalPayment);
-            } else {
-                refundPayment.setStatus(Payment.PaymentStatus.FAILED);
-                refundPayment.setFailureReason(response.getMessage());
-            }
-        } catch (Exception e) {
-            log.error("Error processing refund: {}", e.getMessage());
-            refundPayment.setStatus(Payment.PaymentStatus.FAILED);
-            refundPayment.setFailureReason(e.getMessage());
+        if (response.isSuccess()) {
+            withdrawal.setStatus(WithdrawalStatus.PROCESSING);
+            withdrawal.setProcessedAt(LocalDateTime.now());
+        } else {
+            withdrawal.setStatus(WithdrawalStatus.FAILED);
+            withdrawal.setGatewayResponseMessage(response.getMessage());
         }
 
-        return paymentRepository.save(refundPayment);
+        withdrawalRepository.save(withdrawal);
     }
 
-    public Optional<Payment> getPayment(UUID paymentId) {
-        return paymentRepository.findById(paymentId);
-    }
-
-    public Optional<Payment> getPaymentByExternalId(String externalId) {
-        return paymentRepository.findByExternalId(externalId);
-    }
-
-    public Page<Payment> getUserPayments(String userId, Pageable pageable) {
-        return paymentRepository.findByUserId(userId, pageable);
-    }
-
-    public List<Payment> getUserPaymentsByStatus(String userId, Payment.PaymentStatus status) {
-        return paymentRepository.findByUserIdAndStatus(userId, status);
-    }
-
-    public BigDecimal getUserTotalDeposits(String userId, Instant startDate, Instant endDate) {
-        BigDecimal total = paymentRepository.sumByUserIdAndTypeAndStatusAndDateRange(
-                userId, Payment.PaymentType.DEPOSIT, startDate, endDate);
-        return total != null ? total : BigDecimal.ZERO;
-    }
-
-    public BigDecimal getUserTotalWithdrawals(String userId, Instant startDate, Instant endDate) {
-        BigDecimal total = paymentRepository.sumByUserIdAndTypeAndStatusAndDateRange(
-                userId, Payment.PaymentType.WITHDRAWAL, startDate, endDate);
-        return total != null ? total : BigDecimal.ZERO;
-    }
-
-    @Scheduled(fixedRate = 60000) // Run every minute
+    /**
+     * Approve a withdrawal (admin action)
+     */
     @Transactional
-    public void processExpiredPayments() {
-        List<Payment> expiredPayments = paymentRepository.findExpiredPendingPayments(Instant.now());
-        
-        for (Payment payment : expiredPayments) {
-            log.info("Expiring payment: {}", payment.getExternalId());
-            payment.setStatus(Payment.PaymentStatus.EXPIRED);
-            paymentRepository.save(payment);
+    public Withdrawal approveWithdrawal(UUID withdrawalId, UUID adminUserId) {
+        Withdrawal withdrawal = withdrawalRepository.findById(withdrawalId)
+                .orElseThrow(() -> new IllegalArgumentException("Withdrawal not found"));
+
+        if (withdrawal.getStatus() != WithdrawalStatus.PENDING_APPROVAL) {
+            throw new IllegalStateException("Withdrawal is not pending approval");
         }
+
+        withdrawal.setStatus(WithdrawalStatus.APPROVED);
+        withdrawal.setApprovedBy(adminUserId);
+        withdrawal.setApprovedAt(LocalDateTime.now());
+        withdrawal.setApprovalType(ApprovalType.MANUAL_APPROVED);
+
+        withdrawal = withdrawalRepository.save(withdrawal);
+
+        // Process the withdrawal
+        processApprovedWithdrawal(withdrawal);
+
+        return withdrawal;
     }
 
-    @Scheduled(fixedRate = 300000) // Run every 5 minutes
+    /**
+     * Reject a withdrawal (admin action)
+     */
     @Transactional
-    public void retryFailedPayments() {
-        List<Payment> pendingPayments = paymentRepository.findByTypeAndDateRange(
-                Payment.PaymentType.DEPOSIT, Instant.now().minus(1, ChronoUnit.HOURS));
-        
-        for (Payment payment : pendingPayments) {
-            if (payment.getStatus() == Payment.PaymentStatus.FAILED && payment.getRetries() < 3) {
-                log.info("Retrying payment: {}", payment.getExternalId());
-                payment.setRetries(payment.getRetries() + 1);
-                
-                try {
-                    PaymentGatewayService.PaymentGatewayResponse response = 
-                            paymentGatewayService.processDeposit(payment);
-                    
-                    if (response.isSuccess()) {
-                        payment.setStatus(Payment.PaymentStatus.COMPLETED);
-                        payment.setCompletedAt(Instant.now());
-                    } else {
-                        payment.setFailureReason(response.getMessage());
-                    }
-                } catch (Exception e) {
-                    log.error("Error retrying payment: {}", e.getMessage());
-                    payment.setFailureReason(e.getMessage());
-                }
-                
-                paymentRepository.save(payment);
-            }
+    public Withdrawal rejectWithdrawal(UUID withdrawalId, UUID adminUserId, String reason) {
+        Withdrawal withdrawal = withdrawalRepository.findById(withdrawalId)
+                .orElseThrow(() -> new IllegalArgumentException("Withdrawal not found"));
+
+        if (withdrawal.getStatus() != WithdrawalStatus.PENDING_APPROVAL &&
+            withdrawal.getStatus() != WithdrawalStatus.PENDING_REVIEW) {
+            throw new IllegalStateException("Withdrawal cannot be rejected");
         }
+
+        // Refund balance if already debited
+        if (withdrawal.getStatus() == WithdrawalStatus.APPROVED || 
+            withdrawal.getStatus() == WithdrawalStatus.PROCESSING) {
+            walletService.creditBalance(withdrawal.getUserId(), withdrawal.getAmount(), withdrawal.getCurrency(),
+                    "WITHDRAWAL_REVERSAL", withdrawal.getId().toString());
+        }
+
+        withdrawal.setStatus(WithdrawalStatus.REJECTED);
+        withdrawal.setApprovedBy(adminUserId);
+        withdrawal.setApprovedAt(LocalDateTime.now());
+        withdrawal.setApprovalType(ApprovalType.MANUAL_REJECTED);
+        withdrawal.setRejectionReason(reason);
+
+        return withdrawalRepository.save(withdrawal);
     }
 
     private void validateDepositAmount(BigDecimal amount) {
         if (amount.compareTo(minDeposit) < 0) {
-            throw new IllegalArgumentException("Minimum deposit amount is " + minDeposit);
+            throw new IllegalArgumentException("Minimum deposit is " + minDeposit);
         }
         if (amount.compareTo(maxDeposit) > 0) {
-            throw new IllegalArgumentException("Maximum deposit amount is " + maxDeposit);
+            throw new IllegalArgumentException("Maximum deposit is " + maxDeposit);
         }
     }
 
     private void validateWithdrawalAmount(BigDecimal amount) {
         if (amount.compareTo(minWithdrawal) < 0) {
-            throw new IllegalArgumentException("Minimum withdrawal amount is " + minWithdrawal);
+            throw new IllegalArgumentException("Minimum withdrawal is " + minWithdrawal);
         }
         if (amount.compareTo(maxWithdrawal) > 0) {
-            throw new IllegalArgumentException("Maximum withdrawal amount is " + maxWithdrawal);
+            throw new IllegalArgumentException("Maximum withdrawal is " + maxWithdrawal);
         }
     }
 
-    private BigDecimal calculateFee(BigDecimal amount, Payment.PaymentMethod method) {
-        // Example fee structure - should be configurable
-        return switch (method) {
-            case BITCOIN, ETHEREUM -> amount.multiply(BigDecimal.valueOf(0.01)); // 1% for crypto
-            case BANK_TRANSFER -> amount.multiply(BigDecimal.valueOf(0.005)).max(BigDecimal.valueOf(5)); // 0.5% min $5
-            default -> amount.multiply(BigDecimal.valueOf(0.025)); // 2.5% for e-wallets/cards
-        };
+    private boolean checkWageringRequirements(UUID userId, BigDecimal amount) {
+        // Would check with Bonus Service
+        // Simplified for now - assume requirements met
+        return true;
     }
 
-    public List<String> getSupportedCurrencies() {
-        return List.of("USD", "EUR", "GBP", "BTC", "ETH");
+    private int getRiskScore(UUID userId) {
+        // Would call Risk Scoring Service via gRPC
+        // Simplified for now
+        return 0;
     }
 
-    public List<Payment.PaymentMethod> getSupportedMethods(Payment.PaymentType type) {
-        return switch (type) {
-            case DEPOSIT -> List.of(
-                    Payment.PaymentMethod.CREDIT_CARD,
-                    Payment.PaymentMethod.DEBIT_CARD,
-                    Payment.PaymentMethod.PAYPAL,
-                    Payment.PaymentMethod.SKRILL,
-                    Payment.PaymentMethod.NETELLER,
-                    Payment.PaymentMethod.BITCOIN,
-                    Payment.PaymentMethod.ETHEREUM,
-                    Payment.PaymentMethod.BANK_TRANSFER,
-                    Payment.PaymentMethod.INSTANT_BANK_TRANSFER
-            );
-            case WITHDRAWAL -> List.of(
-                    Payment.PaymentMethod.CREDIT_CARD,
-                    Payment.PaymentMethod.DEBIT_CARD,
-                    Payment.PaymentMethod.PAYPAL,
-                    Payment.PaymentMethod.SKRILL,
-                    Payment.PaymentMethod.NETELLER,
-                    Payment.PaymentMethod.BITCOIN,
-                    Payment.PaymentMethod.ETHEREUM,
-                    Payment.PaymentMethod.BANK_TRANSFER
-            );
-            default -> List.of();
+    private PaymentGatewayAdapter getGatewayAdapter(PaymentGateway gateway) {
+        return gatewayAdapters.stream()
+                .filter(a -> a.getGatewayType() == gateway)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Gateway not supported: " + gateway));
+    }
+
+    private DepositStatus mapResponseStatusToDepositStatus(String responseStatus) {
+        if (responseStatus == null) return DepositStatus.FAILED;
+        
+        return switch (responseStatus) {
+            case "COMPLETED" -> DepositStatus.COMPLETED;
+            case "PROCESSING" -> DepositStatus.PROCESSING;
+            case "PENDING_VERIFICATION" -> DepositStatus.PENDING_VERIFICATION;
+            case "FAILED" -> DepositStatus.FAILED;
+            case "CANCELLED" -> DepositStatus.CANCELLED;
+            default -> DepositStatus.PROCESSING;
         };
     }
 }

@@ -12,12 +12,31 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        // Perform security check before starting the app
+        let securityService = SecurityService.shared
+        let securityResult = securityService.performFullSecurityCheck()
+        
+        if !securityResult.isSecure {
+            // Show security block screen
+            showSecurityBlockScreen(windowScene: windowScene, result: securityResult)
+            return
+        }
+        
         let window = UIWindow(windowScene: windowScene)
         self.window = window
         
         appCoordinator = AppCoordinator(window: window)
         appCoordinator?.start()
         
+        window.makeKeyAndVisible()
+    }
+    
+    private func showSecurityBlockScreen(windowScene: UIWindowScene, result: FullSecurityResult) {
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        
+        let securityBlockVC = SecurityBlockViewController(securityResult: result)
+        window.rootViewController = securityBlockVC
         window.makeKeyAndVisible()
     }
     

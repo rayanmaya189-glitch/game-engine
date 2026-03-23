@@ -2,6 +2,8 @@ package service
 
 import (
 	"context"
+	"sort"
+	"strings"
 	"time"
 
 	"github.com/game_engine/chat/internal/room"
@@ -98,4 +100,99 @@ func (s *ChatService) GetMessageHistory(ctx context.Context, roomID string, befo
 	}
 
 	return result, nil
+}
+
+// SearchMessages searches messages by keyword in a room
+func (s *ChatService) SearchMessages(ctx context.Context, roomID, query string, limit int) ([]room.Message, error) {
+	if limit <= 0 {
+		limit = 50
+	}
+	if limit > 100 {
+		limit = 100
+	}
+
+	messages, err := s.manager.GetMessages(ctx, roomID, 500)
+	if err != nil {
+		return nil, err
+	}
+
+	result := make([]room.Message, 0)
+	for _, msg := range messages {
+		if strings.Contains(strings.ToLower(msg.Content), strings.ToLower(query)) {
+			result = append(result, msg)
+			if len(result) >= limit {
+				break
+			}
+		}
+	}
+
+	return result, nil
+}
+
+// GetUserMessageHistory gets all messages sent by a user
+func (s *ChatService) GetUserMessageHistory(ctx context.Context, userID string, limit int) ([]room.Message, error) {
+	if limit <= 0 {
+		limit = 50
+	}
+	if limit > 100 {
+		limit = 100
+	}
+
+	// Get all rooms
+	rooms, err := s.manager.ListRooms(ctx, "")
+	if err != nil {
+		return nil, err
+	}
+
+	var allMessages []room.Message
+	for _, rm := range rooms {
+		msgs, err := s.manager.GetMessages(ctx, rm.ID, 100)
+		if err != nil {
+			continue
+		}
+		allMessages = append(allMessages, msgs...)
+	}
+
+	// Filter by userID
+	result := make([]room.Message, 0)
+	for _, msg := range allMessages {
+		if msg.UserID == userID {
+			result = append(result, msg)
+			if len(result) >= limit {
+				break
+			}
+		}
+	}
+
+	// Sort by timestamp descending
+	sort.Slice(result, func(i, j int) bool {
+		return result[i].Timestamp.After(result[j].Timestamp)
+	})
+
+	return result, nil
+}
+
+// GetRoomStatistics gets room statistics
+func (s *ChatService) GetRoomStatistics(ctx context.Context, roomID string) (*room.RoomStats, error) {
+	return s.manager.GetRoomStats(ctx, roomID)
+}
+
+// SetTypingIndicator sets user typing status
+func (s *ChatService) SetTypingIndicator(ctx context.Context, roomID, userID string, isTyping bool) error {
+	return s.manager.SetTypingIndicator(ctx, roomID, userID, isTyping)
+}
+
+// GetTypingUsers gets users currently typing in a room
+func (s *ChatService) GetTypingUsers(ctx context.Context, roomID string) ([]string, error) {
+	return s.manager.GetTypingUsers(ctx, roomID)
+}
+
+// EditMessage edits a message (within time limit)
+func (s *ChatService) EditMessage(ctx context.Context, messageID, newContent string) (*room.Message, error) {
+	return s.manager.EditMessage(ctx, messageID, newContent)
+}
+
+// DeleteMessage deletes a message
+func (s *ChatService) DeleteMessage(ctx context.Context, messageID string) error {
+	return s.manager.DeleteMessage(ctx, messageID)
 }

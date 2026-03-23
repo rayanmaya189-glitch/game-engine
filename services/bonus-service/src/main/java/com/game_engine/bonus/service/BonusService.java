@@ -1,367 +1,344 @@
 package com.game_engine.bonus.service;
 
-import com.game_engine.bonus.model.Bonus;
-import com.game_engine.bonus.model.BonusClaim;
-import com.game_engine.bonus.model.BonusClaim.ClaimStatus;
-import com.game_engine.bonus.repository.BonusRepository;
-import com.game_engine.bonus.repository.BonusClaimRepository;
+import com.game_engine.bonus.model.BonusCampaign;
+import com.game_engine.bonus.model.BonusCampaign.BonusType;
+import com.game_engine.bonus.model.PlayerBonus;
+import com.game_engine.bonus.model.PlayerBonus.BonusStatus;
+import com.game_engine.bonus.repository.BonusCampaignRepository;
+import com.game_engine.bonus.repository.PlayerBonusRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.math.BigDecimal;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
+import java.math.RoundingMode;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Bonus Service
+ * 
+ * Manages bonus campaigns, awarding, and wagering requirements.
+ */
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class BonusService {
-    private final BonusRepository bonusRepository;
-    private final BonusClaimRepository bonusClaimRepository;
 
-    private static final int DEFAULT_BONUS_VALIDITY_DAYS = 30;
+    private final BonusCampaignRepository campaignRepository;
+    private final PlayerBonusRepository playerBonusRepository;
+    private final WalletService walletService;
 
-    public Bonus createBonus(Bonus bonus) {
-        return bonusRepository.save(bonus);
+    /**
+     * Check available bonuses for a user (e.g., after deposit)
+     */
+    public List<BonusCampaign> getAvailableBonuses(UUID userId, BigDecimal depositAmount) {
+        LocalDateTime now = LocalDateTime.now();
+        
+        return campaignRepository.findActiveCampaigns(now).stream()
+            .filter(c -> c.getMinDeposit() == null || depositAmount.compareTo(c.getMinDeposit()) >= 0)
+            .filter(c -> canUserClaim(userId, c))
+            .toList();
     }
 
-    public List<Bonus> getActiveBonuses() {
-        return bonusRepository.findByStatus(Bonus.BonusStatus.ACTIVE);
-    }
-
-    public Bonus getBonusById(UUID id) {
-        return bonusRepository.findById(id).orElse(null);
-    }
-
-    public BigDecimal calculateWageringContribution(BigDecimal betAmount, String gameType) {
-        // Slot games contribute 100%, table games 10%
-        return "SLOT".equalsIgnoreCase(gameType) ? betAmount : betAmount.multiply(BigDecimal.valueOf(0.1));
-    }
-
-    public boolean isWageringComplete(UUID bonusId, BigDecimal totalWagered, BigDecimal wageringRequirement) {
-        return totalWagered.compareTo(wageringRequirement) >= 0;
-    }
-
+    /**
+     * Award a bonus to a user
+     */
     @Transactional
-    public Map<String, Object> claimBonus(UUID bonusId, UUID userId) {
-        Map<String, Object> result = new HashMap<>();
-        Bonus bonus = getBonusById(bonusId);
-        
-        if (bonus == null) {
-            result.put("success", false);
-            result.put("message", "Bonus not found");
-            return result;
+    public PlayerBonus awardBonus(UUID userId, UUID campaignId, String sourceType, UUID sourceId) {
+        BonusCampaign campaign = campaignRepository.findById(campaignId)
+                .orElseThrow(() -> new IllegalArgumentException("Campaign not found"));
+
+        // Check eligibility
+        if (!canUserClaim(userId, campaign)) {
+            throw new IllegalStateException("User not eligible for this bonus");
         }
-        
-        if (bonus.getStatus() != Bonus.BonusStatus.ACTIVE) {
-            result.put("success", false);
-            result.put("message", "Bonus is not active");
-            return result;
+
+        // Calculate bonus amount based on type
+        BigDecimal bonusAmount = calculateBonusAmount(campaign, sourceType, sourceId);
+
+        // Create player bonus
+        PlayerBonus playerBonus = PlayerBonus.builder()
+                .userId(userId)
+                .campaign(campaign)
+                .bonusAmount(bonusAmount)
+                .bonusAmountCredited(BigDecimal.ZERO)
+                .status(BonusStatus.PENDING)
+                .sourceType(sourceType)
+                .sourceId(sourceId)
+                .build();
+
+        // Set wagering requirement
+        if (campaign.getWageringMultiplier() != null && campaign.getWageringMultiplier() > 0) {
+            playerBonus.setWageringRequired(
+                bonusAmount.multiply(BigDecimal.valueOf(campaign.getWageringMultiplier()))
+            );
         }
-        
-        // Check if bonus has reached max uses
-        if (bonus.getMaxUses() != null && bonus.getCurrentUses() != null 
-            && bonus.getCurrentUses() >= bonus.getMaxUses()) {
-            result.put("success", false);
-            result.put("message", "Bonus has reached maximum uses");
-            return result;
+
+        // Set expiry
+        if (campaign.getExpiryDays() != null) {
+            playerBonus.setExpiresAt(LocalDateTime.now().plusDays(campaign.getExpiryDays()));
         }
-        
-        // Check if user has already claimed this bonus
-        int existingClaims = bonusClaimRepository.countByUserIdAndBonusId(userId, bonusId);
-        if (existingClaims > 0) {
-            result.put("success", false);
-            result.put("message", "You have already claimed this bonus");
-            return result;
+
+        // Handle different bonus types
+        switch (campaign.getBonusType()) {
+            case FREE_SPINS:
+                playerBonus.setFreeSpinsRemaining(campaign.getFreeSpinCount());
+                playerBonus.setFreeSpinsGameId(campaign.getFreeSpinGameId());
+                // Free spins don't require activation
+                playerBonus.setStatus(BonusStatus.ACTIVE);
+                playerBonus.setActivatedAt(LocalDateTime.now());
+                break;
+                
+            case NO_DEPOSIT:
+                // Credit immediately
+                playerBonus.setBonusAmountCredited(bonusAmount);
+                walletService.creditBonusBalance(userId, bonusAmount, "USD", "NO_DEPOSIT_BONUS", playerBonus.getId().toString());
+                playerBonus.setStatus(BonusStatus.ACTIVE);
+                playerBonus.setActivatedAt(LocalDateTime.now());
+                break;
+                
+            case WELCOME:
+            case RELOAD:
+                // Pending - will activate on deposit
+                break;
+                
+            case CASHBACK:
+                // Will be calculated and awarded periodically
+                break;
         }
-        
-        // Check if bonus is still valid
-        Instant now = Instant.now();
-        if (bonus.getStartDate() != null && now.isBefore(bonus.getStartDate())) {
-            result.put("success", false);
-            result.put("message", "Bonus has not started yet");
-            return result;
-        }
-        
-        if (bonus.getEndDate() != null && now.isAfter(bonus.getEndDate())) {
-            result.put("success", false);
-            result.put("message", "Bonus has expired");
-            return result;
-        }
-        
-        // Calculate bonus amount
-        BigDecimal bonusAmount = bonus.getAmount();
-        if (bonus.getPercentage() != null && bonus.getMinDeposit() != null) {
-            // For deposit bonuses, calculate percentage
-            BigDecimal calculatedAmount = bonus.getMinDeposit().multiply(bonus.getPercentage()).divide(BigDecimal.valueOf(100));
-            if (bonus.getMaxAmount() != null && calculatedAmount.compareTo(bonus.getMaxAmount()) > 0) {
-                calculatedAmount = bonus.getMaxAmount();
-            }
-            bonusAmount = calculatedAmount;
-        }
-        
-        // Calculate wagering requirement
-        BigDecimal wageringRequirement = BigDecimal.ZERO;
-        if (bonus.getWageringRequirement() != null && bonusAmount != null) {
-            wageringRequirement = bonusAmount.multiply(BigDecimal.valueOf(bonus.getWageringRequirement()));
-        }
-        
-        // Calculate expiry date (default 30 days)
-        Instant expiresAt = now.plus(DEFAULT_BONUS_VALIDITY_DAYS, ChronoUnit.DAYS);
-        
-        // Create bonus claim record
-        BonusClaim claim = BonusClaim.builder()
-            .userId(userId)
-            .bonusId(bonusId)
-            .bonusAmount(bonusAmount)
-            .wageringRequirement(wageringRequirement)
-            .wageringContributed(BigDecimal.ZERO)
-            .status(ClaimStatus.ACTIVE)
-            .claimedAt(now)
-            .expiresAt(expiresAt)
-            .build();
-        bonusClaimRepository.save(claim);
-        
-        // Increment usage count
-        bonus.setCurrentUses(bonus.getCurrentUses() != null ? bonus.getCurrentUses() + 1 : 1);
-        bonusRepository.save(bonus);
-        
-        result.put("success", true);
-        result.put("message", "Bonus claimed successfully");
-        result.put("bonusId", bonusId);
-        result.put("userId", userId);
-        result.put("bonusAmount", bonusAmount);
-        result.put("wageringRequirement", wageringRequirement);
-        result.put("expiresAt", expiresAt);
-        result.put("claimId", claim.getId());
-        
-        return result;
+
+        return playerBonusRepository.save(playerBonus);
     }
 
-    public Map<String, Object> checkEligibility(UUID userId) {
-        Map<String, Object> result = new HashMap<>();
-        List<Bonus> activeBonuses = getActiveBonuses();
-        List<Bonus> eligibleBonuses = new ArrayList<>();
-        
-        Instant now = Instant.now();
-        for (Bonus bonus : activeBonuses) {
-            boolean eligible = true;
-            StringBuilder reason = new StringBuilder();
-            
-            // Check if bonus has started
-            if (bonus.getStartDate() != null && now.isBefore(bonus.getStartDate())) {
-                eligible = false;
-                reason.append("Bonus has not started yet; ");
-            }
-            
-            // Check if bonus has expired
-            if (bonus.getEndDate() != null && now.isAfter(bonus.getEndDate())) {
-                eligible = false;
-                reason.append("Bonus has expired; ");
-            }
-            
-            // Check if bonus has reached max uses
-            if (bonus.getMaxUses() != null && bonus.getCurrentUses() != null 
-                && bonus.getCurrentUses() >= bonus.getMaxUses()) {
-                eligible = false;
-                reason.append("Bonus has reached maximum uses; ");
-            }
-            
-            if (eligible) {
-                eligibleBonuses.add(bonus);
-            }
-        }
-        
-        result.put("userId", userId);
-        result.put("eligibleBonuses", eligibleBonuses);
-        result.put("totalEligible", eligibleBonuses.size());
-        
-        return result;
-    }
-
-    public List<Map<String, Object>> getBonusHistory(UUID userId) {
-        List<BonusClaim> claims = bonusClaimRepository.findByUserIdOrderByClaimedAtDesc(userId);
-        List<Map<String, Object>> history = new ArrayList<>();
-        
-        for (BonusClaim claim : claims) {
-            Map<String, Object> entry = new HashMap<>();
-            entry.put("claimId", claim.getId());
-            entry.put("bonusId", claim.getBonusId());
-            entry.put("bonusAmount", claim.getBonusAmount());
-            entry.put("wageringRequirement", claim.getWageringRequirement());
-            entry.put("wageringContributed", claim.getWageringContributed() != null ? claim.getWageringContributed() : BigDecimal.ZERO);
-            entry.put("winningsAmount", claim.getWinningsAmount());
-            entry.put("status", claim.getStatus());
-            entry.put("claimedAt", claim.getClaimedAt());
-            entry.put("completedAt", claim.getCompletedAt());
-            entry.put("expiresAt", claim.getExpiresAt());
-            
-            // Get bonus details
-            Bonus bonus = getBonusById(claim.getBonusId());
-            if (bonus != null) {
-                entry.put("bonusName", bonus.getName());
-                entry.put("bonusType", bonus.getType());
-            }
-            
-            history.add(entry);
-        }
-        
-        return history;
-    }
-
+    /**
+     * Activate a pending bonus (e.g., after making qualifying deposit)
+     */
     @Transactional
-    public Map<String, Object> processWageringContribution(UUID userId, UUID bonusId, BigDecimal betAmount, String gameType) {
-        Map<String, Object> result = new HashMap<>();
-        
-        Optional<BonusClaim> claimOpt = bonusClaimRepository.findByUserIdAndBonusIdAndStatus(userId, bonusId, ClaimStatus.ACTIVE);
-        if (claimOpt.isEmpty()) {
-            result.put("success", false);
-            result.put("message", "No active bonus claim found");
-            return result;
+    public PlayerBonus activateBonus(UUID playerBonusId) {
+        PlayerBonus bonus = playerBonusRepository.findById(playerBonusId)
+                .orElseThrow(() -> new IllegalArgumentException("Bonus not found"));
+
+        if (bonus.getStatus() != BonusStatus.PENDING) {
+            throw new IllegalStateException("Bonus is not pending");
         }
-        
-        BonusClaim claim = claimOpt.get();
-        
-        // Check if expired
-        if (claim.getExpiresAt() != null && Instant.now().isAfter(claim.getExpiresAt())) {
-            claim.setStatus(ClaimStatus.EXPIRED);
-            bonusClaimRepository.save(claim);
-            result.put("success", false);
-            result.put("message", "Bonus has expired");
-            return result;
+
+        bonus.setStatus(BonusStatus.ACTIVE);
+        bonus.setActivatedAt(LocalDateTime.now());
+
+        // Credit bonus balance for match bonuses
+        if (bonus.getCampaign().getBonusType() == BonusType.WELCOME ||
+            bonus.getCampaign().getBonusType() == BonusType.RELOAD) {
+            bonus.setBonusAmountCredited(bonus.getBonusAmount());
+            walletService.creditBonusBalance(
+                bonus.getUserId(), 
+                bonus.getBonusAmount(), 
+                "USD",
+                "DEPOSIT_BONUS",
+                bonus.getId().toString()
+            );
         }
-        
-        // Calculate wagering contribution based on game type
-        BigDecimal contribution = calculateWageringContribution(betAmount, gameType);
-        
-        // Update wagering contributed
-        BigDecimal currentContributed = claim.getWageringContributed() != null ? claim.getWageringContributed() : BigDecimal.ZERO;
-        claim.setWageringContributed(currentContributed.add(contribution));
-        bonusClaimRepository.save(claim);
-        
-        result.put("success", true);
-        result.put("message", "Wagering contribution added");
-        result.put("contribution", contribution);
-        result.put("totalContributed", claim.getWageringContributed());
-        result.put("remaining", claim.getRemainingWagering());
-        result.put("wageringComplete", claim.isWageringComplete());
-        
-        return result;
+
+        return playerBonusRepository.save(bonus);
     }
 
+    /**
+     * Process a bet and update wagering progress
+     */
     @Transactional
-    public Map<String, Object> completeBonus(UUID userId, UUID bonusId, BigDecimal winnings) {
-        Map<String, Object> result = new HashMap<>();
-        
-        Optional<BonusClaim> claimOpt = bonusClaimRepository.findByUserIdAndBonusIdAndStatus(userId, bonusId, ClaimStatus.ACTIVE);
-        if (claimOpt.isEmpty()) {
-            result.put("success", false);
-            result.put("message", "No active bonus claim found");
-            return result;
-        }
-        
-        BonusClaim claim = claimOpt.get();
-        
-        if (!claim.isWageringComplete()) {
-            result.put("success", false);
-            result.put("message", "Wagering requirements not yet met");
-            return result;
-        }
-        
-        claim.setStatus(ClaimStatus.COMPLETED);
-        claim.setCompletedAt(Instant.now());
-        claim.setWinningsAmount(winnings);
-        bonusClaimRepository.save(claim);
-        
-        result.put("success", true);
-        result.put("message", "Bonus completed successfully");
-        result.put("bonusAmount", claim.getBonusAmount());
-        result.put("winnings", winnings);
-        result.put("totalAmount", claim.getBonusAmount().add(winnings));
-        
-        return result;
-    }
+    public void processBet(UUID userId, BigDecimal betAmount, String gameId, String gameCategory) {
+        // Get active bonuses with wagering requirements
+        List<PlayerBonus> activeBonuses = playerBonusRepository
+                .findActiveByUserId(userId, BonusStatus.ACTIVE);
 
-    @Transactional
-    public Map<String, Object> cancelBonus(UUID userId, UUID bonusId, String reason) {
-        Map<String, Object> result = new HashMap<>();
-        
-        Optional<BonusClaim> claimOpt = bonusClaimRepository.findByUserIdAndBonusIdAndStatus(userId, bonusId, ClaimStatus.ACTIVE);
-        if (claimOpt.isEmpty()) {
-            result.put("success", false);
-            result.put("message", "No active bonus claim found");
-            return result;
+        if (activeBonuses.isEmpty()) {
+            return;
         }
-        
-        BonusClaim claim = claimOpt.get();
-        claim.setStatus(ClaimStatus.CANCELLED);
-        claim.setCancelledAt(Instant.now());
-        claim.setCancellationReason(reason);
-        bonusClaimRepository.save(claim);
-        
-        result.put("success", true);
-        result.put("message", "Bonus cancelled");
-        result.put("reason", reason);
-        
-        return result;
-    }
 
-    public List<Map<String, Object>> getActiveBonusClaims(UUID userId) {
-        List<BonusClaim> claims = bonusClaimRepository.findActiveClaimsByUserId(userId);
-        List<Map<String, Object>> activeClaims = new ArrayList<>();
-        
-        for (BonusClaim claim : claims) {
-            Map<String, Object> entry = new HashMap<>();
-            entry.put("claimId", claim.getId());
-            entry.put("bonusId", claim.getBonusId());
-            entry.put("bonusAmount", claim.getBonusAmount());
-            entry.put("wageringRequirement", claim.getWageringRequirement());
-            entry.put("wageringContributed", claim.getWageringContributed() != null ? claim.getWageringContributed() : BigDecimal.ZERO);
-            entry.put("remaining", claim.getRemainingWagering());
-            entry.put("expiresAt", claim.getExpiresAt());
+        // Get game weight
+        double gameWeight = getGameWeight(gameCategory);
+
+        // Calculate wagering contribution
+        BigDecimal contribution = betAmount.multiply(BigDecimal.valueOf(gameWeight));
+
+        // Distribute across bonuses (oldest first)
+        for (PlayerBonus bonus : activeBonuses) {
+            if (bonus.getWageringRequired() == null || 
+                bonus.getWageringRequired().compareTo(BigDecimal.ZERO) <= 0) {
+                continue;
+            }
+
+            BigDecimal remaining = bonus.getWageringRequired()
+                    .subtract(bonus.getWageringProgress());
             
-            Bonus bonus = getBonusById(claim.getBonusId());
-            if (bonus != null) {
-                entry.put("bonusName", bonus.getName());
-                entry.put("bonusType", bonus.getType());
-                entry.put("allowedGames", bonus.getAllowedGames());
+            if (remaining.compareTo(BigDecimal.ZERO) <= 0) {
+                continue;
+            }
+
+            BigDecimal toApply = contribution.compareTo(remaining) > 0 ? remaining : contribution;
+            bonus.setWageringProgress(bonus.getWageringProgress().add(toApply));
+            contribution = contribution.subtract(toApply);
+
+            // Check if wagering complete
+            if (bonus.getWageringProgress().compareTo(bonus.getWageringRequired()) >= 0) {
+                completeBonus(bonus);
+            }
+
+            playerBonusRepository.save(bonus);
+
+            if (contribution.compareTo(BigDecimal.ZERO) <= 0) {
+                break;
+            }
+        }
+    }
+
+    /**
+     * Complete a bonus (wagering requirements met)
+     */
+    @Transactional
+    public void completeBonus(PlayerBonus bonus) {
+        bonus.setStatus(BonusStatus.COMPLETED);
+        bonus.setCompletedAt(LocalDateTime.now());
+
+        // Convert bonus to real money
+        BigDecimal bonusBalance = walletService.getBonusBalance(bonus.getUserId());
+        if (bonusBalance.compareTo(BigDecimal.ZERO) > 0) {
+            // Check max cashout
+            BigDecimal maxCashout = bonus.getCampaign().getMaxCashout();
+            if (maxCashout != null && maxCashout.compareTo(BigDecimal.ZERO) > 0) {
+                bonusBalance = bonusBalance.min(maxCashout);
             }
             
-            activeClaims.add(entry);
+            walletService.convertBonusToReal(bonus.getUserId(), bonusBalance);
         }
-        
-        return activeClaims;
+
+        playerBonusRepository.save(bonus);
+        log.info("Bonus completed: {} for user {}", bonus.getId(), bonus.getUserId());
     }
 
+    /**
+     * Calculate cashback for a user
+     */
     @Transactional
-    public void processExpiredBonuses() {
-        List<BonusClaim> expiredClaims = bonusClaimRepository.findExpiredClaims(Instant.now());
-        for (BonusClaim claim : expiredClaims) {
-            claim.setStatus(ClaimStatus.EXPIRED);
-            bonusClaimRepository.save(claim);
+    public BigDecimal calculateCashback(UUID userId, int periodDays) {
+        // Calculate net losses for period
+        BigDecimal totalBets = walletService.getTotalBets(userId, periodDays);
+        BigDecimal totalWins = walletService.getTotalWins(userId, periodDays);
+        BigDecimal netLosses = totalWins.subtract(totalBets);
+
+        if (netLosses.compareTo(BigDecimal.ZERO) >= 0) {
+            return BigDecimal.ZERO; // No losses = no cashback
+        }
+
+        // Get cashback campaign
+        BonusCampaign cashbackCampaign = campaignRepository
+                .findActiveCashbackCampaign(LocalDateTime.now());
+
+        if (cashbackCampaign == null) {
+            return BigDecimal.ZERO;
+        }
+
+        // Calculate cashback percentage
+        BigDecimal percentage = cashbackCampaign.getCashbackPercentage()
+                .divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP);
+        
+        BigDecimal cashback = netLosses.abs().multiply(percentage);
+
+        // Cap at max bonus if set
+        if (cashbackCampaign.getMaxBonusAmount() != null) {
+            cashback = cashback.min(cashbackCampaign.getMaxBonusAmount());
+        }
+
+        return cashback;
+    }
+
+    /**
+     * Claim cashback
+     */
+    @Transactional
+    public PlayerBonus claimCashback(UUID userId) {
+        BonusCampaign campaign = campaignRepository.findActiveCashbackCampaign(LocalDateTime.now());
+        if (campaign == null) {
+            throw new IllegalStateException("No active cashback campaign");
+        }
+
+        int periodDays = campaign.getCashbackPeriodDays() != null ? campaign.getCashbackPeriodDays() : 7;
+        BigDecimal cashbackAmount = calculateCashback(userId, periodDays);
+
+        if (cashbackAmount.compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalStateException("No cashback available");
+        }
+
+        // Award cashback
+        PlayerBonus bonus = awardBonus(userId, campaign.getId(), "cashback", null);
+        bonus.setBonusAmount(cashbackAmount);
+        bonus.setBonusAmountCredited(cashbackAmount);
+        bonus.setStatus(BonusStatus.CLAIMED);
+        bonus.setClaimedAt(LocalDateTime.now());
+
+        // Credit as real money (no wagering on cashback typically)
+        walletService.creditBalance(userId, cashbackAmount, "USD", "CASHBACK", bonus.getId().toString());
+
+        return playerBonusRepository.save(bonus);
+    }
+
+    private boolean canUserClaim(UUID userId, BonusCampaign campaign) {
+        // Check if already claimed (for one-time bonuses)
+        if (campaign.getMaxUsageCount() != null && campaign.getMaxUsageCount() == 1) {
+            boolean alreadyClaimed = playerBonusRepository
+                    .existsByUserIdAndCampaignId(userId, campaign.getId());
+            if (alreadyClaimed) {
+                return false;
+            }
+        }
+
+        // Check promo code requirement
+        // Check country eligibility
+        // Check KYC level
+        
+        return true;
+    }
+
+    private BigDecimal calculateBonusAmount(BonusCampaign campaign, String sourceType, UUID sourceId) {
+        switch (campaign.getBonusType()) {
+            case FREE_SPINS:
+                return BigDecimal.ZERO; // Free spins don't have monetary value initially
+                
+            case WELCOME:
+            case RELOAD:
+                // Would get deposit amount from source
+                BigDecimal depositAmount = BigDecimal.valueOf(100); // Simplified
+                if (campaign.getMatchPercentage() != null) {
+                    BigDecimal bonus = depositAmount.multiply(
+                        campaign.getMatchPercentage().divide(BigDecimal.valueOf(100))
+                    );
+                    if (campaign.getMaxBonusAmount() != null) {
+                        bonus = bonus.min(campaign.getMaxBonusAmount());
+                    }
+                    return bonus;
+                }
+                return campaign.getFixedAmount() != null ? campaign.getFixedAmount() : BigDecimal.ZERO;
+                
+            case NO_DEPOSIT:
+            case REFERRAL:
+                return campaign.getFixedAmount() != null ? campaign.getFixedAmount() : BigDecimal.ZERO;
+                
+            default:
+                return campaign.getFixedAmount() != null ? campaign.getFixedAmount() : BigDecimal.ZERO;
         }
     }
 
-    public Map<String, Object> getBonusStats(UUID userId) {
-        Map<String, Object> stats = new HashMap<>();
-        
-        List<BonusClaim> allClaims = bonusClaimRepository.findByUserIdOrderByClaimedAtDesc(userId);
-        List<BonusClaim> activeClaims = bonusClaimRepository.findByUserIdAndStatus(userId, ClaimStatus.ACTIVE);
-        List<BonusClaim> completedClaims = bonusClaimRepository.findByUserIdAndStatus(userId, ClaimStatus.COMPLETED);
-        
-        stats.put("totalBonusesClaimed", allClaims.size());
-        stats.put("activeBonuses", activeClaims.size());
-        stats.put("completedBonuses", completedClaims.size());
-        stats.put("totalBonusAmount", allClaims.stream()
-            .map(BonusClaim::getBonusAmount)
-            .filter(Objects::nonNull)
-            .reduce(BigDecimal.ZERO, BigDecimal::add));
-        stats.put("totalWinnings", completedClaims.stream()
-            .map(BonusClaim::getWinningsAmount)
-            .filter(Objects::nonNull)
-            .reduce(BigDecimal.ZERO, BigDecimal::add));
-        
-        return stats;
+    private double getGameWeight(String gameCategory) {
+        // Default weights - would load from campaign config
+        return switch (gameCategory.toLowerCase()) {
+            case "slots" -> 1.0;
+            case "table_games", "blackjack" -> 0.1;
+            case "roulette" -> 0.2;
+            case "poker" -> 0.05;
+            default -> 1.0;
+        };
     }
 }
