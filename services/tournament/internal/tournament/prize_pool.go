@@ -4,6 +4,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"github.com/redis/go-redis/v9"
 )
@@ -205,7 +206,20 @@ func (p *PrizePool) AddBounty(ctx context.Context, tournamentID string, userID s
 func (p *PrizePool) GetBounties(ctx context.Context, tournamentID string) (map[string]int64, error) {
 	key := fmt.Sprintf("bounties:%s", tournamentID)
 
-	return p.redisClient.HGetAll(ctx, key).Result()
+	result, err := p.redisClient.HGetAll(ctx, key).Result()
+	if err != nil {
+		return nil, err
+	}
+
+	bounties := make(map[string]int64)
+	for k, v := range result {
+		val, err := strconv.ParseInt(v, 10, 64)
+		if err != nil {
+			continue
+		}
+		bounties[k] = val
+	}
+	return bounties, nil
 }
 
 // GetPlayerBounty gets a specific player's bounty

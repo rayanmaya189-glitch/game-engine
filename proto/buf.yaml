@@ -1,0 +1,11 @@
+//buf.yaml
+version: v1
+name: buf.build/gameengine/game-engine
+lint:
+  use:
+    - DEFAULT
+  except:
+    - PACKAGE_VERSION_SUFFIX
+breaking:
+  use:
+    - FILE

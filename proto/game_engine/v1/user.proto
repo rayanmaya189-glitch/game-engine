@@ -1,0 +1,180 @@
+syntax = "proto3";
+
+package game_engine.v1;
+
+option go_package = "github.com/game_engine/gen/go/game_engine/v1";
+
+// User Service API
+service UserService {
+  // Get user profile
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+  
+  // Update user profile
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
+  
+  // Get user settings
+  rpc GetSettings(GetSettingsRequest) returns (GetSettingsResponse);
+  
+  // Update user settings
+  rpc UpdateSettings(UpdateSettingsRequest) returns (UpdateSettingsResponse);
+  
+  // Get user preferences
+  rpc GetPreferences(GetPreferencesRequest) returns (GetPreferencesResponse);
+  
+  // Update user preferences
+  rpc UpdatePreferences(UpdatePreferencesRequest) returns (UpdatePreferencesResponse);
+  
+  // Verify KYC
+  rpc VerifyKYC(VerifyKYCRequest) returns (VerifyKYCResponse);
+  
+  // Get user activity
+  rpc GetActivity(GetActivityRequest) returns (GetActivityResponse);
+}
+
+message GetProfileRequest {
+  string user_id = 1;
+}
+
+message GetProfileResponse {
+  UserProfile profile = 1;
+}
+
+message UserProfile {
+  string user_id = 1;
+  string username = 2;
+  string email = 3;
+  string phone = 4;
+  string first_name = 5;
+  string last_name = 6;
+  string date_of_birth = 7;
+  string country = 8;
+  string currency = 9;
+  string timezone = 10;
+  string language = 11;
+  string avatar_url = 12;
+  string status = 13;
+  KYCStatus kyc_status = 14;
+  int64 created_at = 15;
+  int64 updated_at = 16;
+}
+
+enum KYCStatus {
+  KYC_STATUS_UNSPECIFIED = 0;
+  KYC_STATUS_NOT_STARTED = 1;
+  KYC_STATUS_PENDING = 2;
+  KYC_STATUS_IN_REVIEW = 3;
+  KYC_STATUS_VERIFIED = 4;
+  KYC_STATUS_REJECTED = 5;
+}
+
+message UpdateProfileRequest {
+  string user_id = 1;
+  string email = 2;
+  string phone = 3;
+  string first_name = 4;
+  string last_name = 5;
+  string date_of_birth = 6;
+  string country = 7;
+  string timezone = 8;
+  string language = 9;
+  string avatar_url = 10;
+}
+
+message UpdateProfileResponse {
+  bool success = 1;
+  UserProfile profile = 2;
+}
+
+message GetSettingsRequest {
+  string user_id = 1;
+}
+
+message GetSettingsResponse {
+  UserSettings settings = 1;
+}
+
+message UserSettings {
+  bool email_notifications = 1;
+  bool sms_notifications = 2;
+  bool push_notifications = 3;
+  bool marketing_emails = 4;
+  bool two_factor_enabled = 5;
+  string session_timeout = 6;
+  string currency = 7;
+  string language = 8;
+  string timezone = 9;
+}
+
+message UpdateSettingsRequest {
+  string user_id = 1;
+  UserSettings settings = 2;
+}
+
+message UpdateSettingsResponse {
+  bool success = 1;
+  UserSettings settings = 2;
+}
+
+message GetPreferencesRequest {
+  string user_id = 1;
+}
+
+message GetPreferencesResponse {
+  UserPreferences preferences = 1;
+}
+
+message UserPreferences {
+  repeated string favorite_games = 1;
+  repeated string favorite_sports = 2;
+  string default_stake = 3;
+  string default_odds_format = 4;
+  bool sound_enabled = 5;
+  bool animations_enabled = 6;
+  bool compact_view = 7;
+}
+
+message UpdatePreferencesRequest {
+  string user_id = 1;
+  UserPreferences preferences = 2;
+}
+
+message UpdatePreferencesResponse {
+  bool success = 1;
+  UserPreferences preferences = 2;
+}
+
+message VerifyKYCRequest {
+  string user_id = 1;
+  string document_type = 2;
+  string document_number = 3;
+  string document_front = 4;
+  string document_back = 5;
+  string selfie = 6;
+}
+
+message VerifyKYCResponse {
+  bool success = 1;
+  string verification_id = 2;
+  string status = 3;
+}
+
+message GetActivityRequest {
+  string user_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message GetActivityResponse {
+  repeated ActivityLog logs = 1;
+  int32 total = 2;
+}
+
+message ActivityLog {
+  string log_id = 1;
+  string user_id = 2;
+  string action = 3;
+  string ip_address = 4;
+  string device_info = 5;
+  string location = 6;
+  int64 timestamp = 7;
+}

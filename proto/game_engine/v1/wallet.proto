@@ -1,0 +1,149 @@
+syntax = "proto3";
+
+package game_engine.v1;
+
+option go_package = "github.com/game_engine/gen/go/game_engine/v1";
+
+// Wallet Service API
+service WalletService {
+  // Get balance
+  rpc GetBalance(GetBalanceRequest) returns (GetBalanceResponse);
+  
+  // Get transaction history
+  rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+  
+  // Credit balance
+  rpc CreditBalance(CreditBalanceRequest) returns (CreditBalanceResponse);
+  
+  // Debit balance
+  rpc DebitBalance(DebitBalanceRequest) returns (DebitBalanceResponse);
+  
+  // Internal transfer
+  rpc Transfer(TransferRequest) returns (TransferResponse);
+  
+  // Create transaction
+  rpc CreateTransaction(CreateTransactionRequest) returns (CreateTransactionResponse);
+  
+  // Get ledger entries
+  rpc GetLedgerEntries(GetLedgerEntriesRequest) returns (GetLedgerEntriesResponse);
+}
+
+message GetBalanceRequest {
+  string user_id = 1;
+}
+
+message GetBalanceResponse {
+  string user_id = 1;
+  string balance = 2;
+  string available_balance = 3;
+  string locked_balance = 4;
+  string currency = 5;
+}
+
+message GetTransactionsRequest {
+  string user_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+  string type = 4;
+  string status = 5;
+}
+
+message GetTransactionsResponse {
+  repeated Transaction transactions = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message Transaction {
+  string transaction_id = 1;
+  string user_id = 2;
+  string type = 3;
+  string amount = 4;
+  string balance_before = 5;
+  string balance_after = 6;
+  string currency = 7;
+  string status = 8;
+  string reference = 9;
+  string description = 10;
+  int64 created_at = 11;
+}
+
+message CreditBalanceRequest {
+  string user_id = 1;
+  string amount = 2;
+  string type = 3;
+  string reference = 4;
+  string description = 5;
+}
+
+message CreditBalanceResponse {
+  bool success = 1;
+  string transaction_id = 2;
+  string new_balance = 3;
+}
+
+message DebitBalanceRequest {
+  string user_id = 1;
+  string amount = 2;
+  string type = 3;
+  string reference = 4;
+  string description = 5;
+}
+
+message DebitBalanceResponse {
+  bool success = 1;
+  string transaction_id = 2;
+  string new_balance = 3;
+}
+
+message TransferRequest {
+  string from_user_id = 1;
+  string to_user_id = 2;
+  string amount = 3;
+  string type = 4;
+  string reference = 5;
+}
+
+message TransferResponse {
+  bool success = 1;
+  string from_transaction_id = 2;
+  string to_transaction_id = 3;
+}
+
+message CreateTransactionRequest {
+  string user_id = 1;
+  string type = 2;
+  string amount = 3;
+  string currency = 4;
+  string status = 5;
+  string reference = 6;
+  string description = 7;
+}
+
+message CreateTransactionResponse {
+  string transaction_id = 1;
+}
+
+message GetLedgerEntriesRequest {
+  string user_id = 1;
+  int32 page = 2;
+  int32 limit = 3;
+}
+
+message GetLedgerEntriesResponse {
+  repeated LedgerEntry entries = 1;
+  int32 total = 2;
+}
+
+message LedgerEntry {
+  string entry_id = 1;
+  string transaction_id = 2;
+  string user_id = 3;
+  string credit = 4;
+  string debit = 5;
+  string balance = 6;
+  string currency = 7;
+  string description = 8;
+  int64 created_at = 9;
+}

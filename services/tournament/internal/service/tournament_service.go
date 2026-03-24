@@ -75,25 +75,25 @@ func (s *TournamentService) ListTournaments(ctx context.Context, status tourname
 
 // GetLeaderboard gets tournament leaderboard
 func (s *TournamentService) GetLeaderboard(ctx context.Context, tournamentID string, limit int) ([]tournament.LeaderboardEntry, error) {
-	return s.manager.leaderboard.GetLeaderboard(ctx, tournamentID, limit)
+	return s.manager.Leaderboard.GetLeaderboard(ctx, tournamentID, limit)
 }
 
 // GetPlayerRank gets a player's rank
 func (s *TournamentService) GetPlayerRank(ctx context.Context, tournamentID string, userID string) (*tournament.LeaderboardEntry, error) {
-	return s.manager.leaderboard.GetPlayerRank(ctx, tournamentID, userID)
+	return s.manager.Leaderboard.GetPlayerRank(ctx, tournamentID, userID)
 }
 
 // GetTopPlayers gets top N players
 func (s *TournamentService) GetTopPlayers(ctx context.Context, tournamentID string, n int) ([]tournament.LeaderboardEntry, error) {
-	return s.manager.leaderboard.GetTopPlayers(ctx, tournamentID, n)
+	return s.manager.Leaderboard.GetTopPlayers(ctx, tournamentID, n)
 }
 
 // GetScheduledTournaments gets scheduled tournaments
 func (s *TournamentService) GetScheduledTournaments(ctx context.Context) ([]tournament.ScheduledTournament, error) {
-	return s.manager.scheduler.GetScheduledTournaments(ctx)
+	return s.manager.Scheduler.GetScheduledTournaments(ctx)
 }
 
 // GetPrizeDistribution gets prize distribution
 func (s *TournamentService) GetPrizeDistribution(ctx context.Context, tournamentID string) ([]tournament.Result, error) {
-	return s.manager.prizePool.GetPrizeDistribution(ctx, tournamentID)
+	return s.manager.PrizePool.GetPrizeDistribution(ctx, tournamentID)
 }

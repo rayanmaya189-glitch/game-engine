@@ -129,7 +129,6 @@ func (l *Leaderboard) UpdateElimination(ctx context.Context, tournamentID string
 
 // UpdateFinalResult updates final tournament results
 func (l *Leaderboard) UpdateFinalResult(ctx context.Context, tournamentID string, result Result) error {
-	key := fmt.Sprintf("leaderboard:%s", tournamentID)
 	resultKey := fmt.Sprintf("results:%s", tournamentID)
 
 	data, err := json.Marshal(result)

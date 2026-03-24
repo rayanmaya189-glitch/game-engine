@@ -309,7 +309,7 @@ func (m *Manager) RegisterUser(ctx context.Context, tournamentID string, userID,
 	// Auto-start if enabled
 	if tournament.Settings.AutoStart && tournament.Status == TournamentStatusRegistering {
 		if tournament.Type == TournamentTypeSitAndGo {
-			go m.startTournament(tournamentID)
+			go m.startTournament(ctx, tournamentID)
 		}
 	}
 
@@ -362,10 +362,10 @@ func (m *Manager) StartTournament(ctx context.Context, tournamentID string) erro
 	m.mu.Lock()
 	defer m.mu.Unlock()
 
-	return m.startTournament(tournamentID)
+	return m.startTournament(ctx, tournamentID)
 }
 
-func (m *Manager) startTournament(tournamentID string) error {
+func (m *Manager) startTournament(ctx context.Context, tournamentID string) error {
 	tournament, ok := m.tournaments[tournamentID]
 	if !ok {
 		return fmt.Errorf("tournament not found: %s", tournamentID)
