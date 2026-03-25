@@ -7,6 +7,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/game_engine/chat/internal/moderation"
 	"github.com/google/uuid"
 	"github.com/redis/go-redis/v9"
 )
@@ -65,18 +66,33 @@ type Manager struct {
 	rooms       map[string]*ChatRoom
 	config      *Config
 	redisClient *redis.Client
-	filter      *ProfanityFilter
-	moderator   *Moderator
+	filter      *moderation.ProfanityFilter
+	moderator   *moderation.Moderator
 }
 
 // NewManager creates a new chat room manager
 func NewManager(config *Config, redisClient *redis.Client) (*Manager, error) {
+	// Convert room.Config to moderation.FilterConfig
+	filterConfig := &moderation.FilterConfig{
+		ProfanityFilter: moderation.ProfanityConfig{
+			Enabled:         config.ProfanityFilter.Enabled,
+			ReplacementChar: config.ProfanityFilter.ReplacementChar,
+			FilterLevel:     config.ProfanityFilter.FilterLevel,
+		},
+		Moderation: moderation.ModerationConfig{
+			AutoMuteThreshold:   config.Moderation.AutoMuteThreshold,
+			MuteDurationMinutes: config.Moderation.MuteDurationMinutes,
+			BanDurationHours:    config.Moderation.BanDurationHours,
+			RequiresModerator:   config.Moderation.RequiresModerator,
+		},
+	}
+
 	m := &Manager{
 		rooms:       make(map[string]*ChatRoom),
 		config:      config,
 		redisClient: redisClient,
-		filter:      NewProfanityFilter(config),
-		moderator:   NewModerator(config, redisClient),
+		filter:      moderation.NewProfanityFilter(filterConfig),
+		moderator:   moderation.NewModerator(filterConfig, redisClient),
 	}
 
 	// Load existing rooms from Redis

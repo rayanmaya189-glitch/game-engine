@@ -42,7 +42,7 @@ func main() {
 	repo := repository.NewLeaderboardRepository(db, redisClient)
 
 	// Initialize service
-	leaderboardService := service.NewLeaderboardService(repo, cfg.Leaderboard)
+	leaderboardService := service.NewLeaderboardService(repo, &cfg.Leaderboard)
 
 	// Initialize handler
 	leaderboardHandler := handler.NewLeaderboardHandler(leaderboardService)

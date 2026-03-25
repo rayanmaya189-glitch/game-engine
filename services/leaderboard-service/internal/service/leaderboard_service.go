@@ -2,6 +2,7 @@ package service
 
 import (
 	"context"
+	"fmt"
 	"time"
 
 	"github.com/game_engine/leaderboard-service/internal/config"
@@ -87,7 +88,7 @@ func getPeriodString(leaderboardType model.LeaderboardType) string {
 		return now.Format("2006-01-02")
 	case model.LeaderboardTypeWeekly:
 		year, week := now.ISOWeek()
-		return "2024-W01"
+		return fmt.Sprintf("%d-W%02d", year, week)
 	case model.LeaderboardTypeMonthly:
 		return now.Format("2006-01")
 	case model.LeaderboardTypeAllTime:

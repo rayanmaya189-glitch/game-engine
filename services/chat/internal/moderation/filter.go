@@ -2,19 +2,38 @@ package moderation
 
 import (
 	"strings"
-
-	"github.com/game_engine/chat/internal/room"
 )
+
+// ProfanityConfig holds profanity filter configuration
+type ProfanityConfig struct {
+	Enabled         bool   `yaml:"enabled"`
+	ReplacementChar string `yaml:"replacement_char"`
+	FilterLevel     string `yaml:"filter_level"`
+}
+
+// ModerationConfig holds moderation configuration
+type ModerationConfig struct {
+	AutoMuteThreshold   int  `yaml:"auto_mute_threshold"`
+	MuteDurationMinutes int  `yaml:"mute_duration_minutes"`
+	BanDurationHours    int  `yaml:"ban_duration_hours"`
+	RequiresModerator   bool `yaml:"requires_moderator"`
+}
+
+// FilterConfig holds all moderation-related config
+type FilterConfig struct {
+	ProfanityFilter ProfanityConfig  `yaml:"profanity_filter"`
+	Moderation      ModerationConfig `yaml:"moderation"`
+}
 
 // ProfanityFilter filters inappropriate content
 type ProfanityFilter struct {
-	config          *room.Config
+	config          *FilterConfig
 	replacementChar string
 	badWords        map[string]bool
 }
 
 // NewProfanityFilter creates a new profanity filter
-func NewProfanityFilter(config *room.Config) *ProfanityFilter {
+func NewProfanityFilter(config *FilterConfig) *ProfanityFilter {
 	filter := &ProfanityFilter{
 		config:          config,
 		replacementChar: config.ProfanityFilter.ReplacementChar,
@@ -41,47 +60,24 @@ func (f *ProfanityFilter) Filter(text string) string {
 	return result
 }
 
-// IsClean checks if text is clean
-func (f *ProfanityFilter) IsClean(text string) bool {
-	if !f.config.ProfanityFilter.Enabled {
-		return true
+func (f *ProfanityFilter) initBadWords() {
+	// Common bad words list - in production this would be more comprehensive
+	badWords := []string{
+		"badword1", "badword2", // Placeholder - should be loaded from config/file
 	}
-
-	lowerText := strings.ToLower(text)
-	for word := range f.badWords {
-		if strings.Contains(lowerText, word) {
-			return false
-		}
+	for _, word := range badWords {
+		f.badWords[strings.ToLower(word)] = true
 	}
-
-	return true
 }
 
-// AddWord adds a word to the filter
-func (f *ProfanityFilter) AddWord(word string) {
-	f.badWords[strings.ToLower(word)] = true
-}
-
-// RemoveWord removes a word from the filter
-func (f *ProfanityFilter) RemoveWord(word string) {
-	delete(f.badWords, strings.ToLower(word))
-}
-
-// getReplacement returns the replacement string for a word
 func (f *ProfanityFilter) getReplacement(word string) string {
+	if f.replacementChar == "" {
+		f.replacementChar = "*"
+	}
 	return strings.Repeat(f.replacementChar, len(word))
 }
 
-// initBadWords initializes the bad words list
-func (f *ProfanityFilter) initBadWords() {
-	// Common bad words (this is a minimal example - in production, use a comprehensive list)
-	words := []string{
-		"badword1",
-		"badword2",
-		// Add more words as needed
-	}
-
-	for _, word := range words {
-		f.badWords[word] = true
-	}
+// IsEnabled returns whether the filter is enabled
+func (f *ProfanityFilter) IsEnabled() bool {
+	return f.config.ProfanityFilter.Enabled
 }

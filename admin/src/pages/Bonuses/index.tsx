@@ -1,21 +1,29 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import {
   Box, Card, CardContent, Typography, Grid, TextField, InputAdornment,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Button, Chip, IconButton, Tooltip, Switch, FormControlLabel
+  Button, Chip, IconButton, Tooltip
 } from '@mui/material';
 import { Search, Add, Edit, Visibility, CardGiftcard } from '@mui/icons-material';
-import { useAppDispatch } from '../../store/hooks';
-import { showSnackbar } from '../../store/slices/uiSlice';
 import { bonusesAPI } from '../../services/api';
 
+interface Bonus {
+  id: string;
+  name: string;
+  type: string;
+  amount: number;
+  maxBonus: number;
+  minDeposit: number;
+  wagerReq: number;
+  uses: number;
+  status: boolean;
+}
+
 const Bonuses = () => {
-  const dispatch = useAppDispatch();
-  const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['bonuses', search],
     queryFn: () => bonusesAPI.getAll({ search, page: 1, limit: 20 }),
   });
@@ -73,7 +81,7 @@ const Bonuses = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {bonuses.map((bonus) => (
+              {bonuses.map((bonus: Bonus) => (
                 <TableRow key={bonus.id} hover>
                   <TableCell><Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}><CardGiftcard color="primary" />{bonus.name}</Box></TableCell>
                   <TableCell><Chip label={bonus.type} size="small" /></TableCell>
