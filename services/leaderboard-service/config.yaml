@@ -21,55 +21,6 @@ leaderboard:
   reset_interval_hours: 24
   min_bet_threshold: 0.50
   prize_auto_credit: false
-  prizes:
-    daily:
-      - from_rank: 1
-        to_rank: 1
-        type: bonus
-        value: 100.00
-      - from_rank: 2
-        to_rank: 2
-        type: bonus
-        value: 50.00
-      - from_rank: 3
-        to_rank: 3
-        type: bonus
-        value: 25.00
-      - from_rank: 4
-        to_rank: 10
-        type: vip_points
-        value: 100
-    weekly:
-      - from_rank: 1
-        to_rank: 1
-        type: bonus
-        value: 500.00
-      - from_rank: 2
-        to_rank: 2
-        type: bonus
-        value: 250.00
-      - from_rank: 3
-        to_rank: 3
-        type: bonus
-        value: 100.00
-      - from_rank: 4
-        to_rank: 10
-        type: bonus
-        value: 50.00
-    monthly:
-      - from_rank: 1
-        to_rank: 1
-        type: bonus
-        value: 2000.00
-      - from_rank: 2
-        to_rank: 2
-        type: bonus
-        value: 1000.00
-      - from_rank: 3
-        to_rank: 3
-        type: bonus
-        value: 500.00
-      - from_rank: 4
-        to_rank: 10
-        type: bonus
-        value: 200.00
+  # Prize configuration now managed via database (tournament_prize_configs table)
+  # This allows tournament-specific prize configurations
+  # Default prizes can be set in the database for fallback

@@ -109,12 +109,19 @@ func (r *UpdateScoreRequest) Validate(minBetThreshold float64) error {
 
 // PrizeDistribution represents prize distribution for a leaderboard period
 type PrizeDistribution struct {
+	ID              int             `json:"id"`
 	LeaderboardType LeaderboardType `json:"leaderboard_type"`
 	GameType        string          `json:"game_type"`
 	Period          string          `json:"period"`
-	Prizes          []Prize         `json:"prizes"`
+	UserID          string          `json:"user_id"`
+	Rank            int             `json:"rank"`
+	PrizeType       string          `json:"prize_type"`
+	Value           float64         `json:"value"`
+	Currency        string          `json:"currency"`
+	Prizes          []Prize         `json:"prizes,omitempty"`
 	TotalValue      float64         `json:"total_value"`
 	DistributedAt   time.Time       `json:"distributed_at"`
+	Status          string          `json:"status"`
 }
 
 // Prize represents a single prize
@@ -129,5 +136,6 @@ type Prize struct {
 type PrizeDistributionRequest struct {
 	LeaderboardType LeaderboardType `json:"leaderboard_type" binding:"required"`
 	GameType        string          `json:"game_type"`
+	TournamentID    string          `json:"tournament_id"` // For tournament-specific prizes
 	DryRun          bool            `json:"dry_run"`
 }

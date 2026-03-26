@@ -327,6 +327,75 @@ func (r *LeaderboardRepository) RedisResetLeaderboard(ctx context.Context, leade
 	return r.redis.Del(ctx, key).Err()
 }
 
+// GetPrizeConfigs retrieves prize configurations from database
+func (r *LeaderboardRepository) GetPrizeConfigs(ctx context.Context, leaderboardType string, tournamentID string) ([]config.PrizeConfig, error) {
+	query := `
+		SELECT id, tournament_id, from_rank, to_rank, prize_type, value, currency, is_percentage
+		FROM tournament_prize_configs
+		WHERE leaderboard_type = $1 
+		  AND ($2 = '' OR tournament_id = $2)
+		  AND active = true
+		ORDER BY from_rank
+	`
+
+	rows, err := r.db.Query(ctx, query, leaderboardType, tournamentID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var prizes []config.PrizeConfig
+	for rows.Next() {
+		var p config.PrizeConfig
+		if err := rows.Scan(&p.ID, &p.TournamentID, &p.FromRank, &p.ToRank, &p.PrizeType, &p.Value, &p.Currency, &p.IsPercentage); err != nil {
+			return nil, err
+		}
+		prizes = append(prizes, p)
+	}
+	return prizes, nil
+}
+
+// RecordPrizeDistribution records a prize distribution
+func (r *LeaderboardRepository) RecordPrizeDistribution(ctx context.Context, req model.PrizeDistribution) error {
+	query := `
+		INSERT INTO leaderboard_prize_distributions 
+		(leaderboard_type, game_type, period, user_id, rank, prize_type, value, currency, status)
+		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+	`
+	_, err := r.db.Exec(ctx, query,
+		req.LeaderboardType, req.GameType, req.Period,
+		req.UserID, req.Rank, req.PrizeType, req.Value, req.Currency, "distributed")
+	return err
+}
+
+// GetPrizeDistributionHistory retrieves prize distribution history for a user
+func (r *LeaderboardRepository) GetPrizeDistributionHistory(ctx context.Context, userID string, limit int) ([]model.PrizeDistribution, error) {
+	query := `
+		SELECT leaderboard_type, game_type, period, user_id, rank, prize_type, value, currency, distributed_at
+		FROM leaderboard_prize_distributions
+		WHERE user_id = $1
+		ORDER BY distributed_at DESC
+		LIMIT $2
+	`
+
+	rows, err := r.db.Query(ctx, query, userID, limit)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var distributions []model.PrizeDistribution
+	for rows.Next() {
+		var d model.PrizeDistribution
+		if err := rows.Scan(&d.LeaderboardType, &d.GameType, &d.Period, &d.UserID,
+			&d.Rank, &d.PrizeType, &d.Value, &d.Currency, &d.DistributedAt); err != nil {
+			return nil, err
+		}
+		distributions = append(distributions, d)
+	}
+	return distributions, nil
+}
+
 func getRedisKey(leaderboardType model.LeaderboardType, gameType string) string {
 	period := getPeriodFromType(leaderboardType)
 	if gameType == "" || gameType == "all" {

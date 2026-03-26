@@ -122,19 +122,18 @@ func (s *LeaderboardService) UpdatePlayerScoreWithPeriod(ctx context.Context, re
 }
 
 func (s *LeaderboardService) DistributePrizes(ctx context.Context, req model.PrizeDistributionRequest) (*model.PrizeDistribution, error) {
-	// Get prize configuration for this leaderboard type
-	prizeKey := string(req.LeaderboardType)
-	if req.GameType != "" {
-		prizeKey = fmt.Sprintf("%s_%s", req.LeaderboardType, req.GameType)
+	// Get prize configuration from database (tournament-based)
+	prizes, err := s.repo.GetPrizeConfigs(ctx, string(req.LeaderboardType), req.TournamentID)
+	if err != nil {
+		return nil, err
 	}
 
-	prizes, ok := s.config.Prizes[prizeKey]
-	if !ok {
-		return nil, fmt.Errorf("no prize configuration found for %s", prizeKey)
+	if len(prizes) == 0 {
+		return nil, fmt.Errorf("no prize configuration found for leaderboard type: %s", req.LeaderboardType)
 	}
 
 	// Get top players for the leaderboard
-	entries, err := s.repo.GetLeaderboard(ctx, req.LeaderboardType, req.GameType, len(prizes))
+	entries, err := s.repo.GetLeaderboard(ctx, req.LeaderboardType, req.GameType, prizes[len(prizes)-1].ToRank)
 	if err != nil {
 		return nil, err
 	}
@@ -152,17 +151,40 @@ func (s *LeaderboardService) DistributePrizes(ctx context.Context, req model.Pri
 	for _, entry := range entries {
 		for _, prizeConfig := range prizes {
 			if entry.Rank >= prizeConfig.FromRank && entry.Rank <= prizeConfig.ToRank {
+				value := prizeConfig.Value
+				if prizeConfig.IsPercentage {
+					// Calculate percentage of entry's score
+					value = entry.Score * prizeConfig.Value / 100
+				}
+
 				prize := model.Prize{
-					Rank:  entry.Rank,
-					Type:  prizeConfig.Type,
-					Value: prizeConfig.Value,
+					Rank:     entry.Rank,
+					Type:     prizeConfig.PrizeType,
+					Value:    value,
+					Currency: prizeConfig.Currency,
 				}
 				distribution.Prizes = append(distribution.Prizes, prize)
-				distribution.TotalValue += prizeConfig.Value
+				distribution.TotalValue += value
+
+				// Record distribution in database
+				distRecord := model.PrizeDistribution{
+					LeaderboardType: req.LeaderboardType,
+					GameType:        req.GameType,
+					Period:          distribution.Period,
+					UserID:          entry.UserID,
+					Rank:            entry.Rank,
+					PrizeType:       prizeConfig.PrizeType,
+					Value:           value,
+					Currency:        prizeConfig.Currency,
+					DistributedAt:   time.Now(),
+					Status:          "distributed",
+				}
+				s.repo.RecordPrizeDistribution(ctx, distRecord)
 
 				// In production, this would trigger wallet credit
 				if !req.DryRun && s.config.PrizeAutoCredit {
-					log.Printf("Would credit prize to user %s: %+v", entry.UserID, prize)
+					log.Printf("Would credit prize to user %s: rank %d, %s %.2f",
+						entry.UserID, entry.Rank, prizeConfig.PrizeType, value)
 				}
 				break
 			}

@@ -40,20 +40,34 @@ type RedisConfig struct {
 
 // LeaderboardConfig holds leaderboard-specific configuration
 type LeaderboardConfig struct {
-	TopPlayersCount    int                      `mapstructure:"top_players_count"`
-	CacheTTLSeconds    int                      `mapstructure:"cache_ttl_seconds"`
-	ResetIntervalHours int                      `mapstructure:"reset_interval_hours"`
-	MinBetThreshold    float64                  `mapstructure:"min_bet_threshold"`
-	Prizes             map[string][]PrizeConfig `mapstructure:"prizes"`
-	PrizeAutoCredit    bool                     `mapstructure:"prize_auto_credit"`
+	TopPlayersCount    int     `mapstructure:"top_players_count"`
+	CacheTTLSeconds    int     `mapstructure:"cache_ttl_seconds"`
+	ResetIntervalHours int     `mapstructure:"reset_interval_hours"`
+	MinBetThreshold    float64 `mapstructure:"min_bet_threshold"`
+	PrizeAutoCredit    bool    `mapstructure:"prize_auto_credit"`
 }
 
-// PrizeConfig holds prize configuration for a leaderboard
+// PrizeConfig holds prize configuration for a leaderboard (loaded from DB)
 type PrizeConfig struct {
-	FromRank int     `mapstructure:"from_rank"`
-	ToRank   int     `mapstructure:"to_rank"`
-	Type     string  `mapstructure:"type"` // bonus, freespins, vip_points
-	Value    float64 `mapstructure:"value"`
+	ID           int     `mapstructure:"id"`
+	TournamentID string  `mapstructure:"tournament_id"`
+	FromRank     int     `mapstructure:"from_rank"`
+	ToRank       int     `mapstructure:"to_rank"`
+	PrizeType    string  `mapstructure:"prize_type"` // bonus, freespins, vip_points
+	Value        float64 `mapstructure:"value"`
+	Currency     string  `mapstructure:"currency"`
+	IsPercentage bool    `mapstructure:"is_percentage"`
+}
+
+// PrizeTemplate represents a reusable prize template
+type PrizeTemplate struct {
+	ID          int     `json:"id"`
+	Name        string  `json:"name"`
+	Description string  `json:"description"`
+	PrizeType   string  `json:"prize_type"`
+	Value       float64 `json:"value"`
+	Currency    string  `json:"currency"`
+	Active      bool    `json:"active"`
 }
 
 // Load loads configuration from config.yaml and environment variables

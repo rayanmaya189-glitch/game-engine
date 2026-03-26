@@ -213,3 +213,81 @@ CREATE TRIGGER trigger_update_alltime_leaderboard
 AFTER INSERT OR UPDATE ON player_scores
 FOR EACH ROW
 EXECUTE FUNCTION update_alltime_leaderboard();
+
+-- Leaderboard Prize Configuration (Database-managed, not YAML)
+-- Prize configuration is now stored in database for tournament-based management
+
+-- Prize templates table (reusable prize configurations)
+CREATE TABLE IF NOT EXISTS prize_templates (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    prize_type VARCHAR(20) NOT NULL, -- bonus, freespins, vip_points, merchandise
+    value DECIMAL(15, 2) NOT NULL,
+    currency VARCHAR(10) DEFAULT 'USD',
+    active BOOLEAN DEFAULT true,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW()
+);
+
+-- Tournament prize configurations (tournament-specific)
+CREATE TABLE IF NOT EXISTS tournament_prize_configs (
+    id SERIAL PRIMARY KEY,
+    tournament_id VARCHAR(50) NOT NULL,
+    leaderboard_type VARCHAR(20) NOT NULL, -- daily, weekly, monthly, tournament
+    from_rank INTEGER NOT NULL,
+    to_rank INTEGER NOT NULL,
+    prize_template_id INTEGER REFERENCES prize_templates(id),
+    prize_type VARCHAR(20) NOT NULL,
+    value DECIMAL(15, 2) NOT NULL,
+    currency VARCHAR(10) DEFAULT 'USD',
+    is_percentage BOOLEAN DEFAULT false,
+    created_at TIMESTAMP DEFAULT NOW(),
+    updated_at TIMESTAMP DEFAULT NOW(),
+    UNIQUE(tournament_id, leaderboard_type, from_rank, to_rank)
+);
+
+-- Leaderboard prize history (track distributed prizes)
+CREATE TABLE IF NOT EXISTS leaderboard_prize_distributions (
+    id SERIAL PRIMARY KEY,
+    leaderboard_type VARCHAR(20) NOT NULL,
+    game_type VARCHAR(50),
+    period VARCHAR(50) NOT NULL,
+    user_id VARCHAR(50) NOT NULL,
+    rank INTEGER NOT NULL,
+    prize_type VARCHAR(20) NOT NULL,
+    value DECIMAL(15, 2) NOT NULL,
+    currency VARCHAR(10) DEFAULT 'USD',
+    distributed_at TIMESTAMP DEFAULT NOW(),
+    status VARCHAR(20) DEFAULT 'pending', -- pending, distributed, failed
+    transaction_id VARCHAR(100)
+);
+
+-- Indexes
+CREATE INDEX idx_tournament_prize_tournament ON tournament_prize_configs(tournament_id);
+CREATE INDEX idx_leaderboard_prize_period ON leaderboard_prize_distributions(leaderboard_type, period);
+CREATE INDEX idx_leaderboard_prize_user ON leaderboard_prize_distributions(user_id);
+CREATE INDEX idx_prize_templates_active ON prize_templates(active);
+
+-- Default prize templates
+INSERT INTO prize_templates (name, description, prize_type, value, currency, active) VALUES
+('Daily 1st Place', 'First place prize for daily leaderboard', 'bonus', 100.00, 'USD', true),
+('Daily 2nd Place', 'Second place prize for daily leaderboard', 'bonus', 50.00, 'USD', true),
+('Daily 3rd Place', 'Third place prize for daily leaderboard', 'bonus', 25.00, 'USD', true),
+('Daily Top 10', 'VIP points for ranks 4-10', 'vip_points', 100.00, 'USD', true),
+('Weekly 1st Place', 'First place prize for weekly leaderboard', 'bonus', 500.00, 'USD', true),
+('Weekly 2nd Place', 'Second place prize for weekly leaderboard', 'bonus', 250.00, 'USD', true),
+('Weekly 3rd Place', 'Third place prize for weekly leaderboard', 'bonus', 100.00, 'USD', true),
+('Weekly Top 10', 'Bonus for ranks 4-10', 'bonus', 50.00, 'USD', true),
+('Monthly 1st Place', 'First place prize for monthly leaderboard', 'bonus', 2000.00, 'USD', true),
+('Monthly 2nd Place', 'Second place prize for monthly leaderboard', 'bonus', 1000.00, 'USD', true),
+('Monthly 3rd Place', 'Third place prize for monthly leaderboard', 'bonus', 500.00, 'USD', true),
+('Monthly Top 10', 'Bonus for ranks 4-10', 'bonus', 200.00, 'USD', true);
+
+-- Example: Tournament-specific prize configuration
+INSERT INTO tournament_prize_configs (tournament_id, leaderboard_type, from_rank, to_rank, prize_type, value, currency) VALUES
+('T001', 'tournament', 1, 1, 'bonus', 1000.00, 'USD'),
+('T001', 'tournament', 2, 2, 'bonus', 500.00, 'USD'),
+('T001', 'tournament', 3, 3, 'bonus', 250.00, 'USD'),
+('T001', 'tournament', 4, 10, 'bonus', 100.00, 'USD'),
+('T001', 'tournament', 11, 50, 'vip_points', 50.00, 'USD');
