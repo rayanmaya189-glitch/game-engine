@@ -15,6 +15,7 @@ class MLRiskModel:
     WEIGHT_WAGERING_RATIO = float(os.environ.get("AML_WEIGHT_WAGERING_RATIO", "0.30"))
     WEIGHT_PAYMENT_DIVERSITY = float(os.environ.get("AML_WEIGHT_PAYMENT_DIVERSITY", "0.15"))
     WEIGHT_GEO_CONSISTENCY = float(os.environ.get("AML_WEIGHT_GEO_CONSISTENCY", "0.20"))
+    AVG_AMOUNT_NORMALIZER = float(os.environ.get("AML_AVG_AMOUNT_NORMALIZER", "5000"))
 
     @staticmethod
     async def calculate_risk_score(db: AsyncSession, user_id: str) -> RiskScore:
@@ -36,7 +37,7 @@ class MLRiskModel:
         # Feature: Average transaction amount
         amounts = [t.amount for t in recent]
         avg_amount = sum(amounts) / len(amounts) if amounts else 0
-        factors["avg_amount"] = min(avg_amount / 5000, 1.0)
+        factors["avg_amount"] = min(avg_amount / MLRiskModel.AVG_AMOUNT_NORMALIZER, 1.0)
 
         # Feature: Wagering ratio
         deposits = sum(t.amount for t in recent if t.type == "deposit")

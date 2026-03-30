@@ -15,8 +15,8 @@ func (s *WalletService) CreateDeposit(ctx context.Context, userID, currency, pay
 	if amount <= 0 {
 		return nil, errors.New("deposit amount must be positive")
 	}
-	if amount < 10 || amount > 100000 {
-		return nil, errors.New("deposit amount must be between 10 and 100000")
+	if amount < s.cfg.Deposit.MinDepositAmount || amount > s.cfg.Deposit.MaxDepositAmount {
+		return nil, fmt.Errorf("deposit amount must be between %d and %d", s.cfg.Deposit.MinDepositAmount, s.cfg.Deposit.MaxDepositAmount)
 	}
 
 	tx := &model.Transaction{

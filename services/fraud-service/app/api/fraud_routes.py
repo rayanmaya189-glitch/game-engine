@@ -4,6 +4,7 @@ from typing import Optional, List
 from datetime import datetime
 import random
 import json
+import os
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
@@ -15,6 +16,11 @@ from app.repositories import (
 )
 
 router = APIRouter()
+
+HIGH_AMOUNT = float(os.environ.get("FRAUD_HIGH_AMOUNT_THRESHOLD", "5000"))
+VERY_HIGH_AMOUNT = float(os.environ.get("FRAUD_VERY_HIGH_AMOUNT_THRESHOLD", "10000"))
+BET_AMOUNT = float(os.environ.get("FRAUD_BET_AMOUNT_THRESHOLD", "1000"))
+RAPID_BET_SECONDS = int(os.environ.get("FRAUD_RAPID_BET_SECONDS", "2"))
 
 
 class RiskCheckRequest(BaseModel):
@@ -55,10 +61,10 @@ async def check_risk(request: RiskCheckRequest, db: AsyncSession = Depends(get_d
     risk_score = 0.0
     risk_factors = []
 
-    if request.amount > 5000:
+    if request.amount > HIGH_AMOUNT:
         risk_score += 0.2
         risk_factors.append("High transaction amount")
-    if request.amount > 10000:
+    if request.amount > VERY_HIGH_AMOUNT:
         risk_score += 0.2
         risk_factors.append("Very high transaction amount")
 
@@ -103,7 +109,7 @@ async def check_bet_risk(request: BetCheckRequest, db: AsyncSession = Depends(ge
     risk_score = 0.0
     risk_factors = []
 
-    if request.amount > 1000:
+    if request.amount > BET_AMOUNT:
         risk_score += 0.15
         risk_factors.append("Unusually high bet amount")
 
@@ -113,7 +119,7 @@ async def check_bet_risk(request: BetCheckRequest, db: AsyncSession = Depends(ge
         try:
             last_bet = datetime.fromisoformat(profile.last_bet_time)
             time_diff = (datetime.utcnow() - last_bet).total_seconds()
-            if time_diff < 2:
+            if time_diff < RAPID_BET_SECONDS:
                 risk_score += 0.25
                 risk_factors.append("Rapid betting pattern detected")
         except (ValueError, TypeError):

@@ -1,9 +1,13 @@
 """Real-time fraud scoring"""
 
+import os
+
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.models.schemas import FraudScore
 from app.services.multi_account_detector import MultiAccountDetector
+
+NEW_ACCOUNT_AMOUNT = float(os.environ.get("FRAUD_NEW_ACCOUNT_AMOUNT", "1000"))
 
 
 class FraudScorer:
@@ -22,7 +26,7 @@ class FraudScorer:
         """Calculate fraud score for a transaction"""
         signals = {}
 
-        if is_new_account and transaction_amount > 1000:
+        if is_new_account and transaction_amount > NEW_ACCOUNT_AMOUNT:
             signals["new_account_large_txn"] = 0.6
 
         if payment_method_new:

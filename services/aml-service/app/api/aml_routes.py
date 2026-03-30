@@ -4,11 +4,18 @@ from typing import Optional, List
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+import os
 
 from app.database import get_db
 from app.models import AlertRecord, TransactionRecord, RiskScoreRecord
 
 router = APIRouter()
+
+LARGE_TX_THRESHOLD = int(os.environ.get("AML_LARGE_TRANSACTION_THRESHOLD", "10000"))
+DAILY_LIMIT = float(os.environ.get("AML_DAILY_DEPOSIT_LIMIT", "10000"))
+WEEKLY_LIMIT = float(os.environ.get("AML_WEEKLY_DEPOSIT_LIMIT", "25000"))
+MONTHLY_LIMIT = float(os.environ.get("AML_MONTHLY_DEPOSIT_LIMIT", "100000"))
+SINGLE_TX_LIMIT = float(os.environ.get("AML_SINGLE_TRANSACTION_LIMIT", "5000"))
 
 
 class TransactionAlert(BaseModel):
@@ -54,7 +61,7 @@ async def check_transaction(request: TransactionCheckRequest, db: AsyncSession =
     """Check a transaction for AML compliance"""
     risk_score = 0.1
 
-    if request.amount > 10000:
+    if request.amount > LARGE_TX_THRESHOLD:
         risk_score += 0.3
 
     if request.country in HIGH_RISK_COUNTRIES:
@@ -158,10 +165,10 @@ async def get_user_limits(user_id: str, db: AsyncSession = Depends(get_db)):
 
     return {
         "user_id": user_id,
-        "daily_deposit_limit": 10000.0,
-        "weekly_deposit_limit": 25000.0,
-        "monthly_deposit_limit": 100000.0,
-        "single_transaction_limit": 5000.0,
+        "daily_deposit_limit": DAILY_LIMIT,
+        "weekly_deposit_limit": WEEKLY_LIMIT,
+        "monthly_deposit_limit": MONTHLY_LIMIT,
+        "single_transaction_limit": SINGLE_TX_LIMIT,
         "current_daily": daily_deposits,
         "current_weekly": 0.0,
         "current_monthly": 0.0
@@ -172,12 +179,12 @@ async def get_user_limits(user_id: str, db: AsyncSession = Depends(get_db)):
 async def check_limits(user_id: str, amount: float, period: str):
     """Check if amount is within AML limits"""
     limits = {
-        "daily": 10000.0,
-        "weekly": 25000.0,
-        "monthly": 100000.0
+        "daily": DAILY_LIMIT,
+        "weekly": WEEKLY_LIMIT,
+        "monthly": MONTHLY_LIMIT
     }
 
-    limit = limits.get(period, 10000.0)
+    limit = limits.get(period, DAILY_LIMIT)
 
     return {
         "user_id": user_id,

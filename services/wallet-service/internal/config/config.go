@@ -18,7 +18,14 @@ type Config struct {
 	Betting      BettingConfig      `yaml:"betting"`
 	Withdrawal   WithdrawalConfig   `yaml:"withdrawal"`
 	Bonus        BonusConfig        `yaml:"bonus"`
+	Deposit      DepositConfig      `yaml:"deposit"`
 	Payment      PaymentConfig      `yaml:"payment"`
+}
+
+// DepositConfig holds deposit configuration
+type DepositConfig struct {
+	MinDepositAmount int64 `yaml:"min_deposit_amount"`
+	MaxDepositAmount int64 `yaml:"max_deposit_amount"`
 }
 
 // ServerConfig holds gRPC and HTTP server configuration

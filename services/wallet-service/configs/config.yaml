@@ -57,6 +57,10 @@ bonus:
   default_wagering_multiplier: 30
   bonus_expiry_days: 30
 
+deposit:
+  min_deposit_amount: 10
+  max_deposit_amount: 100000
+
 payment:
   provider_url: ""
   provider_api_key: ""

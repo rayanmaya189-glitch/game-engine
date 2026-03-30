@@ -6,6 +6,7 @@ from sqlalchemy import select
 
 from app.database import get_db
 from app.models import AlertRecord, TransactionRecord
+from app.services.rules_engine import AMLRulesEngine
 
 router = APIRouter(prefix="", tags=["reports"])
 
@@ -19,7 +20,7 @@ async def generate_ctr_report(start_date: str, end_date: str, db: AsyncSession =
     stmt = select(TransactionRecord).where(
         TransactionRecord.timestamp > start,
         TransactionRecord.timestamp < end,
-        TransactionRecord.amount > 10000,
+        TransactionRecord.amount > AMLRulesEngine.LARGE_TRANSACTION_THRESHOLD,
     )
     result = await db.execute(stmt)
     records = result.scalars().all()

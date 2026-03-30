@@ -26,7 +26,7 @@ class AMLRulesEngine:
             TransactionRecord.user_id == user_id,
             TransactionRecord.type == "deposit",
             TransactionRecord.timestamp > cutoff,
-            TransactionRecord.amount < 10000,
+            TransactionRecord.amount < AMLRulesEngine.LARGE_TRANSACTION_THRESHOLD,
         )
         result = await db.execute(stmt)
         deposits = result.scalars().all()
