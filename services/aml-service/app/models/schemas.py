@@ -67,9 +67,3 @@ class RiskScore(BaseModel):
     category: str  # low, medium, high, critical
     factors: Dict[str, float] = {}
     last_updated: datetime = Field(default_factory=datetime.now)
-
-
-# In-Memory Storage (would be database in production)
-alerts_db: Dict[str, Alert] = {}
-transactions_db: Dict[str, Transaction] = {}
-risk_scores_db: Dict[str, RiskScore] = {}

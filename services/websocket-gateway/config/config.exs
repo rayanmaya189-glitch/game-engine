@@ -84,6 +84,7 @@ config :websocket_gateway, :nats,
 config :websocket_gateway, :services,
   wallet_service: System.get_env("WALLET_SERVICE_URL") || "http://localhost:8081",
   game_service: System.get_env("GAME_SERVICE_URL") || "http://localhost:8082",
+  game_registry_service: System.get_env("GAME_REGISTRY_SERVICE_URL") || "http://localhost:8082",
   tournament_service: System.get_env("TOURNAMENT_SERVICE_URL") || "http://localhost:8083",
   jackpot_service: System.get_env("JACKPOT_SERVICE_URL") || "http://localhost:8084",
   auth_service: System.get_env("AUTH_SERVICE_URL") || "http://localhost:8080"

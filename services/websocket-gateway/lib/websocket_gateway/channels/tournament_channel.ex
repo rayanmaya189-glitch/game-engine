@@ -1,6 +1,6 @@
 defmodule WebsocketGateway.Channels.TournamentChannel do
   use WebsocketGateway, :channel
-  alias WebsocketGateway.Services.{Presence, RoomManager}
+  alias WebsocketGateway.Services.{Presence, RoomManager, ServiceClient}
 
   # Tournament channel topics:
   # "tournament:lobby" - Main tournament lobby
@@ -197,13 +197,19 @@ defmodule WebsocketGateway.Channels.TournamentChannel do
 
   # Private functions
   defp get_active_tournaments do
-    # TODO: Get from Redis/cache
-    []
+    case ServiceClient.list_active_tournaments() do
+      {:ok, %{"tournaments" => tournaments}} -> tournaments
+      {:ok, response} -> Map.get(response, "tournaments", [])
+      {:error, _} -> []
+    end
   end
 
   defp get_tournament_schedule do
-    # TODO: Get from Redis/cache
-    []
+    case ServiceClient.get_tournament_schedule() do
+      {:ok, %{"schedule" => schedule}} -> schedule
+      {:ok, response} -> Map.get(response, "schedule", [])
+      {:error, _} -> []
+    end
   end
 
   defp get_online_count do
@@ -214,13 +220,19 @@ defmodule WebsocketGateway.Channels.TournamentChannel do
   end
 
   defp get_leaderboard(tournament_id) do
-    # TODO: Get from Redis
-    []
+    case ServiceClient.get_leaderboard(tournament_id) do
+      {:ok, %{"leaderboard" => leaderboard}} -> leaderboard
+      {:ok, response} -> Map.get(response, "leaderboard", [])
+      {:error, _} -> []
+    end
   end
 
   defp get_standings(tournament_id) do
-    # TODO: Get from Redis
-    []
+    case ServiceClient.get_standings(tournament_id) do
+      {:ok, %{"standings" => standings}} -> standings
+      {:ok, response} -> Map.get(response, "standings", [])
+      {:error, _} -> []
+    end
   end
 
   defp subscribe_to_tournament_events(tournament_id) do

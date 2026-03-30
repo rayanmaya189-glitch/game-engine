@@ -1,7 +1,11 @@
+import os
 from fastapi import APIRouter
 from typing import Dict
 
 router = APIRouter(tags=["limits"])
+
+BASE_DEPOSIT = int(os.environ.get("RISK_BASE_DEPOSIT_LIMIT", "10000"))
+BASE_WITHDRAWAL = int(os.environ.get("RISK_BASE_WITHDRAWAL_LIMIT", "5000"))
 
 
 @router.post("/limits/calculate", response_model=Dict)
@@ -14,9 +18,6 @@ async def calculate_dynamic_limits(
 ):
     """Calculate dynamic deposit/withdrawal limits"""
 
-    base_deposit = 10000
-    base_withdrawal = 5000
-
     if account_age_days < 30:
         age_factor = 0.5
     elif account_age_days < 90:
@@ -28,15 +29,15 @@ async def calculate_dynamic_limits(
 
     risk_factor = 1.0 - (current_risk_score / 200)
 
-    deposit_limit = base_deposit * age_factor * vip_factor * risk_factor
-    withdrawal_limit = base_withdrawal * age_factor * vip_factor * risk_factor
+    deposit_limit = BASE_DEPOSIT * age_factor * vip_factor * risk_factor
+    withdrawal_limit = BASE_WITHDRAWAL * age_factor * vip_factor * risk_factor
 
     return {
         "user_id": user_id,
         "daily_deposit_limit": round(deposit_limit, 2),
         "daily_withdrawal_limit": round(withdrawal_limit, 2),
         "calculation": {
-            "base_deposit": base_deposit,
+            "base_deposit": BASE_DEPOSIT,
             "age_factor": age_factor,
             "vip_factor": vip_factor,
             "risk_factor": risk_factor

@@ -3,6 +3,8 @@ package service
 import (
 	"errors"
 	"time"
+
+	"github.com/game_engine/betting/internal/repository"
 )
 
 // Bet types
@@ -52,12 +54,14 @@ const (
 
 // BettingService manages betting operations
 type BettingService struct {
-	minBet     int64
-	maxBet     int64
-	maxPayout  int64
-	maxOdds    float64
-	settlement SettlementService
-	limits     map[string]*LimitConfig
+	minBet          int64
+	maxBet          int64
+	maxPayout       int64
+	maxOdds         float64
+	defaultCurrency string
+	settlement      SettlementService
+	limits          map[string]*LimitConfig
+	repo            repository.BettingRepository
 }
 
 // LimitConfig represents bet limits
@@ -105,32 +109,61 @@ type SettlementService interface {
 // BettingServiceImpl implements BettingService
 type BettingServiceImpl struct {
 	*BettingService
-	bets map[string]*Bet
 }
 
-// NewBettingService creates a new betting service
-func NewBettingService() (*BettingService, error) {
+// NewBettingService creates a new betting service with repository
+func NewBettingService(repo repository.BettingRepository) (*BettingService, error) {
 	return &BettingService{
-		minBet:    1,
-		maxBet:    10000,
-		maxPayout: 100000,
-		maxOdds:   1000.0,
-		limits:    make(map[string]*LimitConfig),
+		minBet:          1,
+		maxBet:          10000,
+		maxPayout:       100000,
+		maxOdds:         1000.0,
+		defaultCurrency: "USD",
+		limits:          make(map[string]*LimitConfig),
+		repo:            repo,
 	}, nil
 }
 
-// NewBettingServiceWithConfig creates a betting service with custom config
-func NewBettingServiceWithConfig(minBet, maxBet int64, maxPayout int64) (*BettingService, error) {
+// NewBettingServiceWithConfig creates a betting service with custom config and repository
+func NewBettingServiceWithConfig(minBet, maxBet int64, maxPayout int64, repo repository.BettingRepository) (*BettingService, error) {
 	if minBet <= 0 || maxBet <= 0 || maxBet < minBet {
 		return nil, errors.New("invalid bet limits")
 	}
 
 	return &BettingService{
-		minBet:     minBet,
-		maxBet:     maxBet,
-		maxPayout:  maxPayout,
-		maxOdds:    1000.0,
-		settlement: nil,
-		limits:     make(map[string]*LimitConfig),
+		minBet:          minBet,
+		maxBet:          maxBet,
+		maxPayout:       maxPayout,
+		maxOdds:         1000.0,
+		defaultCurrency: "USD",
+		settlement:      nil,
+		limits:          make(map[string]*LimitConfig),
+		repo:            repo,
 	}, nil
+}
+
+// NewBettingServiceFromConfig creates a betting service from configuration values
+func NewBettingServiceFromConfig(minBet, maxBet, maxPayout int64, maxOdds float64, defaultCurrency string, repo repository.BettingRepository) (*BettingService, error) {
+	if minBet <= 0 || maxBet <= 0 || maxBet < minBet {
+		return nil, errors.New("invalid bet limits")
+	}
+	if defaultCurrency == "" {
+		defaultCurrency = "USD"
+	}
+
+	return &BettingService{
+		minBet:          minBet,
+		maxBet:          maxBet,
+		maxPayout:       maxPayout,
+		maxOdds:         maxOdds,
+		defaultCurrency: defaultCurrency,
+		settlement:      nil,
+		limits:          make(map[string]*LimitConfig),
+		repo:            repo,
+	}, nil
+}
+
+// GetRepository returns the underlying repository
+func (s *BettingService) GetRepository() repository.BettingRepository {
+	return s.repo
 }

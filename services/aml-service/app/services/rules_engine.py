@@ -1,33 +1,35 @@
+import os
 from typing import Optional, List
 from datetime import datetime, timedelta
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
 
-from app.models.schemas import (
-    Alert, AlertType, AlertSeverity, Transaction, transactions_db
-)
+from app.models import TransactionRecord
+from app.models.schemas import Alert, AlertType, AlertSeverity, Transaction
 
 
 class AMLRulesEngine:
     """Rules engine for detecting suspicious transaction patterns"""
 
-    # Rule thresholds
-    STRUCTURING_THRESHOLD = 10000  # 3+ deposits within 24h totaling > $10K
-    STRUCTURING_COUNT = 3
-    RAPID_WITHDRAW_RATIO = 3  # < 3x wagering of deposit
-    LARGE_TRANSACTION_THRESHOLD = 10000
-    VELOCITY_THRESHOLD = 10  # > 10 transactions/hour
+    STRUCTURING_THRESHOLD = int(os.environ.get("AML_STRUCTURING_THRESHOLD", "10000"))
+    STRUCTURING_COUNT = int(os.environ.get("AML_STRUCTURING_COUNT", "3"))
+    RAPID_WITHDRAW_RATIO = int(os.environ.get("AML_RAPID_WITHDRAW_RATIO", "3"))
+    LARGE_TRANSACTION_THRESHOLD = int(os.environ.get("AML_LARGE_TRANSACTION_THRESHOLD", "10000"))
+    VELOCITY_THRESHOLD = int(os.environ.get("AML_VELOCITY_THRESHOLD", "10"))
 
     @staticmethod
-    def check_structuring(user_id: str, hours: int = 24) -> Optional[Alert]:
+    async def check_structuring(db: AsyncSession, user_id: str, hours: int = 24) -> Optional[Alert]:
         """Detect structuring: multiple deposits just below reporting threshold"""
-        cutoff = datetime.now() - timedelta(hours=hours)
+        cutoff = datetime.utcnow() - timedelta(hours=hours)
 
-        deposits = [
-            t for t in transactions_db.values()
-            if t.user_id == user_id
-            and t.type == "deposit"
-            and t.timestamp > cutoff
-            and t.amount < 10000  # Below single threshold
-        ]
+        stmt = select(TransactionRecord).where(
+            TransactionRecord.user_id == user_id,
+            TransactionRecord.type == "deposit",
+            TransactionRecord.timestamp > cutoff,
+            TransactionRecord.amount < 10000,
+        )
+        result = await db.execute(stmt)
+        deposits = result.scalars().all()
 
         total = sum(d.amount for d in deposits)
 
@@ -42,13 +44,15 @@ class AMLRulesEngine:
         return None
 
     @staticmethod
-    def check_rapid_deposit_withdraw(user_id: str) -> Optional[Alert]:
+    async def check_rapid_deposit_withdraw(db: AsyncSession, user_id: str) -> Optional[Alert]:
         """Detect rapid deposit-withdraw with minimal play"""
-        recent_transactions = [
-            t for t in transactions_db.values()
-            if t.user_id == user_id
-            and t.timestamp > datetime.now() - timedelta(days=7)
-        ]
+        cutoff = datetime.utcnow() - timedelta(days=7)
+        stmt = select(TransactionRecord).where(
+            TransactionRecord.user_id == user_id,
+            TransactionRecord.timestamp > cutoff,
+        )
+        result = await db.execute(stmt)
+        recent_transactions = result.scalars().all()
 
         deposits = [t for t in recent_transactions if t.type == "deposit"]
         withdrawals = [t for t in recent_transactions if t.type == "withdrawal"]
@@ -59,9 +63,9 @@ class AMLRulesEngine:
 
         total_deposits = sum(d.amount for d in deposits)
         total_bets = sum(b.amount for b in bets)
+        total_withdrawals = sum(w.amount for w in withdrawals)
 
-        # Check if withdrawals exceed 3x bets (rapid withdraw pattern)
-        if total_withdrawals := sum(w.amount for w in withdrawals):
+        if total_withdrawals:
             if total_bets < (total_deposits / AMLRulesEngine.RAPID_WITHDRAW_RATIO):
                 return Alert(
                     user_id=user_id,
@@ -86,14 +90,17 @@ class AMLRulesEngine:
         return None
 
     @staticmethod
-    def check_velocity(user_id: str, hours: int = 1) -> Optional[Alert]:
+    async def check_velocity(db: AsyncSession, user_id: str, hours: int = 1) -> Optional[Alert]:
         """Detect unusual transaction frequency"""
-        cutoff = datetime.now() - timedelta(hours=hours)
+        cutoff = datetime.utcnow() - timedelta(hours=hours)
 
-        count = sum(
-            1 for t in transactions_db.values()
-            if t.user_id == user_id and t.timestamp > cutoff
+        stmt = select(TransactionRecord).where(
+            TransactionRecord.user_id == user_id,
+            TransactionRecord.timestamp > cutoff,
         )
+        result = await db.execute(stmt)
+        recent = result.scalars().all()
+        count = len(recent)
 
         if count > AMLRulesEngine.VELOCITY_THRESHOLD:
             return Alert(
@@ -101,25 +108,22 @@ class AMLRulesEngine:
                 alert_type=AlertType.VELOCITY,
                 severity=AlertSeverity.MEDIUM,
                 description=f"High velocity: {count} transactions in {hours} hour(s)",
-                transactions=[
-                    t.transaction_id for t in transactions_db.values()
-                    if t.user_id == user_id and t.timestamp > cutoff
-                ]
+                transactions=[t.transaction_id for t in recent]
             )
         return None
 
     @classmethod
-    def run_all_rules(cls, user_id: str, transaction: Optional[Transaction] = None) -> List[Alert]:
+    async def run_all_rules(cls, db: AsyncSession, user_id: str, transaction: Optional[Transaction] = None) -> List[Alert]:
         """Run all AML rules for a user"""
         alerts = []
 
-        if alert := cls.check_structuring(user_id):
+        if alert := await cls.check_structuring(db, user_id):
             alerts.append(alert)
 
-        if alert := cls.check_rapid_deposit_withdraw(user_id):
+        if alert := await cls.check_rapid_deposit_withdraw(db, user_id):
             alerts.append(alert)
 
-        if alert := cls.check_velocity(user_id):
+        if alert := await cls.check_velocity(db, user_id):
             alerts.append(alert)
 
         if transaction and (alert := cls.check_large_transaction(user_id, transaction)):

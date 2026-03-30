@@ -2,9 +2,9 @@ package com.game_engine.payment.gateway.stripe;
 
 import com.game_engine.payment.gateway.PaymentGatewayAdapter.GatewayResponse;
 import com.game_engine.payment.model.Deposit;
-import com.stripe.Stripe;
 import com.stripe.exception.*;
 import com.stripe.model.PaymentIntent;
+import com.stripe.model.PaymentIntent.NextAction;
 import com.stripe.param.PaymentIntentCreateParams;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,10 +32,8 @@ public class StripeDepositHandler {
             PaymentIntentCreateParams.Builder paramsBuilder = PaymentIntentCreateParams.builder()
                     .setAmount(stripeUtils.currencyToMinorUnits(deposit.getAmount(), deposit.getCurrency()))
                     .setCurrency(deposit.getCurrency().toLowerCase())
-                    .setMetadata(Map.of(
-                        "deposit_id", deposit.getId().toString(),
-                        "user_id", deposit.getUserId().toString()
-                    ))
+                    .putMetadata("deposit_id", deposit.getId().toString())
+                    .putMetadata("user_id", deposit.getUserId().toString())
                     .setCaptureMethod(PaymentIntentCreateParams.CaptureMethod.AUTOMATIC);
 
             String paymentMethodId = paymentDetails.get("payment_method_id");
@@ -44,17 +42,17 @@ public class StripeDepositHandler {
                         .setConfirm(true)
                         .setReturnUrl(paymentDetails.get("return_url"));
             } else {
-                paramsBuilder.setPaymentMethodTypes(java.util.List.of("card"));
+                paramsBuilder.addPaymentMethodType("card");
             }
 
             PaymentIntent intent = PaymentIntent.create(paramsBuilder.build());
 
             if ("requires_action".equals(intent.getStatus()) ||
                 "requires_source_action".equals(intent.getStatus())) {
-                Map<String, String> nextAction = intent.getNextAction();
+                NextAction nextAction = intent.getNextAction();
                 String redirectUrl = null;
-                if (nextAction != null && nextAction.containsKey("redirect_to_url")) {
-                    redirectUrl = nextAction.get("redirect_to_url");
+                if (nextAction != null && nextAction.getRedirectToUrl() != null) {
+                    redirectUrl = nextAction.getRedirectToUrl().getUrl();
                 }
 
                 return GatewayResponse.builder()

@@ -5,7 +5,7 @@ server:
   write_timeout: 30
 
 jwt:
-  secret: "your-secret-key-change-in-production"
+  secret: "${JWT_SECRET:-change-me-in-production}"
   expiration_hours: 24
   refresh_days: 7
 

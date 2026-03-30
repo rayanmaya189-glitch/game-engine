@@ -2,7 +2,11 @@
 // used across all services in the casino game engine.
 package common
 
-import "time"
+import (
+	"os"
+	"strconv"
+	"time"
+)
 
 // ===========================================
 // Service Constants
@@ -84,17 +88,42 @@ const (
 const (
 	// Game settings
 	MaxPlayersPerTable = 6
-	MinBetAmount       = 1.0
-	MaxBetAmount       = 100000.0
 
-	// Transaction limits
-	MaxDepositAmount    = 1000000.0
-	MaxWithdrawalAmount = 100000.0
+	// MinWithdrawalAmount is the minimum withdrawal allowed
 	MinWithdrawalAmount = 10.0
 
 	// Wallet settings
 	WalletDecimalPlaces = 2
 )
+
+// MinBetAmount returns the minimum bet amount, loaded from BET_MIN_AMOUNT env var or default of 1.0
+func MinBetAmount() float64 {
+	return getEnvFloat("BET_MIN_AMOUNT", 1.0)
+}
+
+// MaxBetAmount returns the maximum bet amount, loaded from BET_MAX_AMOUNT env var or default of 100000.0
+func MaxBetAmount() float64 {
+	return getEnvFloat("BET_MAX_AMOUNT", 100000.0)
+}
+
+// MaxDepositAmount returns the maximum deposit amount, loaded from MAX_DEPOSIT_AMOUNT env var or default of 1000000.0
+func MaxDepositAmount() float64 {
+	return getEnvFloat("MAX_DEPOSIT_AMOUNT", 1000000.0)
+}
+
+// MaxWithdrawalAmount returns the maximum withdrawal amount, loaded from MAX_WITHDRAWAL_AMOUNT env var or default of 100000.0
+func MaxWithdrawalAmount() float64 {
+	return getEnvFloat("MAX_WITHDRAWAL_AMOUNT", 100000.0)
+}
+
+func getEnvFloat(key string, fallback float64) float64 {
+	if v := os.Getenv(key); v != "" {
+		if f, err := strconv.ParseFloat(v, 64); err == nil {
+			return f
+		}
+	}
+	return fallback
+}
 
 // DefaultChipDenominations are the default chip denominations for games
 var DefaultChipDenominations = []int64{1, 5, 10, 25, 100, 500, 1000, 5000, 10000}

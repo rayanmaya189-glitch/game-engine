@@ -3,8 +3,11 @@ package com.game_engine.payment.gateway.stripe;
 import com.stripe.Stripe;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 public class StripeUtils {
+
+    private static final Set<String> ZERO_DECIMAL_CURRENCIES = Set.of("JPY", "KRW", "VND");
 
     public void initializeStripe(String apiKey) {
         if (Stripe.apiKey == null || Stripe.apiKey.isEmpty()) {
@@ -13,14 +16,9 @@ public class StripeUtils {
     }
 
     public long currencyToMinorUnits(BigDecimal amount, String currency) {
-        int[] zeroDecimalCurrencies = { "JPY", "KRW", "VND" };
-
-        for (String curr : zeroDecimalCurrencies) {
-            if (curr.equals(currency.toUpperCase())) {
-                return amount.longValue();
-            }
+        if (ZERO_DECIMAL_CURRENCIES.contains(currency.toUpperCase())) {
+            return amount.longValue();
         }
-
         return amount.multiply(BigDecimal.valueOf(100)).longValue();
     }
 

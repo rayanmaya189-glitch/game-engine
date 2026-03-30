@@ -17,7 +17,7 @@ database:
   host: "10.100.1.10"
   port: 5432
   user: "game_engine"
-  password: "game_engine"
+  password: "${DATABASE_PASSWORD:-game_engine}"
   name: "notification"
   ssl_mode: "disable"
 
@@ -34,7 +34,7 @@ notification:
     smtp_host: "smtp.example.com"
     smtp_port: 587
     smtp_user: "notifications@example.com"
-    smtp_password: "password"
+    smtp_password: "${SMTP_PASSWORD:-}"
     from_address: "notifications@example.com"
     from_name: "Game Engine"
   

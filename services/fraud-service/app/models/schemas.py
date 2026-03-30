@@ -38,9 +38,3 @@ class CollusionSignal(BaseModel):
     signal_type: str
     confidence: float
     evidence: Dict = {}
-
-
-# In-Memory Storage
-device_fingerprints: Dict[str, DeviceFingerprint] = {}
-ip_accounts: Dict[str, List[str]] = {}
-fraud_scores: Dict[str, FraudScore] = {}

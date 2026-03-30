@@ -1,26 +1,88 @@
 package service
 
 import (
+	"context"
 	"errors"
 	"fmt"
+
+	"github.com/game_engine/betting/internal/repository"
 )
 
-// GetBet returns a bet by ID (would query database in real implementation)
+// GetBet returns a bet by ID from the repository
 func (s *BettingService) GetBet(betID string) (*Bet, error) {
-	// In real implementation, would query database
-	return nil, errors.New("not implemented")
+	if s.repo == nil {
+		return nil, errors.New("repository not configured")
+	}
+	repoBet, err := s.repo.GetBetByID(context.Background(), betID)
+	if err != nil {
+		return nil, fmt.Errorf("bet not found: %w", err)
+	}
+	return repoToServiceBet(repoBet), nil
 }
 
-// GetBetHistory returns bet history for a user
+// GetBetHistory returns bet history for a user from the repository
 func (s *BettingService) GetBetHistory(userID string, limit, offset int) ([]*Bet, error) {
-	// In real implementation, would query database
-	return []*Bet{}, nil
+	if s.repo == nil {
+		return nil, errors.New("repository not configured")
+	}
+	repoBets, err := s.repo.GetBetHistory(context.Background(), userID, limit, offset)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get bet history: %w", err)
+	}
+	bets := make([]*Bet, len(repoBets))
+	for i, rb := range repoBets {
+		bets[i] = repoToServiceBet(rb)
+	}
+	return bets, nil
 }
 
-// GetOpenBets returns all open (non-settled) bets for a user
+// GetOpenBets returns all open (non-settled) bets for a user from the repository
 func (s *BettingService) GetOpenBets(userID string) ([]*Bet, error) {
-	// In real implementation, would query database
-	return []*Bet{}, nil
+	if s.repo == nil {
+		return nil, errors.New("repository not configured")
+	}
+	repoBets, err := s.repo.GetOpenBets(context.Background(), userID)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get open bets: %w", err)
+	}
+	bets := make([]*Bet, len(repoBets))
+	for i, rb := range repoBets {
+		bets[i] = repoToServiceBet(rb)
+	}
+	return bets, nil
+}
+
+// repoToServiceBet converts a repository Bet to a service Bet
+func repoToServiceBet(rb *repository.Bet) *Bet {
+	selections := make([]Selection, len(rb.Selections))
+	for i, s := range rb.Selections {
+		selections[i] = Selection{
+			ID:         s.ID,
+			EventID:    s.EventID,
+			OutcomeID:  s.OutcomeID,
+			Odds:       s.Odds,
+			OddsFormat: s.OddsFormat,
+			Status:     s.Status,
+			Result:     s.Result,
+			SettledAt:  s.SettledAt,
+		}
+	}
+	return &Bet{
+		ID:           rb.ID,
+		UserID:       rb.UserID,
+		Type:         rb.Type,
+		Stake:        rb.Stake,
+		Odds:         rb.Odds,
+		PotentialWin: rb.PotentialWin,
+		Status:       rb.Status,
+		Selections:   selections,
+		SystemType:   rb.SystemType,
+		Currency:     rb.Currency,
+		CreatedAt:    rb.CreatedAt,
+		UpdatedAt:    rb.UpdatedAt,
+		SettledAt:    rb.SettledAt,
+		VoidReason:   rb.VoidReason,
+	}
 }
 
 // GetBetTypeInfo returns information about a bet type

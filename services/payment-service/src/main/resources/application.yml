@@ -51,6 +51,13 @@ grpc:
     risk-service:
       address: ${RISK_SERVICE_HOST:localhost}:${RISK_SERVICE_PORT:9016}
 
+wallet:
+  service:
+    host: ${WALLET_SERVICE_HOST:localhost}
+    grpc:
+      port: ${WALLET_SERVICE_PORT:9011}
+    timeout-seconds: 10
+
 payment:
   limits:
     deposit:
@@ -65,6 +72,19 @@ payment:
       low: 25
       medium: 50
       high: 75
+    default-score: 0
+    service:
+      url: ${RISK_SERVICE_URL:}
+  wagering:
+    default-met: true
+  bonus:
+    service:
+      url: ${BONUS_SERVICE_URL:}
+  exchange:
+    api-url: ${EXCHANGE_API_URL:}
+    api-key: ${EXCHANGE_API_KEY:}
+    base-currency: USD
+    cache-ttl-ms: 60000
   gateway:
     stripe:
       api-key: ${STRIPE_API_KEY:}

@@ -38,10 +38,14 @@ type Config struct {
 	} `yaml:"redis"`
 
 	Services struct {
-		AuthService   string `yaml:"auth_service"`
-		UserService   string `yaml:"user_service"`
-		WalletService string `yaml:"wallet_service"`
-		GameService   string `yaml:"game_service"`
+		AuthService        string `yaml:"auth_service"`
+		UserService        string `yaml:"user_service"`
+		WalletService      string `yaml:"wallet_service"`
+		GameService        string `yaml:"game_service"`
+		CommissionService  string `yaml:"commission_service"`
+		BonusService       string `yaml:"bonus_service"`
+		TournamentService  string `yaml:"tournament_service"`
+		JackpotService     string `yaml:"jackpot_service"`
 	} `yaml:"services"`
 
 	Admin struct {
@@ -121,6 +125,34 @@ func main() {
 	})
 	defer gameClient.Close()
 
+	commissionClient, _ := client.NewCommissionClient(&client.CommissionClientConfig{
+		Address: cfg.Services.CommissionService,
+		Timeout: 5 * time.Second,
+		UseTLS:  false,
+	})
+	defer commissionClient.Close()
+
+	bonusClient, _ := client.NewBonusClient(&client.BonusClientConfig{
+		Address: cfg.Services.BonusService,
+		Timeout: 5 * time.Second,
+		UseTLS:  false,
+	})
+	defer bonusClient.Close()
+
+	tournamentClient, _ := client.NewTournamentClient(&client.TournamentClientConfig{
+		Address: cfg.Services.TournamentService,
+		Timeout: 5 * time.Second,
+		UseTLS:  false,
+	})
+	defer tournamentClient.Close()
+
+	jackpotClient, _ := client.NewJackpotClient(&client.JackpotClientConfig{
+		Address: cfg.Services.JackpotService,
+		Timeout: 5 * time.Second,
+		UseTLS:  false,
+	})
+	defer jackpotClient.Close()
+
 	h := server.Default(
 		server.WithHostPorts(fmt.Sprintf("%s:%d", cfg.Server.Host, cfg.Server.Port)),
 		server.WithReadTimeout(time.Duration(cfg.Server.ReadTimeout)*time.Second),
@@ -138,6 +170,10 @@ func main() {
 		UserClient:            userClient,
 		WalletClient:          walletClient,
 		GameClient:            gameClient,
+		CommissionClient:      commissionClient,
+		BonusClient:           bonusClient,
+		TournamentClient:      tournamentClient,
+		JackpotClient:         jackpotClient,
 		AllowedIPs:            cfg.Admin.AllowedIPs,
 	})
 
@@ -184,13 +220,19 @@ func loadConfig() *Config {
 			Addr: "redis:6379", Password: "", DB: 0,
 		},
 		Services: struct {
-			AuthService   string `yaml:"auth_service"`
-			UserService   string `yaml:"user_service"`
-			WalletService string `yaml:"wallet_service"`
-			GameService   string `yaml:"game_service"`
+			AuthService        string `yaml:"auth_service"`
+			UserService        string `yaml:"user_service"`
+			WalletService      string `yaml:"wallet_service"`
+			GameService        string `yaml:"game_service"`
+			CommissionService  string `yaml:"commission_service"`
+			BonusService       string `yaml:"bonus_service"`
+			TournamentService  string `yaml:"tournament_service"`
+			JackpotService     string `yaml:"jackpot_service"`
 		}{
 			AuthService: "auth-service:50051", UserService: "user-service:50051",
 			WalletService: "wallet-service:50051", GameService: "game-registry:50051",
+			CommissionService: "commission-service:50051", BonusService: "bonus-service:50051",
+			TournamentService: "tournament-service:50051", JackpotService: "jackpot-service:50051",
 		},
 		Admin: struct {
 			AllowedIPs []string `yaml:"allowed_ips"`

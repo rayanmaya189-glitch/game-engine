@@ -1,6 +1,6 @@
 defmodule WebsocketGateway.Channels.LobbyChannel do
   use WebsocketGateway, :channel
-  alias WebsocketGateway.Services.{Presence, RoomManager}
+  alias WebsocketGateway.Services.{Presence, RoomManager, ServiceClient}
 
   # Lobby channel: "lobby" - Main lobby for featured games, jackpots, etc.
 
@@ -122,35 +122,63 @@ defmodule WebsocketGateway.Channels.LobbyChannel do
   end
 
   defp get_featured_games do
-    # TODO: Get from game registry service
-    []
+    case ServiceClient.get_featured_games(@featured_games_count) do
+      {:ok, %{"games" => games}} -> games
+      {:ok, response} -> Map.get(response, "games", [])
+      {:error, _} -> []
+    end
   end
 
   defp get_new_games do
-    # TODO: Get from game registry service
-    []
+    case ServiceClient.get_new_games() do
+      {:ok, %{"games" => games}} -> games
+      {:ok, response} -> Map.get(response, "games", [])
+      {:error, _} -> []
+    end
   end
 
   defp get_popular_games do
-    # TODO: Get from game registry service
-    []
+    case ServiceClient.get_popular_games() do
+      {:ok, %{"games" => games}} -> games
+      {:ok, response} -> Map.get(response, "games", [])
+      {:error, _} -> []
+    end
   end
 
   defp get_current_jackpot do
-    # TODO: Get from jackpot service via Redis
-    %{
-      amount: 0,
-      currency: "USD",
-      last_winner: nil,
-      last_win_time: nil,
-      games: []
-    }
+    case ServiceClient.list_jackpots() do
+      {:ok, %{"jackpots" => jackpots}} when is_list(jackpots) and jackpots != [] ->
+        primary = List.first(jackpots)
+        %{
+          amount: Map.get(primary, "currentAmount", 0),
+          currency: Map.get(primary, "currency", "USD"),
+          last_winner: Map.get(primary, "lastWinner"),
+          last_win_time: Map.get(primary, "lastWinTime"),
+          games: Map.get(primary, "games", [])
+        }
+      {:ok, %{"jackpot" => jackpot}} ->
+        %{
+          amount: Map.get(jackpot, "currentAmount", 0),
+          currency: Map.get(jackpot, "currency", "USD"),
+          last_winner: Map.get(jackpot, "lastWinner"),
+          last_win_time: Map.get(jackpot, "lastWinTime"),
+          games: Map.get(jackpot, "games", [])
+        }
+      _ ->
+        %{amount: 0, currency: "USD", last_winner: nil, last_win_time: nil, games: []}
+    end
   end
 
   defp get_player_counts do
-    # Get counts per game/category
-    # TODO: Aggregate from presence tracking
-    %{}
+    case Presence.list("lobby") do
+      %{metas: metas} ->
+        metas
+        |> Enum.group_by(& &1[:game_id])
+        |> Enum.reduce(%{}, fn {game_id, players}, acc ->
+          if game_id, do: Map.put(acc, game_id, length(players)), else: acc
+        end)
+      _ -> %{}
+    end
   end
 
   defp get_online_count do
@@ -170,19 +198,19 @@ defmodule WebsocketGateway.Channels.LobbyChannel do
   end
 
   defp get_game_categories do
-    # TODO: Get from game registry service
-    [
-      %{id: "slots", name: "Slots", icon: "slot"},
-      %{id: "table", name: "Table Games", icon: "table"},
-      %{id: "live", name: "Live Casino", icon: "live"},
-      %{id: "poker", name: "Poker", icon: "poker"},
-      %{id: "arcade", name: "Arcade", icon: "arcade"}
-    ]
+    case ServiceClient.get_game_categories() do
+      {:ok, %{"categories" => categories}} -> categories
+      {:ok, response} -> Map.get(response, "categories", [])
+      {:error, _} -> []
+    end
   end
 
   defp search_games(query, limit) do
-    # TODO: Implement search via game registry service
-    []
+    case ServiceClient.search_games(query, limit) do
+      {:ok, %{"games" => games}} -> games
+      {:ok, response} -> Map.get(response, "games", [])
+      {:error, _} -> []
+    end
   end
 
   defp schedule_jackpot_updates(socket) do

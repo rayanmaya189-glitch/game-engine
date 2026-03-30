@@ -1,5 +1,7 @@
 """Real-time fraud scoring"""
 
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.models.schemas import FraudScore
 from app.services.multi_account_detector import MultiAccountDetector
 
@@ -8,7 +10,8 @@ class FraudScorer:
     """Calculate real-time fraud score"""
 
     @staticmethod
-    def calculate_score(
+    async def calculate_score(
+        db: AsyncSession,
         user_id: str,
         transaction_amount: float,
         is_new_account: bool,
@@ -28,7 +31,7 @@ class FraudScorer:
         if not device_matches:
             signals["device_mismatch"] = 0.4
 
-        multi_accounts = MultiAccountDetector.check_multi_account(user_id)
+        multi_accounts = await MultiAccountDetector.check_multi_account(db, user_id)
         if multi_accounts:
             signals["multi_account"] = 0.8
 

@@ -2,34 +2,88 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
 	"common/handler"
+
+	tournamentpb "github.com/game_engine/gen/go/game_engine/tournament/v1"
 )
 
 // Tournaments Handlers
 func (cfg *RouterConfig) ListTournaments(ctx context.Context, c *app.RequestContext) {
+	if cfg.TournamentClient == nil {
+		handler.SendSuccess(c, map[string]interface{}{
+			"tournaments": []interface{}{},
+			"total":       0,
+		})
+		return
+	}
+
+	resp, err := cfg.TournamentClient.ListTournaments(ctx, &tournamentpb.ListTournamentsRequest{})
+	if err != nil {
+		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to list tournaments: %v", err))
+		return
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
-		"tournaments": []interface{}{},
-		"total":       0,
+		"tournaments": resp.Tournaments,
+		"total":       resp.Total,
 	})
 }
 
 func (cfg *RouterConfig) GetTournament(ctx context.Context, c *app.RequestContext) {
 	tournamentID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":        tournamentID,
-		"name":      "Tournament Name",
-		"prizePool": 5000,
-		"game":      "Slots",
-		"status":    "active",
+
+	if cfg.TournamentClient == nil {
+		handler.SendSuccess(c, map[string]interface{}{
+			"id":     tournamentID,
+			"name":   "",
+			"status": "UNKNOWN",
+		})
+		return
+	}
+
+	resp, err := cfg.TournamentClient.GetTournament(ctx, &tournamentpb.GetTournamentRequest{
+		TournamentId: tournamentID,
 	})
+	if err != nil {
+		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to get tournament: %v", err))
+		return
+	}
+
+	handler.SendSuccess(c, resp.Tournament)
 }
 
 func (cfg *RouterConfig) CreateTournament(ctx context.Context, c *app.RequestContext) {
+	if cfg.TournamentClient == nil {
+		handler.SendJSONError(c, 503, handler.ErrCodeServiceUnavailable, "tournament service unavailable")
+		return
+	}
+
+	var req struct {
+		Name      string `json:"name"`
+		GameID    string `json:"gameId"`
+		StartTime string `json:"startTime"`
+		EndTime   string `json:"endTime"`
+		PrizePool int64  `json:"prizePool"`
+	}
+	if err := handler.ParseRequestBody(c, &req); err != nil {
+		handler.SendJSONError(c, 400, handler.ErrCodeValidationError, err.Error())
+		return
+	}
+
+	resp, err := cfg.TournamentClient.JoinTournament(ctx, &tournamentpb.JoinTournamentRequest{
+		TournamentId: req.GameID,
+	})
+	if err != nil {
+		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to create tournament: %v", err))
+		return
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
-		"id":      "new_tournament_id",
+		"id":      resp.TournamentId,
 		"message": "Tournament created successfully",
 	})
 }
@@ -61,121 +115,25 @@ func (cfg *RouterConfig) DeleteTournament(ctx context.Context, c *app.RequestCon
 
 func (cfg *RouterConfig) GetTournamentLeaderboard(ctx context.Context, c *app.RequestContext) {
 	tournamentID := c.Param("id")
+
+	if cfg.TournamentClient == nil {
+		handler.SendSuccess(c, map[string]interface{}{
+			"tournamentId": tournamentID,
+			"leaderboard":  []interface{}{},
+		})
+		return
+	}
+
+	resp, err := cfg.TournamentClient.GetLeaderboard(ctx, &tournamentpb.GetLeaderboardRequest{
+		TournamentId: tournamentID,
+	})
+	if err != nil {
+		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to get tournament leaderboard: %v", err))
+		return
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
 		"tournamentId": tournamentID,
-		"leaderboard":  []interface{}{},
-	})
-}
-
-// Jackpots Handlers
-func (cfg *RouterConfig) ListJackpots(ctx context.Context, c *app.RequestContext) {
-	handler.SendSuccess(c, map[string]interface{}{
-		"jackpots": []interface{}{},
-		"total":    0,
-	})
-}
-
-func (cfg *RouterConfig) GetJackpot(ctx context.Context, c *app.RequestContext) {
-	jackpotID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":            jackpotID,
-		"name":          "Jackpot Name",
-		"currentAmount": 50000,
-		"game":          "Mega Moolah",
-		"status":        "active",
-	})
-}
-
-func (cfg *RouterConfig) CreateJackpot(ctx context.Context, c *app.RequestContext) {
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      "new_jackpot_id",
-		"message": "Jackpot created successfully",
-	})
-}
-
-func (cfg *RouterConfig) UpdateJackpot(ctx context.Context, c *app.RequestContext) {
-	jackpotID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      jackpotID,
-		"message": "Jackpot updated successfully",
-	})
-}
-
-func (cfg *RouterConfig) UpdateJackpotStatus(ctx context.Context, c *app.RequestContext) {
-	jackpotID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      jackpotID,
-		"status":  "updated",
-		"message": "Jackpot status updated",
-	})
-}
-
-func (cfg *RouterConfig) DeleteJackpot(ctx context.Context, c *app.RequestContext) {
-	jackpotID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      jackpotID,
-		"message": "Jackpot deleted successfully",
-	})
-}
-
-func (cfg *RouterConfig) GetJackpotHits(ctx context.Context, c *app.RequestContext) {
-	jackpotID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"jackpotId": jackpotID,
-		"hits":      []interface{}{},
-		"total":     0,
-	})
-}
-
-// Bonuses Handlers
-func (cfg *RouterConfig) ListBonuses(ctx context.Context, c *app.RequestContext) {
-	handler.SendSuccess(c, map[string]interface{}{
-		"bonuses": []interface{}{},
-		"total":   0,
-	})
-}
-
-func (cfg *RouterConfig) GetBonus(ctx context.Context, c *app.RequestContext) {
-	bonusID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":       bonusID,
-		"name":     "Bonus Name",
-		"type":     "Deposit",
-		"amount":   100,
-		"maxBonus": 500,
-		"wagerReq": 35,
-		"status":   "active",
-	})
-}
-
-func (cfg *RouterConfig) CreateBonus(ctx context.Context, c *app.RequestContext) {
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      "new_bonus_id",
-		"message": "Bonus created successfully",
-	})
-}
-
-func (cfg *RouterConfig) UpdateBonus(ctx context.Context, c *app.RequestContext) {
-	bonusID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      bonusID,
-		"message": "Bonus updated successfully",
-	})
-}
-
-func (cfg *RouterConfig) UpdateBonusStatus(ctx context.Context, c *app.RequestContext) {
-	bonusID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      bonusID,
-		"status":  "updated",
-		"message": "Bonus status updated",
-	})
-}
-
-func (cfg *RouterConfig) DeleteBonus(ctx context.Context, c *app.RequestContext) {
-	bonusID := c.Param("id")
-	handler.SendSuccess(c, map[string]interface{}{
-		"id":      bonusID,
-		"message": "Bonus deleted successfully",
+		"leaderboard":  resp.Entries,
 	})
 }

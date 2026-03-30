@@ -15,4 +15,10 @@ public class PaymentConfig {
                 .defaultHeader("Content-Type", "application/json")
                 .build();
     }
+
+    @Bean
+    public WebClient.Builder webClientBuilder() {
+        return WebClient.builder()
+                .defaultHeader("Content-Type", "application/json");
+    }
 }

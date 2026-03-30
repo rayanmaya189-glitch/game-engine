@@ -32,7 +32,7 @@ func (s *BettingService) PlaceSingle(userID, betID string, stake float64, select
 		PotentialWin: potentialWin,
 		Status:       BetStatusPlaced,
 		Selections:   []Selection{selection},
-		Currency:     "USD",
+		Currency:     s.defaultCurrency,
 		CreatedAt:    time.Now(),
 		UpdatedAt:    time.Now(),
 	}
@@ -79,7 +79,7 @@ func (s *BettingService) PlaceAccumulator(userID, betID string, stake float64, s
 		PotentialWin: potentialWin,
 		Status:       BetStatusPlaced,
 		Selections:   selections,
-		Currency:     "USD",
+		Currency:     s.defaultCurrency,
 		CreatedAt:    time.Now(),
 		UpdatedAt:    time.Now(),
 	}
@@ -140,7 +140,7 @@ func (s *BettingService) PlaceSystem(userID, betID string, stake float64, select
 		Status:       BetStatusPlaced,
 		Selections:   selections,
 		SystemType:   systemType,
-		Currency:     "USD",
+		Currency:     s.defaultCurrency,
 		CreatedAt:    time.Now(),
 		UpdatedAt:    time.Now(),
 	}

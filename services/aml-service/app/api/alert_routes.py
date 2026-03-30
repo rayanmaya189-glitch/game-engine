@@ -1,57 +1,83 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Depends
 from typing import Dict, List, Optional
 from datetime import datetime
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select, update
 
-from app.models.schemas import Alert, AlertStatus, AlertSeverity, alerts_db
+from app.database import get_db
+from app.models import AlertRecord
+from app.models.schemas import Alert, AlertStatus, AlertSeverity
 
 router = APIRouter(prefix="", tags=["alerts"])
+
+
+def _record_to_alert(r: AlertRecord) -> Alert:
+    return Alert(
+        alert_id=r.alert_id,
+        user_id=r.user_id,
+        alert_type=r.alert_type,
+        severity=r.severity,
+        status=r.status,
+        description=r.description,
+        transactions=r.transactions or [],
+        assigned_to=r.assigned_to,
+        created_at=r.created_at,
+        updated_at=r.updated_at,
+        resolved_at=r.resolved_at,
+        notes=r.notes,
+    )
 
 
 @router.get("/alerts", response_model=List[Alert])
 async def list_alerts(
     status: Optional[AlertStatus] = None,
     severity: Optional[AlertSeverity] = None,
-    limit: int = 100
+    limit: int = 100,
+    db: AsyncSession = Depends(get_db),
 ):
     """List alerts with optional filters"""
-    alerts = list(alerts_db.values())
-
+    stmt = select(AlertRecord)
     if status:
-        alerts = [a for a in alerts if a.status == status]
+        stmt = stmt.where(AlertRecord.status == status.value)
     if severity:
-        alerts = [a for a in alerts if a.severity == severity]
+        stmt = stmt.where(AlertRecord.severity == severity.value)
+    stmt = stmt.order_by(AlertRecord.created_at.desc()).limit(limit)
 
-    alerts.sort(key=lambda a: a.created_at, reverse=True)
-
-    return alerts[:limit]
+    result = await db.execute(stmt)
+    records = result.scalars().all()
+    return [_record_to_alert(r) for r in records]
 
 
 @router.get("/alerts/{alert_id}", response_model=Alert)
-async def get_alert(alert_id: str):
+async def get_alert(alert_id: str, db: AsyncSession = Depends(get_db)):
     """Get a specific alert"""
-    if alert_id not in alerts_db:
+    result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
+    record = result.scalar_one_or_none()
+    if not record:
         raise HTTPException(status_code=404, detail="Alert not found")
-    return alerts_db[alert_id]
+    return _record_to_alert(record)
 
 
 @router.patch("/alerts/{alert_id}", response_model=Alert)
-async def update_alert(alert_id: str, update: Dict):
+async def update_alert(alert_id: str, update_data: Dict, db: AsyncSession = Depends(get_db)):
     """Update alert status or assign to investigator"""
-    if alert_id not in alerts_db:
+    result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
+    record = result.scalar_one_or_none()
+    if not record:
         raise HTTPException(status_code=404, detail="Alert not found")
 
-    alert = alerts_db[alert_id]
+    if "status" in update_data:
+        record.status = update_data["status"]
+    if "assigned_to" in update_data:
+        record.assigned_to = update_data["assigned_to"]
+    if "notes" in update_data:
+        record.notes = update_data["notes"]
 
-    if "status" in update:
-        alert.status = AlertStatus(update["status"])
-    if "assigned_to" in update:
-        alert.assigned_to = update["assigned_to"]
-    if "notes" in update:
-        alert.notes = update["notes"]
+    if record.status == AlertStatus.RESOLVED.value:
+        record.resolved_at = datetime.utcnow()
 
-    if alert.status == AlertStatus.RESOLVED:
-        alert.resolved_at = datetime.now()
+    record.updated_at = datetime.utcnow()
+    await db.commit()
+    await db.refresh(record)
 
-    alert.updated_at = datetime.now()
-
-    return alert
+    return _record_to_alert(record)

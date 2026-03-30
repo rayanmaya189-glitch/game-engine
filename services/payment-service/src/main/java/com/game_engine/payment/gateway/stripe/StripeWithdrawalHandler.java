@@ -2,7 +2,6 @@ package com.game_engine.payment.gateway.stripe;
 
 import com.game_engine.payment.gateway.PaymentGatewayAdapter.GatewayResponse;
 import com.game_engine.payment.model.Withdrawal;
-import com.stripe.Stripe;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Payout;
 import com.stripe.param.PayoutCreateParams;
@@ -40,10 +39,8 @@ public class StripeWithdrawalHandler {
             PayoutCreateParams params = PayoutCreateParams.builder()
                     .setAmount(stripeUtils.currencyToMinorUnits(withdrawal.getAmount(), withdrawal.getCurrency()))
                     .setCurrency(withdrawal.getCurrency().toLowerCase())
-                    .setMetadata(Map.of(
-                        "withdrawal_id", withdrawal.getId().toString(),
-                        "user_id", withdrawal.getUserId().toString()
-                    ))
+                    .putMetadata("withdrawal_id", withdrawal.getId().toString())
+                    .putMetadata("user_id", withdrawal.getUserId().toString())
                     .build();
 
             Payout payout = Payout.create(params);

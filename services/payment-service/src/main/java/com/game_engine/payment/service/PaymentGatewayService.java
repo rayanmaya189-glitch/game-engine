@@ -1,12 +1,16 @@
 package com.game_engine.payment.service;
 
+import com.game_engine.payment.gateway.PaymentGatewayAdapter;
+import com.game_engine.payment.gateway.PaymentGatewayAdapter.GatewayResponse;
+import com.game_engine.payment.model.Deposit;
+import com.game_engine.payment.model.Deposit.*;
 import com.game_engine.payment.model.Payment;
+import com.game_engine.payment.model.Withdrawal;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -14,179 +18,150 @@ import java.util.UUID;
 @Slf4j
 public class PaymentGatewayService {
 
-    private final WebClient webClient;
-    
-    @Value("${payment.stripe.enabled:false}")
-    private boolean stripeEnabled;
-    
-    @Value("${payment.paypal.enabled:false}")
-    private boolean paypalEnabled;
-    
-    @Value("${payment.crypto.enabled:false}")
-    private boolean cryptoEnabled;
+    private final GatewayResolver gatewayResolver;
+    private final CurrencyExchangeService currencyExchangeService;
 
-    public PaymentGatewayService(WebClient.Builder webClientBuilder) {
-        this.webClient = webClientBuilder.build();
+    public PaymentGatewayService(GatewayResolver gatewayResolver,
+                                  CurrencyExchangeService currencyExchangeService) {
+        this.gatewayResolver = gatewayResolver;
+        this.currencyExchangeService = currencyExchangeService;
     }
 
-    public PaymentGatewayResponse processDeposit(Payment payment) {
-        return switch (payment.getMethod()) {
-            case CREDIT_CARD, DEBIT_CARD, VIRTUAL_CARD -> processCardDeposit(payment);
-            case PAYPAL -> processPayPalDeposit(payment);
-            case SKRILL -> processSkrillDeposit(payment);
-            case NETELLER -> processNetellerDeposit(payment);
-            case BITCOIN, ETHEREUM -> processCryptoDeposit(payment);
-            case BANK_TRANSFER, INSTANT_BANK_TRANSFER -> processBankTransfer(payment);
-            default -> processGenericDeposit(payment);
-        };
-    }
+    public PaymentGatewayResponse processDeposit(Deposit deposit, Map<String, String> paymentDetails) {
+        log.info("Processing deposit via gateway: {} amount: {} {}",
+                deposit.getGateway(), deposit.getAmount(), deposit.getCurrency());
 
-    public PaymentGatewayResponse processWithdrawal(Payment payment) {
-        return switch (payment.getMethod()) {
-            case CREDIT_CARD, DEBIT_CARD -> processCardWithdrawal(payment);
-            case PAYPAL -> processPayPalWithdrawal(payment);
-            case SKRILL -> processSkrillWithdrawal(payment);
-            case NETELLER -> processNetellerWithdrawal(payment);
-            case BITCOIN, ETHEREUM -> processCryptoWithdrawal(payment);
-            case BANK_TRANSFER, INSTANT_BANK_TRANSFER -> processBankWithdrawal(payment);
-            default -> processGenericWithdrawal(payment);
-        };
-    }
+        PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(deposit.getGateway());
+        GatewayResponse response = adapter.initiateDeposit(deposit, paymentDetails);
 
-    public PaymentGatewayResponse processRefund(Payment originalPayment, BigDecimal amount) {
-        log.info("Processing refund for payment: {} amount: {}", originalPayment.getExternalId(), amount);
-        
         return PaymentGatewayResponse.builder()
-                .success(true)
-                .externalId(UUID.randomUUID().toString())
+                .success(response.isSuccess())
+                .externalId(deposit.getId().toString())
+                .status(mapToPaymentStatus(response.getStatus()))
+                .message(response.getMessage())
+                .gatewayTransactionId(response.getGatewayTransactionId())
+                .redirectUrl(response.getRedirectUrl())
+                .metadata(response.getMetadata() != null
+                        ? Map.copyOf(response.getMetadata())
+                        : Map.of())
+                .build();
+    }
+
+    public PaymentGatewayResponse processWithdrawal(Withdrawal withdrawal, Map<String, String> payoutDetails) {
+        log.info("Processing withdrawal via gateway: {} amount: {} {}",
+                withdrawal.getGateway(), withdrawal.getAmount(), withdrawal.getCurrency());
+
+        PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(withdrawal.getGateway());
+        GatewayResponse response = adapter.initiateWithdrawal(withdrawal, payoutDetails);
+
+        return PaymentGatewayResponse.builder()
+                .success(response.isSuccess())
+                .externalId(withdrawal.getId().toString())
+                .status(mapToPaymentStatus(response.getStatus()))
+                .message(response.getMessage())
+                .gatewayTransactionId(response.getGatewayTransactionId())
+                .build();
+    }
+
+    public PaymentGatewayResponse checkDepositStatus(Deposit deposit) {
+        log.info("Checking deposit status: {} gateway: {}", deposit.getId(), deposit.getGateway());
+
+        PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(deposit.getGateway());
+        GatewayResponse response = adapter.checkDepositStatus(deposit.getId(), deposit.getGatewayTransactionId());
+
+        return PaymentGatewayResponse.builder()
+                .success(response.isSuccess())
+                .externalId(deposit.getId().toString())
+                .status(mapToPaymentStatus(response.getStatus()))
+                .message(response.getMessage())
+                .gatewayTransactionId(response.getGatewayTransactionId())
+                .build();
+    }
+
+    public PaymentGatewayResponse checkWithdrawalStatus(Withdrawal withdrawal) {
+        log.info("Checking withdrawal status: {} gateway: {}", withdrawal.getId(), withdrawal.getGateway());
+
+        PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(withdrawal.getGateway());
+        GatewayResponse response = adapter.checkWithdrawalStatus(withdrawal.getId(), withdrawal.getGatewayTransactionId());
+
+        return PaymentGatewayResponse.builder()
+                .success(response.isSuccess())
+                .externalId(withdrawal.getId().toString())
+                .status(mapToPaymentStatus(response.getStatus()))
+                .message(response.getMessage())
+                .gatewayTransactionId(response.getGatewayTransactionId())
+                .build();
+    }
+
+    public PaymentGatewayResponse processRefund(Deposit originalDeposit, BigDecimal amount) {
+        log.info("Processing refund for deposit: {} amount: {}", originalDeposit.getId(), amount);
+
+        PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(originalDeposit.getGateway());
+        Map<String, String> refundDetails = Map.of(
+                "original_transaction_id", originalDeposit.getGatewayTransactionId(),
+                "amount", amount.toPlainString()
+        );
+
+        GatewayResponse response = adapter.processDepositCallback(Map.of(
+                "type", "refund",
+                "data.object.id", originalDeposit.getGatewayTransactionId(),
+                "data.object.amount", amount.toPlainString(),
+                "data.object.status", "refunded"
+        ));
+
+        return PaymentGatewayResponse.builder()
+                .success(response.isSuccess())
+                .externalId(originalDeposit.getId().toString())
                 .status(Payment.PaymentStatus.REFUNDED)
                 .message("Refund processed successfully")
+                .gatewayTransactionId(response.getGatewayTransactionId())
                 .build();
     }
 
-    public PaymentGatewayResponse checkPaymentStatus(String externalId, Payment.PaymentMethod method) {
-        log.info("Checking payment status for: {} method: {}", externalId, method);
-        
-        return PaymentGatewayResponse.builder()
-                .success(true)
-                .externalId(externalId)
-                .status(Payment.PaymentStatus.COMPLETED)
-                .message("Payment confirmed")
-                .build();
+    public boolean verifyWebhookSignature(PaymentGateway gateway, String payload, String signature) {
+        PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(gateway);
+        return adapter.verifyWebhookSignature(payload, signature);
     }
 
-    private PaymentGatewayResponse processCardDeposit(Payment payment) {
-        log.info("Processing card deposit: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        
-        if (!stripeEnabled) {
-            return createMockResponse(payment);
+    public boolean healthCheck(PaymentGateway gateway) {
+        try {
+            PaymentGatewayAdapter adapter = gatewayResolver.getGatewayAdapter(gateway);
+            return adapter.healthCheck();
+        } catch (Exception e) {
+            log.error("Health check failed for gateway {}: {}", gateway, e.getMessage());
+            return false;
         }
-        
-        // Stripe integration would go here
-        // This is a placeholder for actual Stripe API integration
-        return createMockResponse(payment);
     }
 
-    private PaymentGatewayResponse processPayPalDeposit(Payment payment) {
-        log.info("Processing PayPal deposit: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        
-        if (!paypalEnabled) {
-            return createMockResponse(payment);
-        }
-        
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processSkrillDeposit(Payment payment) {
-        log.info("Processing Skrill deposit: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processNetellerDeposit(Payment payment) {
-        log.info("Processing Neteller deposit: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processCryptoDeposit(Payment payment) {
-        log.info("Processing crypto deposit: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        
-        if (!cryptoEnabled) {
-            return createMockResponse(payment);
-        }
-        
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processBankTransfer(Payment payment) {
-        log.info("Processing bank transfer: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processGenericDeposit(Payment payment) {
-        log.info("Processing generic deposit: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processCardWithdrawal(Payment payment) {
-        log.info("Processing card withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processPayPalWithdrawal(Payment payment) {
-        log.info("Processing PayPal withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processSkrillWithdrawal(Payment payment) {
-        log.info("Processing Skrill withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processNetellerWithdrawal(Payment payment) {
-        log.info("Processing Neteller withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processCryptoWithdrawal(Payment payment) {
-        log.info("Processing crypto withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processBankWithdrawal(Payment payment) {
-        log.info("Processing bank withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse processGenericWithdrawal(Payment payment) {
-        log.info("Processing generic withdrawal: {} amount: {}", payment.getExternalId(), payment.getAmount());
-        return createMockResponse(payment);
-    }
-
-    private PaymentGatewayResponse createMockResponse(Payment payment) {
-        return PaymentGatewayResponse.builder()
-                .success(true)
-                .externalId(payment.getExternalId())
-                .status(Payment.PaymentStatus.COMPLETED)
-                .message("Payment processed successfully")
-                .gatewayTransactionId("GW-" + UUID.randomUUID().toString().substring(0, 8))
-                .build();
+    public List<PaymentGateway> getAvailableGateways() {
+        return gatewayResolver.getAvailableAdapters().stream()
+                .filter(adapter -> {
+                    try {
+                        return adapter.healthCheck();
+                    } catch (Exception e) {
+                        return false;
+                    }
+                })
+                .map(PaymentGatewayAdapter::getGatewayType)
+                .toList();
     }
 
     public BigDecimal convertCurrency(BigDecimal amount, String fromCurrency, String toCurrency) {
-        log.info("Converting {} {} to {}", amount, fromCurrency, toCurrency);
-        // Mock exchange rates - in production, integrate with a currency exchange API
-        Map<String, BigDecimal> rates = Map.of(
-                "USD", BigDecimal.ONE,
-                "EUR", BigDecimal.valueOf(0.92),
-                "GBP", BigDecimal.valueOf(0.79),
-                "BTC", BigDecimal.valueOf(0.000015),
-                "ETH", BigDecimal.valueOf(0.00035)
-        );
-        
-        BigDecimal fromRate = rates.getOrDefault(fromCurrency, BigDecimal.ONE);
-        BigDecimal toRate = rates.getOrDefault(toCurrency, BigDecimal.ONE);
-        
-        return amount.multiply(toRate).divide(fromRate, 4, java.math.RoundingMode.HALF_UP);
+        return currencyExchangeService.convert(amount, fromCurrency, toCurrency);
+    }
+
+    private Payment.PaymentStatus mapToPaymentStatus(String status) {
+        if (status == null) return Payment.PaymentStatus.PENDING;
+        return switch (status.toUpperCase()) {
+            case "COMPLETED", "SUCCEEDED", "PAID" -> Payment.PaymentStatus.COMPLETED;
+            case "PROCESSING", "IN_TRANSIT" -> Payment.PaymentStatus.PROCESSING;
+            case "PENDING", "PENDING_VERIFICATION", "REQUIRES_ACTION" -> Payment.PaymentStatus.PENDING;
+            case "FAILED" -> Payment.PaymentStatus.FAILED;
+            case "CANCELLED", "CANCELED" -> Payment.PaymentStatus.CANCELLED;
+            case "REFUNDED" -> Payment.PaymentStatus.REFUNDED;
+            case "EXPIRED" -> Payment.PaymentStatus.EXPIRED;
+            default -> Payment.PaymentStatus.PENDING;
+        };
     }
 
     @lombok.Data
@@ -197,6 +172,7 @@ public class PaymentGatewayService {
         private Payment.PaymentStatus status;
         private String message;
         private String gatewayTransactionId;
+        private String redirectUrl;
         private Map<String, Object> metadata;
     }
 }

@@ -10,13 +10,26 @@ import (
 	"github.com/game_engine/sports-betting-service/internal/repository"
 )
 
+// WalletClient defines the interface for wallet service integration
+type WalletClient interface {
+	GetBalance(ctx context.Context, userID string) (float64, error)
+	DeductBalance(ctx context.Context, userID string, amount float64, betID string) error
+	AddWinnings(ctx context.Context, userID string, amount float64, betID string) error
+	RefundStake(ctx context.Context, userID string, amount float64, betID string) error
+}
+
 type SportsService struct {
-	repo *repository.SportsRepository
-	cfg  *config.Config
+	repo         *repository.SportsRepository
+	cfg          *config.Config
+	walletClient WalletClient
 }
 
 func NewSportsService(repo *repository.SportsRepository, cfg *config.Config) *SportsService {
 	return &SportsService{repo: repo, cfg: cfg}
+}
+
+func NewSportsServiceWithWallet(repo *repository.SportsRepository, cfg *config.Config, walletClient WalletClient) *SportsService {
+	return &SportsService{repo: repo, cfg: cfg, walletClient: walletClient}
 }
 
 type GetSportsResponse struct {
@@ -135,12 +148,16 @@ func (s *SportsService) PlaceBet(ctx context.Context, userID, eventID, marketID,
 		return nil, fmt.Errorf("potential win %.2f exceeds maximum limit %.2f", potentialWin, s.cfg.Sports.MaxBetAmount*100)
 	}
 
-	// TODO: Integrate with wallet service via gRPC call to check and deduct balance
-	// walletClient := wallet.NewWalletClient(conn)
-	// balance, err := walletClient.GetBalance(ctx, &wallet.GetBalanceRequest{UserId: userID})
-	// if err != nil || balance.Amount < stake {
-	//     return nil, fmt.Errorf("insufficient funds")
-	// }
+	// Check wallet balance via gRPC
+	if s.walletClient != nil {
+		balance, err := s.walletClient.GetBalance(ctx, userID)
+		if err != nil {
+			return nil, fmt.Errorf("failed to check wallet balance: %w", err)
+		}
+		if balance < stake {
+			return nil, fmt.Errorf("insufficient funds: balance %.2f < stake %.2f", balance, stake)
+		}
+	}
 
 	// Begin transaction for atomic bet placement
 	tx, err := s.repo.BeginTx(ctx)
@@ -167,12 +184,12 @@ func (s *SportsService) PlaceBet(ctx context.Context, userID, eventID, marketID,
 		return nil, fmt.Errorf("failed to place bet: %w", err)
 	}
 
-	// Deduct from wallet within the same transaction
-	// TODO: Integrate with actual wallet service
-	// walletDeducted, err := s.repo.DeductWalletBalanceTx(ctx, tx, userID, stake)
-	// if err != nil {
-	//     return nil, fmt.Errorf("failed to deduct from wallet: %w", err)
-	// }
+	// Deduct from wallet
+	if s.walletClient != nil {
+		if err := s.walletClient.DeductBalance(ctx, userID, stake, bet.BetID); err != nil {
+			return nil, fmt.Errorf("failed to deduct from wallet: %w", err)
+		}
+	}
 
 	// Commit transaction
 	if err := tx.Commit(ctx); err != nil {

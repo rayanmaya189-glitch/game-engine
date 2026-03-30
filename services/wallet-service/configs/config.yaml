@@ -6,7 +6,7 @@ database:
   host: "10.100.1.10"
   port: 5432
   username: "wallet_user"
-  password: "wallet_password"
+  password: "${DATABASE_PASSWORD:-wallet_password}"
   name: "wallet_db"
   ssl_mode: "disable"
   max_open_conns: 25

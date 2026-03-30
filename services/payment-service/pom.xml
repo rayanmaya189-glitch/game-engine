@@ -32,6 +32,10 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
@@ -63,6 +67,16 @@
             <artifactId>grpc-stub</artifactId>
             <version>${grpc.version}</version>
         </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
 
         <!-- Database -->
         <dependency>
@@ -77,6 +91,7 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-database-postgresql</artifactId>
+            <version>10.3.0</version>
         </dependency>
 
         <!-- Payment Gateways -->
@@ -90,16 +105,7 @@
             <artifactId>adyen-java-api-library</artifactId>
             <version>20.0.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.skrill</groupId>
-            <artifactId>skrill-java-client</artifactId>
-            <version>1.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.neteller</groupId>
-            <artifactId>neteller-java-client</artifactId>
-            <version>1.0.0</version>
-        </dependency>
+
 
         <!-- Configuration -->
         <dependency>

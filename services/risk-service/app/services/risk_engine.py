@@ -1,3 +1,4 @@
+import os
 from typing import Optional, List
 
 from app.models.schemas import RiskCategory, RiskProfile
@@ -7,26 +8,26 @@ class RiskScoringEngine:
     """Calculate unified risk profile from multiple sources"""
 
     WEIGHTS = {
-        "kyc_level": 0.20,
-        "aml_alerts": 0.25,
-        "fraud_score": 0.25,
-        "transaction_risk": 0.15,
-        "device_risk": 0.10,
-        "velocity_risk": 0.05
+        "kyc_level": float(os.environ.get("RISK_WEIGHT_KYC", "0.20")),
+        "aml_alerts": float(os.environ.get("RISK_WEIGHT_AML", "0.25")),
+        "fraud_score": float(os.environ.get("RISK_WEIGHT_FRAUD", "0.25")),
+        "transaction_risk": float(os.environ.get("RISK_WEIGHT_TRANSACTION", "0.15")),
+        "device_risk": float(os.environ.get("RISK_WEIGHT_DEVICE", "0.10")),
+        "velocity_risk": float(os.environ.get("RISK_WEIGHT_VELOCITY", "0.05")),
     }
 
     DEPOSIT_LIMITS = {
-        "low": 50000,
-        "medium": 10000,
-        "high": 1000,
-        "critical": 0
+        "low": int(os.environ.get("RISK_DEPOSIT_LIMIT_LOW", "50000")),
+        "medium": int(os.environ.get("RISK_DEPOSIT_LIMIT_MEDIUM", "10000")),
+        "high": int(os.environ.get("RISK_DEPOSIT_LIMIT_HIGH", "1000")),
+        "critical": int(os.environ.get("RISK_DEPOSIT_LIMIT_CRITICAL", "0")),
     }
 
     WITHDRAWAL_LIMITS = {
-        "low": 50000,
-        "medium": 5000,
-        "high": 500,
-        "critical": 0
+        "low": int(os.environ.get("RISK_WITHDRAWAL_LIMIT_LOW", "50000")),
+        "medium": int(os.environ.get("RISK_WITHDRAWAL_LIMIT_MEDIUM", "5000")),
+        "high": int(os.environ.get("RISK_WITHDRAWAL_LIMIT_HIGH", "500")),
+        "critical": int(os.environ.get("RISK_WITHDRAWAL_LIMIT_CRITICAL", "0")),
     }
 
     @staticmethod

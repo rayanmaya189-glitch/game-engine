@@ -2,6 +2,9 @@ defmodule WebsocketGateway.Channels.ChatChannel do
   use WebsocketGateway, :channel
   alias WebsocketGateway.Services.{Presence, RoomManager}
 
+  @chat_ttl 86_400
+  @chat_max_history 200
+
   # Chat channel topics:
   # "chat:room" - Public chat
   # "chat:game:{game_id}" - Game table chat
@@ -217,13 +220,57 @@ defmodule WebsocketGateway.Channels.ChatChannel do
   end
 
   defp get_chat_history(room_id, limit \\ 50) do
-    # TODO: Get from Redis
-    []
+    redis_key = "chat:history:#{room_id}"
+    safe_limit = min(limit, @chat_max_history)
+
+    case redis_client() do
+      nil ->
+        []
+      conn ->
+        case Redix.command(conn, ["ZREVRANGE", redis_key, "0", "#{safe_limit - 1}"]) do
+          {:ok, raw_messages} ->
+            raw_messages
+            |> Enum.reverse()
+            |> Enum.map(fn raw ->
+              case Jason.decode(raw) do
+                {:ok, message} -> message
+                {:error, _} -> nil
+              end
+            end)
+            |> Enum.reject(&is_nil/1)
+          {:error, _} ->
+            []
+        end
+    end
   end
 
   defp save_message(room_id, message_data) do
-    # TODO: Save to Redis with TTL
-    :ok
+    redis_key = "chat:history:#{room_id}"
+
+    case redis_client() do
+      nil ->
+        :ok
+      conn ->
+        case Jason.encode(message_data) do
+          {:ok, encoded} ->
+            score = to_string(message_data.timestamp)
+            Redix.command(conn, ["ZADD", redis_key, score, encoded])
+            Redix.command(conn, ["EXPIRE", redis_key, @chat_ttl])
+            Redix.command(conn, ["ZREMRANGEBYRANK", redis_key, "0", "-#{@chat_max_history - 1}"])
+            :ok
+          {:error, _} ->
+            :ok
+        end
+    end
+  end
+
+  defp redis_client do
+    case Process.whereis(WebsocketGateway.Redis) do
+      nil -> nil
+      pid -> pid
+    end
+  rescue
+    _ -> nil
   end
 
   defp get_chat_users(room_id) do

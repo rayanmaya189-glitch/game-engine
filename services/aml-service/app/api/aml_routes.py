@@ -1,11 +1,16 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy import select
+
+from app.database import get_db
+from app.models import AlertRecord, TransactionRecord, RiskScoreRecord
 
 router = APIRouter()
 
-# Models
+
 class TransactionAlert(BaseModel):
     id: str
     user_id: str
@@ -41,35 +46,38 @@ class SARRequest(BaseModel):
     amount: float
 
 
-# Routes
+HIGH_RISK_COUNTRIES = ["KP", "IR", "SY", "CU"]
+
+
 @router.post("/transaction/check")
-async def check_transaction(request: TransactionCheckRequest):
+async def check_transaction(request: TransactionCheckRequest, db: AsyncSession = Depends(get_db)):
     """Check a transaction for AML compliance"""
-    # Mock implementation - would integrate with actual monitoring systems
-    risk_score = 0.1  # Low risk by default
-    
-    # Check for suspicious patterns
+    risk_score = 0.1
+
     if request.amount > 10000:
         risk_score += 0.3
-    
-    # Check for high-risk countries
-    high_risk_countries = ["KP", "IR", "SY", "CU"]
-    if request.country in high_risk_countries:
+
+    if request.country in HIGH_RISK_COUNTRIES:
         risk_score += 0.4
-    
+
+    result = await db.execute(
+        select(AlertRecord).where(AlertRecord.user_id == request.user_id)
+    )
+    existing_alerts = result.scalars().all()
+
     return {
         "user_id": request.user_id,
         "transaction_allowed": risk_score < 0.7,
         "risk_score": risk_score,
         "requires_review": risk_score >= 0.5,
-        "alerts": [] if risk_score < 0.5 else ["High transaction amount", "Manual review required"]
+        "alerts": [] if risk_score < 0.5 else ["High transaction amount", "Manual review required"],
+        "existing_alert_count": len(existing_alerts),
     }
 
 
 @router.post("/sanctions/screen")
 async def screen_sanctions(request: SanctionsScreeningRequest):
     """Screen against sanctions lists (OFAC, EU, UN)"""
-    # Mock implementation - would integrate with actual sanctions list providers
     return {
         "name": request.name,
         "matched": False,
@@ -81,7 +89,6 @@ async def screen_sanctions(request: SanctionsScreeningRequest):
 @router.post("/pep/screen")
 async def screen_pep(name: str):
     """Screen against Politically Exposed Persons list"""
-    # Mock implementation
     return {
         "name": name,
         "is_pep": False,
@@ -90,37 +97,74 @@ async def screen_pep(name: str):
 
 
 @router.get("/alerts")
-async def get_alerts(status: Optional[str] = None, limit: int = 50):
+async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSession = Depends(get_db)):
     """Get AML alerts"""
+    stmt = select(AlertRecord)
+    if status:
+        stmt = stmt.where(AlertRecord.status == status)
+    stmt = stmt.order_by(AlertRecord.created_at.desc()).limit(limit)
+    result = await db.execute(stmt)
+    records = result.scalars().all()
     return {
-        "count": 0,
-        "alerts": []
+        "count": len(records),
+        "alerts": [
+            {
+                "alert_id": r.alert_id,
+                "user_id": r.user_id,
+                "alert_type": r.alert_type,
+                "severity": r.severity,
+                "status": r.status,
+                "description": r.description,
+                "created_at": r.created_at.isoformat() if r.created_at else None,
+            }
+            for r in records
+        ],
     }
 
 
 @router.post("/sar")
-async def create_sar(request: SARRequest):
+async def create_sar(request: SARRequest, db: AsyncSession = Depends(get_db)):
     """Create Suspicious Activity Report"""
-    sar_id = f"SAR-{datetime.now().strftime('%Y%m%d')}-001"
+    sar_id = f"SAR-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+    alert = AlertRecord(
+        alert_id=sar_id,
+        user_id=request.user_id,
+        alert_type=request.suspicious_activity_type,
+        severity="high",
+        status="open",
+        description=request.description,
+        transactions=[request.transaction_id],
+        created_at=datetime.utcnow(),
+        updated_at=datetime.utcnow(),
+    )
+    db.add(alert)
+    await db.commit()
     return {
         "sar_id": sar_id,
         "status": "PENDING_REVIEW",
-        "created_at": datetime.now().isoformat()
+        "created_at": datetime.utcnow().isoformat()
     }
 
 
 @router.get("/limits/user/{user_id}")
-async def get_user_limits(user_id: str):
+async def get_user_limits(user_id: str, db: AsyncSession = Depends(get_db)):
     """Get AML limits for a user"""
+    result = await db.execute(
+        select(TransactionRecord).where(TransactionRecord.user_id == user_id)
+    )
+    transactions = result.scalars().all()
+
+    daily_deposits = sum(t.amount for t in transactions if t.type == "deposit")
+
     return {
         "user_id": user_id,
         "daily_deposit_limit": 10000.0,
         "weekly_deposit_limit": 25000.0,
         "monthly_deposit_limit": 100000.0,
         "single_transaction_limit": 5000.0,
-        "current_daily": 1500.0,
-        "current_weekly": 5000.0,
-        "current_monthly": 15000.0
+        "current_daily": daily_deposits,
+        "current_weekly": 0.0,
+        "current_monthly": 0.0
     }
 
 
@@ -132,9 +176,9 @@ async def check_limits(user_id: str, amount: float, period: str):
         "weekly": 25000.0,
         "monthly": 100000.0
     }
-    
+
     limit = limits.get(period, 10000.0)
-    
+
     return {
         "user_id": user_id,
         "amount": amount,

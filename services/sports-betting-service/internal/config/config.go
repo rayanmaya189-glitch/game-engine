@@ -12,6 +12,7 @@ type Config struct {
 	Database DatabaseConfig `yaml:"database"`
 	Redis    RedisConfig    `yaml:"redis"`
 	Sports   SportsConfig   `yaml:"sports"`
+	Wallet   WalletConfig   `yaml:"wallet"`
 }
 
 type GRPCConfig struct {
@@ -48,6 +49,15 @@ type SportsConfig struct {
 	MinBetAmount float64 `yaml:"min_bet_amount"`
 	MaxOdds      float64 `yaml:"max_odds"`
 	Commission   float64 `yaml:"commission"`
+}
+
+type WalletConfig struct {
+	Host string `yaml:"host"`
+	Port int    `yaml:"port"`
+}
+
+func (w WalletConfig) Address() string {
+	return fmt.Sprintf("%s:%d", w.Host, w.Port)
 }
 
 func Load() (*Config, error) {

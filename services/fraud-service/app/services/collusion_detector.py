@@ -8,8 +8,6 @@ from app.models.schemas import CollusionSignal
 class CollusionDetector:
     """Detect collusion in poker games"""
 
-    game_history: Dict[str, List[Dict]] = {}
-
     @staticmethod
     def analyze_table(table_id: str, players: List[str]) -> List[CollusionSignal]:
         """Analyze players at a table for collusion patterns"""

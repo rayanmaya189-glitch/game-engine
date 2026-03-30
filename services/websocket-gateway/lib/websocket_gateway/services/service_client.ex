@@ -82,6 +82,86 @@ defmodule WebsocketGateway.Services.ServiceClient do
   end
 
   @doc """
+  List all active jackpots.
+  """
+  def list_jackpots do
+    service_url(:jackpot_service, "/api/v1/jackpots")
+    |> make_request(%{})
+  end
+
+  @doc """
+  Get featured games from game registry.
+  """
+  def get_featured_games(limit \\ 10) do
+    service_url(:game_registry_service, "/api/v1/games/featured")
+    |> make_request(%{limit: limit})
+  end
+
+  @doc """
+  Get new games from game registry.
+  """
+  def get_new_games(limit \\ 10) do
+    service_url(:game_registry_service, "/api/v1/games/new")
+    |> make_request(%{limit: limit})
+  end
+
+  @doc """
+  Get popular games from game registry.
+  """
+  def get_popular_games(limit \\ 10) do
+    service_url(:game_registry_service, "/api/v1/games/popular")
+    |> make_request(%{limit: limit})
+  end
+
+  @doc """
+  Get game categories from game registry.
+  """
+  def get_game_categories do
+    service_url(:game_registry_service, "/api/v1/games/categories")
+    |> make_request(%{})
+  end
+
+  @doc """
+  Search games in game registry.
+  """
+  def search_games(query, limit \\ 20) do
+    service_url(:game_registry_service, "/api/v1/games/search")
+    |> make_request(%{query: query, limit: limit})
+  end
+
+  @doc """
+  Get active tournaments.
+  """
+  def list_active_tournaments do
+    service_url(:tournament_service, "/api/v1/tournaments/active")
+    |> make_request(%{})
+  end
+
+  @doc """
+  Get tournament schedule.
+  """
+  def get_tournament_schedule do
+    service_url(:tournament_service, "/api/v1/tournaments/schedule")
+    |> make_request(%{})
+  end
+
+  @doc """
+  Get tournament leaderboard.
+  """
+  def get_leaderboard(tournament_id) do
+    service_url(:tournament_service, "/api/v1/tournaments/#{tournament_id}/leaderboard")
+    |> make_request(%{})
+  end
+
+  @doc """
+  Get tournament standings.
+  """
+  def get_standings(tournament_id) do
+    service_url(:tournament_service, "/api/v1/tournaments/#{tournament_id}/standings")
+    |> make_request(%{})
+  end
+
+  @doc """
   Authenticate user token.
   """
   def authenticate_user(token) do
@@ -92,8 +172,10 @@ defmodule WebsocketGateway.Services.ServiceClient do
   # Private functions
 
   defp service_url(service_key, path) do
-    base_url = Application.get_env(:websocket_gateway, :services, [])
-               |> Keyword.get(service_key, "http://localhost:8080")
+    services = Application.get_env(:websocket_gateway, :services, [])
+    base_url = Keyword.get_lazy(services, service_key, fn ->
+      System.get_env("DEFAULT_SERVICE_URL") || "http://localhost:8080"
+    end)
 
     "#{base_url}#{path}"
   end

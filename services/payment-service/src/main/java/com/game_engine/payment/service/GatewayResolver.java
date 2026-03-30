@@ -23,6 +23,10 @@ public class GatewayResolver {
                 .orElseThrow(() -> new IllegalArgumentException("Gateway not supported: " + gateway));
     }
 
+    public List<PaymentGatewayAdapter> getAvailableAdapters() {
+        return gatewayAdapters;
+    }
+
     public DepositStatus mapResponseStatusToDepositStatus(String responseStatus) {
         if (responseStatus == null) return DepositStatus.FAILED;
 
