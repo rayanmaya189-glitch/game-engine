@@ -6,8 +6,6 @@ import (
 	"time"
 
 	"github.com/redis/go-redis/v9"
-
-	"github.com/game_engine/chat/internal/room"
 )
 
 // ModerationAction represents a moderation action
@@ -22,12 +20,12 @@ const (
 
 // Moderator handles moderation actions
 type Moderator struct {
-	config      *room.Config
+	config      *FilterConfig
 	redisClient *redis.Client
 }
 
 // NewModerator creates a new moderator
-func NewModerator(config *room.Config, redisClient *redis.Client) *Moderator {
+func NewModerator(config *FilterConfig, redisClient *redis.Client) *Moderator {
 	return &Moderator{
 		config:      config,
 		redisClient: redisClient,
@@ -38,133 +36,76 @@ func NewModerator(config *room.Config, redisClient *redis.Client) *Moderator {
 func (m *Moderator) CheckRateLimit(ctx context.Context, userID string) bool {
 	key := fmt.Sprintf("ratelimit:%s", userID)
 
-	count, err := m.redisClient.Incr(ctx, key).Result()
+	count, err := m.redisClient.Get(ctx, key).Int()
+	if err == redis.Nil {
+		return true
+	}
 	if err != nil {
-		return true // Allow on error
+		return true // Fail open
 	}
 
-	if count == 1 {
-		// Set expiry for the rate limit window
-		m.redisClient.Expire(ctx, key, time.Minute)
-	}
+	return count < m.config.Moderation.AutoMuteThreshold
+}
 
-	return count <= int64(m.config.Chat.RateLimitPerMinute)
+// RecordMessage records a message for rate limiting
+func (m *Moderator) RecordMessage(ctx context.Context, userID string) error {
+	key := fmt.Sprintf("ratelimit:%s", userID)
+
+	pipe := m.redisClient.Pipeline()
+	pipe.Incr(ctx, key)
+	pipe.Expire(ctx, key, time.Minute)
+	_, err := pipe.Exec(ctx)
+
+	return err
 }
 
 // MuteUser mutes a user
-func (m *Moderator) MuteUser(ctx context.Context, userID string, duration time.Duration) error {
-	key := fmt.Sprintf("mute:%s", userID)
-
-	err := m.redisClient.Set(ctx, key, "1", duration).Err()
-	if err != nil {
-		return err
+func (m *Moderator) MuteUser(ctx context.Context, userID string, durationMinutes int) error {
+	if durationMinutes == 0 {
+		durationMinutes = m.config.Moderation.MuteDurationMinutes
 	}
 
-	return nil
+	key := fmt.Sprintf("mute:%s", userID)
+	return m.redisClient.Set(ctx, key, "1", time.Duration(durationMinutes)*time.Minute).Err()
 }
 
 // UnmuteUser unmutes a user
 func (m *Moderator) UnmuteUser(ctx context.Context, userID string) error {
 	key := fmt.Sprintf("mute:%s", userID)
-
 	return m.redisClient.Del(ctx, key).Err()
 }
 
-// IsMuted checks if a user is muted
-func (m *Moderator) IsMuted(ctx context.Context, userID string) (bool, error) {
+// IsMuted checks if user is muted
+func (m *Moderator) IsMuted(ctx context.Context, userID string) bool {
 	key := fmt.Sprintf("mute:%s", userID)
-
-	exists, err := m.redisClient.Exists(ctx, key).Result()
-	if err != nil {
-		return false, err
-	}
-
-	return exists > 0, nil
+	_, err := m.redisClient.Get(ctx, key).Result()
+	return err == nil
 }
 
 // BanUser bans a user
-func (m *Moderator) BanUser(ctx context.Context, userID string, duration time.Duration) error {
-	key := fmt.Sprintf("ban:%s", userID)
-
-	err := m.redisClient.Set(ctx, key, "1", duration).Err()
-	if err != nil {
-		return err
+func (m *Moderator) BanUser(ctx context.Context, userID string, durationHours int) error {
+	if durationHours == 0 {
+		durationHours = m.config.Moderation.BanDurationHours
 	}
 
-	return nil
+	key := fmt.Sprintf("ban:%s", userID)
+	return m.redisClient.Set(ctx, key, "1", time.Duration(durationHours)*time.Hour).Err()
 }
 
 // UnbanUser unbans a user
 func (m *Moderator) UnbanUser(ctx context.Context, userID string) error {
 	key := fmt.Sprintf("ban:%s", userID)
-
 	return m.redisClient.Del(ctx, key).Err()
 }
 
-// IsBanned checks if a user is banned
-func (m *Moderator) IsBanned(ctx context.Context, userID string) (bool, error) {
+// IsBanned checks if user is banned
+func (m *Moderator) IsBanned(ctx context.Context, userID string) bool {
 	key := fmt.Sprintf("ban:%s", userID)
-
-	exists, err := m.redisClient.Exists(ctx, key).Result()
-	if err != nil {
-		return false, err
-	}
-
-	return exists > 0, nil
+	_, err := m.redisClient.Get(ctx, key).Result()
+	return err == nil
 }
 
-// RecordWarning records a warning for a user
-func (m *Moderator) RecordWarning(ctx context.Context, userID string) (int, error) {
-	key := fmt.Sprintf("warnings:%s", userID)
-
-	count, err := m.redisClient.Incr(ctx, key).Result()
-	if err != nil {
-		return 0, err
-	}
-
-	// Set expiry for warnings (reset daily)
-	m.redisClient.Expire(ctx, key, 24*time.Hour)
-
-	// Auto-mute if threshold reached
-	if int(count) >= m.config.Moderation.AutoMuteThreshold {
-		muteDuration := time.Duration(m.config.Moderation.MuteDurationMinutes) * time.Minute
-		_ = m.MuteUser(ctx, userID, muteDuration)
-	}
-
-	return int(count), nil
-}
-
-// GetWarningCount gets the warning count for a user
-func (m *Moderator) GetWarningCount(ctx context.Context, userID string) (int, error) {
-	key := fmt.Sprintf("warnings:%s", userID)
-
-	count, err := m.redisClient.Get(ctx, key).Int()
-	if err == redis.Nil {
-		return 0, nil
-	}
-
-	return count, err
-}
-
-// ClearWarnings clears warnings for a user
-func (m *Moderator) ClearWarnings(ctx context.Context, userID string) error {
-	key := fmt.Sprintf("warnings:%s", userID)
-
-	return m.redisClient.Del(ctx, key).Err()
-}
-
-// PerformAction performs a moderation action
-func (m *Moderator) PerformAction(ctx context.Context, userID string, action ModerationAction, duration time.Duration) error {
-	switch action {
-	case ActionMute:
-		return m.MuteUser(ctx, userID, duration)
-	case ActionUnmute:
-		return m.UnmuteUser(ctx, userID)
-	case ActionBan:
-		return m.BanUser(ctx, userID, duration)
-	case ActionUnban:
-		return m.UnbanUser(ctx, userID)
-	default:
-		return fmt.Errorf("unknown action: %s", action)
-	}
+// GetModerationConfig returns the moderation config
+func (m *Moderator) GetModerationConfig() *ModerationConfig {
+	return &m.config.Moderation
 }

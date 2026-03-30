@@ -154,3 +154,45 @@ func (h *LeaderboardHandler) UpdatePlayerScore(c *gin.Context) {
 
 	c.JSON(http.StatusOK, gin.H{"message": "Score updated successfully"})
 }
+
+func (h *LeaderboardHandler) DistributePrizes(c *gin.Context) {
+	var req model.PrizeDistributionRequest
+	if err := c.ShouldBindJSON(&req); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	result, err := h.service.DistributePrizes(c.Request.Context(), req)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, result)
+}
+
+func (h *LeaderboardHandler) SyncLeaderboard(c *gin.Context) {
+	leaderboardType := c.Param("type")
+	gameType := c.Query("game_type")
+
+	err := h.service.SyncLeaderboard(c.Request.Context(), model.LeaderboardType(leaderboardType), gameType)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Leaderboard synced successfully"})
+}
+
+func (h *LeaderboardHandler) ResetLeaderboard(c *gin.Context) {
+	leaderboardType := c.Param("type")
+	gameType := c.Query("game_type")
+
+	err := h.service.ResetLeaderboard(c.Request.Context(), model.LeaderboardType(leaderboardType), gameType)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"message": "Leaderboard reset successfully"})
+}

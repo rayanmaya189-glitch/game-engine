@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import {
   Box, Card, CardContent, Typography, Grid, TextField, InputAdornment,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
@@ -7,32 +7,16 @@ import {
   DialogActions, FormControl, InputLabel, Select, MenuItem, Switch, FormControlLabel
 } from '@mui/material';
 import { Search, Add, Edit, Block, CheckCircle } from '@mui/icons-material';
-import { useAppDispatch } from '../../store/hooks';
-import { showSnackbar } from '../../store/slices/uiSlice';
 import { merchantsAPI } from '../../services/api';
 
 const Merchants = () => {
-  const dispatch = useAppDispatch();
-  const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedMerchant, setSelectedMerchant] = useState<any>(null);
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['merchants', search],
     queryFn: () => merchantsAPI.getAll({ search, page: 1, limit: 20 }),
-  });
-
-  const updateStatusMutation = useMutation({
-    mutationFn: ({ id, status }: { id: string; status: string }) =>
-      merchantsAPI.updateStatus(id, { status }),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['merchants'] });
-      dispatch(showSnackbar({ message: 'Merchant status updated', severity: 'success' }));
-    },
-    onError: (error: any) => {
-      dispatch(showSnackbar({ message: error.message, severity: 'error' }));
-    },
   });
 
   const merchants = data?.data?.merchants || [];
@@ -92,11 +76,7 @@ const Merchants = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {isLoading ? (
-                <TableRow>
-                  <TableCell colSpan={9} align="center">Loading...</TableCell>
-                </TableRow>
-              ) : merchants.length === 0 ? (
+              {merchants.length === 0 ? (
                 <TableRow>
                   <TableCell colSpan={9} align="center">No merchants found</TableCell>
                 </TableRow>

@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+database:
+  host: localhost
+  port: 5432
+  user: postgres
+  password: postgres
+  dbname: leaderboard
+  sslmode: disable
+
+redis:
+  host: localhost
+  port: 6379
+  password: ""
+  db: 0
+
+leaderboard:
+  top_players_count: 100
+  cache_ttl_seconds: 300
+  reset_interval_hours: 24
+  min_bet_threshold: 0.50
+  prize_auto_credit: false
+  # Prize configuration now managed via database (tournament_prize_configs table)
+  # This allows tournament-specific prize configurations
+  # Default prizes can be set in the database for fallback

@@ -248,7 +248,7 @@ public class PaymentService {
         PaymentGatewayAdapter adapter = getGatewayAdapter(withdrawal.getGateway());
         Map<String, String> payoutDetails = Map.of(
             "destination_token", withdrawal.getPaymentDestination(),
-            "beneficiary_name", withdrawal.getBeneficiaryName() != "" ? withdrawal.getBeneficiaryName() : ""
+            "beneficiary_name", withdrawal.getBeneficiaryName() != null && !withdrawal.getBeneficiaryName().isEmpty() ? withdrawal.getBeneficiaryName() : ""
         );
 
         GatewayResponse response = adapter.initiateWithdrawal(withdrawal, payoutDetails);

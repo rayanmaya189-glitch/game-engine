@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Box, Card, CardContent, Typography, Grid, TextField, InputAdornment,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Button, Chip, IconButton, Tooltip, Switch, FormControlLabel, MenuItem
+  Button, Chip, IconButton, Tooltip, MenuItem
 } from '@mui/material';
 import { Search, Add, Edit, Visibility, Delete, Casino } from '@mui/icons-material';
 import { useAppDispatch } from '../../store/hooks';
@@ -17,7 +17,7 @@ const Games = () => {
   const [category, setCategory] = useState('');
   const [status, setStatus] = useState('');
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['games', search, category, status],
     queryFn: () => gamesAPI.getAll({ category, status, page: 1, limit: 50 }),
   });

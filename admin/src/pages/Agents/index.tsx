@@ -1,21 +1,28 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import {
   Box, Card, CardContent, Typography, Grid, TextField, InputAdornment,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Button, Chip, IconButton, Tooltip, Avatar, LinearProgress
+  Button, Chip, IconButton, Tooltip, Avatar
 } from '@mui/material';
-import { Search, Add, Edit, Visibility, TrendingUp } from '@mui/icons-material';
-import { useAppDispatch } from '../../store/hooks';
-import { showSnackbar } from '../../store/slices/uiSlice';
+import { Search, Add, Edit, Visibility } from '@mui/icons-material';
 import { agentsAPI } from '../../services/api';
 
+interface Agent {
+  id: string;
+  name: string;
+  email: string;
+  tier: string;
+  players: number;
+  revenue: number;
+  commission: number;
+  status: string;
+}
+
 const Agents = () => {
-  const dispatch = useAppDispatch();
-  const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['agents', search],
     queryFn: () => agentsAPI.getAll({ search, page: 1, limit: 20 }),
   });
@@ -72,7 +79,7 @@ const Agents = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {agents.map((agent) => (
+              {agents.map((agent: Agent) => (
                 <TableRow key={agent.id} hover>
                   <TableCell>
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>

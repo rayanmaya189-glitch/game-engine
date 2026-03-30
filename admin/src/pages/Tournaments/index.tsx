@@ -1,21 +1,28 @@
 import { useState } from 'react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import {
   Box, Card, CardContent, Typography, Grid, TextField, InputAdornment,
   Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Button, Chip, IconButton, Tooltip, Avatar, AvatarGroup
+  Button, Chip, IconButton, Tooltip
 } from '@mui/material';
-import { Search, Add, Edit, Visibility, EmojiEvents, Timer } from '@mui/icons-material';
-import { useAppDispatch } from '../../store/hooks';
-import { showSnackbar } from '../../store/slices/uiSlice';
+import { Search, Add, Edit, Visibility, EmojiEvents } from '@mui/icons-material';
 import { tournamentsAPI } from '../../services/api';
 
+interface Tournament {
+  id: string;
+  name: string;
+  game: string;
+  prizePool: number;
+  players: number;
+  status: string;
+  startDate: string;
+  endDate: string;
+}
+
 const Tournaments = () => {
-  const dispatch = useAppDispatch();
-  const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ['tournaments', search],
     queryFn: () => tournamentsAPI.getAll({ search, page: 1, limit: 20 }),
   });
@@ -82,9 +89,9 @@ const Tournaments = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {tournaments.map((tournament) => (
+              {tournaments.map((tournament: Tournament) => (
                 <TableRow key={tournament.id} hover>
-                  <TableCell fontWeight="500">{tournament.name}</TableCell>
+                  <TableCell sx={{ fontWeight: 500 }}>{tournament.name}</TableCell>
                   <TableCell>{tournament.game}</TableCell>
                   <TableCell><Box sx={{ display: 'flex', alignItems: 'center', gap: 0.5 }}><EmojiEvents color="warning" /> ${tournament.prizePool.toLocaleString()}</Box></TableCell>
                   <TableCell>{tournament.players}</TableCell>

@@ -6,7 +6,7 @@ import {
   Button, Chip, IconButton, Tooltip, Tabs, Tab, FormControl, InputLabel, Select, MenuItem,
   Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress
 } from '@mui/material';
-import { Search, Add, Edit, Visibility, AccountBalance, CreditCard, SwapHoriz, CheckCircle, Cancel, Refresh } from '@mui/icons-material';
+import { Search, Visibility, AccountBalance, CreditCard, SwapHoriz, CheckCircle, Cancel, Refresh } from '@mui/icons-material';
 import { useAppDispatch } from '../../store/hooks';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { paymentsAPI } from '../../services/api';

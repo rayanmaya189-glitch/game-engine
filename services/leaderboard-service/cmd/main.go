@@ -42,7 +42,7 @@ func main() {
 	repo := repository.NewLeaderboardRepository(db, redisClient)
 
 	// Initialize service
-	leaderboardService := service.NewLeaderboardService(repo, cfg.Leaderboard)
+	leaderboardService := service.NewLeaderboardService(repo, &cfg.Leaderboard)
 
 	// Initialize handler
 	leaderboardHandler := handler.NewLeaderboardHandler(leaderboardService)
@@ -115,6 +115,13 @@ func setupRouter(h *handler.LeaderboardHandler) *gin.Engine {
 
 		// Update score (internal use)
 		api.POST("/leaderboard/update", h.UpdatePlayerScore)
+
+		// Prize distribution (admin)
+		api.POST("/leaderboard/prizes/distribute", h.DistributePrizes)
+
+		// Leaderboard management (admin)
+		api.POST("/leaderboard/sync/:type", h.SyncLeaderboard)
+		api.POST("/leaderboard/reset/:type", h.ResetLeaderboard)
 	}
 
 	return router
