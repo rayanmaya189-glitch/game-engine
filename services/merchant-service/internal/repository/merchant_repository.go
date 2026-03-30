@@ -84,79 +84,6 @@ func (r *MerchantRepository) GetPlayer(ctx context.Context, merchantID, playerID
 	return &p, nil
 }
 
-// Reports
-func (r *MerchantRepository) GetRevenueReport(ctx context.Context, merchantID, startDate, endDate string) (*model.RevenueReport, error) {
-	var report model.RevenueReport
-
-	query := `SELECT COALESCE(SUM(total_revenue), 0), COALESCE(SUM(total_deposits), 0), COALESCE(SUM(total_withdrawals), 0), COUNT(DISTINCT player_id) FROM merchant_reports WHERE merchant_id = $1`
-	args := []interface{}{merchantID}
-	argNum := 2
-
-	if startDate != "" {
-		query += fmt.Sprintf(" AND created_at >= $%d", argNum)
-		args = append(args, startDate)
-		argNum++
-	}
-	if endDate != "" {
-		query += fmt.Sprintf(" AND created_at <= $%d", argNum)
-		args = append(args, endDate)
-	}
-
-	err := r.db.QueryRow(ctx, query, args...).Scan(&report.TotalRevenue, &report.TotalDeposits, &report.TotalWithdrawals, &report.TotalPlayers)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get revenue report: %w", err)
-	}
-	return &report, nil
-}
-
-func (r *MerchantRepository) GetPlayerReport(ctx context.Context, merchantID, playerID, startDate, endDate string) (*model.PlayerReport, error) {
-	var report model.PlayerReport
-
-	query := `SELECT COALESCE(SUM(total_bets), 0), COALESCE(SUM(total_wins), 0), COALESCE(SUM(net_revenue), 0), COUNT(*) FROM player_reports WHERE merchant_id = $1 AND player_id = $2`
-	args := []interface{}{merchantID, playerID}
-	argNum := 3
-
-	if startDate != "" {
-		query += fmt.Sprintf(" AND created_at >= $%d", argNum)
-		args = append(args, startDate)
-		argNum++
-	}
-	if endDate != "" {
-		query += fmt.Sprintf(" AND created_at <= $%d", argNum)
-		args = append(args, endDate)
-	}
-
-	err := r.db.QueryRow(ctx, query, args...).Scan(&report.TotalBets, &report.TotalWins, &report.NetRevenue, &report.GamesPlayed)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get player report: %w", err)
-	}
-	return &report, nil
-}
-
-func (r *MerchantRepository) GetGameReport(ctx context.Context, merchantID, gameID, startDate, endDate string) (*model.GameReport, error) {
-	var report model.GameReport
-
-	query := `SELECT COALESCE(SUM(total_bets), 0), COALESCE(SUM(total_wins), 0), COUNT(DISTINCT player_id), COUNT(*) FROM game_reports WHERE merchant_id = $1 AND game_id = $2`
-	args := []interface{}{merchantID, gameID}
-	argNum := 3
-
-	if startDate != "" {
-		query += fmt.Sprintf(" AND created_at >= $%d", argNum)
-		args = append(args, startDate)
-		argNum++
-	}
-	if endDate != "" {
-		query += fmt.Sprintf(" AND created_at <= $%d", argNum)
-		args = append(args, endDate)
-	}
-
-	err := r.db.QueryRow(ctx, query, args...).Scan(&report.TotalBets, &report.TotalWins, &report.TotalPlayers, &report.Plays)
-	if err != nil {
-		return nil, fmt.Errorf("failed to get game report: %w", err)
-	}
-	return &report, nil
-}
-
 // Config
 func (r *MerchantRepository) GetConfig(ctx context.Context, merchantID string) (map[string]string, error) {
 	rows, err := r.db.Query(ctx, `SELECT key, value FROM merchant_config WHERE merchant_id = $1`, merchantID)
@@ -257,7 +184,6 @@ func (r *MerchantRepository) GetAgent(ctx context.Context, merchantID, agentID s
 func (r *MerchantRepository) CreateAgent(ctx context.Context, merchantID, username, email string, sendInvitation bool) (string, error) {
 	var agentID string
 	status := "pending"
-	// If not sending invitation, agent is active immediately
 	if !sendInvitation {
 		status = "active"
 	}
@@ -266,11 +192,8 @@ func (r *MerchantRepository) CreateAgent(ctx context.Context, merchantID, userna
 		return "", fmt.Errorf("failed to create agent: %w", err)
 	}
 
-	// If sendInvitation is true, queue the invitation for processing
 	if sendInvitation {
 		if err := r.queueAgentInvitation(ctx, merchantID, agentID, username, email); err != nil {
-			// Log the error but don't fail the agent creation
-			// The agent can be invited later manually
 			log.Printf("failed to queue invitation for agent %s: %v", agentID, err)
 		}
 	}
@@ -278,9 +201,7 @@ func (r *MerchantRepository) CreateAgent(ctx context.Context, merchantID, userna
 	return agentID, nil
 }
 
-// queueAgentInvitation creates an invitation record that can be processed by a notification worker
 func (r *MerchantRepository) queueAgentInvitation(ctx context.Context, merchantID, agentID, username, email string) error {
-	// Create invitation record with pending status
 	var invitationID string
 	err := r.db.QueryRow(ctx, `
 		INSERT INTO merchant_agent_invitations (merchant_id, agent_id, email, username, status, created_at)
@@ -291,14 +212,12 @@ func (r *MerchantRepository) queueAgentInvitation(ctx context.Context, merchantI
 		return fmt.Errorf("failed to create invitation record: %w", err)
 	}
 
-	// Publish to Redis queue for async processing
 	invitationData := fmt.Sprintf("{\"invitation_id\":\"%s\",\"agent_id\":\"%s\",\"email\":\"%s\",\"username\":\"%s\"}",
 		invitationID, agentID, email, username)
 	if err := r.redis.Publish(ctx, "agent-invitations", invitationData).Err(); err != nil {
 		return fmt.Errorf("failed to publish invitation to queue: %w", err)
 	}
 
-	// Set TTL for invitation (24 hours)
 	if err := r.redis.Set(ctx, fmt.Sprintf("invitation:%s", invitationID),
 		"pending", 24*time.Hour).Err(); err != nil {
 		log.Printf("warning: failed to set invitation TTL: %v", err)

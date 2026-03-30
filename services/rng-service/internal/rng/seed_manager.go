@@ -56,19 +56,16 @@ func (sm *SeedManager) GenerateSeedPair(gameID string) (*SeedPair, error) {
 	sm.mu.Lock()
 	defer sm.mu.Unlock()
 
-	// Generate server seed
 	serverSeed, err := sm.generateRandomBytes(sm.serverSeedLen)
 	if err != nil {
 		return nil, fmt.Errorf("failed to generate server seed: %w", err)
 	}
 
-	// Generate client seed
 	clientSeed, err := sm.generateRandomBytes(sm.clientSeedLen)
 	if err != nil {
 		return nil, fmt.Errorf("failed to generate client seed: %w", err)
 	}
 
-	// Create seed pair
 	pair := &SeedPair{
 		ServerSeed: hex.EncodeToString(serverSeed),
 		ClientSeed: hex.EncodeToString(clientSeed),
@@ -78,7 +75,6 @@ func (sm *SeedManager) GenerateSeedPair(gameID string) (*SeedPair, error) {
 		Hash:       sm.computeHash(serverSeed, clientSeed),
 	}
 
-	// Store the seed pair
 	sm.activeSeeds[pair.Hash] = pair
 
 	return pair, nil
@@ -89,18 +85,15 @@ func (sm *SeedManager) SetClientSeed(gameID, serverSeedHash, clientSeed string) 
 	sm.mu.Lock()
 	defer sm.mu.Unlock()
 
-	// Validate client seed format
-	if len(clientSeed) != sm.clientSeedLen*2 { // hex encoded
+	if len(clientSeed) != sm.clientSeedLen*2 {
 		return nil, errors.New("invalid client seed length")
 	}
 
-	// Find existing server seed
 	pair, exists := sm.activeSeeds[serverSeedHash]
 	if !exists {
 		return nil, errors.New("server seed not found")
 	}
 
-	// Update client seed
 	pair.ClientSeed = clientSeed
 	pair.Hash = sm.computeHash([]byte(pair.ServerSeed), []byte(clientSeed))
 
@@ -171,10 +164,8 @@ func (sm *SeedManager) ComputeResult(gameID string, max int) (int, error) {
 		return 0, err
 	}
 
-	// Combine seeds for result
 	combined := sm.combineSeeds(pair.ServerSeed, pair.ClientSeed, pair.Nonce)
 
-	// Generate result
 	rng, err := NewCryptoRNG(false, false, 32)
 	if err != nil {
 		return 0, err
@@ -189,123 +180,12 @@ func (sm *SeedManager) ComputeResult(gameID string, max int) (int, error) {
 		return 0, err
 	}
 
-	// Increment nonce
 	pair.Nonce++
 
 	return result, nil
 }
 
-// VerifyResult verifies that a result was generated fairly
-func (sm *SeedManager) VerifyResult(gameID string, result, max int) (bool, error) {
-	sm.mu.RLock()
-	defer sm.mu.RUnlock()
-
-	pair, err := sm.getSeedPairRLocked(gameID)
-	if err != nil {
-		return false, err
-	}
-
-	// Compute expected result
-	combined := sm.combineSeeds(pair.ServerSeed, pair.ClientSeed, pair.Nonce)
-
-	rng, err := NewCryptoRNG(false, false, 32)
-	if err != nil {
-		return false, err
-	}
-
-	if err := rng.Seed(combined); err != nil {
-		return false, err
-	}
-
-	expected, err := rng.Intn(max)
-	if err != nil {
-		return false, err
-	}
-
-	return expected == result, nil
-}
-
-// GenerateCertificate generates a certificate for the current RNG state
-func (sm *SeedManager) GenerateCertificate(gameID string) (*SeedCertificate, error) {
-	sm.mu.RLock()
-	defer sm.mu.RUnlock()
-
-	pair, err := sm.getSeedPairRLocked(gameID)
-	if err != nil {
-		return nil, err
-	}
-
-	// In production, this would use a proper signing key
-	signature := sm.computeSignature(pair)
-
-	cert := &SeedCertificate{
-		SeedHash:   pair.Hash,
-		GameID:     gameID,
-		Signature:  signature,
-		Timestamp:  time.Now().UTC(),
-		ValidUntil: time.Now().UTC().Add(24 * time.Hour),
-		RNGState:   sm.computeRNGState(pair),
-	}
-
-	return cert, nil
-}
-
-// VerifyCertificate verifies a certificate
-func (sm *SeedManager) VerifyCertificate(cert *SeedCertificate) bool {
-	sm.mu.RLock()
-	defer sm.mu.RUnlock()
-
-	// Check if certificate is expired
-	if time.Now().UTC().After(cert.ValidUntil) {
-		return false
-	}
-
-	// Find matching seed pair
-	pair, exists := sm.activeSeeds[cert.SeedHash]
-	if !exists {
-		return false
-	}
-
-	// Verify signature
-	expectedSig := sm.computeSignature(pair)
-	return cert.Signature == expectedSig
-}
-
-// MarkVerified marks a seed pair as verified
-func (sm *SeedManager) MarkVerified(gameID string) error {
-	sm.mu.Lock()
-	defer sm.mu.Unlock()
-
-	pair, err := sm.getSeedPairLocked(gameID)
-	if err != nil {
-		return err
-	}
-
-	pair.IsVerified = true
-	return nil
-}
-
-// Cleanup removes old/verified seed pairs
-func (sm *SeedManager) Cleanup(maxAge time.Duration) int {
-	sm.mu.Lock()
-	defer sm.mu.Unlock()
-
-	now := time.Now().UTC()
-	removed := 0
-
-	for hash, pair := range sm.activeSeeds {
-		age := now.Sub(pair.CreatedAt)
-		if age > maxAge || pair.IsVerified {
-			delete(sm.activeSeeds, hash)
-			removed++
-		}
-	}
-
-	return removed
-}
-
-// Helper functions
-
+// generateRandomBytes generates random bytes
 func (sm *SeedManager) generateRandomBytes(n int) ([]byte, error) {
 	b := make([]byte, n)
 	_, err := rand.Read(b)
@@ -315,45 +195,10 @@ func (sm *SeedManager) generateRandomBytes(n int) ([]byte, error) {
 	return b, nil
 }
 
+// computeHash computes SHA256 hash
 func (sm *SeedManager) computeHash(serverSeed, clientSeed []byte) string {
 	h := sha256.Sum256(append(serverSeed, clientSeed...))
 	return hex.EncodeToString(h[:])
-}
-
-func (sm *SeedManager) combineSeeds(serverSeed, clientSeed string, nonce uint64) []byte {
-	data := fmt.Sprintf("%s:%s:%d", serverSeed, clientSeed, nonce)
-	h := sha256.Sum256([]byte(data))
-	return h[:]
-}
-
-func (sm *SeedManager) computeSignature(pair *SeedPair) string {
-	data := fmt.Sprintf("%s:%s:%d:%s", pair.ServerSeed, pair.ClientSeed, pair.Nonce, pair.GameID)
-	h := sha256.Sum256([]byte(data))
-	return hex.EncodeToString(h[:])
-}
-
-func (sm *SeedManager) computeRNGState(pair *SeedPair) string {
-	data := fmt.Sprintf("%s:%s:%d", pair.ServerSeed, pair.ClientSeed, pair.Nonce)
-	h := sha256.Sum256([]byte(data))
-	return hex.EncodeToString(h[:])
-}
-
-func (sm *SeedManager) getSeedPairLocked(gameID string) (*SeedPair, error) {
-	for _, pair := range sm.activeSeeds {
-		if pair.GameID == gameID && !pair.IsVerified {
-			return pair, nil
-		}
-	}
-	return nil, errors.New("seed pair not found")
-}
-
-func (sm *SeedManager) getSeedPairRLocked(gameID string) (*SeedPair, error) {
-	for _, pair := range sm.activeSeeds {
-		if pair.GameID == gameID && !pair.IsVerified {
-			return pair, nil
-		}
-	}
-	return nil, errors.New("seed pair not found")
 }
 
 // MarshalJSON implements custom JSON marshaling for SeedPair

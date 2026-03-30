@@ -38,13 +38,11 @@ func (h *GameHandler) ListGames(c *gin.Context) {
 		SortBy:           c.Query("sort_by"),
 	}
 
-	// Parse pagination
 	page := c.DefaultQuery("page", "1")
 	pageSize := c.DefaultQuery("page_size", "20")
 	req.Pagination.Page = parseInt32(page, 1)
 	req.Pagination.PageSize = parseInt32(pageSize, 20)
 
-	// Parse status
 	if status := c.Query("status"); status != "" {
 		req.Status = parseInt32(status, 0)
 	}
@@ -118,8 +116,8 @@ func (h *GameHandler) GetGameURL(c *gin.Context) {
 	}
 
 	if err := c.ShouldBindJSON(&req); err != nil {
-		req.DeviceType = 1 // Default to desktop
-		req.Language = 1   // Default to English
+		req.DeviceType = 1
+		req.Language = 1
 		req.Currency = "USD"
 	}
 
@@ -131,100 +129,6 @@ func (h *GameHandler) GetGameURL(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, result)
-}
-
-// GetCategories handles GET /categories
-func (h *GameHandler) GetCategories(c *gin.Context) {
-	includeGamesCount := c.Query("include_games_count") == "true"
-
-	ctx := context.Background()
-	categories, err := h.gameService.GetCategories(ctx, includeGamesCount)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"categories": categories})
-}
-
-// GetProviders handles GET /providers
-func (h *GameHandler) GetProviders(c *gin.Context) {
-	activeOnly := c.Query("active_only") == "true"
-
-	ctx := context.Background()
-	providers, err := h.gameService.GetProviders(ctx, activeOnly)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"providers": providers})
-}
-
-// SearchGames handles GET /games/search
-func (h *GameHandler) SearchGames(c *gin.Context) {
-	query := c.Query("q")
-	if query == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "query is required"})
-		return
-	}
-
-	limit := parseInt32(c.Query("limit"), 20)
-	categoryID := c.Query("category_id")
-
-	ctx := context.Background()
-	games, err := h.gameService.SearchGames(ctx, query, int(limit), categoryID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"games": games})
-}
-
-// GetFeaturedGames handles GET /games/featured
-func (h *GameHandler) GetFeaturedGames(c *gin.Context) {
-	limit := parseInt32(c.Query("limit"), 10)
-	categoryID := c.Query("category_id")
-
-	ctx := context.Background()
-	games, err := h.gameService.GetFeaturedGames(ctx, int(limit), categoryID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"games": games})
-}
-
-// GetPopularGames handles GET /games/popular
-func (h *GameHandler) GetPopularGames(c *gin.Context) {
-	limit := parseInt32(c.Query("limit"), 10)
-	categoryID := c.Query("category_id")
-
-	ctx := context.Background()
-	games, err := h.gameService.GetPopularGames(ctx, int(limit), categoryID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"games": games})
-}
-
-// GetNewGames handles GET /games/new
-func (h *GameHandler) GetNewGames(c *gin.Context) {
-	limit := parseInt32(c.Query("limit"), 10)
-	categoryID := c.Query("category_id")
-
-	ctx := context.Background()
-	games, err := h.gameService.GetNewGames(ctx, int(limit), categoryID)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"games": games})
 }
 
 // CreateGame handles POST /games (admin)
@@ -322,7 +226,6 @@ func (h *GameHandler) SetGameOrder(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"game_id": gameID, "sort_order": req.SortOrder})
 }
 
-// Helper function to parse int32
 func parseInt32(s string, defaultValue int32) int32 {
 	var result int32
 	for _, c := range s {

@@ -174,6 +174,8 @@ const (
 	ErrCodeRateLimitExceeded  = "E1007"
 	ErrCodeServiceUnavailable = "E1008"
 	ErrCodeTimeout            = "E1009"
+	ErrCodeBadRequest         = "E1010"
+	ErrCodeValidationError    = "E1011"
 
 	// Authentication errors (2xxx)
 	ErrCodeInvalidCredentials = "E2001"
@@ -182,6 +184,8 @@ const (
 	ErrCodeAccountLocked      = "E2004"
 	ErrCodeAccountDisabled    = "E2005"
 	ErrCodeSessionExpired     = "E2006"
+	ErrCodeMFARequired        = "E2007"
+	ErrCodeMFAInvalid         = "E2008"
 
 	// User errors (3xxx)
 	ErrCodeUserNotFound      = "E3001"
@@ -197,6 +201,7 @@ const (
 	ErrCodeTransactionFailed = "E4003"
 	ErrCodeWithdrawalPending = "E4004"
 	ErrCodeDepositFailed     = "E4005"
+	ErrCodeWalletLocked      = "E4006"
 
 	// Game errors (5xxx)
 	ErrCodeGameNotFound      = "E5001"
@@ -206,6 +211,7 @@ const (
 	ErrCodeBetTooLow         = "E5005"
 	ErrCodeBetTooHigh        = "E5006"
 	ErrCodeInsufficientChips = "E5007"
+	ErrCodeGameUnavailable   = "E5008"
 )
 
 // ===========================================

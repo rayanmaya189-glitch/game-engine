@@ -67,7 +67,7 @@ public class KycService {
     @Transactional
     public KycVerification startLevel1Verification(UUID userId, String phoneNumber) {
         KycVerification verification = kycRepository.findByUserId(userId)
-                .orElseGet(() -> createNewVerification(userId));
+                .orElseGet(() -> KycLevelHelper.createNewVerification(userId));
 
         verification.setPhoneNumber(phoneNumber);
         verification.setStatus(KycStatus.IN_PROGRESS);
@@ -87,7 +87,7 @@ public class KycService {
 
         verification.setPhoneVerified(true);
         verification.setPhoneVerifiedAt(LocalDateTime.now());
-        updateLevelIfComplete(verification);
+        KycLevelHelper.updateLevelIfComplete(verification);
 
         return kycRepository.save(verification);
     }
@@ -100,7 +100,7 @@ public class KycService {
                                                    LocalDateTime dateOfBirth, String country,
                                                    DocumentType documentType) {
         KycVerification verification = kycRepository.findByUserId(userId)
-                .orElseGet(() -> createNewVerification(userId));
+                .orElseGet(() -> KycLevelHelper.createNewVerification(userId));
 
         verification.setFirstName(firstName);
         verification.setLastName(lastName);
@@ -165,7 +165,7 @@ public class KycService {
                 verification.setStatus(KycStatus.REQUIRES_REVIEW);
         }
 
-        updateLevelIfComplete(verification);
+        KycLevelHelper.updateLevelIfComplete(verification);
         return kycRepository.save(verification);
     }
 
@@ -256,47 +256,7 @@ public class KycService {
      * Check if KYC is required based on triggers
      */
     public VerificationLevel getRequiredLevelForAction(double totalDeposits, double withdrawalAmount) {
-        if (withdrawalAmount > 0) {
-            return VerificationLevel.LEVEL_2;
-        }
-        if (totalDeposits >= highDepositTrigger) {
-            return VerificationLevel.LEVEL_3;
-        }
-        if (totalDeposits >= depositCumulativeTrigger) {
-            return VerificationLevel.LEVEL_2;
-        }
-        return VerificationLevel.LEVEL_0;
-    }
-
-    private KycVerification createNewVerification(UUID userId) {
-        return KycVerification.builder()
-                .userId(userId)
-                .level(VerificationLevel.LEVEL_0)
-                .status(KycStatus.PENDING)
-                .build();
-    }
-
-    private void updateLevelIfComplete(KycVerification verification) {
-        switch (verification.getLevel()) {
-            case LEVEL_0:
-                if (verification.getEmailVerified() != null && verification.getPhoneVerified() != null) {
-                    if (verification.getEmailVerified() && verification.getPhoneVerified()) {
-                        verification.setLevel(VerificationLevel.LEVEL_1);
-                        verification.setStatus(KycStatus.VERIFIED);
-                    }
-                }
-                break;
-            case LEVEL_1:
-                if (Boolean.TRUE.equals(verification.getDocumentVerified())) {
-                    verification.setLevel(VerificationLevel.LEVEL_2);
-                }
-                break;
-            case LEVEL_2:
-                if (Boolean.TRUE.equals(verification.getAddressVerified()) &&
-                    Boolean.TRUE.equals(verification.getSourceOfFundsVerified())) {
-                    verification.setLevel(VerificationLevel.LEVEL_3);
-                }
-                break;
-        }
+        return KycLevelHelper.getRequiredLevelForAction(
+                totalDeposits, withdrawalAmount, highDepositTrigger, depositCumulativeTrigger);
     }
 }

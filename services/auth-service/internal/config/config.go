@@ -55,6 +55,7 @@ type NATSConfig struct {
 
 // JWTConfig holds JWT configuration
 type JWTConfig struct {
+	PrivateKeyPath     string        `yaml:"private_key_path"`
 	AccessTokenExpiry  time.Duration `yaml:"access_token_expiry"`
 	RefreshTokenExpiry time.Duration `yaml:"refresh_token_expiry"`
 	Issuer             string        `yaml:"issuer"`

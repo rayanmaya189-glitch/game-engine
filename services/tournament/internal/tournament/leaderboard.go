@@ -4,7 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"sort"
 	"time"
 
 	"github.com/redis/go-redis/v9"
@@ -51,7 +50,6 @@ func (l *Leaderboard) UpdateRegistration(ctx context.Context, tournamentID strin
 		return err
 	}
 
-	// Add to sorted set with score 0
 	return l.redisClient.ZAdd(ctx, key, redis.Z{
 		Score:  0,
 		Member: data,
@@ -62,7 +60,6 @@ func (l *Leaderboard) UpdateRegistration(ctx context.Context, tournamentID strin
 func (l *Leaderboard) UpdateScore(ctx context.Context, tournamentID string, userID string, score int) error {
 	key := fmt.Sprintf("leaderboard:%s", tournamentID)
 
-	// Get current entry
 	entries, err := l.redisClient.ZRangeWithScores(ctx, key, 0, -1).Result()
 	if err != nil {
 		return err
@@ -78,10 +75,7 @@ func (l *Leaderboard) UpdateScore(ctx context.Context, tournamentID string, user
 			entry.Score = score
 			data, _ := json.Marshal(entry)
 
-			// Remove old entry
 			l.redisClient.ZRem(ctx, key, z.Member)
-
-			// Add updated entry
 			l.redisClient.ZAdd(ctx, key, redis.Z{
 				Score:  float64(score),
 				Member: data,
@@ -114,7 +108,6 @@ func (l *Leaderboard) UpdateElimination(ctx context.Context, tournamentID string
 			entry.Rank = rank
 			data, _ := json.Marshal(entry)
 
-			// Remove and re-add with eliminated flag
 			l.redisClient.ZRem(ctx, key, z.Member)
 			l.redisClient.ZAdd(ctx, key, redis.Z{
 				Score:  z.Score,
@@ -136,7 +129,6 @@ func (l *Leaderboard) UpdateFinalResult(ctx context.Context, tournamentID string
 		return err
 	}
 
-	// Store final result
 	return l.redisClient.SAdd(ctx, resultKey, data).Err()
 }
 
@@ -245,93 +237,4 @@ func (l *Leaderboard) RemoveParticipant(ctx context.Context, tournamentID string
 	}
 
 	return nil
-}
-
-// GetGlobalLeaderboard returns the global leaderboard across all tournaments
-func (l *Leaderboard) GetGlobalLeaderboard(ctx context.Context, limit int) ([]LeaderboardEntry, error) {
-	key := "global:leaderboard"
-
-	if limit <= 0 {
-		limit = 100
-	}
-
-	entries, err := l.redisClient.ZRevRangeWithScores(ctx, key, 0, int64(limit-1)).Result()
-	if err != nil {
-		return nil, err
-	}
-
-	result := make([]LeaderboardEntry, 0, len(entries))
-
-	for _, z := range entries {
-		var entry LeaderboardEntry
-		if err := json.Unmarshal([]byte(z.Member.(string)), &entry); err != nil {
-			continue
-		}
-		result = append(result, entry)
-	}
-
-	return result, nil
-}
-
-// UpdateGlobalScore updates a player's global score
-func (l *Leaderboard) UpdateGlobalScore(ctx context.Context, userID string, username string, scoreDelta int) error {
-	key := "global:leaderboard"
-
-	// Get current score
-	currentScore, err := l.redisClient.ZScore(ctx, key, userID).Result()
-	if err != nil && err != redis.Nil {
-		return err
-	}
-
-	newScore := currentScore + float64(scoreDelta)
-
-	entry := LeaderboardEntry{
-		UserID:   userID,
-		Username: username,
-		Score:    int(newScore),
-	}
-
-	data, err := json.Marshal(entry)
-	if err != nil {
-		return err
-	}
-
-	return l.redisClient.ZAdd(ctx, key, redis.Z{
-		Score:  newScore,
-		Member: data,
-	}).Err()
-}
-
-// ClearLeaderboard clears a tournament leaderboard
-func (l *Leaderboard) ClearLeaderboard(ctx context.Context, tournamentID string) error {
-	key := fmt.Sprintf("leaderboard:%s", tournamentID)
-	return l.redisClient.Del(ctx, key).Err()
-}
-
-// GetLeaderboardWithSort allows custom sorting of leaderboard entries
-func (l *Leaderboard) GetLeaderboardWithSort(ctx context.Context, tournamentID string, sortBy string, limit int) ([]LeaderboardEntry, error) {
-	entries, err := l.GetLeaderboard(ctx, tournamentID, limit)
-	if err != nil {
-		return nil, err
-	}
-
-	switch sortBy {
-	case "score":
-		sort.Slice(entries, func(i, j int) bool {
-			return entries[i].Score > entries[j].Score
-		})
-	case "knockouts":
-		sort.Slice(entries, func(i, j int) bool {
-			return entries[i].Knockouts > entries[j].Knockouts
-		})
-	case "rank":
-		// Already sorted by rank
-	}
-
-	// Update ranks after sorting
-	for i := range entries {
-		entries[i].Rank = i + 1
-	}
-
-	return entries, nil
 }
