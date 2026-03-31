@@ -5,6 +5,9 @@ import (
 	"fmt"
 	"time"
 
+	commonv1 "game_engine/gen/go/common/v1"
+	walletv1 "game_engine/gen/go/wallet/v1"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -12,6 +15,7 @@ import (
 // GRPCWalletClient implements the WalletClient interface using gRPC
 type GRPCWalletClient struct {
 	conn   *grpc.ClientConn
+	client walletv1.WalletServiceClient
 	target string
 }
 
@@ -30,6 +34,7 @@ func NewGRPCWalletClient(target string) (*GRPCWalletClient, error) {
 
 	return &GRPCWalletClient{
 		conn:   conn,
+		client: walletv1.NewWalletServiceClient(conn),
 		target: target,
 	}, nil
 }
@@ -44,49 +49,56 @@ func (c *GRPCWalletClient) Close() error {
 
 // GetBalance retrieves the user's wallet balance via gRPC
 func (c *GRPCWalletClient) GetBalance(ctx context.Context, userID string) (float64, error) {
-	// The actual gRPC call would use generated stubs:
-	//   client := walletv1.NewWalletServiceClient(c.conn)
-	//   resp, err := client.GetBalance(ctx, &walletv1.GetBalanceRequest{
-	//       UserId: userID,
-	//   })
-	//   if err != nil {
-	//       return 0, err
-	//   }
-	//   return float64(resp.Balance.Amount) / 100, nil
-	return 0, fmt.Errorf("gRPC stubs not yet generated; run protoc to generate wallet client stubs")
+	resp, err := c.client.GetBalance(ctx, &walletv1.GetBalanceRequest{
+		UserId: userID,
+	})
+	if err != nil {
+		return 0, fmt.Errorf("failed to get balance for user %s: %w", userID, err)
+	}
+	if resp.Balance == nil {
+		return 0, nil
+	}
+	return float64(resp.Balance.Amount) / 100, nil
 }
 
-// DeductBalance deducts the specified amount from the user's wallet
+// DeductBalance deducts the specified amount from the user's wallet via PlaceBet
 func (c *GRPCWalletClient) DeductBalance(ctx context.Context, userID string, amount float64, betID string) error {
-	// client := walletv1.NewWalletServiceClient(c.conn)
-	// _, err := client.PlaceBet(ctx, &walletv1.PlaceBetRequest{
-	//     UserId:  userID,
-	//     BetId:   betID,
-	//     Amount:  &commonv1.Money{Amount: int64(amount * 100), Currency: "USD"},
-	// })
-	// return err
-	return fmt.Errorf("gRPC stubs not yet generated; run protoc to generate wallet client stubs")
+	_, err := c.client.PlaceBet(ctx, &walletv1.PlaceBetRequest{
+		UserId: userID,
+		GameId: betID,
+		Amount: &commonv1.Money{
+			Amount: int64(amount * 100),
+		},
+	})
+	if err != nil {
+		return fmt.Errorf("failed to deduct balance for user %s: %w", userID, err)
+	}
+	return nil
 }
 
-// AddWinnings credits winnings to the user's wallet
+// AddWinnings credits winnings to the user's wallet via SettleBet
 func (c *GRPCWalletClient) AddWinnings(ctx context.Context, userID string, amount float64, betID string) error {
-	// client := walletv1.NewWalletServiceClient(c.conn)
-	// _, err := client.SettleBet(ctx, &walletv1.SettleBetRequest{
-	//     BetId: betID,
-	//     SettlementType: walletv1.BetSettlementType_BET_SETTLEMENT_TYPE_WON,
-	//     WinAmount: &commonv1.Money{Amount: int64(amount * 100), Currency: "USD"},
-	// })
-	// return err
-	return fmt.Errorf("gRPC stubs not yet generated; run protoc to generate wallet client stubs")
+	_, err := c.client.SettleBet(ctx, &walletv1.SettleBetRequest{
+		BetId:          betID,
+		SettlementType: walletv1.BetSettlementType_BET_SETTLEMENT_TYPE_WON,
+		WinAmount: &commonv1.Money{
+			Amount: int64(amount * 100),
+		},
+	})
+	if err != nil {
+		return fmt.Errorf("failed to add winnings for user %s: %w", userID, err)
+	}
+	return nil
 }
 
-// RefundStake refunds a bet stake to the user's wallet
+// RefundStake refunds a bet stake to the user's wallet via CancelBet
 func (c *GRPCWalletClient) RefundStake(ctx context.Context, userID string, amount float64, betID string) error {
-	// client := walletv1.NewWalletServiceClient(c.conn)
-	// _, err := client.CancelBet(ctx, &walletv1.CancelBetRequest{
-	//     BetId: betID,
-	//     Reason: "bet cancelled",
-	// })
-	// return err
-	return fmt.Errorf("gRPC stubs not yet generated; run protoc to generate wallet client stubs")
+	_, err := c.client.CancelBet(ctx, &walletv1.CancelBetRequest{
+		BetId:  betID,
+		Reason: "bet cancelled",
+	})
+	if err != nil {
+		return fmt.Errorf("failed to refund stake for user %s: %w", userID, err)
+	}
+	return nil
 }

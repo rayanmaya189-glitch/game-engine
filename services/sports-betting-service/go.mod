@@ -3,6 +3,7 @@ module github.com/game_engine/sports-betting-service
 go 1.25
 
 require (
+	game_engine/gen/go v0.0.0
 	github.com/game_engine/common v0.0.0
 	github.com/game_engine/database v0.0.0
 	github.com/game_engine/redis v0.0.0
@@ -10,3 +11,5 @@ require (
 	google.golang.org/grpc v1.60.1
 	google.golang.org/protobuf v1.32.0
 )
+
+replace game_engine/gen/go => ../../proto/gen/go

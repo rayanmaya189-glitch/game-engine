@@ -1,0 +1,72 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aml-service
+  namespace: game_engine
+  labels:
+    app: aml-service
+    version: v1
+    component: service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: aml-service
+  template:
+    metadata:
+      labels:
+        app: aml-service
+        version: v1
+        component: service
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: aml-service
+          image: registry.game_engine.local:5000/aml-service:latest
+          imagePullPolicy: Always
+          ports:
+            - name: grpc
+              containerPort: 9114
+              protocol: TCP
+          env:
+            - name: GRPC_PORT
+              value: "9114"
+          resources:
+            requests:
+              cpu: 125m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          livenessProbe:
+            grpc:
+              port: 9114
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            grpc:
+              port: 9114
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aml-service
+  namespace: game_engine
+  labels:
+    app: aml-service
+spec:
+  type: ClusterIP
+  ports:
+    - name: grpc
+      port: 9114
+      targetPort: 9114
+      protocol: TCP
+  selector:
+    app: aml-service

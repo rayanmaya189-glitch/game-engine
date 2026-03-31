@@ -123,7 +123,7 @@ func (h *GameHandler) GetGameConfig(ctx context.Context, req *gamesv1.GetGameCon
 			Currency:     config.Currency,
 			Language:     config.Language,
 		},
-		GameUrl: config.GameURL,
+		GameUrl:      config.GameURL,
 		SessionToken: config.SessionToken,
 	}, nil
 }
@@ -152,63 +152,6 @@ func (h *GameHandler) GetGameURL(ctx context.Context, req *gamesv1.GetGameURLReq
 		GameUrl:      result.GameURL,
 		SessionToken: result.SessionToken,
 		Game:         gameSummaryToProto(&result.Game),
-	}, nil
-}
-
-// GetCategories handles the GetCategories gRPC call
-func (h *GameHandler) GetCategories(ctx context.Context, req *gamesv1.GetCategoriesRequest) (*gamesv1.GetCategoriesResponse, error) {
-	categories, err := h.gameService.GetCategories(ctx, req.GetIncludeGamesCount())
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to get categories: %v", err)
-	}
-
-	cats := make([]*gamesv1.GameCategory, len(categories))
-	for i, c := range categories {
-		cats[i] = &gamesv1.GameCategory{
-			CategoryId:  c.ID,
-			Name:        c.Name,
-			Description: c.Description,
-			IconUrl:     c.IconURL,
-			BannerUrl:   c.BannerURL,
-			ParentId:    c.ParentID,
-			SortOrder:   int32(c.SortOrder),
-			Status:      gamesv1.Status(c.Status),
-			IsFeatured:  c.IsFeatured,
-			GamesCount:  int32(c.GamesCount),
-			Slug:        c.Slug,
-		}
-	}
-
-	return &gamesv1.GetCategoriesResponse{
-		Categories: cats,
-	}, nil
-}
-
-// GetProviders handles the GetProviders gRPC call
-func (h *GameHandler) GetProviders(ctx context.Context, req *gamesv1.GetProvidersRequest) (*gamesv1.GetProvidersResponse, error) {
-	providers, err := h.gameService.GetProviders(ctx, req.GetActiveOnly())
-	if err != nil {
-		return nil, status.Errorf(codes.Internal, "failed to get providers: %v", err)
-	}
-
-	provs := make([]*gamesv1.GameProvider, len(providers))
-	for i, p := range providers {
-		provs[i] = &gamesv1.GameProvider{
-			ProviderId:   p.ID,
-			Name:         p.Name,
-			Description:  p.Description,
-			LogoUrl:      p.LogoURL,
-			WebsiteUrl:   p.WebsiteURL,
-			Status:       gamesv1.Status(p.Status),
-			GamesCount:   int32(p.GamesCount),
-			License:      p.License,
-			Established:  int32(p.Established),
-			IsFeatured:   p.IsFeatured,
-		}
-	}
-
-	return &gamesv1.GetProvidersResponse{
-		Providers: provs,
 	}, nil
 }
 
@@ -284,25 +227,25 @@ func (h *GameHandler) GetNewGames(ctx context.Context, req *gamesv1.GetNewGamesR
 // Helper to convert model.GameSummary to proto GameSummary
 func gameSummaryToProto(g *model.GameSummary) *gamesv1.GameSummary {
 	return &gamesv1.GameSummary{
-		GameId:           g.GameID,
-		Name:             g.Name,
-		ProviderId:       g.ProviderID,
-		ProviderName:     g.ProviderName,
-		CategoryId:       g.CategoryID,
-		CategoryName:     g.CategoryName,
-		Type:             gamesv1.GameCategoryEnum(g.Type),
-		Status:           gamesv1.Status(g.Status),
-		ThumbnailUrl:     g.ThumbnailURL,
-		BannerUrl:        g.BannerURL,
-		Rtp:              g.RTP,
-		Volatility:       g.Volatility,
-		MaxWin:           g.MaxWin,
-		IsFeatured:       g.IsFeatured,
-		IsNew:            g.IsNew,
-		IsPopular:        g.IsPopular,
-		IsJackpot:        g.IsJackpot,
-		LaunchUrl:        g.LaunchURL,
-		PopularityScore:  int32(g.PopularityScore),
+		GameId:          g.GameID,
+		Name:            g.Name,
+		ProviderId:      g.ProviderID,
+		ProviderName:    g.ProviderName,
+		CategoryId:      g.CategoryID,
+		CategoryName:    g.CategoryName,
+		Type:            gamesv1.GameCategoryEnum(g.Type),
+		Status:          gamesv1.Status(g.Status),
+		ThumbnailUrl:    g.ThumbnailURL,
+		BannerUrl:       g.BannerURL,
+		Rtp:             g.RTP,
+		Volatility:      g.Volatility,
+		MaxWin:          g.MaxWin,
+		IsFeatured:      g.IsFeatured,
+		IsNew:           g.IsNew,
+		IsPopular:       g.IsPopular,
+		IsJackpot:       g.IsJackpot,
+		LaunchUrl:       g.LaunchURL,
+		PopularityScore: int32(g.PopularityScore),
 	}
 }
 

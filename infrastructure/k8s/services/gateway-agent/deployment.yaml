@@ -1,0 +1,74 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-agent
+  namespace: game_engine
+  labels:
+    app: gateway-agent
+    version: v1
+    component: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gateway-agent
+  template:
+    metadata:
+      labels:
+        app: gateway-agent
+        version: v1
+        component: gateway
+    spec:
+      terminationGracePeriodSeconds: 30
+      containers:
+        - name: gateway-agent
+          image: registry.game_engine.local:5000/gateway-agent:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8083
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8083"
+          resources:
+            requests:
+              cpu: 125m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8083
+            initialDelaySeconds: 10
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8083
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-agent
+  namespace: game_engine
+  labels:
+    app: gateway-agent
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8083
+      protocol: TCP
+  selector:
+    app: gateway-agent

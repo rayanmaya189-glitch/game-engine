@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/rand"
 	"crypto/rsa"
-	"crypto/tls"
 	"crypto/x509"
 	"encoding/base64"
 	"encoding/pem"
@@ -22,7 +21,18 @@ import (
 	"github.com/go-playground/validator/v10"
 	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
+	"github.com/nats-io/nats.go"
 	"github.com/redis/go-redis/v9"
+)
+
+const (
+	EventUserRegistered = "auth.events.user_registered"
+	EventUserLoggedIn   = "auth.events.user_logged_in"
+	EventUserLoggedOut  = "auth.events.user_logged_out"
+	EventTokenRefreshed = "auth.events.token_refreshed"
+	EventPasswordReset  = "auth.events.password_reset"
+	Event2FAEnabled     = "auth.events.2fa_enabled"
+	Event2FADisabled    = "auth.events.2fa_disabled"
 )
 
 var (
@@ -52,6 +62,7 @@ type AuthService struct {
 	cfg        *config.Config
 	privateKey *rsa.PrivateKey
 	validate   *validator.Validate
+	nats       *nats.Conn
 }
 
 // NewAuthService creates a new AuthService
@@ -242,14 +253,34 @@ func (s *AuthService) MarkPhoneVerified(ctx context.Context, userID uuid.UUID) e
 }
 
 // ConnectNATS connects to NATS
-func (s *AuthService) ConnectNATS() (*tls.Conn, error) {
-	// Simplified NATS connection for now
-	// In production, use nats.go library
-	return nil, nil
+func (s *AuthService) ConnectNATS(url string) error {
+	nc, err := nats.Connect(url)
+	if err != nil {
+		return fmt.Errorf("failed to connect to NATS: %w", err)
+	}
+	s.nats = nc
+	return nil
+}
+
+// DisconnectNATS closes the NATS connection
+func (s *AuthService) DisconnectNATS() {
+	if s.nats != nil {
+		s.nats.Close()
+	}
 }
 
 // PublishEvent publishes an event to NATS
-func (s *AuthService) PublishEvent(subject string, data interface{}) error {
-	// Simplified - in production use NATS
-	return nil
+func (s *AuthService) PublishEvent(subject string, data []byte) error {
+	if s.nats == nil {
+		return nil // NATS not configured
+	}
+	return s.nats.Publish(subject, data)
+}
+
+// SubscribeToEvents subscribes to NATS events
+func (s *AuthService) SubscribeToEvents(subject string, handler func(*nats.Msg)) (*nats.Subscription, error) {
+	if s.nats == nil {
+		return nil, fmt.Errorf("NATS not connected")
+	}
+	return s.nats.Subscribe(subject, handler)
 }

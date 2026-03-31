@@ -9,7 +9,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
 
-import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -182,77 +181,6 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting active bonus claims", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
-        }
-    }
-
-    @Override
-    public void processWageringContribution(ProcessWageringContributionRequest request, StreamObserver<ProcessWageringContributionResponse> responseObserver) {
-        try {
-            UUID userId = UUID.fromString(request.getUserId());
-            UUID bonusId = UUID.fromString(request.getBonusId());
-            java.math.BigDecimal betAmount = java.math.BigDecimal.valueOf(request.getBetAmount());
-            String gameType = request.getGameType();
-
-            Map<String, Object> result = bonusService.processWageringContribution(userId, bonusId, betAmount, gameType);
-
-            ProcessWageringContributionResponse.Builder response = ProcessWageringContributionResponse.newBuilder()
-                    .setSuccess((Boolean) result.getOrDefault("success", false))
-                    .setCompleted((Boolean) result.getOrDefault("completed", false));
-            if (result.containsKey("wageringProgress")) response.setWageringProgress(((Number) result.get("wageringProgress")).doubleValue());
-            if (result.containsKey("wageringRequired")) response.setWageringRequired(((Number) result.get("wageringRequired")).doubleValue());
-
-            responseObserver.onNext(response.build());
-            responseObserver.onCompleted();
-        } catch (Exception e) {
-            log.error("Error processing wagering contribution", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
-        }
-    }
-
-    @Override
-    public void completeBonus(CompleteBonusRequest request, StreamObserver<CompleteBonusResponse> responseObserver) {
-        try {
-            UUID userId = UUID.fromString(request.getUserId());
-            UUID bonusId = UUID.fromString(request.getBonusId());
-            java.math.BigDecimal winnings = java.math.BigDecimal.valueOf(request.getWinnings());
-
-            Map<String, Object> result = bonusService.completeBonus(userId, bonusId, winnings);
-
-            CompleteBonusResponse.Builder response = CompleteBonusResponse.newBuilder()
-                    .setSuccess((Boolean) result.getOrDefault("success", false))
-                    .setMessage(String.valueOf(result.getOrDefault("message", "Bonus completed")));
-            if (result.containsKey("payoutAmount")) response.setPayoutAmount(((Number) result.get("payoutAmount")).doubleValue());
-
-            responseObserver.onNext(response.build());
-            responseObserver.onCompleted();
-        } catch (Exception e) {
-            log.error("Error completing bonus", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
-        }
-    }
-
-    @Override
-    public void cancelBonus(CancelBonusRequest request, StreamObserver<CancelBonusResponse> responseObserver) {
-        try {
-            UUID userId = UUID.fromString(request.getUserId());
-            UUID bonusId = UUID.fromString(request.getBonusId());
-            String reason = request.getReason();
-
-            Map<String, Object> result = bonusService.cancelBonus(userId, bonusId, reason);
-
-            CancelBonusResponse response = CancelBonusResponse.newBuilder()
-                    .setSuccess((Boolean) result.getOrDefault("success", false))
-                    .setMessage(String.valueOf(result.getOrDefault("message", "Bonus cancelled")))
-                    .build();
-
-            responseObserver.onNext(response);
-            responseObserver.onCompleted();
-        } catch (Exception e) {
-            log.error("Error cancelling bonus", e);
             responseObserver.onError(io.grpc.Status.INTERNAL
                     .withDescription(e.getMessage()).asRuntimeException());
         }
