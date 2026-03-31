@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Snackbar, Alert } from '@mui/material';
 import { useAppDispatch, useAppSelector } from './store/hooks';
 import { hideSnackbar } from './store/slices/uiSlice';
+import { canAccessAdmin } from './utils/permissions';
 import Layout from './components/Layout';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -18,8 +19,39 @@ import Reports from './pages/Reports';
 import Settings from './pages/Settings';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated } = useAppSelector((state: any) => state.auth);
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" />;
+  const { isAuthenticated, user } = useAppSelector((state: any) => state.auth);
+  
+  if (!isAuthenticated) return <Navigate to="/login" />;
+  
+  // Check if user has admin access
+  if (user && !canAccessAdmin(user.role)) {
+    return <Navigate to="/login" />;
+  }
+  
+  return <>{children}</>;
+};
+
+// Permission-based route guard
+const PermissionRoute = ({ 
+  children, 
+  permission 
+}: { 
+  children: React.ReactNode; 
+  permission?: string 
+}) => {
+  const { user } = useAppSelector((state: any) => state.auth);
+  
+  if (!user) return <Navigate to="/" />;
+  
+  // Superadmin has access to everything
+  if (user.role === 'superadmin') return <>{children}</>;
+  
+  // Check specific permission
+  if (permission && !user.permissions?.includes(permission)) {
+    return <Navigate to="/" />;
+  }
+  
+  return <>{children}</>;
 };
 
 function App() {
@@ -39,17 +71,61 @@ function App() {
           }
         >
           <Route index element={<Dashboard />} />
-          <Route path="claims" element={<ClaimsManagement />} />
-          <Route path="users" element={<Users />} />
-          <Route path="merchants" element={<Merchants />} />
-          <Route path="agents" element={<Agents />} />
-          <Route path="games" element={<Games />} />
-          <Route path="tournaments" element={<Tournaments />} />
-          <Route path="jackpots" element={<Jackpots />} />
-          <Route path="bonuses" element={<Bonuses />} />
-          <Route path="payments" element={<Payments />} />
-          <Route path="reports" element={<Reports />} />
-          <Route path="settings" element={<Settings />} />
+          <Route path="claims" element={
+            <PermissionRoute permission="claims:view">
+              <ClaimsManagement />
+            </PermissionRoute>
+          } />
+          <Route path="users" element={
+            <PermissionRoute permission="players:view">
+              <Users />
+            </PermissionRoute>
+          } />
+          <Route path="merchants" element={
+            <PermissionRoute permission="merchants:view">
+              <Merchants />
+            </PermissionRoute>
+          } />
+          <Route path="agents" element={
+            <PermissionRoute permission="agents:view">
+              <Agents />
+            </PermissionRoute>
+          } />
+          <Route path="games" element={
+            <PermissionRoute permission="games:view">
+              <Games />
+            </PermissionRoute>
+          } />
+          <Route path="tournaments" element={
+            <PermissionRoute permission="tournaments:view">
+              <Tournaments />
+            </PermissionRoute>
+          } />
+          <Route path="jackpots" element={
+            <PermissionRoute permission="jackpots:view">
+              <Jackpots />
+            </PermissionRoute>
+          } />
+          <Route path="bonuses" element={
+            <PermissionRoute permission="bonuses:view">
+              <Bonuses />
+            </PermissionRoute>
+          } />
+          <Route path="payments" element={
+            <PermissionRoute permission="payments:view">
+              <Payments />
+            </PermissionRoute>
+          } />
+          <Route path="reports" element={
+            <PermissionRoute permission="reports:view">
+              <Reports />
+            </PermissionRoute>
+          } />
+          <Route path="settings" element={
+            <PermissionRoute permission="settings:view">
+              <Settings />
+            </PermissionRoute>
+          } />
         </Route>
       </Routes>
       

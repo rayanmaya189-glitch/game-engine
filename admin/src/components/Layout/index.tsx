@@ -3,7 +3,7 @@ import { Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { 
   Box, AppBar, Toolbar, Typography, Drawer, List, ListItem, 
   ListItemButton, ListItemIcon, ListItemText, IconButton,
-  Avatar, Menu, MenuItem, Badge, Divider
+  Avatar, Menu, MenuItem, Badge, Divider, Chip
 } from '@mui/material';
 import {
   Menu as MenuIcon,
@@ -14,23 +14,23 @@ import {
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { toggleSidebar } from '../../store/slices/uiSlice';
 import { logout } from '../../store/slices/authSlice';
+import { getFilteredMenuItems, isSuperAdmin } from '../../utils/permissions';
 
 const drawerWidth = 260;
 
-const menuItems = [
-  { text: 'Dashboard', icon: <Dashboard />, path: '/' },
-  { text: 'Claims Management', icon: <Assignment />, path: '/claims' },
-  { text: 'Users', icon: <People />, path: '/users' },
-  { text: 'Merchants', icon: <Business />, path: '/merchants' },
-  { text: 'Agents', icon: <SupervisorAccount />, path: '/agents' },
-  { text: 'Games', icon: <Games />, path: '/games' },
-  { text: 'Tournaments', icon: <EmojiEvents />, path: '/tournaments' },
-  { text: 'Jackpots', icon: <EmojiEvents />, path: '/jackpots' },
-  { text: 'Bonuses', icon: <CardGiftcard />, path: '/bonuses' },
-  { text: 'Payments', icon: <AccountBalance />, path: '/payments' },
-  { text: 'Reports', icon: <Assessment />, path: '/reports' },
-  { text: 'Settings', icon: <Settings />, path: '/settings' },
-];
+const iconMap: Record<string, React.ReactNode> = {
+  Dashboard: <Dashboard />,
+  Assignment: <Assignment />,
+  People: <People />,
+  Business: <Business />,
+  SupervisorAccount: <SupervisorAccount />,
+  Games: <Games />,
+  EmojiEvents: <EmojiEvents />,
+  CardGiftcard: <CardGiftcard />,
+  AccountBalance: <AccountBalance />,
+  Assessment: <Assessment />,
+  Settings: <Settings />,
+};
 
 const Layout = () => {
   const dispatch = useAppDispatch();
@@ -53,6 +53,21 @@ const Layout = () => {
     navigate('/login');
   };
 
+  // Filter menu items based on user permissions
+  const userRole = user?.role || '';
+  const userPermissions: string[] = user?.permissions || [];
+  const filteredMenuItems = getFilteredMenuItems(userRole, userPermissions);
+
+  const getRoleBadgeColor = (role: string) => {
+    switch (role) {
+      case 'superadmin': return 'error';
+      case 'admin': return 'primary';
+      case 'finance': return 'success';
+      case 'support': return 'info';
+      default: return 'default';
+    }
+  };
+
   const drawer = (
     <Box sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -63,7 +78,7 @@ const Layout = () => {
       </Box>
       <Divider />
       <List sx={{ flex: 1, px: 1, overflow: 'auto' }}>
-        {menuItems.map((item) => (
+        {filteredMenuItems.map((item) => (
           <ListItem key={item.text} disablePadding>
             <ListItemButton
               selected={location.pathname === item.path}
@@ -77,7 +92,9 @@ const Layout = () => {
                 },
               }}
             >
-              <ListItemIcon sx={{ minWidth: 40 }}>{item.icon}</ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                {iconMap[item.icon] || <Dashboard />}
+              </ListItemIcon>
               <ListItemText primary={item.text} />
             </ListItemButton>
           </ListItem>
@@ -85,6 +102,12 @@ const Layout = () => {
       </List>
       <Divider />
       <Box sx={{ p: 2 }}>
+        <Chip
+          label={userRole}
+          size="small"
+          color={getRoleBadgeColor(userRole) as any}
+          sx={{ mb: 1 }}
+        />
         <Typography variant="body2" color="text.secondary">v1.0.0</Typography>
       </Box>
     </Box>
@@ -110,6 +133,9 @@ const Layout = () => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             Casino Admin Panel
           </Typography>
+          {isSuperAdmin(userRole) && (
+            <Chip label="SUPERADMIN" color="error" size="small" sx={{ mr: 2 }} />
+          )}
           <IconButton color="inherit">
             <Badge badgeContent={4} color="error">
               <Notifications />
@@ -117,7 +143,7 @@ const Layout = () => {
           </IconButton>
           <IconButton onClick={handleMenuOpen} sx={{ ml: 1 }}>
             <Avatar sx={{ bgcolor: 'primary.main', width: 36, height: 36 }}>
-              {user?.name?.[0] || 'A'}
+              {user?.name?.[0] || user?.username?.[0] || 'A'}
             </Avatar>
           </IconButton>
           <Menu
@@ -127,6 +153,12 @@ const Layout = () => {
             transformOrigin={{ horizontal: 'right', vertical: 'top' }}
             anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
           >
+            <MenuItem disabled>
+              <Typography variant="body2" color="text.secondary">
+                {user?.name || user?.username} ({userRole})
+              </Typography>
+            </MenuItem>
+            <Divider />
             <MenuItem onClick={handleMenuClose}><ListItemIcon><Person fontSize="small" /></ListItemIcon>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}><ListItemIcon><Settings fontSize="small" /></ListItemIcon>Settings</MenuItem>
             <Divider />

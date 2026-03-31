@@ -155,3 +155,31 @@ func (m *AuthMiddleware) BlacklistToken(tokenString string) error {
 	}
 	return nil
 }
+
+// RequireAnyAdminRole checks if user has any admin-level role
+func (m *AuthMiddleware) RequireAnyAdminRole() app.HandlerFunc {
+	return func(c context.Context, ctx *app.RequestContext) {
+		role := string(ctx.GetString("role"))
+
+		adminRoles := map[string]bool{
+			"superadmin": true,
+			"admin":      true,
+			"support":    true,
+			"finance":    true,
+			"cs":         true,
+			"audit":      true,
+			"marketing":  true,
+		}
+
+		if !adminRoles[role] {
+			ctx.JSON(consts.StatusForbidden, map[string]interface{}{
+				"error": "admin access required",
+				"code":  "E1005",
+			})
+			ctx.Abort()
+			return
+		}
+
+		ctx.Next(c)
+	}
+}
