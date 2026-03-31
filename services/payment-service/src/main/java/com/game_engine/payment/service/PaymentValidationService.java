@@ -1,13 +1,13 @@
 package com.game_engine.payment.service;
 
+import com.game_engine.payment.grpc.BonusGrpcClient;
+import com.game_engine.payment.grpc.RiskGrpcClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.math.BigDecimal;
-import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -15,7 +15,8 @@ import java.util.UUID;
 @Slf4j
 public class PaymentValidationService {
 
-    private final WebClient.Builder webClientBuilder;
+    private final BonusGrpcClient bonusGrpcClient;
+    private final RiskGrpcClient riskGrpcClient;
 
     @Value("${payment.limits.deposit.min:10}")
     private BigDecimal minDeposit;
@@ -28,12 +29,6 @@ public class PaymentValidationService {
 
     @Value("${payment.limits.withdrawal.max:50000}")
     private BigDecimal maxWithdrawal;
-
-    @Value("${payment.bonus.service.url:}")
-    private String bonusServiceUrl;
-
-    @Value("${payment.risk.service.url:}")
-    private String riskServiceUrl;
 
     @Value("${payment.risk.default-score:0}")
     private int defaultRiskScore;
@@ -60,51 +55,20 @@ public class PaymentValidationService {
     }
 
     public boolean checkWageringRequirements(UUID userId, BigDecimal amount) {
-        if (bonusServiceUrl == null || bonusServiceUrl.isEmpty()) {
-            log.debug("Bonus service not configured, wagering requirements met by default for user {}", userId);
-            return defaultWageringMet;
-        }
-
         try {
-            Map<String, Object> response = webClientBuilder.build()
-                    .get()
-                    .uri(bonusServiceUrl + "/api/v1/bonus/wagering-status?userId={userId}&amount={amount}",
-                            userId, amount.toPlainString())
-                    .retrieve()
-                    .bodyToMono(Map.class)
-                    .block();
-
-            if (response != null && response.containsKey("requirementsMet")) {
-                return Boolean.TRUE.equals(response.get("requirementsMet"));
-            }
+            return bonusGrpcClient.checkWageringRequirements(userId, amount.doubleValue());
         } catch (Exception e) {
             log.error("Failed to check wagering requirements for user {}: {}", userId, e.getMessage());
+            return defaultWageringMet;
         }
-
-        return defaultWageringMet;
     }
 
     public int getRiskScore(UUID userId) {
-        if (riskServiceUrl == null || riskServiceUrl.isEmpty()) {
-            log.debug("Risk service not configured, using default score for user {}", userId);
-            return defaultRiskScore;
-        }
-
         try {
-            Map<String, Object> response = webClientBuilder.build()
-                    .get()
-                    .uri(riskServiceUrl + "/api/v1/risk/score?userId={userId}", userId)
-                    .retrieve()
-                    .bodyToMono(Map.class)
-                    .block();
-
-            if (response != null && response.containsKey("score")) {
-                return ((Number) response.get("score")).intValue();
-            }
+            return riskGrpcClient.getRiskScore(userId);
         } catch (Exception e) {
             log.error("Failed to get risk score for user {}: {}", userId, e.getMessage());
+            return defaultRiskScore;
         }
-
-        return defaultRiskScore;
     }
 }

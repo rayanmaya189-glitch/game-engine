@@ -10,13 +10,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 public class PaymentConfig {
 
     @Bean
-    public WebClient webClient() {
-        return WebClient.builder()
-                .defaultHeader("Content-Type", "application/json")
-                .build();
-    }
-
-    @Bean
     public WebClient.Builder webClientBuilder() {
         return WebClient.builder()
                 .defaultHeader("Content-Type", "application/json");

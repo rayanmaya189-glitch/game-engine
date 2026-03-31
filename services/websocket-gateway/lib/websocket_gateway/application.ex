@@ -28,6 +28,9 @@ defmodule WebsocketGateway.Application do
       # Start the Endpoint (http/https)
       WebsocketGateway.Endpoint,
 
+      # gRPC channel manager for inter-service communication
+      {WebsocketGateway.GRPC.ChannelManager, []},
+
       # Presence tracking
       {WebsocketGateway.Services.Presence, []},
 

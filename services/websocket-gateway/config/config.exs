@@ -80,14 +80,27 @@ config :websocket_gateway, :nats,
     "jackpot.events.*"
   ]
 
-# Service endpoints configuration
+# gRPC service endpoints configuration (host:port for each backend service)
 config :websocket_gateway, :services,
-  wallet_service: System.get_env("WALLET_SERVICE_URL") || "http://localhost:8081",
-  game_service: System.get_env("GAME_SERVICE_URL") || "http://localhost:8082",
-  game_registry_service: System.get_env("GAME_REGISTRY_SERVICE_URL") || "http://localhost:8082",
-  tournament_service: System.get_env("TOURNAMENT_SERVICE_URL") || "http://localhost:8083",
-  jackpot_service: System.get_env("JACKPOT_SERVICE_URL") || "http://localhost:8084",
-  auth_service: System.get_env("AUTH_SERVICE_URL") || "http://localhost:8080"
+  # Wallet Service
+  wallet_service_host: System.get_env("WALLET_SERVICE_GRPC_HOST") || "localhost",
+  wallet_service_port: String.to_integer(System.get_env("WALLET_SERVICE_GRPC_PORT") || "9081"),
+
+  # Game Registry Service
+  game_registry_service_host: System.get_env("GAME_REGISTRY_SERVICE_GRPC_HOST") || "localhost",
+  game_registry_service_port: String.to_integer(System.get_env("GAME_REGISTRY_SERVICE_GRPC_PORT") || "9082"),
+
+  # Tournament Service
+  tournament_service_host: System.get_env("TOURNAMENT_SERVICE_GRPC_HOST") || "localhost",
+  tournament_service_port: String.to_integer(System.get_env("TOURNAMENT_SERVICE_GRPC_PORT") || "9083"),
+
+  # Jackpot Service
+  jackpot_service_host: System.get_env("JACKPOT_SERVICE_GRPC_HOST") || "localhost",
+  jackpot_service_port: String.to_integer(System.get_env("JACKPOT_SERVICE_GRPC_PORT") || "9084"),
+
+  # Auth Service
+  auth_service_host: System.get_env("AUTH_SERVICE_GRPC_HOST") || "localhost",
+  auth_service_port: String.to_integer(System.get_env("AUTH_SERVICE_GRPC_PORT") || "9080")
 
 # Phoenix channels configuration
 config :websocket_gateway, :channels,

@@ -63,6 +63,11 @@ defmodule WebsocketGateway.MixProject do
       # NATS
       {:gnat, "~> 1.5"},
 
+      # gRPC (inter-service communication)
+      {:grpc, "~> 0.9"},
+      {:protobuf, "~> 0.13"},
+      {:cowboy, "~> 2.10"},
+
       # Monitoring
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
@@ -73,9 +78,6 @@ defmodule WebsocketGateway.MixProject do
       # Config
       {:distillery, "~> 2.1", runtime: false},
       {:config_parser_ex, "~> 4.0"}
-
-      # SSL
-      # {:ssl, "~> 11.0"}
     ]
   end
 

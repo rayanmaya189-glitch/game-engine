@@ -79,7 +79,11 @@ public class DocumentStorageService {
      */
     public String generateViewUrl(String s3Key, Duration expiration) {
         if (s3Client == null) {
-            return "http://localhost:8080/dev/view/" + s3Key;
+            String devBaseUrl = System.getenv().getOrDefault("KYC_DOCUMENT_BASE_URL", "");
+            if (devBaseUrl.isEmpty()) {
+                throw new RuntimeException("S3 client not configured and KYC_DOCUMENT_BASE_URL not set");
+            }
+            return devBaseUrl + "/" + s3Key;
         }
 
         try {

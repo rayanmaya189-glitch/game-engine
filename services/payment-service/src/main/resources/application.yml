@@ -50,6 +50,8 @@ grpc:
       address: ${WALLET_SERVICE_HOST:localhost}:${WALLET_SERVICE_PORT:9011}
     risk-service:
       address: ${RISK_SERVICE_HOST:localhost}:${RISK_SERVICE_PORT:9016}
+    bonus-service:
+      address: ${BONUS_SERVICE_HOST:localhost}:${BONUS_SERVICE_PORT:9013}
 
 wallet:
   service:
@@ -73,13 +75,8 @@ payment:
       medium: 50
       high: 75
     default-score: 0
-    service:
-      url: ${RISK_SERVICE_URL:}
   wagering:
     default-met: true
-  bonus:
-    service:
-      url: ${BONUS_SERVICE_URL:}
   exchange:
     api-url: ${EXCHANGE_API_URL:}
     api-key: ${EXCHANGE_API_KEY:}
