@@ -2,14 +2,15 @@ import { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Box, Card, CardContent, Typography, Grid, TextField, InputAdornment,
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow,
-  Button, Chip, IconButton, Tooltip, Tabs, Tab, FormControl, InputLabel, Select, MenuItem,
-  Dialog, DialogActions, DialogContent, DialogTitle, LinearProgress
+  Button, Tabs, Tab, FormControl, InputLabel, Select, MenuItem,
+  LinearProgress
 } from '@mui/material';
-import { Search, Visibility, AccountBalance, CreditCard, SwapHoriz, CheckCircle, Cancel, Refresh } from '@mui/icons-material';
+import { Search, Refresh } from '@mui/icons-material';
 import { useAppDispatch } from '../../store/hooks';
 import { showSnackbar } from '../../store/slices/uiSlice';
 import { paymentsAPI } from '../../services/api';
+import PaymentDetails from './PaymentDetails';
+import PaymentActions from './PaymentActions';
 
 const Payments = () => {
   const dispatch = useAppDispatch();
@@ -23,11 +24,11 @@ const Payments = () => {
 
   const { data, isLoading, refetch } = useQuery({
     queryKey: ['payments', activeTab, statusFilter, methodFilter],
-    queryFn: () => paymentsAPI.getAll({ 
+    queryFn: () => paymentsAPI.getAll({
       status: statusFilter || undefined,
       type: activeTab === 1 ? 'deposit' : activeTab === 2 ? 'withdrawal' : undefined,
-      page: 1, 
-      limit: 50 
+      page: 1,
+      limit: 50
     }),
   });
 
@@ -67,7 +68,6 @@ const Payments = () => {
     },
   });
 
-  // Fallback mock data for demo purposes when API is not available
   const mockPayments = [
     { id: 'TXN001', userId: 'USR001', user: 'John Doe', amount: 500, method: 'Bank Transfer', type: 'deposit', status: 'completed', date: '2024-01-15 10:30' },
     { id: 'TXN002', userId: 'USR002', user: 'Sarah Smith', amount: 250, method: 'Credit Card', type: 'deposit', status: 'pending', date: '2024-01-15 11:45' },
@@ -84,31 +84,11 @@ const Payments = () => {
     if (methodFilter && payment.method.toLowerCase() !== methodFilter.toLowerCase()) return false;
     if (activeTab === 1 && payment.type !== 'deposit') return false;
     if (activeTab === 2 && payment.type !== 'withdrawal') return false;
-    if (search && !payment.user.toLowerCase().includes(search.toLowerCase()) && 
+    if (search && !payment.user.toLowerCase().includes(search.toLowerCase()) &&
         !payment.id.toLowerCase().includes(search.toLowerCase())) return false;
     return true;
   });
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'completed': return 'success';
-      case 'pending': return 'warning';
-      case 'failed': return 'error';
-      case 'processing': return 'info';
-      default: return 'default';
-    }
-  };
-
-  const getMethodIcon = (method: string) => {
-    switch (method.toLowerCase()) {
-      case 'bank transfer': return <AccountBalance />;
-      case 'credit card': return <CreditCard />;
-      case 'crypto': return <SwapHoriz />;
-      default: return <CreditCard />;
-    }
-  };
-
-  // Calculate stats from payments
   const totalDeposits = mockPayments.filter(p => p.type === 'deposit' && p.status === 'completed').reduce((sum, p) => sum + p.amount, 0);
   const totalWithdrawals = mockPayments.filter(p => p.type === 'withdrawal' && p.status === 'completed').reduce((sum, p) => sum + p.amount, 0);
   const pendingPayments = mockPayments.filter(p => p.status === 'pending').reduce((sum, p) => sum + p.amount, 0);
@@ -125,7 +105,6 @@ const Payments = () => {
 
       {isLoading && <LinearProgress sx={{ mb: 2 }} />}
 
-      {/* Stats Cards */}
       <Grid container spacing={3} sx={{ mb: 3 }}>
         <Grid item xs={12} md={3}>
           <Card sx={{ borderLeft: '4px solid #22c55e' }}>
@@ -169,7 +148,6 @@ const Payments = () => {
         </Grid>
       </Grid>
 
-      {/* Filters */}
       <Card sx={{ mb: 3 }}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={activeTab} onChange={(_, v) => setActiveTab(v)}>
@@ -228,203 +206,23 @@ const Payments = () => {
         </CardContent>
       </Card>
 
-      {/* Transactions Table */}
       <Card>
-        <TableContainer>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Transaction ID</TableCell>
-                <TableCell>User</TableCell>
-                <TableCell align="right">Amount</TableCell>
-                <TableCell>Method</TableCell>
-                <TableCell>Type</TableCell>
-                <TableCell>Status</TableCell>
-                <TableCell>Date</TableCell>
-                <TableCell align="center">Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {payments.length === 0 ? (
-                <TableRow>
-                  <TableCell colSpan={8} align="center" sx={{ py: 4 }}>
-                    <Typography color="text.secondary">No transactions found</Typography>
-                  </TableCell>
-                </TableRow>
-              ) : (
-                payments.map((payment: any) => (
-                  <TableRow key={payment.id} hover>
-                    <TableCell>
-                      <Typography fontFamily="monospace" fontWeight={500}>
-                        {payment.id}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Box>
-                        <Typography fontWeight={500}>{payment.user}</Typography>
-                        <Typography variant="caption" color="text.secondary">{payment.userId}</Typography>
-                      </Box>
-                    </TableCell>
-                    <TableCell align="right">
-                      <Typography 
-                        fontWeight={600} 
-                        color={payment.type === 'deposit' ? 'success.main' : 'error.main'}
-                      >
-                        {payment.type === 'deposit' ? '+' : '-'}${payment.amount.toLocaleString()}
-                      </Typography>
-                    </TableCell>
-                    <TableCell>
-                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        {getMethodIcon(payment.method)}
-                        {payment.method}
-                      </Box>
-                    </TableCell>
-                    <TableCell>
-                      <Chip 
-                        label={payment.type} 
-                        color={payment.type === 'deposit' ? 'success' : 'error'} 
-                        size="small" 
-                        variant="outlined"
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Chip 
-                        label={payment.status} 
-                        color={getStatusColor(payment.status) as any} 
-                        size="small" 
-                      />
-                    </TableCell>
-                    <TableCell>
-                      <Typography variant="body2" color="text.secondary">
-                        {payment.date}
-                      </Typography>
-                    </TableCell>
-                    <TableCell align="center">
-                      <Tooltip title="View Details">
-                        <IconButton 
-                          size="small" 
-                          onClick={() => {
-                            setSelectedPayment(payment);
-                            setDetailsOpen(true);
-                          }}
-                        >
-                          <Visibility fontSize="small" />
-                        </IconButton>
-                      </Tooltip>
-                      {payment.status === 'pending' && (
-                        <>
-                          <Tooltip title="Approve">
-                            <IconButton 
-                              size="small" 
-                              color="success"
-                              onClick={() => approveMutation.mutate(payment.id)}
-                            >
-                              <CheckCircle fontSize="small" />
-                            </IconButton>
-                          </Tooltip>
-                          <Tooltip title="Reject">
-                            <IconButton 
-                              size="small" 
-                              color="error"
-                              onClick={() => rejectMutation.mutate(payment.id)}
-                            >
-                              <Cancel fontSize="small" />
-                            </IconButton>
-                          </Tooltip>
-                        </>
-                      )}
-                      {payment.status === 'completed' && (
-                        <Tooltip title="Process (Re-process)">
-                          <IconButton 
-                            size="small" 
-                            color="primary"
-                            onClick={() => processMutation.mutate(payment.id)}
-                          >
-                            <Refresh fontSize="small" />
-                          </IconButton>
-                        </Tooltip>
-                      )}
-                    </TableCell>
-                  </TableRow>
-                ))
-              )}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <PaymentActions
+          payments={payments}
+          onViewDetails={(payment) => { setSelectedPayment(payment); setDetailsOpen(true); }}
+          onApprove={(id) => approveMutation.mutate(id)}
+          onReject={(id) => rejectMutation.mutate(id)}
+          onProcess={(id) => processMutation.mutate(id)}
+        />
       </Card>
 
-      {/* Payment Details Dialog */}
-      <Dialog open={detailsOpen} onClose={() => setDetailsOpen(false)} maxWidth="sm" fullWidth>
-        <DialogTitle>Transaction Details</DialogTitle>
-        <DialogContent>
-          {selectedPayment && (
-            <Grid container spacing={2} sx={{ mt: 1 }}>
-              <Grid item xs={6}>
-                <Typography variant="caption" color="text.secondary">Transaction ID</Typography>
-                <Typography fontFamily="monospace">{selectedPayment.id}</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="caption" color="text.secondary">Date</Typography>
-                <Typography>{selectedPayment.date}</Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="caption" color="text.secondary">User</Typography>
-                <Typography>{selectedPayment.user} ({selectedPayment.userId})</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="caption" color="text.secondary">Amount</Typography>
-                <Typography variant="h6" color={selectedPayment.type === 'deposit' ? 'success.main' : 'error.main'}>
-                  {selectedPayment.type === 'deposit' ? '+' : '-'}${selectedPayment.amount.toLocaleString()}
-                </Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="caption" color="text.secondary">Method</Typography>
-                <Typography>{selectedPayment.method}</Typography>
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="caption" color="text.secondary">Type</Typography>
-                <Chip 
-                  label={selectedPayment.type} 
-                  color={selectedPayment.type === 'deposit' ? 'success' : 'error'} 
-                  size="small" 
-                />
-              </Grid>
-              <Grid item xs={6}>
-                <Typography variant="caption" color="text.secondary">Status</Typography>
-                <Chip 
-                  label={selectedPayment.status} 
-                  color={getStatusColor(selectedPayment.status) as any} 
-                  size="small" 
-                />
-              </Grid>
-            </Grid>
-          )}
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setDetailsOpen(false)}>Close</Button>
-          {selectedPayment?.status === 'pending' && (
-            <>
-              <Button 
-                color="error" 
-                onClick={() => {
-                  rejectMutation.mutate(selectedPayment.id);
-                }}
-              >
-                Reject
-              </Button>
-              <Button 
-                color="success" 
-                variant="contained"
-                onClick={() => {
-                  approveMutation.mutate(selectedPayment.id);
-                }}
-              >
-                Approve
-              </Button>
-            </>
-          )}
-        </DialogActions>
-      </Dialog>
+      <PaymentDetails
+        open={detailsOpen}
+        payment={selectedPayment}
+        onClose={() => setDetailsOpen(false)}
+        onApprove={(id) => approveMutation.mutate(id)}
+        onReject={(id) => rejectMutation.mutate(id)}
+      />
     </Box>
   );
 };
