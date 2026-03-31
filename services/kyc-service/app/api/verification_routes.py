@@ -1,4 +1,3 @@
-from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
@@ -10,13 +9,10 @@ from app.api.schemas.kyc_schemas import (
     KYCResponse,
 )
 
-router = APIRouter()
 
-
-@router.post("/verify", response_model=KYCResponse)
 async def verify_document(
     request: VerificationResultRequest,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession
 ):
     service = KYCService(db)
 
@@ -41,10 +37,9 @@ async def verify_document(
     )
 
 
-@router.post("/liveness", response_model=KYCResponse)
 async def verify_liveness(
     request: LivenessCheckRequest,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession
 ):
     service = KYCService(db)
 
@@ -65,11 +60,10 @@ async def verify_liveness(
     )
 
 
-@router.post("/address/verify", response_model=KYCResponse)
 async def verify_address(
     user_id: str,
     address_verified: bool,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession
 ):
     service = KYCService(db)
 
@@ -89,10 +83,9 @@ async def verify_address(
     )
 
 
-@router.post("/address", response_model=KYCResponse)
 async def submit_address(
     request: AddressVerificationRequest,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession
 ):
     service = KYCService(db)
 

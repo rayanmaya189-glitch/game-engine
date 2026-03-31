@@ -6,23 +6,23 @@ import (
 	"fmt"
 	"log"
 	"net"
-	"net/http"
 	"os"
 	"os/signal"
 	"syscall"
 	"time"
 
-	gamesv1 "github.com/game_engine/gen/go/game_engine/game/v1"
+	gamesv1 "github.com/game_engine/game-registry/gen/go/game/v1"
 
 	"github.com/game_engine/game-registry/internal/config"
 	"github.com/game_engine/game-registry/internal/handler"
 	"github.com/game_engine/game-registry/internal/repository"
 	"github.com/game_engine/game-registry/internal/service"
-	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v8"
 	_ "github.com/lib/pq"
 	"github.com/nats-io/nats.go"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
 )
 
@@ -71,33 +71,22 @@ func main() {
 	// Initialize handler
 	gameHandler := handler.NewGameHandler(gameService)
 
-	// Setup router
-	router := setupRouter(gameHandler)
-
-	// Start HTTP server
-	httpAddr := fmt.Sprintf(":%d", cfg.App.Port)
-	httpServer := &http.Server{
-		Addr:    httpAddr,
-		Handler: router,
-	}
-
 	// Start gRPC server
 	grpcAddr := fmt.Sprintf(":%d", cfg.App.GRPCPort)
 	grpcServer := grpc.NewServer()
 
-	// Register gRPC service
+	// Register game registry service
 	gamesv1.RegisterGameRegistryServiceServer(grpcServer, gameHandler)
 
-	go func() {
-		log.Printf("Starting HTTP server on %s", httpAddr)
-		if err := httpServer.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("Failed to start HTTP server: %v", err)
-		}
-	}()
+	// Register gRPC health check
+	healthServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(grpcServer, healthServer)
+	healthServer.SetServingStatus("game-registry", grpc_health_v1.HealthCheckResponse_SERVING)
+
+	reflection.Register(grpcServer)
 
 	go func() {
 		log.Printf("Starting gRPC server on %s", grpcAddr)
-		reflection.Register(grpcServer)
 		lis, err := net.Listen("tcp", grpcAddr)
 		if err != nil {
 			log.Fatalf("Failed to listen: %v", err)
@@ -112,19 +101,11 @@ func main() {
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
 
-	log.Println("Shutting down servers...")
-
-	// Graceful shutdown
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-
-	if err := httpServer.Shutdown(ctx); err != nil {
-		log.Printf("HTTP server forced to shutdown: %v", err)
-	}
+	log.Println("Shutting down gRPC server...")
 
 	grpcServer.GracefulStop()
 
-	log.Println("Servers exited")
+	log.Println("Server exited")
 }
 
 func initDatabase(cfg *config.Config) (*sql.DB, error) {
@@ -175,44 +156,4 @@ func initNATS(cfg *config.Config) (*nats.Conn, error) {
 
 	log.Println("NATS connection established")
 	return nc, nil
-}
-
-func setupRouter(gameHandler *handler.GameHandler) *gin.Engine {
-	router := gin.Default()
-
-	// Health check
-	router.GET("/health", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"status": "ok"})
-	})
-
-	// API v1
-	v1 := router.Group("/api/v1")
-	{
-		// Game endpoints
-		games := v1.Group("/games")
-		{
-			games.GET("", gameHandler.ListGames)
-			games.GET("/search", gameHandler.SearchGames)
-			games.GET("/featured", gameHandler.GetFeaturedGames)
-			games.GET("/popular", gameHandler.GetPopularGames)
-			games.GET("/new", gameHandler.GetNewGames)
-			games.GET("/:id", gameHandler.GetGame)
-			games.GET("/:id/config", gameHandler.GetGameConfig)
-			games.POST("/:id/url", gameHandler.GetGameURL)
-
-			// Admin endpoints
-			games.POST("", gameHandler.CreateGame)
-			games.PUT("/:id", gameHandler.UpdateGame)
-			games.POST("/:id/toggle", gameHandler.ToggleGame)
-			games.POST("/:id/order", gameHandler.SetGameOrder)
-		}
-
-		// Category endpoints
-		v1.GET("/categories", gameHandler.GetCategories)
-
-		// Provider endpoints
-		v1.GET("/providers", gameHandler.GetProviders)
-	}
-
-	return router
 }

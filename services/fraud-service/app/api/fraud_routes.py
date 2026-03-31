@@ -1,4 +1,3 @@
-from fastapi import APIRouter, HTTPException, Depends
 from pydantic import BaseModel
 from typing import Optional, List
 from datetime import datetime
@@ -14,8 +13,6 @@ from app.repositories import (
     FraudAlertRepository,
     UserRiskProfileRepository,
 )
-
-router = APIRouter()
 
 HIGH_AMOUNT = float(os.environ.get("FRAUD_HIGH_AMOUNT_THRESHOLD", "5000"))
 VERY_HIGH_AMOUNT = float(os.environ.get("FRAUD_VERY_HIGH_AMOUNT_THRESHOLD", "10000"))
@@ -55,8 +52,7 @@ class AlertRequest(BaseModel):
     evidence: Optional[dict] = None
 
 
-@router.post("/check")
-async def check_risk(request: RiskCheckRequest, db: AsyncSession = Depends(get_db)):
+async def check_risk(request: RiskCheckRequest, db: AsyncSession):
     """Check transaction for fraud risk"""
     risk_score = 0.0
     risk_factors = []
@@ -103,8 +99,7 @@ async def check_risk(request: RiskCheckRequest, db: AsyncSession = Depends(get_d
     }
 
 
-@router.post("/check/bet")
-async def check_bet_risk(request: BetCheckRequest, db: AsyncSession = Depends(get_db)):
+async def check_bet_risk(request: BetCheckRequest, db: AsyncSession):
     """Check bet for fraud patterns (bonus abuse, collusion, etc.)"""
     risk_score = 0.0
     risk_factors = []
@@ -138,8 +133,7 @@ async def check_bet_risk(request: BetCheckRequest, db: AsyncSession = Depends(ge
     }
 
 
-@router.post("/check/account")
-async def check_account_activity(request: AccountActivityRequest, db: AsyncSession = Depends(get_db)):
+async def check_account_activity(request: AccountActivityRequest, db: AsyncSession):
     """Check for account takeover attempts"""
     risk_score = 0.0
     risk_factors = []
@@ -172,8 +166,7 @@ async def check_account_activity(request: AccountActivityRequest, db: AsyncSessi
     }
 
 
-@router.get("/user/{user_id}/risk")
-async def get_user_risk(user_id: str, db: AsyncSession = Depends(get_db)):
+async def get_user_risk(user_id: str, db: AsyncSession):
     """Get user's risk profile"""
     profile = await UserRiskProfileRepository.get_or_create(db, user_id)
     profile.is_blocked = (profile.risk_score or 0) > 0.8
@@ -190,8 +183,7 @@ async def get_user_risk(user_id: str, db: AsyncSession = Depends(get_db)):
     }
 
 
-@router.post("/alert")
-async def create_alert(request: AlertRequest, db: AsyncSession = Depends(get_db)):
+async def create_alert(request: AlertRequest, db: AsyncSession):
     """Create fraud alert"""
     alert_id = f"ALERT-{datetime.now().strftime('%Y%m%d%H%M%S')}-{random.randint(1000, 9999)}"
 
@@ -224,8 +216,7 @@ async def create_alert(request: AlertRequest, db: AsyncSession = Depends(get_db)
     }
 
 
-@router.get("/alerts")
-async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSession = Depends(get_db)):
+async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSession = None):
     """Get fraud alerts"""
     records = await FraudAlertRepository.list_alerts(db, status=status, limit=limit)
     return {
@@ -245,8 +236,7 @@ async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSes
     }
 
 
-@router.post("/user/{user_id}/unblock")
-async def unblock_user(user_id: str, db: AsyncSession = Depends(get_db)):
+async def unblock_user(user_id: str, db: AsyncSession):
     """Unblock a user after review"""
     profile = await UserRiskProfileRepository.get_or_create(db, user_id)
     profile.is_blocked = False
@@ -256,8 +246,7 @@ async def unblock_user(user_id: str, db: AsyncSession = Depends(get_db)):
     return {"user_id": user_id, "unblocked": True}
 
 
-@router.post("/user/{user_id}/block")
-async def block_user(user_id: str, reason: str, db: AsyncSession = Depends(get_db)):
+async def block_user(user_id: str, reason: str, db: AsyncSession):
     """Block a user"""
     profile = await UserRiskProfileRepository.get_or_create(db, user_id)
     profile.is_blocked = True

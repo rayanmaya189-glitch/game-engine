@@ -1,6 +1,5 @@
-"""Fraud scoring endpoints"""
+"""Fraud scoring functions"""
 
-from fastapi import APIRouter, HTTPException, Depends
 from typing import Dict
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -10,10 +9,7 @@ from app.models import FraudScoreRecord
 from app.models.schemas import FraudScore
 from app.services.fraud_scorer import FraudScorer
 
-router = APIRouter(prefix="/score", tags=["score"])
 
-
-@router.post("/transaction", response_model=FraudScore)
 async def score_transaction(
     user_id: str,
     transaction_amount: float,
@@ -21,8 +17,8 @@ async def score_transaction(
     ip_country: str = "unknown",
     payment_method_new: bool = True,
     device_matches: bool = True,
-    db: AsyncSession = Depends(get_db),
-):
+    db: AsyncSession = None,
+) -> FraudScore:
     """Calculate fraud score for a transaction"""
     score = await FraudScorer.calculate_score(
         db, user_id, transaction_amount, is_new_account,
@@ -44,13 +40,12 @@ async def score_transaction(
     return score
 
 
-@router.get("/user/{user_id}", response_model=FraudScore)
-async def get_user_fraud_score(user_id: str, db: AsyncSession = Depends(get_db)):
+async def get_user_fraud_score(user_id: str, db: AsyncSession) -> FraudScore:
     """Get the latest fraud score for a user"""
     result = await db.execute(select(FraudScoreRecord).where(FraudScoreRecord.user_id == user_id))
     record = result.scalar_one_or_none()
     if not record:
-        raise HTTPException(status_code=404, detail="No score found")
+        raise ValueError("No score found")
     return FraudScore(
         user_id=record.user_id,
         score=record.score,

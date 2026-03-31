@@ -1,20 +1,22 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
-	"net/http"
+	"net"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
+	leaderv1 "github.com/game_engine/leaderboard-service/gen/go/leaderboard/v1"
 	"github.com/game_engine/leaderboard-service/internal/config"
 	"github.com/game_engine/leaderboard-service/internal/handler"
 	"github.com/game_engine/leaderboard-service/internal/repository"
 	"github.com/game_engine/leaderboard-service/internal/service"
-	"github.com/gin-gonic/gin"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -47,20 +49,28 @@ func main() {
 	// Initialize handler
 	leaderboardHandler := handler.NewLeaderboardHandler(leaderboardService)
 
-	// Setup router
-	router := setupRouter(leaderboardHandler)
+	// Start gRPC server
+	grpcAddr := fmt.Sprintf(":%d", cfg.Server.Port)
+	grpcServer := grpc.NewServer()
 
-	// Create server
-	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", cfg.Server.Port),
-		Handler: router,
-	}
+	// Register leaderboard service
+	leaderv1.RegisterLeaderboardServiceServer(grpcServer, leaderboardHandler)
 
-	// Start server in goroutine
+	// Register gRPC health check
+	healthServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(grpcServer, healthServer)
+	healthServer.SetServingStatus("leaderboard", grpc_health_v1.HealthCheckResponse_SERVING)
+
+	reflection.Register(grpcServer)
+
 	go func() {
-		log.Printf("Leaderboard service starting on port %d", cfg.Server.Port)
-		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("Failed to start server: %v", err)
+		log.Printf("Leaderboard gRPC server starting on %s", grpcAddr)
+		lis, err := net.Listen("tcp", grpcAddr)
+		if err != nil {
+			log.Fatalf("Failed to listen: %v", err)
+		}
+		if err := grpcServer.Serve(lis); err != nil {
+			log.Fatalf("Failed to start gRPC server: %v", err)
 		}
 	}()
 
@@ -68,61 +78,9 @@ func main() {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	log.Println("Shutting down server...")
+	log.Println("Shutting down gRPC server...")
 
-	// Graceful shutdown
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err := srv.Shutdown(ctx); err != nil {
-		log.Fatalf("Server forced to shutdown: %v", err)
-	}
+	grpcServer.GracefulStop()
 
-	log.Println("Server exiting")
-}
-
-func setupRouter(h *handler.LeaderboardHandler) *gin.Engine {
-	router := gin.Default()
-
-	// Health check
-	router.GET("/health", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"status": "healthy"})
-	})
-
-	// API routes
-	api := router.Group("/api/v1")
-	{
-		// Daily leaderboard
-		api.GET("/leaderboard/daily", h.GetDailyLeaderboard)
-		api.GET("/leaderboard/daily/:gameType", h.GetDailyLeaderboardByGame)
-
-		// Weekly leaderboard
-		api.GET("/leaderboard/weekly", h.GetWeeklyLeaderboard)
-		api.GET("/leaderboard/weekly/:gameType", h.GetWeeklyLeaderboardByGame)
-
-		// Monthly leaderboard
-		api.GET("/leaderboard/monthly", h.GetMonthlyLeaderboard)
-		api.GET("/leaderboard/monthly/:gameType", h.GetMonthlyLeaderboardByGame)
-
-		// All-time leaderboard
-		api.GET("/leaderboard/alltime", h.GetAllTimeLeaderboard)
-		api.GET("/leaderboard/alltime/:gameType", h.GetAllTimeLeaderboardByGame)
-
-		// Player rank
-		api.GET("/leaderboard/rank/daily/:userId", h.GetPlayerDailyRank)
-		api.GET("/leaderboard/rank/weekly/:userId", h.GetPlayerWeeklyRank)
-		api.GET("/leaderboard/rank/monthly/:userId", h.GetPlayerMonthlyRank)
-		api.GET("/leaderboard/rank/alltime/:userId", h.GetPlayerAllTimeRank)
-
-		// Update score (internal use)
-		api.POST("/leaderboard/update", h.UpdatePlayerScore)
-
-		// Prize distribution (admin)
-		api.POST("/leaderboard/prizes/distribute", h.DistributePrizes)
-
-		// Leaderboard management (admin)
-		api.POST("/leaderboard/sync/:type", h.SyncLeaderboard)
-		api.POST("/leaderboard/reset/:type", h.ResetLeaderboard)
-	}
-
-	return router
+	log.Println("Server exited")
 }

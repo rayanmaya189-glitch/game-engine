@@ -1,34 +1,40 @@
+"""
+KYC Service
+
+FastAPI health check only.
+gRPC server for all business logic endpoints.
+"""
+
+import os
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-import logging
 
-from app.api import kyc_routes
 from app.database import engine, Base
 from app.config import settings
+from app.grpc_server import serve_grpc
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-)
 logger = logging.getLogger(__name__)
+
+GRPC_PORT = int(os.environ.get("KYC_GRPC_PORT", "9131"))
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
     logger.info("Starting KYC Service...")
-    
-    # Create tables
+
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
-    
+
+    grpc_server = await serve_grpc(GRPC_PORT)
+    logger.info(f"KYC gRPC server listening on port {GRPC_PORT}")
+
     logger.info("KYC Service started successfully")
-    
     yield
-    
-    # Shutdown
-    logger.info("Shutting down KYC Service...")
+
+    await grpc_server.stop(grace=5)
+    logger.info("KYC gRPC server stopped")
     await engine.dispose()
 
 
@@ -36,10 +42,9 @@ app = FastAPI(
     title="KYC Service",
     description="Know Your Customer service for identity verification",
     version="1.0.0",
-    lifespan=lifespan
+    lifespan=lifespan,
 )
 
-# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.cors_origins,
@@ -47,9 +52,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Include routers
-app.include_router(kyc_routes.router, prefix="/api/v1/kyc", tags=["KYC"])
 
 
 @app.get("/health")
@@ -68,5 +70,5 @@ if __name__ == "__main__":
         "main:app",
         host="0.0.0.0",
         port=9031,
-        reload=settings.debug
+        reload=settings.debug,
     )

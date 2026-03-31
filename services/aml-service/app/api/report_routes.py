@@ -1,4 +1,3 @@
-from fastapi import APIRouter, HTTPException, Depends
 from typing import Dict
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -8,11 +7,8 @@ from app.database import get_db
 from app.models import AlertRecord, TransactionRecord
 from app.services.rules_engine import AMLRulesEngine
 
-router = APIRouter(prefix="", tags=["reports"])
 
-
-@router.get("/reports/ctr", response_model=Dict)
-async def generate_ctr_report(start_date: str, end_date: str, db: AsyncSession = Depends(get_db)):
+async def generate_ctr_report(start_date: str, end_date: str, db: AsyncSession) -> Dict:
     """Generate Currency Transaction Report for transactions > $10K"""
     start = datetime.fromisoformat(start_date)
     end = datetime.fromisoformat(end_date)
@@ -48,13 +44,12 @@ async def generate_ctr_report(start_date: str, end_date: str, db: AsyncSession =
     }
 
 
-@router.get("/reports/sar/{alert_id}", response_model=Dict)
-async def generate_sar_report(alert_id: str, db: AsyncSession = Depends(get_db)):
+async def generate_sar_report(alert_id: str, db: AsyncSession) -> Dict:
     """Generate Suspicious Activity Report for an alert"""
     result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
     record = result.scalar_one_or_none()
     if not record:
-        raise HTTPException(status_code=404, detail="Alert not found")
+        raise ValueError("Alert not found")
 
     alert_data = {
         "alert_id": record.alert_id,

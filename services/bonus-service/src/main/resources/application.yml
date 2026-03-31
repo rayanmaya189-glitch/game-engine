@@ -1,6 +1,10 @@
 server:
   port: 9034
 
+grpc:
+  server:
+    port: 9013
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bonus_db

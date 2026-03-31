@@ -13,3 +13,4 @@ redis==5.0.1
 httpx==0.26.0
 tenacity==8.2.3
 alembic==1.13.1
+grpcio==1.62.1

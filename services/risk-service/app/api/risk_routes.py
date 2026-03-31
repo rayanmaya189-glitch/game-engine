@@ -1,13 +1,9 @@
-from fastapi import APIRouter
 from typing import Dict
 
 from app.models.schemas import RiskProfile, RiskAssessmentRequest
 from app.services.risk_engine import RiskScoringEngine
 
-router = APIRouter(prefix="/risk", tags=["risk"])
 
-
-@router.post("/profile", response_model=RiskProfile)
 async def calculate_risk_profile(
     user_id: str,
     kyc_level: int = 0,
@@ -16,7 +12,7 @@ async def calculate_risk_profile(
     transaction_risk: int = 0,
     device_risk: int = 0,
     velocity_risk: int = 0
-):
+) -> RiskProfile:
     """Calculate risk profile from provided signals"""
     return await RiskScoringEngine.calculate_profile(
         user_id, kyc_level, aml_alerts, fraud_score,
@@ -24,8 +20,7 @@ async def calculate_risk_profile(
     )
 
 
-@router.post("/assess", response_model=Dict)
-async def assess_transaction(request: RiskAssessmentRequest):
+async def assess_transaction(request: RiskAssessmentRequest) -> Dict:
     """Assess if a transaction should be allowed"""
 
     kyc_level = 2
@@ -52,13 +47,12 @@ async def assess_transaction(request: RiskAssessmentRequest):
     return {
         "allowed": allowed,
         "reason": reason,
-        "profile": profile.dict(),
+        "profile": profile.model_dump(),
         "actions": profile.recommended_actions
     }
 
 
-@router.get("/profile/{user_id}", response_model=RiskProfile)
-async def get_user_risk_profile(user_id: str):
+async def get_user_risk_profile(user_id: str) -> RiskProfile:
     """Get existing risk profile (would fetch from cache/database)"""
     return await RiskScoringEngine.calculate_profile(
         user_id,

@@ -1,28 +1,21 @@
 from datetime import datetime
-from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
 from app.services.kyc_service import KYCService
 from app.api.schemas.kyc_schemas import KYCSubmissionRequest, KYCResponse
 
-router = APIRouter()
 
-
-@router.post("/documents", response_model=KYCResponse)
 async def submit_document(
     request: KYCSubmissionRequest,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession
 ):
     service = KYCService(db)
 
     try:
         document_expiry = datetime.fromisoformat(request.document_expiry.replace("Z", "+00:00"))
     except ValueError:
-        raise HTTPException(
-            status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid date format. Use ISO format."
-        )
+        raise ValueError("Invalid date format. Use ISO format.")
 
     kyc = await service.document.submit_document(
         user_id=request.user_id,

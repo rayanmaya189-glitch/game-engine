@@ -1,0 +1,153 @@
+syntax = "proto3";
+
+package game_engine.payment.v1;
+
+option java_multiple_files = true;
+option java_package = "com.game_engine.payment.v1";
+
+service PaymentService {
+  rpc CreateDeposit(CreateDepositRequest) returns (CreateDepositResponse);
+  rpc ProcessDeposit(ProcessDepositRequest) returns (ProcessDepositResponse);
+  rpc CreateWithdrawal(CreateWithdrawalRequest) returns (CreateWithdrawalResponse);
+  rpc ProcessWithdrawal(ProcessWithdrawalRequest) returns (ProcessWithdrawalResponse);
+  rpc RefundPayment(RefundPaymentRequest) returns (RefundPaymentResponse);
+  rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse);
+  rpc GetPaymentByExternalId(GetPaymentByExternalIdRequest) returns (GetPaymentByExternalIdResponse);
+  rpc GetUserPayments(GetUserPaymentsRequest) returns (GetUserPaymentsResponse);
+  rpc GetUserPaymentSummary(GetUserPaymentSummaryRequest) returns (GetUserPaymentSummaryResponse);
+  rpc GetSupportedMethods(GetSupportedMethodsRequest) returns (GetSupportedMethodsResponse);
+  rpc GetSupportedCurrencies(GetSupportedCurrenciesRequest) returns (GetSupportedCurrenciesResponse);
+  rpc CancelPayment(CancelPaymentRequest) returns (CancelPaymentResponse);
+}
+
+message Payment {
+  string id = 1;
+  string user_id = 2;
+  string external_id = 3;
+  string type = 4;
+  string method = 5;
+  string status = 6;
+  double amount = 7;
+  string currency = 8;
+  string description = 9;
+  int64 created_at = 10;
+  int64 processed_at = 11;
+  int64 completed_at = 12;
+  string failure_reason = 13;
+}
+
+message CreateDepositRequest {
+  string user_id = 1;
+  double amount = 2;
+  string method = 3;
+  string currency = 4;
+  string description = 5;
+}
+
+message CreateDepositResponse {
+  Payment payment = 1;
+}
+
+message ProcessDepositRequest {
+  string payment_id = 1;
+}
+
+message ProcessDepositResponse {
+  Payment payment = 1;
+}
+
+message CreateWithdrawalRequest {
+  string user_id = 1;
+  double amount = 2;
+  string method = 3;
+  string currency = 4;
+  string account_details = 5;
+  string description = 6;
+}
+
+message CreateWithdrawalResponse {
+  Payment payment = 1;
+}
+
+message ProcessWithdrawalRequest {
+  string payment_id = 1;
+}
+
+message ProcessWithdrawalResponse {
+  Payment payment = 1;
+}
+
+message RefundPaymentRequest {
+  string payment_id = 1;
+  double amount = 2;
+}
+
+message RefundPaymentResponse {
+  Payment payment = 1;
+}
+
+message GetPaymentRequest {
+  string payment_id = 1;
+}
+
+message GetPaymentResponse {
+  Payment payment = 1;
+  bool found = 2;
+}
+
+message GetPaymentByExternalIdRequest {
+  string external_id = 1;
+}
+
+message GetPaymentByExternalIdResponse {
+  Payment payment = 1;
+  bool found = 2;
+}
+
+message GetUserPaymentsRequest {
+  string user_id = 1;
+  int32 page = 2;
+  int32 size = 3;
+  string sort_by = 4;
+  string sort_dir = 5;
+}
+
+message GetUserPaymentsResponse {
+  repeated Payment payments = 1;
+  int32 total_elements = 2;
+  int32 total_pages = 3;
+  int32 current_page = 4;
+}
+
+message GetUserPaymentSummaryRequest {
+  string user_id = 1;
+  int32 days = 2;
+}
+
+message GetUserPaymentSummaryResponse {
+  double total_deposits = 1;
+  double total_withdrawals = 2;
+  double net_amount = 3;
+}
+
+message GetSupportedMethodsRequest {}
+
+message GetSupportedMethodsResponse {
+  repeated string deposit_methods = 1;
+  repeated string withdrawal_methods = 2;
+}
+
+message GetSupportedCurrenciesRequest {}
+
+message GetSupportedCurrenciesResponse {
+  repeated string currencies = 1;
+}
+
+message CancelPaymentRequest {
+  string payment_id = 1;
+}
+
+message CancelPaymentResponse {
+  Payment payment = 1;
+  bool success = 2;
+}

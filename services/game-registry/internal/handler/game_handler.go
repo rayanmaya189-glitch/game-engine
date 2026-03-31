@@ -2,17 +2,17 @@ package handler
 
 import (
 	"context"
-	"net/http"
 
-	gamesv1 "github.com/game_engine/gen/go/game_engine/game/v1"
+	gamesv1 "github.com/game_engine/game-registry/gen/go/game/v1"
 
 	"github.com/game_engine/game-registry/internal/enums"
 	"github.com/game_engine/game-registry/internal/model"
 	"github.com/game_engine/game-registry/internal/service"
-	"github.com/gin-gonic/gin"
+	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/status"
 )
 
-// GameHandler handles HTTP and gRPC requests for games
+// GameHandler handles gRPC requests for games
 type GameHandler struct {
 	gamesv1.UnimplementedGameRegistryServiceServer
 	gameService *service.GameService
@@ -25,217 +25,308 @@ func NewGameHandler(gameService *service.GameService) *GameHandler {
 	}
 }
 
-// ListGames handles GET /games
-func (h *GameHandler) ListGames(c *gin.Context) {
-	req := service.ListGamesRequest{
-		CategoryID:       c.Query("category_id"),
-		ProviderID:       c.Query("provider_id"),
-		MobileSupported:  c.Query("mobile_supported") == "true",
-		DesktopSupported: c.Query("desktop_supported") == "true",
-		IsFeatured:       c.Query("is_featured") == "true",
-		IsJackpot:        c.Query("is_jackpot") == "true",
-		Query:            c.Query("query"),
-		SortBy:           c.Query("sort_by"),
+// ListGames handles the ListGames gRPC call
+func (h *GameHandler) ListGames(ctx context.Context, req *gamesv1.ListGamesRequest) (*gamesv1.ListGamesResponse, error) {
+	svcReq := &service.ListGamesRequest{
+		CategoryID:       req.GetCategoryId(),
+		ProviderID:       req.GetProviderId(),
+		MobileSupported:  req.GetMobileSupported(),
+		DesktopSupported: req.GetDesktopSupported(),
+		IsFeatured:       req.GetIsFeatured(),
+		IsJackpot:        req.GetIsJackpot(),
+		Query:            req.GetQuery(),
+		SortBy:           req.GetSortBy(),
+		Status:           int32(req.GetStatus()),
 	}
 
-	page := c.DefaultQuery("page", "1")
-	pageSize := c.DefaultQuery("page_size", "20")
-	req.Pagination.Page = parseInt32(page, 1)
-	req.Pagination.PageSize = parseInt32(pageSize, 20)
-
-	if status := c.Query("status"); status != "" {
-		req.Status = parseInt32(status, 0)
+	if req.Pagination != nil {
+		svcReq.Pagination.Page = req.Pagination.GetPage()
+		svcReq.Pagination.PageSize = req.Pagination.GetPageSize()
 	}
 
-	ctx := context.Background()
-	resp, err := h.gameService.ListGames(ctx, &req)
+	for _, cat := range req.GetCategories() {
+		svcReq.Categories = append(svcReq.Categories, int32(cat))
+	}
+	for _, prov := range req.GetProviders() {
+		svcReq.Providers = append(svcReq.Providers, int32(prov))
+	}
+
+	resp, err := h.gameService.ListGames(ctx, svcReq)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		return nil, status.Errorf(codes.Internal, "failed to list games: %v", err)
 	}
 
-	c.JSON(http.StatusOK, resp)
+	games := make([]*gamesv1.GameSummary, len(resp.Games))
+	for i, g := range resp.Games {
+		games[i] = gameSummaryToProto(&g)
+	}
+
+	var pagination *gamesv1.PaginationResponse
+	if resp.Pagination != nil {
+		pagination = &gamesv1.PaginationResponse{
+			Page:       resp.Pagination.Page,
+			PageSize:   resp.Pagination.PageSize,
+			TotalCount: resp.Pagination.TotalCount,
+			TotalPages: resp.Pagination.TotalPages,
+		}
+	}
+
+	return &gamesv1.ListGamesResponse{
+		Games:      games,
+		Pagination: pagination,
+	}, nil
 }
 
-// GetGame handles GET /games/:id
-func (h *GameHandler) GetGame(c *gin.Context) {
-	gameID := c.Param("id")
+// GetGame handles the GetGame gRPC call
+func (h *GameHandler) GetGame(ctx context.Context, req *gamesv1.GetGameRequest) (*gamesv1.GetGameResponse, error) {
+	gameID := req.GetGameId()
 	if gameID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "game id is required"})
-		return
+		return nil, status.Error(codes.InvalidArgument, "game_id is required")
 	}
 
-	ctx := context.Background()
 	game, err := h.gameService.GetGame(ctx, gameID)
 	if err != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "game not found"})
-		return
+		return nil, status.Errorf(codes.NotFound, "game not found: %v", err)
 	}
 
-	c.JSON(http.StatusOK, game)
+	return &gamesv1.GetGameResponse{
+		Game: gameModelToProto(game),
+	}, nil
 }
 
-// GetGameConfig handles GET /games/:id/config
-func (h *GameHandler) GetGameConfig(c *gin.Context) {
-	gameID := c.Param("id")
+// GetGameConfig handles the GetGameConfig gRPC call
+func (h *GameHandler) GetGameConfig(ctx context.Context, req *gamesv1.GetGameConfigRequest) (*gamesv1.GetGameConfigResponse, error) {
+	gameID := req.GetGameId()
 	if gameID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "game id is required"})
-		return
+		return nil, status.Error(codes.InvalidArgument, "game_id is required")
 	}
 
-	userID := c.Query("user_id")
-	deviceType := enums.DeviceType(parseInt32(c.Query("device_type"), 1))
-	language := enums.GameLanguage(parseInt32(c.Query("language"), 1))
-	currency := c.DefaultQuery("currency", "USD")
-	sessionID := c.Query("session_id")
-
-	ctx := context.Background()
-	config, err := h.gameService.GetGameConfig(ctx, gameID, userID, deviceType, language, currency, sessionID)
+	config, err := h.gameService.GetGameConfig(
+		ctx,
+		gameID,
+		req.GetUserId(),
+		enums.DeviceType(req.GetDeviceType()),
+		enums.GameLanguage(req.GetLanguage()),
+		req.GetCurrency(),
+		req.GetSessionId(),
+	)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		return nil, status.Errorf(codes.Internal, "failed to get game config: %v", err)
 	}
 
-	c.JSON(http.StatusOK, config)
+	return &gamesv1.GetGameConfigResponse{
+		Config: &gamesv1.GameConfig{
+			GameId:       config.GameID,
+			SessionToken: config.SessionToken,
+			GameUrl:      config.GameURL,
+			PlayerId:     config.PlayerID,
+			Currency:     config.Currency,
+			Language:     config.Language,
+		},
+		GameUrl: config.GameURL,
+		SessionToken: config.SessionToken,
+	}, nil
 }
 
-// GetGameURL handles POST /games/:id/url
-func (h *GameHandler) GetGameURL(c *gin.Context) {
-	gameID := c.Param("id")
+// GetGameURL handles the GetGameURL gRPC call
+func (h *GameHandler) GetGameURL(ctx context.Context, req *gamesv1.GetGameURLRequest) (*gamesv1.GetGameURLResponse, error) {
+	gameID := req.GetGameId()
 	if gameID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "game id is required"})
-		return
+		return nil, status.Error(codes.InvalidArgument, "game_id is required")
 	}
 
-	var req struct {
-		UserID     string `json:"user_id"`
-		DeviceType int32  `json:"device_type"`
-		SessionID  string `json:"session_id"`
-		Language   int32  `json:"language"`
-		Currency   string `json:"currency"`
-	}
-
-	if err := c.ShouldBindJSON(&req); err != nil {
-		req.DeviceType = 1
-		req.Language = 1
-		req.Currency = "USD"
-	}
-
-	ctx := context.Background()
-	result, err := h.gameService.GetGameURL(ctx, gameID, req.UserID, enums.DeviceType(req.DeviceType), req.SessionID, enums.GameLanguage(req.Language), req.Currency)
+	result, err := h.gameService.GetGameURL(
+		ctx,
+		gameID,
+		req.GetUserId(),
+		enums.DeviceType(req.GetDeviceType()),
+		req.GetSessionId(),
+		enums.GameLanguage(req.GetLanguage()),
+		req.GetCurrency(),
+	)
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		return nil, status.Errorf(codes.Internal, "failed to get game URL: %v", err)
 	}
 
-	c.JSON(http.StatusOK, result)
+	return &gamesv1.GetGameURLResponse{
+		GameUrl:      result.GameURL,
+		SessionToken: result.SessionToken,
+		Game:         gameSummaryToProto(&result.Game),
+	}, nil
 }
 
-// CreateGame handles POST /games (admin)
-func (h *GameHandler) CreateGame(c *gin.Context) {
-	var game model.Game
-	if err := c.ShouldBindJSON(&game); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	ctx := context.Background()
-	err := h.gameService.CreateGame(ctx, &game)
+// GetCategories handles the GetCategories gRPC call
+func (h *GameHandler) GetCategories(ctx context.Context, req *gamesv1.GetCategoriesRequest) (*gamesv1.GetCategoriesResponse, error) {
+	categories, err := h.gameService.GetCategories(ctx, req.GetIncludeGamesCount())
 	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
+		return nil, status.Errorf(codes.Internal, "failed to get categories: %v", err)
 	}
 
-	c.JSON(http.StatusCreated, game)
-}
-
-// UpdateGame handles PUT /games/:id (admin)
-func (h *GameHandler) UpdateGame(c *gin.Context) {
-	gameID := c.Param("id")
-	if gameID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "game id is required"})
-		return
-	}
-
-	var game model.Game
-	game.ID = gameID
-	if err := c.ShouldBindJSON(&game); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	ctx := context.Background()
-	err := h.gameService.UpdateGame(ctx, &game)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, game)
-}
-
-// ToggleGame handles POST /games/:id/toggle (admin)
-func (h *GameHandler) ToggleGame(c *gin.Context) {
-	gameID := c.Param("id")
-	if gameID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "game id is required"})
-		return
-	}
-
-	var req struct {
-		Enable bool `json:"enable"`
-	}
-	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	ctx := context.Background()
-	err := h.gameService.ToggleGame(ctx, gameID, req.Enable)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"game_id": gameID, "enabled": req.Enable})
-}
-
-// SetGameOrder handles POST /games/:id/order (admin)
-func (h *GameHandler) SetGameOrder(c *gin.Context) {
-	gameID := c.Param("id")
-	if gameID == "" {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "game id is required"})
-		return
-	}
-
-	var req struct {
-		SortOrder int `json:"sort_order"`
-	}
-	if err := c.ShouldBindJSON(&req); err != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-		return
-	}
-
-	ctx := context.Background()
-	err := h.gameService.SetGameOrder(ctx, gameID, req.SortOrder)
-	if err != nil {
-		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-		return
-	}
-
-	c.JSON(http.StatusOK, gin.H{"game_id": gameID, "sort_order": req.SortOrder})
-}
-
-func parseInt32(s string, defaultValue int32) int32 {
-	var result int32
-	for _, c := range s {
-		if c < '0' || c > '9' {
-			return defaultValue
+	cats := make([]*gamesv1.GameCategory, len(categories))
+	for i, c := range categories {
+		cats[i] = &gamesv1.GameCategory{
+			CategoryId:  c.ID,
+			Name:        c.Name,
+			Description: c.Description,
+			IconUrl:     c.IconURL,
+			BannerUrl:   c.BannerURL,
+			ParentId:    c.ParentID,
+			SortOrder:   int32(c.SortOrder),
+			Status:      gamesv1.Status(c.Status),
+			IsFeatured:  c.IsFeatured,
+			GamesCount:  int32(c.GamesCount),
+			Slug:        c.Slug,
 		}
-		result = result*10 + int32(c-'0')
 	}
-	if result == 0 {
-		return defaultValue
+
+	return &gamesv1.GetCategoriesResponse{
+		Categories: cats,
+	}, nil
+}
+
+// GetProviders handles the GetProviders gRPC call
+func (h *GameHandler) GetProviders(ctx context.Context, req *gamesv1.GetProvidersRequest) (*gamesv1.GetProvidersResponse, error) {
+	providers, err := h.gameService.GetProviders(ctx, req.GetActiveOnly())
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to get providers: %v", err)
 	}
-	return result
+
+	provs := make([]*gamesv1.GameProvider, len(providers))
+	for i, p := range providers {
+		provs[i] = &gamesv1.GameProvider{
+			ProviderId:   p.ID,
+			Name:         p.Name,
+			Description:  p.Description,
+			LogoUrl:      p.LogoURL,
+			WebsiteUrl:   p.WebsiteURL,
+			Status:       gamesv1.Status(p.Status),
+			GamesCount:   int32(p.GamesCount),
+			License:      p.License,
+			Established:  int32(p.Established),
+			IsFeatured:   p.IsFeatured,
+		}
+	}
+
+	return &gamesv1.GetProvidersResponse{
+		Providers: provs,
+	}, nil
+}
+
+// SearchGames handles the SearchGames gRPC call
+func (h *GameHandler) SearchGames(ctx context.Context, req *gamesv1.SearchGamesRequest) (*gamesv1.SearchGamesResponse, error) {
+	games, err := h.gameService.SearchGames(ctx, req.GetQuery(), int(req.GetLimit()), req.GetCategoryId())
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to search games: %v", err)
+	}
+
+	result := make([]*gamesv1.GameSummary, len(games))
+	for i, g := range games {
+		result[i] = gameSummaryToProto(&g)
+	}
+
+	return &gamesv1.SearchGamesResponse{
+		Games:      result,
+		TotalCount: int32(len(games)),
+	}, nil
+}
+
+// GetFeaturedGames handles the GetFeaturedGames gRPC call
+func (h *GameHandler) GetFeaturedGames(ctx context.Context, req *gamesv1.GetFeaturedGamesRequest) (*gamesv1.GetFeaturedGamesResponse, error) {
+	games, err := h.gameService.GetFeaturedGames(ctx, int(req.GetLimit()), req.GetCategoryId())
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to get featured games: %v", err)
+	}
+
+	result := make([]*gamesv1.GameSummary, len(games))
+	for i, g := range games {
+		result[i] = gameSummaryToProto(&g)
+	}
+
+	return &gamesv1.GetFeaturedGamesResponse{
+		Games: result,
+	}, nil
+}
+
+// GetPopularGames handles the GetPopularGames gRPC call
+func (h *GameHandler) GetPopularGames(ctx context.Context, req *gamesv1.GetPopularGamesRequest) (*gamesv1.GetPopularGamesResponse, error) {
+	games, err := h.gameService.GetPopularGames(ctx, int(req.GetLimit()), req.GetCategoryId())
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to get popular games: %v", err)
+	}
+
+	result := make([]*gamesv1.GameSummary, len(games))
+	for i, g := range games {
+		result[i] = gameSummaryToProto(&g)
+	}
+
+	return &gamesv1.GetPopularGamesResponse{
+		Games: result,
+	}, nil
+}
+
+// GetNewGames handles the GetNewGames gRPC call
+func (h *GameHandler) GetNewGames(ctx context.Context, req *gamesv1.GetNewGamesRequest) (*gamesv1.GetNewGamesResponse, error) {
+	games, err := h.gameService.GetNewGames(ctx, int(req.GetLimit()), req.GetCategoryId())
+	if err != nil {
+		return nil, status.Errorf(codes.Internal, "failed to get new games: %v", err)
+	}
+
+	result := make([]*gamesv1.GameSummary, len(games))
+	for i, g := range games {
+		result[i] = gameSummaryToProto(&g)
+	}
+
+	return &gamesv1.GetNewGamesResponse{
+		Games: result,
+	}, nil
+}
+
+// Helper to convert model.GameSummary to proto GameSummary
+func gameSummaryToProto(g *model.GameSummary) *gamesv1.GameSummary {
+	return &gamesv1.GameSummary{
+		GameId:           g.GameID,
+		Name:             g.Name,
+		ProviderId:       g.ProviderID,
+		ProviderName:     g.ProviderName,
+		CategoryId:       g.CategoryID,
+		CategoryName:     g.CategoryName,
+		Type:             gamesv1.GameCategoryEnum(g.Type),
+		Status:           gamesv1.Status(g.Status),
+		ThumbnailUrl:     g.ThumbnailURL,
+		BannerUrl:        g.BannerURL,
+		Rtp:              g.RTP,
+		Volatility:       g.Volatility,
+		MaxWin:           g.MaxWin,
+		IsFeatured:       g.IsFeatured,
+		IsNew:            g.IsNew,
+		IsPopular:        g.IsPopular,
+		IsJackpot:        g.IsJackpot,
+		LaunchUrl:        g.LaunchURL,
+		PopularityScore:  int32(g.PopularityScore),
+	}
+}
+
+// Helper to convert model.Game to proto Game
+func gameModelToProto(g *model.Game) *gamesv1.Game {
+	return &gamesv1.Game{
+		GameId:       g.ID,
+		Name:         g.Name,
+		Description:  g.Description,
+		ProviderId:   g.ProviderID,
+		ProviderName: g.ProviderName,
+		CategoryId:   g.CategoryID,
+		CategoryName: g.CategoryName,
+		Type:         gamesv1.GameCategoryEnum(g.Type),
+		Status:       gamesv1.Status(g.Status),
+		ThumbnailUrl: g.ThumbnailURL,
+		BannerUrl:    g.BannerURL,
+		Rtp:          g.RTP,
+		Volatility:   g.Volatility,
+		MaxWin:       g.MaxWin,
+		IsFeatured:   g.IsFeatured,
+		IsNew:        g.IsNew,
+		IsPopular:    g.IsPopular,
+		IsJackpot:    g.IsJackpot,
+		LaunchUrl:    g.LaunchURL,
+	}
 }

@@ -1,4 +1,3 @@
-from fastapi import APIRouter, Depends
 from typing import Dict, List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
@@ -8,11 +7,8 @@ from app.models import TransactionRecord, AlertRecord
 from app.models.schemas import Transaction, Alert
 from app.services.rules_engine import AMLRulesEngine
 
-router = APIRouter(prefix="", tags=["transactions"])
 
-
-@router.post("/transactions", response_model=Dict)
-async def analyze_transaction(transaction: Transaction, db: AsyncSession = Depends(get_db)):
+async def analyze_transaction(transaction: Transaction, db: AsyncSession) -> Dict:
     """Analyze a transaction for suspicious patterns"""
     record = TransactionRecord(
         transaction_id=transaction.transaction_id,
@@ -54,8 +50,7 @@ async def analyze_transaction(transaction: Transaction, db: AsyncSession = Depen
     }
 
 
-@router.post("/batch/analyze", response_model=Dict)
-async def analyze_transactions(transactions: List[Transaction], db: AsyncSession = Depends(get_db)):
+async def analyze_transactions(transactions: List[Transaction], db: AsyncSession) -> Dict:
     """Batch analyze multiple transactions"""
     all_alerts = []
 

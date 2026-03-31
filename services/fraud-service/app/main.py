@@ -1,24 +1,31 @@
-"""Fraud Detection Service
+"""
+Fraud Detection Service
 
-FastAPI service for detecting fraud patterns including:
-- Multi-account detection (device fingerprinting, IP correlation)
-- Bot detection
-- Collusion detection for poker
-- Real-time fraud scoring
+FastAPI health check only.
+gRPC server for all business logic endpoints.
 """
 
 import os
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.database import init_db
-from app.api import fingerprint_routes, bot_routes, collusion_routes, score_routes, fraud_routes
+from app.grpc_server import serve_grpc
+
+logger = logging.getLogger(__name__)
+
+GRPC_PORT = int(os.environ.get("FRAUD_GRPC_PORT", "9115"))
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
+    grpc_server = await serve_grpc(GRPC_PORT)
+    logger.info(f"Fraud gRPC server listening on port {GRPC_PORT}")
     yield
+    await grpc_server.stop(grace=5)
+    logger.info("Fraud gRPC server stopped")
 
 
 app = FastAPI(
@@ -27,12 +34,6 @@ app = FastAPI(
     version="1.0.0",
     lifespan=lifespan,
 )
-
-app.include_router(fingerprint_routes.router)
-app.include_router(bot_routes.router)
-app.include_router(collusion_routes.router)
-app.include_router(score_routes.router)
-app.include_router(fraud_routes.router)
 
 
 @app.get("/health")

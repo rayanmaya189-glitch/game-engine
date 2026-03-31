@@ -1,4 +1,3 @@
-from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime
@@ -8,8 +7,6 @@ import os
 
 from app.database import get_db
 from app.models import AlertRecord, TransactionRecord, RiskScoreRecord
-
-router = APIRouter()
 
 LARGE_TX_THRESHOLD = int(os.environ.get("AML_LARGE_TRANSACTION_THRESHOLD", "10000"))
 DAILY_LIMIT = float(os.environ.get("AML_DAILY_DEPOSIT_LIMIT", "10000"))
@@ -56,8 +53,7 @@ class SARRequest(BaseModel):
 HIGH_RISK_COUNTRIES = ["KP", "IR", "SY", "CU"]
 
 
-@router.post("/transaction/check")
-async def check_transaction(request: TransactionCheckRequest, db: AsyncSession = Depends(get_db)):
+async def check_transaction(request: TransactionCheckRequest, db: AsyncSession):
     """Check a transaction for AML compliance"""
     risk_score = 0.1
 
@@ -82,7 +78,6 @@ async def check_transaction(request: TransactionCheckRequest, db: AsyncSession =
     }
 
 
-@router.post("/sanctions/screen")
 async def screen_sanctions(request: SanctionsScreeningRequest):
     """Screen against sanctions lists (OFAC, EU, UN)"""
     return {
@@ -93,7 +88,6 @@ async def screen_sanctions(request: SanctionsScreeningRequest):
     }
 
 
-@router.post("/pep/screen")
 async def screen_pep(name: str):
     """Screen against Politically Exposed Persons list"""
     return {
@@ -103,8 +97,7 @@ async def screen_pep(name: str):
     }
 
 
-@router.get("/alerts")
-async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSession = Depends(get_db)):
+async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSession = None):
     """Get AML alerts"""
     stmt = select(AlertRecord)
     if status:
@@ -129,8 +122,7 @@ async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSes
     }
 
 
-@router.post("/sar")
-async def create_sar(request: SARRequest, db: AsyncSession = Depends(get_db)):
+async def create_sar(request: SARRequest, db: AsyncSession):
     """Create Suspicious Activity Report"""
     sar_id = f"SAR-{datetime.now().strftime('%Y%m%d%H%M%S')}"
     alert = AlertRecord(
@@ -153,8 +145,7 @@ async def create_sar(request: SARRequest, db: AsyncSession = Depends(get_db)):
     }
 
 
-@router.get("/limits/user/{user_id}")
-async def get_user_limits(user_id: str, db: AsyncSession = Depends(get_db)):
+async def get_user_limits(user_id: str, db: AsyncSession):
     """Get AML limits for a user"""
     result = await db.execute(
         select(TransactionRecord).where(TransactionRecord.user_id == user_id)
@@ -175,7 +166,6 @@ async def get_user_limits(user_id: str, db: AsyncSession = Depends(get_db)):
     }
 
 
-@router.post("/limits/check")
 async def check_limits(user_id: str, amount: float, period: str):
     """Check if amount is within AML limits"""
     limits = {

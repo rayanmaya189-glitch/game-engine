@@ -1,17 +1,13 @@
-from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
 from app.services.kyc_service import KYCService
 from app.api.schemas.kyc_schemas import ManualReviewRequest, KYCResponse
 
-router = APIRouter()
 
-
-@router.post("/review", response_model=KYCResponse)
 async def manual_review(
     request: ManualReviewRequest,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession
 ):
     service = KYCService(db)
 
@@ -33,10 +29,9 @@ async def manual_review(
     )
 
 
-@router.get("/queue/pending")
 async def get_pending_review_queue(
     limit: int = 50,
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = None
 ):
     service = KYCService(db)
     records = await service.review.get_pending_review_queue(limit)

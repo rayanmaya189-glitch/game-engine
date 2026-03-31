@@ -7,3 +7,4 @@ pydantic-settings==2.1.0
 redis==5.0.1
 httpx==0.26.0
 tenacity==8.2.3
+grpcio==1.62.1

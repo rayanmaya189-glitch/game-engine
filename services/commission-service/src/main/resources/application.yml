@@ -1,5 +1,9 @@
 server:
   port: 9035
+
+grpc:
+  server:
+    port: 9015
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/commission_db

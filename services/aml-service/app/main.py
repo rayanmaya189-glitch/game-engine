@@ -1,22 +1,31 @@
 """
 AML (Anti-Money Laundering) Detection Service
 
-FastAPI service for detecting suspicious financial patterns
-and generating regulatory reports.
+FastAPI health check only.
+gRPC server for all business logic endpoints.
 """
 
 import os
+import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from app.database import init_db
-from app.api import transaction_routes, alert_routes, risk_routes, report_routes, aml_routes
+from app.grpc_server import serve_grpc
+
+logger = logging.getLogger(__name__)
+
+GRPC_PORT = int(os.environ.get("AML_GRPC_PORT", "9114"))
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await init_db()
+    grpc_server = await serve_grpc(GRPC_PORT)
+    logger.info(f"AML gRPC server listening on port {GRPC_PORT}")
     yield
+    await grpc_server.stop(grace=5)
+    logger.info("AML gRPC server stopped")
 
 
 app = FastAPI(
@@ -26,16 +35,9 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-app.include_router(transaction_routes.router)
-app.include_router(alert_routes.router)
-app.include_router(risk_routes.router)
-app.include_router(report_routes.router)
-app.include_router(aml_routes.router)
-
 
 @app.get("/health")
 async def health_check():
-    """Health check endpoint"""
     return {"status": "healthy", "service": "aml-service"}
 
 

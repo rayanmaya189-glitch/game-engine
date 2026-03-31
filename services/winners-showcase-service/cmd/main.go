@@ -1,20 +1,22 @@
 package main
 
 import (
-	"context"
 	"fmt"
 	"log"
-	"net/http"
+	"net"
 	"os"
 	"os/signal"
 	"syscall"
-	"time"
 
+	winnersv1 "github.com/game_engine/winners-showcase-service/gen/go/winners/v1"
 	"github.com/game_engine/winners-showcase-service/internal/config"
 	"github.com/game_engine/winners-showcase-service/internal/handler"
 	"github.com/game_engine/winners-showcase-service/internal/repository"
 	"github.com/game_engine/winners-showcase-service/internal/service"
-	"github.com/gin-gonic/gin"
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/health"
+	"google.golang.org/grpc/health/grpc_health_v1"
+	"google.golang.org/grpc/reflection"
 )
 
 func main() {
@@ -47,20 +49,28 @@ func main() {
 	// Initialize handler
 	winnersHandler := handler.NewWinnersHandler(winnersService)
 
-	// Setup router
-	router := setupRouter(winnersHandler)
+	// Start gRPC server
+	grpcAddr := fmt.Sprintf(":%d", cfg.Server.Port)
+	grpcServer := grpc.NewServer()
 
-	// Create server
-	srv := &http.Server{
-		Addr:    fmt.Sprintf(":%d", cfg.Server.Port),
-		Handler: router,
-	}
+	// Register winners service
+	winnersv1.RegisterWinnersServiceServer(grpcServer, winnersHandler)
 
-	// Start server in goroutine
+	// Register gRPC health check
+	healthServer := health.NewServer()
+	grpc_health_v1.RegisterHealthServer(grpcServer, healthServer)
+	healthServer.SetServingStatus("winners-showcase", grpc_health_v1.HealthCheckResponse_SERVING)
+
+	reflection.Register(grpcServer)
+
 	go func() {
-		log.Printf("Winners Showcase service starting on port %d", cfg.Server.Port)
-		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			log.Fatalf("Failed to start server: %v", err)
+		log.Printf("Winners Showcase gRPC server starting on %s", grpcAddr)
+		lis, err := net.Listen("tcp", grpcAddr)
+		if err != nil {
+			log.Fatalf("Failed to listen: %v", err)
+		}
+		if err := grpcServer.Serve(lis); err != nil {
+			log.Fatalf("Failed to start gRPC server: %v", err)
 		}
 	}()
 
@@ -68,47 +78,9 @@ func main() {
 	quit := make(chan os.Signal, 1)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	log.Println("Shutting down server...")
+	log.Println("Shutting down gRPC server...")
 
-	// Graceful shutdown
-	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
-	defer cancel()
-	if err := srv.Shutdown(ctx); err != nil {
-		log.Fatalf("Server forced to shutdown: %v", err)
-	}
+	grpcServer.GracefulStop()
 
-	log.Println("Server exiting")
-}
-
-func setupRouter(h *handler.WinnersHandler) *gin.Engine {
-	router := gin.Default()
-
-	// Health check
-	router.GET("/health", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{"status": "healthy"})
-	})
-
-	// API routes
-	api := router.Group("/api/v1")
-	{
-		// Recent winners feed
-		api.GET("/winners/recent", h.GetRecentWinners)
-
-		// Big win highlights
-		api.GET("/winners/big", h.GetBigWins)
-
-		// Jackpot winners
-		api.GET("/winners/jackpot", h.GetJackpotWinners)
-
-		// Record a new win (internal)
-		api.POST("/winners/record", h.RecordWin)
-
-		// Get player's privacy settings
-		api.GET("/winners/privacy/:userId", h.GetPrivacySettings)
-
-		// Update player's privacy settings
-		api.PUT("/winners/privacy/:userId", h.UpdatePrivacySettings)
-	}
-
-	return router
+	log.Println("Server exited")
 }

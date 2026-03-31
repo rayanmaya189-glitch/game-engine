@@ -1,4 +1,3 @@
-from fastapi import APIRouter, HTTPException, Depends
 from typing import Dict, List, Optional
 from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -7,8 +6,6 @@ from sqlalchemy import select, update
 from app.database import get_db
 from app.models import AlertRecord
 from app.models.schemas import Alert, AlertStatus, AlertSeverity
-
-router = APIRouter(prefix="", tags=["alerts"])
 
 
 def _record_to_alert(r: AlertRecord) -> Alert:
@@ -28,13 +25,12 @@ def _record_to_alert(r: AlertRecord) -> Alert:
     )
 
 
-@router.get("/alerts", response_model=List[Alert])
 async def list_alerts(
     status: Optional[AlertStatus] = None,
     severity: Optional[AlertSeverity] = None,
     limit: int = 100,
-    db: AsyncSession = Depends(get_db),
-):
+    db: AsyncSession = None,
+) -> List[Alert]:
     """List alerts with optional filters"""
     stmt = select(AlertRecord)
     if status:
@@ -48,23 +44,21 @@ async def list_alerts(
     return [_record_to_alert(r) for r in records]
 
 
-@router.get("/alerts/{alert_id}", response_model=Alert)
-async def get_alert(alert_id: str, db: AsyncSession = Depends(get_db)):
+async def get_alert(alert_id: str, db: AsyncSession) -> Alert:
     """Get a specific alert"""
     result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
     record = result.scalar_one_or_none()
     if not record:
-        raise HTTPException(status_code=404, detail="Alert not found")
+        raise ValueError("Alert not found")
     return _record_to_alert(record)
 
 
-@router.patch("/alerts/{alert_id}", response_model=Alert)
-async def update_alert(alert_id: str, update_data: Dict, db: AsyncSession = Depends(get_db)):
+async def update_alert(alert_id: str, update_data: Dict, db: AsyncSession) -> Alert:
     """Update alert status or assign to investigator"""
     result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
     record = result.scalar_one_or_none()
     if not record:
-        raise HTTPException(status_code=404, detail="Alert not found")
+        raise ValueError("Alert not found")
 
     if "status" in update_data:
         record.status = update_data["status"]

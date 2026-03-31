@@ -1,5 +1,9 @@
 server:
   port: 9036
+
+grpc:
+  server:
+    port: 9014
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/affiliate_db

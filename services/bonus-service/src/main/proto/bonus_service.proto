@@ -1,0 +1,169 @@
+syntax = "proto3";
+
+package game_engine.bonus.v1;
+
+option java_multiple_files = true;
+option java_package = "com.game_engine.bonus.v1";
+
+service BonusService {
+  rpc GetActiveBonuses(GetActiveBonusesRequest) returns (GetActiveBonusesResponse);
+  rpc GetBonus(GetBonusRequest) returns (GetBonusResponse);
+  rpc CreateBonus(CreateBonusRequest) returns (CreateBonusResponse);
+  rpc ClaimBonus(ClaimBonusRequest) returns (ClaimBonusResponse);
+  rpc CheckEligibility(CheckEligibilityRequest) returns (CheckEligibilityResponse);
+  rpc GetBonusHistory(GetBonusHistoryRequest) returns (GetBonusHistoryResponse);
+  rpc GetActiveBonusClaims(GetActiveBonusClaimsRequest) returns (GetActiveBonusClaimsResponse);
+  rpc ProcessWageringContribution(ProcessWageringContributionRequest) returns (ProcessWageringContributionResponse);
+  rpc CompleteBonus(CompleteBonusRequest) returns (CompleteBonusResponse);
+  rpc CancelBonus(CancelBonusRequest) returns (CancelBonusResponse);
+  rpc GetBonusStats(GetBonusStatsRequest) returns (GetBonusStatsResponse);
+}
+
+message GetActiveBonusesRequest {}
+
+message GetActiveBonusesResponse {
+  repeated Bonus bonuses = 1;
+}
+
+message Bonus {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string type = 4;
+  string status = 5;
+  double amount = 6;
+  double percentage = 7;
+  double max_amount = 8;
+  double min_deposit = 9;
+  int32 wagering_requirement = 10;
+  double max_bet = 11;
+  string allowed_games = 12;
+  int64 start_date = 13;
+  int64 end_date = 14;
+  int32 max_uses = 15;
+  int32 current_uses = 16;
+  string vip_level = 17;
+  int64 created_at = 18;
+  int64 updated_at = 19;
+}
+
+message GetBonusRequest {
+  string id = 1;
+}
+
+message GetBonusResponse {
+  Bonus bonus = 1;
+}
+
+message CreateBonusRequest {
+  Bonus bonus = 1;
+}
+
+message CreateBonusResponse {
+  Bonus bonus = 1;
+}
+
+message ClaimBonusRequest {
+  string bonus_id = 1;
+  string user_id = 2;
+}
+
+message ClaimBonusResponse {
+  bool success = 1;
+  string message = 2;
+  double bonus_amount = 3;
+  map<string, string> details = 4;
+}
+
+message CheckEligibilityRequest {
+  string user_id = 1;
+}
+
+message CheckEligibilityResponse {
+  bool eligible = 1;
+  map<string, string> details = 2;
+}
+
+message GetBonusHistoryRequest {
+  string user_id = 1;
+}
+
+message GetBonusHistoryResponse {
+  repeated BonusHistoryEntry entries = 1;
+}
+
+message BonusHistoryEntry {
+  string bonus_id = 1;
+  string bonus_name = 2;
+  double amount = 3;
+  string status = 4;
+  int64 claimed_at = 5;
+  int64 completed_at = 6;
+}
+
+message GetActiveBonusClaimsRequest {
+  string user_id = 1;
+}
+
+message GetActiveBonusClaimsResponse {
+  repeated ActiveBonusClaim claims = 1;
+}
+
+message ActiveBonusClaim {
+  string bonus_id = 1;
+  string bonus_name = 2;
+  double amount = 3;
+  double wagering_progress = 4;
+  double wagering_required = 5;
+  string status = 6;
+  int64 expires_at = 7;
+}
+
+message ProcessWageringContributionRequest {
+  string user_id = 1;
+  string bonus_id = 2;
+  double bet_amount = 3;
+  string game_type = 4;
+}
+
+message ProcessWageringContributionResponse {
+  bool success = 1;
+  double wagering_progress = 2;
+  double wagering_required = 3;
+  bool completed = 4;
+}
+
+message CompleteBonusRequest {
+  string user_id = 1;
+  string bonus_id = 2;
+  double winnings = 3;
+}
+
+message CompleteBonusResponse {
+  bool success = 1;
+  double payout_amount = 2;
+  string message = 3;
+}
+
+message CancelBonusRequest {
+  string user_id = 1;
+  string bonus_id = 2;
+  string reason = 3;
+}
+
+message CancelBonusResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetBonusStatsRequest {
+  string user_id = 1;
+}
+
+message GetBonusStatsResponse {
+  int32 total_bonuses_claimed = 1;
+  double total_bonus_amount = 2;
+  double total_wagered = 3;
+  double total_winnings = 4;
+  map<string, string> stats = 5;
+}
