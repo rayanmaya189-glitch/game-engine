@@ -1,28 +1,114 @@
 # ===========================================
 # Game Engine Casino - Complete Docker Compose
-# All Microservices
+# All Microservices with gRPC + NATS
 # ===========================================
 
 services:
   # ===========================================
-  # Gateway Services (Hertz)
+  # API Gateway - Player (Hertz REST -> gRPC)
   # ===========================================
-  gateway:
+  gateway-player:
     build:
       context: ./services/gateway
-      dockerfile: Dockerfile
-    container_name: game_engine-gateway
+      dockerfile: Dockerfile.player
+    container_name: game_engine-gateway-player
     ports:
       - "8080:8080"
-      - "8081:8081"
     environment:
-      - NODE_ENV=production
-      - SERVICE_NAME=gateway
+      - SERVICE_NAME=gateway-player
+      - SERVER_PORT=8080
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - AUTH_SERVICE_GRPC=auth-service:4433
+      - USER_SERVICE_GRPC=user-service:4435
+      - WALLET_SERVICE_GRPC=wallet-service:4437
+      - GAME_SERVICE_GRPC=game-registry:4439
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
     depends_on:
       - auth-service
       - user-service
       - wallet-service
       - game-registry
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # API Gateway - Admin (Hertz REST -> gRPC)
+  # ===========================================
+  gateway-admin:
+    build:
+      context: ./services/gateway/admin
+      dockerfile: Dockerfile
+    container_name: game_engine-gateway-admin
+    ports:
+      - "8081:8081"
+    environment:
+      - SERVICE_NAME=gateway-admin
+      - SERVER_PORT=8081
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - AUTH_SERVICE_GRPC=auth-service:4433
+      - USER_SERVICE_GRPC=user-service:4435
+      - WALLET_SERVICE_GRPC=wallet-service:4437
+      - GAME_SERVICE_GRPC=game-registry:4439
+      - COMMISSION_SERVICE_GRPC=commission-service:9015
+      - BONUS_SERVICE_GRPC=bonus-service:9013
+      - TOURNAMENT_SERVICE_GRPC=tournament-service:9020
+      - JACKPOT_SERVICE_GRPC=jackpot-service:9091
+      - PAYMENT_SERVICE_GRPC=payment-service:9012
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - auth-service
+      - wallet-service
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # API Gateway - Merchant (Hertz REST -> gRPC)
+  # ===========================================
+  gateway-merchant:
+    build:
+      context: ./services/gateway/merchant
+      dockerfile: Dockerfile
+    container_name: game_engine-gateway-merchant
+    ports:
+      - "8082:8082"
+    environment:
+      - SERVICE_NAME=gateway-merchant
+      - SERVER_PORT=8082
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - MERCHANT_SERVICE_GRPC=merchant-service:9095
+      - WALLET_SERVICE_GRPC=wallet-service:4437
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - merchant-service
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # API Gateway - Agent (Hertz REST -> gRPC)
+  # ===========================================
+  gateway-agent:
+    build:
+      context: ./services/gateway/agent
+      dockerfile: Dockerfile
+    container_name: game_engine-gateway-agent
+    ports:
+      - "8083:8083"
+    environment:
+      - SERVICE_NAME=gateway-agent
+      - SERVER_PORT=8083
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - AGENT_SERVICE_GRPC=agent-service:9083
+      - WALLET_SERVICE_GRPC=wallet-service:4437
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - agent-service
     networks:
       - game_engine-network
     restart: unless-stopped
@@ -36,19 +122,34 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-websocket-gateway
     ports:
-      - "8100:4000"
+      - "4000:4000"
     environment:
       - MIX_ENV=prod
-      - SERVICE_NAME=websocket-gateway
+      - PHX_HOST=0.0.0.0
+      - PORT=4000
+      - SECRET_KEY_BASE=${WS_SECRET_KEY_BASE:-change-me-in-production}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - WALLET_SERVICE_GRPC_HOST=wallet-service
+      - WALLET_SERVICE_GRPC_PORT=4437
+      - GAME_REGISTRY_GRPC_HOST=game-registry
+      - GAME_REGISTRY_GRPC_PORT=4439
+      - TOURNAMENT_SERVICE_GRPC_HOST=tournament-service
+      - TOURNAMENT_SERVICE_GRPC_PORT=9020
+      - JACKPOT_SERVICE_GRPC_HOST=jackpot-service
+      - JACKPOT_SERVICE_GRPC_PORT=9091
+      - AUTH_SERVICE_GRPC_HOST=auth-service
+      - AUTH_SERVICE_GRPC_PORT=4433
     depends_on:
       - redis
-      - nats
+      - wallet-service
+      - game-registry
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Auth Service (Go)
+  # Auth Service (Go gRPC)
   # ===========================================
   auth-service:
     build:
@@ -57,28 +158,33 @@ services:
     container_name: game_engine-auth-service
     ports:
       - "4433:4433"
-      - "4434:4434"
     environment:
       - SERVICE_NAME=auth-service
+      - SERVER_GRPC_PORT=4433
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=auth_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
+      - JWT_PRIVATE_KEY_PATH=/certs/jwt-private.pem
+      - JWT_PUBLIC_KEY_PATH=/certs/jwt-public.pem
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # User Service (Go)
+  # User Service (Go gRPC)
   # ===========================================
   user-service:
     build:
@@ -87,28 +193,29 @@ services:
     container_name: game_engine-user-service
     ports:
       - "4435:4435"
-      - "4436:4436"
     environment:
       - SERVICE_NAME=user-service
+      - SERVER_GRPC_PORT=4435
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=user_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Wallet Service (Go)
+  # Wallet Service (Go gRPC)
   # ===========================================
   wallet-service:
     build:
@@ -117,31 +224,31 @@ services:
     container_name: game_engine-wallet-service
     ports:
       - "4437:4437"
-      - "4438:4438"
     environment:
       - SERVICE_NAME=wallet-service
+      - SERVER_GRPC_PORT=4437
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=wallet_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
-      - TIMESCALEDB_HOST=timescaledb
-      - TIMESCALEDB_PORT=5433
     depends_on:
-      - postgres
-      - redis
-      - nats
-      - timescaledb
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Game Registry Service (Go)
+  # Game Registry (Go gRPC)
   # ===========================================
   game-registry:
     build:
@@ -150,25 +257,27 @@ services:
     container_name: game_engine-game-registry
     ports:
       - "4439:4439"
-      - "4440:4440"
     environment:
       - SERVICE_NAME=game-registry
+      - SERVER_GRPC_PORT=4439
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=game_registry
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Card Games Service (Go)
+  # Card Games (Go gRPC)
   # ===========================================
   card-games:
     build:
@@ -176,29 +285,30 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-card-games
     ports:
-      - "8087:8087"
-      - "8088:8088"
+      - "9040:9040"
     environment:
       - SERVICE_NAME=card-games
+      - SERVER_GRPC_PORT=9040
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=card_games
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Dice Games Service (Go)
+  # Dice Games (Go gRPC)
   # ===========================================
   dice-games:
     build:
@@ -206,26 +316,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-dice-games
     ports:
-      - "8089:8089"
-      - "8090:8090"
+      - "9041:9041"
     environment:
       - SERVICE_NAME=dice-games
+      - SERVER_GRPC_PORT=9041
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=dice_games
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Slot Games Service (Go)
+  # Slot Games (Go gRPC)
   # ===========================================
   slot-games:
     build:
@@ -233,26 +345,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-slot-games
     ports:
-      - "8098:8098"
-      - "8099:8099"
+      - "9042:9042"
     environment:
       - SERVICE_NAME=slot-games
+      - SERVER_GRPC_PORT=9042
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=slot_games
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # RNG Service (Go)
+  # RNG Service (Go gRPC)
   # ===========================================
   rng-service:
     build:
@@ -260,26 +374,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-rng-service
     ports:
-      - "8097:8097"
-      - "8098:8098"
+      - "9043:9043"
     environment:
       - SERVICE_NAME=rng-service
+      - SERVER_GRPC_PORT=9043
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=rng_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Betting Service (Go)
+  # Betting Service (Go gRPC)
   # ===========================================
   betting-service:
     build:
@@ -287,29 +403,32 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-betting-service
     ports:
-      - "8085:8085"
-      - "8086:8086"
+      - "9044:9044"
     environment:
       - SERVICE_NAME=betting-service
+      - SERVER_GRPC_PORT=9044
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=betting_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Tournament Service (Go)
+  # Tournament Service (Go gRPC)
   # ===========================================
   tournament-service:
     build:
@@ -318,22 +437,31 @@ services:
     container_name: game_engine-tournament-service
     ports:
       - "9020:9020"
-      - "8020:8020"
     environment:
       - SERVICE_NAME=tournament-service
+      - SERVER_GRPC_PORT=9020
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - DB_NAME=tournament_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Jackpot Service (Go)
+  # Jackpot Service (Go gRPC)
   # ===========================================
   jackpot-service:
     build:
@@ -341,29 +469,30 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-jackpot-service
     ports:
-      - "8091:8091"
-      - "8092:8092"
+      - "9091:9091"
     environment:
       - SERVICE_NAME=jackpot-service
+      - SERVER_GRPC_PORT=9091
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=jackpot_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Live Dealer Service (Go)
+  # Live Dealer Service (Go gRPC)
   # ===========================================
   live-dealer-service:
     build:
@@ -371,29 +500,30 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-live-dealer-service
     ports:
-      - "8093:8093"
-      - "8094:8094"
+      - "9092:9092"
     environment:
       - SERVICE_NAME=live-dealer-service
+      - SERVER_GRPC_PORT=9092
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=live_dealer_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Sports Betting Service (Go)
+  # Sports Betting Service (Go gRPC)
   # ===========================================
   sports-betting-service:
     build:
@@ -401,29 +531,62 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-sports-betting-service
     ports:
-      - "8099:8099"
-      - "8100:8100"
+      - "9093:9093"
     environment:
       - SERVICE_NAME=sports-betting-service
+      - SERVER_GRPC_PORT=9093
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=sports_betting_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - postgres
-      - redis
-      - nats
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Multiplayer Service (Go)
+  # Game Engine (Go gRPC)
+  # ===========================================
+  game-engine:
+    build:
+      context: ./services/game-engine
+      dockerfile: Dockerfile
+    container_name: game_engine-game-engine
+    ports:
+      - "9094:9094"
+    environment:
+      - SERVICE_NAME=game-engine
+      - SERVER_GRPC_PORT=9094
+      - SERVER_HOST=0.0.0.0
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - DB_NAME=game_engine_db
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - NATS_HOST=nats
+      - NATS_PORT=4222
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Multiplayer Service (Go gRPC)
   # ===========================================
   multiplayer-service:
     build:
@@ -432,22 +595,24 @@ services:
     container_name: game_engine-multiplayer-service
     ports:
       - "9021:9021"
-      - "8021:8021"
     environment:
       - SERVICE_NAME=multiplayer-service
+      - SERVER_GRPC_PORT=9021
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - redis
-      - nats
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Chat Service (Go)
+  # Chat Service (Go gRPC)
   # ===========================================
   chat-service:
     build:
@@ -456,22 +621,24 @@ services:
     container_name: game_engine-chat-service
     ports:
       - "9022:9022"
-      - "8022:8022"
     environment:
       - SERVICE_NAME=chat-service
+      - SERVER_GRPC_PORT=9022
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - redis
-      - nats
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Notification Service (Go)
+  # Notification Service (Go gRPC)
   # ===========================================
   notification-service:
     build:
@@ -480,22 +647,82 @@ services:
     container_name: game_engine-notification-service
     ports:
       - "9023:9023"
-      - "8023:8023"
     environment:
       - SERVICE_NAME=notification-service
+      - SERVER_GRPC_PORT=9023
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - NATS_HOST=nats
       - NATS_PORT=4222
     depends_on:
-      - redis
-      - nats
+      redis:
+        condition: service_healthy
+      nats:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Merchant Service (Go)
+  # Leaderboard Service (Go gRPC)
+  # ===========================================
+  leaderboard-service:
+    build:
+      context: ./services/leaderboard-service
+      dockerfile: Dockerfile
+    container_name: game_engine-leaderboard-service
+    ports:
+      - "9024:9024"
+    environment:
+      - SERVICE_NAME=leaderboard-service
+      - SERVER_GRPC_PORT=9024
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - DB_NAME=leaderboard_service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Winners Showcase Service (Go gRPC)
+  # ===========================================
+  winners-showcase-service:
+    build:
+      context: ./services/winners-showcase-service
+      dockerfile: Dockerfile
+    container_name: game_engine-winners-showcase-service
+    ports:
+      - "9025:9025"
+    environment:
+      - SERVICE_NAME=winners-showcase-service
+      - SERVER_GRPC_PORT=9025
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - DB_NAME=winners_showcase_service
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Merchant Service (Go gRPC)
   # ===========================================
   merchant-service:
     build:
@@ -503,26 +730,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-merchant-service
     ports:
-      - "8095:8095"
-      - "8096:8096"
+      - "9095:9095"
     environment:
       - SERVICE_NAME=merchant-service
+      - SERVER_GRPC_PORT=9095
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=merchant_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Agent Service (Go)
+  # Agent Service (Go gRPC)
   # ===========================================
   agent-service:
     build:
@@ -530,26 +759,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-agent-service
     ports:
-      - "8083:8083"
-      - "8084:8084"
+      - "9083:9083"
     environment:
       - SERVICE_NAME=agent-service
+      - SERVER_GRPC_PORT=9083
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=agent_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Loyalty Service (Go)
+  # Loyalty Service (Go gRPC)
   # ===========================================
   loyalty-service:
     build:
@@ -557,26 +788,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-loyalty-service
     ports:
-      - "8094:8094"
-      - "8095:8095"
+      - "9096:9096"
     environment:
       - SERVICE_NAME=loyalty-service
+      - SERVER_GRPC_PORT=9096
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
       - DB_NAME=loyalty_service
       - REDIS_HOST=redis
       - REDIS_PORT=6379
     depends_on:
-      - postgres
-      - redis
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Payment Service (Java Spring Boot)
+  # Payment Service (Java gRPC)
   # ===========================================
   payment-service:
     build:
@@ -584,21 +817,28 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-payment-service
     ports:
-      - "8096:8096"
-      - "8097:8097"
+      - "9012:9012"
+      - "9032:9032"
     environment:
       - SERVICE_NAME=payment-service
+      - SERVER_PORT=9032
+      - GRPC_SERVER_PORT=9012
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/payment_service
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - WALLET_GRPC_HOST=wallet-service
+      - WALLET_GRPC_PORT=4437
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+      wallet-service:
+        condition: service_started
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Bonus Service (Java Spring Boot)
+  # Bonus Service (Java gRPC)
   # ===========================================
   bonus-service:
     build:
@@ -606,21 +846,24 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-bonus-service
     ports:
-      - "8086:8086"
-      - "8087:8087"
+      - "9013:9013"
+      - "9033:9033"
     environment:
       - SERVICE_NAME=bonus-service
+      - SERVER_PORT=9033
+      - GRPC_SERVER_PORT=9013
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/bonus_service
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD:-postgres}
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Commission Service (Java Spring Boot)
+  # Commission Service (Java gRPC)
   # ===========================================
   commission-service:
     build:
@@ -628,21 +871,24 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-commission-service
     ports:
-      - "8088:8088"
-      - "8089:8089"
+      - "9015:9015"
+      - "9035:9035"
     environment:
       - SERVICE_NAME=commission-service
+      - SERVER_PORT=9035
+      - GRPC_SERVER_PORT=9015
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/commission_service
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD:-postgres}
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Affiliate Service (Java Spring Boot)
+  # Affiliate Service (Java gRPC)
   # ===========================================
   affiliate-service:
     build:
@@ -650,21 +896,24 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-affiliate-service
     ports:
-      - "8082:8082"
-      - "8083:8083"
+      - "9014:9014"
+      - "9036:9036"
     environment:
       - SERVICE_NAME=affiliate-service
+      - SERVER_PORT=9036
+      - GRPC_SERVER_PORT=9014
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/affiliate_service
       - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_PASSWORD=${DATABASE_PASSWORD:-postgres}
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # KYC Service (Python FastAPI)
+  # KYC Service (Python gRPC)
   # ===========================================
   kyc-service:
     build:
@@ -672,19 +921,25 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-kyc-service
     ports:
-      - "8092:8092"
-      - "8093:8093"
+      - "9031:9031"
+      - "9131:9131"
     environment:
       - SERVICE_NAME=kyc-service
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/kyc_service
+      - KYC_DATABASE_URL=postgresql+asyncpg://postgres:${DATABASE_PASSWORD:-postgres}@postgres:5432/kyc_service
+      - KYC_REDIS_URL=redis://redis:6379/0
+      - KYC_PORT=9031
+      - GRPC_PORT=9131
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # AML Service (Python FastAPI)
+  # AML Service (Python gRPC)
   # ===========================================
   aml-service:
     build:
@@ -692,19 +947,21 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-aml-service
     ports:
-      - "8084:8084"
-      - "8085:8085"
+      - "9114:9114"
     environment:
       - SERVICE_NAME=aml-service
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/aml_service
+      - AML_DATABASE_URL=postgresql+asyncpg://postgres:${DATABASE_PASSWORD:-postgres}@postgres:5432/aml_service
+      - AML_PORT=9114
+      - GRPC_PORT=9114
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     networks:
       - game_engine-network
     restart: unless-stopped
 
   # ===========================================
-  # Fraud Service (Python FastAPI)
+  # Fraud Service (Python gRPC)
   # ===========================================
   fraud-service:
     build:
@@ -712,13 +969,59 @@ services:
       dockerfile: Dockerfile
     container_name: game_engine-fraud-service
     ports:
-      - "8090:8090"
-      - "8091:8091"
+      - "9115:9115"
     environment:
       - SERVICE_NAME=fraud-service
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/fraud_service
+      - FRAUD_DATABASE_URL=postgresql+asyncpg://postgres:${DATABASE_PASSWORD:-postgres}@postgres:5432/fraud_service
+      - FRAUD_PORT=9115
+      - GRPC_PORT=9115
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Risk Service (Python gRPC)
+  # ===========================================
+  risk-service:
+    build:
+      context: ./services/risk-service
+      dockerfile: Dockerfile
+    container_name: game_engine-risk-service
+    ports:
+      - "9016:9016"
+      - "9116:9116"
+    environment:
+      - SERVICE_NAME=risk-service
+      - RISK_PORT=9016
+      - GRPC_PORT=9116
+      - AML_GRPC_HOST=aml-service
+      - AML_GRPC_PORT=9114
+      - FRAUD_GRPC_HOST=fraud-service
+      - FRAUD_GRPC_PORT=9115
+    depends_on:
+      - aml-service
+      - fraud-service
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Admin Panel (React)
+  # ===========================================
+  admin-panel:
+    build:
+      context: ./admin
+      dockerfile: Dockerfile
+    container_name: game_engine-admin-panel
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_URL=http://localhost:8081
+    depends_on:
+      - gateway-admin
     networks:
       - game_engine-network
     restart: unless-stopped
@@ -732,12 +1035,14 @@ networks:
     name: game_engine-network
 
 # ===========================================
-# Volumes
+# Volumes (shared with docker-compose.dev.yml)
 # ===========================================
 volumes:
   postgres-data:
-    driver: local
+    external: true
   redis-data:
-    driver: local
+    external: true
   timescaledb-data:
-    driver: local
+    external: true
+  nats-data:
+    external: true

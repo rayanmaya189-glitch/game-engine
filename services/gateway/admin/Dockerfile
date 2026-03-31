@@ -1,0 +1,34 @@
+# Build stage
+FROM golang:1.21-alpine AS builder
+
+WORKDIR /app
+
+RUN apk add --no-cache git
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY common/ ./common/
+COPY admin/ ./admin/
+
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o gateway-admin ./admin/main.go
+
+# Runtime stage
+FROM alpine:latest
+
+WORKDIR /app
+
+RUN apk --no-cache add ca-certificates tzdata
+
+COPY --from=builder /app/gateway-admin .
+COPY admin/config.yaml ./config.yaml
+
+RUN adduser -D -u 1000 appuser
+USER appuser
+
+EXPOSE 8081
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:8081/health || exit 1
+
+ENTRYPOINT ["./gateway-admin"]
