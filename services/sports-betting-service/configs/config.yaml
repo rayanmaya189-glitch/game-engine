@@ -1,0 +1,26 @@
+server:
+  host: "0.0.0.0"
+  grpc_port: 9093
+database:
+  host: "${DB_HOST:-localhost}"
+  port: "${DB_PORT:-5432}"
+  user: "${DB_USER:-postgres}"
+  password: "${DB_PASSWORD:-postgres}"
+  name: "${DB_NAME:-sports_betting_service}"
+  max_connections: 20
+redis:
+  host: "${REDIS_HOST:-localhost}"
+  port: "${REDIS_PORT:-6379}"
+nats:
+  host: "${NATS_HOST:-localhost}"
+  port: "${NATS_PORT:-4222}"
+betting:
+  min_bet: 1
+  max_bet: 100000
+  max_payout: 1000000
+  max_odds: 1000
+  live_betting_enabled: true
+  cashout_enabled: true
+odds:
+  update_interval_seconds: 5
+  max_odds_change_percent: 20

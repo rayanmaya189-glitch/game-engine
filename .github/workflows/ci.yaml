@@ -12,6 +12,10 @@ on:
       - '**.go'
       - 'go.mod'
       - 'go.sum'
+      - '**/*.py'
+      - '**/requirements.txt'
+      - '**/*.java'
+      - '**/pom.xml'
       - '**/*.ex'
       - '**/*.exs'
       - '**/mix.exs'
@@ -24,6 +28,10 @@ on:
       - '**.go'
       - 'go.mod'
       - 'go.sum'
+      - '**/*.py'
+      - '**/requirements.txt'
+      - '**/*.java'
+      - '**/pom.xml'
       - '**/*.ex'
       - '**/*.exs'
       - '**/mix.exs'
@@ -36,6 +44,8 @@ env:
   GO_VERSION: '1.21'
   ELIXIR_VERSION: '1.15'
   OTP_VERSION: '26'
+  PYTHON_VERSION: '3.11'
+  JAVA_VERSION: '17'
 
 jobs:
   # ===========================================================================
@@ -114,6 +124,57 @@ jobs:
         run: |
           cd services/websocket-gateway
           mix dialyzer || true
+
+  # ===========================================================================
+  # Python Lint
+  # ===========================================================================
+  lint-python:
+    name: Python Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install linting tools
+        run: pip install ruff mypy
+
+      - name: Run ruff
+        run: ruff check services/aml-service services/fraud-service
+
+      - name: Run mypy
+        run: mypy services/aml-service services/fraud-service --ignore-missing-imports || true
+
+  # ===========================================================================
+  # Java Lint
+  # ===========================================================================
+  lint-java:
+    name: Java Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: 'maven'
+
+      - name: Check Java formatting
+        run: |
+          for dir in commission-service affiliate-service bonus-service payment-service kyc-service; do
+            if [ -f "services/$dir/pom.xml" ]; then
+              cd services/$dir
+              mvn -q spotless:check || true
+              cd ../..
+            fi
+          done
 
   # ===========================================================================
   # Unit Tests
@@ -246,50 +307,163 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    needs: [lint, lint-elixir, test, test-elixir]
+    needs: [lint, lint-elixir, lint-python, lint-java, test, test-elixir]
     strategy:
+      fail-fast: false
       matrix:
-        service:
-          - auth-service
-          - user-service
-          - wallet-service
-          - game-registry
-          - gateway-player
-          - gateway-admin
-          - gateway-merchant
-          - gateway-agent
-          - websocket-gateway
+        include:
+          # Go Services
+          - service: auth-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.auth-service
+          - service: user-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.user-service
+          - service: wallet-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.wallet-service
+          - service: game-registry
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.game-registry
+          - service: game-engine
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.game-engine
+          - service: card-games
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.card-games
+          - service: dice-games
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.dice-games
+          - service: slot-games
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.slot-games
+          - service: rng-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.rng-service
+          - service: betting
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.betting
+          - service: tournament
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.tournament
+          - service: jackpot-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.jackpot-service
+          - service: merchant-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.merchant-service
+          - service: agent-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.agent-service
+          - service: leaderboard-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.leaderboard-service
+          - service: winners-showcase-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.winners-showcase-service
+          - service: multiplayer
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.multiplayer
+          - service: chat
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.chat
+          - service: notification
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.notification
+          - service: loyalty-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.loyalty-service
+          - service: live-dealer-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.live-dealer-service
+          - service: sports-betting-service
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.sports-betting-service
+          # API Gateways
+          - service: gateway-player
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.gateway-player
+          - service: gateway-admin
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.gateway-admin
+          - service: gateway-merchant
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.gateway-merchant
+          - service: gateway-agent
+            language: go
+            dockerfile: infrastructure/docker/Dockerfile.gateway-agent
+          # Python Services
+          - service: aml-service
+            language: python
+            dockerfile: services/aml-service/Dockerfile
+          - service: fraud-service
+            language: python
+            dockerfile: services/fraud-service/Dockerfile
+          # Java Services
+          - service: commission-service
+            language: java
+            dockerfile: services/commission-service/Dockerfile
+          - service: affiliate-service
+            language: java
+            dockerfile: services/affiliate-service/Dockerfile
+          - service: bonus-service
+            language: java
+            dockerfile: services/bonus-service/Dockerfile
+          - service: payment-service
+            language: java
+            dockerfile: services/payment-service/Dockerfile
+          - service: kyc-service
+            language: java
+            dockerfile: services/kyc-service/Dockerfile
+          # Elixir Services
+          - service: websocket-gateway
+            language: elixir
+            dockerfile: services/websocket-gateway/Dockerfile
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Go
-        if: matrix.service != 'websocket-gateway'
+        if: matrix.language == 'go'
         uses: actions/setup-go@v4
         with:
           go-version: ${{ env.GO_VERSION }}
 
       - name: Set up Elixir
-        if: matrix.service == 'websocket-gateway'
+        if: matrix.language == 'elixir'
         uses: erlef/setup-beam@v1
         with:
           elixir-version: ${{ env.ELIXIR_VERSION }}
           otp-version: ${{ env.OTP_VERSION }}
 
+      - name: Set up Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Java
+        if: matrix.language == 'java'
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+
       - name: Cache Go modules
-        if: matrix.service != 'websocket-gateway'
+        if: matrix.language == 'go'
         uses: actions/cache@v3
         with:
           path: |
             ~/.cache/go-build
             ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          key: ${{ runner.os }}-go-${{ matrix.service }}-${{ hashFiles('**/go.sum') }}
           restore-keys: |
+            ${{ runner.os }}-go-${{ matrix.service }}-
             ${{ runner.os }}-go-
 
       - name: Cache Elixir dependencies
-        if: matrix.service == 'websocket-gateway'
+        if: matrix.language == 'elixir'
         uses: actions/cache@v3
         with:
           path: |
@@ -299,39 +473,39 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-mix-
 
-      - name: Build ${{ matrix.service }}
-        if: matrix.service != 'websocket-gateway'
+      - name: Build ${{ matrix.service }} (Go)
+        if: matrix.language == 'go'
         run: make build SERVICE=${{ matrix.service }}
 
       - name: Install Elixir dependencies
-        if: matrix.service == 'websocket-gateway'
+        if: matrix.language == 'elixir'
         run: |
           cd services/websocket-gateway
           mix deps.get
 
       - name: Build Elixir project
-        if: matrix.service == 'websocket-gateway'
+        if: matrix.language == 'elixir'
         run: |
           cd services/websocket-gateway
           MIX_ENV=prod mix release
 
       - name: Build Docker image (Go services)
-        if: matrix.service != 'websocket-gateway'
+        if: matrix.language == 'go'
         run: |
           docker build \
-            -f infrastructure/docker/Dockerfile.${{ matrix.service }} \
+            -f ${{ matrix.dockerfile }} \
             -t ${{ env.REGISTRY }}/${{ matrix.service }}:${{ github.sha }} \
             -t ${{ env.REGISTRY }}/${{ matrix.service }}:latest \
             .
 
-      - name: Build Docker image (Elixir services)
-        if: matrix.service == 'websocket-gateway'
+      - name: Build Docker image (Python/Java/Elixir services)
+        if: matrix.language != 'go'
         run: |
           docker build \
-            -f services/websocket-gateway/Dockerfile \
+            -f ${{ matrix.dockerfile }} \
             -t ${{ env.REGISTRY }}/${{ matrix.service }}:${{ github.sha }} \
             -t ${{ env.REGISTRY }}/${{ matrix.service }}:latest \
-            services/websocket-gateway
+            .
 
       - name: Push to registry (if on main)
         if: github.ref == 'refs/heads/main'
@@ -392,7 +566,7 @@ jobs:
   docker-build:
     name: Docker Build All
     runs-on: ubuntu-latest
-    needs: [lint, lint-elixir, test, test-elixir, security]
+    needs: [lint, lint-elixir, lint-python, lint-java, test, test-elixir, security]
     if: github.ref == 'refs/heads/main' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout code
@@ -416,7 +590,7 @@ jobs:
 
       - name: Build and push Go services (multi-platform)
         run: |
-          for service in auth-service user-service wallet-service game-registry gateway-player gateway-admin gateway-merchant gateway-agent; do
+          for service in auth-service user-service wallet-service game-registry game-engine card-games dice-games slot-games rng-service betting tournament jackpot-service merchant-service agent-service leaderboard-service winners-showcase-service multiplayer chat notification loyalty-service live-dealer-service sports-betting-service gateway-player gateway-admin gateway-merchant gateway-agent; do
             docker buildx build \
               -f infrastructure/docker/Dockerfile.$service \
               -t ${{ env.REGISTRY }}/$service:${{ github.sha }} \
@@ -436,6 +610,30 @@ jobs:
             --push \
             services/websocket-gateway
 
+      - name: Build and push Python services (multi-platform)
+        run: |
+          for service in aml-service fraud-service; do
+            docker buildx build \
+              -f services/$service/Dockerfile \
+              -t ${{ env.REGISTRY }}/$service:${{ github.sha }} \
+              -t ${{ env.REGISTRY }}/$service:latest \
+              --platform linux/amd64,linux/arm64 \
+              --push \
+              .
+          done
+
+      - name: Build and push Java services (multi-platform)
+        run: |
+          for service in commission-service affiliate-service bonus-service payment-service kyc-service; do
+            docker buildx build \
+              -f services/$service/Dockerfile \
+              -t ${{ env.REGISTRY }}/$service:${{ github.sha }} \
+              -t ${{ env.REGISTRY }}/$service:latest \
+              --platform linux/amd64,linux/arm64 \
+              --push \
+              .
+          done
+
       - name: Create and push manifest
         run: |
           docker manifest create ${{ env.REGISTRY }}/game_engine:latest \
@@ -443,7 +641,35 @@ jobs:
             ${{ env.REGISTRY }}/user-service:${{ github.sha }} \
             ${{ env.REGISTRY }}/wallet-service:${{ github.sha }} \
             ${{ env.REGISTRY }}/game-registry:${{ github.sha }} \
+            ${{ env.REGISTRY }}/game-engine:${{ github.sha }} \
+            ${{ env.REGISTRY }}/card-games:${{ github.sha }} \
+            ${{ env.REGISTRY }}/dice-games:${{ github.sha }} \
+            ${{ env.REGISTRY }}/slot-games:${{ github.sha }} \
+            ${{ env.REGISTRY }}/rng-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/betting:${{ github.sha }} \
+            ${{ env.REGISTRY }}/tournament:${{ github.sha }} \
+            ${{ env.REGISTRY }}/jackpot-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/merchant-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/agent-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/leaderboard-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/winners-showcase-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/multiplayer:${{ github.sha }} \
+            ${{ env.REGISTRY }}/chat:${{ github.sha }} \
+            ${{ env.REGISTRY }}/notification:${{ github.sha }} \
+            ${{ env.REGISTRY }}/loyalty-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/live-dealer-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/sports-betting-service:${{ github.sha }} \
             ${{ env.REGISTRY }}/gateway-player:${{ github.sha }} \
+            ${{ env.REGISTRY }}/gateway-admin:${{ github.sha }} \
+            ${{ env.REGISTRY }}/gateway-merchant:${{ github.sha }} \
+            ${{ env.REGISTRY }}/gateway-agent:${{ github.sha }} \
+            ${{ env.REGISTRY }}/aml-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/fraud-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/commission-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/affiliate-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/bonus-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/payment-service:${{ github.sha }} \
+            ${{ env.REGISTRY }}/kyc-service:${{ github.sha }} \
             ${{ env.REGISTRY }}/websocket-gateway:${{ github.sha }}
 
           docker manifest push ${{ env.REGISTRY }}/game_engine:latest

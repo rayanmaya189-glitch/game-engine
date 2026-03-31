@@ -140,13 +140,20 @@ func loadConfig() *Config {
 			Password string `yaml:"password"`
 			DB       int    `yaml:"db"`
 		}{
-			Addr: "redis:6379", Password: "", DB: 0,
+			Addr: getEnv("REDIS_ADDR", "redis:6379"), Password: "", DB: 0,
 		},
 		Services: struct {
 			UserService   string `yaml:"user_service"`
 			WalletService string `yaml:"wallet_service"`
 		}{
-			UserService: "user-service:50051", WalletService: "wallet-service:50051",
+			UserService: getEnv("USER_SERVICE_ADDR", "user-service:50051"), WalletService: getEnv("WALLET_SERVICE_ADDR", "wallet-service:50051"),
 		},
 	}
+}
+
+func getEnv(key, fallback string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return fallback
 }

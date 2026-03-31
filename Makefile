@@ -43,18 +43,21 @@ GO_SERVICES := \
 	user-service \
 	wallet-service \
 	game-registry \
+	game-engine \
 	card-games \
 	dice-games \
 	slot-games \
 	rng-service \
-	betting-service \
-	tournament-service \
+	betting \
+	tournament \
 	jackpot-service \
 	live-dealer-service \
 	sports-betting-service \
-	multiplayer-service \
-	chat-service \
-	notification-service \
+	leaderboard-service \
+	winners-showcase-service \
+	multiplayer \
+	chat \
+	notification \
 	merchant-service \
 	agent-service \
 	loyalty-service
@@ -70,7 +73,8 @@ JAVA_SERVICES := \
 PYTHON_SERVICES := \
 	kyc-service \
 	aml-service \
-	fraud-service
+	fraud-service \
+	risk-service
 
 # All services
 ALL_SERVICES := $(GO_SERVICES) $(JAVA_SERVICES) $(PYTHON_SERVICES)
@@ -108,7 +112,7 @@ build: build-go build-java build-python
 
 # ---- Go Services ----
 .PHONY: build-go
-build-go: build-gateway build-auth build-user build-wallet build-game-registry build-card-games build-dice-games build-slot-games build-rng build-betting build-tournament build-jackpot build-live-dealer build-sports-betting build-multiplayer build-chat build-notification build-merchant build-agent build-loyalty
+build-go: build-gateway build-auth build-user build-wallet build-game-registry build-game-engine build-card-games build-dice-games build-slot-games build-rng build-betting build-tournament build-jackpot build-live-dealer build-sports-betting build-leaderboard build-winners-showcase build-multiplayer build-chat build-notification build-merchant build-agent build-loyalty
 	@echo "$(GREEN)All Go services built successfully!$(NC)"
 
 .PHONY: gateway
@@ -141,6 +145,12 @@ game-registry:
 	cd services/game-registry && $(GO_BUILD) -o ../../$(BIN_DIR)/game-registry .
 	@echo "$(GREEN)Game-registry built successfully!$(NC)"
 
+.PHONY: game-engine
+game-engine:
+	@echo "$(CYAN)Building game-engine service...$(NC)"
+	cd services/game-engine && $(GO_BUILD) -o ../../$(BIN_DIR)/game-engine .
+	@echo "$(GREEN)Game-engine built successfully!$(NC)"
+
 .PHONY: card-games
 card-games:
 	@echo "$(CYAN)Building card-games service...$(NC)"
@@ -165,17 +175,17 @@ rng-service:
 	cd services/rng-service && $(GO_BUILD) -o ../../$(BIN_DIR)/rng-service .
 	@echo "$(GREEN)Rng-service built successfully!$(NC)"
 
-.PHONY: betting-service
-betting-service:
-	@echo "$(CYAN)Building betting-service...$(NC)"
-	cd services/betting-service && $(GO_BUILD) -o ../../$(BIN_DIR)/betting-service .
-	@echo "$(GREEN)Betting-service built successfully!$(NC)"
+.PHONY: betting
+betting:
+	@echo "$(CYAN)Building betting...$(NC)"
+	cd services/betting && $(GO_BUILD) -o ../../$(BIN_DIR)/betting .
+	@echo "$(GREEN)Betting built successfully!$(NC)"
 
-.PHONY: tournament-service
-tournament-service:
-	@echo "$(CYAN)Building tournament-service...$(NC)"
-	cd services/tournament-service && $(GO_BUILD) -o ../../$(BIN_DIR)/tournament-service .
-	@echo "$(GREEN)Tournament-service built successfully!$(NC)"
+.PHONY: tournament
+tournament:
+	@echo "$(CYAN)Building tournament...$(NC)"
+	cd services/tournament && $(GO_BUILD) -o ../../$(BIN_DIR)/tournament .
+	@echo "$(GREEN)Tournament built successfully!$(NC)"
 
 .PHONY: jackpot-service
 jackpot-service:
@@ -195,23 +205,35 @@ sports-betting-service:
 	cd services/sports-betting-service && $(GO_BUILD) -o ../../$(BIN_DIR)/sports-betting-service .
 	@echo "$(GREEN)Sports-betting-service built successfully!$(NC)"
 
-.PHONY: multiplayer-service
-multiplayer-service:
-	@echo "$(CYAN)Building multiplayer-service...$(NC)"
-	cd services/multiplayer-service && $(GO_BUILD) -o ../../$(BIN_DIR)/multiplayer-service .
-	@echo "$(GREEN)Multiplayer-service built successfully!$(NC)"
+.PHONY: leaderboard-service
+leaderboard-service:
+	@echo "$(CYAN)Building leaderboard-service...$(NC)"
+	cd services/leaderboard-service && $(GO_BUILD) -o ../../$(BIN_DIR)/leaderboard-service .
+	@echo "$(GREEN)Leaderboard-service built successfully!$(NC)"
 
-.PHONY: chat-service
-chat-service:
-	@echo "$(CYAN)Building chat-service...$(NC)"
-	cd services/chat-service && $(GO_BUILD) -o ../../$(BIN_DIR)/chat-service .
-	@echo "$(GREEN)Chat-service built successfully!$(NC)"
+.PHONY: winners-showcase-service
+winners-showcase-service:
+	@echo "$(CYAN)Building winners-showcase-service...$(NC)"
+	cd services/winners-showcase-service && $(GO_BUILD) -o ../../$(BIN_DIR)/winners-showcase-service .
+	@echo "$(GREEN)Winners-showcase-service built successfully!$(NC)"
 
-.PHONY: notification-service
-notification-service:
-	@echo "$(CYAN)Building notification-service...$(NC)"
-	cd services/notification-service && $(GO_BUILD) -o ../../$(BIN_DIR)/notification-service .
-	@echo "$(GREEN)Notification-service built successfully!$(NC)"
+.PHONY: multiplayer
+multiplayer:
+	@echo "$(CYAN)Building multiplayer...$(NC)"
+	cd services/multiplayer && $(GO_BUILD) -o ../../$(BIN_DIR)/multiplayer .
+	@echo "$(GREEN)Multiplayer built successfully!$(NC)"
+
+.PHONY: chat
+chat:
+	@echo "$(CYAN)Building chat...$(NC)"
+	cd services/chat && $(GO_BUILD) -o ../../$(BIN_DIR)/chat .
+	@echo "$(GREEN)Chat built successfully!$(NC)"
+
+.PHONY: notification
+notification:
+	@echo "$(CYAN)Building notification...$(NC)"
+	cd services/notification && $(GO_BUILD) -o ../../$(BIN_DIR)/notification .
+	@echo "$(GREEN)Notification built successfully!$(NC)"
 
 .PHONY: merchant-service
 merchant-service:
@@ -262,7 +284,7 @@ affiliate-service:
 
 # ---- Python Services ----
 .PHONY: build-python
-build-python: build-kyc build-aml build-fraud
+build-python: build-kyc build-aml build-fraud build-risk
 	@echo "$(GREEN)All Python services built successfully!$(NC)"
 
 .PHONY: kyc-service
@@ -282,6 +304,12 @@ fraud-service:
 	@echo "$(BLUE)Building fraud-service...$(NC)"
 	cd services/fraud-service && $(PIP_INSTALL)
 	@echo "$(GREEN)Fraud-service built successfully!$(NC)"
+
+.PHONY: risk-service
+risk-service:
+	@echo "$(BLUE)Building risk-service...$(NC)"
+	cd services/risk-service && $(PIP_INSTALL)
+	@echo "$(GREEN)Risk-service built successfully!$(NC)"
 
 # ---- Build All to Single Directory ----
 .PHONY: build-all

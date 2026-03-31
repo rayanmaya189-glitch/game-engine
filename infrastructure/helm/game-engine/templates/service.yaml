@@ -1,0 +1,33 @@
+{{/*
+Generic Service Template for Game Engine Services
+*/}}
+{{- range $serviceName, $serviceConfig := .Values }}
+{{- if and (kindIs "map" $serviceConfig) (hasKey $serviceConfig "enabled") ($serviceConfig.enabled) }}
+{{- $servicePorts := $serviceConfig.ports | default dict }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $serviceName | kebabcase }}
+  namespace: {{ $.Values.global.namespace | default "game_engine" }}
+  labels:
+    app: {{ $serviceName | kebabcase }}
+    component: service
+    helm.sh/chart: {{ include "game-engine.chart" $ }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+    app.kubernetes.io/part-of: casino-gaming-platform
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: {{ $servicePorts.http | default 8080 }}
+      protocol: TCP
+    - name: grpc
+      port: {{ $servicePorts.grpc | default 9090 }}
+      targetPort: {{ $servicePorts.grpc | default 9090 }}
+      protocol: TCP
+  selector:
+    app: {{ $serviceName | kebabcase }}
+{{- end }}
+{{- end }}

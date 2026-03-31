@@ -1,0 +1,56 @@
+{{/*
+HorizontalPodAutoscaler Template for Game Engine Services
+*/}}
+{{- range $serviceName, $serviceConfig := .Values }}
+{{- if and (kindIs "map" $serviceConfig) (hasKey $serviceConfig "enabled") ($serviceConfig.enabled) (hasKey $serviceConfig "autoscaling") ($serviceConfig.autoscaling.enabled) }}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: {{ $serviceName | kebabcase }}
+  namespace: {{ $.Values.global.namespace | default "game_engine" }}
+  labels:
+    app: {{ $serviceName | kebabcase }}
+    component: service
+    helm.sh/chart: {{ include "game-engine.chart" $ }}
+    app.kubernetes.io/managed-by: {{ $.Release.Service }}
+    app.kubernetes.io/part-of: casino-gaming-platform
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: {{ $serviceName | kebabcase }}
+  minReplicas: {{ $serviceConfig.autoscaling.minReplicas | default 2 }}
+  maxReplicas: {{ $serviceConfig.autoscaling.maxReplicas | default 10 }}
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: {{ $serviceConfig.autoscaling.targetCPUUtilization | default 70 }}
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: {{ $serviceConfig.autoscaling.targetMemoryUtilization | default 80 }}
+  behavior:
+    scaleDown:
+      stabilizationWindowSeconds: 300
+      policies:
+        - type: Percent
+          value: 10
+          periodSeconds: 60
+    scaleUp:
+      stabilizationWindowSeconds: 0
+      policies:
+        - type: Percent
+          value: 100
+          periodSeconds: 15
+        - type: Pods
+          value: 4
+          periodSeconds: 15
+      selectPolicy: Max
+{{- end }}
+{{- end }}

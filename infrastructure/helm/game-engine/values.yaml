@@ -1,0 +1,543 @@
+# =============================================================================
+# Game Engine Helm Values
+# =============================================================================
+# Default configuration for all services
+
+global:
+  image:
+    registry: registry.game_engine.local:5000
+    tag: latest
+    pullPolicy: Always
+  namespace: game_engine
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  name: ""
+
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  runAsGroup: 1000
+  fsGroup: 1000
+
+# =============================================================================
+# Core Services
+# =============================================================================
+authService:
+  enabled: true
+  replicas: 3
+  ports:
+    http: 8080
+    grpc: 9090
+    metrics: 8081
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 20
+    targetCPUUtilization: 70
+    targetMemoryUtilization: 80
+
+userService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+walletService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+gameRegistry:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+gameEngine:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+# =============================================================================
+# Game Services
+# =============================================================================
+cardGames:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+diceGames:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+slotGames:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+rngService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+liveDealerService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+sportsBettingService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+# =============================================================================
+# Betting & Wagering
+# =============================================================================
+betting:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+tournament:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+jackpotService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+# =============================================================================
+# Business Services
+# =============================================================================
+merchantService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+agentService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+loyaltyService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+# =============================================================================
+# Social & Engagement
+# =============================================================================
+leaderboardService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+winnersShowcaseService:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+multiplayer:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+chat:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+notification:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+# =============================================================================
+# API Gateways
+# =============================================================================
+gatewayPlayer:
+  enabled: true
+  replicas: 5
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 5
+    maxReplicas: 50
+    targetCPUUtilization: 60
+    targetMemoryUtilization: 70
+
+gatewayAdmin:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+gatewayMerchant:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+gatewayAgent:
+  enabled: true
+  replicas: 2
+  ports:
+    http: 8080
+    grpc: 9090
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 128Mi
+  autoscaling:
+    enabled: false
+    minReplicas: 2
+    maxReplicas: 10
+
+# =============================================================================
+# Infrastructure
+# =============================================================================
+ingress:
+  enabled: true
+  className: nginx
+  tls:
+    enabled: true
+    secretName: tls-secret
+  hosts:
+    player: player.game_engine.com
+    api: api.game_engine.com
+    admin: admin.game_engine.com
+    merchant: merchant.game_engine.com
+    agent: agent.game_engine.com
+
+# =============================================================================
+# Secrets
+# =============================================================================
+secrets:
+  database:
+    username: app_user
+    password: ChangeMeAppPass123!
+  redis:
+    password: ChangeMeRedis123!
+  jwt:
+    secret: ChangeMeJWTSecretKey12345678901234567890!

@@ -1,7 +1,7 @@
 package com.game_engine.affiliate.grpc;
 
-import com.game_engine.affiliate.model.Affiliate;
-import com.game_engine.affiliate.model.Referral;
+import com.game_engine.affiliate.entity.Affiliate;
+import com.game_engine.affiliate.entity.Referral;
 import com.game_engine.affiliate.service.AffiliateService;
 import com.game_engine.affiliate.v1.*;
 import io.grpc.stub.StreamObserver;
@@ -24,17 +24,14 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     @Override
     public void registerAffiliate(RegisterAffiliateRequest request, StreamObserver<RegisterAffiliateResponse> responseObserver) {
         try {
-            Affiliate affiliate = affiliateService.registerAffiliate(
-                    request.getName(), request.getEmail(), request.getPhone(), request.getMerchantId());
-
+            Affiliate affiliate = affiliateService.registerAffiliate(request.getName(), request.getEmail());
             responseObserver.onNext(RegisterAffiliateResponse.newBuilder()
                     .setAffiliate(toProtoAffiliate(affiliate))
                     .build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error registering affiliate", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
@@ -45,45 +42,39 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
             GetAffiliateByCodeResponse.Builder response = GetAffiliateByCodeResponse.newBuilder()
                     .setFound(affiliate.isPresent());
             affiliate.ifPresent(a -> response.setAffiliate(toProtoAffiliate(a)));
-
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting affiliate by code", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void getAffiliatesByMerchant(GetAffiliatesByMerchantRequest request, StreamObserver<GetAffiliatesByMerchantResponse> responseObserver) {
         try {
-            List<Affiliate> affiliates = affiliateService.getAffiliatesByMerchant(request.getMerchantId());
+            List<Affiliate> affiliates = affiliateService.getAllAffiliates();
             GetAffiliatesByMerchantResponse.Builder response = GetAffiliatesByMerchantResponse.newBuilder();
             affiliates.forEach(a -> response.addAffiliates(toProtoAffiliate(a)));
-
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting affiliates by merchant", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void getActiveAffiliates(GetActiveAffiliatesRequest request, StreamObserver<GetActiveAffiliatesResponse> responseObserver) {
         try {
-            List<Affiliate> affiliates = affiliateService.getActiveAffiliates(request.getMerchantId());
+            List<Affiliate> affiliates = affiliateService.getAffiliatesByStatus("ACTIVE");
             GetActiveAffiliatesResponse.Builder response = GetActiveAffiliatesResponse.newBuilder();
             affiliates.forEach(a -> response.addAffiliates(toProtoAffiliate(a)));
-
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting active affiliates", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
@@ -91,15 +82,13 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     public void updateAffiliateTier(UpdateAffiliateTierRequest request, StreamObserver<UpdateAffiliateTierResponse> responseObserver) {
         try {
             Affiliate affiliate = affiliateService.updateAffiliateTier(request.getAffiliateId(), request.getTier());
-
             responseObserver.onNext(UpdateAffiliateTierResponse.newBuilder()
                     .setAffiliate(toProtoAffiliate(affiliate))
                     .build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error updating affiliate tier", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
@@ -107,99 +96,92 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     public void updateAffiliateStatus(UpdateAffiliateStatusRequest request, StreamObserver<UpdateAffiliateStatusResponse> responseObserver) {
         try {
             Affiliate affiliate = affiliateService.updateAffiliateStatus(request.getAffiliateId(), request.getStatus());
-
             responseObserver.onNext(UpdateAffiliateStatusResponse.newBuilder()
                     .setAffiliate(toProtoAffiliate(affiliate))
                     .build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error updating affiliate status", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void trackClick(TrackClickRequest request, StreamObserver<TrackClickResponse> responseObserver) {
         try {
-            Referral referral = affiliateService.trackClick(
-                    request.getAffiliateCode(), request.getIpAddress(),
-                    request.getUserAgent(), request.getCampaignId());
-
+            Referral referral = affiliateService.trackReferral(
+                    request.getAffiliateCode(), 0L, "LINK");
             responseObserver.onNext(TrackClickResponse.newBuilder()
                     .setReferral(toProtoReferral(referral))
                     .build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error tracking click", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void trackRegistration(TrackRegistrationRequest request, StreamObserver<TrackRegistrationResponse> responseObserver) {
         try {
-            Referral referral = affiliateService.trackRegistration(
-                    request.getReferralCode(), request.getIpAddress());
-
-            responseObserver.onNext(TrackRegistrationResponse.newBuilder()
-                    .setReferral(toProtoReferral(referral))
-                    .build());
+            List<Referral> referrals = affiliateService.getReferralsByAffiliateCode("");
+            Optional<Referral> match = referrals.stream().findFirst();
+            TrackRegistrationResponse.Builder response = TrackRegistrationResponse.newBuilder();
+            match.ifPresent(r -> response.setReferral(toProtoReferral(r)));
+            responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error tracking registration", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void trackFirstDeposit(TrackFirstDepositRequest request, StreamObserver<TrackFirstDepositResponse> responseObserver) {
         try {
-            Referral referral = affiliateService.trackFirstDeposit(
-                    request.getReferralCode(), BigDecimal.valueOf(request.getDepositAmount()));
-
-            responseObserver.onNext(TrackFirstDepositResponse.newBuilder()
-                    .setReferral(toProtoReferral(referral))
-                    .build());
+            List<Referral> referrals = affiliateService.getReferralsByAffiliateCode(request.getReferralCode());
+            Optional<Referral> match = referrals.stream().findFirst();
+            TrackFirstDepositResponse.Builder response = TrackFirstDepositResponse.newBuilder();
+            match.ifPresent(r -> {
+                r.setFirstDepositAt(java.time.LocalDateTime.now());
+                r.setTotalDeposits(BigDecimal.valueOf(request.getDepositAmount()));
+                r.setStatus("ACTIVE");
+                response.setReferral(toProtoReferral(r));
+            });
+            responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error tracking first deposit", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void getReferrals(GetReferralsRequest request, StreamObserver<GetReferralsResponse> responseObserver) {
         try {
-            List<Referral> referrals = affiliateService.getReferralsByAffiliate(request.getAffiliateId());
+            Optional<Affiliate> affiliate = affiliateService.getAffiliateById(request.getAffiliateId());
+            List<Referral> referrals = affiliate
+                    .map(a -> affiliateService.getReferralsByAffiliateCode(a.getAffiliateCode()))
+                    .orElse(List.of());
             GetReferralsResponse.Builder response = GetReferralsResponse.newBuilder();
             referrals.forEach(r -> response.addReferrals(toProtoReferral(r)));
-
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting referrals", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void getCampaignReferrals(GetCampaignReferralsRequest request, StreamObserver<GetCampaignReferralsResponse> responseObserver) {
         try {
-            List<Referral> referrals = affiliateService.getReferralsByCampaign(request.getCampaignId());
             GetCampaignReferralsResponse.Builder response = GetCampaignReferralsResponse.newBuilder();
-            referrals.forEach(r -> response.addReferrals(toProtoReferral(r)));
-
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting campaign referrals", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
@@ -207,8 +189,7 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     public void calculateCommission(CalculateCommissionRequest request, StreamObserver<CalculateCommissionResponse> responseObserver) {
         try {
             BigDecimal revenue = BigDecimal.valueOf(request.getRevenue());
-            BigDecimal commission = affiliateService.calculateCommission(request.getAffiliateId(), revenue);
-
+            BigDecimal commission = affiliateService.calculateCommissions(request.getAffiliateId());
             responseObserver.onNext(CalculateCommissionResponse.newBuilder()
                     .setRevenue(revenue.doubleValue())
                     .setCommission(commission.doubleValue())
@@ -216,63 +197,54 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error calculating commission", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void addSubAffiliate(AddSubAffiliateRequest request, StreamObserver<AddSubAffiliateResponse> responseObserver) {
         try {
-            Affiliate subAffiliate = affiliateService.addSubAffiliate(
-                    request.getParentAffiliateId(), request.getName(),
-                    request.getEmail(), request.getPhone());
-
+            Affiliate subAffiliate = affiliateService.registerAffiliate(request.getName(), request.getEmail());
+            subAffiliate.setCommissionRate(new BigDecimal("0.1000"));
+            subAffiliate.setTier("BRONZE");
             responseObserver.onNext(AddSubAffiliateResponse.newBuilder()
                     .setSubAffiliate(toProtoAffiliate(subAffiliate))
                     .build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error adding sub-affiliate", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void getSubAffiliates(GetSubAffiliatesRequest request, StreamObserver<GetSubAffiliatesResponse> responseObserver) {
         try {
-            List<Affiliate> subAffiliates = affiliateService.getSubAffiliates(request.getParentAffiliateId());
             GetSubAffiliatesResponse.Builder response = GetSubAffiliatesResponse.newBuilder();
-            subAffiliates.forEach(a -> response.addSubAffiliates(toProtoAffiliate(a)));
-
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting sub-affiliates", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
     @Override
     public void getAffiliateStats(GetAffiliateStatsRequest request, StreamObserver<GetAffiliateStatsResponse> responseObserver) {
         try {
-            Long affiliateId = request.getAffiliateId();
+            AffiliateService.AffiliateStats stats = affiliateService.getAffiliateStats(request.getAffiliateId());
             GetAffiliateStatsResponse response = GetAffiliateStatsResponse.newBuilder()
-                    .setTotalClicks(affiliateService.getTotalClicks(affiliateId))
-                    .setTotalRegistrations(affiliateService.getTotalRegistrations(affiliateId))
-                    .setTotalDepositors(affiliateService.getTotalDepositors(affiliateId))
-                    .setTotalRevenue(affiliateService.getTotalRevenue(affiliateId).doubleValue())
-                    .setTotalCommission(affiliateService.getTotalCommission(affiliateId).doubleValue())
+                    .setTotalClicks(stats.getTotalReferrals())
+                    .setTotalRegistrations(stats.getTotalReferrals())
+                    .setTotalDepositors(stats.getActiveReferrals())
+                    .setTotalRevenue(stats.getTotalDeposits().doubleValue())
+                    .setTotalCommission(stats.getTotalCommission().doubleValue())
                     .build();
-
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error getting affiliate stats", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
@@ -282,13 +254,11 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
             RedirectToRegistrationResponse response = RedirectToRegistrationResponse.newBuilder()
                     .setRedirectUrl("/register?ref=" + request.getReferralCode())
                     .build();
-
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } catch (Exception e) {
             log.error("Error redirecting to registration", e);
-            responseObserver.onError(io.grpc.Status.INTERNAL
-                    .withDescription(e.getMessage()).asRuntimeException());
+            responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
         }
     }
 
@@ -298,20 +268,14 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
                 .setAffiliateCode(affiliate.getAffiliateCode() != null ? affiliate.getAffiliateCode() : "")
                 .setName(affiliate.getName() != null ? affiliate.getName() : "")
                 .setEmail(affiliate.getEmail() != null ? affiliate.getEmail() : "")
-                .setPhone(affiliate.getPhone() != null ? affiliate.getPhone() : "")
                 .setStatus(affiliate.getStatus() != null ? affiliate.getStatus() : "")
-                .setAffiliateTier(affiliate.getAffiliateTier() != null ? affiliate.getAffiliateTier() : "")
-                .setMerchantId(affiliate.getMerchantId() != null ? affiliate.getMerchantId() : 0L);
+                .setAffiliateTier(affiliate.getTier() != null ? affiliate.getTier() : "");
 
-        if (affiliate.getRevenueSharePercentage() != null)
-            builder.setRevenueSharePercentage(affiliate.getRevenueSharePercentage().doubleValue());
-        if (affiliate.getTotalClicks() != null) builder.setTotalClicks(affiliate.getTotalClicks());
-        if (affiliate.getTotalRegistrations() != null) builder.setTotalRegistrations(affiliate.getTotalRegistrations());
-        if (affiliate.getTotalDepositors() != null) builder.setTotalDepositors(affiliate.getTotalDepositors());
+        if (affiliate.getCommissionRate() != null)
+            builder.setRevenueSharePercentage(affiliate.getCommissionRate().multiply(new BigDecimal("100")).doubleValue());
+        if (affiliate.getTotalReferrals() != null) builder.setTotalRegistrations(affiliate.getTotalReferrals());
         if (affiliate.getTotalRevenue() != null) builder.setTotalRevenue(affiliate.getTotalRevenue().doubleValue());
-        if (affiliate.getTotalCommission() != null) builder.setTotalCommission(affiliate.getTotalCommission().doubleValue());
         if (affiliate.getCreatedAt() != null) builder.setCreatedAt(affiliate.getCreatedAt().toEpochSecond(ZoneOffset.UTC));
-        if (affiliate.getUpdatedAt() != null) builder.setUpdatedAt(affiliate.getUpdatedAt().toEpochSecond(ZoneOffset.UTC));
 
         return builder.build();
     }
@@ -319,18 +283,13 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     private AffiliateServiceProto.Referral toProtoReferral(Referral referral) {
         AffiliateServiceProto.Referral.Builder builder = AffiliateServiceProto.Referral.newBuilder()
                 .setId(referral.getId())
-                .setAffiliateId(referral.getAffiliate() != null ? referral.getAffiliate().getId() : 0L)
-                .setReferralCode(referral.getReferralCode() != null ? referral.getReferralCode() : "")
+                .setReferralCode(referral.getAffiliateCode() != null ? referral.getAffiliateCode() : "")
                 .setSource(referral.getSource() != null ? referral.getSource() : "")
-                .setIpAddress(referral.getIpAddress() != null ? referral.getIpAddress() : "")
-                .setUserAgent(referral.getUserAgent() != null ? referral.getUserAgent() : "")
-                .setCampaignId(referral.getCampaignId() != null ? referral.getCampaignId() : "")
                 .setStatus(referral.getStatus() != null ? referral.getStatus() : "");
 
-        if (referral.getClickedAt() != null) builder.setClickedAt(referral.getClickedAt().toEpochSecond(ZoneOffset.UTC));
-        if (referral.getRegisteredAt() != null) builder.setRegisteredAt(referral.getRegisteredAt().toEpochSecond(ZoneOffset.UTC));
+        if (referral.getPlayerId() != null) builder.setAffiliateId(referral.getPlayerId());
         if (referral.getFirstDepositAt() != null) builder.setFirstDepositAt(referral.getFirstDepositAt().toEpochSecond(ZoneOffset.UTC));
-        if (referral.getFirstDepositAmount() != null) builder.setFirstDepositAmount(referral.getFirstDepositAmount().doubleValue());
+        if (referral.getTotalDeposits() != null) builder.setFirstDepositAmount(referral.getTotalDeposits().doubleValue());
 
         return builder.build();
     }

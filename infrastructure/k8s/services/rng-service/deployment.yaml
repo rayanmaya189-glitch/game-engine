@@ -1,0 +1,158 @@
+# =============================================================================
+# RNG Service Deployment
+# =============================================================================
+# Cryptographic random number generation service
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rng-service
+  namespace: game_engine
+  labels:
+    app: rng-service
+    version: v1
+    component: service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rng-service
+  template:
+    metadata:
+      labels:
+        app: rng-service
+        version: v1
+        component: service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: rng-service
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: rng-service
+          image: registry.game_engine.local:5000/rng-service:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: GRPC_PORT
+              value: "9090"
+            - name: REDIS_HOST
+              value: "redis.game_engine.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: password
+            - name: AUTH_SERVICE_URL
+              value: "http://auth-service.game_engine.svc.cluster.local"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: ENVIRONMENT
+              value: "production"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          livenessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: rng-service-config
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: rng-service
+                topologyKey: kubernetes.io/hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rng-service
+  namespace: game_engine
+  labels:
+    app: rng-service
+    component: service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: grpc
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: rng-service
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rng-service-config
+  namespace: game_engine
+data:
+  config.yaml: |
+    server:
+      port: 8080
+      grpc_port: 9090
+
+    redis:
+      pool_size: 10
+      ttl: 60
+
+    rng:
+      algorithm: chacha20
+      entropy_pool_size: 4096
+      batch_size: 1000
+      seed_refresh_interval: 1h
+      audit_enabled: true
+      proof_enabled: true
+
+    logging:
+      format: json
+      level: info

@@ -1,0 +1,25 @@
+{{/*
+ConfigMap Template for Game Engine Services
+*/}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "game-engine.fullname" . }}-config
+  namespace: {{ .Values.global.namespace | default "game_engine" }}
+  labels:
+    {{- include "game-engine.labels" . | nindent 4 }}
+data:
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "info"
+  LOG_FORMAT: "json"
+  REGISTRY: {{ .Values.global.image.registry | quote }}
+  DATABASE_HOST: "postgresql.{{ .Values.global.namespace }}.svc.cluster.local"
+  DATABASE_PORT: "5432"
+  REDIS_HOST: "redis.{{ .Values.global.namespace }}.svc.cluster.local"
+  REDIS_PORT: "6379"
+  AUTH_SERVICE_URL: "http://auth-service.{{ .Values.global.namespace }}.svc.cluster.local"
+  USER_SERVICE_URL: "http://user-service.{{ .Values.global.namespace }}.svc.cluster.local"
+  WALLET_SERVICE_URL: "http://wallet-service.{{ .Values.global.namespace }}.svc.cluster.local"
+  GAME_REGISTRY_URL: "http://game-registry.{{ .Values.global.namespace }}.svc.cluster.local"
+  RNG_SERVICE_URL: "http://rng-service.{{ .Values.global.namespace }}.svc.cluster.local"
+  NATS_URL: "nats://nats.{{ .Values.global.namespace }}.svc.cluster.local:4222"

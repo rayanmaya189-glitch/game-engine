@@ -1,0 +1,186 @@
+# =============================================================================
+# Live Dealer Service Deployment
+# =============================================================================
+# Live dealer casino games service
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: live-dealer-service
+  namespace: game_engine
+  labels:
+    app: live-dealer-service
+    version: v1
+    component: service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: live-dealer-service
+  template:
+    metadata:
+      labels:
+        app: live-dealer-service
+        version: v1
+        component: service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: live-dealer-service
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: live-dealer-service
+          image: registry.game_engine.local:5000/live-dealer-service:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: GRPC_PORT
+              value: "9090"
+            - name: DATABASE_HOST
+              value: "postgresql.game_engine.svc.cluster.local"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: "live_dealer_db"
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: password
+            - name: REDIS_HOST
+              value: "redis.game_engine.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: password
+            - name: WALLET_SERVICE_URL
+              value: "http://wallet-service.game_engine.svc.cluster.local"
+            - name: AUTH_SERVICE_URL
+              value: "http://auth-service.game_engine.svc.cluster.local"
+            - name: NATS_URL
+              value: "nats://nats.game_engine.svc.cluster.local:4222"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: ENVIRONMENT
+              value: "production"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          livenessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: live-dealer-service-config
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: live-dealer-service
+                topologyKey: kubernetes.io/hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: live-dealer-service
+  namespace: game_engine
+  labels:
+    app: live-dealer-service
+    component: service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: grpc
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: live-dealer-service
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: live-dealer-service-config
+  namespace: game_engine
+data:
+  config.yaml: |
+    server:
+      port: 8080
+      grpc_port: 9090
+
+    database:
+      max_open_conns: 25
+      max_idle_conns: 10
+
+    redis:
+      pool_size: 20
+      ttl: 10
+
+    live_dealer:
+      max_tables: 200
+      max_players_per_table: 7
+      stream_quality: 1080p
+      stream_bitrate: 4000kbps
+      chat_enabled: true
+      tip_enabled: true
+
+    studio:
+      heartbeat_interval: 5s
+      reconnect_timeout: 30s
+
+    logging:
+      format: json
+      level: info

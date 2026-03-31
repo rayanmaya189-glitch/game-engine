@@ -137,19 +137,26 @@ func loadConfig() *Config {
 			Secret          string `yaml:"secret"`
 			ExpirationHours int    `yaml:"expiration_hours"`
 		}{
-			Secret: "your-secret-key-change-in-production", ExpirationHours: 24,
+			Secret: getEnv("JWT_SECRET", "your-secret-key-change-in-production"), ExpirationHours: 24,
 		},
 		Redis: struct {
 			Addr     string `yaml:"addr"`
 			Password string `yaml:"password"`
 			DB       int    `yaml:"db"`
 		}{
-			Addr: "redis:6379", Password: "", DB: 0,
+			Addr: getEnv("REDIS_ADDR", "redis:6379"), Password: "", DB: 0,
 		},
 		Services: struct {
 			UserService string `yaml:"user_service"`
 		}{
-			UserService: "user-service:50051",
+			UserService: getEnv("USER_SERVICE_ADDR", "user-service:50051"),
 		},
 	}
+}
+
+func getEnv(key, fallback string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return fallback
 }

@@ -1,169 +1,197 @@
 package com.game_engine.commission.service;
 
-import com.game_engine.commission.model.Commission;
-import com.game_engine.commission.repository.CommissionRepository;
+import com.game_engine.commission.entity.CommissionClaim;
+import com.game_engine.commission.entity.CommissionConfig;
+import com.game_engine.commission.entity.CommissionSettlement;
+import com.game_engine.commission.repository.CommissionClaimRepository;
+import com.game_engine.commission.repository.CommissionConfigRepository;
+import com.game_engine.commission.repository.CommissionSettlementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.YearMonth;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
 public class CommissionService {
-    
+
     @Autowired
-    private CommissionRepository commissionRepository;
-    
-    public Commission createCommission(Commission commission) {
-        commission.setCreatedAt(LocalDateTime.now());
-        commission.setStatus("PENDING");
-        return commissionRepository.save(commission);
-    }
-    
-    public Optional<Commission> getCommissionById(Long id) {
-        return commissionRepository.findById(id);
-    }
-    
-    public List<Commission> getCommissionsByAffiliate(Long affiliateId) {
-        return commissionRepository.findByAffiliateId(affiliateId);
-    }
-    
-    public List<Commission> getCommissionsByMerchant(Long merchantId) {
-        return commissionRepository.findByMerchantId(merchantId);
-    }
-    
-    public List<Commission> getCommissionsByPeriod(String period) {
-        return commissionRepository.findByPeriod(period);
-    }
-    
-    public Optional<Commission> getCommissionByAffiliateAndPeriod(Long affiliateId, String period) {
-        return commissionRepository.findByAffiliateAndPeriod(affiliateId, period);
-    }
-    
-    public BigDecimal getTotalPaidCommission(Long affiliateId) {
-        BigDecimal total = commissionRepository.getTotalPaidCommission(affiliateId);
-        return total != null ? total : BigDecimal.ZERO;
-    }
-    
-    public BigDecimal getTotalPendingCommission(Long affiliateId) {
-        BigDecimal total = commissionRepository.getTotalPendingCommission(affiliateId);
-        return total != null ? total : BigDecimal.ZERO;
-    }
-    
-    public BigDecimal getTotalRevenueByMerchant(Long merchantId) {
-        BigDecimal total = commissionRepository.getTotalRevenueByMerchant(merchantId);
-        return total != null ? total : BigDecimal.ZERO;
-    }
-    
-    public Commission calculateRevenueShare(Long affiliateId, Long merchantId, BigDecimal netRevenue, 
-                                              BigDecimal commissionRate, String period) {
-        Optional<Commission> existing = commissionRepository.findByAffiliateAndPeriod(affiliateId, period);
-        
-        Commission commission;
-        if (existing.isPresent()) {
-            commission = existing.get();
-            commission.setNetRevenue(commission.getNetRevenue().add(netRevenue));
-            commission.setCommissionAmount(commission.getNetRevenue().multiply(commissionRate));
-            commission.setCalculatedAt(LocalDateTime.now());
-        } else {
-            commission = new Commission();
-            commission.setAffiliateId(affiliateId);
-            commission.setMerchantId(merchantId);
-            commission.setPeriod(period);
-            commission.setNetRevenue(netRevenue);
-            commission.setCommissionRate(commissionRate);
-            commission.setCommissionAmount(netRevenue.multiply(commissionRate));
-            commission.setCpaAmount(BigDecimal.ZERO);
-            commission.setTotalDeposits(BigDecimal.ZERO);
-            commission.setTotalPlayers(0);
-            commission.setNewPlayers(0);
+    @Qualifier("commissionConfigRepositoryV2")
+    private CommissionConfigRepository configRepository;
+
+    @Autowired
+    @Qualifier("commissionClaimRepositoryV2")
+    private CommissionClaimRepository claimRepository;
+
+    @Autowired
+    private CommissionSettlementRepository settlementRepository;
+
+    public BigDecimal calculateCommission(Long agentId, Long affiliateId, BigDecimal grossRevenue, int newPlayers) {
+        Optional<CommissionConfig> configOpt = configRepository
+                .findByAgentIdAndAffiliateIdAndIsActive(agentId, affiliateId, true)
+                .stream().findFirst();
+
+        if (configOpt.isEmpty()) {
+            throw new RuntimeException("No active commission config found for agent/affiliate");
         }
-        
-        return commissionRepository.save(commission);
-    }
-    
-    public Commission calculateCPA(Long affiliateId, Long merchantId, int newPlayers, 
-                                     BigDecimal cpaRate, String period) {
-        Optional<Commission> existing = commissionRepository.findByAffiliateAndPeriod(affiliateId, period);
-        
-        Commission commission;
-        if (existing.isPresent()) {
-            commission = existing.get();
-            commission.setNewPlayers(commission.getNewPlayers() + newPlayers);
-            commission.setCpaAmount(BigDecimal.valueOf(commission.getNewPlayers()).multiply(cpaRate));
-            commission.setCalculatedAt(LocalDateTime.now());
-        } else {
-            commission = new Commission();
-            commission.setAffiliateId(affiliateId);
-            commission.setMerchantId(merchantId);
-            commission.setPeriod(period);
-            commission.setNetRevenue(BigDecimal.ZERO);
-            commission.setCommissionRate(BigDecimal.ZERO);
-            commission.setCommissionAmount(BigDecimal.ZERO);
-            commission.setCpaAmount(BigDecimal.valueOf(newPlayers).multiply(cpaRate));
-            commission.setTotalDeposits(BigDecimal.ZERO);
-            commission.setTotalPlayers(0);
-            commission.setNewPlayers(newPlayers);
+
+        CommissionConfig config = configOpt.get();
+        BigDecimal commission;
+
+        switch (config.getCommissionType()) {
+            case "REVENUE_SHARE" -> commission = grossRevenue.multiply(config.getRate());
+            case "CPA" -> commission = config.getRate().multiply(BigDecimal.valueOf(newPlayers));
+            case "HYBRID" -> {
+                BigDecimal revShare = grossRevenue.multiply(config.getRate());
+                BigDecimal cpa = config.getRate().multiply(BigDecimal.valueOf(newPlayers));
+                commission = revShare.add(cpa);
+            }
+            default -> throw new RuntimeException("Unknown commission type: " + config.getCommissionType());
         }
-        
-        return commissionRepository.save(commission);
-    }
-    
-    public Commission approveCommission(Long id) {
-        Commission commission = commissionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Commission not found"));
-        commission.setStatus("APPROVED");
-        commission.setApprovedAt(LocalDateTime.now());
-        return commissionRepository.save(commission);
-    }
-    
-    public Commission rejectCommission(Long id, String reason) {
-        Commission commission = commissionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Commission not found"));
-        commission.setStatus("REJECTED");
-        commission.setRejectedAt(LocalDateTime.now());
-        commission.setRejectionReason(reason);
-        return commissionRepository.save(commission);
-    }
-    
-    public Commission payCommission(Long id) {
-        Commission commission = commissionRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Commission not found"));
-        
-        if (!"APPROVED".equals(commission.getStatus())) {
-            throw new RuntimeException("Commission must be approved before payment");
+
+        if (config.getMaxCommission() != null && commission.compareTo(config.getMaxCommission()) > 0) {
+            commission = config.getMaxCommission();
         }
-        
-        commission.setStatus("PAID");
-        commission.setPaidAt(LocalDateTime.now());
-        return commissionRepository.save(commission);
+
+        return commission;
     }
-    
-    public List<Commission> getPendingCommissions() {
-        LocalDateTime cutoffDate = LocalDateTime.now().minusDays(30);
-        return commissionRepository.findPendingOlderThan(cutoffDate);
+
+    public CommissionClaim createClaim(Long agentId, Long affiliateId, Long playerId,
+                                        String period, BigDecimal grossRevenue) {
+        BigDecimal commissionAmount = calculateCommission(agentId, affiliateId, grossRevenue, 0);
+
+        CommissionClaim claim = new CommissionClaim();
+        claim.setClaimId(UUID.randomUUID().toString());
+        claim.setAgentId(agentId);
+        claim.setAffiliateId(affiliateId);
+        claim.setPlayerId(playerId);
+        claim.setPeriod(period);
+        claim.setGrossRevenue(grossRevenue);
+        claim.setCommissionAmount(commissionAmount);
+        claim.setStatus("PENDING");
+
+        return claimRepository.save(claim);
     }
-    
-    public String generatePeriod(LocalDate date) {
-        YearMonth ym = YearMonth.from(date);
-        return ym.toString();
+
+    public CommissionClaim approveClaim(Long claimId) {
+        CommissionClaim claim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new RuntimeException("Commission claim not found"));
+
+        if (!"PENDING".equals(claim.getStatus())) {
+            throw new RuntimeException("Claim is not in PENDING status");
+        }
+
+        claim.setStatus("APPROVED");
+        claim.setProcessedAt(LocalDateTime.now());
+        return claimRepository.save(claim);
     }
-    
-    public String generateCurrentPeriod() {
-        return generatePeriod(LocalDate.now());
+
+    public CommissionClaim rejectClaim(Long claimId) {
+        CommissionClaim claim = claimRepository.findById(claimId)
+                .orElseThrow(() -> new RuntimeException("Commission claim not found"));
+
+        if (!"PENDING".equals(claim.getStatus())) {
+            throw new RuntimeException("Claim is not in PENDING status");
+        }
+
+        claim.setStatus("REJECTED");
+        claim.setProcessedAt(LocalDateTime.now());
+        return claimRepository.save(claim);
     }
-    
-    public List<Commission> getAllCommissions() {
-        return commissionRepository.findAll();
+
+    public CommissionSettlement processSettlement(Long agentId, Long affiliateId,
+                                                    LocalDateTime periodStart, LocalDateTime periodEnd) {
+        List<CommissionClaim> approvedClaims = claimRepository.findByAffiliateIdAndStatus(affiliateId, "APPROVED");
+
+        BigDecimal totalRevenue = approvedClaims.stream()
+                .map(CommissionClaim::getGrossRevenue)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        BigDecimal totalCommission = approvedClaims.stream()
+                .map(CommissionClaim::getCommissionAmount)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        CommissionSettlement settlement = new CommissionSettlement();
+        settlement.setSettlementId(UUID.randomUUID().toString());
+        settlement.setAgentId(agentId);
+        settlement.setAffiliateId(affiliateId);
+        settlement.setPeriodStart(periodStart);
+        settlement.setPeriodEnd(periodEnd);
+        settlement.setTotalRevenue(totalRevenue);
+        settlement.setTotalCommission(totalCommission);
+        settlement.setStatus("PAID");
+        settlement.setPaidAt(LocalDateTime.now());
+
+        for (CommissionClaim claim : approvedClaims) {
+            claim.setStatus("PAID");
+            claim.setProcessedAt(LocalDateTime.now());
+            claimRepository.save(claim);
+        }
+
+        return settlementRepository.save(settlement);
     }
-    
-    public void deleteCommission(Long id) {
-        commissionRepository.deleteById(id);
+
+    public Optional<CommissionClaim> getClaimById(Long id) {
+        return claimRepository.findById(id);
+    }
+
+    public List<CommissionClaim> getClaimsByAgentId(Long agentId) {
+        return claimRepository.findByAgentId(agentId);
+    }
+
+    public List<CommissionClaim> getClaimsByAffiliateId(Long affiliateId) {
+        return claimRepository.findByAffiliateId(affiliateId);
+    }
+
+    public List<CommissionClaim> getClaimsByStatus(String status) {
+        return claimRepository.findByStatus(status);
+    }
+
+    public List<CommissionSettlement> getSettlementsByAffiliateId(Long affiliateId) {
+        return settlementRepository.findByAffiliateId(affiliateId);
+    }
+
+    public List<CommissionSettlement> getSettlementsByAgentId(Long agentId) {
+        return settlementRepository.findByAgentId(agentId);
+    }
+
+    public CommissionConfig createConfig(CommissionConfig config) {
+        return configRepository.save(config);
+    }
+
+    public Optional<CommissionConfig> getConfigById(Long id) {
+        return configRepository.findById(id);
+    }
+
+    public List<CommissionConfig> getConfigsByAgentId(Long agentId) {
+        return configRepository.findByAgentId(agentId);
+    }
+
+    public List<CommissionConfig> getConfigsByAffiliateId(Long affiliateId) {
+        return configRepository.findByAffiliateId(affiliateId);
+    }
+
+    public CommissionConfig updateConfig(Long id, CommissionConfig updatedConfig) {
+        CommissionConfig existing = configRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Commission config not found"));
+
+        existing.setCommissionType(updatedConfig.getCommissionType());
+        existing.setRate(updatedConfig.getRate());
+        existing.setMinDeposit(updatedConfig.getMinDeposit());
+        existing.setMaxCommission(updatedConfig.getMaxCommission());
+        existing.setIsActive(updatedConfig.getIsActive());
+        existing.setUpdatedAt(LocalDateTime.now());
+
+        return configRepository.save(existing);
+    }
+
+    public void deleteConfig(Long id) {
+        configRepository.deleteById(id);
     }
 }

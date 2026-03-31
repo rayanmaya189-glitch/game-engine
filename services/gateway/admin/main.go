@@ -210,14 +210,14 @@ func loadConfig() *Config {
 			ExpirationHours int    `yaml:"expiration_hours"`
 			RefreshDays     int    `yaml:"refresh_days"`
 		}{
-			Secret: "your-secret-key-change-in-production", ExpirationHours: 24, RefreshDays: 7,
+			Secret: getEnv("JWT_SECRET", "your-secret-key-change-in-production"), ExpirationHours: 24, RefreshDays: 7,
 		},
 		Redis: struct {
 			Addr     string `yaml:"addr"`
 			Password string `yaml:"password"`
 			DB       int    `yaml:"db"`
 		}{
-			Addr: "redis:6379", Password: "", DB: 0,
+			Addr: getEnv("REDIS_ADDR", "redis:6379"), Password: "", DB: 0,
 		},
 		Services: struct {
 			AuthService        string `yaml:"auth_service"`
@@ -229,10 +229,10 @@ func loadConfig() *Config {
 			TournamentService  string `yaml:"tournament_service"`
 			JackpotService     string `yaml:"jackpot_service"`
 		}{
-			AuthService: "auth-service:50051", UserService: "user-service:50051",
-			WalletService: "wallet-service:50051", GameService: "game-registry:50051",
-			CommissionService: "commission-service:50051", BonusService: "bonus-service:50051",
-			TournamentService: "tournament-service:50051", JackpotService: "jackpot-service:50051",
+			AuthService: getEnv("AUTH_SERVICE_ADDR", "auth-service:50051"), UserService: getEnv("USER_SERVICE_ADDR", "user-service:50051"),
+			WalletService: getEnv("WALLET_SERVICE_ADDR", "wallet-service:50051"), GameService: getEnv("GAME_SERVICE_ADDR", "game-registry:50051"),
+			CommissionService: getEnv("COMMISSION_SERVICE_ADDR", "commission-service:50051"), BonusService: getEnv("BONUS_SERVICE_ADDR", "bonus-service:50051"),
+			TournamentService: getEnv("TOURNAMENT_SERVICE_ADDR", "tournament-service:50051"), JackpotService: getEnv("JACKPOT_SERVICE_ADDR", "jackpot-service:50051"),
 		},
 		Admin: struct {
 			AllowedIPs []string `yaml:"allowed_ips"`
@@ -240,4 +240,11 @@ func loadConfig() *Config {
 			AllowedIPs: []string{"admin.example.com"},
 		},
 	}
+}
+
+func getEnv(key, fallback string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return fallback
 }

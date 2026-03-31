@@ -195,7 +195,7 @@ func loadConfig() *Config {
 			ExpirationHours int    `yaml:"expiration_hours"`
 			RefreshDays     int    `yaml:"refresh_days"`
 		}{
-			Secret:          "your-secret-key-change-in-production",
+			Secret:          getEnv("JWT_SECRET", "your-secret-key-change-in-production"),
 			ExpirationHours: 24,
 			RefreshDays:     7,
 		},
@@ -204,7 +204,7 @@ func loadConfig() *Config {
 			Password string `yaml:"password"`
 			DB       int    `yaml:"db"`
 		}{
-			Addr:     "localhost:6379",
+			Addr:     getEnv("REDIS_ADDR", "localhost:6379"),
 			Password: "",
 			DB:       0,
 		},
@@ -214,10 +214,10 @@ func loadConfig() *Config {
 			WalletService string `yaml:"wallet_service"`
 			GameService   string `yaml:"game_service"`
 		}{
-			AuthService:   "auth-service:50051",
-			UserService:   "user-service:50051",
-			WalletService: "wallet-service:50051",
-			GameService:   "game-registry:50051",
+			AuthService:   getEnv("AUTH_SERVICE_ADDR", "auth-service:50051"),
+			UserService:   getEnv("USER_SERVICE_ADDR", "user-service:50051"),
+			WalletService: getEnv("WALLET_SERVICE_ADDR", "wallet-service:50051"),
+			GameService:   getEnv("GAME_SERVICE_ADDR", "game-registry:50051"),
 		},
 	}
 
@@ -225,4 +225,11 @@ func loadConfig() *Config {
 	// In production, use viper or similar library
 
 	return cfg
+}
+
+func getEnv(key, fallback string) string {
+	if v := os.Getenv(key); v != "" {
+		return v
+	}
+	return fallback
 }

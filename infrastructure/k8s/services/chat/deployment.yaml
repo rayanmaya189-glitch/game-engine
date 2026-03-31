@@ -1,0 +1,185 @@
+# =============================================================================
+# Chat Service Deployment
+# =============================================================================
+# In-game chat and messaging service
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat
+  namespace: game_engine
+  labels:
+    app: chat
+    version: v1
+    component: service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: chat
+  template:
+    metadata:
+      labels:
+        app: chat
+        version: v1
+        component: service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: chat
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: chat
+          image: registry.game_engine.local:5000/chat:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: GRPC_PORT
+              value: "9090"
+            - name: DATABASE_HOST
+              value: "postgresql.game_engine.svc.cluster.local"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: "chat_db"
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: password
+            - name: REDIS_HOST
+              value: "redis.game_engine.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: password
+            - name: AUTH_SERVICE_URL
+              value: "http://auth-service.game_engine.svc.cluster.local"
+            - name: NATS_URL
+              value: "nats://nats.game_engine.svc.cluster.local:4222"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: ENVIRONMENT
+              value: "production"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          livenessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: chat-config
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: chat
+                topologyKey: kubernetes.io/hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chat
+  namespace: game_engine
+  labels:
+    app: chat
+    component: service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: grpc
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: chat
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: chat-config
+  namespace: game_engine
+data:
+  config.yaml: |
+    server:
+      port: 8080
+      grpc_port: 9090
+
+    database:
+      max_open_conns: 25
+      max_idle_conns: 10
+
+    redis:
+      pool_size: 20
+      ttl: 3600
+
+    chat:
+      max_message_length: 500
+      profanity_filter: true
+      rate_limit_messages: 10
+      rate_limit_window: 60s
+      retention_days: 90
+      max_rooms_per_user: 10
+
+    moderation:
+      auto_moderation: true
+      banned_words_enabled: true
+      report_enabled: true
+
+    logging:
+      format: json
+      level: info

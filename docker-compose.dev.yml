@@ -215,7 +215,7 @@ services:
       GF_SERVER_ROOT_URL: "%(protocol)s://%(domain)s:%(http_port)s/grafana"
       GF_INSTALL_PLUGINS: grafana-clock-panel
     ports:
-      - "3000:3000"
+      - "3001:3000"
     volumes:
       - grafana-data:/var/lib/grafana
       - ./infrastructure/docker/grafana/provisioning:/etc/grafana/provisioning

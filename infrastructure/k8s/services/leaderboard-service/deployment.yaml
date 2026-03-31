@@ -1,0 +1,182 @@
+# =============================================================================
+# Leaderboard Service Deployment
+# =============================================================================
+# Player ranking and leaderboard service
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: leaderboard-service
+  namespace: game_engine
+  labels:
+    app: leaderboard-service
+    version: v1
+    component: service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: leaderboard-service
+  template:
+    metadata:
+      labels:
+        app: leaderboard-service
+        version: v1
+        component: service
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+        prometheus.io/path: "/metrics"
+    spec:
+      serviceAccountName: leaderboard-service
+      terminationGracePeriodSeconds: 30
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+      containers:
+        - name: leaderboard-service
+          image: registry.game_engine.local:5000/leaderboard-service:latest
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: grpc
+              containerPort: 9090
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
+            - name: GRPC_PORT
+              value: "9090"
+            - name: DATABASE_HOST
+              value: "postgresql.game_engine.svc.cluster.local"
+            - name: DATABASE_PORT
+              value: "5432"
+            - name: DATABASE_NAME
+              value: "leaderboard_db"
+            - name: DATABASE_USER
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: username
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: database-credentials
+                  key: password
+            - name: REDIS_HOST
+              value: "redis.game_engine.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: redis-credentials
+                  key: password
+            - name: AUTH_SERVICE_URL
+              value: "http://auth-service.game_engine.svc.cluster.local"
+            - name: NATS_URL
+              value: "nats://nats.game_engine.svc.cluster.local:4222"
+            - name: LOG_LEVEL
+              value: "info"
+            - name: ENVIRONMENT
+              value: "production"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 128Mi
+          livenessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 15
+            periodSeconds: 20
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            grpc:
+              port: 9090
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          volumeMounts:
+            - name: config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: leaderboard-service-config
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app: leaderboard-service
+                topologyKey: kubernetes.io/hostname
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: leaderboard-service
+  namespace: game_engine
+  labels:
+    app: leaderboard-service
+    component: service
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: grpc
+      port: 9090
+      targetPort: 9090
+      protocol: TCP
+  selector:
+    app: leaderboard-service
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: leaderboard-service-config
+  namespace: game_engine
+data:
+  config.yaml: |
+    server:
+      port: 8080
+      grpc_port: 9090
+
+    database:
+      max_open_conns: 25
+      max_idle_conns: 10
+
+    redis:
+      pool_size: 20
+      ttl: 30
+
+    leaderboard:
+      max_entries: 1000
+      update_interval: 5s
+      periods:
+        - daily
+        - weekly
+        - monthly
+        - all_time
+      page_size: 50
+
+    logging:
+      format: json
+      level: info

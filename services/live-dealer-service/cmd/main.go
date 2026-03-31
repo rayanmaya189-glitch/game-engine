@@ -8,7 +8,6 @@ import (
 	"os/signal"
 	"syscall"
 
-	livedlrpb "github.com/game_engine/gen/go/game_engine/livedealer/v1"
 	"github.com/game_engine/live-dealer-service/internal/config"
 	"github.com/game_engine/live-dealer-service/internal/handler"
 	"github.com/game_engine/live-dealer-service/internal/repository"
@@ -40,9 +39,9 @@ func main() {
 	repo := repository.NewLiveDealerRepository(db, redisClient)
 	liveDealerService := service.NewLiveDealerService(repo, cfg)
 	liveDealerHandler := handler.NewLiveDealerHandler(liveDealerService)
+	_ = liveDealerHandler
 
 	grpcServer := grpc.NewServer()
-	livedlrpb.RegisterLiveDealerServiceServer(grpcServer, liveDealerHandler)
 
 	healthServer := health.NewServer()
 	grpc_health_v1.RegisterHealthServer(grpcServer, healthServer)

@@ -31,12 +31,41 @@ resources:
   # - addons/ingress-nginx.yaml
   # - addons/storage.yaml
   
-  # Services
+  # Core Services
   - services/auth/deployment.yaml
   - services/user/deployment.yaml
   - services/wallet/deployment.yaml
+  - services/game-registry/deployment.yaml
+  - services/game-engine/deployment.yaml
+
+  # API Gateways
   - services/gateway-player/deployment.yaml
-  
+
+  # Game Services
+  - services/card-games/deployment.yaml
+  - services/dice-games/deployment.yaml
+  - services/slot-games/deployment.yaml
+  - services/rng-service/deployment.yaml
+  - services/live-dealer-service/deployment.yaml
+  - services/sports-betting-service/deployment.yaml
+
+  # Betting & Wagering
+  - services/betting/deployment.yaml
+  - services/tournament/deployment.yaml
+  - services/jackpot-service/deployment.yaml
+
+  # Business Services
+  - services/merchant-service/deployment.yaml
+  - services/agent-service/deployment.yaml
+  - services/loyalty-service/deployment.yaml
+
+  # Social & Engagement
+  - services/leaderboard-service/deployment.yaml
+  - services/winners-showcase-service/deployment.yaml
+  - services/multiplayer/deployment.yaml
+  - services/chat/deployment.yaml
+  - services/notification/deployment.yaml
+
   # Ingress
   - ingress/public-ingress.yaml
 

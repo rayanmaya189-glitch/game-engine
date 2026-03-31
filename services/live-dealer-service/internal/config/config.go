@@ -11,6 +11,8 @@ type Config struct {
 	GRPC     GRPCConfig     `yaml:"grpc"`
 	Database DatabaseConfig `yaml:"database"`
 	Redis    RedisConfig    `yaml:"redis"`
+	NATS     NATSConfig     `yaml:"nats"`
+	Dealer   DealerConfig   `yaml:"dealer"`
 }
 
 type GRPCConfig struct {
@@ -18,12 +20,13 @@ type GRPCConfig struct {
 }
 
 type DatabaseConfig struct {
-	Host     string `yaml:"host"`
-	Port     int    `yaml:"port"`
-	User     string `yaml:"user"`
-	Password string `yaml:"password"`
-	Name     string `yaml:"name"`
-	SSLMode  string `yaml:"sslmode"`
+	Host            string `yaml:"host"`
+	Port            int    `yaml:"port"`
+	User            string `yaml:"user"`
+	Password        string `yaml:"password"`
+	Name            string `yaml:"name"`
+	SSLMode         string `yaml:"sslmode"`
+	MaxConnections  int    `yaml:"max_connections"`
 }
 
 func (d DatabaseConfig) ConnectionString() string {
@@ -42,6 +45,22 @@ func (r RedisConfig) Address() string {
 	return fmt.Sprintf("%s:%d", r.Host, r.Port)
 }
 
+type NATSConfig struct {
+	Host string `yaml:"host"`
+	Port int    `yaml:"port"`
+}
+
+func (n NATSConfig) Address() string {
+	return fmt.Sprintf("nats://%s:%d", n.Host, n.Port)
+}
+
+type DealerConfig struct {
+	MaxTablesPerDealer     int `yaml:"max_tables_per_dealer"`
+	SessionTimeoutMinutes int `yaml:"session_timeout_minutes"`
+	VideoStreamBitrate    int `yaml:"video_stream_bitrate"`
+	MaxPlayersPerTable    int `yaml:"max_players_per_table"`
+}
+
 func Load() (*Config, error) {
 	configPath := os.Getenv("CONFIG_PATH")
 	if configPath == "" {
@@ -50,7 +69,6 @@ func Load() (*Config, error) {
 
 	data, err := os.ReadFile(configPath)
 	if err != nil {
-		// Return config with no defaults - all values must be provided via config file or environment
 		return nil, fmt.Errorf("config file not found at %s: please provide CONFIG_PATH or config file", configPath)
 	}
 
@@ -58,5 +76,13 @@ func Load() (*Config, error) {
 	if err := yaml.Unmarshal(data, &cfg); err != nil {
 		return nil, fmt.Errorf("failed to parse config: %w", err)
 	}
+
+	if cfg.Database.SSLMode == "" {
+		cfg.Database.SSLMode = "disable"
+	}
+	if cfg.Database.MaxConnections == 0 {
+		cfg.Database.MaxConnections = 20
+	}
+
 	return &cfg, nil
 }
