@@ -1,0 +1,24 @@
+server:
+  host: "0.0.0.0"
+  grpc_port: 9097
+
+database:
+  host: "${DB_HOST:-localhost}"
+  port: "${DB_PORT:-5432}"
+  user: "${DB_USER:-postgres}"
+  password: "${DB_PASSWORD:-postgres}"
+  name: "${DB_NAME:-banner_service}"
+  max_connections: 20
+
+redis:
+  host: "${REDIS_HOST:-localhost}"
+  port: "${REDIS_PORT:-6379}"
+  db: 0
+
+banner:
+  default_page_size: 20
+  max_page_size: 100
+  cache_ttl_seconds: 300
+  max_image_size_mb: 5
+  auto_rotate: true
+  rotation_interval_seconds: 30

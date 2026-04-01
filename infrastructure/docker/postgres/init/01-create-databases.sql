@@ -92,3 +92,6 @@ CREATE DATABASE multiplayer_service;
 
 -- Notification Service
 CREATE DATABASE notification_service;
+
+-- Banner Service
+CREATE DATABASE banner_service;
