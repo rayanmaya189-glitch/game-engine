@@ -106,6 +106,16 @@ export const Permissions = {
 
   // Audit
   AUDIT_VIEW: 'audit:view',
+
+  // Banners
+  BANNERS_VIEW: 'banners:view',
+  BANNERS_CREATE: 'banners:create',
+  BANNERS_EDIT: 'banners:edit',
+  BANNERS_DELETE: 'banners:delete',
+
+  // Referrals
+  REFERRALS_VIEW: 'referrals:view',
+  REFERRALS_EDIT: 'referrals:edit',
 } as const;
 
 export type Permission = typeof Permissions[keyof typeof Permissions];
@@ -170,6 +180,9 @@ export const menuItemsConfig: MenuItemConfig[] = [
   { text: 'Payments', icon: 'AccountBalance', path: '/payments', permission: Permissions.PAYMENTS_VIEW },
   { text: 'Reports', icon: 'Assessment', path: '/reports', permission: Permissions.REPORTS_VIEW },
   { text: 'Settings', icon: 'Settings', path: '/settings', permission: Permissions.SETTINGS_VIEW },
+  { text: 'KYC', icon: 'VerifiedUser', path: '/kyc', permission: Permissions.KYC_VIEW },
+  { text: 'Banners', icon: 'Image', path: '/banners', permission: Permissions.BANNERS_VIEW },
+  { text: 'Referrals', icon: 'Share', path: '/referrals', permission: Permissions.REFERRALS_VIEW },
 ];
 
 // Filter menu items based on user permissions

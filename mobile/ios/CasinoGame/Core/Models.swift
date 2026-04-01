@@ -15,7 +15,7 @@ struct User: Codable {
     let currency: String
     let language: String
     let createdAt: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id, email, username, phone
         case firstName = "first_name"
@@ -35,7 +35,7 @@ struct LoginResponse: Codable {
     let accessToken: String
     let refreshToken: String
     let expiresIn: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case user
         case accessToken = "access_token"
@@ -50,7 +50,7 @@ struct RegisterResponse: Codable {
     let refreshToken: String
     let expiresIn: Int
     let message: String
-    
+
     enum CodingKeys: String, CodingKey {
         case user
         case accessToken = "access_token"
@@ -84,7 +84,7 @@ struct Game: Codable, Identifiable {
     let jackpotAmount: Double?
     let playCount: Int
     let rating: Double?
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, slug, description, provider, category
         case thumbnailUrl = "thumbnail_url"
@@ -109,7 +109,7 @@ struct GameProvider: Codable {
     let id: String
     let name: String
     let logoUrl: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name
         case logoUrl = "logo_url"
@@ -122,36 +122,11 @@ struct GameCategory: Codable, Identifiable {
     let slug: String
     let icon: String?
     let gameCount: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, slug, icon
         case gameCount = "game_count"
     }
-}
-
-struct GameListResponse: Codable {
-    let games: [Game]
-    let total: Int
-    let page: Int
-    let pageSize: Int
-    let totalPages: Int
-    
-    enum CodingKeys: String, CodingKey {
-        case games, total, page
-        case pageSize = "page_size"
-        case totalPages = "total_pages"
-    }
-}
-
-struct FeaturedGamesResponse: Codable {
-    let featured: [Game]
-    let popular: [Game]
-    let new: [Game]
-    let jackpot: [Game]
-}
-
-struct CategoriesResponse: Codable {
-    let categories: [GameCategory]
 }
 
 struct GameSession: Codable {
@@ -160,7 +135,7 @@ struct GameSession: Codable {
     let playUrl: String
     let funPlayUrl: String?
     let expiresAt: String
-    
+
     enum CodingKeys: String, CodingKey {
         case sessionId = "session_id"
         case gameId = "game_id"
@@ -182,7 +157,7 @@ struct Wallet: Codable {
     let totalWon: Double
     let totalWagered: Double
     let lastUpdated: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case userId = "user_id"
@@ -199,7 +174,7 @@ struct WalletBalance: Codable {
     let balance: Double
     let bonusBalance: Double
     let currency: String
-    
+
     enum CodingKeys: String, CodingKey {
         case balance
         case bonusBalance = "bonus_balance"
@@ -214,7 +189,7 @@ struct DepositResponse: Codable {
     let currency: String
     let paymentUrl: String?
     let expiresAt: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case transactionId = "transaction_id"
         case status, amount, currency
@@ -230,7 +205,7 @@ struct WithdrawResponse: Codable {
     let currency: String
     let fee: Double
     let estimatedArrival: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case transactionId = "transaction_id"
         case status, amount, currency, fee
@@ -250,7 +225,7 @@ struct Transaction: Codable, Identifiable {
     let description: String?
     let createdAt: String
     let completedAt: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case userId = "user_id"
@@ -269,7 +244,7 @@ struct TransactionListResponse: Codable {
     let page: Int
     let pageSize: Int
     let totalPages: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case transactions, total, page
         case pageSize = "page_size"
@@ -287,7 +262,7 @@ struct PaymentMethod: Codable {
     let feePercentage: Double
     let processingTime: String
     let isAvailable: Bool
-    
+
     enum CodingKeys: String, CodingKey {
         case id, name, type
         case logoUrl = "logo_url"
@@ -296,15 +271,5 @@ struct PaymentMethod: Codable {
         case feePercentage = "fee_percentage"
         case processingTime = "processing_time"
         case isAvailable = "is_available"
-    }
-}
-
-struct PaymentMethodsResponse: Codable {
-    let depositMethods: [PaymentMethod]
-    let withdrawMethods: [PaymentMethod]
-    
-    enum CodingKeys: String, CodingKey {
-        case depositMethods = "deposit_methods"
-        case withdrawMethods = "withdraw_methods"
     }
 }

@@ -2,7 +2,6 @@ package com.casino.game.data.model
 
 import com.google.gson.annotations.SerializedName
 
-// Auth Models
 data class LoginRequest(
     val email: String,
     val password: String
@@ -59,124 +58,6 @@ data class UpdateProfileRequest(
     val phone: String? = null
 )
 
-// Wallet Models
-data class BalanceResponse(
-    val balance: Double,
-    @SerializedName("bonus_balance")
-    val bonusBalance: Double,
-    @SerializedName("pending_balance")
-    val pendingBalance: Double,
-    val currency: String
-)
-
-data class Transaction(
-    val id: String,
-    val type: String,
-    val amount: Double,
-    val status: String,
-    val method: String?,
-    @SerializedName("created_at")
-    val createdAt: String,
-    @SerializedName("transaction_id")
-    val transactionId: String?
-)
-
-data class TransactionsResponse(
-    val transactions: List<Transaction>,
-    val total: Int,
-    val page: Int,
-    val pages: Int
-)
-
-data class DepositRequest(
-    val amount: Double,
-    val method: String,
-    @SerializedName("payment_id")
-    val paymentId: String? = null
-)
-
-data class DepositResponse(
-    @SerializedName("transaction_id")
-    val transactionId: String,
-    val status: String,
-    val message: String
-)
-
-data class WithdrawRequest(
-    val amount: Double,
-    val method: String,
-    @SerializedName("account_info")
-    val accountInfo: String
-)
-
-data class WithdrawResponse(
-    @SerializedName("transaction_id")
-    val transactionId: String,
-    val status: String,
-    val message: String
-)
-
-// Game Models
-data class Game(
-    val id: String,
-    val name: String,
-    val provider: String,
-    val category: String,
-    val thumbnail: String?,
-    val status: String,
-    @SerializedName("min_bet")
-    val minBet: Double,
-    @SerializedName("max_bet")
-    val maxBet: Double,
-    @SerializedName("rtp")
-    val rtp: Double,
-    val volatility: String?
-)
-
-data class GameDetails(
-    val id: String,
-    val name: String,
-    val provider: String,
-    val category: String,
-    val thumbnail: String?,
-    val banner: String?,
-    val description: String,
-    val status: String,
-    @SerializedName("min_bet")
-    val minBet: Double,
-    @SerializedName("max_bet")
-    val maxBet: Double,
-    @SerializedName("rtp")
-    val rtp: Double,
-    val volatility: String?,
-    @SerializedName("paylines")
-    val paylines: Int?,
-    @SerializedName("reels")
-    val reels: Int?,
-    @SerializedName("game_features")
-    val gameFeatures: List<String>?
-)
-
-data class GamesResponse(
-    val games: List<Game>,
-    val total: Int,
-    val page: Int,
-    val pages: Int
-)
-
-data class Category(
-    val id: String,
-    val name: String,
-    val icon: String?,
-    @SerializedName("game_count")
-    val gameCount: Int
-)
-
-data class CategoriesResponse(
-    val categories: List<Category>
-)
-
-// Tournament Models
 data class Tournament(
     val id: String,
     val name: String,
@@ -245,7 +126,6 @@ data class LeaderboardResponse(
     val type: String
 )
 
-// Jackpot Models
 data class Jackpot(
     val id: String,
     val name: String,
@@ -292,7 +172,6 @@ data class JackpotsResponse(
     val jackpots: List<Jackpot>
 )
 
-// Bonus Models
 data class Bonus(
     val id: String,
     val name: String,
@@ -321,7 +200,6 @@ data class ClaimBonusResponse(
     val bonusAmount: Double?
 )
 
-// Support Models
 data class SupportTicket(
     val id: String,
     val subject: String,
@@ -347,7 +225,6 @@ data class TicketResponse(
     val message: String
 )
 
-// WebSocket Models
 data class WsMessage(
     val type: String,
     val data: Any?
@@ -382,7 +259,6 @@ data class BalanceUpdate(
     val amount: Double
 )
 
-// Generic Response
 data class ApiResponse<T>(
     val success: Boolean,
     val data: T?,

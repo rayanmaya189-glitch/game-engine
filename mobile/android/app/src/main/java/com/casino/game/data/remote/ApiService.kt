@@ -7,7 +7,7 @@ import retrofit2.http.*
 interface ApiService {
     // Auth
     @POST("player/auth/login")
-   Body request: Login suspend fun login(@Request): Response<LoginResponse>
+    suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
     @POST("player/auth/register")
     suspend fun register(@Body request: RegisterRequest): Response<LoginResponse>
@@ -103,6 +103,13 @@ interface ApiService {
         @Query("type") type: String = "all",
         @Query("period") period: String = "daily"
     ): Response<LeaderboardResponse>
+
+    // Game Play
+    @POST("player/games/{id}/spin")
+    suspend fun spinGame(@Path("id") gameId: String, @Body request: SpinRequest): Response<SpinResponse>
+
+    @POST("player/tournaments/{id}/join")
+    suspend fun joinTournament(@Path("id") tournamentId: String): Response<Unit>
 
     // Support
     @GET("player/support/tickets")

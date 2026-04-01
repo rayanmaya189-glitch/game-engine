@@ -237,4 +237,25 @@ export const rbacAPI = {
   deleteAdminUser: (id: string) => api.delete(`/admin/admin-users/${id}`),
 };
 
+// Banner API (matches backend /api/v1/admin/banners)
+export const bannerAPI = {
+  getAll: (params?: { type?: string; status?: string; page?: number; limit?: number }) =>
+    api.get('/admin/banners', { params }),
+  create: (data: Record<string, any>) => api.post('/admin/banners', data),
+  update: (id: string, data: Record<string, any>) => api.put(`/admin/banners/${id}`, data),
+  delete: (id: string) => api.delete(`/admin/banners/${id}`),
+  updateStatus: (id: string, data: { status: string }) =>
+    api.put(`/admin/banners/${id}/status`, data),
+};
+
+// Referral API (matches backend /api/v1/admin/referrals)
+export const referralAPI = {
+  getCodes: (params?: { status?: string; page?: number; limit?: number }) =>
+    api.get('/admin/referrals/codes', { params }),
+  getStats: () => api.get('/admin/referrals/stats'),
+  getRewards: () => api.get('/admin/referrals/rewards'),
+  updateReward: (id: string, data: Record<string, any>) =>
+    api.put(`/admin/referrals/rewards/${id}`, data),
+};
+
 export default api;

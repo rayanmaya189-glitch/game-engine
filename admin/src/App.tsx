@@ -17,6 +17,9 @@ import Bonuses from './pages/Bonuses';
 import Payments from './pages/Payments';
 import Reports from './pages/Reports';
 import Settings from './pages/Settings';
+import KYC from './pages/KYC';
+import BannerManagement from './pages/BannerManagement';
+import ReferralManagement from './pages/ReferralManagement';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, user } = useAppSelector((state: any) => state.auth);
@@ -124,6 +127,21 @@ function App() {
           <Route path="settings" element={
             <PermissionRoute permission="settings:view">
               <Settings />
+            </PermissionRoute>
+          } />
+          <Route path="kyc" element={
+            <PermissionRoute permission="kyc:view">
+              <KYC />
+            </PermissionRoute>
+          } />
+          <Route path="banners" element={
+            <PermissionRoute permission="banners:view">
+              <BannerManagement />
+            </PermissionRoute>
+          } />
+          <Route path="referrals" element={
+            <PermissionRoute permission="referrals:view">
+              <ReferralManagement />
             </PermissionRoute>
           } />
         </Route>

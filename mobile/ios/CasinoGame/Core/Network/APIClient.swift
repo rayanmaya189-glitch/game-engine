@@ -171,7 +171,28 @@ class APIClient {
     func removeFromFavorites(gameId: String) async throws {
         let _: EmptyResponse = try await request(endpoint: "games/\(gameId)/favorite", method: .delete)
     }
-    
+
+    func spinGame(betAmount: Double) async throws -> SpinResult {
+        let parameters: [String: Any] = ["bet_amount": betAmount]
+        return try await request(endpoint: "games/slots/spin", method: .post, parameters: parameters)
+    }
+
+    // MARK: - Jackpot
+
+    func getJackpotWinners() async throws -> [JackpotWinner] {
+        return try await request(endpoint: "jackpot/winners", method: .get)
+    }
+
+    // MARK: - Bonus
+
+    func getBonuses() async throws -> [Bonus] {
+        return try await request(endpoint: "bonuses", method: .get)
+    }
+
+    func claimBonus(id: String) async throws {
+        let _: EmptyResponse = try await request(endpoint: "bonuses/\(id)/claim", method: .post)
+    }
+
     // MARK: - Private Methods
     
     private func request<T: Decodable>(
