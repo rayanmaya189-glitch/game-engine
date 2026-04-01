@@ -1,0 +1,26 @@
+server:
+  host: "0.0.0.0"
+  grpc_port: 9098
+
+database:
+  host: "${DB_HOST:-localhost}"
+  port: "${DB_PORT:-5432}"
+  user: "${DB_USER:-postgres}"
+  password: "${DB_PASSWORD:-postgres}"
+  name: "${DB_NAME:-referral_service}"
+  max_connections: 20
+
+redis:
+  host: "${REDIS_HOST:-localhost}"
+  port: "${REDIS_PORT:-6379}"
+  db: 0
+
+referral:
+  code_prefix: "REF"
+  code_length: 8
+  default_referrer_bonus: 10.0
+  default_referee_bonus: 5.0
+  min_deposit_for_reward: 20.0
+  max_referral_depth: 3
+  multi_tier_rate: 0.1
+  reward_expiry_days: 90

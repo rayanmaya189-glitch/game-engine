@@ -95,3 +95,6 @@ CREATE DATABASE notification_service;
 
 -- Banner Service
 CREATE DATABASE banner_service;
+
+-- Referral Service
+CREATE DATABASE referral_service;
