@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { 
-  Box, Typography, Card, CardContent, Grid, TextField, Button, 
-  FormControl, InputLabel, Select, MenuItem, Table, TableBody, 
-  TableCell, TableContainer, TableHead, TableRow, Chip, Tabs, Tab,
-  LinearProgress, Paper
+  Box, Typography, Card, CardContent,
+  Table, TableBody, TableCell, TableContainer, TableHead, 
+  TableRow, Chip, Tabs, Tab, LinearProgress
 } from '@mui/material';
-import { Download, TrendingUp, TrendingDown, People, Games, AttachMoney, MonetizationOn } from '@mui/icons-material';
 import { reportsAPI } from '../../services/api';
+import { RevenueSummaryCards, UserSummaryCards } from './ReportCharts';
+import ReportFilters from './ReportFilters';
 
 const Reports = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -88,62 +88,16 @@ const Reports = () => {
           </Tabs>
         </Box>
         <CardContent>
-          <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} md={3}>
-              <TextField 
-                type="date" 
-                label="From" 
-                fullWidth 
-                size="small"
-                value={dateRange.from}
-                onChange={(e) => setDateRange({ ...dateRange, from: e.target.value })}
-                InputLabelProps={{ shrink: true }}
-              />
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <TextField 
-                type="date" 
-                label="To" 
-                fullWidth 
-                size="small"
-                value={dateRange.to}
-                onChange={(e) => setDateRange({ ...dateRange, to: e.target.value })}
-                InputLabelProps={{ shrink: true }}
-              />
-            </Grid>
-            {activeTab === 1 && (
-              <Grid item xs={12} md={3}>
-                <FormControl fullWidth size="small">
-                  <InputLabel>Period</InputLabel>
-                  <Select value={period} label="Period" onChange={(e) => setPeriod(e.target.value)}>
-                    <MenuItem value="7">Last 7 days</MenuItem>
-                    <MenuItem value="30">Last 30 days</MenuItem>
-                    <MenuItem value="90">Last 90 days</MenuItem>
-                    <MenuItem value="365">Last year</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            )}
-            {activeTab === 2 && (
-              <Grid item xs={12} md={3}>
-                <FormControl fullWidth size="small">
-                  <InputLabel>Category</InputLabel>
-                  <Select value={category} label="Category" onChange={(e) => setCategory(e.target.value)}>
-                    <MenuItem value="">All Games</MenuItem>
-                    <MenuItem value="slot">Slots</MenuItem>
-                    <MenuItem value="live_casino">Live Casino</MenuItem>
-                    <MenuItem value="table_games">Table Games</MenuItem>
-                    <MenuItem value="dice">Dice</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-            )}
-            <Grid item xs={12} md={activeTab === 0 ? 6 : 3}>
-              <Button variant="contained" startIcon={<Download />} onClick={handleExport}>
-                Export
-              </Button>
-            </Grid>
-          </Grid>
+          <ReportFilters
+            activeTab={activeTab}
+            dateRange={dateRange}
+            setDateRange={setDateRange}
+            period={period}
+            setPeriod={setPeriod}
+            category={category}
+            setCategory={setCategory}
+            onExport={handleExport}
+          />
         </CardContent>
       </Card>
 
@@ -154,44 +108,7 @@ const Reports = () => {
         <Card>
           <CardContent>
             <Typography variant="h6" gutterBottom>Revenue Overview</Typography>
-            <Grid container spacing={2} sx={{ mb: 3 }}>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <AttachMoney sx={{ color: 'success.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">Total Deposits</Typography>
-                    <Typography variant="h6" fontWeight="bold">$72,900</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <MonetizationOn sx={{ color: 'error.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">Total Withdrawals</Typography>
-                    <Typography variant="h6" fontWeight="bold">$47,600</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <TrendingUp sx={{ color: 'primary.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">Net Revenue</Typography>
-                    <Typography variant="h6" fontWeight="bold">$25,300</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Games sx={{ color: 'warning.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">Total Rake</Typography>
-                    <Typography variant="h6" fontWeight="bold">$17,800</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            </Grid>
+            <RevenueSummaryCards />
             <TableContainer>
               <Table>
                 <TableHead>
@@ -233,44 +150,7 @@ const Reports = () => {
         <Card>
           <CardContent>
             <Typography variant="h6" gutterBottom>User Statistics</Typography>
-            <Grid container spacing={2} sx={{ mb: 3 }}>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <People sx={{ color: 'info.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">New Users</Typography>
-                    <Typography variant="h6" fontWeight="bold">251</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <TrendingUp sx={{ color: 'success.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">Active Users</Typography>
-                    <Typography variant="h6" fontWeight="bold">6,447</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <TrendingDown sx={{ color: 'warning.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">KYC Approved</Typography>
-                    <Typography variant="h6" fontWeight="bold">67</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <Paper sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <AttachMoney sx={{ color: 'primary.main', fontSize: 32 }} />
-                  <Box>
-                    <Typography variant="body2" color="text.secondary">Conversions</Typography>
-                    <Typography variant="h6" fontWeight="bold">65.9%</Typography>
-                  </Box>
-                </Paper>
-              </Grid>
-            </Grid>
+            <UserSummaryCards />
             <TableContainer>
               <Table>
                 <TableHead>

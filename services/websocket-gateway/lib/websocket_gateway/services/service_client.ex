@@ -1,10 +1,7 @@
 defmodule WebsocketGateway.Services.ServiceClient do
   @moduledoc """
-  gRPC client for communicating with backend services.
-  Used by WebSocket channels to call wallet, game, tournament,
-  jackpot, and auth services via gRPC.
-
-  All inter-service communication uses gRPC exclusively (no HTTP/REST).
+  gRPC client for wallet and game service calls.
+  Used by WebSocket channels to call wallet and game registry services via gRPC.
   """
 
   alias WebsocketGateway.GRPC.ChannelManager
@@ -163,92 +160,6 @@ defmodule WebsocketGateway.Services.ServiceClient do
     request = %Messages.Game.SearchGamesRequest{query: query, limit: limit}
 
     call_rpc(:game_registry_service, "game_engine.game.v1.GameRegistryService/SearchGames", request, Messages.Game.SearchGamesResponse)
-  end
-
-  # =========================================================================
-  # Tournament Service
-  # =========================================================================
-
-  @doc """
-  Get tournament details.
-  """
-  def get_tournament(tournament_id) do
-    request = %Messages.Tournament.GetTournamentRequest{tournament_id: tournament_id}
-
-    call_rpc(:tournament_service, "game_engine.tournament.v1.TournamentService/GetTournament", request, Messages.Tournament.GetTournamentResponse)
-  end
-
-  @doc """
-  Get active tournaments.
-  """
-  def list_active_tournaments do
-    request = %Messages.Tournament.ListTournamentsRequest{status: "active", limit: 50}
-
-    call_rpc(:tournament_service, "game_engine.tournament.v1.TournamentService/ListTournaments", request, Messages.Tournament.ListTournamentsResponse)
-  end
-
-  @doc """
-  Get tournament schedule.
-  Lists all tournaments regardless of status for scheduling view.
-  """
-  def get_tournament_schedule do
-    request = %Messages.Tournament.ListTournamentsRequest{status: "", limit: 100}
-
-    call_rpc(:tournament_service, "game_engine.tournament.v1.TournamentService/ListTournaments", request, Messages.Tournament.ListTournamentsResponse)
-  end
-
-  @doc """
-  Get tournament leaderboard.
-  """
-  def get_leaderboard(tournament_id) do
-    request = %Messages.Tournament.GetLeaderboardRequest{tournament_id: tournament_id, limit: 50}
-
-    call_rpc(:tournament_service, "game_engine.tournament.v1.TournamentService/GetLeaderboard", request, Messages.Tournament.GetLeaderboardResponse)
-  end
-
-  @doc """
-  Get tournament standings.
-  Same as leaderboard, returned as standings view.
-  """
-  def get_standings(tournament_id) do
-    request = %Messages.Tournament.GetLeaderboardRequest{tournament_id: tournament_id, limit: 100}
-
-    call_rpc(:tournament_service, "game_engine.tournament.v1.TournamentService/GetLeaderboard", request, Messages.Tournament.GetLeaderboardResponse)
-  end
-
-  # =========================================================================
-  # Jackpot Service
-  # =========================================================================
-
-  @doc """
-  Get current jackpot amounts.
-  """
-  def get_jackpot(jackpot_id) do
-    request = %Messages.Jackpot.GetJackpotRequest{jackpot_id: jackpot_id}
-
-    call_rpc(:jackpot_service, "game_engine.jackpot.v1.JackpotService/GetJackpot", request, Messages.Jackpot.GetJackpotResponse)
-  end
-
-  @doc """
-  List all active jackpots.
-  """
-  def list_jackpots do
-    request = %Messages.Jackpot.ListJackpotsRequest{status: "active"}
-
-    call_rpc(:jackpot_service, "game_engine.jackpot.v1.JackpotService/ListJackpots", request, Messages.Jackpot.ListJackpotsResponse)
-  end
-
-  # =========================================================================
-  # Auth Service
-  # =========================================================================
-
-  @doc """
-  Authenticate user token via auth service gRPC.
-  """
-  def authenticate_user(token) do
-    request = %Messages.Auth.ValidateTokenRequest{token: token, expected_type: "access"}
-
-    call_rpc(:auth_service, "game_engine.auth.v1.AuthService/ValidateToken", request, Messages.Auth.ValidateTokenResponse)
   end
 
   # =========================================================================

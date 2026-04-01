@@ -137,7 +137,7 @@ func loadConfig() *Config {
 			Secret          string `yaml:"secret"`
 			ExpirationHours int    `yaml:"expiration_hours"`
 		}{
-			Secret: getEnv("JWT_SECRET", "your-secret-key-change-in-production"), ExpirationHours: 24,
+			Secret: getEnv("JWT_SECRET", ""), ExpirationHours: 24,
 		},
 		Redis: struct {
 			Addr     string `yaml:"addr"`

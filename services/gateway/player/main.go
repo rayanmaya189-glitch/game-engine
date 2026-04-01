@@ -195,7 +195,7 @@ func loadConfig() *Config {
 			ExpirationHours int    `yaml:"expiration_hours"`
 			RefreshDays     int    `yaml:"refresh_days"`
 		}{
-			Secret:          getEnv("JWT_SECRET", "your-secret-key-change-in-production"),
+			Secret:          getEnv("JWT_SECRET", ""),
 			ExpirationHours: 24,
 			RefreshDays:     7,
 		},

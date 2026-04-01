@@ -1,0 +1,20 @@
+server:
+  host: "0.0.0.0"
+  port: 8081
+jwt:
+  secret: "${JWT_SECRET}"
+  expiration_hours: 24
+  refresh_days: 7
+  algorithm: RS256
+redis:
+  host: "${REDIS_HOST:-localhost}"
+  port: "${REDIS_PORT:-6379}"
+  db: 2
+rate_limit:
+  enabled: true
+  requests_per_second: 100
+  burst: 200
+cors:
+  allowed_origins:
+    - "http://localhost:3000"
+    - "http://localhost:3001"

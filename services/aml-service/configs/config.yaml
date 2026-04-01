@@ -1,0 +1,15 @@
+server:
+  host: "0.0.0.0"
+  port: 9114
+  grpc_port: 9114
+database:
+  url: "${AML_DATABASE_URL:-postgresql+asyncpg://postgres:postgres@localhost:5432/aml_service}"
+rules:
+  structuring_threshold: 10000
+  structuring_count: 3
+  rapid_withdraw_ratio: 0.8
+  large_transaction_threshold: 10000
+  velocity_threshold: 10
+  daily_deposit_limit: 10000
+  weekly_deposit_limit: 25000
+  monthly_deposit_limit: 100000

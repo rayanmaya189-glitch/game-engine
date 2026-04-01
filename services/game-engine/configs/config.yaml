@@ -1,0 +1,20 @@
+server:
+  host: "0.0.0.0"
+  port: 9094
+database:
+  host: "${DB_HOST:-localhost}"
+  port: "${DB_PORT:-5432}"
+  user: "${DB_USER:-postgres}"
+  password: "${DB_PASSWORD:-postgres}"
+  name: "${DB_NAME:-game_engine_db}"
+redis:
+  host: "${REDIS_HOST:-localhost}"
+  port: "${REDIS_PORT:-6379}"
+nats:
+  host: "${NATS_HOST:-localhost}"
+  port: "${NATS_PORT:-4222}"
+game:
+  max_reels: 6
+  max_rows: 7
+  min_bet: 1
+  max_bet: 10000

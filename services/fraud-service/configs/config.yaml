@@ -1,0 +1,12 @@
+server:
+  host: "0.0.0.0"
+  port: 9115
+  grpc_port: 9115
+database:
+  url: "${FRAUD_DATABASE_URL:-postgresql+asyncpg://postgres:postgres@localhost:5432/fraud_service}"
+thresholds:
+  high_amount: 5000
+  very_high_amount: 10000
+  bet_amount: 1000
+  rapid_bet_seconds: 2
+  new_account_amount: 1000
