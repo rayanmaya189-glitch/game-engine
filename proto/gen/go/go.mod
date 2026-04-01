@@ -1,6 +1,6 @@
 module game_engine/gen/go
 
-go 1.25.0
+go 1.21
 
 require (
 	google.golang.org/genproto/googleapis/api v0.0.0-20241015194416-e50c2f71c0bc
