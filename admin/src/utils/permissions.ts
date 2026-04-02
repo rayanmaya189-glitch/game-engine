@@ -116,6 +116,18 @@ export const Permissions = {
   // Referrals
   REFERRALS_VIEW: 'referrals:view',
   REFERRALS_EDIT: 'referrals:edit',
+
+  // Live Dealer
+  LIVE_DEALER_VIEW: 'live_dealer:view',
+  LIVE_DEALER_MANAGE: 'live_dealer:manage',
+
+  // Chat
+  CHAT_VIEW: 'chat:view',
+  CHAT_MODERATE: 'chat:moderate',
+
+  // Notifications
+  NOTIFICATIONS_VIEW: 'notifications:view',
+  NOTIFICATIONS_SEND: 'notifications:send',
 } as const;
 
 export type Permission = typeof Permissions[keyof typeof Permissions];
@@ -183,6 +195,9 @@ export const menuItemsConfig: MenuItemConfig[] = [
   { text: 'KYC', icon: 'VerifiedUser', path: '/kyc', permission: Permissions.KYC_VIEW },
   { text: 'Banners', icon: 'Image', path: '/banners', permission: Permissions.BANNERS_VIEW },
   { text: 'Referrals', icon: 'Share', path: '/referrals', permission: Permissions.REFERRALS_VIEW },
+  { text: 'Live Dealer', icon: 'Videocam', path: '/live-dealer', permission: Permissions.LIVE_DEALER_VIEW },
+  { text: 'Chat Moderation', icon: 'Chat', path: '/chat', permission: Permissions.CHAT_VIEW },
+  { text: 'Notifications', icon: 'Notifications', path: '/notifications', permission: Permissions.NOTIFICATIONS_VIEW },
 ];
 
 // Filter menu items based on user permissions

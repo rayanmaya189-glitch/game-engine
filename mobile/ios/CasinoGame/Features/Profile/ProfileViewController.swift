@@ -65,7 +65,10 @@ class ProfileViewController: UIViewController {
         ("Edit Profile", "person.fill"),
         ("KYC Verification", "person.badge.key.fill"),
         ("My Bonuses", "gift.fill"),
+        ("Refer & Earn", "link"),
         ("Transaction History", "list.bullet.rectangle"),
+        ("Chat", "message.fill"),
+        ("Notifications", "bell.fill"),
         ("Responsible Gaming", "shield.fill"),
         ("Settings", "gearshape.fill"),
         ("Help & Support", "questionmark.circle.fill")
@@ -184,6 +187,18 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.row {
+        case 3:
+            navigationController?.pushViewController(ReferralViewController(), animated: true)
+        case 5:
+            navigationController?.pushViewController(ChatViewController(), animated: true)
+        case 6:
+            navigationController?.pushViewController(NotificationViewController(), animated: true)
+        case 8:
+            navigationController?.pushViewController(SettingsViewController(), animated: true)
+        default:
+            break
+        }
     }
 }
 

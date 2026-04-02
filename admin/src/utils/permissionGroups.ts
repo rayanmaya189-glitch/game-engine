@@ -180,4 +180,25 @@ export const permissionGroups: PermissionGroup[] = [
       { key: 'audit:view', name: 'View Audit Log', description: 'View audit trail' },
     ],
   },
+  {
+    name: 'Live Dealer',
+    permissions: [
+      { key: 'live_dealer:view', name: 'View Live Dealer', description: 'View live dealer tables' },
+      { key: 'live_dealer:manage', name: 'Manage Live Dealer', description: 'Create tables and control sessions' },
+    ],
+  },
+  {
+    name: 'Chat',
+    permissions: [
+      { key: 'chat:view', name: 'View Chat', description: 'View chat rooms and messages' },
+      { key: 'chat:moderate', name: 'Moderate Chat', description: 'Delete messages and ban users' },
+    ],
+  },
+  {
+    name: 'Notifications',
+    permissions: [
+      { key: 'notifications:view', name: 'View Notifications', description: 'View notification history' },
+      { key: 'notifications:send', name: 'Send Notifications', description: 'Create and send notifications' },
+    ],
+  },
 ];

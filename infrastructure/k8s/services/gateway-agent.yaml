@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-agent
+  namespace: game-engine
+  labels:
+    app: gateway-agent
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gateway-agent
+  template:
+    metadata:
+      labels:
+        app: gateway-agent
+        tier: backend
+    spec:
+      containers:
+        - name: gateway-agent
+          image: game-engine/gateway-agent:latest
+          ports:
+            - containerPort: 8083
+              name: http
+          env:
+            - name: REDIS_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: game-engine-config
+                  key: redis-host
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8083
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8083
+            initialDelaySeconds: 5
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-agent
+  namespace: game-engine
+spec:
+  selector:
+    app: gateway-agent
+  ports:
+    - port: 8083
+      targetPort: 8083
+      name: http
+  type: ClusterIP

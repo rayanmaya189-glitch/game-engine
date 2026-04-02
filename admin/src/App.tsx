@@ -20,6 +20,9 @@ import Settings from './pages/Settings';
 import KYC from './pages/KYC';
 import BannerManagement from './pages/BannerManagement';
 import ReferralManagement from './pages/ReferralManagement';
+import LiveDealer from './pages/LiveDealer';
+import ChatModeration from './pages/ChatModeration';
+import Notifications from './pages/Notifications';
 
 const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, user } = useAppSelector((state: any) => state.auth);
@@ -142,6 +145,21 @@ function App() {
           <Route path="referrals" element={
             <PermissionRoute permission="referrals:view">
               <ReferralManagement />
+            </PermissionRoute>
+          } />
+          <Route path="live-dealer" element={
+            <PermissionRoute permission="live_dealer:view">
+              <LiveDealer />
+            </PermissionRoute>
+          } />
+          <Route path="chat" element={
+            <PermissionRoute permission="chat:view">
+              <ChatModeration />
+            </PermissionRoute>
+          } />
+          <Route path="notifications" element={
+            <PermissionRoute permission="notifications:view">
+              <Notifications />
             </PermissionRoute>
           } />
         </Route>

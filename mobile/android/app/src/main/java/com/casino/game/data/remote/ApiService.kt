@@ -117,4 +117,59 @@ interface ApiService {
 
     @POST("player/support/tickets")
     suspend fun createTicket(@Body request: CreateTicketRequest): Response<TicketResponse>
+
+    // Chat
+    @GET("player/chat/rooms")
+    suspend fun getChatRooms(): Response<List<ChatRoom>>
+
+    @GET("player/chat/rooms/{id}/messages")
+    suspend fun getChatMessages(@Path("id") roomId: String): Response<List<ChatMessage>>
+
+    @POST("player/chat/rooms/{id}/messages")
+    suspend fun sendChatMessage(@Path("id") roomId: String, @Body request: Map<String, String>): Response<ChatMessage>
+
+    // Notifications
+    @GET("player/notifications")
+    suspend fun getNotifications(): Response<List<AppNotification>>
+
+    @PUT("player/notifications/{id}/read")
+    suspend fun markNotificationRead(@Path("id") notificationId: String): Response<Unit>
+
+    @DELETE("player/notifications/{id}")
+    suspend fun deleteNotification(@Path("id") notificationId: String): Response<Unit>
+
+    // Referral
+    @GET("player/referral/stats")
+    suspend fun getReferralStats(): Response<ReferralStats>
+
+    @GET("player/referral/history")
+    suspend fun getReferralHistory(): Response<List<ReferralEntry>>
+
+    @GET("player/referral/tiers")
+    suspend fun getReferralTiers(): Response<List<ReferralTier>>
+
+    // Live Dealer
+    @GET("player/live-dealer/tables")
+    suspend fun getLiveDealerTables(): Response<List<LiveDealerTable>>
+
+    @POST("player/live-dealer/tables/{id}/chat")
+    suspend fun sendDealerChat(@Path("id") tableId: String, @Body request: Map<String, String>): Response<DealerChatMessage>
+
+    // Blackjack
+    @POST("player/games/blackjack/deal")
+    suspend fun blackjackDeal(@Body request: Map<String, Double>): Response<BlackjackDealResponse>
+
+    @POST("player/games/blackjack/action")
+    suspend fun blackjackAction(@Body request: Map<String, String>): Response<BlackjackActionResponse>
+
+    // Poker
+    @POST("player/games/poker/start")
+    suspend fun pokerStart(@Body request: Map<String, Double>): Response<PokerStartResponse>
+
+    @POST("player/games/poker/action")
+    suspend fun pokerAction(@Body request: Map<String, Any>): Response<PokerActionResponse>
+
+    // Account
+    @DELETE("player/account")
+    suspend fun deleteAccount(): Response<Unit>
 }

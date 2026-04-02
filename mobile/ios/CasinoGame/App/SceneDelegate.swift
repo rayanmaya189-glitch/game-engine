@@ -110,27 +110,30 @@ class AppCoordinator {
     
     func showMainScreen() {
         let mainTabBar = MainTabBarController()
-        
-        // Setup tab bar items
+
         let homeVC = HomeViewController()
         homeVC.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house.fill"))
-        
+
         let gamesVC = GamesViewController()
         gamesVC.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller"), selectedImage: UIImage(systemName: "gamecontroller.fill"))
-        
+
+        let liveDealerVC = LiveDealerViewController()
+        liveDealerVC.tabBarItem = UITabBarItem(title: "Live", image: UIImage(systemName: "video"), selectedImage: UIImage(systemName: "video.fill"))
+
         let walletVC = WalletViewController()
         walletVC.tabBarItem = UITabBarItem(title: "Wallet", image: UIImage(systemName: "wallet.pass"), selectedImage: UIImage(systemName: "wallet.pass.fill"))
-        
+
         let profileVC = ProfileViewController()
         profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
-        
+
         mainTabBar.viewControllers = [
             UINavigationController(rootViewController: homeVC),
             UINavigationController(rootViewController: gamesVC),
+            UINavigationController(rootViewController: liveDealerVC),
             UINavigationController(rootViewController: walletVC),
             UINavigationController(rootViewController: profileVC)
         ]
-        
+
         window.rootViewController = mainTabBar
     }
 }

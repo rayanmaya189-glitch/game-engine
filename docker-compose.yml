@@ -809,6 +809,56 @@ services:
     restart: unless-stopped
 
   # ===========================================
+  # Banner Service (Go gRPC)
+  # ===========================================
+  banner-service:
+    build:
+      context: ./services/banner-service
+      dockerfile: Dockerfile
+    container_name: game_engine-banner-service
+    ports:
+      - "9097:9097"
+    environment:
+      - SERVICE_NAME=banner-service
+      - SERVER_GRPC_PORT=9097
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - DB_NAME=banner_service
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
+  # Referral Service (Go gRPC)
+  # ===========================================
+  referral-service:
+    build:
+      context: ./services/referral-service
+      dockerfile: Dockerfile
+    container_name: game_engine-referral-service
+    ports:
+      - "9098:9098"
+    environment:
+      - SERVICE_NAME=referral-service
+      - SERVER_GRPC_PORT=9098
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=${DATABASE_PASSWORD:-postgres}
+      - DB_NAME=referral_service
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - game_engine-network
+    restart: unless-stopped
+
+  # ===========================================
   # Payment Service (Java gRPC)
   # ===========================================
   payment-service:

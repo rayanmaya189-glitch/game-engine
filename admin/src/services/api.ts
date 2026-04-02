@@ -258,4 +258,31 @@ export const referralAPI = {
     api.put(`/admin/referrals/rewards/${id}`, data),
 };
 
+// Live Dealer API
+export const liveDealerAPI = {
+  getTables: (params?: any) => api.get('/admin/live-dealer/tables', { params }),
+  createTable: (data: any) => api.post('/admin/live-dealer/tables', data),
+  startSession: (id: string) => api.post(`/admin/live-dealer/tables/${id}/start`),
+  endSession: (id: string) => api.post(`/admin/live-dealer/tables/${id}/end`),
+};
+
+// Chat Moderation API
+export const chatModerationAPI = {
+  getRooms: (params?: any) => api.get('/admin/chat/rooms', { params }),
+  getMessages: (params?: any) => api.get('/admin/chat/messages', { params }),
+  deleteMessage: (id: string, data: { reason: string }) => api.delete(`/admin/chat/messages/${id}`, { data }),
+  banUser: (id: string, data: { reason: string }) => api.post(`/admin/chat/ban/${id}`, data),
+  getMutedUsers: () => api.get('/admin/chat/muted'),
+};
+
+// Notifications API
+export const notificationsAPI = {
+  getAll: (params?: any) => api.get('/admin/notifications', { params }),
+  create: (data: any) => api.post('/admin/notifications', data),
+  send: (id: string) => api.post(`/admin/notifications/${id}/send`),
+  getTemplates: () => api.get('/admin/notifications/templates'),
+  createTemplate: (data: any) => api.post('/admin/notifications/templates', data),
+  getStats: () => api.get('/admin/notifications/stats'),
+};
+
 export default api;
