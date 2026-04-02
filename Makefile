@@ -793,4 +793,82 @@ help:
 	@echo "  make status             - Show all services status"
 	@echo "  make help               - Show this help message"
 	@echo ""
+	@echo "$(CYAN)=== SETUP COMMANDS (Zero Config) ===$(NC)"
+	@echo "  make setup              - Full automated Docker setup"
+	@echo "  make setup-k3s          - Full automated K3s deployment"
+	@echo "  make setup-dev          - Development environment"
+	@echo "  make status             - Show service status"
+	@echo "  make logs               - Tail all logs"
+	@echo "  make logs-service S=... - Tail specific service logs"
+	@echo "  make restart            - Restart all services"
+	@echo "  make stop               - Stop all services"
+	@echo "  make clean-all          - Remove everything"
+	@echo "  make reset              - Clean and re-setup"
+	@echo ""
 	@echo "================================================================================"
+
+# =============================================================================
+# SETUP COMMANDS - Zero configuration deployment
+# =============================================================================
+
+.PHONY: setup setup-k3s setup-dev status logs logs-service restart stop clean-all reset
+
+## setup: Full automated Docker Compose setup (recommended for single server)
+setup: ## One-command setup: generates secrets, builds images, starts all services
+	@echo "$(GREEN)Starting automated setup...$(NC)"
+	@bash setup.sh
+
+## setup-k3s: Full automated K3s deployment
+setup-k3s: ## One-command K3s deployment with auto-generated secrets
+	@echo "$(GREEN)Starting K3s deployment...$(NC)"
+	@bash k3s-deploy.sh
+
+## setup-dev: Development setup
+setup-dev: ## Start development environment
+	@echo "$(GREEN)Starting development environment...$(NC)"
+	@docker compose -f docker-compose.dev.yml up -d
+	@sleep 5
+	@docker compose -f docker-compose.yml up -d
+	@echo "$(GREEN)Development environment ready!$(NC)"
+	@echo "  Admin Panel: http://localhost:3000"
+	@echo "  Player API:  http://localhost:8080"
+	@echo "  Admin API:   http://localhost:8081"
+
+## status: Show all service status
+status: ## Show status of all services
+	@echo "$(CYAN)=== Docker Services ===$(NC)"
+	@docker ps --filter "name=game_engine" --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}" 2>/dev/null || echo "No services running"
+	@echo ""
+	@echo "$(CYAN)=== Service Health ===$(NC)"
+	@curl -s http://localhost:8080/health 2>/dev/null && echo " - Player Gateway: OK" || echo " - Player Gateway: DOWN"
+	@curl -s http://localhost:8081/health 2>/dev/null && echo " - Admin Gateway: OK" || echo " - Admin Gateway: DOWN"
+	@curl -s http://localhost:4000/health 2>/dev/null && echo " - WebSocket: OK" || echo " - WebSocket: DOWN"
+	@curl -s http://localhost:3000 2>/dev/null && echo " - Admin Panel: OK" || echo " - Admin Panel: DOWN"
+
+## logs: Show logs for all services
+logs: ## Tail logs for all services
+	@docker compose -f docker-compose.yml logs -f --tail=100
+
+## logs-service: Show logs for a specific service
+logs-service: ## Show logs for a specific service (make logs-service S=auth-service)
+	@docker compose -f docker-compose.yml logs -f --tail=100 $(S)
+
+## restart: Restart all services
+restart: ## Restart all services
+	@docker compose -f docker-compose.yml restart
+
+## stop: Stop all services
+stop: ## Stop all services
+	@docker compose -f docker-compose.yml down
+
+## clean-all: Stop and remove everything
+clean-all: ## Remove all containers, volumes, and data
+	@echo "$(RED)Removing all data...$(NC)"
+	@docker compose -f docker-compose.yml down -v 2>/dev/null || true
+	@docker compose -f docker-compose.dev.yml down -v 2>/dev/null || true
+	@docker system prune -f
+	@rm -f .env credentials.txt k3s-credentials.txt
+	@echo "$(GREEN)Cleaned!$(NC)"
+
+## reset: Clean and re-setup
+reset: clean-all setup ## Full reset and re-setup

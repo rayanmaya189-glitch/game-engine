@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-admin
+  namespace: game-engine
+  labels:
+    app: gateway-admin
+    tier: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: gateway-admin
+  template:
+    metadata:
+      labels:
+        app: gateway-admin
+    spec:
+      containers:
+        - name: gateway-admin
+          image: game-engine/gateway-admin:latest
+          ports:
+            - containerPort: 8081
+              name: http
+          envFrom:
+            - configMapRef:
+                name: game-engine-config
+          env:
+            - name: SERVER_PORT
+              value: "8081"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: secret
+            - name: REDIS_HOST
+              value: "redis.databases.svc.cluster.local"
+            - name: REDIS_PORT
+              value: "6379"
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "200m"
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 10
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gateway-admin
+  namespace: game-engine
+spec:
+  selector:
+    app: gateway-admin
+  ports:
+    - port: 80
+      targetPort: 8081
+      name: http
+  type: ClusterIP

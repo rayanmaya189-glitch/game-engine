@@ -21,16 +21,16 @@ resources:
   - base/00-namespaces.yaml
   - base/01-service-accounts.yaml
   - base/02-network-policies.yaml
-  
-  # Database services (external)
+
+  # Database services
   - services/database/postgresql.yaml
   - services/database/redis.yaml
-  
-  # Addons (uncomment after cluster setup)
-  # - addons/metallb.yaml
-  # - addons/ingress-nginx.yaml
-  # - addons/storage.yaml
-  
+
+  # Addons
+  - addons/metallb.yaml
+  - addons/ingress-nginx.yaml
+  - addons/storage.yaml
+
   # Core Services
   - services/auth/deployment.yaml
   - services/user/deployment.yaml
@@ -40,6 +40,12 @@ resources:
 
   # API Gateways
   - services/gateway-player/deployment.yaml
+  - services/gateway-admin/deployment.yaml
+  - services/gateway-merchant/deployment.yaml
+  - services/gateway-agent/deployment.yaml
+
+  # WebSocket Gateway
+  - services/websocket-gateway/deployment.yaml
 
   # Game Services
   - services/card-games/deployment.yaml
@@ -59,23 +65,44 @@ resources:
   - services/agent-service/deployment.yaml
   - services/loyalty-service/deployment.yaml
 
+  # Financial Services
+  - services/payment-service/deployment.yaml
+  - services/bonus-service/deployment.yaml
+  - services/commission-service/deployment.yaml
+  - services/affiliate-service/deployment.yaml
+
+  # Compliance Services
+  - services/kyc-service/deployment.yaml
+  - services/aml-service/deployment.yaml
+  - services/fraud-service/deployment.yaml
+  - services/risk-service/deployment.yaml
+
   # Social & Engagement
   - services/leaderboard-service/deployment.yaml
   - services/winners-showcase-service/deployment.yaml
   - services/multiplayer/deployment.yaml
   - services/chat/deployment.yaml
   - services/notification/deployment.yaml
+  - services/banner-service/banner-deployment.yaml
+  - services/referral-service/referral-deployment.yaml
 
   # Ingress
   - ingress/public-ingress.yaml
 
 # ConfigMap generation
 configMapGenerator:
-  - name: game_engine-config
+  - name: game-engine-config
     literals:
       - ENVIRONMENT=production
       - LOG_LEVEL=info
-      - REGISTRY=registry.game_engine.local:5000
+      - REGISTRY=registry.game-engine.local:5000
+      - DB_HOST=postgresql.databases.svc.cluster.local
+      - DB_PORT=5432
+      - DB_USER=app_user
+      - REDIS_HOST=redis.databases.svc.cluster.local
+      - REDIS_PORT=6379
+      - NATS_HOST=nats.databases.svc.cluster.local
+      - NATS_PORT=4222
 
 # Secret generation
 secretGenerator:
@@ -90,9 +117,8 @@ secretGenerator:
     literals:
       - password=ChangeMeRedis123!
 
-# Patches
+# Patches for resource limits
 patches:
-  # Add resources limits to all deployments
   - patch: |-
       apiVersion: apps/v1
       kind: Deployment
@@ -113,7 +139,7 @@ patches:
     target:
       kind: Deployment
 
-# Replicas for each service
+# Replicas for critical services
 replicas:
   - name: auth-service
     count: 3
@@ -122,4 +148,18 @@ replicas:
   - name: wallet-service
     count: 3
   - name: gateway-player
-    count: 5
+    count: 3
+  - name: gateway-admin
+    count: 2
+  - name: websocket-gateway
+    count: 3
+  - name: game-registry
+    count: 2
+  - name: betting
+    count: 2
+  - name: tournament
+    count: 2
+  - name: payment-service
+    count: 2
+  - name: bonus-service
+    count: 2
