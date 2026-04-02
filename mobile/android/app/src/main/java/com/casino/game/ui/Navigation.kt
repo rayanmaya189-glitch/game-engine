@@ -42,6 +42,13 @@ sealed class Screen(val route: String) {
     object LiveDealer : Screen("live_dealer")
     object Blackjack : Screen("blackjack")
     object Poker : Screen("poker")
+    object PaymentHistory : Screen("payment_history")
+    object KycVerification : Screen("kyc_verification")
+    object GameDetail : Screen("game_detail/{gameId}") { fun createRoute(gameId: String) = "game_detail/$gameId" }
+    object BetHistory : Screen("bet_history")
+    object Support : Screen("support")
+    object Leaderboard : Screen("leaderboard")
+    object ResponsibleGaming : Screen("responsible_gaming")
 }
 
 sealed class BottomNavItem(val route: String, val title: String, val selectedIcon: ImageVector, val unselectedIcon: ImageVector) {
@@ -100,6 +107,20 @@ fun MainNavigation() {
         composable(Screen.LiveDealer.route) { MainScaffold(navController, bottomNavItems) { LiveDealerScreen(onBack = { navController.popBackStack() }) } }
         composable(Screen.Blackjack.route) { MainScaffold(navController, bottomNavItems) { BlackjackScreen(onBack = { navController.popBackStack() }) } }
         composable(Screen.Poker.route) { MainScaffold(navController, bottomNavItems) { PokerScreen(onBack = { navController.popBackStack() }) } }
+        composable(Screen.PaymentHistory.route) { MainScaffold(navController, bottomNavItems) { PaymentHistoryScreen(onBack = { navController.popBackStack() }) } }
+        composable(Screen.KycVerification.route) { MainScaffold(navController, bottomNavItems) { KycVerificationScreen(onBack = { navController.popBackStack() }) } }
+        composable(route = Screen.GameDetail.route, arguments = listOf(navArgument("gameId") { type = NavType.StringType })) { backStackEntry ->
+            GameDetailScreen(
+                gameId = backStackEntry.arguments?.getString("gameId") ?: "",
+                onBack = { navController.popBackStack() },
+                onPlayGame = { navController.navigate(Screen.GamePlay.createRoute(it)) },
+                onGameClick = { navController.navigate(Screen.GameDetail.createRoute(it)) }
+            )
+        }
+        composable(Screen.BetHistory.route) { MainScaffold(navController, bottomNavItems) { BetHistoryScreen(onBack = { navController.popBackStack() }) } }
+        composable(Screen.Support.route) { MainScaffold(navController, bottomNavItems) { SupportScreen(onBack = { navController.popBackStack() }) } }
+        composable(Screen.Leaderboard.route) { MainScaffold(navController, bottomNavItems) { LeaderboardScreen(onBack = { navController.popBackStack() }) } }
+        composable(Screen.ResponsibleGaming.route) { MainScaffold(navController, bottomNavItems) { ResponsibleGamingScreen(onBack = { navController.popBackStack() }) } }
     }
 }
 

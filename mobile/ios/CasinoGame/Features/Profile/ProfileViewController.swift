@@ -64,8 +64,11 @@ class ProfileViewController: UIViewController {
     private let menuItems = [
         ("Edit Profile", "person.fill"),
         ("KYC Verification", "person.badge.key.fill"),
+        ("Payment History", "creditcard.fill"),
+        ("Bet History", "dice.fill"),
         ("My Bonuses", "gift.fill"),
         ("Refer & Earn", "link"),
+        ("Leaderboard", "trophy.fill"),
         ("Transaction History", "list.bullet.rectangle"),
         ("Chat", "message.fill"),
         ("Notifications", "bell.fill"),
@@ -188,14 +191,26 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
+        case 1:
+            navigationController?.pushViewController(KycVerificationViewController(), animated: true)
+        case 2:
+            navigationController?.pushViewController(PaymentHistoryViewController(), animated: true)
         case 3:
-            navigationController?.pushViewController(ReferralViewController(), animated: true)
+            navigationController?.pushViewController(BetHistoryViewController(), animated: true)
         case 5:
-            navigationController?.pushViewController(ChatViewController(), animated: true)
+            navigationController?.pushViewController(ReferralViewController(), animated: true)
         case 6:
-            navigationController?.pushViewController(NotificationViewController(), animated: true)
+            navigationController?.pushViewController(LeaderboardViewController(), animated: true)
         case 8:
+            navigationController?.pushViewController(ChatViewController(), animated: true)
+        case 9:
+            navigationController?.pushViewController(NotificationViewController(), animated: true)
+        case 10:
+            navigationController?.pushViewController(ResponsibleGamingViewController(), animated: true)
+        case 11:
             navigationController?.pushViewController(SettingsViewController(), animated: true)
+        case 12:
+            navigationController?.pushViewController(SupportViewController(), animated: true)
         default:
             break
         }

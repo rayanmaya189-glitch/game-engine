@@ -169,6 +169,36 @@ interface ApiService {
     @POST("player/games/poker/action")
     suspend fun pokerAction(@Body request: Map<String, Any>): Response<PokerActionResponse>
 
+    // Payment History
+    @GET("player/payments/history")
+    suspend fun getPaymentHistory(@Query("type") type: String? = null): Response<PaymentHistoryResponse>
+
+    // KYC
+    @GET("player/kyc/status")
+    suspend fun getKycStatus(): Response<KycStatusResponse>
+
+    @POST("player/kyc/upload")
+    suspend fun uploadKycDocument(@Body request: Map<String, String>): Response<Unit>
+
+    // Game Detail
+    @GET("player/games/{id}/detail")
+    suspend fun getGameDetail(@Path("id") gameId: String): Response<GameDetailResponse>
+
+    // Bet History
+    @GET("player/bets/history")
+    suspend fun getBetHistory(@Query("result") result: String? = null): Response<BetHistoryResponse>
+
+    // FAQ
+    @GET("player/support/faq")
+    suspend fun getFaq(): Response<FaqResponse>
+
+    // Responsible Gaming
+    @GET("player/responsible-gaming/limits")
+    suspend fun getGamingLimits(): Response<GamingLimitsResponse>
+
+    @PUT("player/responsible-gaming/limits")
+    suspend fun updateGamingLimits(@Body request: UpdateGamingLimitsRequest): Response<Unit>
+
     // Account
     @DELETE("player/account")
     suspend fun deleteAccount(): Response<Unit>

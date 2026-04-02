@@ -198,3 +198,4 @@ class APIClient {
     func getChatMessages() async throws -> ChatMessagesResponse {
         return try await request(endpoint: "chat/messages", method: .get)
     }
+}

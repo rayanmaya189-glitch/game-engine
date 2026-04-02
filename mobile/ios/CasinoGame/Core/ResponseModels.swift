@@ -34,3 +34,15 @@ struct PaymentMethodsResponse: Codable {
         case withdrawMethods = "withdraw_methods"
     }
 }
+
+struct GameDetailResponse: Codable {
+    let game: Game
+    let recentWins: [RecentWin]
+    let relatedGames: [Game]
+
+    enum CodingKeys: String, CodingKey {
+        case game
+        case recentWins = "recent_wins"
+        case relatedGames = "related_games"
+    }
+}
