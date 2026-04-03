@@ -99,82 +99,83 @@ public final class AffiliateServiceOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n/game_engine/affiliate/v1/affiliate_serv" +
-      "ice.proto\022\027game_engine.affiliate.v1\032\037goog" +
-      "le/protobuf/timestamp.proto\032%game_engine/" +
-      "common/v1/pagination.proto\"\224\001\n\021TrackClic" +
-      "kRequest\022%\n\016affiliate_code\030\001 \001(\tR\raffili" +
-      "ateCode\022\035\n\nip_address\030\002 \001(\tR\tipAddress\022\035" +
-      "\n\nuser_agent\030\003 \001(\tR\tuserAgent\022\032\n\010referre" +
-      "r\030\004 \001(\tR\010referrer\"s\n\022TrackClickResponse\022" +
-      "\031\n\010click_id\030\001 \001(\tR\007clickId\022\034\n\ttimestamp\030" +
-      "\002 \001(\003R\ttimestamp\022$\n\016is_new_visitor\030\003 \001(\010" +
-      "R\014isNewVisitor\"z\n\033GetPerformanceReportRe" +
-      "quest\022!\n\014affiliate_id\030\001 \001(\tR\013affiliateId" +
-      "\022\035\n\nstart_date\030\002 \001(\tR\tstartDate\022\031\n\010end_d" +
-      "ate\030\003 \001(\tR\007endDate\"\334\001\n\034GetPerformanceRep" +
-      "ortResponse\022!\n\014total_clicks\030\001 \001(\003R\013total" +
-      "Clicks\022+\n\021total_conversions\030\002 \001(\003R\020total" +
-      "Conversions\022\'\n\017conversion_rate\030\003 \001(\001R\016co" +
-      "nversionRate\022#\n\rtotal_revenue\030\004 \001(\001R\014tot" +
-      "alRevenue\022\036\n\ncommission\030\005 \001(\001R\ncommissio" +
-      "n\"\237\001\n\026GetClickReportsRequest\022!\n\014affiliat" +
-      "e_id\030\001 \001(\tR\013affiliateId\022\035\n\nstart_date\030\002 " +
-      "\001(\tR\tstartDate\022\031\n\010end_date\030\003 \001(\tR\007endDat" +
-      "e\022\022\n\004page\030\004 \001(\005R\004page\022\024\n\005limit\030\005 \001(\005R\005li" +
-      "mit\"m\n\027GetClickReportsResponse\022<\n\006clicks" +
-      "\030\001 \003(\0132$.game_engine.affiliate.v1.ClickRe" +
-      "portR\006clicks\022\024\n\005total\030\002 \001(\005R\005total\"\242\001\n\013C" +
-      "lickReport\022\031\n\010click_id\030\001 \001(\tR\007clickId\022\035\n" +
-      "\nip_address\030\002 \001(\tR\tipAddress\022\035\n\nuser_age" +
-      "nt\030\003 \001(\tR\tuserAgent\022\034\n\ttimestamp\030\004 \001(\003R\t" +
-      "timestamp\022\034\n\tconverted\030\005 \001(\010R\tconverted\"" +
-      "\244\001\n\033GetConversionReportsRequest\022!\n\014affil" +
+      "\n0game_engine/affiliate/v1/affiliate_ser" +
+      "vice.proto\022\030game_engine.affiliate.v1\032\037go" +
+      "ogle/protobuf/timestamp.proto\032&game_engi" +
+      "ne/common/v1/pagination.proto\"\224\001\n\021TrackC" +
+      "lickRequest\022%\n\016affiliate_code\030\001 \001(\tR\raff" +
+      "iliateCode\022\035\n\nip_address\030\002 \001(\tR\tipAddres" +
+      "s\022\035\n\nuser_agent\030\003 \001(\tR\tuserAgent\022\032\n\010refe" +
+      "rrer\030\004 \001(\tR\010referrer\"s\n\022TrackClickRespon" +
+      "se\022\031\n\010click_id\030\001 \001(\tR\007clickId\022\034\n\ttimesta" +
+      "mp\030\002 \001(\003R\ttimestamp\022$\n\016is_new_visitor\030\003 " +
+      "\001(\010R\014isNewVisitor\"z\n\033GetPerformanceRepor" +
+      "tRequest\022!\n\014affiliate_id\030\001 \001(\tR\013affiliat" +
+      "eId\022\035\n\nstart_date\030\002 \001(\tR\tstartDate\022\031\n\010en" +
+      "d_date\030\003 \001(\tR\007endDate\"\334\001\n\034GetPerformance" +
+      "ReportResponse\022!\n\014total_clicks\030\001 \001(\003R\013to" +
+      "talClicks\022+\n\021total_conversions\030\002 \001(\003R\020to" +
+      "talConversions\022\'\n\017conversion_rate\030\003 \001(\001R" +
+      "\016conversionRate\022#\n\rtotal_revenue\030\004 \001(\001R\014" +
+      "totalRevenue\022\036\n\ncommission\030\005 \001(\001R\ncommis" +
+      "sion\"\237\001\n\026GetClickReportsRequest\022!\n\014affil" +
       "iate_id\030\001 \001(\tR\013affiliateId\022\035\n\nstart_date" +
       "\030\002 \001(\tR\tstartDate\022\031\n\010end_date\030\003 \001(\tR\007end" +
       "Date\022\022\n\004page\030\004 \001(\005R\004page\022\024\n\005limit\030\005 \001(\005R" +
-      "\005limit\"\201\001\n\034GetConversionReportsResponse\022" +
-      "K\n\013conversions\030\001 \003(\0132).game_engine.affili" +
-      "ate.v1.ConversionReportR\013conversions\022\024\n\005" +
-      "total\030\002 \001(\005R\005total\"\307\001\n\020ConversionReport\022" +
-      "#\n\rconversion_id\030\001 \001(\tR\014conversionId\022\031\n\010" +
-      "click_id\030\002 \001(\tR\007clickId\022\033\n\tplayer_id\030\003 \001" +
-      "(\tR\010playerId\022\030\n\007revenue\030\004 \001(\001R\007revenue\022\036" +
-      "\n\ncommission\030\005 \001(\001R\ncommission\022\034\n\ttimest" +
-      "amp\030\006 \001(\003R\ttimestamp\"=\n\030GetAffiliateLink" +
-      "sRequest\022!\n\014affiliate_id\030\001 \001(\tR\013affiliat" +
-      "eId\"Y\n\031GetAffiliateLinksResponse\022<\n\005link" +
-      "s\030\001 \003(\0132&.game_engine.affiliate.v1.Affili" +
-      "ateLinkR\005links\"j\n\rAffiliateLink\022\027\n\007link_" +
-      "id\030\001 \001(\tR\006linkId\022\022\n\004code\030\002 \001(\tR\004code\022\020\n\003" +
-      "url\030\003 \001(\tR\003url\022\032\n\010campaign\030\004 \001(\tR\010campai" +
-      "gn\"~\n\032CreateAffiliateLinkRequest\022!\n\014affi" +
-      "liate_id\030\001 \001(\tR\013affiliateId\022\032\n\010campaign\030" +
-      "\002 \001(\tR\010campaign\022!\n\014url_template\030\003 \001(\tR\013u" +
-      "rlTemplate\"\\\n\033CreateAffiliateLinkRespons" +
-      "e\022\027\n\007link_id\030\001 \001(\tR\006linkId\022\022\n\004code\030\002 \001(\t" +
-      "R\004code\022\020\n\003url\030\003 \001(\tR\003url2\372\005\n\020AffiliateSe" +
-      "rvice\022e\n\nTrackClick\022*.game_engine.affilia" +
-      "te.v1.TrackClickRequest\032+.game_engine.aff" +
-      "iliate.v1.TrackClickResponse\022\203\001\n\024GetPerf" +
-      "ormanceReport\0224.game_engine.affiliate.v1." +
-      "GetPerformanceReportRequest\0325.game_engine" +
-      ".affiliate.v1.GetPerformanceReportRespon" +
-      "se\022t\n\017GetClickReports\022/.game_engine.affil" +
-      "iate.v1.GetClickReportsRequest\0320.gameeng" +
-      "ine.affiliate.v1.GetClickReportsResponse" +
-      "\022\203\001\n\024GetConversionReports\0224.game_engine.a" +
-      "ffiliate.v1.GetConversionReportsRequest\032" +
-      "5.game_engine.affiliate.v1.GetConversionR" +
-      "eportsResponse\022z\n\021GetAffiliateLinks\0221.ga" +
-      "meengine.affiliate.v1.GetAffiliateLinksR" +
-      "equest\0322.game_engine.affiliate.v1.GetAffi" +
-      "liateLinksResponse\022\200\001\n\023CreateAffiliateLi" +
-      "nk\0223.game_engine.affiliate.v1.CreateAffil" +
-      "iateLinkRequest\0324.game_engine.affiliate.v" +
-      "1.CreateAffiliateLinkResponseBA\n\034com.gam" +
-      "e_engine.affiliate.v1P\001Z\037gen/go/affiliat" +
-      "e/v1;affiliatev1b\006proto3"
+      "\005limit\"n\n\027GetClickReportsResponse\022=\n\006cli" +
+      "cks\030\001 \003(\0132%.game_engine.affiliate.v1.Cli" +
+      "ckReportR\006clicks\022\024\n\005total\030\002 \001(\005R\005total\"\242" +
+      "\001\n\013ClickReport\022\031\n\010click_id\030\001 \001(\tR\007clickI" +
+      "d\022\035\n\nip_address\030\002 \001(\tR\tipAddress\022\035\n\nuser" +
+      "_agent\030\003 \001(\tR\tuserAgent\022\034\n\ttimestamp\030\004 \001" +
+      "(\003R\ttimestamp\022\034\n\tconverted\030\005 \001(\010R\tconver" +
+      "ted\"\244\001\n\033GetConversionReportsRequest\022!\n\014a" +
+      "ffiliate_id\030\001 \001(\tR\013affiliateId\022\035\n\nstart_" +
+      "date\030\002 \001(\tR\tstartDate\022\031\n\010end_date\030\003 \001(\tR" +
+      "\007endDate\022\022\n\004page\030\004 \001(\005R\004page\022\024\n\005limit\030\005 " +
+      "\001(\005R\005limit\"\202\001\n\034GetConversionReportsRespo" +
+      "nse\022L\n\013conversions\030\001 \003(\0132*.game_engine.a" +
+      "ffiliate.v1.ConversionReportR\013conversion" +
+      "s\022\024\n\005total\030\002 \001(\005R\005total\"\307\001\n\020ConversionRe" +
+      "port\022#\n\rconversion_id\030\001 \001(\tR\014conversionI" +
+      "d\022\031\n\010click_id\030\002 \001(\tR\007clickId\022\033\n\tplayer_i" +
+      "d\030\003 \001(\tR\010playerId\022\030\n\007revenue\030\004 \001(\001R\007reve" +
+      "nue\022\036\n\ncommission\030\005 \001(\001R\ncommission\022\034\n\tt" +
+      "imestamp\030\006 \001(\003R\ttimestamp\"=\n\030GetAffiliat" +
+      "eLinksRequest\022!\n\014affiliate_id\030\001 \001(\tR\013aff" +
+      "iliateId\"Z\n\031GetAffiliateLinksResponse\022=\n" +
+      "\005links\030\001 \003(\0132\'.game_engine.affiliate.v1." +
+      "AffiliateLinkR\005links\"j\n\rAffiliateLink\022\027\n" +
+      "\007link_id\030\001 \001(\tR\006linkId\022\022\n\004code\030\002 \001(\tR\004co" +
+      "de\022\020\n\003url\030\003 \001(\tR\003url\022\032\n\010campaign\030\004 \001(\tR\010" +
+      "campaign\"~\n\032CreateAffiliateLinkRequest\022!" +
+      "\n\014affiliate_id\030\001 \001(\tR\013affiliateId\022\032\n\010cam" +
+      "paign\030\002 \001(\tR\010campaign\022!\n\014url_template\030\003 " +
+      "\001(\tR\013urlTemplate\"\\\n\033CreateAffiliateLinkR" +
+      "esponse\022\027\n\007link_id\030\001 \001(\tR\006linkId\022\022\n\004code" +
+      "\030\002 \001(\tR\004code\022\020\n\003url\030\003 \001(\tR\003url2\206\006\n\020Affil" +
+      "iateService\022g\n\nTrackClick\022+.game_engine." +
+      "affiliate.v1.TrackClickRequest\032,.game_en" +
+      "gine.affiliate.v1.TrackClickResponse\022\205\001\n" +
+      "\024GetPerformanceReport\0225.game_engine.affi" +
+      "liate.v1.GetPerformanceReportRequest\0326.g" +
+      "ame_engine.affiliate.v1.GetPerformanceRe" +
+      "portResponse\022v\n\017GetClickReports\0220.game_e" +
+      "ngine.affiliate.v1.GetClickReportsReques" +
+      "t\0321.game_engine.affiliate.v1.GetClickRep" +
+      "ortsResponse\022\205\001\n\024GetConversionReports\0225." +
+      "game_engine.affiliate.v1.GetConversionRe" +
+      "portsRequest\0326.game_engine.affiliate.v1." +
+      "GetConversionReportsResponse\022|\n\021GetAffil" +
+      "iateLinks\0222.game_engine.affiliate.v1.Get" +
+      "AffiliateLinksRequest\0323.game_engine.affi" +
+      "liate.v1.GetAffiliateLinksResponse\022\202\001\n\023C" +
+      "reateAffiliateLink\0224.game_engine.affilia" +
+      "te.v1.CreateAffiliateLinkRequest\0325.game_" +
+      "engine.affiliate.v1.CreateAffiliateLinkR" +
+      "esponseBA\n\034com.game_engine.affiliate.v1P" +
+      "\001Z\037gen/go/affiliate/v1;affiliatev1b\006prot" +
+      "o3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

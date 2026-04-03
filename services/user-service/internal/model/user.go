@@ -3,7 +3,7 @@ package model
 import (
 	"time"
 
-	userv1 "gen/go/user/v1"
+	userv1 "game_engine/gen/go/user/v1"
 )
 
 // Profile represents a player profile in the database

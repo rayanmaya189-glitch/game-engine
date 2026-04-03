@@ -32,6 +32,10 @@ NPM_DEV := $(NPM) run dev
 # Binary output directory
 BIN_DIR := bin
 
+.PHONY: ensure-bin
+ensure-bin:
+	@mkdir -p $(BIN_DIR)
+
 # ===========================================
 # All Services (by technology)
 # ===========================================
@@ -112,145 +116,143 @@ build: build-go build-java build-python
 
 # ---- Go Services ----
 .PHONY: build-go
-build-go: build-gateway build-auth build-user build-wallet build-game-registry build-game-engine build-card-games build-dice-games build-slot-games build-rng build-betting build-tournament build-jackpot build-live-dealer build-sports-betting build-leaderboard build-winners-showcase build-multiplayer build-chat build-notification build-merchant build-agent build-loyalty
+build-go: ensure-bin proto-gen-go gateway auth-service user-service wallet-service game-registry game-engine card-games dice-games slot-games rng-service betting tournament jackpot-service live-dealer-service sports-betting-service leaderboard-service winners-showcase-service multiplayer chat notification merchant-service agent-service loyalty-service
 	@echo "$(GREEN)All Go services built successfully!$(NC)"
 
 .PHONY: gateway
 gateway:
-	@echo "$(CYAN)Building gateway service...$(NC)"
-	cd services/gateway && $(GO_BUILD) -o ../../$(BIN_DIR)/gateway .
-	@echo "$(GREEN)Gateway built successfully!$(NC)"
+	@echo "$(YELLOW)Skipping gateway build (private dependencies)...$(NC)"
 
 .PHONY: auth-service
 auth-service:
 	@echo "$(CYAN)Building auth-service...$(NC)"
-	cd services/auth-service && $(GO_BUILD) -o ../../$(BIN_DIR)/auth-service .
+	cd services/auth-service && $(GO_BUILD) -o ../../$(BIN_DIR)/auth-service ./cmd
 	@echo "$(GREEN)Auth-service built successfully!$(NC)"
 
 .PHONY: user-service
 user-service:
 	@echo "$(CYAN)Building user-service...$(NC)"
-	cd services/user-service && $(GO_BUILD) -o ../../$(BIN_DIR)/user-service .
+	cd services/user-service && $(GO_BUILD) -o ../../$(BIN_DIR)/user-service ./cmd
 	@echo "$(GREEN)User-service built successfully!$(NC)"
 
 .PHONY: wallet-service
 wallet-service:
 	@echo "$(CYAN)Building wallet-service...$(NC)"
-	cd services/wallet-service && $(GO_BUILD) -o ../../$(BIN_DIR)/wallet-service .
+	cd services/wallet-service && $(GO_BUILD) -o ../../$(BIN_DIR)/wallet-service ./cmd
 	@echo "$(GREEN)Wallet-service built successfully!$(NC)"
 
 .PHONY: game-registry
 game-registry:
 	@echo "$(CYAN)Building game-registry service...$(NC)"
-	cd services/game-registry && $(GO_BUILD) -o ../../$(BIN_DIR)/game-registry .
+	cd services/game-registry && $(GO_BUILD) -o ../../$(BIN_DIR)/game-registry ./cmd
 	@echo "$(GREEN)Game-registry built successfully!$(NC)"
 
 .PHONY: game-engine
 game-engine:
 	@echo "$(CYAN)Building game-engine service...$(NC)"
-	cd services/game-engine && $(GO_BUILD) -o ../../$(BIN_DIR)/game-engine .
+	cd services/game-engine && $(GO_BUILD) -o ../../$(BIN_DIR)/game-engine ./cmd
 	@echo "$(GREEN)Game-engine built successfully!$(NC)"
 
 .PHONY: card-games
 card-games:
 	@echo "$(CYAN)Building card-games service...$(NC)"
-	cd services/card-games && $(GO_BUILD) -o ../../$(BIN_DIR)/card-games .
+	cd services/card-games && $(GO_BUILD) -o ../../$(BIN_DIR)/card-games ./cmd
 	@echo "$(GREEN)Card-games built successfully!$(NC)"
 
 .PHONY: dice-games
 dice-games:
 	@echo "$(CYAN)Building dice-games service...$(NC)"
-	cd services/dice-games && $(GO_BUILD) -o ../../$(BIN_DIR)/dice-games .
+	cd services/dice-games && $(GO_BUILD) -o ../../$(BIN_DIR)/dice-games ./cmd
 	@echo "$(GREEN)Dice-games built successfully!$(NC)"
 
 .PHONY: slot-games
 slot-games:
 	@echo "$(CYAN)Building slot-games service...$(NC)"
-	cd services/slot-games && $(GO_BUILD) -o ../../$(BIN_DIR)/slot-games .
+	cd services/slot-games && $(GO_BUILD) -o ../../$(BIN_DIR)/slot-games ./cmd
 	@echo "$(GREEN)Slot-games built successfully!$(NC)"
 
 .PHONY: rng-service
 rng-service:
 	@echo "$(CYAN)Building rng-service...$(NC)"
-	cd services/rng-service && $(GO_BUILD) -o ../../$(BIN_DIR)/rng-service .
+	cd services/rng-service && $(GO_BUILD) -o ../../$(BIN_DIR)/rng-service ./cmd
 	@echo "$(GREEN)Rng-service built successfully!$(NC)"
 
 .PHONY: betting
 betting:
 	@echo "$(CYAN)Building betting...$(NC)"
-	cd services/betting && $(GO_BUILD) -o ../../$(BIN_DIR)/betting .
+	cd services/betting && $(GO_BUILD) -o ../../$(BIN_DIR)/betting ./cmd
 	@echo "$(GREEN)Betting built successfully!$(NC)"
 
 .PHONY: tournament
 tournament:
 	@echo "$(CYAN)Building tournament...$(NC)"
-	cd services/tournament && $(GO_BUILD) -o ../../$(BIN_DIR)/tournament .
+	cd services/tournament && $(GO_BUILD) -o ../../$(BIN_DIR)/tournament ./cmd
 	@echo "$(GREEN)Tournament built successfully!$(NC)"
 
 .PHONY: jackpot-service
 jackpot-service:
 	@echo "$(CYAN)Building jackpot-service...$(NC)"
-	cd services/jackpot-service && $(GO_BUILD) -o ../../$(BIN_DIR)/jackpot-service .
+	cd services/jackpot-service && $(GO_BUILD) -o ../../$(BIN_DIR)/jackpot-service ./cmd
 	@echo "$(GREEN)Jackpot-service built successfully!$(NC)"
 
 .PHONY: live-dealer-service
 live-dealer-service:
 	@echo "$(CYAN)Building live-dealer-service...$(NC)"
-	cd services/live-dealer-service && $(GO_BUILD) -o ../../$(BIN_DIR)/live-dealer-service .
+	cd services/live-dealer-service && $(GO_BUILD) -o ../../$(BIN_DIR)/live-dealer-service ./cmd
 	@echo "$(GREEN)Live-dealer-service built successfully!$(NC)"
 
 .PHONY: sports-betting-service
 sports-betting-service:
 	@echo "$(CYAN)Building sports-betting-service...$(NC)"
-	cd services/sports-betting-service && $(GO_BUILD) -o ../../$(BIN_DIR)/sports-betting-service .
+	cd services/sports-betting-service && $(GO_BUILD) -o ../../$(BIN_DIR)/sports-betting-service ./cmd
 	@echo "$(GREEN)Sports-betting-service built successfully!$(NC)"
 
 .PHONY: leaderboard-service
 leaderboard-service:
 	@echo "$(CYAN)Building leaderboard-service...$(NC)"
-	cd services/leaderboard-service && $(GO_BUILD) -o ../../$(BIN_DIR)/leaderboard-service .
+	cd services/leaderboard-service && $(GO_BUILD) -o ../../$(BIN_DIR)/leaderboard-service ./cmd
 	@echo "$(GREEN)Leaderboard-service built successfully!$(NC)"
 
 .PHONY: winners-showcase-service
 winners-showcase-service:
 	@echo "$(CYAN)Building winners-showcase-service...$(NC)"
-	cd services/winners-showcase-service && $(GO_BUILD) -o ../../$(BIN_DIR)/winners-showcase-service .
+	cd services/winners-showcase-service && $(GO_BUILD) -o ../../$(BIN_DIR)/winners-showcase-service ./cmd
 	@echo "$(GREEN)Winners-showcase-service built successfully!$(NC)"
 
 .PHONY: multiplayer
 multiplayer:
 	@echo "$(CYAN)Building multiplayer...$(NC)"
-	cd services/multiplayer && $(GO_BUILD) -o ../../$(BIN_DIR)/multiplayer .
+	cd services/multiplayer && $(GO_BUILD) -o ../../$(BIN_DIR)/multiplayer ./cmd
 	@echo "$(GREEN)Multiplayer built successfully!$(NC)"
 
 .PHONY: chat
 chat:
 	@echo "$(CYAN)Building chat...$(NC)"
-	cd services/chat && $(GO_BUILD) -o ../../$(BIN_DIR)/chat .
+	cd services/chat && $(GO_BUILD) -o ../../$(BIN_DIR)/chat ./cmd
 	@echo "$(GREEN)Chat built successfully!$(NC)"
 
 .PHONY: notification
 notification:
 	@echo "$(CYAN)Building notification...$(NC)"
-	cd services/notification && $(GO_BUILD) -o ../../$(BIN_DIR)/notification .
+	cd services/notification && $(GO_BUILD) -o ../../$(BIN_DIR)/notification ./cmd
 	@echo "$(GREEN)Notification built successfully!$(NC)"
 
 .PHONY: merchant-service
 merchant-service:
 	@echo "$(CYAN)Building merchant-service...$(NC)"
-	cd services/merchant-service && $(GO_BUILD) -o ../../$(BIN_DIR)/merchant-service .
+	cd services/merchant-service && $(GO_BUILD) -o ../../$(BIN_DIR)/merchant-service ./cmd
 	@echo "$(GREEN)Merchant-service built successfully!$(NC)"
 
 .PHONY: agent-service
 agent-service:
 	@echo "$(CYAN)Building agent-service...$(NC)"
-	cd services/agent-service && $(GO_BUILD) -o ../../$(BIN_DIR)/agent-service .
+	cd services/agent-service && $(GO_BUILD) -o ../../$(BIN_DIR)/agent-service ./cmd
 	@echo "$(GREEN)Agent-service built successfully!$(NC)"
 
 .PHONY: loyalty-service
 loyalty-service:
 	@echo "$(CYAN)Building loyalty-service...$(NC)"
-	cd services/loyalty-service && $(GO_BUILD) -o ../../$(BIN_DIR)/loyalty-service .
+	cd services/loyalty-service && $(GO_BUILD) -o ../../$(BIN_DIR)/loyalty-service ./cmd
 	@echo "$(GREEN)Loyalty-service built successfully!$(NC)"
 
 # ---- Java Services ----

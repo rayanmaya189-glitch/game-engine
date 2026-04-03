@@ -164,204 +164,206 @@ public final class WalletServiceOuterClass {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n)game_engine/wallet/v1/wallet_service.pr" +
-      "oto\022\024game_engine.wallet.v1\032\037google/protob" +
-      "uf/timestamp.proto\032\033google/protobuf/empt" +
-      "y.proto\032 game_engine/common/v1/enums.prot" +
-      "o\032%game_engine/common/v1/pagination.proto" +
-      "\032 game_engine/common/v1/money.proto\"r\n\021Ge" +
-      "tBalanceRequest\022\027\n\007user_id\030\001 \001(\tR\006userId" +
-      "\022D\n\014balance_type\030\002 \001(\0162!.game_engine.comm" +
-      "on.v1.BalanceTypeR\013balanceType\"\225\002\n\022GetBa" +
-      "lanceResponse\0225\n\007balance\030\001 \001(\0132\033.gameeng" +
-      "ine.common.v1.MoneyR\007balance\022@\n\rlocked_a" +
-      "mount\030\002 \001(\0132\033.game_engine.common.v1.Money" +
-      "R\014lockedAmount\022F\n\020available_amount\030\003 \001(\013" +
-      "2\033.game_engine.common.v1.MoneyR\017available" +
-      "Amount\022>\n\014bonus_amount\030\004 \001(\0132\033.gameengin" +
-      "e.common.v1.MoneyR\013bonusAmount\"0\n\025GetAll" +
-      "BalancesRequest\022\027\n\007user_id\030\001 \001(\tR\006userId" +
-      "\"X\n\026GetAllBalancesResponse\022>\n\010balances\030\001" +
-      " \003(\0132\".game_engine.common.v1.BalanceEntry" +
-      "R\010balances\"\364\002\n\034GetTransactionHistoryRequ" +
-      "est\022\027\n\007user_id\030\001 \001(\tR\006userId\022;\n\005types\030\002 " +
-      "\003(\0162%.game_engine.common.v1.TransactionTy" +
-      "peR\005types\022C\n\010statuses\030\003 \003(\0162\'.game_engine" +
-      ".common.v1.TransactionStatusR\010statuses\0229" +
-      "\n\nstart_date\030\004 \001(\0132\032.google.protobuf.Tim" +
-      "estampR\tstartDate\0225\n\010end_date\030\005 \001(\0132\032.go" +
-      "ogle.protobuf.TimestampR\007endDate\022G\n\npagi" +
-      "nation\030\006 \001(\0132\'.game_engine.common.v1.Pagi" +
-      "nationRequestR\npagination\"\260\001\n\035GetTransac" +
-      "tionHistoryResponse\022E\n\014transactions\030\001 \003(" +
-      "\0132!.game_engine.wallet.v1.TransactionR\014tr" +
-      "ansactions\022H\n\npagination\030\002 \001(\0132(.gameeng" +
-      "ine.common.v1.PaginationResponseR\npagina" +
-      "tion\"\372\001\n\024CreateDepositRequest\022\027\n\007user_id" +
-      "\030\001 \001(\tR\006userId\0223\n\006amount\030\002 \001(\0132\033.gameeng" +
-      "ine.common.v1.MoneyR\006amount\022J\n\016payment_m" +
-      "ethod\030\003 \001(\0162#.game_engine.common.v1.Payme" +
-      "ntMethodR\rpaymentMethod\022)\n\020payment_provi" +
-      "der\030\004 \001(\tR\017paymentProvider\022\035\n\nbonus_code" +
-      "\030\005 \001(\tR\tbonusCode\"\335\001\n\025CreateDepositRespo" +
-      "nse\022;\n\007deposit\030\001 \001(\0132!.game_engine.wallet" +
-      ".v1.TransactionR\007deposit\022\037\n\013payment_url\030" +
-      "\002 \001(\tR\npaymentUrl\022+\n\021payment_reference\030\003" +
-      " \001(\tR\020paymentReference\0229\n\nexpires_at\030\004 \001" +
-      "(\0132\032.google.protobuf.TimestampR\texpiresA" +
-      "t\"\224\001\n\025ConfirmDepositRequest\022%\n\016transacti" +
-      "on_id\030\001 \001(\tR\rtransactionId\022+\n\021payment_re" +
-      "ference\030\002 \001(\tR\020paymentReference\022\'\n\017provi" +
-      "der_status\030\003 \001(\tR\016providerStatus\"\221\001\n\026Con" +
-      "firmDepositResponse\022\030\n\007success\030\001 \001(\010R\007su" +
-      "ccess\022C\n\013transaction\030\002 \001(\0132!.game_engine." +
-      "wallet.v1.TransactionR\013transaction\022\030\n\007me" +
-      "ssage\030\003 \001(\tR\007message\"\231\001\n\027CreateWithdrawa" +
-      "lRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\0223\n\006amo" +
-      "unt\030\002 \001(\0132\033.game_engine.common.v1.MoneyR\006" +
-      "amount\0220\n\024withdrawal_method_id\030\003 \001(\tR\022wi" +
-      "thdrawalMethodId\"\244\001\n\030CreateWithdrawalRes" +
-      "ponse\022A\n\nwithdrawal\030\001 \001(\0132!.game_engine.w" +
-      "allet.v1.TransactionR\nwithdrawal\022+\n\021appr" +
-      "oval_required\030\002 \001(\010R\020approvalRequired\022\030\n" +
-      "\007message\030\003 \001(\tR\007message\"\261\001\n\030ConfirmWithd" +
-      "rawalRequest\022%\n\016transaction_id\030\001 \001(\tR\rtr" +
-      "ansactionId\022-\n\022provider_reference\030\002 \001(\tR" +
-      "\021providerReference\022?\n\006status\030\003 \001(\0162\'.gam" +
-      "eengine.common.v1.TransactionStatusR\006sta" +
-      "tus\"\224\001\n\031ConfirmWithdrawalResponse\022\030\n\007suc" +
-      "cess\030\001 \001(\010R\007success\022C\n\013transaction\030\002 \001(\013" +
-      "2!.game_engine.wallet.v1.TransactionR\013tra" +
-      "nsaction\022\030\n\007message\030\003 \001(\tR\007message\"\305\001\n\017P" +
-      "laceBetRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\022" +
-      "\027\n\007game_id\030\002 \001(\tR\006gameId\0223\n\006amount\030\003 \001(\013" +
-      "2\033.game_engine.common.v1.MoneyR\006amount\022\031\n" +
-      "\010bet_type\030\004 \001(\tR\007betType\022\034\n\tselection\030\005 " +
-      "\001(\tR\tselection\022\022\n\004odds\030\006 \001(\tR\004odds\"\370\001\n\020P" +
-      "laceBetResponse\0223\n\003bet\030\001 \001(\0132!.gameengin" +
-      "e.wallet.v1.TransactionR\003bet\022<\n\013new_bala" +
-      "nce\030\002 \001(\0132\033.game_engine.common.v1.MoneyR\n" +
-      "newBalance\022@\n\rlocked_amount\030\003 \001(\0132\033.game" +
-      "engine.common.v1.MoneyR\014lockedAmount\022\025\n\006" +
-      "bet_id\030\004 \001(\tR\005betId\022\030\n\007message\030\005 \001(\tR\007me" +
-      "ssage\"\317\001\n\020SettleBetRequest\022\025\n\006bet_id\030\001 \001" +
-      "(\tR\005betId\022P\n\017settlement_type\030\002 \001(\0162\'.gam" +
-      "eengine.wallet.v1.BetSettlementTypeR\016set" +
-      "tlementType\022:\n\nwin_amount\030\003 \001(\0132\033.gameen" +
-      "gine.common.v1.MoneyR\twinAmount\022\026\n\006resul" +
-      "t\030\004 \001(\tR\006result\"\357\001\n\021SettleBetResponse\022\030\n" +
-      "\007success\030\001 \001(\010R\007success\0223\n\003bet\030\002 \001(\0132!.g" +
-      "ameengine.wallet.v1.TransactionR\003bet\0223\n\003" +
-      "win\030\003 \001(\0132!.game_engine.wallet.v1.Transac" +
-      "tionR\003win\022<\n\013new_balance\030\004 \001(\0132\033.gameeng" +
-      "ine.common.v1.MoneyR\nnewBalance\022\030\n\007messa" +
-      "ge\030\005 \001(\tR\007message\"A\n\020CancelBetRequest\022\025\n" +
-      "\006bet_id\030\001 \001(\tR\005betId\022\026\n\006reason\030\002 \001(\tR\006re" +
-      "ason\"\300\001\n\021CancelBetResponse\022\030\n\007success\030\001 " +
-      "\001(\010R\007success\0229\n\006refund\030\002 \001(\0132!.gameengin" +
-      "e.wallet.v1.TransactionR\006refund\022<\n\013new_b" +
-      "alance\030\003 \001(\0132\033.game_engine.common.v1.Mone" +
-      "yR\nnewBalance\022\030\n\007message\030\004 \001(\tR\007message\"" +
-      "\202\002\n\030CreateBonusCreditRequest\022\027\n\007user_id\030" +
-      "\001 \001(\tR\006userId\0223\n\006amount\030\002 \001(\0132\033.gameengi" +
-      "ne.common.v1.MoneyR\006amount\022>\n\nbonus_type" +
-      "\030\003 \001(\0162\037.game_engine.wallet.v1.BonusTypeR" +
-      "\tbonusType\022\035\n\nbonus_code\030\004 \001(\tR\tbonusCod" +
-      "e\0229\n\nexpires_at\030\005 \001(\0132\032.google.protobuf." +
-      "TimestampR\texpiresAt\"\210\001\n\031CreateBonusCred" +
-      "itResponse\022\030\n\007success\030\001 \001(\010R\007success\0227\n\005" +
-      "bonus\030\002 \001(\0132!.game_engine.wallet.v1.Trans" +
-      "actionR\005bonus\022\030\n\007message\030\003 \001(\tR\007message\"" +
-      "Z\n\031ReverseTransactionRequest\022%\n\016transact" +
-      "ion_id\030\001 \001(\tR\rtransactionId\022\026\n\006reason\030\002 " +
-      "\001(\tR\006reason\"\217\001\n\032ReverseTransactionRespon" +
-      "se\022\030\n\007success\030\001 \001(\010R\007success\022=\n\010reversal" +
-      "\030\002 \001(\0132!.game_engine.wallet.v1.Transactio" +
-      "nR\010reversal\022\030\n\007message\030\003 \001(\tR\007message\"\222\001" +
-      "\n\025GetPendingBetsRequest\022\027\n\007user_id\030\001 \001(\t" +
-      "R\006userId\022\027\n\007game_id\030\002 \001(\tR\006gameId\022G\n\npag" +
-      "ination\030\003 \001(\0132\'.game_engine.common.v1.Pag" +
-      "inationRequestR\npagination\"\221\001\n\026GetPendin" +
-      "gBetsResponse\022-\n\004bets\030\001 \003(\0132\031.game_engine" +
-      ".wallet.v1.BetR\004bets\022H\n\npagination\030\002 \001(\013" +
-      "2(.game_engine.common.v1.PaginationRespon" +
-      "seR\npagination\"\372\004\n\013Transaction\022%\n\016transa" +
-      "ction_id\030\001 \001(\tR\rtransactionId\022\027\n\007user_id" +
-      "\030\002 \001(\tR\006userId\0229\n\004type\030\003 \001(\0162%.gameengin" +
-      "e.common.v1.TransactionTypeR\004type\022?\n\006sta" +
-      "tus\030\004 \001(\0162\'.game_engine.common.v1.Transac" +
-      "tionStatusR\006status\022?\n\006amount\030\005 \001(\0132\'.gam" +
-      "eengine.common.v1.TransactionAmountR\006amo" +
-      "unt\022J\n\016payment_method\030\006 \001(\0162#.game_engine" +
-      ".common.v1.PaymentMethodR\rpaymentMethod\022" +
-      ")\n\020payment_provider\030\007 \001(\tR\017paymentProvid" +
-      "er\022+\n\021payment_reference\030\010 \001(\tR\020paymentRe" +
-      "ference\022\027\n\007game_id\030\t \001(\tR\006gameId\022\025\n\006bet_" +
-      "id\030\n \001(\tR\005betId\022 \n\013description\030\013 \001(\tR\013de" +
-      "scription\0229\n\ncreated_at\030\014 \001(\0132\032.google.p" +
-      "rotobuf.TimestampR\tcreatedAt\022=\n\014processe" +
-      "d_at\030\r \001(\0132\032.google.protobuf.TimestampR\013" +
-      "processedAt\"\230\004\n\003Bet\022\025\n\006bet_id\030\001 \001(\tR\005bet" +
-      "Id\022\027\n\007user_id\030\002 \001(\tR\006userId\022\027\n\007game_id\030\003" +
-      " \001(\tR\006gameId\022\031\n\010bet_type\030\004 \001(\tR\007betType\022" +
-      "\034\n\tselection\030\005 \001(\tR\tselection\022\022\n\004odds\030\006 " +
-      "\001(\tR\004odds\0221\n\005stake\030\007 \001(\0132\033.game_engine.co" +
-      "mmon.v1.MoneyR\005stake\022@\n\rpotential_win\030\010 " +
-      "\001(\0132\033.game_engine.common.v1.MoneyR\014potent" +
-      "ialWin\022:\n\nactual_win\030\t \001(\0132\033.game_engine." +
-      "common.v1.MoneyR\tactualWin\022P\n\017settlement" +
-      "_type\030\n \001(\0162\'.game_engine.wallet.v1.BetSe" +
-      "ttlementTypeR\016settlementType\022?\n\006status\030\013" +
-      " \001(\0162\'.game_engine.common.v1.TransactionS" +
-      "tatusR\006status\0227\n\tplaced_at\030\014 \001(\0132\032.googl" +
-      "e.protobuf.TimestampR\010placedAt*\267\001\n\021BetSe" +
-      "ttlementType\022#\n\037BET_SETTLEMENT_TYPE_UNSP" +
-      "ECIFIED\020\000\022\037\n\033BET_SETTLEMENT_TYPE_PENDING" +
-      "\020\001\022\033\n\027BET_SETTLEMENT_TYPE_WON\020\002\022\034\n\030BET_S" +
-      "ETTLEMENT_TYPE_LOST\020\003\022!\n\035BET_SETTLEMENT_" +
-      "TYPE_CANCELLED\020\004*\276\001\n\tBonusType\022\032\n\026BONUS_" +
-      "TYPE_UNSPECIFIED\020\000\022\026\n\022BONUS_TYPE_WELCOME" +
-      "\020\001\022\026\n\022BONUS_TYPE_DEPOSIT\020\002\022\031\n\025BONUS_TYPE" +
-      "_NO_DEPOSIT\020\003\022\031\n\025BONUS_TYPE_FREE_SPINS\020\004" +
-      "\022\027\n\023BONUS_TYPE_CASHBACK\020\005\022\026\n\022BONUS_TYPE_" +
-      "LOYALTY\020\0062\223\013\n\rWalletService\022_\n\nGetBalanc" +
-      "e\022\'.game_engine.wallet.v1.GetBalanceReque" +
-      "st\032(.game_engine.wallet.v1.GetBalanceResp" +
-      "onse\022k\n\016GetAllBalances\022+.game_engine.wall" +
-      "et.v1.GetAllBalancesRequest\032,.game_engine" +
-      ".wallet.v1.GetAllBalancesResponse\022\200\001\n\025Ge" +
-      "tTransactionHistory\0222.game_engine.wallet." +
-      "v1.GetTransactionHistoryRequest\0323.gameen" +
-      "gine.wallet.v1.GetTransactionHistoryResp" +
-      "onse\022h\n\rCreateDeposit\022*.game_engine.walle" +
-      "t.v1.CreateDepositRequest\032+.game_engine.w" +
-      "allet.v1.CreateDepositResponse\022k\n\016Confir" +
-      "mDeposit\022+.game_engine.wallet.v1.ConfirmD" +
-      "epositRequest\032,.game_engine.wallet.v1.Con" +
-      "firmDepositResponse\022q\n\020CreateWithdrawal\022" +
-      "-.game_engine.wallet.v1.CreateWithdrawalR" +
-      "equest\032..game_engine.wallet.v1.CreateWith" +
-      "drawalResponse\022t\n\021ConfirmWithdrawal\022..ga" +
-      "meengine.wallet.v1.ConfirmWithdrawalRequ" +
-      "est\032/.game_engine.wallet.v1.ConfirmWithdr" +
-      "awalResponse\022Y\n\010PlaceBet\022%.game_engine.wa" +
-      "llet.v1.PlaceBetRequest\032&.game_engine.wal" +
-      "let.v1.PlaceBetResponse\022\\\n\tSettleBet\022&.g" +
-      "ameengine.wallet.v1.SettleBetRequest\032\'.g" +
-      "ameengine.wallet.v1.SettleBetResponse\022\\\n" +
-      "\tCancelBet\022&.game_engine.wallet.v1.Cancel" +
-      "BetRequest\032\'.game_engine.wallet.v1.Cancel" +
-      "BetResponse\022t\n\021CreateBonusCredit\022..gamee" +
-      "ngine.wallet.v1.CreateBonusCreditRequest" +
-      "\032/.game_engine.wallet.v1.CreateBonusCredi" +
-      "tResponse\022w\n\022ReverseTransaction\022/.gameen" +
-      "gine.wallet.v1.ReverseTransactionRequest" +
-      "\0320.game_engine.wallet.v1.ReverseTransacti" +
-      "onResponse\022k\n\016GetPendingBets\022+.gameengin" +
-      "e.wallet.v1.GetPendingBetsRequest\032,.game" +
-      "engine.wallet.v1.GetPendingBetsResponseB" +
-      "9\n\031com.game_engine.wallet.v1P\001Z\032gen/go/w" +
-      "allet/v1;walletsv1b\006proto3"
+      "\n*game_engine/wallet/v1/wallet_service.p" +
+      "roto\022\025game_engine.wallet.v1\032\037google/prot" +
+      "obuf/timestamp.proto\032\033google/protobuf/em" +
+      "pty.proto\032!game_engine/common/v1/enums.p" +
+      "roto\032&game_engine/common/v1/pagination.p" +
+      "roto\032!game_engine/common/v1/money.proto\"" +
+      "s\n\021GetBalanceRequest\022\027\n\007user_id\030\001 \001(\tR\006u" +
+      "serId\022E\n\014balance_type\030\002 \001(\0162\".game_engin" +
+      "e.common.v1.BalanceTypeR\013balanceType\"\231\002\n" +
+      "\022GetBalanceResponse\0226\n\007balance\030\001 \001(\0132\034.g" +
+      "ame_engine.common.v1.MoneyR\007balance\022A\n\rl" +
+      "ocked_amount\030\002 \001(\0132\034.game_engine.common." +
+      "v1.MoneyR\014lockedAmount\022G\n\020available_amou" +
+      "nt\030\003 \001(\0132\034.game_engine.common.v1.MoneyR\017" +
+      "availableAmount\022?\n\014bonus_amount\030\004 \001(\0132\034." +
+      "game_engine.common.v1.MoneyR\013bonusAmount" +
+      "\"0\n\025GetAllBalancesRequest\022\027\n\007user_id\030\001 \001" +
+      "(\tR\006userId\"Y\n\026GetAllBalancesResponse\022?\n\010" +
+      "balances\030\001 \003(\0132#.game_engine.common.v1.B" +
+      "alanceEntryR\010balances\"\367\002\n\034GetTransaction" +
+      "HistoryRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\022" +
+      "<\n\005types\030\002 \003(\0162&.game_engine.common.v1.T" +
+      "ransactionTypeR\005types\022D\n\010statuses\030\003 \003(\0162" +
+      "(.game_engine.common.v1.TransactionStatu" +
+      "sR\010statuses\0229\n\nstart_date\030\004 \001(\0132\032.google" +
+      ".protobuf.TimestampR\tstartDate\0225\n\010end_da" +
+      "te\030\005 \001(\0132\032.google.protobuf.TimestampR\007en" +
+      "dDate\022H\n\npagination\030\006 \001(\0132(.game_engine." +
+      "common.v1.PaginationRequestR\npagination\"" +
+      "\262\001\n\035GetTransactionHistoryResponse\022F\n\014tra" +
+      "nsactions\030\001 \003(\0132\".game_engine.wallet.v1." +
+      "TransactionR\014transactions\022I\n\npagination\030" +
+      "\002 \001(\0132).game_engine.common.v1.Pagination" +
+      "ResponseR\npagination\"\374\001\n\024CreateDepositRe" +
+      "quest\022\027\n\007user_id\030\001 \001(\tR\006userId\0224\n\006amount" +
+      "\030\002 \001(\0132\034.game_engine.common.v1.MoneyR\006am" +
+      "ount\022K\n\016payment_method\030\003 \001(\0162$.game_engi" +
+      "ne.common.v1.PaymentMethodR\rpaymentMetho" +
+      "d\022)\n\020payment_provider\030\004 \001(\tR\017paymentProv" +
+      "ider\022\035\n\nbonus_code\030\005 \001(\tR\tbonusCode\"\336\001\n\025" +
+      "CreateDepositResponse\022<\n\007deposit\030\001 \001(\0132\"" +
+      ".game_engine.wallet.v1.TransactionR\007depo" +
+      "sit\022\037\n\013payment_url\030\002 \001(\tR\npaymentUrl\022+\n\021" +
+      "payment_reference\030\003 \001(\tR\020paymentReferenc" +
+      "e\0229\n\nexpires_at\030\004 \001(\0132\032.google.protobuf." +
+      "TimestampR\texpiresAt\"\224\001\n\025ConfirmDepositR" +
+      "equest\022%\n\016transaction_id\030\001 \001(\tR\rtransact" +
+      "ionId\022+\n\021payment_reference\030\002 \001(\tR\020paymen" +
+      "tReference\022\'\n\017provider_status\030\003 \001(\tR\016pro" +
+      "viderStatus\"\222\001\n\026ConfirmDepositResponse\022\030" +
+      "\n\007success\030\001 \001(\010R\007success\022D\n\013transaction\030" +
+      "\002 \001(\0132\".game_engine.wallet.v1.Transactio" +
+      "nR\013transaction\022\030\n\007message\030\003 \001(\tR\007message" +
+      "\"\232\001\n\027CreateWithdrawalRequest\022\027\n\007user_id\030" +
+      "\001 \001(\tR\006userId\0224\n\006amount\030\002 \001(\0132\034.game_eng" +
+      "ine.common.v1.MoneyR\006amount\0220\n\024withdrawa" +
+      "l_method_id\030\003 \001(\tR\022withdrawalMethodId\"\245\001" +
+      "\n\030CreateWithdrawalResponse\022B\n\nwithdrawal" +
+      "\030\001 \001(\0132\".game_engine.wallet.v1.Transacti" +
+      "onR\nwithdrawal\022+\n\021approval_required\030\002 \001(" +
+      "\010R\020approvalRequired\022\030\n\007message\030\003 \001(\tR\007me" +
+      "ssage\"\262\001\n\030ConfirmWithdrawalRequest\022%\n\016tr" +
+      "ansaction_id\030\001 \001(\tR\rtransactionId\022-\n\022pro" +
+      "vider_reference\030\002 \001(\tR\021providerReference" +
+      "\022@\n\006status\030\003 \001(\0162(.game_engine.common.v1" +
+      ".TransactionStatusR\006status\"\225\001\n\031ConfirmWi" +
+      "thdrawalResponse\022\030\n\007success\030\001 \001(\010R\007succe" +
+      "ss\022D\n\013transaction\030\002 \001(\0132\".game_engine.wa" +
+      "llet.v1.TransactionR\013transaction\022\030\n\007mess" +
+      "age\030\003 \001(\tR\007message\"\306\001\n\017PlaceBetRequest\022\027" +
+      "\n\007user_id\030\001 \001(\tR\006userId\022\027\n\007game_id\030\002 \001(\t" +
+      "R\006gameId\0224\n\006amount\030\003 \001(\0132\034.game_engine.c" +
+      "ommon.v1.MoneyR\006amount\022\031\n\010bet_type\030\004 \001(\t" +
+      "R\007betType\022\034\n\tselection\030\005 \001(\tR\tselection\022" +
+      "\022\n\004odds\030\006 \001(\tR\004odds\"\373\001\n\020PlaceBetResponse" +
+      "\0224\n\003bet\030\001 \001(\0132\".game_engine.wallet.v1.Tr" +
+      "ansactionR\003bet\022=\n\013new_balance\030\002 \001(\0132\034.ga" +
+      "me_engine.common.v1.MoneyR\nnewBalance\022A\n" +
+      "\rlocked_amount\030\003 \001(\0132\034.game_engine.commo" +
+      "n.v1.MoneyR\014lockedAmount\022\025\n\006bet_id\030\004 \001(\t" +
+      "R\005betId\022\030\n\007message\030\005 \001(\tR\007message\"\321\001\n\020Se" +
+      "ttleBetRequest\022\025\n\006bet_id\030\001 \001(\tR\005betId\022Q\n" +
+      "\017settlement_type\030\002 \001(\0162(.game_engine.wal" +
+      "let.v1.BetSettlementTypeR\016settlementType" +
+      "\022;\n\nwin_amount\030\003 \001(\0132\034.game_engine.commo" +
+      "n.v1.MoneyR\twinAmount\022\026\n\006result\030\004 \001(\tR\006r" +
+      "esult\"\362\001\n\021SettleBetResponse\022\030\n\007success\030\001" +
+      " \001(\010R\007success\0224\n\003bet\030\002 \001(\0132\".game_engine" +
+      ".wallet.v1.TransactionR\003bet\0224\n\003win\030\003 \001(\013" +
+      "2\".game_engine.wallet.v1.TransactionR\003wi" +
+      "n\022=\n\013new_balance\030\004 \001(\0132\034.game_engine.com" +
+      "mon.v1.MoneyR\nnewBalance\022\030\n\007message\030\005 \001(" +
+      "\tR\007message\"A\n\020CancelBetRequest\022\025\n\006bet_id" +
+      "\030\001 \001(\tR\005betId\022\026\n\006reason\030\002 \001(\tR\006reason\"\302\001" +
+      "\n\021CancelBetResponse\022\030\n\007success\030\001 \001(\010R\007su" +
+      "ccess\022:\n\006refund\030\002 \001(\0132\".game_engine.wall" +
+      "et.v1.TransactionR\006refund\022=\n\013new_balance" +
+      "\030\003 \001(\0132\034.game_engine.common.v1.MoneyR\nne" +
+      "wBalance\022\030\n\007message\030\004 \001(\tR\007message\"\204\002\n\030C" +
+      "reateBonusCreditRequest\022\027\n\007user_id\030\001 \001(\t" +
+      "R\006userId\0224\n\006amount\030\002 \001(\0132\034.game_engine.c" +
+      "ommon.v1.MoneyR\006amount\022?\n\nbonus_type\030\003 \001" +
+      "(\0162 .game_engine.wallet.v1.BonusTypeR\tbo" +
+      "nusType\022\035\n\nbonus_code\030\004 \001(\tR\tbonusCode\0229" +
+      "\n\nexpires_at\030\005 \001(\0132\032.google.protobuf.Tim" +
+      "estampR\texpiresAt\"\211\001\n\031CreateBonusCreditR" +
+      "esponse\022\030\n\007success\030\001 \001(\010R\007success\0228\n\005bon" +
+      "us\030\002 \001(\0132\".game_engine.wallet.v1.Transac" +
+      "tionR\005bonus\022\030\n\007message\030\003 \001(\tR\007message\"Z\n" +
+      "\031ReverseTransactionRequest\022%\n\016transactio" +
+      "n_id\030\001 \001(\tR\rtransactionId\022\026\n\006reason\030\002 \001(" +
+      "\tR\006reason\"\220\001\n\032ReverseTransactionResponse" +
+      "\022\030\n\007success\030\001 \001(\010R\007success\022>\n\010reversal\030\002" +
+      " \001(\0132\".game_engine.wallet.v1.Transaction" +
+      "R\010reversal\022\030\n\007message\030\003 \001(\tR\007message\"\223\001\n" +
+      "\025GetPendingBetsRequest\022\027\n\007user_id\030\001 \001(\tR" +
+      "\006userId\022\027\n\007game_id\030\002 \001(\tR\006gameId\022H\n\npagi" +
+      "nation\030\003 \001(\0132(.game_engine.common.v1.Pag" +
+      "inationRequestR\npagination\"\223\001\n\026GetPendin" +
+      "gBetsResponse\022.\n\004bets\030\001 \003(\0132\032.game_engin" +
+      "e.wallet.v1.BetR\004bets\022I\n\npagination\030\002 \001(" +
+      "\0132).game_engine.common.v1.PaginationResp" +
+      "onseR\npagination\"\376\004\n\013Transaction\022%\n\016tran" +
+      "saction_id\030\001 \001(\tR\rtransactionId\022\027\n\007user_" +
+      "id\030\002 \001(\tR\006userId\022:\n\004type\030\003 \001(\0162&.game_en" +
+      "gine.common.v1.TransactionTypeR\004type\022@\n\006" +
+      "status\030\004 \001(\0162(.game_engine.common.v1.Tra" +
+      "nsactionStatusR\006status\022@\n\006amount\030\005 \001(\0132(" +
+      ".game_engine.common.v1.TransactionAmount" +
+      "R\006amount\022K\n\016payment_method\030\006 \001(\0162$.game_" +
+      "engine.common.v1.PaymentMethodR\rpaymentM" +
+      "ethod\022)\n\020payment_provider\030\007 \001(\tR\017payment" +
+      "Provider\022+\n\021payment_reference\030\010 \001(\tR\020pay" +
+      "mentReference\022\027\n\007game_id\030\t \001(\tR\006gameId\022\025" +
+      "\n\006bet_id\030\n \001(\tR\005betId\022 \n\013description\030\013 \001" +
+      "(\tR\013description\0229\n\ncreated_at\030\014 \001(\0132\032.go" +
+      "ogle.protobuf.TimestampR\tcreatedAt\022=\n\014pr" +
+      "ocessed_at\030\r \001(\0132\032.google.protobuf.Times" +
+      "tampR\013processedAt\"\235\004\n\003Bet\022\025\n\006bet_id\030\001 \001(" +
+      "\tR\005betId\022\027\n\007user_id\030\002 \001(\tR\006userId\022\027\n\007gam" +
+      "e_id\030\003 \001(\tR\006gameId\022\031\n\010bet_type\030\004 \001(\tR\007be" +
+      "tType\022\034\n\tselection\030\005 \001(\tR\tselection\022\022\n\004o" +
+      "dds\030\006 \001(\tR\004odds\0222\n\005stake\030\007 \001(\0132\034.game_en" +
+      "gine.common.v1.MoneyR\005stake\022A\n\rpotential" +
+      "_win\030\010 \001(\0132\034.game_engine.common.v1.Money" +
+      "R\014potentialWin\022;\n\nactual_win\030\t \001(\0132\034.gam" +
+      "e_engine.common.v1.MoneyR\tactualWin\022Q\n\017s" +
+      "ettlement_type\030\n \001(\0162(.game_engine.walle" +
+      "t.v1.BetSettlementTypeR\016settlementType\022@" +
+      "\n\006status\030\013 \001(\0162(.game_engine.common.v1.T" +
+      "ransactionStatusR\006status\0227\n\tplaced_at\030\014 " +
+      "\001(\0132\032.google.protobuf.TimestampR\010placedA" +
+      "t*\267\001\n\021BetSettlementType\022#\n\037BET_SETTLEMEN" +
+      "T_TYPE_UNSPECIFIED\020\000\022\037\n\033BET_SETTLEMENT_T" +
+      "YPE_PENDING\020\001\022\033\n\027BET_SETTLEMENT_TYPE_WON" +
+      "\020\002\022\034\n\030BET_SETTLEMENT_TYPE_LOST\020\003\022!\n\035BET_" +
+      "SETTLEMENT_TYPE_CANCELLED\020\004*\276\001\n\tBonusTyp" +
+      "e\022\032\n\026BONUS_TYPE_UNSPECIFIED\020\000\022\026\n\022BONUS_T" +
+      "YPE_WELCOME\020\001\022\026\n\022BONUS_TYPE_DEPOSIT\020\002\022\031\n" +
+      "\025BONUS_TYPE_NO_DEPOSIT\020\003\022\031\n\025BONUS_TYPE_F" +
+      "REE_SPINS\020\004\022\027\n\023BONUS_TYPE_CASHBACK\020\005\022\026\n\022" +
+      "BONUS_TYPE_LOYALTY\020\0062\255\013\n\rWalletService\022a" +
+      "\n\nGetBalance\022(.game_engine.wallet.v1.Get" +
+      "BalanceRequest\032).game_engine.wallet.v1.G" +
+      "etBalanceResponse\022m\n\016GetAllBalances\022,.ga" +
+      "me_engine.wallet.v1.GetAllBalancesReques" +
+      "t\032-.game_engine.wallet.v1.GetAllBalances" +
+      "Response\022\202\001\n\025GetTransactionHistory\0223.gam" +
+      "e_engine.wallet.v1.GetTransactionHistory" +
+      "Request\0324.game_engine.wallet.v1.GetTrans" +
+      "actionHistoryResponse\022j\n\rCreateDeposit\022+" +
+      ".game_engine.wallet.v1.CreateDepositRequ" +
+      "est\032,.game_engine.wallet.v1.CreateDeposi" +
+      "tResponse\022m\n\016ConfirmDeposit\022,.game_engin" +
+      "e.wallet.v1.ConfirmDepositRequest\032-.game" +
+      "_engine.wallet.v1.ConfirmDepositResponse" +
+      "\022s\n\020CreateWithdrawal\022..game_engine.walle" +
+      "t.v1.CreateWithdrawalRequest\032/.game_engi" +
+      "ne.wallet.v1.CreateWithdrawalResponse\022v\n" +
+      "\021ConfirmWithdrawal\022/.game_engine.wallet." +
+      "v1.ConfirmWithdrawalRequest\0320.game_engin" +
+      "e.wallet.v1.ConfirmWithdrawalResponse\022[\n" +
+      "\010PlaceBet\022&.game_engine.wallet.v1.PlaceB" +
+      "etRequest\032\'.game_engine.wallet.v1.PlaceB" +
+      "etResponse\022^\n\tSettleBet\022\'.game_engine.wa" +
+      "llet.v1.SettleBetRequest\032(.game_engine.w" +
+      "allet.v1.SettleBetResponse\022^\n\tCancelBet\022" +
+      "\'.game_engine.wallet.v1.CancelBetRequest" +
+      "\032(.game_engine.wallet.v1.CancelBetRespon" +
+      "se\022v\n\021CreateBonusCredit\022/.game_engine.wa" +
+      "llet.v1.CreateBonusCreditRequest\0320.game_" +
+      "engine.wallet.v1.CreateBonusCreditRespon" +
+      "se\022y\n\022ReverseTransaction\0220.game_engine.w" +
+      "allet.v1.ReverseTransactionRequest\0321.gam" +
+      "e_engine.wallet.v1.ReverseTransactionRes" +
+      "ponse\022m\n\016GetPendingBets\022,.game_engine.wa" +
+      "llet.v1.GetPendingBetsRequest\032-.game_eng" +
+      "ine.wallet.v1.GetPendingBetsResponseB9\n\031" +
+      "com.game_engine.wallet.v1P\001Z\032gen/go/wall" +
+      "et/v1;walletsv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -2,10 +2,8 @@ package service
 
 import (
 	"context"
-	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
-	"encoding/base64"
 	"encoding/pem"
 	"errors"
 	"fmt"
@@ -19,7 +17,6 @@ import (
 	"github.com/game_engine/auth-service/internal/repository"
 	"github.com/game_engine/auth-service/pkg/utils"
 	"github.com/go-playground/validator/v10"
-	"github.com/golang-jwt/jwt/v5"
 	"github.com/google/uuid"
 	"github.com/nats-io/nats.go"
 	"github.com/redis/go-redis/v9"

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	authv1 "github.com/game_engine/common/proto/gen/go/game_engine/auth/v1"
+	authv1 "game_engine/gen/go/auth/v1"
 
 	"github.com/game_engine/auth-service/internal/model"
 	"google.golang.org/protobuf/types/known/timestamppb"
