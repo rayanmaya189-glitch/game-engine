@@ -1,6 +1,8 @@
 module github.com/game_engine/chat
 
-go 1.25
+go 1.24
+
+replace github.com/nats-io/nats-server/v2 => github.com/nats-io/nats-server/v2 v2.9.0
 
 require (
 	github.com/google/uuid v1.5.0

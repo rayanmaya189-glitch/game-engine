@@ -3,7 +3,9 @@ package model
 import (
 	"time"
 
-	userv1 "game_engine/gen/go/user/v1"
+	userv1 "github.com/game_engine/user-service/pkg/game_engine/user/v1"
+	commonv1 "github.com/game_engine/user-service/pkg/game_engine/common/v1"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Profile represents a player profile in the database
@@ -134,24 +136,24 @@ func (p *Profile) ToProto() *userv1.UserProfile {
 		LastName:         p.LastName,
 		AvatarUrl:        p.AvatarURL,
 		Country:          p.Country,
-		Language:         userv1.Language(userv1.Language_value[p.Language]),
+		Language:         commonv1.Language(commonv1.Language_value[p.Language]),
 		Currency:         p.Currency,
 		Timezone:         p.Timezone,
-		Status:           userv1.Status(userv1.Status_value[p.Status]),
-		KycLevel:         userv1.KYCLevel(userv1.KYCLevel_value[p.KYCLevel]),
+		Status:           commonv1.Status(commonv1.Status_value[p.Status]),
+		KycLevel:         commonv1.KYCLevel(commonv1.KYCLevel_value[p.KYCLevel]),
 		EmailVerified:    p.EmailVerified,
 		PhoneVerified:    p.PhoneVerified,
 		TwoFactorEnabled: p.TwoFactorEnabled,
-		CreatedAt:        p.CreatedAt.String(),
-		UpdatedAt:        p.UpdatedAt.String(),
+		CreatedAt:        timestamppb.New(p.CreatedAt),
+		UpdatedAt:        timestamppb.New(p.UpdatedAt),
 	}
 
 	if p.DateOfBirth != nil {
-		proto.DateOfBirth = p.DateOfBirth.String()
+		proto.DateOfBirth = timestamppb.New(*p.DateOfBirth)
 	}
 
 	if p.LastLoginAt != nil {
-		proto.LastLoginAt = p.LastLoginAt.String()
+		proto.LastLoginAt = timestamppb.New(*p.LastLoginAt)
 	}
 
 	return proto
@@ -171,17 +173,17 @@ func (a *Address) ToProto() *userv1.Address {
 // ToProto converts KYCStatus to protobuf message
 func (k *KYCStatus) ToProto() *userv1.KYCStatus {
 	proto := &userv1.KYCStatus{
-		Status:          userv1.VerificationStatus(userv1.VerificationStatus_value[k.Status]),
-		Level:           userv1.KYCLevel(userv1.KYCLevel_value[k.Level]),
+		Status:          commonv1.VerificationStatus(commonv1.VerificationStatus_value[k.Status]),
+		Level:           commonv1.KYCLevel(commonv1.KYCLevel_value[k.Level]),
 		RejectionReason: k.RejectionReason,
 	}
 
 	if k.SubmittedAt != nil {
-		proto.SubmittedAt = k.SubmittedAt.String()
+		proto.SubmittedAt = timestamppb.New(*k.SubmittedAt)
 	}
 
 	if k.ReviewedAt != nil {
-		proto.ReviewedAt = k.ReviewedAt.String()
+		proto.ReviewedAt = timestamppb.New(*k.ReviewedAt)
 	}
 
 	return proto
@@ -205,6 +207,23 @@ func (ps *PlayerSettings) ToProto() *userv1.PlayerSettings {
 			Theme:       ps.Theme,
 		},
 	}
+}
+
+func PlayerSettingsFromProto(proto *userv1.PlayerSettings) *PlayerSettings {
+	if proto == nil {
+		return nil
+	}
+	ps := &PlayerSettings{
+		EmailNotifications: proto.Notifications.EmailEnabled,
+		SMSNotifications:   proto.Notifications.SmsEnabled,
+		PushNotifications:  proto.Notifications.PushEnabled,
+		ProfilePublic:      proto.Privacy.ProfilePublic,
+		ShowOnlineStatus:   proto.Privacy.ShowOnlineStatus,
+		AutoPlay:           proto.Gaming.AutoPlay,
+		SoundVolume:        int(proto.Gaming.SoundVolume),
+		Theme:              proto.Gaming.Theme,
+	}
+	return ps
 }
 
 // ProfileFromProto creates Profile from protobuf message

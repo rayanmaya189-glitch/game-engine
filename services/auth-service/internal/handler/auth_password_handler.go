@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
 	"github.com/google/uuid"
@@ -66,10 +67,11 @@ func (h *AuthHandler) ConfirmResetPassword(ctx context.Context, req *ConfirmRese
 	}
 
 	// Publish password reset event
-	h.authService.PublishEvent("player.events.password_reset", map[string]interface{}{
+	data, _ := json.Marshal(map[string]interface{}{
 		"user_id":   userID.String(),
 		"timestamp": time.Now().Unix(),
 	})
+	h.authService.PublishEvent("player.events.password_reset", data)
 
 	return &emptypb.Empty{}, nil
 }

@@ -1,6 +1,6 @@
 module github.com/game_engine/game-registry
 
-go 1.25
+go 1.24
 
 require (
 	github.com/go-redis/redis/v8 v8.11.5
@@ -9,6 +9,7 @@ require (
 	github.com/nats-io/nats.go v1.31.0
 	github.com/spf13/viper v1.18.2
 	google.golang.org/grpc v1.68.1
+	google.golang.org/protobuf v1.35.1
 )
 
 require (
@@ -36,9 +37,8 @@ require (
 	golang.org/x/sys v0.26.0 // indirect
 	golang.org/x/text v0.19.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
-	google.golang.org/protobuf v1.35.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace game_engine/gen/go => ../../proto/gen/go
+replace github.com/nats-io/nats-server/v2 => github.com/nats-io/nats-server/v2 v2.9.0

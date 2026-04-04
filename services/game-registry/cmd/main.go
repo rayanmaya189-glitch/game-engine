@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	gamesv1 "github.com/game_engine/game-registry/gen/go/game/v1"
+	gamesv1 "github.com/game_engine/game-registry/pkg/game_engine/game/v1"
 
 	"github.com/game_engine/game-registry/internal/config"
 	"github.com/game_engine/game-registry/internal/handler"

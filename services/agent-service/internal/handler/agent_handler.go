@@ -4,13 +4,14 @@ import (
 	"context"
 
 	"github.com/game_engine/agent-service/internal/service"
-	agentpb "github.com/game_engine/gen/go/game_engine/agent/v1"
+	agentpb "github.com/game_engine/agent-service/pkg/game_engine/agent/v1"
 )
 
 // Ensure AgentHandler implements the server interface
 var _ agentpb.AgentServiceServer = (*AgentHandler)(nil)
 
 type AgentHandler struct {
+	agentpb.UnimplementedAgentServiceServer
 	service *service.AgentService
 }
 

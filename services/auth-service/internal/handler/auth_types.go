@@ -4,231 +4,43 @@ import (
 	"fmt"
 	"time"
 
-	authv1 "game_engine/gen/go/auth/v1"
+	authv1 "github.com/game_engine/auth-service/pkg/game_engine/auth/v1"
+	commonv1 "github.com/game_engine/auth-service/pkg/game_engine/common/v1"
 
 	"github.com/game_engine/auth-service/internal/model"
-	"google.golang.org/protobuf/types/known/timestamppb"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 )
 
-type RegisterResponse struct {
-	UserId                    string
-	AccessToken               string
-	RefreshToken              string
-	ExpiresAt                 *timestamppb.Timestamp
-	EmailVerificationRequired bool
-	PhoneVerificationRequired bool
-	Message                   string
-}
-type LoginRequest struct {
-	Identifier string
-	Password   string
-	DeviceInfo *DeviceInfo
-	RememberMe bool
-}
-
-type LoginResponse struct {
-	UserId       string
-	AccessToken  string
-	RefreshToken string
-	ExpiresAt    *timestamppb.Timestamp
-	Requires2Fa  bool
-	SessionId    string
-	UserStatus   Status
-	Message      string
-}
-
-type RefreshTokenRequest struct {
-	RefreshToken string
-	DeviceInfo   *DeviceInfo
-}
-
-type RefreshTokenResponse struct {
-	AccessToken  string
-	RefreshToken string
-	ExpiresAt    *timestamppb.Timestamp
-	SessionId    string
-}
-
-type LogoutRequest struct {
-	SessionId   string
-	AllSessions bool
-}
-
-type ValidateTokenRequest struct {
-	Token        string
-	ExpectedType string
-}
-
-type ValidateTokenResponse struct {
-	Valid     bool
-	UserId    string
-	SessionId string
-	TokenType string
-	ExpiresAt *timestamppb.Timestamp
-	Roles     []UserRole
-}
-
-type ResetPasswordRequest struct {
-	Identifier string
-}
-
-type ConfirmResetPasswordRequest struct {
-	Identifier      string
-	Token           string
-	NewPassword     string
-	ConfirmPassword string
-}
-
-type Enable2FARequest struct {
-	UserId   string
-	Password string
-}
-
-type Enable2FAResponse struct {
-	Secret      string
-	QrCodeUrl   string
-	BackupCodes []string
-}
-
-type Verify2FARequest struct {
-	UserId       string
-	Code         string
-	IsBackupCode bool
-}
-
-type Verify2FAResponse struct {
-	Success      bool
-	Message      string
-	AccessToken  string
-	RefreshToken string
-	ExpiresAt    *timestamppb.Timestamp
-}
+type RegisterResponse = authv1.RegisterResponse
+type LoginRequest = authv1.LoginRequest
+type LoginResponse = authv1.LoginResponse
+type RefreshTokenRequest = authv1.RefreshTokenRequest
+type RefreshTokenResponse = authv1.RefreshTokenResponse
+type LogoutRequest = authv1.LogoutRequest
+type ValidateTokenRequest = authv1.ValidateTokenRequest
+type ValidateTokenResponse = authv1.ValidateTokenResponse
+type ResetPasswordRequest = authv1.ResetPasswordRequest
+type ConfirmResetPasswordRequest = authv1.ConfirmResetPasswordRequest
+type Enable2FARequest = authv1.Enable2FARequest
+type Enable2FAResponse = authv1.Enable2FAResponse
+type Verify2FARequest = authv1.Verify2FARequest
+type Verify2FAResponse = authv1.Verify2FAResponse
 
 type Disable2FARequest struct {
 	UserId   string
 	Password string
 }
 
-type VerifyEmailRequest struct {
-	UserId string
-	Code   string
-}
+type VerifyEmailRequest = authv1.VerifyEmailRequest
+type VerifyEmailResponse = authv1.VerifyEmailResponse
+type VerifyPhoneRequest = authv1.VerifyPhoneRequest
+type VerifyPhoneResponse = authv1.VerifyPhoneResponse
+type ChangePasswordRequest = authv1.ChangePasswordRequest
 
-type VerifyEmailResponse struct {
-	Success      bool
-	Message      string
-	AccessToken  string
-	RefreshToken string
-}
-
-type VerifyPhoneRequest struct {
-	UserId string
-	Code   string
-}
-
-type VerifyPhoneResponse struct {
-	Success      bool
-	Message      string
-	AccessToken  string
-	RefreshToken string
-}
-
-type ChangePasswordRequest struct {
-	UserId          string
-	CurrentPassword string
-	NewPassword     string
-	ConfirmPassword string
-}
-
-// Enum types (would normally be generated from proto)
-type Status int32
-type UserRole int32
-type Language int32
-type DeviceType int32
-type OSType int32
-type BrowserType int32
-
-const (
-	Status_STATUS_UNSPECIFIED Status = 0
-	Status_STATUS_ACTIVE      Status = 1
-	Status_STATUS_SUSPENDED   Status = 2
-	Status_STATUS_LOCKED      Status = 3
-	Status_STATUS_INACTIVE    Status = 4
-)
-
-const (
-	UserRole_ROLE_UNSPECIFIED UserRole = 0
-	UserRole_ROLE_PLAYER      UserRole = 1
-	UserRole_ROLE_ADMIN       UserRole = 2
-	UserRole_ROLE_SUPPORT     UserRole = 3
-)
-
-const (
-	Language_LANGUAGE_UNSPECIFIED Language = 0
-	Language_LANGUAGE_EN          Language = 1
-	Language_LANGUAGE_TH          Language = 2
-	Language_LANGUAGE_VI          Language = 3
-	Language_LANGUAGE_ID          Language = 4
-	Language_LANGUAGE_MS          Language = 5
-	Language_LANGUAGE_ZH          Language = 6
-)
-
-const (
-	DeviceType_DEVICE_TYPE_UNSPECIFIED DeviceType = 0
-	DeviceType_DEVICE_TYPE_MOBILE      DeviceType = 1
-	DeviceType_DEVICE_TYPE_DESKTOP     DeviceType = 2
-	DeviceType_DEVICE_TYPE_TABLET      DeviceType = 3
-	DeviceType_DEVICE_TYPE_TV          DeviceType = 4
-)
-
-const (
-	OSType_OS_TYPE_UNSPECIFIED OSType = 0
-	OSType_OS_TYPE_IOS         OSType = 1
-	OSType_OS_TYPE_ANDROID     OSType = 2
-	OSType_OS_TYPE_WINDOWS     OSType = 3
-	OSType_OS_TYPE_MACOS       OSType = 4
-	OSType_OS_TYPE_LINUX       OSType = 5
-)
-
-const (
-	BrowserType_BROWSER_TYPE_UNSPECIFIED BrowserType = 0
-	BrowserType_BROWSER_TYPE_CHROME      BrowserType = 1
-	BrowserType_BROWSER_TYPE_FIREFOX     BrowserType = 2
-	BrowserType_BROWSER_TYPE_SAFARI      BrowserType = 3
-	BrowserType_BROWSER_TYPE_EDGE        BrowserType = 4
-	BrowserType_BROWSER_TYPE_OPERA       BrowserType = 5
-)
-
-type DeviceInfo struct {
-	DeviceType  DeviceType
-	OSType      OSType
-	BrowserType BrowserType
-	DeviceId    string
-	DeviceName  string
-	IpAddress   string
-	UserAgent   string
-	Country     string
-	City        string
-	Timezone    string
-}
-
-func (d DeviceType) String() string {
-	return "DEVICE_TYPE_UNSPECIFIED"
-}
-
-func (o OSType) String() string {
-	return "OS_TYPE_UNSPECIFIED"
-}
-
-func (b BrowserType) String() string {
-	return "BROWSER_TYPE_UNSPECIFIED"
-}
-
-func (l Language) String() string {
-	return "LANGUAGE_UNSPECIFIED"
-}
-
-// Helper functions
+type DeviceInfo = authv1.DeviceInfo
+type Status = commonv1.Status
+type UserRole = commonv1.UserRole
+type Language = commonv1.Language
 
 func generateReferralCode() string {
 	return fmt.Sprintf("GE%d", time.Now().UnixNano()%100000)
@@ -241,29 +53,29 @@ func getDeviceID(info *authv1.DeviceInfo) string {
 	return info.GetDeviceId()
 }
 
-func convertStatus(status model.UserStatus) Status {
+func convertStatus(status model.UserStatus) commonv1.Status {
 	switch status {
 	case model.UserStatusActive:
-		return Status_STATUS_ACTIVE
+		return commonv1.Status_STATUS_ACTIVE
 	case model.UserStatusSuspended:
-		return Status_STATUS_SUSPENDED
+		return commonv1.Status_STATUS_SUSPENDED
 	case model.UserStatusLocked:
-		return Status_STATUS_LOCKED
+		return commonv1.Status_STATUS_LOCKED
 	default:
-		return Status_STATUS_INACTIVE
+		return commonv1.Status_STATUS_INACTIVE
 	}
 }
 
-func convertRoles(roles []model.UserRole) []UserRole {
-	result := make([]UserRole, len(roles))
+func convertRoles(roles []model.UserRole) []commonv1.UserRole {
+	result := make([]commonv1.UserRole, len(roles))
 	for i, r := range roles {
 		switch r {
 		case model.RoleAdmin:
-			result[i] = UserRole_ROLE_ADMIN
+			result[i] = commonv1.UserRole_USER_ROLE_ADMIN
 		case model.RoleSupport:
-			result[i] = UserRole_ROLE_SUPPORT
+			result[i] = commonv1.UserRole_USER_ROLE_SUPPORT
 		default:
-			result[i] = UserRole_ROLE_PLAYER
+			result[i] = commonv1.UserRole_USER_ROLE_PLAYER
 		}
 	}
 	return result
@@ -286,3 +98,5 @@ func convertDeviceInfo(info *authv1.DeviceInfo) model.DeviceInfo {
 		Timezone:    info.GetTimezone(),
 	}
 }
+
+type Empty = emptypb.Empty

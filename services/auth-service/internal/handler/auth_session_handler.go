@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
 	"github.com/game_engine/auth-service/internal/model"
@@ -87,10 +88,11 @@ func (h *AuthHandler) Logout(ctx context.Context, req *LogoutRequest) (*emptypb.
 	}
 
 	// Publish logout event
-	h.authService.PublishEvent("player.events.logged_out", map[string]interface{}{
+	data, _ := json.Marshal(map[string]interface{}{
 		"session_id": sessionID.String(),
 		"timestamp":  time.Now().Unix(),
 	})
+	h.authService.PublishEvent("player.events.logged_out", data)
 
 	return &emptypb.Empty{}, nil
 }

@@ -25,6 +25,8 @@ nats:
   client_id: "auth-service"
 
 jwt:
+  private_key_path: "/certs/tls.key"
+  public_key_path: "/certs/tls.crt"
   access_token_expiry: 15m
   refresh_token_expiry: 168h
   issuer: "game_engine-auth"

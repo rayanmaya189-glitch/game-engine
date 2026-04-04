@@ -2,9 +2,10 @@ package handler
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
-	authv1 "game_engine/gen/go/auth/v1"
+	authv1 "github.com/game_engine/auth-service/pkg/game_engine/auth/v1"
 
 	"github.com/game_engine/auth-service/internal/model"
 	"github.com/game_engine/auth-service/internal/service"
@@ -110,12 +111,13 @@ func (h *AuthHandler) Register(ctx context.Context, req *authv1.RegisterRequest)
 	}
 
 	// Publish registration event
-	h.authService.PublishEvent("player.events.registered", map[string]interface{}{
+	data, _ := json.Marshal(map[string]interface{}{
 		"user_id":   user.ID.String(),
 		"email":     user.Email,
 		"country":   user.Country,
 		"timestamp": time.Now().Unix(),
 	})
+	h.authService.PublishEvent("player.events.registered", data)
 
 	_ = verificationToken // Would be sent via email in production
 
@@ -161,7 +163,7 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 	// Verify password
 	if !h.authService.CheckPassword(req.Password, user.PasswordHash) {
 		// Record failed attempt
-		h.authService.RecordLoginAttempt(ctx, user.ID, req.DeviceInfo.IpAddress, false)
+		h.authService.RecordLoginAttempt(ctx, user.ID, req.GetDeviceInfo().GetIpAddress(), false)
 		return nil, status.Errorf(codes.Unauthenticated, "invalid credentials")
 	}
 
@@ -176,7 +178,7 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 
 		return &LoginResponse{
 			UserId:      user.ID.String(),
-			Requires2Fa: true,
+			Requires_2Fa: true,
 			SessionId:   sessionID.String(),
 			UserStatus:  convertStatus(user.Status),
 			Message:     "2FA verification required",
@@ -185,7 +187,7 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 	}
 
 	// Successful login - create session
-	if err := h.authService.RecordLoginAttempt(ctx, user.ID, req.DeviceInfo.IpAddress, true); err != nil {
+	if err := h.authService.RecordLoginAttempt(ctx, user.ID, req.GetDeviceInfo().GetIpAddress(), true); err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to record login: %v", err)
 	}
 
@@ -211,8 +213,8 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 		ID:         sessionID,
 		UserID:     user.ID,
 		DeviceInfo: convertDeviceInfo(req.DeviceInfo),
-		IPAddress:  req.DeviceInfo.IpAddress,
-		UserAgent:  req.DeviceInfo.UserAgent,
+		IPAddress:  req.GetDeviceInfo().GetIpAddress(),
+		UserAgent:  req.GetDeviceInfo().GetUserAgent(),
 		ExpiresAt:  time.Now().Add(24 * time.Hour),
 		CreatedAt:  time.Now(),
 		LastUsedAt: time.Now(),
@@ -227,19 +229,20 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 	}
 
 	// Publish login event
-	h.authService.PublishEvent("player.events.logged_in", map[string]interface{}{
+	data, _ := json.Marshal(map[string]interface{}{
 		"user_id":    user.ID.String(),
 		"session_id": sessionID.String(),
-		"ip_address": req.DeviceInfo.IpAddress,
+		"ip_address": req.GetDeviceInfo().GetIpAddress(),
 		"timestamp":  time.Now().Unix(),
 	})
+	h.authService.PublishEvent("player.events.logged_in", data)
 
 	return &LoginResponse{
 		UserId:       user.ID.String(),
 		AccessToken:  accessToken,
 		RefreshToken: refreshToken,
 		ExpiresAt:    timestamppb.New(expiresAt),
-		Requires2Fa:  false,
+		Requires_2Fa:  false,
 		SessionId:    sessionID.String(),
 		UserStatus:   convertStatus(user.Status),
 		Message:      "Login successful",

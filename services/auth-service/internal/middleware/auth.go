@@ -23,7 +23,7 @@ func NewAuthMiddleware(authService *service.AuthService) *AuthMiddleware {
 
 // AuthInterceptor creates a unary interceptor for authentication
 func (m *AuthMiddleware) AuthInterceptor() grpc.UnaryServerInterceptor {
-	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.HandlerFunc) (interface{}, error) {
+	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
 		// Skip auth for certain methods
 		if shouldSkipAuth(info.FullMethod) {
 			return handler(ctx, req)

@@ -4,14 +4,16 @@ import (
 	"context"
 	"time"
 
-	commonv1 "game_engine/gen/go/common/v1"
-	walletsv1 "game_engine/gen/go/wallet/v1"
+	commonv1 "github.com/game_engine/wallet-service/pkg/game_engine/common/v1"
+	walletsv1 "github.com/game_engine/wallet-service/pkg/game_engine/wallet/v1"
 
 	"github.com/game_engine/wallet-service/internal/service"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // WalletHandler handles gRPC requests for wallet service
 type WalletHandler struct {
+	walletsv1.UnimplementedWalletServiceServer
 	walletService *service.WalletService
 }
 
@@ -135,9 +137,7 @@ func (h *WalletHandler) CreateDeposit(ctx context.Context, req *walletsv1.Create
 		Deposit:          tx.ToTransactionProto(),
 		PaymentUrl:       "",
 		PaymentReference: tx.PaymentReference,
-		ExpiresAt: &commonv1.Timestamp{
-			Seconds: expiresAt.Unix(),
-		},
+		ExpiresAt: timestamppb.New(expiresAt),
 	}, nil
 }
 

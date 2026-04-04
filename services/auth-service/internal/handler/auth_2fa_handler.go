@@ -2,6 +2,7 @@ package handler
 
 import (
 	"context"
+	"encoding/json"
 	"time"
 
 	"github.com/game_engine/auth-service/internal/model"
@@ -105,10 +106,11 @@ func (h *AuthHandler) Verify2FA(ctx context.Context, req *Verify2FARequest) (*Ve
 	}
 
 	// Publish 2FA enabled event
-	h.authService.PublishEvent("player.events.2fa_enabled", map[string]interface{}{
+	data, _ := json.Marshal(map[string]interface{}{
 		"user_id":   user.ID.String(),
 		"timestamp": time.Now().Unix(),
 	})
+	h.authService.PublishEvent("player.events.2fa_enabled", data)
 
 	return &Verify2FAResponse{
 		Success:      true,
@@ -145,10 +147,11 @@ func (h *AuthHandler) Disable2FA(ctx context.Context, req *Disable2FARequest) (*
 	}
 
 	// Publish 2FA disabled event
-	h.authService.PublishEvent("player.events.2fa_disabled", map[string]interface{}{
+	data, _ := json.Marshal(map[string]interface{}{
 		"user_id":   user.ID.String(),
 		"timestamp": time.Now().Unix(),
 	})
+	h.authService.PublishEvent("player.events.2fa_disabled", data)
 
 	return &emptypb.Empty{}, nil
 }

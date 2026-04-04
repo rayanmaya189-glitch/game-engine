@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  auth-service:
+    image: game-engine/auth-service:latest
+    container_name: game-engine-auth-service
+    environment:
+      - SERVICE_NAME=auth-service
+      - SERVER_GRPC_PORT=9001
+      - SERVER_HTTP_PORT=8001
+      - DATABASE_HOST=game-engine-postgres
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=game123
+      - DATABASE_NAME=auth_service
+      - REDIS_HOST=game-engine-redis
+      - REDIS_PORT=6379
+      - NATS_URLS=nats://game-engine-nats:4222
+      - JWT_PRIVATE_KEY_PATH=/certs/tls.key
+      - JWT_PUBLIC_KEY_PATH=/certs/tls.crt
+    ports:
+      - "8001:8001"
+      - "9001:9001"
+    volumes:
+      - ./certs:/certs:ro
+    networks:
+      - game-engine_game-engine-network
+    depends_on:
+      - postgres
+      - redis
+      - nats
+    restart: unless-stopped

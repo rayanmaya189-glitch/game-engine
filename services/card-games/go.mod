@@ -1,6 +1,8 @@
 module github.com/game_engine/card-games
 
-go 1.25
+go 1.24
+
+replace github.com/nats-io/nats-server/v2 => github.com/nats-io/nats-server/v2 v2.9.0
 
 require (
 	github.com/game_engine/rng-service v0.0.0

@@ -2,15 +2,20 @@ package handler
 
 import (
 	"context"
+	"errors"
 
-	userv1 "game_engine/gen/go/user/v1"
+	userv1 "github.com/game_engine/user-service/pkg/game_engine/user/v1"
+	commonv1 "github.com/game_engine/user-service/pkg/game_engine/common/v1"
 
 	"github.com/game_engine/user-service/internal/model"
 	"github.com/game_engine/user-service/internal/service"
 )
 
+var ErrUnauthorized = errors.New("unauthorized")
+
 // UserHandler handles gRPC requests for user service
 type UserHandler struct {
+	userv1.UnimplementedUserServiceServer
 	userService *service.UserService
 }
 
@@ -71,8 +76,7 @@ func (h *UserHandler) GetKYCStatus(ctx context.Context, req *userv1.GetKYCStatus
 	}
 
 	return &userv1.GetKYCStatusResponse{
-		Status:          userv1.VerificationStatus(userv1.VerificationStatus_value[kycStatus.Status]),
-		Level:           userv1.KYCLevel(userv1.KYCLevel_value[kycStatus.Level]),
+		Status:          kycStatus.ToProto(),
 		RejectionReason: kycStatus.RejectionReason,
 	}, nil
 }
@@ -116,7 +120,7 @@ func (h *UserHandler) UpdatePlayerSettings(ctx context.Context, req *userv1.Upda
 		return nil, ErrUnauthorized
 	}
 
-	settings, err := h.userService.UpdatePlayerSettings(ctx, userID.(string), req.Settings)
+	settings, err := h.userService.UpdatePlayerSettings(ctx, userID.(string), model.PlayerSettingsFromProto(req.Settings))
 	if err != nil {
 		return nil, err
 	}
@@ -137,7 +141,7 @@ func (h *UserHandler) GetPlayerByAdmin(ctx context.Context, req *userv1.GetPlaye
 	return &userv1.GetPlayerByAdminResponse{
 		Profile: profile.ToProto(),
 		AccountStatus: &userv1.AccountStatus{
-			Status:        userv1.Status(userv1.Status_value[profile.Status]),
+			Status:        commonv1.Status(commonv1.Status_value[profile.Status]),
 			EmailVerified: profile.EmailVerified,
 			PhoneVerified: profile.PhoneVerified,
 			KycVerified:   kycStatus.Status == "VERIFICATION_STATUS_VERIFIED",
@@ -180,7 +184,7 @@ func (h *UserHandler) ListPlayers(ctx context.Context, req *userv1.ListPlayersRe
 
 	return &userv1.ListPlayersResponse{
 		Players: protoProfiles,
-		Pagination: &userv1.PaginationResponse{
+		Pagination: &commonv1.PaginationResponse{
 			Page:       int32(page),
 			PageSize:   int32(pageSize),
 			TotalItems: int32(total),

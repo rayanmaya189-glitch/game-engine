@@ -1,0 +1,51 @@
+# Game Engine - Databases Only
+# For quick deployment verification
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: game-engine-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: game123
+      POSTGRES_DB: game_engine
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - game-engine-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: game-engine-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - game-engine-network
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+  nats:
+    image: nats:2.10-alpine
+    container_name: game-engine-nats
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    networks:
+      - game-engine-network
+
+volumes:
+  postgres_data:
+
+networks:
+  game-engine-network:
+    driver: bridge

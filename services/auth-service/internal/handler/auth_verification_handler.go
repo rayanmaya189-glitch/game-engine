@@ -22,7 +22,7 @@ func (h *AuthHandler) VerifyEmail(ctx context.Context, req *VerifyEmailRequest) 
 
 	// Generate tokens
 	sessionID := uuid.New()
-	accessToken, expiresAt, err := h.authService.GenerateAccessToken(*userID, sessionID, []model.UserRole{model.RolePlayer})
+	accessToken, _, err := h.authService.GenerateAccessToken(*userID, sessionID, []model.UserRole{model.RolePlayer})
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to generate access token: %v", err)
 	}
@@ -53,7 +53,7 @@ func (h *AuthHandler) VerifyPhone(ctx context.Context, req *VerifyPhoneRequest) 
 	}
 
 	sessionID := uuid.New()
-	accessToken, expiresAt, err := h.authService.GenerateAccessToken(userID, sessionID, []model.UserRole{model.RolePlayer})
+	accessToken, _, err := h.authService.GenerateAccessToken(userID, sessionID, []model.UserRole{model.RolePlayer})
 	if err != nil {
 		return nil, status.Errorf(codes.Internal, "failed to generate access token: %v", err)
 	}

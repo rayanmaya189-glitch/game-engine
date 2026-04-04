@@ -3,8 +3,9 @@ package model
 import (
 	"time"
 
-	commonv1 "game_engine/gen/go/common/v1"
-	walletsv1 "game_engine/gen/go/wallet/v1"
+	commonv1 "github.com/game_engine/wallet-service/pkg/game_engine/common/v1"
+	walletsv1 "github.com/game_engine/wallet-service/pkg/game_engine/wallet/v1"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // Wallet represents a player's wallet (main or bonus)
@@ -139,6 +140,23 @@ func (b *Bet) ToBetProto() *walletsv1.Bet {
 	}
 }
 
+// ToTransactionProto converts Bet to protobuf Transaction message
+func (b *Bet) ToTransactionProto() *walletsv1.Transaction {
+	return &walletsv1.Transaction{
+		TransactionId: b.BetID,
+		UserId:        b.UserID,
+		Type:           commonv1.TransactionType_TRANSACTION_TYPE_BET,
+		Status:        commonv1.TransactionStatus(commonv1.TransactionStatus_value[b.Status]),
+		Amount: &commonv1.TransactionAmount{
+			Requested: &commonv1.Money{Amount: b.Stake},
+			Approved:  &commonv1.Money{Amount: b.ActualWin},
+		},
+		GameId:    b.GameID,
+		BetId:     b.BetID,
+		CreatedAt: timestampToProto(b.PlacedAt),
+	}
+}
+
 // ToBonusProto converts BonusTransaction to protobuf message
 func (bt *BonusTransaction) ToBonusProto() *walletsv1.Transaction {
 	return &walletsv1.Transaction{
@@ -155,18 +173,15 @@ func (bt *BonusTransaction) ToBonusProto() *walletsv1.Transaction {
 }
 
 // Helper function to convert time.Time to protobuf timestamp
-func timestampToProto(t time.Time) *commonv1.Timestamp {
+func timestampToProto(t time.Time) *timestamppb.Timestamp {
 	if t.IsZero() {
 		return nil
 	}
-	return &commonv1.Timestamp{
-		Seconds: t.Unix(),
-		Nanos:   int32(t.Nanosecond()),
-	}
+	return timestamppb.New(t)
 }
 
 // Helper function to convert *time.Time to protobuf timestamp
-func timestampToProtoPtr(t *time.Time) *commonv1.Timestamp {
+func timestampToProtoPtr(t *time.Time) *timestamppb.Timestamp {
 	if t == nil {
 		return nil
 	}

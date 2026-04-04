@@ -3,7 +3,8 @@ package handler
 import (
 	"context"
 
-	gamesv1 "github.com/game_engine/game-registry/gen/go/game/v1"
+	gamesv1 "github.com/game_engine/game-registry/pkg/game_engine/game/v1"
+	commonv1 "github.com/game_engine/game-registry/pkg/game_engine/common/v1"
 
 	"github.com/game_engine/game-registry/internal/enums"
 	"github.com/game_engine/game-registry/internal/model"

@@ -3,10 +3,10 @@ package handler
 import (
 	"context"
 
-	commonv1 "game_engine/gen/go/common/v1"
-	walletsv1 "game_engine/gen/go/wallet/v1"
-
+	commonv1 "github.com/game_engine/wallet-service/pkg/game_engine/common/v1"
+	walletsv1 "github.com/game_engine/wallet-service/pkg/game_engine/wallet/v1"
 	"github.com/game_engine/wallet-service/internal/service"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 // PlaceBet locks funds for a bet
@@ -27,13 +27,13 @@ func (h *WalletHandler) PlaceBet(ctx context.Context, req *walletsv1.PlaceBetReq
 		Status:    commonv1.TransactionStatus_TRANSACTION_STATUS_COMPLETED,
 		GameId:    req.GameId,
 		BetId:     bet.BetID,
-		CreatedAt: &commonv1.Timestamp{Seconds: bet.PlacedAt.Unix()},
+		CreatedAt: timestamppb.New(bet.PlacedAt),
 	}
 
 	_ = tx
 
 	return &walletsv1.PlaceBetResponse{
-		Bet:          bet.ToBetProto(),
+		Bet:          bet.ToTransactionProto(),
 		NewBalance:   &commonv1.Money{Amount: wallet.Amount, Currency: commonv1.Currency(commonv1.Currency_value[wallet.Currency])},
 		LockedAmount: &commonv1.Money{Amount: wallet.LockedAmount, Currency: commonv1.Currency(commonv1.Currency_value[wallet.Currency])},
 		BetId:        bet.BetID,
@@ -68,7 +68,7 @@ func (h *WalletHandler) SettleBet(ctx context.Context, req *walletsv1.SettleBetR
 
 	return &walletsv1.SettleBetResponse{
 		Success:    true,
-		Bet:        bet.ToBetProto(),
+		Bet:        bet.ToTransactionProto(),
 		Win:        winTx,
 		NewBalance: &commonv1.Money{Amount: wallet.Amount, Currency: commonv1.Currency(commonv1.Currency_value[wallet.Currency])},
 		Message:    "Bet settled successfully",
