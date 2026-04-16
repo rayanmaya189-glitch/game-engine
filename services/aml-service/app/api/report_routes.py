@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.database import get_db
-from app.models import AlertRecord, TransactionRecord
+from app import db_models
 from app.services.rules_engine import AMLRulesEngine
 
 
@@ -13,10 +13,10 @@ async def generate_ctr_report(start_date: str, end_date: str, db: AsyncSession) 
     start = datetime.fromisoformat(start_date)
     end = datetime.fromisoformat(end_date)
 
-    stmt = select(TransactionRecord).where(
-        TransactionRecord.timestamp > start,
-        TransactionRecord.timestamp < end,
-        TransactionRecord.amount > AMLRulesEngine.LARGE_TRANSACTION_THRESHOLD,
+    stmt = select(db_models.TransactionRecord).where(
+        db_models.TransactionRecord.timestamp > start,
+        db_models.TransactionRecord.timestamp < end,
+        db_models.TransactionRecord.amount > AMLRulesEngine.LARGE_TRANSACTION_THRESHOLD,
     )
     result = await db.execute(stmt)
     records = result.scalars().all()
@@ -46,7 +46,7 @@ async def generate_ctr_report(start_date: str, end_date: str, db: AsyncSession) 
 
 async def generate_sar_report(alert_id: str, db: AsyncSession) -> Dict:
     """Generate Suspicious Activity Report for an alert"""
-    result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
+    result = await db.execute(select(db_models.AlertRecord).where(db_models.AlertRecord.alert_id == alert_id))
     record = result.scalar_one_or_none()
     if not record:
         raise ValueError("Alert not found")

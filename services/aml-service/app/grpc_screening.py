@@ -7,7 +7,7 @@ import logging
 import grpc
 
 from app.database import async_session_factory
-from app.models import TransactionRecord
+from app import db_models
 from sqlalchemy import select
 
 logger = logging.getLogger(__name__)
@@ -52,7 +52,7 @@ class AMLServiceServicer:
             try:
                 user_id = request.user_id
                 result = await db.execute(
-                    select(TransactionRecord).where(TransactionRecord.user_id == user_id)
+                    select(db_models.TransactionRecord).where(db_models.TransactionRecord.user_id == user_id)
                 )
                 transactions = result.scalars().all()
                 daily_deposits = sum(t.amount for t in transactions if t.type == "deposit")

@@ -5,38 +5,38 @@ from datetime import datetime
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
 
-from app.models import TransactionRecord, AlertRecord, RiskScoreRecord
+from app import db_models
 
 
 class TransactionRepository:
     @staticmethod
-    async def save(db: AsyncSession, record: TransactionRecord) -> None:
+    async def save(db: AsyncSession, record: db_models.TransactionRecord) -> None:
         db.add(record)
         await db.commit()
 
     @staticmethod
-    async def get_by_user(db: AsyncSession, user_id: str) -> List[TransactionRecord]:
+    async def get_by_user(db: AsyncSession, user_id: str) -> List[db_models.TransactionRecord]:
         result = await db.execute(
-            select(TransactionRecord).where(TransactionRecord.user_id == user_id)
+            select(db_models.TransactionRecord).where(db_models.TransactionRecord.user_id == user_id)
         )
         return list(result.scalars().all())
 
     @staticmethod
-    async def get_by_id(db: AsyncSession, transaction_id: str) -> Optional[TransactionRecord]:
+    async def get_by_id(db: AsyncSession, transaction_id: str) -> Optional[db_models.TransactionRecord]:
         result = await db.execute(
-            select(TransactionRecord).where(TransactionRecord.transaction_id == transaction_id)
+            select(db_models.TransactionRecord).where(db_models.TransactionRecord.transaction_id == transaction_id)
         )
         return result.scalar_one_or_none()
 
     @staticmethod
     async def get_by_user_and_period(
         db: AsyncSession, user_id: str, start: datetime, end: datetime
-    ) -> List[TransactionRecord]:
+    ) -> List[db_models.TransactionRecord]:
         result = await db.execute(
-            select(TransactionRecord).where(
-                TransactionRecord.user_id == user_id,
-                TransactionRecord.timestamp >= start,
-                TransactionRecord.timestamp <= end,
+            select(db_models.TransactionRecord).where(
+                db_models.TransactionRecord.user_id == user_id,
+                db_models.TransactionRecord.timestamp >= start,
+                db_models.TransactionRecord.timestamp <= end,
             )
         )
         return list(result.scalars().all())
@@ -44,23 +44,23 @@ class TransactionRepository:
 
 class AlertRepository:
     @staticmethod
-    async def save(db: AsyncSession, record: AlertRecord) -> None:
+    async def save(db: AsyncSession, record: db_models.AlertRecord) -> None:
         db.add(record)
         await db.commit()
 
     @staticmethod
-    async def get_by_id(db: AsyncSession, alert_id: str) -> Optional[AlertRecord]:
+    async def get_by_id(db: AsyncSession, alert_id: str) -> Optional[db_models.AlertRecord]:
         result = await db.execute(
-            select(AlertRecord).where(AlertRecord.alert_id == alert_id)
+            select(db_models.AlertRecord).where(db_models.AlertRecord.alert_id == alert_id)
         )
         return result.scalar_one_or_none()
 
     @staticmethod
-    async def get_by_user(db: AsyncSession, user_id: str, limit: int = 100) -> List[AlertRecord]:
+    async def get_by_user(db: AsyncSession, user_id: str, limit: int = 100) -> List[db_models.AlertRecord]:
         result = await db.execute(
-            select(AlertRecord)
-            .where(AlertRecord.user_id == user_id)
-            .order_by(AlertRecord.created_at.desc())
+            select(db_models.AlertRecord)
+            .where(db_models.AlertRecord.user_id == user_id)
+            .order_by(db_models.AlertRecord.created_at.desc())
             .limit(limit)
         )
         return list(result.scalars().all())
@@ -71,34 +71,34 @@ class AlertRepository:
         status: Optional[str] = None,
         severity: Optional[str] = None,
         limit: int = 100,
-    ) -> List[AlertRecord]:
-        stmt = select(AlertRecord)
+    ) -> List[db_models.AlertRecord]:
+        stmt = select(db_models.AlertRecord)
         if status:
-            stmt = stmt.where(AlertRecord.status == status)
+            stmt = stmt.where(db_models.AlertRecord.status == status)
         if severity:
-            stmt = stmt.where(AlertRecord.severity == severity)
-        stmt = stmt.order_by(AlertRecord.created_at.desc()).limit(limit)
+            stmt = stmt.where(db_models.AlertRecord.severity == severity)
+        stmt = stmt.order_by(db_models.AlertRecord.created_at.desc()).limit(limit)
         result = await db.execute(stmt)
         return list(result.scalars().all())
 
     @staticmethod
-    async def update(db: AsyncSession, record: AlertRecord) -> None:
+    async def update(db: AsyncSession, record: db_models.AlertRecord) -> None:
         await db.commit()
         await db.refresh(record)
 
 
 class RiskScoreRepository:
     @staticmethod
-    async def save(db: AsyncSession, record: RiskScoreRecord) -> None:
+    async def save(db: AsyncSession, record: db_models.RiskScoreRecord) -> None:
         await db.execute(
-            delete(RiskScoreRecord).where(RiskScoreRecord.user_id == record.user_id)
+            delete(db_models.RiskScoreRecord).where(db_models.RiskScoreRecord.user_id == record.user_id)
         )
         db.add(record)
         await db.commit()
 
     @staticmethod
-    async def get_by_user(db: AsyncSession, user_id: str) -> Optional[RiskScoreRecord]:
+    async def get_by_user(db: AsyncSession, user_id: str) -> Optional[db_models.RiskScoreRecord]:
         result = await db.execute(
-            select(RiskScoreRecord).where(RiskScoreRecord.user_id == user_id)
+            select(db_models.RiskScoreRecord).where(db_models.RiskScoreRecord.user_id == user_id)
         )
         return result.scalar_one_or_none()

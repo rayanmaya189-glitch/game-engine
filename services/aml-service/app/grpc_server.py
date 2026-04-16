@@ -11,7 +11,7 @@ import grpc
 from sqlalchemy import select
 
 from app.database import async_session_factory
-from app.models import AlertRecord, TransactionRecord
+from app import db_models
 from app.models.schemas import Transaction, RiskScore
 from app.services.rules_engine import AMLRulesEngine
 from app.services.risk_model import MLRiskModel
@@ -38,7 +38,7 @@ class AMLServiceServicer:
 
                 user_id = request.user_id
                 result = await db.execute(
-                    select(AlertRecord).where(AlertRecord.user_id == user_id)
+                    select(db_models.AlertRecord).where(db_models.AlertRecord.user_id == user_id)
                 )
                 existing_alerts = result.scalars().all()
 
@@ -65,10 +65,10 @@ class AMLServiceServicer:
                 status = getattr(request, "status", None) or None
                 limit = getattr(request, "limit", 50)
 
-                stmt = select(AlertRecord)
+                stmt = select(db_models.AlertRecord)
                 if status:
-                    stmt = stmt.where(AlertRecord.status == status)
-                stmt = stmt.order_by(AlertRecord.created_at.desc()).limit(limit)
+                    stmt = stmt.where(db_models.AlertRecord.status == status)
+                stmt = stmt.order_by(db_models.AlertRecord.created_at.desc()).limit(limit)
                 result = await db.execute(stmt)
                 records = result.scalars().all()
 
@@ -108,7 +108,7 @@ class AMLServiceServicer:
                     timestamp=datetime.utcnow(),
                 )
 
-                record = TransactionRecord(
+                record = db_models.TransactionRecord(
                     transaction_id=transaction.transaction_id,
                     user_id=transaction.user_id,
                     type=transaction.type,
@@ -124,7 +124,7 @@ class AMLServiceServicer:
 
                 alerts = await AMLRulesEngine.run_all_rules(db, transaction.user_id, transaction)
                 for alert in alerts:
-                    db.add(AlertRecord(
+                    db.add(db_models.AlertRecord(
                         alert_id=alert.alert_id,
                         user_id=alert.user_id,
                         alert_type=alert.alert_type.value,

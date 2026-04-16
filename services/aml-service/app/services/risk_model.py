@@ -3,7 +3,7 @@ from datetime import datetime, timedelta
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
 
-from app.models import TransactionRecord, RiskScoreRecord
+from app import db_models
 from app.models.schemas import RiskScore
 
 
@@ -22,7 +22,7 @@ class MLRiskModel:
         """Calculate risk score based on user behavior patterns"""
         factors = {}
 
-        stmt = select(TransactionRecord).where(TransactionRecord.user_id == user_id)
+        stmt = select(db_models.TransactionRecord).where(db_models.TransactionRecord.user_id == user_id)
         result = await db.execute(stmt)
         user_transactions = result.scalars().all()
 
@@ -83,8 +83,8 @@ class MLRiskModel:
     @staticmethod
     async def save_risk_score(db: AsyncSession, risk_score: RiskScore) -> None:
         """Persist risk score to database"""
-        await db.execute(delete(RiskScoreRecord).where(RiskScoreRecord.user_id == risk_score.user_id))
-        db.add(RiskScoreRecord(
+        await db.execute(delete(db_models.RiskScoreRecord).where(db_models.RiskScoreRecord.user_id == risk_score.user_id))
+        db.add(db_models.RiskScoreRecord(
             user_id=risk_score.user_id,
             score=risk_score.score,
             category=risk_score.category,

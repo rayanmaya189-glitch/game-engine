@@ -9,7 +9,7 @@ import grpc
 from sqlalchemy import select
 
 from app.database import async_session_factory
-from app.models import FraudScoreRecord
+from app import db_models
 from app.services.fraud_scorer import FraudScorer
 from app.services.bot_detector import BotDetector
 
@@ -118,9 +118,9 @@ class FraudServiceServicer:
                     device_matches=getattr(request, "device_matches", True),
                 )
                 await db.execute(
-                    FraudScoreRecord.__table__.delete().where(FraudScoreRecord.user_id == request.user_id)
+                    db_models.FraudScoreRecord.__table__.delete().where(db_models.FraudScoreRecord.user_id == request.user_id)
                 )
-                db.add(FraudScoreRecord(
+                db.add(db_models.FraudScoreRecord(
                     user_id=score.user_id,
                     score=score.score,
                     category=score.category,
@@ -140,7 +140,7 @@ class FraudServiceServicer:
         async with async_session_factory() as db:
             try:
                 result = await db.execute(
-                    select(FraudScoreRecord).where(FraudScoreRecord.user_id == request.user_id)
+                    select(db_models.FraudScoreRecord).where(db_models.FraudScoreRecord.user_id == request.user_id)
                 )
                 record = result.scalar_one_or_none()
                 if not record:

@@ -2,7 +2,7 @@ from typing import Dict, List
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.database import get_db
-from app.models import RiskScoreRecord
+from app import db_models
 from app.models.schemas import RiskScore
 from app.services.risk_model import MLRiskModel
 

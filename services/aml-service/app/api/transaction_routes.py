@@ -3,14 +3,14 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.database import get_db
-from app.models import TransactionRecord, AlertRecord
+from app import db_models
 from app.models.schemas import Transaction, Alert
 from app.services.rules_engine import AMLRulesEngine
 
 
 async def analyze_transaction(transaction: Transaction, db: AsyncSession) -> Dict:
     """Analyze a transaction for suspicious patterns"""
-    record = TransactionRecord(
+    record = db_models.TransactionRecord(
         transaction_id=transaction.transaction_id,
         user_id=transaction.user_id,
         type=transaction.type,
@@ -27,7 +27,7 @@ async def analyze_transaction(transaction: Transaction, db: AsyncSession) -> Dic
     alerts = await AMLRulesEngine.run_all_rules(db, transaction.user_id, transaction)
 
     for alert in alerts:
-        db.add(AlertRecord(
+        db.add(db_models.AlertRecord(
             alert_id=alert.alert_id,
             user_id=alert.user_id,
             alert_type=alert.alert_type.value,
@@ -55,7 +55,7 @@ async def analyze_transactions(transactions: List[Transaction], db: AsyncSession
     all_alerts = []
 
     for transaction in transactions:
-        db.add(TransactionRecord(
+        db.add(db_models.TransactionRecord(
             transaction_id=transaction.transaction_id,
             user_id=transaction.user_id,
             type=transaction.type,
@@ -71,7 +71,7 @@ async def analyze_transactions(transactions: List[Transaction], db: AsyncSession
         all_alerts.extend(alerts)
 
         for alert in alerts:
-            db.add(AlertRecord(
+            db.add(db_models.AlertRecord(
                 alert_id=alert.alert_id,
                 user_id=alert.user_id,
                 alert_type=alert.alert_type.value,

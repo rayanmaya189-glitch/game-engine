@@ -4,7 +4,7 @@ from typing import List
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, delete
 
-from app.models import DeviceFingerprintRecord, IpAccountRecord
+from app import db_models
 from app.models.schemas import DeviceFingerprint
 
 
@@ -15,9 +15,9 @@ class MultiAccountDetector:
     async def register_fingerprint(db: AsyncSession, fingerprint: DeviceFingerprint):
         """Register a device fingerprint"""
         await db.execute(
-            delete(DeviceFingerprintRecord).where(DeviceFingerprintRecord.user_id == fingerprint.user_id)
+            delete(db_models.DeviceFingerprintRecord).where(db_models.DeviceFingerprintRecord.user_id == fingerprint.user_id)
         )
-        db.add(DeviceFingerprintRecord(
+        db.add(db_models.DeviceFingerprintRecord(
             user_id=fingerprint.user_id,
             canvas_hash=fingerprint.canvas_hash,
             webgl_hash=fingerprint.webgl_hash,
@@ -30,13 +30,13 @@ class MultiAccountDetector:
 
         if fingerprint.ip_address:
             result = await db.execute(
-                select(IpAccountRecord).where(
-                    IpAccountRecord.ip_address == fingerprint.ip_address,
-                    IpAccountRecord.user_id == fingerprint.user_id,
+                select(db_models.IpAccountRecord).where(
+                    db_models.IpAccountRecord.ip_address == fingerprint.ip_address,
+                    db_models.IpAccountRecord.user_id == fingerprint.user_id,
                 )
             )
             if not result.scalar_one_or_none():
-                db.add(IpAccountRecord(
+                db.add(db_models.IpAccountRecord(
                     ip_address=fingerprint.ip_address,
                     user_id=fingerprint.user_id,
                 ))
@@ -46,7 +46,7 @@ class MultiAccountDetector:
     async def check_multi_account(db: AsyncSession, user_id: str) -> List[str]:
         """Check if user has multiple accounts"""
         result = await db.execute(
-            select(DeviceFingerprintRecord).where(DeviceFingerprintRecord.user_id == user_id)
+            select(db_models.DeviceFingerprintRecord).where(db_models.DeviceFingerprintRecord.user_id == user_id)
         )
         fp = result.scalar_one_or_none()
         if not fp:
@@ -57,9 +57,9 @@ class MultiAccountDetector:
         # Check by canvas hash
         if fp.canvas_hash:
             result = await db.execute(
-                select(DeviceFingerprintRecord).where(
-                    DeviceFingerprintRecord.canvas_hash == fp.canvas_hash,
-                    DeviceFingerprintRecord.user_id != user_id,
+                select(db_models.DeviceFingerprintRecord).where(
+                    db_models.DeviceFingerprintRecord.canvas_hash == fp.canvas_hash,
+                    db_models.DeviceFingerprintRecord.user_id != user_id,
                 )
             )
             for r in result.scalars().all():
@@ -68,9 +68,9 @@ class MultiAccountDetector:
         # Check by webgl hash
         if fp.webgl_hash:
             result = await db.execute(
-                select(DeviceFingerprintRecord).where(
-                    DeviceFingerprintRecord.webgl_hash == fp.webgl_hash,
-                    DeviceFingerprintRecord.user_id != user_id,
+                select(db_models.DeviceFingerprintRecord).where(
+                    db_models.DeviceFingerprintRecord.webgl_hash == fp.webgl_hash,
+                    db_models.DeviceFingerprintRecord.user_id != user_id,
                 )
             )
             for r in result.scalars().all():
@@ -79,9 +79,9 @@ class MultiAccountDetector:
         # Check by IP
         if fp.ip_address:
             result = await db.execute(
-                select(IpAccountRecord).where(
-                    IpAccountRecord.ip_address == fp.ip_address,
-                    IpAccountRecord.user_id != user_id,
+                select(db_models.IpAccountRecord).where(
+                    db_models.IpAccountRecord.ip_address == fp.ip_address,
+                    db_models.IpAccountRecord.user_id != user_id,
                 )
             )
             for r in result.scalars().all():

@@ -12,14 +12,8 @@ from concurrent import futures
 import grpc
 
 from app.database import async_session_factory
-from app.models import (
-    DeviceFingerprintRecord,
-    FraudAlertRecord,
-    UserRiskProfileRecord,
-)
-from app.models.schemas import (
-    DeviceFingerprint,
-)
+from app import db_models
+from app.models.schemas import DeviceFingerprint
 from app.repositories import (
     DeviceFingerprintRepository,
     FraudAlertRepository,
@@ -117,7 +111,7 @@ class FraudServiceServicer:
                 alert_id = f"ALERT-{datetime.now().strftime('%Y%m%d%H%M%S')}-{random.randint(1000, 9999)}"
                 evidence = getattr(request, "evidence", None)
 
-                alert = FraudAlertRecord(
+                alert = db_models.FraudAlertRecord(
                     alert_id=alert_id,
                     user_id=request.user_id,
                     alert_type=request.alert_type,

@@ -4,11 +4,11 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select, update
 
 from app.database import get_db
-from app.models import AlertRecord
+from app import db_models
 from app.models.schemas import Alert, AlertStatus, AlertSeverity
 
 
-def _record_to_alert(r: AlertRecord) -> Alert:
+def _record_to_alert(r: db_models.AlertRecord) -> Alert:
     return Alert(
         alert_id=r.alert_id,
         user_id=r.user_id,
@@ -32,12 +32,12 @@ async def list_alerts(
     db: AsyncSession = None,
 ) -> List[Alert]:
     """List alerts with optional filters"""
-    stmt = select(AlertRecord)
+    stmt = select(db_models.AlertRecord)
     if status:
-        stmt = stmt.where(AlertRecord.status == status.value)
+        stmt = stmt.where(db_models.AlertRecord.status == status.value)
     if severity:
-        stmt = stmt.where(AlertRecord.severity == severity.value)
-    stmt = stmt.order_by(AlertRecord.created_at.desc()).limit(limit)
+        stmt = stmt.where(db_models.AlertRecord.severity == severity.value)
+    stmt = stmt.order_by(db_models.AlertRecord.created_at.desc()).limit(limit)
 
     result = await db.execute(stmt)
     records = result.scalars().all()
@@ -46,7 +46,7 @@ async def list_alerts(
 
 async def get_alert(alert_id: str, db: AsyncSession) -> Alert:
     """Get a specific alert"""
-    result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
+    result = await db.execute(select(db_models.AlertRecord).where(db_models.AlertRecord.alert_id == alert_id))
     record = result.scalar_one_or_none()
     if not record:
         raise ValueError("Alert not found")
@@ -55,7 +55,7 @@ async def get_alert(alert_id: str, db: AsyncSession) -> Alert:
 
 async def update_alert(alert_id: str, update_data: Dict, db: AsyncSession) -> Alert:
     """Update alert status or assign to investigator"""
-    result = await db.execute(select(AlertRecord).where(AlertRecord.alert_id == alert_id))
+    result = await db.execute(select(db_models.AlertRecord).where(db_models.AlertRecord.alert_id == alert_id))
     record = result.scalar_one_or_none()
     if not record:
         raise ValueError("Alert not found")

@@ -6,7 +6,7 @@ from sqlalchemy import select
 import os
 
 from app.database import get_db
-from app.models import AlertRecord, TransactionRecord, RiskScoreRecord
+from app import db_models
 
 LARGE_TX_THRESHOLD = int(os.environ.get("AML_LARGE_TRANSACTION_THRESHOLD", "10000"))
 DAILY_LIMIT = float(os.environ.get("AML_DAILY_DEPOSIT_LIMIT", "10000"))
@@ -64,7 +64,7 @@ async def check_transaction(request: TransactionCheckRequest, db: AsyncSession):
         risk_score += 0.4
 
     result = await db.execute(
-        select(AlertRecord).where(AlertRecord.user_id == request.user_id)
+        select(db_models.AlertRecord).where(db_models.AlertRecord.user_id == request.user_id)
     )
     existing_alerts = result.scalars().all()
 
@@ -99,10 +99,10 @@ async def screen_pep(name: str):
 
 async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSession = None):
     """Get AML alerts"""
-    stmt = select(AlertRecord)
+    stmt = select(db_models.AlertRecord)
     if status:
-        stmt = stmt.where(AlertRecord.status == status)
-    stmt = stmt.order_by(AlertRecord.created_at.desc()).limit(limit)
+        stmt = stmt.where(db_models.AlertRecord.status == status)
+    stmt = stmt.order_by(db_models.AlertRecord.created_at.desc()).limit(limit)
     result = await db.execute(stmt)
     records = result.scalars().all()
     return {
@@ -125,7 +125,7 @@ async def get_alerts(status: Optional[str] = None, limit: int = 50, db: AsyncSes
 async def create_sar(request: SARRequest, db: AsyncSession):
     """Create Suspicious Activity Report"""
     sar_id = f"SAR-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-    alert = AlertRecord(
+    alert = db_models.AlertRecord(
         alert_id=sar_id,
         user_id=request.user_id,
         alert_type=request.suspicious_activity_type,
@@ -148,7 +148,7 @@ async def create_sar(request: SARRequest, db: AsyncSession):
 async def get_user_limits(user_id: str, db: AsyncSession):
     """Get AML limits for a user"""
     result = await db.execute(
-        select(TransactionRecord).where(TransactionRecord.user_id == user_id)
+        select(db_models.TransactionRecord).where(db_models.TransactionRecord.user_id == user_id)
     )
     transactions = result.scalars().all()
 

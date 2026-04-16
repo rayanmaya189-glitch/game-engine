@@ -9,7 +9,7 @@ import grpc
 from sqlalchemy import select
 
 from app.database import async_session_factory
-from app.models import AlertRecord
+from app import db_models
 from app.services.rules_engine import AMLRulesEngine
 from app.services.risk_model import MLRiskModel
 
@@ -22,7 +22,7 @@ class AMLServiceServicer:
         async with async_session_factory() as db:
             try:
                 sar_id = f"SAR-{datetime.now().strftime('%Y%m%d%H%M%S')}"
-                alert = AlertRecord(
+                alert = db_models.AlertRecord(
                     alert_id=sar_id,
                     user_id=request.user_id,
                     alert_type=request.suspicious_activity_type,
@@ -93,7 +93,7 @@ class AMLServiceServicer:
         async with async_session_factory() as db:
             try:
                 result = await db.execute(
-                    select(AlertRecord).where(AlertRecord.alert_id == request.alert_id)
+                    select(db_models.AlertRecord).where(db_models.AlertRecord.alert_id == request.alert_id)
                 )
                 record = result.scalar_one_or_none()
                 if not record:

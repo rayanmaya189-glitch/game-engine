@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
-from app.models import TransactionRecord
+from app import db_models
 from app.models.schemas import Alert, AlertType, AlertSeverity, Transaction
 
 
@@ -22,11 +22,11 @@ class AMLRulesEngine:
         """Detect structuring: multiple deposits just below reporting threshold"""
         cutoff = datetime.utcnow() - timedelta(hours=hours)
 
-        stmt = select(TransactionRecord).where(
-            TransactionRecord.user_id == user_id,
-            TransactionRecord.type == "deposit",
-            TransactionRecord.timestamp > cutoff,
-            TransactionRecord.amount < AMLRulesEngine.LARGE_TRANSACTION_THRESHOLD,
+        stmt = select(db_models.TransactionRecord).where(
+            db_models.TransactionRecord.user_id == user_id,
+            db_models.TransactionRecord.type == "deposit",
+            db_models.TransactionRecord.timestamp > cutoff,
+            db_models.TransactionRecord.amount < AMLRulesEngine.LARGE_TRANSACTION_THRESHOLD,
         )
         result = await db.execute(stmt)
         deposits = result.scalars().all()
@@ -47,9 +47,9 @@ class AMLRulesEngine:
     async def check_rapid_deposit_withdraw(db: AsyncSession, user_id: str) -> Optional[Alert]:
         """Detect rapid deposit-withdraw with minimal play"""
         cutoff = datetime.utcnow() - timedelta(days=7)
-        stmt = select(TransactionRecord).where(
-            TransactionRecord.user_id == user_id,
-            TransactionRecord.timestamp > cutoff,
+        stmt = select(db_models.TransactionRecord).where(
+            db_models.TransactionRecord.user_id == user_id,
+            db_models.TransactionRecord.timestamp > cutoff,
         )
         result = await db.execute(stmt)
         recent_transactions = result.scalars().all()
@@ -94,9 +94,9 @@ class AMLRulesEngine:
         """Detect unusual transaction frequency"""
         cutoff = datetime.utcnow() - timedelta(hours=hours)
 
-        stmt = select(TransactionRecord).where(
-            TransactionRecord.user_id == user_id,
-            TransactionRecord.timestamp > cutoff,
+        stmt = select(db_models.TransactionRecord).where(
+            db_models.TransactionRecord.user_id == user_id,
+            db_models.TransactionRecord.timestamp > cutoff,
         )
         result = await db.execute(stmt)
         recent = result.scalars().all()

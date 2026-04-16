@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
 
 from app.database import get_db
-from app.models import FraudScoreRecord
+from app import db_models
 from app.models.schemas import FraudScore
 from app.services.fraud_scorer import FraudScorer
 
@@ -26,9 +26,9 @@ async def score_transaction(
     )
     # Persist score
     await db.execute(
-        FraudScoreRecord.__table__.delete().where(FraudScoreRecord.user_id == user_id)
+        db_models.FraudScoreRecord.__table__.delete().where(db_models.FraudScoreRecord.user_id == user_id)
     )
-    db.add(FraudScoreRecord(
+    db.add(db_models.FraudScoreRecord(
         user_id=score.user_id,
         score=score.score,
         category=score.category,
@@ -42,7 +42,7 @@ async def score_transaction(
 
 async def get_user_fraud_score(user_id: str, db: AsyncSession) -> FraudScore:
     """Get the latest fraud score for a user"""
-    result = await db.execute(select(FraudScoreRecord).where(FraudScoreRecord.user_id == user_id))
+    result = await db.execute(select(db_models.FraudScoreRecord).where(db_models.FraudScoreRecord.user_id == user_id))
     record = result.scalar_one_or_none()
     if not record:
         raise ValueError("No score found")

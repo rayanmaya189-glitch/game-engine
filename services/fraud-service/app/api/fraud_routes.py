@@ -7,7 +7,7 @@ import os
 
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.database import get_db
-from app.models import FraudAlertRecord, UserRiskProfileRecord
+from app import db_models
 from app.repositories import (
     DeviceFingerprintRepository,
     FraudAlertRepository,
@@ -187,7 +187,7 @@ async def create_alert(request: AlertRequest, db: AsyncSession):
     """Create fraud alert"""
     alert_id = f"ALERT-{datetime.now().strftime('%Y%m%d%H%M%S')}-{random.randint(1000, 9999)}"
 
-    alert = FraudAlertRecord(
+    alert = db_models.FraudAlertRecord(
         alert_id=alert_id,
         user_id=request.user_id,
         alert_type=request.alert_type,
