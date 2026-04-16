@@ -7,6 +7,7 @@ import (
 
 	"github.com/game_engine/loyalty-service/internal/config"
 	"github.com/game_engine/loyalty-service/internal/model"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 )
@@ -48,7 +49,7 @@ func NewRedisClient(cfg config.RedisConfig) (*redis.Client, error) {
 	return client, nil
 }
 
-func (r *LoyaltyRepository) BeginTx(ctx context.Context) (*pgxpool.Tx, error) {
+func (r *LoyaltyRepository) BeginTx(ctx context.Context) (pgx.Tx, error) {
 	return r.db.Begin(ctx)
 }
 
@@ -64,7 +65,7 @@ func (r *LoyaltyRepository) GetMember(ctx context.Context, userID string) (*mode
 	return &m, nil
 }
 
-func (r *LoyaltyRepository) GetMemberTx(ctx context.Context, tx *pgxpool.Tx, userID string) (*model.Member, error) {
+func (r *LoyaltyRepository) GetMemberTx(ctx context.Context, tx pgx.Tx, userID string) (*model.Member, error) {
 	var m model.Member
 	err := tx.QueryRow(ctx, `
 		SELECT user_id, username, email, points, lifetime_points, tier, status, joined_at, updated_at
@@ -84,7 +85,7 @@ func (r *LoyaltyRepository) CreateMember(ctx context.Context, member *model.Memb
 	return err
 }
 
-func (r *LoyaltyRepository) UpdateMemberPointsTx(ctx context.Context, tx *pgxpool.Tx, userID string, points, lifetimePoints int, tier string) error {
+func (r *LoyaltyRepository) UpdateMemberPointsTx(ctx context.Context, tx pgx.Tx, userID string, points, lifetimePoints int, tier string) error {
 	_, err := tx.Exec(ctx, `
 		UPDATE loyalty_members SET points = $1, lifetime_points = $2, tier = $3, updated_at = NOW()
 		WHERE user_id = $4
@@ -92,7 +93,7 @@ func (r *LoyaltyRepository) UpdateMemberPointsTx(ctx context.Context, tx *pgxpoo
 	return err
 }
 
-func (r *LoyaltyRepository) AddPointsTransactionTx(ctx context.Context, tx *pgxpool.Tx, txRecord *model.PointsTransaction) error {
+func (r *LoyaltyRepository) AddPointsTransactionTx(ctx context.Context, tx pgx.Tx, txRecord *model.PointsTransaction) error {
 	_, err := tx.Exec(ctx, `
 		INSERT INTO loyalty_points_transactions (transaction_id, user_id, amount, type, source, reference_id, description, created_at)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())

@@ -8,6 +8,7 @@ import (
 	"github.com/game_engine/winners-showcase-service/internal/service"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type WinnersHandler struct {
@@ -27,7 +28,7 @@ func (h *WinnersHandler) GetRecentWinners(ctx context.Context, req *winnersv1.Ge
 
 	winners := make([]*winnersv1.Winner, len(resp.Winners))
 	for i, w := range resp.Winners {
-		ts := w.Timestamp
+		ts := timestamppb.New(w.Timestamp)
 		winners[i] = &winnersv1.Winner{
 			Id:          int64(w.ID),
 			UserId:      w.UserID,
@@ -39,15 +40,14 @@ func (h *WinnersHandler) GetRecentWinners(ctx context.Context, req *winnersv1.Ge
 			GameName:    w.GameName,
 			WinType:     string(w.WinType),
 			Multiplier:  w.Multiplier,
-			Timestamp:   &ts,
+			Timestamp:   ts,
 		}
 	}
 
-	updatedAt := resp.UpdatedAt
 	return &winnersv1.GetRecentWinnersResponse{
 		Winners:   winners,
 		Total:     int32(resp.Total),
-		UpdatedAt: &updatedAt,
+		UpdatedAt: timestamppb.New(resp.UpdatedAt),
 	}, nil
 }
 
@@ -59,7 +59,7 @@ func (h *WinnersHandler) GetBigWins(ctx context.Context, req *winnersv1.GetBigWi
 
 	wins := make([]*winnersv1.Winner, len(resp.Wins))
 	for i, w := range resp.Wins {
-		ts := w.Timestamp
+		ts := timestamppb.New(w.Timestamp)
 		wins[i] = &winnersv1.Winner{
 			Id:          int64(w.ID),
 			UserId:      w.UserID,
@@ -71,16 +71,15 @@ func (h *WinnersHandler) GetBigWins(ctx context.Context, req *winnersv1.GetBigWi
 			GameName:    w.GameName,
 			WinType:     string(w.WinType),
 			Multiplier:  w.Multiplier,
-			Timestamp:   &ts,
+			Timestamp:   ts,
 		}
 	}
 
-	updatedAt := resp.UpdatedAt
 	return &winnersv1.GetBigWinsResponse{
 		Wins:      wins,
 		Threshold: resp.Threshold,
 		Total:     int32(resp.Total),
-		UpdatedAt: &updatedAt,
+		UpdatedAt: timestamppb.New(resp.UpdatedAt),
 	}, nil
 }
 
@@ -92,7 +91,7 @@ func (h *WinnersHandler) GetJackpotWinners(ctx context.Context, req *winnersv1.G
 
 	winners := make([]*winnersv1.Winner, len(resp.Winners))
 	for i, w := range resp.Winners {
-		ts := w.Timestamp
+		ts := timestamppb.New(w.Timestamp)
 		winners[i] = &winnersv1.Winner{
 			Id:          int64(w.ID),
 			UserId:      w.UserID,
@@ -104,16 +103,15 @@ func (h *WinnersHandler) GetJackpotWinners(ctx context.Context, req *winnersv1.G
 			GameName:    w.GameName,
 			WinType:     string(w.WinType),
 			Multiplier:  w.Multiplier,
-			Timestamp:   &ts,
+			Timestamp:   ts,
 		}
 	}
 
-	updatedAt := resp.UpdatedAt
 	return &winnersv1.GetJackpotWinnersResponse{
 		Winners:   winners,
 		Threshold: resp.Threshold,
 		Total:     int32(resp.Total),
-		UpdatedAt: &updatedAt,
+		UpdatedAt: timestamppb.New(resp.UpdatedAt),
 	}, nil
 }
 

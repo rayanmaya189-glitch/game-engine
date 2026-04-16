@@ -6,6 +6,7 @@ import (
 
 	"github.com/game_engine/sports-betting-service/internal/config"
 	"github.com/game_engine/sports-betting-service/internal/model"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/redis/go-redis/v9"
 )
@@ -129,11 +130,11 @@ func (r *SportsRepository) SettleBet(ctx context.Context, betID string, status s
 	return err
 }
 
-func (r *SportsRepository) BeginTx(ctx context.Context) (pgxpool.Tx, error) {
+func (r *SportsRepository) BeginTx(ctx context.Context) (pgx.Tx, error) {
 	return r.db.Begin(ctx)
 }
 
-func (r *SportsRepository) PlaceBetTx(ctx context.Context, tx *pgxpool.Tx, bet *model.Bet) error {
+func (r *SportsRepository) PlaceBetTx(ctx context.Context, tx pgx.Tx, bet *model.Bet) error {
 	_, err := tx.Exec(ctx, `
 		INSERT INTO sports_bets (bet_id, user_id, event_id, market_id, selection, stake, odds, potential_win, status, placed_at)
 		VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, NOW())

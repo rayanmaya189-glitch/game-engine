@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	commonv1 "game_engine/gen/go/common/v1"
-	walletv1 "game_engine/gen/go/wallet/v1"
+	commonv1 "github.com/game_engine/gen/go/common/v1"
+	walletv1 "github.com/game_engine/gen/go/wallet/v1"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"

@@ -1,6 +1,6 @@
-module game_engine/gen/go
+module github.com/game_engine/gen/go
 
-go 1.21
+go 1.25
 
 require (
 	google.golang.org/grpc v1.66.0

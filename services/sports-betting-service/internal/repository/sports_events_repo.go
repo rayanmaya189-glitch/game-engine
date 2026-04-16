@@ -3,6 +3,7 @@ package repository
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/game_engine/sports-betting-service/internal/model"
 )
@@ -63,15 +64,16 @@ func (r *SportsRepository) GetEventByID(ctx context.Context, eventID string) (*m
 }
 
 // GetLiveEventByID returns a live event by ID
-func (r *SportsRepository) GetLiveEventByID(ctx context.Context, eventID string) (*model.Event, error) {
-	var e model.Event
+func (r *SportsRepository) GetLiveEventByID(ctx context.Context, eventID string) (*model.LiveEvent, error) {
+	var e model.LiveEvent
 	err := r.db.QueryRow(ctx, `
-		SELECT event_id, sport_id, league_id, home_team, away_team, start_time, status, home_score, away_score, created_at, period, minute
+		SELECT event_id, sport_id, home_team, away_team, start_time, status, home_score, away_score, period, minute
 		FROM sports_events WHERE event_id = $1
-	`, eventID).Scan(&e.EventID, &e.SportID, &e.LeagueID, &e.HomeTeam, &e.AwayTeam, &e.StartTime, &e.Status, &e.HomeScore, &e.AwayScore, &e.CreatedAt, &e.Period, &e.Minute)
+	`, eventID).Scan(&e.EventID, &e.SportID, &e.HomeTeam, &e.AwayTeam, &e.StartTime, &e.Status, &e.HomeScore, &e.AwayScore, &e.Period, &e.Minute)
 	if err != nil {
 		return nil, fmt.Errorf("event not found: %w", err)
 	}
+	e.LastUpdate = time.Now()
 	return &e, nil
 }
 

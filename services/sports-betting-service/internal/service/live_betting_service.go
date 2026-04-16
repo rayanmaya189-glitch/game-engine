@@ -30,7 +30,7 @@ type SportsConfig struct {
 }
 
 // GetLiveEvents returns all live events
-func (s *LiveBettingService) GetLiveEvents(ctx context.Context) ([]model.LiveEvent, error) {
+func (s *LiveBettingService) GetLiveEvents(ctx context.Context) ([]model.Event, error) {
 	return s.repo.GetLiveEvents(ctx)
 }
 

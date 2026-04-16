@@ -40,13 +40,13 @@ func (s *LiveBettingService) settleEventBets(ctx context.Context, eventID string
 
 	// Settle each bet
 	for _, bet := range bets {
-		result := s.calculateBetResult(bet, event)
+		result := s.calculateBetResult(ctx, &bet, event)
 		_ = s.repo.UpdateBetStatus(ctx, bet.BetID, result.Status, result.WinAmount)
 	}
 }
 
 // calculateBetResult calculates the result of a bet
-func (s *LiveBettingService) calculateBetResult(bet *model.Bet, event *model.Event) BetResult {
+func (s *LiveBettingService) calculateBetResult(ctx context.Context, bet *model.Bet, event *model.Event) BetResult {
 	result := BetResult{}
 
 	// Get the market for this bet
@@ -95,9 +95,9 @@ type BetResult struct {
 }
 
 // GetCashOutAmount calculates the cash out amount for a bet
-func (s *LiveBettingService) GetCashOutAmount(ctx context.Context, betID string) (*CashOutCalculation, error) {
+func (s *LiveBettingService) GetCashOutAmount(ctx context.Context, betID string) (*model.CashOutCalculation, error) {
 	if !s.cfg.CashOutEnabled {
-		return &CashOutCalculation{
+		return &model.CashOutCalculation{
 			BetID:            betID,
 			Eligible:         false,
 			IneligibleReason: "Cash out is not available",
@@ -115,8 +115,8 @@ func (s *LiveBettingService) GetCashOutAmount(ctx context.Context, betID string)
 	}
 
 	// Check if bet is eligible for cash out
-	if bet.Status != model.BetStatusPending {
-		return &CashOutCalculation{
+	if bet.Status != string(model.BetStatusPending) {
+		return &model.CashOutCalculation{
 			BetID:            betID,
 			Eligible:         false,
 			IneligibleReason: fmt.Sprintf("Bet status is %s, not eligible for cash out", bet.Status),
@@ -158,7 +158,7 @@ func (s *LiveBettingService) GetCashOutAmount(ctx context.Context, betID string)
 	cashOutAmount := (bet.Stake * currentOdds) * (1 - houseEdge)
 	profit := cashOutAmount - bet.Stake
 
-	return &CashOutCalculation{
+	return &model.CashOutCalculation{
 		BetID:         betID,
 		OriginalStake: bet.Stake,
 		OriginalOdds:  bet.Odds,
@@ -171,7 +171,7 @@ func (s *LiveBettingService) GetCashOutAmount(ctx context.Context, betID string)
 }
 
 // RequestCashOut requests a cash out for a bet
-func (s *LiveBettingService) RequestCashOut(ctx context.Context, userID, betID string) (*CashOut, error) {
+func (s *LiveBettingService) RequestCashOut(ctx context.Context, userID, betID string) (*model.CashOut, error) {
 	if !s.cfg.CashOutEnabled {
 		return nil, fmt.Errorf("cash out is not available")
 	}

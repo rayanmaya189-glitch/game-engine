@@ -3,9 +3,11 @@ module github.com/game_engine/winners-showcase-service
 go 1.25.0
 
 require (
+	github.com/game_engine/gen/go v0.0.0-00010101000000-000000000000
 	github.com/jackc/pgx/v5 v5.9.1
 	github.com/redis/go-redis/v9 v9.18.0
 	google.golang.org/grpc v1.68.1
+	google.golang.org/protobuf v1.36.10
 	gopkg.in/yaml.v2 v2.4.0
 )
 
@@ -23,5 +25,6 @@ require (
 	golang.org/x/sys v0.41.0 // indirect
 	golang.org/x/text v0.34.0 // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240903143218-8af14fe29dc1 // indirect
-	google.golang.org/protobuf v1.36.10 // indirect
 )
+
+replace github.com/game_engine/gen/go => ../../proto/gen/go

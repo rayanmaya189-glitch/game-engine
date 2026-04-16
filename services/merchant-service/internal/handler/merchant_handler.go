@@ -3,13 +3,14 @@ package handler
 import (
 	"context"
 
-	merchantpb "github.com/game_engine/gen/go/game_engine/merchant/v1"
+	merchantpb "github.com/game_engine/gen/go/merchant/v1"
 	"github.com/game_engine/merchant-service/internal/service"
 )
 
 var _ merchantpb.MerchantServiceServer = (*MerchantHandler)(nil)
 
 type MerchantHandler struct {
+	merchantpb.UnimplementedMerchantServiceServer
 	service *service.MerchantService
 }
 

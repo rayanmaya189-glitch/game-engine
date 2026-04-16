@@ -2,9 +2,8 @@ package service
 
 import (
 	"context"
-	"strconv"
 
-	merchantpb "github.com/game_engine/gen/go/game_engine/merchant/v1"
+	merchantpb "github.com/game_engine/gen/go/merchant/v1"
 	"github.com/game_engine/merchant-service/internal/config"
 	"github.com/game_engine/merchant-service/internal/repository"
 )
@@ -111,11 +110,7 @@ func (s *MerchantService) GetConfig(ctx context.Context, req *merchantpb.GetConf
 }
 
 func (s *MerchantService) UpdateConfig(ctx context.Context, req *merchantpb.UpdateConfigRequest) (*merchantpb.UpdateConfigResponse, error) {
-	config := make(map[string]string)
-	if req.CommissionRate > 0 {
-		config["commission_rate"] = strconv.FormatFloat(req.CommissionRate, 'f', 2, 64)
-	}
-	err := s.repo.UpdateConfig(ctx, req.MerchantId, config)
+	err := s.repo.UpdateConfig(ctx, req.MerchantId, req.Config)
 	if err != nil {
 		return nil, err
 	}

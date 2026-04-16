@@ -3,13 +3,14 @@ package handler
 import (
 	"context"
 
-	jackpotpb "github.com/game_engine/gen/go/game_engine/jackpot/v1"
+	jackpotpb "github.com/game_engine/gen/go/jackpot/v1"
 	"github.com/game_engine/jackpot-service/internal/service"
 )
 
 var _ jackpotpb.JackpotServiceServer = (*JackpotHandler)(nil)
 
 type JackpotHandler struct {
+	jackpotpb.UnimplementedJackpotServiceServer
 	service *service.JackpotService
 }
 
