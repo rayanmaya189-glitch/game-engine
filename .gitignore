@@ -270,13 +270,13 @@ coverage.out
 coverage.html
 
 # Protobuf generated files
-*.pb.go
-*.pb.gw.go
-*.grpc.pb.go
+# *.pb.go
+# *.pb.gw.go
+# *.grpc.pb.go
 
 # Protoc output
-proto-gen/
+# proto-gen/
 
-# Generated protobuf code
-proto/gen/java/
-proto/gen/python/
+# # Generated protobuf code
+# proto/gen/java/
+# proto/gen/python/
