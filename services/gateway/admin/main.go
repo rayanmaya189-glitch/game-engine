@@ -12,9 +12,9 @@ import (
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/redis/go-redis/v9"
 
-	"common/client"
-	"common/handler"
-	"common/middleware"
+	"github.com/game_engine/gateway/common/client"
+	"github.com/game_engine/gateway/common/handler"
+	"github.com/game_engine/gateway/common/middleware"
 )
 
 type Config struct {
@@ -38,14 +38,14 @@ type Config struct {
 	} `yaml:"redis"`
 
 	Services struct {
-		AuthService        string `yaml:"auth_service"`
-		UserService        string `yaml:"user_service"`
-		WalletService      string `yaml:"wallet_service"`
-		GameService        string `yaml:"game_service"`
-		CommissionService  string `yaml:"commission_service"`
-		BonusService       string `yaml:"bonus_service"`
-		TournamentService  string `yaml:"tournament_service"`
-		JackpotService     string `yaml:"jackpot_service"`
+		AuthService       string `yaml:"auth_service"`
+		UserService       string `yaml:"user_service"`
+		WalletService     string `yaml:"wallet_service"`
+		GameService       string `yaml:"game_service"`
+		CommissionService string `yaml:"commission_service"`
+		BonusService      string `yaml:"bonus_service"`
+		TournamentService string `yaml:"tournament_service"`
+		JackpotService    string `yaml:"jackpot_service"`
 	} `yaml:"services"`
 
 	Admin struct {
@@ -220,14 +220,14 @@ func loadConfig() *Config {
 			Addr: getEnv("REDIS_ADDR", "redis:6379"), Password: "", DB: 0,
 		},
 		Services: struct {
-			AuthService        string `yaml:"auth_service"`
-			UserService        string `yaml:"user_service"`
-			WalletService      string `yaml:"wallet_service"`
-			GameService        string `yaml:"game_service"`
-			CommissionService  string `yaml:"commission_service"`
-			BonusService       string `yaml:"bonus_service"`
-			TournamentService  string `yaml:"tournament_service"`
-			JackpotService     string `yaml:"jackpot_service"`
+			AuthService       string `yaml:"auth_service"`
+			UserService       string `yaml:"user_service"`
+			WalletService     string `yaml:"wallet_service"`
+			GameService       string `yaml:"game_service"`
+			CommissionService string `yaml:"commission_service"`
+			BonusService      string `yaml:"bonus_service"`
+			TournamentService string `yaml:"tournament_service"`
+			JackpotService    string `yaml:"jackpot_service"`
 		}{
 			AuthService: getEnv("AUTH_SERVICE_ADDR", "auth-service:50051"), UserService: getEnv("USER_SERVICE_ADDR", "user-service:50051"),
 			WalletService: getEnv("WALLET_SERVICE_ADDR", "wallet-service:50051"), GameService: getEnv("GAME_SERVICE_ADDR", "game-registry:50051"),
