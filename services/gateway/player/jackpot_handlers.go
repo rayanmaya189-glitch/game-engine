@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	jackpotpb "github.com/game_engine/gen/go/game_engine/jackpot/v1"
+	jackpotpb "github.com/game_engine/common-service/proto/gen/go/jackpot/v1"
 
 	"common/handler"
 )

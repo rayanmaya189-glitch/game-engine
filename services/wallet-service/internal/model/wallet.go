@@ -3,8 +3,8 @@ package model
 import (
 	"time"
 
-	commonv1 "github.com/game_engine/wallet-service/pkg/game_engine/common/v1"
-	walletsv1 "github.com/game_engine/wallet-service/pkg/game_engine/wallet/v1"
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
+	walletsv1 "github.com/game_engine/common-service/proto/gen/go/wallet/v1"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
@@ -145,7 +145,7 @@ func (b *Bet) ToTransactionProto() *walletsv1.Transaction {
 	return &walletsv1.Transaction{
 		TransactionId: b.BetID,
 		UserId:        b.UserID,
-		Type:           commonv1.TransactionType_TRANSACTION_TYPE_BET,
+		Type:          commonv1.TransactionType_TRANSACTION_TYPE_BET,
 		Status:        commonv1.TransactionStatus(commonv1.TransactionStatus_value[b.Status]),
 		Amount: &commonv1.TransactionAmount{
 			Requested: &commonv1.Money{Amount: b.Stake},

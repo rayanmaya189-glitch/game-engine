@@ -8,8 +8,8 @@ import (
 
 	"common/handler"
 
-	jackpotpb "github.com/game_engine/gen/go/game_engine/jackpot/v1"
-	bonuspb "github.com/game_engine/gen/go/game_engine/bonus/v1"
+	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
+	jackpotpb "github.com/game_engine/common-service/proto/gen/go/jackpot/v1"
 )
 
 // Jackpots Handlers

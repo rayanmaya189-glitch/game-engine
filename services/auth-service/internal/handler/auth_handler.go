@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"time"
 
-	authv1 "github.com/game_engine/auth-service/pkg/game_engine/auth/v1"
+	authv1 "github.com/game_engine/common-service/proto/gen/go/auth/v1"
 
 	"github.com/game_engine/auth-service/internal/model"
 	"github.com/game_engine/auth-service/internal/service"
@@ -177,12 +177,12 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 		}
 
 		return &LoginResponse{
-			UserId:      user.ID.String(),
+			UserId:       user.ID.String(),
 			Requires_2Fa: true,
-			SessionId:   sessionID.String(),
-			UserStatus:  convertStatus(user.Status),
-			Message:     "2FA verification required",
-			AccessToken: partialToken,
+			SessionId:    sessionID.String(),
+			UserStatus:   convertStatus(user.Status),
+			Message:      "2FA verification required",
+			AccessToken:  partialToken,
 		}, nil
 	}
 
@@ -242,7 +242,7 @@ func (h *AuthHandler) Login(ctx context.Context, req *LoginRequest) (*LoginRespo
 		AccessToken:  accessToken,
 		RefreshToken: refreshToken,
 		ExpiresAt:    timestamppb.New(expiresAt),
-		Requires_2Fa:  false,
+		Requires_2Fa: false,
 		SessionId:    sessionID.String(),
 		UserStatus:   convertStatus(user.Status),
 		Message:      "Login successful",

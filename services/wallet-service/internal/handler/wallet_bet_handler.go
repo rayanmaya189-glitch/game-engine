@@ -3,8 +3,8 @@ package handler
 import (
 	"context"
 
-	commonv1 "github.com/game_engine/wallet-service/pkg/game_engine/common/v1"
-	walletsv1 "github.com/game_engine/wallet-service/pkg/game_engine/wallet/v1"
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
+	walletsv1 "github.com/game_engine/common-service/proto/gen/go/wallet/v1"
 	"github.com/game_engine/wallet-service/internal/service"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )

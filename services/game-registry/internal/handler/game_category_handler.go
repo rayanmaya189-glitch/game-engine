@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	gamesv1 "github.com/game_engine/game-registry/pkg/game_engine/game/v1"
+	gamesv1 "github.com/game_engine/common-service/proto/gen/go/game/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )

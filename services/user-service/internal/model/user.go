@@ -3,8 +3,8 @@ package model
 import (
 	"time"
 
-	userv1 "github.com/game_engine/user-service/pkg/game_engine/user/v1"
-	commonv1 "github.com/game_engine/user-service/pkg/game_engine/common/v1"
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
+	userv1 "github.com/game_engine/common-service/proto/gen/go/user/v1"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )
 

@@ -8,8 +8,8 @@ import (
 
 	"common/handler"
 
-	commissionpb "github.com/game_engine/gen/go/game_engine/commission/v1"
-	bonuspb "github.com/game_engine/gen/go/game_engine/bonus/v1"
+	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
+	commissionpb "github.com/game_engine/common-service/proto/gen/go/commission/v1"
 )
 
 // Insurance Claims Handlers

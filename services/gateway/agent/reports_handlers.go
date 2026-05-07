@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	affiliatepb "github.com/game_engine/gen/go/game_engine/affiliate/v1"
+	affiliatepb "github.com/game_engine/common-service/proto/gen/go/affiliate/v1"
 
 	"common/handler"
 )

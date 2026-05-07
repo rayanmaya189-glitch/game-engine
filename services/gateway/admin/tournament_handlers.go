@@ -8,7 +8,7 @@ import (
 
 	"common/handler"
 
-	tournamentpb "github.com/game_engine/gen/go/game_engine/tournament/v1"
+	tournamentpb "github.com/game_engine/common-service/proto/gen/go/tournament/v1"
 )
 
 // Tournaments Handlers

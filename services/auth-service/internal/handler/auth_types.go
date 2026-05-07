@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	authv1 "github.com/game_engine/auth-service/pkg/game_engine/auth/v1"
-	commonv1 "github.com/game_engine/auth-service/pkg/game_engine/common/v1"
+	authv1 "github.com/game_engine/common-service/proto/gen/go/auth/v1"
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
 
 	"github.com/game_engine/auth-service/internal/model"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"

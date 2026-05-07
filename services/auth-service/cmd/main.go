@@ -9,7 +9,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	authv1 "github.com/game_engine/auth-service/pkg/game_engine/auth/v1"
+	authv1 "github.com/game_engine/common-service/proto/gen/go/auth/v1"
 
 	"github.com/game_engine/auth-service/internal/config"
 	"github.com/game_engine/auth-service/internal/handler"

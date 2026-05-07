@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"time"
 
-	userv1 "github.com/game_engine/user-service/pkg/game_engine/user/v1"
+	userv1 "github.com/game_engine/common-service/proto/gen/go/user/v1"
 
 	"github.com/game_engine/user-service/internal/config"
 	"github.com/game_engine/user-service/internal/handler"

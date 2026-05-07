@@ -12,7 +12,7 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/keepalive"
 
-	merchantpb "github.com/game_engine/gen/go/game_engine/merchant/v1"
+	merchantpb "github.com/game_engine/common-service/proto/gen/go/merchant/v1"
 )
 
 type MerchantClient struct {

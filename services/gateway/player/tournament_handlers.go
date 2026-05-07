@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	tournamentpb "github.com/game_engine/gen/go/game_engine/tournament/v1"
+	tournamentpb "github.com/game_engine/common-service/proto/gen/go/tournament/v1"
 
 	"common/handler"
 )

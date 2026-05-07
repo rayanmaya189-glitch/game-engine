@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	commissionpb "github.com/game_engine/gen/go/game_engine/commission/v1"
+	commissionpb "github.com/game_engine/common-service/proto/gen/go/commission/v1"
 
 	"common/handler"
 )
