@@ -11,9 +11,9 @@ import (
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
 
-	"github.com/game-engine/game-engine/internal/config"
-	"github.com/game-engine/game-engine/internal/registry"
-	"github.com/game-engine/game-engine/internal/rng"
+	"github.com/game_engine/game-engine/internal/config"
+	"github.com/game_engine/game-engine/internal/registry"
+	"github.com/game_engine/game-engine/internal/rng"
 )
 
 type GameEngineHandler struct {
@@ -55,10 +55,10 @@ func (h *GameEngineHandler) Spin(ctx context.Context, req *SpinRequest) (*SpinRe
 	}
 
 	return &SpinResponse{
-		GameId:      req.GameId,
-		UserId:      req.UserId,
-		ReelResult:  reelResult,
-		GameConfig:  gameConfig,
+		GameId:     req.GameId,
+		UserId:     req.UserId,
+		ReelResult: reelResult,
+		GameConfig: gameConfig,
 	}, nil
 }
 

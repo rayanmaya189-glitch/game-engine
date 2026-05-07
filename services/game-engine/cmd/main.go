@@ -10,10 +10,10 @@ import (
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/reflection"
 
-	"github.com/game-engine/game-engine/internal/config"
-	"github.com/game-engine/game-engine/internal/handler"
-	"github.com/game-engine/game-engine/internal/registry"
-	"github.com/game-engine/game-engine/internal/rng"
+	"github.com/game_engine/game-engine/internal/config"
+	"github.com/game_engine/game-engine/internal/handler"
+	"github.com/game_engine/game-engine/internal/registry"
+	"github.com/game_engine/game-engine/internal/rng"
 )
 
 func main() {

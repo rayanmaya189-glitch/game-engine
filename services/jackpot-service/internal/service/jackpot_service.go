@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	jackpotpb "github.com/game_engine/gen/go/jackpot/v1"
+	jackpotpb "github.com/game_engine/common-service/proto/gen/go/jackpot/v1"
 	"github.com/game_engine/jackpot-service/internal/config"
 	"github.com/game_engine/jackpot-service/internal/repository"
 )

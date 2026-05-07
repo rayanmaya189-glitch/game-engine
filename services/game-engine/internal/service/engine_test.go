@@ -3,8 +3,8 @@ package service
 import (
 	"testing"
 
-	"github.com/game-engine/game-engine/internal/game"
-	"github.com/game-engine/game-engine/internal/rng"
+	"github.com/game_engine/game-engine/internal/game"
+	"github.com/game_engine/game-engine/internal/rng"
 )
 
 func TestStateMachineTransitions(t *testing.T) {

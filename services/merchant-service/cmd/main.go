@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	merchantpb "github.com/game_engine/gen/go/merchant/v1"
+	merchantpb "github.com/game_engine/common-service/proto/gen/go/merchant/v1"
 	"github.com/game_engine/merchant-service/internal/config"
 	"github.com/game_engine/merchant-service/internal/handler"
 	"github.com/game_engine/merchant-service/internal/repository"
