@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/cloudwego/hertz/pkg/router"
+	"github.com/cloudwego/hertz/pkg/route"
 
 	"common/client"
 	"common/handler"
@@ -28,8 +28,8 @@ type RouterConfig struct {
 	AllowedIPs            []string
 }
 
-func NewRouter(cfg *RouterConfig) *router.Router {
-	r := router.New()
+func NewRouter(cfg *RouterConfig) *route.Router {
+	r := route.New()
 
 	r.Use(cfg.LoggerMiddleware.RequestID())
 	r.Use(cfg.LoggerMiddleware.StructuredLogger())

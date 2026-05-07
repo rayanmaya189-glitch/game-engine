@@ -1,7 +1,7 @@
 package router
 
 import (
-	"github.com/cloudwego/hertz/pkg/router"
+	"github.com/cloudwego/hertz/pkg/route"
 
 	"handler"
 	"middleware"
@@ -16,8 +16,8 @@ type RouterOption struct {
 	ErrorHandler          *handler.ErrorHandler
 }
 
-func NewRouter(opts *RouterOption) *router.Router {
-	r := router.New()
+func NewRouter(opts *RouterOption) *route.Router {
+	r := route.New()
 
 	// Global middleware (applied to all routes)
 	if opts.LoggerMiddleware != nil {
