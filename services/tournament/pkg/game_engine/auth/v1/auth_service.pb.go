@@ -7,13 +7,14 @@
 package authv1
 
 import (
-	v1 "gen/go/common/v1"
+	reflect "reflect"
+	sync "sync"
+
+	v1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	timestamppb "google.golang.org/protobuf/types/known/timestamppb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (

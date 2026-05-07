@@ -1,0 +1,678 @@
+syntax = "proto3";
+
+package game_engine.commission.v1;
+
+import "google/protobuf/timestamp.proto";
+import "common/v1/pagination.proto";
+
+option go_package = "gen/go/commission/v1;commissionv1";
+option java_multiple_files = true;
+option java_package = "com.game_engine.commission.v1";
+
+// =============================================================================
+// Commission Service - manages commission calculations and configs
+// =============================================================================
+service CommissionService {
+  // Commission operations
+  rpc CreateCommission(CreateCommissionRequest) returns (CreateCommissionResponse);
+  rpc GetCommissionById(GetCommissionByIdRequest) returns (GetCommissionByIdResponse);
+  rpc GetCommissionsByAffiliate(GetCommissionsByAffiliateRequest) returns (GetCommissionsByAffiliateResponse);
+  rpc GetCommissionsByMerchant(GetCommissionsByMerchantRequest) returns (GetCommissionsByMerchantResponse);
+  rpc GetCommissionsByPeriod(GetCommissionsByPeriodRequest) returns (GetCommissionsByPeriodResponse);
+  rpc GetCommissionByAffiliateAndPeriod(GetCommissionByAffiliateAndPeriodRequest) returns (GetCommissionByAffiliateAndPeriodResponse);
+  rpc GetTotalPaidCommission(GetTotalPaidCommissionRequest) returns (GetTotalPaidCommissionResponse);
+  rpc GetTotalPendingCommission(GetTotalPendingCommissionRequest) returns (GetTotalPendingCommissionResponse);
+  rpc GetTotalRevenueByMerchant(GetTotalRevenueByMerchantRequest) returns (GetTotalRevenueByMerchantResponse);
+  
+  // Calculation
+  rpc CalculateRevenueShare(CalculateRevenueShareRequest) returns (CalculateRevenueShareResponse);
+  rpc CalculateCPA(CalculateCPARequest) returns (CalculateCPAResponse);
+  
+  // Approval and payment
+  rpc ApproveCommission(ApproveCommissionRequest) returns (ApproveCommissionResponse);
+  rpc RejectCommission(RejectCommissionRequest) returns (RejectCommissionResponse);
+  rpc PayCommission(PayCommissionRequest) returns (PayCommissionResponse);
+  
+  // Queries
+  rpc GetPendingCommissions(GetPendingCommissionsRequest) returns (GetPendingCommissionsResponse);
+  rpc GetAllCommissions(GetAllCommissionsRequest) returns (GetAllCommissionsResponse);
+  rpc DeleteCommission(DeleteCommissionRequest) returns (DeleteCommissionResponse);
+}
+
+// =============================================================================
+// Commission Config Service - manages commission configurations
+// =============================================================================
+service CommissionConfigService {
+  rpc CreateCommissionConfig(CreateCommissionConfigRequest) returns (CreateCommissionConfigResponse);
+  rpc GetConfigById(GetConfigByIdRequest) returns (GetConfigByIdResponse);
+  rpc GetConfigsByAffiliate(GetConfigsByAffiliateRequest) returns (GetConfigsByAffiliateResponse);
+  rpc GetConfigsByMerchant(GetConfigsByMerchantRequest) returns (GetConfigsByMerchantResponse);
+  rpc GetActiveConfigsByAffiliate(GetActiveConfigsByAffiliateRequest) returns (GetActiveConfigsByAffiliateResponse);
+  rpc GetActiveConfigsByAffiliateAndMerchant(GetActiveConfigsByAffiliateAndMerchantRequest) returns (GetActiveConfigsByAffiliateAndMerchantResponse);
+  rpc GetConfigByAffiliateAndMerchantAndType(GetConfigByAffiliateAndMerchantAndTypeRequest) returns (GetConfigByAffiliateAndMerchantAndTypeResponse);
+  rpc UpdateCommissionConfig(UpdateCommissionConfigRequest) returns (UpdateCommissionConfigResponse);
+  rpc ActivateConfig(ActivateConfigRequest) returns (ActivateConfigResponse);
+  rpc DeactivateConfig(DeactivateConfigRequest) returns (DeactivateConfigResponse);
+  rpc DeleteConfig(DeleteConfigRequest) returns (DeleteConfigResponse);
+  rpc GetAllConfigs(GetAllConfigsRequest) returns (GetAllConfigsResponse);
+}
+
+// =============================================================================
+// Claim Service - handles commission claims, rebet claims, insurance claims, settlements
+// =============================================================================
+service ClaimService {
+  // Commission Claims
+  rpc SubmitCommissionClaim(SubmitCommissionClaimRequest) returns (SubmitCommissionClaimResponse);
+  rpc GetUserCommissionClaims(GetUserCommissionClaimsRequest) returns (GetUserCommissionClaimsResponse);
+  rpc GetCommissionClaimsByStatus(GetCommissionClaimsByStatusRequest) returns (GetCommissionClaimsByStatusResponse);
+  rpc GetCommissionClaimById(GetCommissionClaimByIdRequest) returns (GetCommissionClaimByIdResponse);
+  rpc ApproveCommissionClaim(ApproveCommissionClaimRequest) returns (ApproveCommissionClaimResponse);
+  rpc RejectCommissionClaim(RejectCommissionClaimRequest) returns (RejectCommissionClaimResponse);
+  rpc PayCommissionClaim(PayCommissionClaimRequest) returns (PayCommissionClaimResponse);
+  
+  // Rebet Claims
+  rpc CreateRebetClaim(CreateRebetClaimRequest) returns (CreateRebetClaimResponse);
+  rpc UpdateRebetProgress(UpdateRebetProgressRequest) returns (UpdateRebetProgressResponse);
+  rpc ClaimRebet(ClaimRebetRequest) returns (ClaimRebetResponse);
+  rpc GetUserRebetClaims(GetUserRebetClaimsRequest) returns (GetUserRebetClaimsResponse);
+  rpc GetClaimableRebets(GetClaimableRebetsRequest) returns (GetClaimableRebetsResponse);
+  
+  // Insurance Claims
+  rpc SubmitInsuranceClaim(SubmitInsuranceClaimRequest) returns (SubmitInsuranceClaimResponse);
+  rpc ApproveInsuranceClaim(ApproveInsuranceClaimRequest) returns (ApproveInsuranceClaimResponse);
+  rpc RejectInsuranceClaim(RejectInsuranceClaimRequest) returns (RejectInsuranceClaimResponse);
+  rpc PayInsuranceClaim(PayInsuranceClaimRequest) returns (PayInsuranceClaimResponse);
+  rpc GetUserInsuranceClaims(GetUserInsuranceClaimsRequest) returns (GetUserInsuranceClaimsResponse);
+  rpc GetInsuranceClaimsByStatus(GetInsuranceClaimsByStatusRequest) returns (GetInsuranceClaimsByStatusResponse);
+  
+  // Settlements
+  rpc GetUserSettlements(GetUserSettlementsRequest) returns (GetUserSettlementsResponse);
+  rpc GetSettlementsByStatus(GetSettlementsByStatusRequest) returns (GetSettlementsByStatusResponse);
+  rpc GetSettlementsByType(GetSettlementsByTypeRequest) returns (GetSettlementsByTypeResponse);
+  rpc GetSettlementById(GetSettlementByIdRequest) returns (GetSettlementByIdResponse);
+  rpc GetUserTotalPending(GetUserTotalPendingRequest) returns (GetUserTotalPendingResponse);
+  rpc GetUserTotalSettled(GetUserTotalSettledRequest) returns (GetUserTotalSettledResponse);
+}
+
+// =============================================================================
+// Messages
+// =============================================================================
+
+// Commission message
+message Commission {
+  int64 id = 1;
+  int64 affiliate_id = 2;
+  int64 merchant_id = 3;
+  string commission_type = 4;      // REVENUE_SHARE, CPA
+  string status = 5;               // PENDING, APPROVED, PAID, REJECTED
+  double net_revenue = 6;
+  double commission_percentage = 7;
+  double commission_amount = 8;
+  double cpa_amount = 9;
+  int32 cpa_count = 10;
+  int32 total_players = 11;
+  string period = 12;               // MONTHLY, WEEKLY, DAILY
+  google.protobuf.Timestamp calculated_at = 13;
+  google.protobuf.Timestamp approved_at = 14;
+  google.protobuf.Timestamp paid_at = 15;
+  string rejection_reason = 16;
+  google.protobuf.Timestamp created_at = 17;
+}
+
+// Commission Requests/Responses
+message CreateCommissionRequest {
+  Commission commission = 1;
+}
+
+message CreateCommissionResponse {
+  Commission commission = 1;
+}
+
+message GetCommissionByIdRequest {
+  int64 id = 1;
+}
+
+message GetCommissionByIdResponse {
+  Commission commission = 1;
+  bool found = 2;
+}
+
+message GetCommissionsByAffiliateRequest {
+  int64 affiliate_id = 1;
+}
+
+message GetCommissionsByAffiliateResponse {
+  repeated Commission commissions = 1;
+}
+
+message GetCommissionsByMerchantRequest {
+  int64 merchant_id = 1;
+}
+
+message GetCommissionsByMerchantResponse {
+  repeated Commission commissions = 1;
+}
+
+message GetCommissionsByPeriodRequest {
+  string period = 1;
+}
+
+message GetCommissionsByPeriodResponse {
+  repeated Commission commissions = 1;
+}
+
+message GetCommissionByAffiliateAndPeriodRequest {
+  int64 affiliate_id = 1;
+  string period = 2;
+}
+
+message GetCommissionByAffiliateAndPeriodResponse {
+  Commission commission = 1;
+  bool found = 2;
+}
+
+message GetTotalPaidCommissionRequest {
+  int64 affiliate_id = 1;
+}
+
+message GetTotalPaidCommissionResponse {
+  double total_paid = 1;
+}
+
+message GetTotalPendingCommissionRequest {
+  int64 affiliate_id = 1;
+}
+
+message GetTotalPendingCommissionResponse {
+  double total_pending = 1;
+}
+
+message GetTotalRevenueByMerchantRequest {
+  int64 merchant_id = 1;
+}
+
+message GetTotalRevenueByMerchantResponse {
+  double total_revenue = 1;
+}
+
+message CalculateRevenueShareRequest {
+  int64 affiliate_id = 1;
+  int64 merchant_id = 2;
+  double net_revenue = 3;
+  double commission_rate = 4;
+  string period = 5;
+}
+
+message CalculateRevenueShareResponse {
+  Commission commission = 1;
+}
+
+message CalculateCPARequest {
+  int64 affiliate_id = 1;
+  int64 merchant_id = 2;
+  int32 new_players = 3;
+  double cpa_rate = 4;
+  string period = 5;
+}
+
+message CalculateCPAResponse {
+  Commission commission = 1;
+}
+
+message ApproveCommissionRequest {
+  int64 id = 1;
+  string admin_note = 2;
+}
+
+message ApproveCommissionResponse {
+  Commission commission = 1;
+}
+
+message RejectCommissionRequest {
+  int64 id = 1;
+  string reason = 2;
+}
+
+message RejectCommissionResponse {
+  Commission commission = 1;
+}
+
+message PayCommissionRequest {
+  int64 id = 1;
+}
+
+message PayCommissionResponse {
+  Commission commission = 1;
+}
+
+message GetPendingCommissionsRequest {}
+
+message GetPendingCommissionsResponse {
+  repeated Commission commissions = 1;
+}
+
+message GetAllCommissionsRequest {}
+
+message GetAllCommissionsResponse {
+  repeated Commission commissions = 1;
+}
+
+message DeleteCommissionRequest {
+  int64 id = 1;
+}
+
+message DeleteCommissionResponse {
+  bool success = 1;
+}
+
+// Commission Config Messages
+message CommissionConfig {
+  int64 id = 1;
+  int64 merchant_id = 2;
+  int64 affiliate_id = 3;
+  string commission_type = 4;      // REVENUE_SHARE, CPA
+  double revenue_share_rate = 5;
+  double cpa_rate = 6;
+  int32 min_players = 7;
+  double tier_rate = 8;
+  int32 tier_threshold = 9;
+  bool is_active = 10;
+  google.protobuf.Timestamp effective_from = 11;
+  google.protobuf.Timestamp effective_to = 12;
+  google.protobuf.Timestamp created_at = 13;
+  google.protobuf.Timestamp updated_at = 14;
+}
+
+message CreateCommissionConfigRequest {
+  CommissionConfig config = 1;
+}
+
+message CreateCommissionConfigResponse {
+  CommissionConfig config = 1;
+}
+
+message GetConfigByIdRequest {
+  int64 id = 1;
+}
+
+message GetConfigByIdResponse {
+  CommissionConfig config = 1;
+  bool found = 2;
+}
+
+message GetConfigsByAffiliateRequest {
+  int64 affiliate_id = 1;
+}
+
+message GetConfigsByAffiliateResponse {
+  repeated CommissionConfig configs = 1;
+}
+
+message GetConfigsByMerchantRequest {
+  int64 merchant_id = 1;
+}
+
+message GetConfigsByMerchantResponse {
+  repeated CommissionConfig configs = 1;
+}
+
+message GetActiveConfigsByAffiliateRequest {
+  int64 affiliate_id = 1;
+}
+
+message GetActiveConfigsByAffiliateResponse {
+  repeated CommissionConfig configs = 1;
+}
+
+message GetActiveConfigsByAffiliateAndMerchantRequest {
+  int64 affiliate_id = 1;
+  int64 merchant_id = 2;
+}
+
+message GetActiveConfigsByAffiliateAndMerchantResponse {
+  repeated CommissionConfig configs = 1;
+}
+
+message GetConfigByAffiliateAndMerchantAndTypeRequest {
+  int64 affiliate_id = 1;
+  int64 merchant_id = 2;
+  string type = 3;
+}
+
+message GetConfigByAffiliateAndMerchantAndTypeResponse {
+  CommissionConfig config = 1;
+  bool found = 2;
+}
+
+message UpdateCommissionConfigRequest {
+  int64 id = 1;
+  CommissionConfig config = 2;
+}
+
+message UpdateCommissionConfigResponse {
+  CommissionConfig config = 1;
+}
+
+message ActivateConfigRequest {
+  int64 id = 1;
+}
+
+message ActivateConfigResponse {
+  CommissionConfig config = 1;
+}
+
+message DeactivateConfigRequest {
+  int64 id = 1;
+}
+
+message DeactivateConfigResponse {
+  CommissionConfig config = 1;
+}
+
+message DeleteConfigRequest {
+  int64 id = 1;
+}
+
+message DeleteConfigResponse {
+  bool success = 1;
+}
+
+message GetAllConfigsRequest {}
+
+message GetAllConfigsResponse {
+  repeated CommissionConfig configs = 1;
+}
+
+// Claim Messages
+message CommissionClaimMsg {
+  int64 id = 1;
+  int64 user_id = 2;
+  int64 affiliate_id = 3;
+  int64 commission_id = 4;
+  string claim_type = 5;
+  double amount = 6;
+  string status = 7;               // PENDING, APPROVED, PAID, REJECTED
+  string claim_reason = 8;
+  string admin_note = 9;
+  google.protobuf.Timestamp requested_at = 10;
+  google.protobuf.Timestamp processed_at = 11;
+  google.protobuf.Timestamp paid_at = 12;
+  string transaction_id = 13;
+}
+
+message RebetClaimMsg {
+  int64 id = 1;
+  int64 user_id = 2;
+  int64 bonus_id = 3;
+  string bonus_code = 4;
+  int64 game_id = 5;
+  int64 bet_id = 6;
+  double original_bonus_amount = 7;
+  double rebet_requirement = 8;
+  double current_rebet_amount = 9;
+  double claim_amount = 10;
+  string status = 11;              // ACTIVE, COMPLETED, CLAIMED, EXPIRED
+  google.protobuf.Timestamp expires_at = 12;
+  google.protobuf.Timestamp claimed_at = 13;
+  string transaction_id = 14;
+  bool claimable = 15;
+}
+
+message InsuranceClaimMsg {
+  int64 id = 1;
+  int64 user_id = 2;
+  int64 game_id = 3;
+  int64 bet_id = 4;
+  string insurance_policy_id = 5;
+  string claim_type = 6;
+  double insured_amount = 7;
+  double loss_amount = 8;
+  double claim_amount = 9;
+  string status = 10;              // PENDING, APPROVED, PAID, REJECTED
+  string claim_reason = 11;
+  string evidence_details = 12;
+  string admin_note = 13;
+  int64 reviewed_by = 14;
+  google.protobuf.Timestamp requested_at = 15;
+  google.protobuf.Timestamp reviewed_at = 16;
+  google.protobuf.Timestamp paid_at = 17;
+  string transaction_id = 18;
+}
+
+message SettlementMsg {
+  int64 id = 1;
+  int64 user_id = 2;
+  string settlement_type = 3;      // COMMISSION, REBET, INSURANCE
+  int64 claim_id = 4;
+  double amount = 5;
+  double bonus_amount = 6;
+  double rake_amount = 7;
+  double net_amount = 8;
+  string status = 9;               // PENDING, COMPLETED, FAILED
+  string payment_method = 10;
+  string transaction_id = 11;
+  google.protobuf.Timestamp completed_at = 12;
+}
+
+// Commission Claim RPCs
+message SubmitCommissionClaimRequest {
+  int64 user_id = 1;
+  int64 affiliate_id = 2;
+  int64 commission_id = 3;
+  double amount = 4;
+  string claim_reason = 5;
+}
+
+message SubmitCommissionClaimResponse {
+  CommissionClaimMsg claim = 1;
+}
+
+message GetUserCommissionClaimsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserCommissionClaimsResponse {
+  repeated CommissionClaimMsg claims = 1;
+}
+
+message GetCommissionClaimsByStatusRequest {
+  string status = 1;
+}
+
+message GetCommissionClaimsByStatusResponse {
+  repeated CommissionClaimMsg claims = 1;
+}
+
+message GetCommissionClaimByIdRequest {
+  int64 id = 1;
+}
+
+message GetCommissionClaimByIdResponse {
+  CommissionClaimMsg claim = 1;
+  bool found = 2;
+}
+
+message ApproveCommissionClaimRequest {
+  int64 id = 1;
+  string admin_note = 2;
+}
+
+message ApproveCommissionClaimResponse {
+  CommissionClaimMsg claim = 1;
+}
+
+message RejectCommissionClaimRequest {
+  int64 id = 1;
+  string admin_note = 2;
+}
+
+message RejectCommissionClaimResponse {
+  CommissionClaimMsg claim = 1;
+}
+
+message PayCommissionClaimRequest {
+  int64 id = 1;
+}
+
+message PayCommissionClaimResponse {
+  CommissionClaimMsg claim = 1;
+}
+
+// Rebet Claim RPCs
+message CreateRebetClaimRequest {
+  int64 user_id = 1;
+  int64 bonus_id = 2;
+  string bonus_code = 3;
+  double bonus_amount = 4;
+  double rebet_requirement = 5;
+  int64 game_id = 6;
+  int64 bet_id = 7;
+}
+
+message CreateRebetClaimResponse {
+  RebetClaimMsg claim = 1;
+}
+
+message UpdateRebetProgressRequest {
+  int64 id = 1;
+  double additional_bet_amount = 2;
+}
+
+message UpdateRebetProgressResponse {
+  RebetClaimMsg claim = 1;
+}
+
+message ClaimRebetRequest {
+  int64 id = 1;
+}
+
+message ClaimRebetResponse {
+  RebetClaimMsg claim = 1;
+}
+
+message GetUserRebetClaimsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserRebetClaimsResponse {
+  repeated RebetClaimMsg claims = 1;
+}
+
+message GetClaimableRebetsRequest {
+  int64 user_id = 1;
+}
+
+message GetClaimableRebetsResponse {
+  repeated RebetClaimMsg claims = 1;
+}
+
+// Insurance Claim RPCs
+message SubmitInsuranceClaimRequest {
+  int64 user_id = 1;
+  int64 game_id = 2;
+  int64 bet_id = 3;
+  string insurance_policy_id = 4;
+  string claim_type = 5;
+  double insured_amount = 6;
+  double loss_amount = 7;
+  string claim_reason = 8;
+  string evidence_details = 9;
+}
+
+message SubmitInsuranceClaimResponse {
+  InsuranceClaimMsg claim = 1;
+}
+
+message ApproveInsuranceClaimRequest {
+  int64 id = 1;
+  int64 reviewed_by = 2;
+  string admin_note = 3;
+}
+
+message ApproveInsuranceClaimResponse {
+  InsuranceClaimMsg claim = 1;
+}
+
+message RejectInsuranceClaimRequest {
+  int64 id = 1;
+  int64 reviewed_by = 2;
+  string admin_note = 3;
+}
+
+message RejectInsuranceClaimResponse {
+  InsuranceClaimMsg claim = 1;
+}
+
+message PayInsuranceClaimRequest {
+  int64 id = 1;
+}
+
+message PayInsuranceClaimResponse {
+  InsuranceClaimMsg claim = 1;
+}
+
+message GetUserInsuranceClaimsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserInsuranceClaimsResponse {
+  repeated InsuranceClaimMsg claims = 1;
+}
+
+message GetInsuranceClaimsByStatusRequest {
+  string status = 1;
+}
+
+message GetInsuranceClaimsByStatusResponse {
+  repeated InsuranceClaimMsg claims = 1;
+}
+
+// Settlement RPCs
+message GetUserSettlementsRequest {
+  int64 user_id = 1;
+}
+
+message GetUserSettlementsResponse {
+  repeated SettlementMsg settlements = 1;
+}
+
+message GetSettlementsByStatusRequest {
+  string status = 1;
+}
+
+message GetSettlementsByStatusResponse {
+  repeated SettlementMsg settlements = 1;
+}
+
+message GetSettlementsByTypeRequest {
+  string type = 1;
+}
+
+message GetSettlementsByTypeResponse {
+  repeated SettlementMsg settlements = 1;
+}
+
+message GetSettlementByIdRequest {
+  int64 id = 1;
+}
+
+message GetSettlementByIdResponse {
+  SettlementMsg settlement = 1;
+  bool found = 2;
+}
+
+message GetUserTotalPendingRequest {
+  int64 user_id = 1;
+}
+
+message GetUserTotalPendingResponse {
+  double total_pending = 1;
+}
+
+message GetUserTotalSettledRequest {
+  int64 user_id = 1;
+}
+
+message GetUserTotalSettledResponse {
+  double total_settled = 1;
+}

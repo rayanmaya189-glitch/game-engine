@@ -7,12 +7,13 @@
 package jackpotv1
 
 import (
-	_ "gen/go/common/v1"
+	reflect "reflect"
+	sync "sync"
+
+	_ "github.com/game_engine/common-service/proto/gen/go/common/v1"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	_ "google.golang.org/protobuf/types/known/timestamppb"
-	reflect "reflect"
-	sync "sync"
 )
 
 const (

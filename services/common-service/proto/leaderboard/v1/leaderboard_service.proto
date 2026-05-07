@@ -1,0 +1,119 @@
+syntax = "proto3";
+
+package game_engine.leaderboard.v1;
+
+import "google/protobuf/timestamp.proto";
+
+option go_package = "gen/go/leaderboard/v1;leaderv1";
+option java_multiple_files = true;
+option java_package = "com.game_engine.leaderboard.v1";
+
+// LeaderboardService manages leaderboards and player rankings
+service LeaderboardService {
+  rpc GetDailyLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
+  rpc GetWeeklyLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
+  rpc GetMonthlyLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
+  rpc GetAllTimeLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
+  rpc GetPlayerRank(GetPlayerRankRequest) returns (GetPlayerRankResponse);
+  rpc UpdatePlayerScore(UpdatePlayerScoreRequest) returns (UpdatePlayerScoreResponse);
+  rpc DistributePrizes(DistributePrizesRequest) returns (DistributePrizesResponse);
+  rpc SyncLeaderboard(SyncLeaderboardRequest) returns (SyncLeaderboardResponse);
+  rpc ResetLeaderboard(ResetLeaderboardRequest) returns (ResetLeaderboardResponse);
+}
+
+message GetLeaderboardRequest {
+  string game_type = 1;
+  int32 limit = 2;
+}
+
+message GetLeaderboardResponse {
+  string type = 1;
+  string period = 2;
+  repeated LeaderboardEntry entries = 3;
+  int32 total = 4;
+  google.protobuf.Timestamp updated_at = 5;
+}
+
+message LeaderboardEntry {
+  int32 rank = 1;
+  string user_id = 2;
+  string username = 3;
+  double score = 4;
+  int32 wins = 5;
+  double win_amount = 6;
+  string game_type = 7;
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+message GetPlayerRankRequest {
+  string user_id = 1;
+  string game_type = 2;
+  string leaderboard_type = 3;
+}
+
+message GetPlayerRankResponse {
+  string user_id = 1;
+  string username = 2;
+  int32 rank = 3;
+  double score = 4;
+  string type = 5;
+  string period = 6;
+}
+
+message UpdatePlayerScoreRequest {
+  string user_id = 1;
+  string username = 2;
+  double score = 3;
+  string game_type = 4;
+  bool is_win = 5;
+  double win_amount = 6;
+  double bet_amount = 7;
+}
+
+message UpdatePlayerScoreResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message DistributePrizesRequest {
+  string leaderboard_type = 1;
+  string game_type = 2;
+  string tournament_id = 3;
+  bool dry_run = 4;
+}
+
+message DistributePrizesResponse {
+  string leaderboard_type = 1;
+  string game_type = 2;
+  string period = 3;
+  repeated Prize prizes = 4;
+  double total_value = 5;
+  google.protobuf.Timestamp distributed_at = 6;
+}
+
+message Prize {
+  int32 rank = 1;
+  string type = 2;
+  double value = 3;
+  string currency = 4;
+}
+
+message SyncLeaderboardRequest {
+  string leaderboard_type = 1;
+  string game_type = 2;
+}
+
+message SyncLeaderboardResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ResetLeaderboardRequest {
+  string leaderboard_type = 1;
+  string game_type = 2;
+}
+
+message ResetLeaderboardResponse {
+  bool success = 1;
+  string message = 2;
+}

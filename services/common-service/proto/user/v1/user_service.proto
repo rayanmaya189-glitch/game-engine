@@ -1,0 +1,321 @@
+syntax = "proto3";
+
+package game_engine.user.v1;
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "common/v1/enums.proto";
+import "common/v1/pagination.proto";
+import "common/v1/money.proto";
+
+option go_package = "gen/go/user/v1;userv1";
+option java_multiple_files = true;
+option java_package = "com.game_engine.user.v1";
+
+// User Service - handles player profiles, KYC, limits, and settings management
+service UserService {
+  rpc GetProfile(GetProfileRequest) returns (GetProfileResponse);
+  rpc UpdateProfile(UpdateProfileRequest) returns (UpdateProfileResponse);
+  rpc GetKYCStatus(GetKYCStatusRequest) returns (GetKYCStatusResponse);
+  rpc SubmitKYC(SubmitKYCRequest) returns (SubmitKYCResponse);
+  rpc GetPlayerSettings(GetPlayerSettingsRequest) returns (GetPlayerSettingsResponse);
+  rpc UpdatePlayerSettings(UpdatePlayerSettingsRequest) returns (UpdatePlayerSettingsResponse);
+  rpc GetPlayerByAdmin(GetPlayerByAdminRequest) returns (GetPlayerByAdminResponse);
+  rpc ListPlayers(ListPlayersRequest) returns (ListPlayersResponse);
+  rpc UpdatePlayerStatus(UpdatePlayerStatusRequest) returns (UpdatePlayerStatusResponse);
+
+  // Responsible Gaming - Limits management
+  rpc SetDepositLimit(SetDepositLimitRequest) returns (SetDepositLimitResponse);
+  rpc SetBetLimit(SetBetLimitRequest) returns (SetBetLimitResponse);
+  rpc SetLossLimit(SetLossLimitRequest) returns (SetLossLimitResponse);
+  rpc GetPlayerLimits(GetPlayerLimitsRequest) returns (GetPlayerLimitsResponse);
+
+  // Self-Exclusion
+  rpc SelfExclude(SelfExcludeRequest) returns (SelfExcludeResponse);
+}
+
+// Requests/Responses
+message GetProfileRequest {
+  string user_id = 1;
+}
+
+message GetProfileResponse {
+  UserProfile profile = 1;
+}
+
+message UpdateProfileRequest {
+  string first_name = 1;
+  string last_name = 2;
+  google.protobuf.Timestamp date_of_birth = 3;
+  common.v1.Gender gender = 4;
+  Address address = 5;
+  common.v1.Language language = 6;
+  string timezone = 7;
+  string display_name = 8;
+}
+
+message UpdateProfileResponse {
+  UserProfile profile = 1;
+  string message = 2;
+}
+
+message GetKYCStatusRequest {
+  string user_id = 1;
+}
+
+message GetKYCStatusResponse {
+  KYCStatus status = 1;
+  common.v1.KYCLevel level = 2;
+  string rejection_reason = 3;
+}
+
+message SubmitKYCRequest {
+  string user_id = 1;
+  KYCDocumentType document_type = 2;
+  string document_data = 3;
+  string document_number = 4;
+}
+
+message SubmitKYCResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message GetPlayerSettingsRequest {
+  string user_id = 1;
+}
+
+message GetPlayerSettingsResponse {
+  PlayerSettings settings = 1;
+}
+
+message UpdatePlayerSettingsRequest {
+  PlayerSettings settings = 1;
+}
+
+message UpdatePlayerSettingsResponse {
+  PlayerSettings settings = 1;
+  string message = 2;
+}
+
+message GetPlayerByAdminRequest {
+  string identifier = 1;
+}
+
+message GetPlayerByAdminResponse {
+  UserProfile profile = 1;
+  AccountStatus account_status = 2;
+  KYCStatus kyc_status = 3;
+}
+
+message ListPlayersRequest {
+  PlayerFilters filters = 1;
+  common.v1.PaginationRequest pagination = 2;
+}
+
+message ListPlayersResponse {
+  repeated UserProfile players = 1;
+  common.v1.PaginationResponse pagination = 2;
+}
+
+message UpdatePlayerStatusRequest {
+  string user_id = 1;
+  common.v1.Status status = 2;
+  string reason = 3;
+}
+
+message UpdatePlayerStatusResponse {
+  bool success = 1;
+  string message = 2;
+  common.v1.Status status = 3;
+}
+
+// ============================================
+// Responsible Gaming - Limits Management
+// ============================================
+
+message SetDepositLimitRequest {
+  string user_id = 1;
+  LimitType limit_type = 2;
+  game_engine.common.v1.Money amount = 3;
+  string period = 4;  // DAILY, WEEKLY, MONTHLY
+}
+
+message SetDepositLimitResponse {
+  bool success = 1;
+  string message = 2;
+  PlayerLimit limit = 3;
+}
+
+message SetBetLimitRequest {
+  string user_id = 1;
+  LimitType limit_type = 2;
+  game_engine.common.v1.Money amount = 3;
+  string period = 4;  // DAILY, WEEKLY, MONTHLY, PER_BET
+}
+
+message SetBetLimitResponse {
+  bool success = 1;
+  string message = 2;
+  PlayerLimit limit = 3;
+}
+
+message SetLossLimitRequest {
+  string user_id = 1;
+  LimitType limit_type = 2;
+  game_engine.common.v1.Money amount = 3;
+  string period = 4;  // DAILY, WEEKLY, MONTHLY
+}
+
+message SetLossLimitResponse {
+  bool success = 1;
+  string message = 2;
+  PlayerLimit limit = 3;
+}
+
+message GetPlayerLimitsRequest {
+  string user_id = 1;
+}
+
+message GetPlayerLimitsResponse {
+  PlayerLimit deposit_limit = 1;
+  PlayerLimit bet_limit = 2;
+  PlayerLimit loss_limit = 3;
+  bool self_excluded = 4;
+  google.protobuf.Timestamp self_exclusion_end_date = 5;
+}
+
+message SelfExcludeRequest {
+  string user_id = 1;
+  ExclusionDuration duration = 2;  // e.g., EXCLUSION_24H, EXCLUSION_7D, EXCLUSION_30D, EXCLUSION_PERMANENT
+  string reason = 3;
+}
+
+message SelfExcludeResponse {
+  bool success = 1;
+  string message = 2;
+  bool self_excluded = 3;
+  google.protobuf.Timestamp exclusion_start_date = 4;
+  google.protobuf.Timestamp exclusion_end_date = 5;
+}
+
+// Limit type enumeration
+enum LimitType {
+  LIMIT_TYPE_UNSPECIFIED = 0;
+  LIMIT_TYPE_DEPOSIT = 1;
+  LIMIT_TYPE_BET = 2;
+  LIMIT_TYPE_LOSS = 3;
+}
+
+// Exclusion duration
+enum ExclusionDuration {
+  EXCLUSION_DURATION_UNSPECIFIED = 0;
+  EXCLUSION_24H = 1;
+  EXCLUSION_7D = 2;
+  EXCLUSION_30D = 3;
+  EXCLUSION_90D = 4;
+  EXCLUSION_6M = 5;
+  EXCLUSION_1Y = 6;
+  EXCLUSION_PERMANENT = 7;
+}
+
+// Player limit settings
+message PlayerLimit {
+  LimitType limit_type = 1;
+  game_engine.common.v1.Money amount = 2;
+  string period = 3;  // DAILY, WEEKLY, MONTHLY, PER_BET
+  bool active = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
+}
+
+// Data models
+message UserProfile {
+  string user_id = 1;
+  string email = 2;
+  string phone = 3;
+  string username = 4;
+  string display_name = 5;
+  string first_name = 6;
+  string last_name = 7;
+  google.protobuf.Timestamp date_of_birth = 8;
+  common.v1.Gender gender = 9;
+  string avatar_url = 10;
+  string country = 11;
+  common.v1.Language language = 12;
+  string currency = 13;
+  string timezone = 14;
+  common.v1.Status status = 15;
+  repeated common.v1.UserRole roles = 16;
+  bool email_verified = 17;
+  bool phone_verified = 18;
+  bool two_factor_enabled = 19;
+  common.v1.KYCLevel kyc_level = 20;
+  google.protobuf.Timestamp created_at = 21;
+  google.protobuf.Timestamp updated_at = 22;
+  google.protobuf.Timestamp last_login_at = 23;
+  Address address = 24;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string state = 3;
+  string postal_code = 4;
+  string country = 5;
+}
+
+message KYCStatus {
+  common.v1.VerificationStatus status = 1;
+  common.v1.KYCLevel level = 2;
+  google.protobuf.Timestamp submitted_at = 3;
+  google.protobuf.Timestamp reviewed_at = 4;
+  string rejection_reason = 5;
+}
+
+enum KYCDocumentType {
+  KYCDOC_TYPE_UNSPECIFIED = 0;
+  KYCDOC_TYPE_PASSPORT = 1;
+  KYCDOC_TYPE_NATIONAL_ID = 2;
+  KYCDOC_TYPE_DRIVERS_LICENSE = 3;
+  KYCDOC_TYPE_UTILITY_BILL = 4;
+}
+
+message AccountStatus {
+  common.v1.Status status = 1;
+  bool email_verified = 2;
+  bool phone_verified = 3;
+  bool kyc_verified = 4;
+  bool two_factor_enabled = 5;
+  bool locked = 6;
+}
+
+message PlayerSettings {
+  NotificationSettings notifications = 1;
+  PrivacySettings privacy = 2;
+  GamingSettings gaming = 3;
+}
+
+message NotificationSettings {
+  bool email_enabled = 1;
+  bool sms_enabled = 2;
+  bool push_enabled = 3;
+}
+
+message PrivacySettings {
+  bool profile_public = 1;
+  bool show_online_status = 2;
+}
+
+message GamingSettings {
+  bool auto_play = 1;
+  int32 sound_volume = 2;
+  string theme = 3;
+}
+
+message PlayerFilters {
+  common.v1.Status status = 1;
+  common.v1.KYCLevel kyc_level = 2;
+  string country = 3;
+  string search = 4;
+}

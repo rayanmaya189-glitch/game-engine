@@ -1,0 +1,12 @@
+version: v1
+name: buf.build/game-engine/common-service
+deps:
+  - buf.build/googleapis/googleapis
+  - buf.build/grpc/grpc
+lint:
+  use:
+    - STYLE_BASIC
+    - STYLE_COMMENTS
+breaking:
+  use:
+    - FILE
