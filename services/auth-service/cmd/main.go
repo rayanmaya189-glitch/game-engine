@@ -26,7 +26,7 @@ func main() {
 	// Load configuration
 	configPath := os.Getenv("CONFIG_PATH")
 	if configPath == "" {
-		configPath = "configs/config.yaml"
+		configPath = "auth-service/configs/config.yaml"
 	}
 
 	cfg, err := config.Load(configPath)
