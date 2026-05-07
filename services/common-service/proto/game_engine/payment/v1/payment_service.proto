@@ -3,116 +3,173 @@ syntax = "proto3";
 package game_engine.payment.v1;
 
 import "google/protobuf/timestamp.proto";
-import "game_engine/common/v1/pagination.proto";
 
 option go_package = "gen/go/payment/v1;paymentv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.payment.v1";
 
+// Payment Service - handles deposit, withdrawal, and refund operations
 service PaymentService {
-  // Payment operations
-  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
-  rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse);
-  rpc ApprovePayment(ApprovePaymentRequest) returns (ApprovePaymentResponse);
-  rpc RejectPayment(RejectPaymentRequest) returns (RejectPaymentResponse);
-  rpc ProcessPayment(ProcessPaymentRequest) returns (ProcessPaymentResponse);
+  // Deposit operations
+  rpc CreateDeposit(CreateDepositRequest) returns (CreateDepositResponse);
+  rpc ProcessDeposit(ProcessDepositRequest) returns (ProcessDepositResponse);
   
-  // List and methods
-  rpc ListPayments(ListPaymentsRequest) returns (ListPaymentsResponse);
-  rpc GetPaymentMethods(GetPaymentMethodsRequest) returns (GetPaymentMethodsResponse);
+  // Withdrawal operations
+  rpc CreateWithdrawal(CreateWithdrawalRequest) returns (CreateWithdrawalResponse);
+  rpc ProcessWithdrawal(ProcessWithdrawalRequest) returns (ProcessWithdrawalResponse);
+  
+  // Refund operation
+  rpc RefundPayment(RefundPaymentRequest) returns (RefundPaymentResponse);
+  
+  // Query operations
+  rpc GetPayment(GetPaymentRequest) returns (GetPaymentResponse);
+  rpc GetPaymentByExternalId(GetPaymentByExternalIdRequest) returns (GetPaymentByExternalIdResponse);
+  rpc GetUserPayments(GetUserPaymentsRequest) returns (GetUserPaymentsResponse);
+  rpc GetUserPaymentSummary(GetUserPaymentSummaryRequest) returns (GetUserPaymentSummaryResponse);
+  
+  // Supported methods and currencies
+  rpc GetSupportedMethods(GetSupportedMethodsRequest) returns (GetSupportedMethodsResponse);
+  rpc GetSupportedCurrencies(GetSupportedCurrenciesRequest) returns (GetSupportedCurrenciesResponse);
+  
+  // Cancel payment
+  rpc CancelPayment(CancelPaymentRequest) returns (CancelPaymentResponse);
 }
 
-message CreatePaymentRequest {
+// Payment message
+message Payment {
+  string id = 1;
+  string user_id = 2;
+  string external_id = 3;
+  string type = 4;           // DEPOSIT, WITHDRAWAL, REFUND
+  string method = 5;          // CREDIT_CARD, BANK_TRANSFER, etc.
+  string status = 6;         // PENDING, PROCESSING, COMPLETED, FAILED, CANCELLED
+  double amount = 7;
+  string currency = 8;
+  string description = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp processed_at = 11;
+  google.protobuf.Timestamp completed_at = 12;
+  string failure_reason = 13;
+}
+
+// Deposit requests/responses
+message CreateDepositRequest {
   string user_id = 1;
   double amount = 2;
-  string currency = 3;
-  string payment_method = 4;
-  string payment_type = 5;
-  map<string, string> metadata = 6;
+  string method = 3;
+  string currency = 4;
+  string description = 5;
 }
 
-message CreatePaymentResponse {
+message CreateDepositResponse {
+  Payment payment = 1;
+}
+
+message ProcessDepositRequest {
   string payment_id = 1;
-  string status = 2;
-  string payment_url = 3;
 }
 
+message ProcessDepositResponse {
+  Payment payment = 1;
+}
+
+// Withdrawal requests/responses
+message CreateWithdrawalRequest {
+  string user_id = 1;
+  double amount = 2;
+  string method = 3;
+  string currency = 4;
+  string account_details = 5;
+  string description = 6;
+}
+
+message CreateWithdrawalResponse {
+  Payment payment = 1;
+}
+
+message ProcessWithdrawalRequest {
+  string payment_id = 1;
+}
+
+message ProcessWithdrawalResponse {
+  Payment payment = 1;
+}
+
+// Refund
+message RefundPaymentRequest {
+  string payment_id = 1;
+  double amount = 2;  // Partial refund if less than original
+}
+
+message RefundPaymentResponse {
+  Payment payment = 1;
+}
+
+// Query operations
 message GetPaymentRequest {
   string payment_id = 1;
 }
 
 message GetPaymentResponse {
   Payment payment = 1;
+  bool found = 2;
 }
 
-message Payment {
-  string payment_id = 1;
-  string user_id = 2;
-  double amount = 3;
-  string currency = 4;
-  string payment_method = 5;
-  string payment_type = 6;
-  string status = 7;
-  int64 created_at = 8;
-  int64 updated_at = 9;
+message GetPaymentByExternalIdRequest {
+  string external_id = 1;
 }
 
-message ApprovePaymentRequest {
-  string payment_id = 1;
-  string approved_by = 2;
+message GetPaymentByExternalIdResponse {
+  Payment payment = 1;
+  bool found = 2;
 }
 
-message ApprovePaymentResponse {
-  bool success = 1;
-  string message = 2;
-}
-
-message RejectPaymentRequest {
-  string payment_id = 1;
-  string rejected_by = 2;
-  string reason = 3;
-}
-
-message RejectPaymentResponse {
-  bool success = 1;
-  string message = 2;
-}
-
-message ProcessPaymentRequest {
-  string payment_id = 1;
-}
-
-message ProcessPaymentResponse {
-  bool success = 1;
-  string transaction_id = 2;
-}
-
-message ListPaymentsRequest {
+message GetUserPaymentsRequest {
   string user_id = 1;
-  string status = 2;
-  string payment_type = 3;
-  int32 page = 4;
-  int32 limit = 5;
+  int32 page = 2;
+  int32 size = 3;
+  string sort_by = 4;
+  string sort_dir = 5;  // ASC or DESC
 }
 
-message ListPaymentsResponse {
+message GetUserPaymentsResponse {
   repeated Payment payments = 1;
-  int32 total = 2;
+  int32 total_elements = 2;
+  int32 total_pages = 3;
+  int32 current_page = 4;
 }
 
-message GetPaymentMethodsRequest {
-  string merchant_id = 1;
+message GetUserPaymentSummaryRequest {
+  string user_id = 1;
+  int32 days = 2;  // Last N days
 }
 
-message GetPaymentMethodsResponse {
-  repeated PaymentMethod methods = 1;
+message GetUserPaymentSummaryResponse {
+  double total_deposits = 1;
+  double total_withdrawals = 2;
+  double net_amount = 3;
 }
 
-message PaymentMethod {
-  string method_id = 1;
-  string name = 2;
-  string type = 3;
-  bool enabled = 4;
-  double min_amount = 5;
-  double max_amount = 6;
+// Supported methods
+message GetSupportedMethodsRequest {}
+
+message GetSupportedMethodsResponse {
+  repeated string deposit_methods = 1;
+  repeated string withdrawal_methods = 2;
+}
+
+message GetSupportedCurrenciesRequest {}
+
+message GetSupportedCurrenciesResponse {
+  repeated string currencies = 1;
+}
+
+// Cancel
+message CancelPaymentRequest {
+  string payment_id = 1;
+}
+
+message CancelPaymentResponse {
+  Payment payment = 1;
+  bool success = 2;
 }

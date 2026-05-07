@@ -2,15 +2,98 @@ syntax = "proto3";
 
 package game_engine.risk.v1;
 
+import "google/protobuf/timestamp.proto";
+
 option go_package = "gen/go/risk/v1;riskv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.risk.v1";
 
+// Risk Service - provides risk scoring and limit calculations
 service RiskService {
+  // Risk profile and scoring
+  rpc CalculateProfile(CalculateProfileRequest) returns (RiskProfileResponse);
+  rpc AssessTransaction(AssessTransactionRequest) returns (TransactionAssessmentResponse);
+  rpc GetUserRiskProfile(GetUserRiskProfileRequest) returns (RiskProfileResponse);
+  
+  // Limits calculation
+  rpc CalculateLimits(CalculateLimitsRequest) returns (LimitsResponse);
+  
+  // Administrative
   rpc GetRiskScore(GetRiskScoreRequest) returns (GetRiskScoreResponse);
   rpc UpdateRiskScore(UpdateRiskScoreRequest) returns (UpdateRiskScoreResponse);
 }
 
+// Risk Profile (full profile with all factors)
+message RiskProfile {
+  string user_id = 1;
+  int32 score = 2;                  // 0-100 (0 = lowest risk)
+  string risk_level = 3;             // LOW, MEDIUM, HIGH, CRITICAL
+  int32 kyc_level = 4;               // 1-4
+  int32 aml_alerts = 5;              // Number of AML alerts
+  int32 fraud_score = 6;            // Fraud score component
+  int32 transaction_risk = 7;        // Transaction risk component
+  int32 device_risk = 8;            // Device risk component
+  int32 velocity_risk = 9;           // Velocity risk component
+  repeated string reccomended_actions = 10;  // Actions to take
+  google.protobuf.Timestamp last_updated = 11;
+}
+
+// CalculateProfile - calculate full risk profile
+message CalculateProfileRequest {
+  string user_id = 1;
+  int32 kyc_level = 2;
+  int32 aml_alerts = 3;
+  int32 fraud_score = 4;
+  int32 transaction_risk = 5;
+  int32 device_risk = 6;
+  int32 velocity_risk = 7;
+}
+
+message RiskProfileResponse {
+  RiskProfile profile = 1;
+}
+
+// AssessTransaction - assess if transaction is allowed
+message AssessTransactionRequest {
+  string user_id = 1;
+  int32 kyc_level = 2;
+  int32 aml_alerts = 3;
+  int32 fraud_score = 4;
+  double transaction_amount = 5;
+  string transaction_type = 6;      // DEPOSIT, WITHDRAWAL, BET, etc.
+}
+
+message TransactionAssessmentResponse {
+  bool allowed = 1;
+  string reason = 2;
+  RiskProfile profile = 3;
+  repeated string actions = 4;
+}
+
+// GetUserRiskProfile - get cached/computed profile for user
+message GetUserRiskProfileRequest {
+  string user_id = 1;
+  int32 kyc_level = 2;             // Optional override
+  int32 aml_alerts = 3;            // Optional override
+  int32 fraud_score = 4;           // Optional override
+}
+
+// CalculateLimits - calculate user limits based on risk
+message CalculateLimitsRequest {
+  string user_id = 1;
+  int32 account_age_days = 2;
+  int32 vip_level = 3;              // 0-4 (0 = none, 4 = platinum)
+  int32 current_risk_score = 4;
+}
+
+message LimitsResponse {
+  string user_id = 1;
+  double daily_deposit_limit = 2;
+  double daily_withdrawal_limit = 3;
+  map<string, double> calculation = 4;  // Factors used
+}
+
+// GetRiskScore - simple score retrieval (proto-compliant)
 message GetRiskScoreRequest {
   string user_id = 1;
 }
@@ -21,6 +104,7 @@ message GetRiskScoreResponse {
   string risk_level = 3;
 }
 
+// UpdateRiskScore - update user's risk score
 message UpdateRiskScoreRequest {
   string user_id = 1;
   int32 score = 2;

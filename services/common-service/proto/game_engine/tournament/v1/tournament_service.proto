@@ -9,73 +9,145 @@ option go_package = "gen/go/tournament/v1;tournamentv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.tournament.v1";
 
+// Tournament Service - manages tournaments, registrations, and leaderboards
 service TournamentService {
-  // Tournament operations
+  // Tournament management
+  rpc CreateTournament(CreateTournamentRequest) returns (TournamentResponse);
+  rpc GetTournament(GetTournamentRequest) returns (TournamentResponse);
   rpc ListTournaments(ListTournamentsRequest) returns (ListTournamentsResponse);
-  rpc GetTournament(GetTournamentRequest) returns (GetTournamentResponse);
-  rpc JoinTournament(JoinTournamentRequest) returns (JoinTournamentResponse);
-  rpc LeaveTournament(LeaveTournamentRequest) returns (LeaveTournamentResponse);
+  rpc UpdateTournament(UpdateTournamentRequest) returns (TournamentResponse);
+  rpc CancelTournament(CancelTournamentRequest) returns (CancelTournamentResponse);
+  
+  // Registration
+  rpc RegisterUser(RegisterUserRequest) returns (RegisterUserResponse);
+  rpc UnregisterUser(UnregisterUserRequest) returns (UnregisterUserResponse);
+  rpc GetTournamentUsers(GetTournamentUsersRequest) returns (GetTournamentUsersResponse);
   
   // Leaderboard
   rpc GetLeaderboard(GetLeaderboardRequest) returns (GetLeaderboardResponse);
-  rpc UpdateScore(UpdateScoreRequest) returns (UpdateScoreResponse);
+  rpc UpdatePlayerScore(UpdatePlayerScoreRequest) returns (UpdatePlayerScoreResponse);
   
   // User tournaments
-  rpc GetMyTournaments(GetMyTournamentsRequest) returns (GetMyTournamentsResponse);
+  rpc GetUserTournaments(GetUserTournamentsRequest) returns (GetUserTournamentsResponse);
 }
 
+// Tournament message
+message Tournament {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string type = 4;              // SINGLES, DOUBLES, TEAM
+  string game_type = 5;          // SLOT, POKER, CHESS, etc.
+  string status = 6;             // PENDING, ACTIVE, COMPLETED, CANCELLED
+  int64 entry_fee = 7;
+  int64 buy_in = 8;
+  int64 prize_pool = 9;
+  int32 min_players = 10;
+  int32 max_players = 11;
+  int32 current_players = 12;
+  google.protobuf.Timestamp start_time = 13;
+  google.protobuf.Timestamp end_time = 14;
+  google.protobuf.Timestamp created_at = 15;
+  google.protobuf.Timestamp updated_at = 16;
+}
+
+// CreateTournament
+message CreateTournamentRequest {
+  string name = 1;
+  string description = 2;
+  string type = 3;
+  string game_type = 4;
+  int64 entry_fee = 5;
+  int64 buy_in = 6;
+  int32 min_players = 7;
+  int32 max_players = 8;
+  google.protobuf.Timestamp start_time = 9;
+  google.protobuf.Timestamp end_time = 10;
+}
+
+message TournamentResponse {
+  Tournament tournament = 1;
+}
+
+// GetTournament
+message GetTournamentRequest {
+  string id = 1;
+}
+
+// ListTournaments
 message ListTournamentsRequest {
-  string status = 1;
-  int32 page = 2;
-  int32 limit = 3;
+  string status = 1;          // Filter by status (empty = all)
+  string type = 2;            // Filter by type (empty = all)
+  common.v1.PaginationRequest pagination = 3;
 }
 
 message ListTournamentsResponse {
   repeated Tournament tournaments = 1;
-  int32 total = 2;
+  common.v1.PaginationResponse pagination = 2;
 }
 
-message Tournament {
+// UpdateTournament
+message UpdateTournamentRequest {
+  string id = 1;
+  Tournament tournament = 2;
+}
+
+// CancelTournament
+message CancelTournamentRequest {
+  string id = 1;
+  string reason = 2;
+}
+
+message CancelTournamentResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// RegisterUser
+message RegisterUserRequest {
   string tournament_id = 1;
-  string name = 2;
-  string description = 3;
-  string game_id = 4;
-  double buy_in = 5;
-  double prize_pool = 6;
-  int32 max_participants = 7;
-  int32 current_participants = 8;
-  string status = 9;
-  int64 starts_at = 10;
-  int64 ends_at = 11;
+  string user_id = 2;
+  string username = 3;
 }
 
-message GetTournamentRequest {
-  string tournament_id = 1;
+message RegisterUserResponse {
+  bool success = 1;
+  int32 position = 2;        // Registration position
+  string message = 3;
 }
 
-message GetTournamentResponse {
-  Tournament tournament = 1;
-}
-
-message JoinTournamentRequest {
+// UnregisterUser
+message UnregisterUserRequest {
   string tournament_id = 1;
   string user_id = 2;
 }
 
-message JoinTournamentResponse {
+message UnregisterUserResponse {
   bool success = 1;
-  int32 position = 2;
+  string message = 2;
 }
 
-message LeaveTournamentRequest {
+// GetTournamentUsers
+message GetTournamentUsersRequest {
   string tournament_id = 1;
-  string user_id = 2;
+  common.v1.PaginationRequest pagination = 2;
 }
 
-message LeaveTournamentResponse {
-  bool success = 1;
+message GetTournamentUsersResponse {
+  repeated TournamentUser users = 1;
+  common.v1.PaginationResponse pagination = 2;
 }
 
+message TournamentUser {
+  string user_id = 1;
+  string username = 2;
+  int32 rank = 3;
+  double score = 4;
+  int32 wins = 5;
+  google.protobuf.Timestamp registered_at = 6;
+}
+
+// GetLeaderboard
 message GetLeaderboardRequest {
   string tournament_id = 1;
   int32 limit = 2;
@@ -91,25 +163,32 @@ message LeaderboardEntry {
   int32 rank = 3;
   double score = 4;
   int32 wins = 5;
+  double total_winnings = 6;
 }
 
-message UpdateScoreRequest {
+// UpdatePlayerScore
+message UpdatePlayerScoreRequest {
   string tournament_id = 1;
   string user_id = 2;
-  double score = 3;
+  double score_delta = 3;      // Score change (can be negative)
 }
 
-message UpdateScoreResponse {
+message UpdatePlayerScoreResponse {
   bool success = 1;
   int32 new_rank = 2;
+  double new_score = 3;
 }
 
-message GetMyTournamentsRequest {
+// GetUserTournaments
+message GetUserTournamentsRequest {
   string user_id = 1;
+  string status = 2;           // Filter by status (empty = all)
+  common.v1.PaginationRequest pagination = 3;
 }
 
-message GetMyTournamentsResponse {
+message GetUserTournamentsResponse {
   repeated UserTournament tournaments = 1;
+  common.v1.PaginationResponse pagination = 2;
 }
 
 message UserTournament {
@@ -118,4 +197,6 @@ message UserTournament {
   int32 rank = 3;
   double score = 4;
   string status = 5;
+  google.protobuf.Timestamp start_time = 6;
+  google.protobuf.Timestamp end_time = 7;
 }
