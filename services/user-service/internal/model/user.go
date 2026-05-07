@@ -107,6 +107,19 @@ type PlayerLimits struct {
 	UpdatedAt        time.Time  `json:"updated_at"`
 }
 
+// ToProto converts PlayerLimits to protobuf message
+func (pl *PlayerLimits) ToProto() *userv1.PlayerLimit {
+	proto := &userv1.PlayerLimit{
+		LimitType: commonv1.LimitType(commonv1.LimitType_value["LIMIT_TYPE_DEPOSIT"]),
+		Amount:    &commonv1.Money{Amount: int64(pl.DailyLimit), Currency: commonv1.Currency(commonv1.Currency_value["CURRENCY_USD"])},
+		Period:    "DAILY",
+		Active:    true,
+		CreatedAt: timestamppb.New(pl.CreatedAt),
+		UpdatedAt: timestamppb.New(pl.UpdatedAt),
+	}
+	return proto
+}
+
 // PlayerStats represents aggregated player statistics
 type PlayerStats struct {
 	ID               string    `json:"id"`

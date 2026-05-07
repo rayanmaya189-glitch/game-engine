@@ -1,0 +1,23 @@
+version: v1
+plugins:
+  # Go gRPC
+  - plugin: buf.build/protocolbuffers/go:v1.34.1
+    out: gen/go
+    opt:
+      - module=github.com/game_engine/common-service/proto/gen/go
+  - plugin: buf.build/grpc/go:v1.4.0
+    out: gen/go
+    opt:
+      - module=github.com/game_engine/common-service/proto/gen/go
+
+  # Java gRPC
+  - plugin: buf.build/protocolbuffers/java:v25.3
+    out: gen/java
+  - plugin: buf.build/grpc/java:v1.79.0
+    out: gen/java
+
+  # Python gRPC
+  - plugin: buf.build/protocolbuffers/python:v25.3
+    out: gen/python
+  - plugin: buf.build/grpc/python:v1.78.1
+    out: gen/python
