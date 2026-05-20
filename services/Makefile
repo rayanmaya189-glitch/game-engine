@@ -99,6 +99,17 @@ stop:
 	-pkill -f "uvicorn"
 	-pkill -f "mix phx.server"
 
+status:
+	@echo "Checking running services..."
+	@echo "Java services:"
+	@pgrep -f "java -jar" | xargs -r ps -fp || echo "None"
+	@echo "\nGo services:"
+	@pgrep -f "./bin/" | xargs -r ps -fp || echo "None"
+	@echo "\nPython services:"
+	@pgrep -f "uvicorn" | xargs -r ps -fp || echo "None"
+	@echo "\nElixir services:"
+	@pgrep -f "mix phx.server" | xargs -r ps -fp || echo "None"
+
 clean:
 	@echo "Cleaning up..."
 	rm -rf $(BIN_DIR) logs
