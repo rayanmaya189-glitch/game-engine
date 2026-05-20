@@ -1,6 +1,7 @@
 package com.game_engine.commission.grpc;
 
 import com.game_engine.commission.model.*;
+import com.game_engine.commission.model.CommissionConfig;
 import com.game_engine.commission.service.CommissionConfigService;
 import com.game_engine.commission.v1.*;
 import io.grpc.stub.StreamObserver;
@@ -8,10 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
+import com.google.protobuf.Timestamp;
 
 @GrpcService
 @Slf4j
@@ -21,7 +24,8 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     private CommissionConfigService commissionConfigService;
 
     @Override
-    public void createCommissionConfig(CreateCommissionConfigRequest request, StreamObserver<CreateCommissionConfigResponse> responseObserver) {
+    public void createCommissionConfig(CreateCommissionConfigRequest request,
+            StreamObserver<CreateCommissionConfigResponse> responseObserver) {
         try {
             CommissionConfig config = fromProtoConfig(request.getConfig());
             CommissionConfig created = commissionConfigService.createCommissionConfig(config);
@@ -47,7 +51,8 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void getConfigsByAffiliate(GetConfigsByAffiliateRequest request, StreamObserver<GetConfigsByAffiliateResponse> responseObserver) {
+    public void getConfigsByAffiliate(GetConfigsByAffiliateRequest request,
+            StreamObserver<GetConfigsByAffiliateResponse> responseObserver) {
         try {
             List<CommissionConfig> configs = commissionConfigService.getConfigsByAffiliate(request.getAffiliateId());
             GetConfigsByAffiliateResponse.Builder response = GetConfigsByAffiliateResponse.newBuilder();
@@ -60,7 +65,8 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void getConfigsByMerchant(GetConfigsByMerchantRequest request, StreamObserver<GetConfigsByMerchantResponse> responseObserver) {
+    public void getConfigsByMerchant(GetConfigsByMerchantRequest request,
+            StreamObserver<GetConfigsByMerchantResponse> responseObserver) {
         try {
             List<CommissionConfig> configs = commissionConfigService.getConfigsByMerchant(request.getMerchantId());
             GetConfigsByMerchantResponse.Builder response = GetConfigsByMerchantResponse.newBuilder();
@@ -73,9 +79,11 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void getActiveConfigsByAffiliate(GetActiveConfigsByAffiliateRequest request, StreamObserver<GetActiveConfigsByAffiliateResponse> responseObserver) {
+    public void getActiveConfigsByAffiliate(GetActiveConfigsByAffiliateRequest request,
+            StreamObserver<GetActiveConfigsByAffiliateResponse> responseObserver) {
         try {
-            List<CommissionConfig> configs = commissionConfigService.getActiveConfigsByAffiliate(request.getAffiliateId());
+            List<CommissionConfig> configs = commissionConfigService
+                    .getActiveConfigsByAffiliate(request.getAffiliateId());
             GetActiveConfigsByAffiliateResponse.Builder response = GetActiveConfigsByAffiliateResponse.newBuilder();
             configs.forEach(c -> response.addConfigs(toProtoConfig(c)));
             responseObserver.onNext(response.build());
@@ -86,10 +94,13 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void getActiveConfigsByAffiliateAndMerchant(GetActiveConfigsByAffiliateAndMerchantRequest request, StreamObserver<GetActiveConfigsByAffiliateAndMerchantResponse> responseObserver) {
+    public void getActiveConfigsByAffiliateAndMerchant(GetActiveConfigsByAffiliateAndMerchantRequest request,
+            StreamObserver<GetActiveConfigsByAffiliateAndMerchantResponse> responseObserver) {
         try {
-            List<CommissionConfig> configs = commissionConfigService.getActiveConfigsByAffiliateAndMerchant(request.getAffiliateId(), request.getMerchantId());
-            GetActiveConfigsByAffiliateAndMerchantResponse.Builder response = GetActiveConfigsByAffiliateAndMerchantResponse.newBuilder();
+            List<CommissionConfig> configs = commissionConfigService
+                    .getActiveConfigsByAffiliateAndMerchant(request.getAffiliateId(), request.getMerchantId());
+            GetActiveConfigsByAffiliateAndMerchantResponse.Builder response = GetActiveConfigsByAffiliateAndMerchantResponse
+                    .newBuilder();
             configs.forEach(c -> response.addConfigs(toProtoConfig(c)));
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
@@ -99,11 +110,13 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void getConfigByAffiliateAndMerchantAndType(GetConfigByAffiliateAndMerchantAndTypeRequest request, StreamObserver<GetConfigByAffiliateAndMerchantAndTypeResponse> responseObserver) {
+    public void getConfigByAffiliateAndMerchantAndType(GetConfigByAffiliateAndMerchantAndTypeRequest request,
+            StreamObserver<GetConfigByAffiliateAndMerchantAndTypeResponse> responseObserver) {
         try {
             Optional<CommissionConfig> config = commissionConfigService.getConfigByAffiliateAndMerchantAndType(
                     request.getAffiliateId(), request.getMerchantId(), request.getType());
-            GetConfigByAffiliateAndMerchantAndTypeResponse.Builder response = GetConfigByAffiliateAndMerchantAndTypeResponse.newBuilder()
+            GetConfigByAffiliateAndMerchantAndTypeResponse.Builder response = GetConfigByAffiliateAndMerchantAndTypeResponse
+                    .newBuilder()
                     .setFound(config.isPresent());
             config.ifPresent(c -> response.setConfig(toProtoConfig(c)));
             responseObserver.onNext(response.build());
@@ -114,7 +127,8 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void updateCommissionConfig(UpdateCommissionConfigRequest request, StreamObserver<UpdateCommissionConfigResponse> responseObserver) {
+    public void updateCommissionConfig(UpdateCommissionConfigRequest request,
+            StreamObserver<UpdateCommissionConfigResponse> responseObserver) {
         try {
             CommissionConfig config = fromProtoConfig(request.getConfig());
             CommissionConfig updated = commissionConfigService.updateCommissionConfig(request.getId(), config);
@@ -139,7 +153,8 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
     }
 
     @Override
-    public void deactivateConfig(DeactivateConfigRequest request, StreamObserver<DeactivateConfigResponse> responseObserver) {
+    public void deactivateConfig(DeactivateConfigRequest request,
+            StreamObserver<DeactivateConfigResponse> responseObserver) {
         try {
             CommissionConfig config = commissionConfigService.deactivateConfig(request.getId());
             responseObserver.onNext(DeactivateConfigResponse.newBuilder()
@@ -174,28 +189,54 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
         }
     }
 
-    private CommissionServiceProto.CommissionConfig toProtoConfig(CommissionConfig c) {
-        CommissionServiceProto.CommissionConfig.Builder builder = CommissionServiceProto.CommissionConfig.newBuilder()
+    private com.game_engine.commission.v1.CommissionConfig toProtoConfig(CommissionConfig c) {
+        com.game_engine.commission.v1.CommissionConfig.Builder builder = com.game_engine.commission.v1.CommissionConfig
+                .newBuilder()
                 .setId(c.getId());
 
-        if (c.getMerchantId() != null) builder.setMerchantId(c.getMerchantId());
-        if (c.getAffiliateId() != null) builder.setAffiliateId(c.getAffiliateId());
-        if (c.getCommissionType() != null) builder.setCommissionType(c.getCommissionType());
-        if (c.getRevenueShareRate() != null) builder.setRevenueShareRate(c.getRevenueShareRate().doubleValue());
-        if (c.getCpaRate() != null) builder.setCpaRate(c.getCpaRate().doubleValue());
-        if (c.getMinPlayers() != null) builder.setMinPlayers(c.getMinPlayers());
-        if (c.getTierRate() != null) builder.setTierRate(c.getTierRate().doubleValue());
-        if (c.getTierThreshold() != null) builder.setTierThreshold(c.getTierThreshold());
-        if (c.getIsActive() != null) builder.setIsActive(c.getIsActive());
-        if (c.getEffectiveFrom() != null) builder.setEffectiveFrom(c.getEffectiveFrom().toEpochSecond(ZoneOffset.UTC));
-        if (c.getEffectiveTo() != null) builder.setEffectiveTo(c.getEffectiveTo().toEpochSecond(ZoneOffset.UTC));
-        if (c.getCreatedAt() != null) builder.setCreatedAt(c.getCreatedAt().toEpochSecond(ZoneOffset.UTC));
-        if (c.getUpdatedAt() != null) builder.setUpdatedAt(c.getUpdatedAt().toEpochSecond(ZoneOffset.UTC));
+        if (c.getMerchantId() != null)
+            builder.setMerchantId(c.getMerchantId());
+        if (c.getAffiliateId() != null)
+            builder.setAffiliateId(c.getAffiliateId());
+        if (c.getCommissionType() != null)
+            builder.setCommissionType(c.getCommissionType());
+        if (c.getRevenueShareRate() != null)
+            builder.setRevenueShareRate(c.getRevenueShareRate().doubleValue());
+        if (c.getCpaRate() != null)
+            builder.setCpaRate(c.getCpaRate().doubleValue());
+        if (c.getMinPlayers() != null)
+            builder.setMinPlayers(c.getMinPlayers());
+        if (c.getTierRate() != null)
+            builder.setTierRate(c.getTierRate().doubleValue());
+        if (c.getTierThreshold() != null)
+            builder.setTierThreshold(c.getTierThreshold());
+        if (c.getIsActive() != null)
+            builder.setIsActive(c.getIsActive());
+        if (c.getEffectiveFrom() != null)
+            builder.setEffectiveFrom(
+                    Timestamp.newBuilder()
+                            .setSeconds(c.getEffectiveFrom().toEpochSecond(ZoneOffset.UTC))
+                            .build());
+        if (c.getEffectiveTo() != null)
+            builder.setEffectiveTo(
+                    Timestamp.newBuilder()
+                            .setSeconds(c.getEffectiveTo().toEpochSecond(ZoneOffset.UTC))
+                            .build());
+        if (c.getCreatedAt() != null)
+            builder.setCreatedAt(
+                    Timestamp.newBuilder()
+                            .setSeconds(c.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
+                            .build());
+        if (c.getUpdatedAt() != null)
+            builder.setUpdatedAt(
+                    Timestamp.newBuilder()
+                            .setSeconds(c.getUpdatedAt().toEpochSecond(ZoneOffset.UTC))
+                            .build());
 
         return builder.build();
     }
 
-    private CommissionConfig fromProtoConfig(CommissionServiceProto.CommissionConfig proto) {
+    private CommissionConfig fromProtoConfig(com.game_engine.commission.v1.CommissionConfig proto) {
         CommissionConfig config = new CommissionConfig();
         config.setMerchantId(proto.getMerchantId());
         config.setAffiliateId(proto.getAffiliateId());
@@ -206,8 +247,18 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
         config.setTierRate(BigDecimal.valueOf(proto.getTierRate()));
         config.setTierThreshold(proto.getTierThreshold());
         config.setIsActive(proto.getIsActive());
-        if (proto.getEffectiveFrom() != 0) config.setEffectiveFrom(LocalDateTime.ofEpochSecond(proto.getEffectiveFrom(), 0, ZoneOffset.UTC));
-        if (proto.getEffectiveTo() != 0) config.setEffectiveTo(LocalDateTime.ofEpochSecond(proto.getEffectiveTo(), 0, ZoneOffset.UTC));
+        if (proto.hasEffectiveFrom())
+            config.setEffectiveFrom(
+                    LocalDateTime.ofEpochSecond(proto.getEffectiveFrom().getSeconds(), 0, ZoneOffset.UTC));
+        if (proto.hasEffectiveTo())
+            config.setEffectiveTo(
+                    LocalDateTime.ofEpochSecond(proto.getEffectiveTo().getSeconds(), 0, ZoneOffset.UTC));
+        if (proto.hasCreatedAt())
+            config.setCreatedAt(
+                    LocalDateTime.ofEpochSecond(proto.getCreatedAt().getSeconds(), 0, ZoneOffset.UTC));
+        if (proto.hasUpdatedAt())
+            config.setUpdatedAt(
+                    LocalDateTime.ofEpochSecond(proto.getUpdatedAt().getSeconds(), 0, ZoneOffset.UTC));
         return config;
     }
 }

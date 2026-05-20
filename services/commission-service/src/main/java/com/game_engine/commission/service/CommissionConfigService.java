@@ -1,6 +1,6 @@
 package com.game_engine.commission.service;
 
-import com.game_engine.commission.v1.*;
+import com.game_engine.commission.model.CommissionConfig;
 import com.game_engine.commission.repository.CommissionConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,11 +22,11 @@ public class CommissionConfigService {
         return commissionConfigRepository.save(config);
     }
 
-    public Optional<com.game_engine.commission.entity.CommissionConfig> getConfigById(Long id) {
+    public Optional<CommissionConfig> getConfigById(Long id) {
         return commissionConfigRepository.findById(id);
     }
 
-    public List<com.game_engine.commission.entity.CommissionConfig> getConfigsByAffiliate(Long affiliateId) {
+    public List<CommissionConfig> getConfigsByAffiliate(Long affiliateId) {
         return commissionConfigRepository.findByAffiliateId(affiliateId);
     }
 
@@ -48,7 +48,7 @@ public class CommissionConfigService {
     }
 
     public CommissionConfig updateCommissionConfig(Long id, CommissionConfig updatedConfig) {
-        com.game_engine.commission.entity.CommissionConfig existing = commissionConfigRepository.findById(id)
+        CommissionConfig existing = commissionConfigRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Commission config not found"));
 
         existing.setCommissionType(updatedConfig.getCommissionType());

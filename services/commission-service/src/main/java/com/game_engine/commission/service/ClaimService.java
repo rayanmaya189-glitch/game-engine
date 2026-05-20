@@ -1,6 +1,10 @@
 package com.game_engine.commission.service;
 
-import com.game_engine.commission.model.*;
+import com.game_engine.commission.model.Commission;
+import com.game_engine.commission.model.CommissionClaim;
+import com.game_engine.commission.model.InsuranceClaim;
+import com.game_engine.commission.model.RebetClaim;
+import com.game_engine.commission.model.Settlement;
 import com.game_engine.commission.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -58,11 +62,11 @@ public class ClaimService {
         return commissionClaimRepository.findByUserId(userId);
     }
 
-    public List<com.game_engine.commission.entity.CommissionClaim> getCommissionClaimsByStatus(String status) {
+    public List<CommissionClaim> getCommissionClaimsByStatus(String status) {
         return commissionClaimRepository.findByStatus(status);
     }
 
-    public Optional<com.game_engine.commission.entity.CommissionClaim> getCommissionClaimById(Long id) {
+    public Optional<CommissionClaim> getCommissionClaimById(Long id) {
         return commissionClaimRepository.findById(id);
     }
 

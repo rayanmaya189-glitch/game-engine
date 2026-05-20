@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.List;
 import java.util.Optional;
+import com.google.protobuf.Timestamp;
 
 @GrpcService
 @Slf4j
@@ -24,7 +25,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     private CommissionService commissionService;
 
     @Override
-    public void createCommission(CreateCommissionRequest request, StreamObserver<CreateCommissionResponse> responseObserver) {
+    public void createCommission(CreateCommissionRequest request,
+            StreamObserver<CreateCommissionResponse> responseObserver) {
         try {
             CommissionClaim claim = commissionService.createClaim(
                     request.getCommission().getAffiliateId(),
@@ -43,10 +45,12 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getCommissionById(GetCommissionByIdRequest request, StreamObserver<GetCommissionByIdResponse> responseObserver) {
+    public void getCommissionById(GetCommissionByIdRequest request,
+            StreamObserver<GetCommissionByIdResponse> responseObserver) {
         try {
             Optional<CommissionClaim> claim = commissionService.getClaimById(request.getId());
-            GetCommissionByIdResponse.Builder response = GetCommissionByIdResponse.newBuilder().setFound(claim.isPresent());
+            GetCommissionByIdResponse.Builder response = GetCommissionByIdResponse.newBuilder()
+                    .setFound(claim.isPresent());
             claim.ifPresent(c -> response.setCommission(toProtoCommission(c)));
             responseObserver.onNext(response.build());
             responseObserver.onCompleted();
@@ -57,7 +61,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getCommissionsByAffiliate(GetCommissionsByAffiliateRequest request, StreamObserver<GetCommissionsByAffiliateResponse> responseObserver) {
+    public void getCommissionsByAffiliate(GetCommissionsByAffiliateRequest request,
+            StreamObserver<GetCommissionsByAffiliateResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByAffiliateId(request.getAffiliateId());
             GetCommissionsByAffiliateResponse.Builder response = GetCommissionsByAffiliateResponse.newBuilder();
@@ -70,7 +75,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getCommissionsByMerchant(GetCommissionsByMerchantRequest request, StreamObserver<GetCommissionsByMerchantResponse> responseObserver) {
+    public void getCommissionsByMerchant(GetCommissionsByMerchantRequest request,
+            StreamObserver<GetCommissionsByMerchantResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByAgentId(request.getMerchantId());
             GetCommissionsByMerchantResponse.Builder response = GetCommissionsByMerchantResponse.newBuilder();
@@ -83,7 +89,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getCommissionsByPeriod(GetCommissionsByPeriodRequest request, StreamObserver<GetCommissionsByPeriodResponse> responseObserver) {
+    public void getCommissionsByPeriod(GetCommissionsByPeriodRequest request,
+            StreamObserver<GetCommissionsByPeriodResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByStatus("PENDING");
             GetCommissionsByPeriodResponse.Builder response = GetCommissionsByPeriodResponse.newBuilder();
@@ -98,13 +105,15 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getCommissionByAffiliateAndPeriod(GetCommissionByAffiliateAndPeriodRequest request, StreamObserver<GetCommissionByAffiliateAndPeriodResponse> responseObserver) {
+    public void getCommissionByAffiliateAndPeriod(GetCommissionByAffiliateAndPeriodRequest request,
+            StreamObserver<GetCommissionByAffiliateAndPeriodResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByAffiliateId(request.getAffiliateId());
             Optional<CommissionClaim> match = claims.stream()
                     .filter(c -> request.getPeriod().equals(c.getPeriod()))
                     .findFirst();
-            GetCommissionByAffiliateAndPeriodResponse.Builder response = GetCommissionByAffiliateAndPeriodResponse.newBuilder()
+            GetCommissionByAffiliateAndPeriodResponse.Builder response = GetCommissionByAffiliateAndPeriodResponse
+                    .newBuilder()
                     .setFound(match.isPresent());
             match.ifPresent(c -> response.setCommission(toProtoCommission(c)));
             responseObserver.onNext(response.build());
@@ -115,14 +124,16 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getTotalPaidCommission(GetTotalPaidCommissionRequest request, StreamObserver<GetTotalPaidCommissionResponse> responseObserver) {
+    public void getTotalPaidCommission(GetTotalPaidCommissionRequest request,
+            StreamObserver<GetTotalPaidCommissionResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByAffiliateId(request.getAffiliateId());
             BigDecimal total = claims.stream()
                     .filter(c -> "PAID".equals(c.getStatus()))
                     .map(CommissionClaim::getCommissionAmount)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
-            responseObserver.onNext(GetTotalPaidCommissionResponse.newBuilder().setTotalPaid(total.doubleValue()).build());
+            responseObserver
+                    .onNext(GetTotalPaidCommissionResponse.newBuilder().setTotalPaid(total.doubleValue()).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
@@ -130,14 +141,16 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getTotalPendingCommission(GetTotalPendingCommissionRequest request, StreamObserver<GetTotalPendingCommissionResponse> responseObserver) {
+    public void getTotalPendingCommission(GetTotalPendingCommissionRequest request,
+            StreamObserver<GetTotalPendingCommissionResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByAffiliateId(request.getAffiliateId());
             BigDecimal total = claims.stream()
                     .filter(c -> "PENDING".equals(c.getStatus()))
                     .map(CommissionClaim::getCommissionAmount)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
-            responseObserver.onNext(GetTotalPendingCommissionResponse.newBuilder().setTotalPending(total.doubleValue()).build());
+            responseObserver.onNext(
+                    GetTotalPendingCommissionResponse.newBuilder().setTotalPending(total.doubleValue()).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
@@ -145,13 +158,15 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getTotalRevenueByMerchant(GetTotalRevenueByMerchantRequest request, StreamObserver<GetTotalRevenueByMerchantResponse> responseObserver) {
+    public void getTotalRevenueByMerchant(GetTotalRevenueByMerchantRequest request,
+            StreamObserver<GetTotalRevenueByMerchantResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByAgentId(request.getMerchantId());
             BigDecimal total = claims.stream()
                     .map(CommissionClaim::getGrossRevenue)
                     .reduce(BigDecimal.ZERO, BigDecimal::add);
-            responseObserver.onNext(GetTotalRevenueByMerchantResponse.newBuilder().setTotalRevenue(total.doubleValue()).build());
+            responseObserver.onNext(
+                    GetTotalRevenueByMerchantResponse.newBuilder().setTotalRevenue(total.doubleValue()).build());
             responseObserver.onCompleted();
         } catch (Exception e) {
             responseObserver.onError(io.grpc.Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException());
@@ -159,7 +174,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void calculateRevenueShare(CalculateRevenueShareRequest request, StreamObserver<CalculateRevenueShareResponse> responseObserver) {
+    public void calculateRevenueShare(CalculateRevenueShareRequest request,
+            StreamObserver<CalculateRevenueShareResponse> responseObserver) {
         try {
             BigDecimal revenue = BigDecimal.valueOf(request.getNetRevenue());
             BigDecimal rate = BigDecimal.valueOf(request.getCommissionRate());
@@ -200,7 +216,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void approveCommission(ApproveCommissionRequest request, StreamObserver<ApproveCommissionResponse> responseObserver) {
+    public void approveCommission(ApproveCommissionRequest request,
+            StreamObserver<ApproveCommissionResponse> responseObserver) {
         try {
             CommissionClaim claim = commissionService.approveClaim(request.getId());
             responseObserver.onNext(ApproveCommissionResponse.newBuilder()
@@ -212,7 +229,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void rejectCommission(RejectCommissionRequest request, StreamObserver<RejectCommissionResponse> responseObserver) {
+    public void rejectCommission(RejectCommissionRequest request,
+            StreamObserver<RejectCommissionResponse> responseObserver) {
         try {
             CommissionClaim claim = commissionService.rejectClaim(request.getId());
             responseObserver.onNext(RejectCommissionResponse.newBuilder()
@@ -237,7 +255,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getPendingCommissions(GetPendingCommissionsRequest request, StreamObserver<GetPendingCommissionsResponse> responseObserver) {
+    public void getPendingCommissions(GetPendingCommissionsRequest request,
+            StreamObserver<GetPendingCommissionsResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByStatus("PENDING");
             GetPendingCommissionsResponse.Builder response = GetPendingCommissionsResponse.newBuilder();
@@ -250,7 +269,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void getAllCommissions(GetAllCommissionsRequest request, StreamObserver<GetAllCommissionsResponse> responseObserver) {
+    public void getAllCommissions(GetAllCommissionsRequest request,
+            StreamObserver<GetAllCommissionsResponse> responseObserver) {
         try {
             List<CommissionClaim> claims = commissionService.getClaimsByStatus("PAID");
             GetAllCommissionsResponse.Builder response = GetAllCommissionsResponse.newBuilder();
@@ -263,7 +283,8 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
     }
 
     @Override
-    public void deleteCommission(DeleteCommissionRequest request, StreamObserver<DeleteCommissionResponse> responseObserver) {
+    public void deleteCommission(DeleteCommissionRequest request,
+            StreamObserver<DeleteCommissionResponse> responseObserver) {
         try {
             responseObserver.onNext(DeleteCommissionResponse.newBuilder().setSuccess(true).build());
             responseObserver.onCompleted();
@@ -272,18 +293,22 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
         }
     }
 
-    private CommissionServiceProto.Commission toProtoCommission(CommissionClaim c) {
-        CommissionServiceProto.Commission.Builder builder = CommissionServiceProto.Commission.newBuilder()
+    private com.game_engine.commission.v1.Commission toProtoCommission(CommissionClaim c) {
+        com.game_engine.commission.v1.Commission.Builder builder = com.game_engine.commission.v1.Commission.newBuilder()
                 .setId(c.getId())
                 .setAffiliateId(c.getAffiliateId() != null ? c.getAffiliateId() : 0L)
                 .setMerchantId(c.getAgentId() != null ? c.getAgentId() : 0L)
                 .setStatus(c.getStatus() != null ? c.getStatus() : "")
                 .setPeriod(c.getPeriod() != null ? c.getPeriod() : "");
 
-        if (c.getGrossRevenue() != null) builder.setNetRevenue(c.getGrossRevenue().doubleValue());
-        if (c.getCommissionAmount() != null) builder.setCommissionAmount(c.getCommissionAmount().doubleValue());
-        if (c.getCreatedAt() != null) builder.setCreatedAt(c.getCreatedAt().toEpochSecond(ZoneOffset.UTC));
-        if (c.getProcessedAt() != null) builder.setPaidAt(c.getProcessedAt().toEpochSecond(ZoneOffset.UTC));
+        if (c.getGrossRevenue() != null)
+            builder.setNetRevenue(c.getGrossRevenue().doubleValue());
+        if (c.getCommissionAmount() != null)
+            builder.setCommissionAmount(c.getCommissionAmount().doubleValue());
+        if (c.getCreatedAt() != null)
+            builder.setCreatedAt(Timestamp.newBuilder().setSeconds(c.getCreatedAt().toEpochSecond(ZoneOffset.UTC)));
+        if (c.getProcessedAt() != null)
+            builder.setPaidAt(Timestamp.newBuilder().setSeconds(c.getProcessedAt().toEpochSecond(ZoneOffset.UTC)));
 
         return builder.build();
     }
