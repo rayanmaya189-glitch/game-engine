@@ -3,8 +3,8 @@ package com.game_engine.commission.service;
 import com.game_engine.commission.entity.CommissionClaim;
 import com.game_engine.commission.entity.CommissionConfig;
 import com.game_engine.commission.entity.CommissionSettlement;
-import com.game_engine.commission.repository.CommissionClaimRepository;
-import com.game_engine.commission.repository.CommissionConfigRepository;
+import com.game_engine.commission.repository.CommissionClaimV2Repository;
+import com.game_engine.commission.repository.CommissionConfigV2Repository;
 import com.game_engine.commission.repository.CommissionSettlementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,11 +23,11 @@ public class CommissionService {
 
     @Autowired
     @Qualifier("commissionConfigRepositoryV2")
-    private CommissionConfigRepository configRepository;
+    private CommissionConfigV2Repository configRepository;
 
     @Autowired
     @Qualifier("commissionClaimRepositoryV2")
-    private CommissionClaimRepository claimRepository;
+    private CommissionClaimV2Repository claimRepository;
 
     @Autowired
     private CommissionSettlementRepository settlementRepository;

@@ -306,9 +306,9 @@ public class GrpcCommissionService extends CommissionServiceGrpc.CommissionServi
         if (c.getCommissionAmount() != null)
             builder.setCommissionAmount(c.getCommissionAmount().doubleValue());
         if (c.getCreatedAt() != null)
-            builder.setCreatedAt(Timestamp.newBuilder().setSeconds(c.getCreatedAt().toEpochSecond(ZoneOffset.UTC)));
+            builder.setCreatedAt(c.getCreatedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getProcessedAt() != null)
-            builder.setPaidAt(Timestamp.newBuilder().setSeconds(c.getProcessedAt().toEpochSecond(ZoneOffset.UTC)));
+            builder.setPaidAt(c.getProcessedAt().toEpochSecond(java.time.ZoneOffset.UTC));
 
         return builder.build();
     }

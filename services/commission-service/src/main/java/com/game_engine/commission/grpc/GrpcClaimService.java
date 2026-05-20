@@ -220,20 +220,11 @@ public class GrpcClaimService extends ClaimServiceGrpc.ClaimServiceImplBase {
         if (c.getAdminNote() != null)
             builder.setAdminNote(c.getAdminNote());
         if (c.getRequestedAt() != null)
-            builder.setRequestedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getRequestedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setRequestedAt(c.getRequestedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getProcessedAt() != null)
-            builder.setProcessedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getProcessedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setProcessedAt(c.getProcessedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getPaidAt() != null)
-            builder.setPaidAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getPaidAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setPaidAt(c.getPaidAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getTransactionId() != null)
             builder.setTransactionId(c.getTransactionId());
 
@@ -266,15 +257,9 @@ public class GrpcClaimService extends ClaimServiceGrpc.ClaimServiceImplBase {
         if (c.getClaimAmount() != null)
             builder.setClaimAmount(c.getClaimAmount().doubleValue());
         if (c.getExpiresAt() != null)
-            builder.setExpiresAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getExpiresAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setExpiresAt(c.getExpiresAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getClaimedAt() != null)
-            builder.setClaimedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getClaimedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setClaimedAt(c.getClaimedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getTransactionId() != null)
             builder.setTransactionId(c.getTransactionId());
 
@@ -312,20 +297,11 @@ public class GrpcClaimService extends ClaimServiceGrpc.ClaimServiceImplBase {
         if (c.getReviewedBy() != null)
             builder.setReviewedBy(c.getReviewedBy());
         if (c.getRequestedAt() != null)
-            builder.setRequestedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getRequestedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setRequestedAt(c.getRequestedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getReviewedAt() != null)
-            builder.setReviewedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getReviewedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setReviewedAt(c.getReviewedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getPaidAt() != null)
-            builder.setPaidAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getPaidAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setPaidAt(c.getPaidAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getTransactionId() != null)
             builder.setTransactionId(c.getTransactionId());
 

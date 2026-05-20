@@ -295,9 +295,7 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
         if (affiliate.getTotalRevenue() != null)
             builder.setTotalRevenue(affiliate.getTotalRevenue().doubleValue());
         if (affiliate.getCreatedAt() != null)
-            builder.setCreatedAt(
-                    Timestamp.newBuilder().setSeconds(affiliate.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setCreatedAt(affiliate.getCreatedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         return builder.build();
     }
 
@@ -311,9 +309,7 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
         if (referral.getPlayerId() != null)
             builder.setAffiliateId(referral.getPlayerId());
         if (referral.getFirstDepositAt() != null)
-            builder.setFirstDepositAt(
-                    Timestamp.newBuilder().setSeconds(referral.getFirstDepositAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setFirstDepositAt(referral.getFirstDepositAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (referral.getTotalDeposits() != null)
             builder.setFirstDepositAmount(referral.getTotalDeposits().doubleValue());
 

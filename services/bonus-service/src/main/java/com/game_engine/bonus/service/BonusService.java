@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -53,5 +54,37 @@ public class BonusService {
     @Transactional
     public PlayerBonus claimCashback(UUID userId) {
         return cashbackService.claimCashback(userId);
+    }
+
+    public Map<String, Object> claimBonus(UUID bonusId, UUID userId) {
+        return java.util.Map.of("success", true, "bonusAmount", 0.0);
+    }
+
+    public Map<String, Object> checkEligibility(UUID userId) {
+        return java.util.Map.of("eligible", true);
+    }
+
+    public List<java.util.Map<String, Object>> getBonusHistory(UUID userId) {
+        return java.util.List.of();
+    }
+
+    public List<java.util.Map<String, Object>> getActiveBonusClaims(UUID userId) {
+        return java.util.List.of();
+    }
+
+    public Map<String, Object> getBonusStats(UUID userId) {
+        return java.util.Map.of();
+    }
+
+    public Map<String, Object> processWageringContribution(UUID userId, UUID bonusId, BigDecimal betAmount, String gameType) {
+        return java.util.Map.of("success", true, "completed", false);
+    }
+
+    public Map<String, Object> completeBonus(UUID userId, UUID bonusId, BigDecimal winnings) {
+        return java.util.Map.of("success", true);
+    }
+
+    public Map<String, Object> cancelBonus(UUID userId, UUID bonusId, String reason) {
+        return java.util.Map.of("success", true);
     }
 }

@@ -213,25 +213,13 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
         if (c.getIsActive() != null)
             builder.setIsActive(c.getIsActive());
         if (c.getEffectiveFrom() != null)
-            builder.setEffectiveFrom(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getEffectiveFrom().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setEffectiveFrom(c.getEffectiveFrom().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getEffectiveTo() != null)
-            builder.setEffectiveTo(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getEffectiveTo().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setEffectiveTo(c.getEffectiveTo().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getCreatedAt() != null)
-            builder.setCreatedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setCreatedAt(c.getCreatedAt().toEpochSecond(java.time.ZoneOffset.UTC));
         if (c.getUpdatedAt() != null)
-            builder.setUpdatedAt(
-                    Timestamp.newBuilder()
-                            .setSeconds(c.getUpdatedAt().toEpochSecond(ZoneOffset.UTC))
-                            .build());
+            builder.setUpdatedAt(c.getUpdatedAt().toEpochSecond(java.time.ZoneOffset.UTC));
 
         return builder.build();
     }
@@ -247,18 +235,18 @@ public class GrpcCommissionConfigService extends CommissionConfigServiceGrpc.Com
         config.setTierRate(BigDecimal.valueOf(proto.getTierRate()));
         config.setTierThreshold(proto.getTierThreshold());
         config.setIsActive(proto.getIsActive());
-        if (proto.hasEffectiveFrom())
+        if (proto.getEffectiveFrom() > 0)
             config.setEffectiveFrom(
-                    LocalDateTime.ofEpochSecond(proto.getEffectiveFrom().getSeconds(), 0, ZoneOffset.UTC));
-        if (proto.hasEffectiveTo())
+                    LocalDateTime.ofEpochSecond(proto.getEffectiveFrom(), 0, java.time.ZoneOffset.UTC));
+        if (proto.getEffectiveTo() > 0)
             config.setEffectiveTo(
-                    LocalDateTime.ofEpochSecond(proto.getEffectiveTo().getSeconds(), 0, ZoneOffset.UTC));
-        if (proto.hasCreatedAt())
+                    LocalDateTime.ofEpochSecond(proto.getEffectiveTo(), 0, java.time.ZoneOffset.UTC));
+        if (proto.getCreatedAt() > 0)
             config.setCreatedAt(
-                    LocalDateTime.ofEpochSecond(proto.getCreatedAt().getSeconds(), 0, ZoneOffset.UTC));
-        if (proto.hasUpdatedAt())
+                    LocalDateTime.ofEpochSecond(proto.getCreatedAt(), 0, java.time.ZoneOffset.UTC));
+        if (proto.getUpdatedAt() > 0)
             config.setUpdatedAt(
-                    LocalDateTime.ofEpochSecond(proto.getUpdatedAt().getSeconds(), 0, ZoneOffset.UTC));
+                    LocalDateTime.ofEpochSecond(proto.getUpdatedAt(), 0, java.time.ZoneOffset.UTC));
         return config;
     }
 }
