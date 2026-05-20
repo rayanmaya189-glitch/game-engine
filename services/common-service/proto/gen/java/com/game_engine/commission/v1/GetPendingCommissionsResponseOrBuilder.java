@@ -31,4 +31,28 @@ public interface GetPendingCommissionsResponseOrBuilder extends
    */
   com.game_engine.commission.v1.CommissionOrBuilder getCommissionsOrBuilder(
       int index);
+
+  /**
+   * <code>repeated .game_engine.commission.v1.Commission pending = 2 [json_name = "pending"];</code>
+   */
+  java.util.List<com.game_engine.commission.v1.Commission> 
+      getPendingList();
+  /**
+   * <code>repeated .game_engine.commission.v1.Commission pending = 2 [json_name = "pending"];</code>
+   */
+  com.game_engine.commission.v1.Commission getPending(int index);
+  /**
+   * <code>repeated .game_engine.commission.v1.Commission pending = 2 [json_name = "pending"];</code>
+   */
+  int getPendingCount();
+  /**
+   * <code>repeated .game_engine.commission.v1.Commission pending = 2 [json_name = "pending"];</code>
+   */
+  java.util.List<? extends com.game_engine.commission.v1.CommissionOrBuilder> 
+      getPendingOrBuilderList();
+  /**
+   * <code>repeated .game_engine.commission.v1.Commission pending = 2 [json_name = "pending"];</code>
+   */
+  com.game_engine.commission.v1.CommissionOrBuilder getPendingOrBuilder(
+      int index);
 }

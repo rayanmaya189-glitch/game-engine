@@ -13,6 +13,7 @@ import (
 )
 
 type AuthConfig struct {
+	JWTSecret         string
 	PublicKey         *rsa.PublicKey
 	PrivateKey        *rsa.PrivateKey
 	JWTExpiration     time.Duration
@@ -22,11 +23,12 @@ type AuthConfig struct {
 }
 
 type Claims struct {
-	UserID   string `json:"user_id"`
-	Username string `json:"username"`
-	Role     string `json:"role"`
-	Merchant string `json:"merchant,omitempty"`
-	Agent    string `json:"agent,omitempty"`
+	UserID    string `json:"user_id"`
+	Username  string `json:"username"`
+	SessionID string `json:"session_id"`
+	Role      string `json:"role"`
+	Merchant  string `json:"merchant,omitempty"`
+	Agent     string `json:"agent,omitempty"`
 	jwt.RegisteredClaims
 }
 
@@ -49,7 +51,7 @@ func (m *AuthMiddleware) JWTValidation() app.HandlerFunc {
 		}
 
 		// Get token from Authorization header
-		authHeader := string(ctx.Request.Header.Authorization())
+		authHeader := string(ctx.Request.Header.Get("Authorization"))
 		if authHeader == "" {
 			ctx.JSON(consts.StatusUnauthorized, map[string]interface{}{
 				"error": "missing authorization header",
@@ -79,6 +81,7 @@ func (m *AuthMiddleware) JWTValidation() app.HandlerFunc {
 		// Set claims in context
 		ctx.Set("user_id", claims.UserID)
 		ctx.Set("username", claims.Username)
+		ctx.Set("session_id", claims.SessionID)
 		ctx.Set("role", claims.Role)
 		ctx.Set("claims", claims)
 
@@ -89,10 +92,16 @@ func (m *AuthMiddleware) JWTValidation() app.HandlerFunc {
 // validateToken validates the JWT token using RS256
 func (m *AuthMiddleware) validateToken(tokenString string) (*Claims, error) {
 	token, err := jwt.ParseWithClaims(tokenString, &Claims{}, func(token *jwt.Token) (interface{}, error) {
-		if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
+		if m.config.PublicKey != nil {
+			if _, ok := token.Method.(*jwt.SigningMethodRSA); !ok {
+				return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
+			}
+			return m.config.PublicKey, nil
+		}
+		if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method: %v", token.Header["alg"])
 		}
-		return m.config.PublicKey, nil
+		return []byte(m.config.JWTSecret), nil
 	})
 
 	if err != nil {

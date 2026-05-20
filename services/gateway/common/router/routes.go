@@ -3,8 +3,8 @@ package router
 import (
 	"github.com/cloudwego/hertz/pkg/route"
 
-	"handler"
-	"middleware"
+	"github.com/game_engine/gateway/common/handler"
+	"github.com/game_engine/gateway/common/middleware"
 )
 
 type RouterOption struct {
@@ -16,7 +16,7 @@ type RouterOption struct {
 	ErrorHandler          *handler.ErrorHandler
 }
 
-func NewRouter(opts *RouterOption) *route.Router {
+func NewRouter(opts *RouterOption) *route.Engine {
 	r := route.New()
 
 	// Global middleware (applied to all routes)
@@ -37,7 +37,7 @@ func NewRouter(opts *RouterOption) *route.Router {
 	return r
 }
 
-func ConfigurePlayerRoutes(r *router.Router, opts *RouterOption) {
+func ConfigurePlayerRoutes(r *route.Engine, opts *RouterOption) {
 	// Apply player-specific middleware
 	r.Use(opts.RateLimiterMiddleware.RateLimiter())
 	r.Use(opts.AuthMiddleware.JWTValidation())
@@ -79,7 +79,7 @@ func ConfigurePlayerRoutes(r *router.Router, opts *RouterOption) {
 	}
 }
 
-func ConfigureAdminRoutes(r *router.Router, opts *RouterOption) {
+func ConfigureAdminRoutes(r *route.Engine, opts *RouterOption) {
 	// Apply admin-specific middleware
 	r.Use(opts.RateLimiterMiddleware.RateLimiter())
 	r.Use(opts.AuthMiddleware.JWTValidation())
@@ -119,7 +119,7 @@ func ConfigureAdminRoutes(r *router.Router, opts *RouterOption) {
 	}
 }
 
-func ConfigureMerchantRoutes(r *router.Router, opts *RouterOption) {
+func ConfigureMerchantRoutes(r *route.Engine, opts *RouterOption) {
 	// Apply merchant-specific middleware
 	r.Use(opts.RateLimiterMiddleware.RateLimiter())
 	r.Use(opts.AuthMiddleware.APIKeyValidation())
@@ -153,7 +153,7 @@ func ConfigureMerchantRoutes(r *router.Router, opts *RouterOption) {
 	}
 }
 
-func ConfigureAgentRoutes(r *router.Router, opts *RouterOption) {
+func ConfigureAgentRoutes(r *route.Engine, opts *RouterOption) {
 	// Apply agent-specific middleware
 	r.Use(opts.RateLimiterMiddleware.RateLimiter())
 	r.Use(opts.AuthMiddleware.JWTValidation())

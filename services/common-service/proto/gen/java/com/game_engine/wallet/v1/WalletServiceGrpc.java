@@ -418,6 +418,161 @@ public final class WalletServiceGrpc {
     return getGetPendingBetsMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.wallet.v1.GetTransactionsRequest,
+      com.game_engine.wallet.v1.GetTransactionsResponse> getGetTransactionsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetTransactions",
+      requestType = com.game_engine.wallet.v1.GetTransactionsRequest.class,
+      responseType = com.game_engine.wallet.v1.GetTransactionsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.wallet.v1.GetTransactionsRequest,
+      com.game_engine.wallet.v1.GetTransactionsResponse> getGetTransactionsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.wallet.v1.GetTransactionsRequest, com.game_engine.wallet.v1.GetTransactionsResponse> getGetTransactionsMethod;
+    if ((getGetTransactionsMethod = WalletServiceGrpc.getGetTransactionsMethod) == null) {
+      synchronized (WalletServiceGrpc.class) {
+        if ((getGetTransactionsMethod = WalletServiceGrpc.getGetTransactionsMethod) == null) {
+          WalletServiceGrpc.getGetTransactionsMethod = getGetTransactionsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.wallet.v1.GetTransactionsRequest, com.game_engine.wallet.v1.GetTransactionsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetTransactions"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.GetTransactionsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.GetTransactionsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletServiceMethodDescriptorSupplier("GetTransactions"))
+              .build();
+        }
+      }
+    }
+    return getGetTransactionsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.wallet.v1.DepositRequest,
+      com.game_engine.wallet.v1.DepositResponse> getDepositMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Deposit",
+      requestType = com.game_engine.wallet.v1.DepositRequest.class,
+      responseType = com.game_engine.wallet.v1.DepositResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.wallet.v1.DepositRequest,
+      com.game_engine.wallet.v1.DepositResponse> getDepositMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.wallet.v1.DepositRequest, com.game_engine.wallet.v1.DepositResponse> getDepositMethod;
+    if ((getDepositMethod = WalletServiceGrpc.getDepositMethod) == null) {
+      synchronized (WalletServiceGrpc.class) {
+        if ((getDepositMethod = WalletServiceGrpc.getDepositMethod) == null) {
+          WalletServiceGrpc.getDepositMethod = getDepositMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.wallet.v1.DepositRequest, com.game_engine.wallet.v1.DepositResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Deposit"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.DepositRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.DepositResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletServiceMethodDescriptorSupplier("Deposit"))
+              .build();
+        }
+      }
+    }
+    return getDepositMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.wallet.v1.WithdrawRequest,
+      com.game_engine.wallet.v1.WithdrawResponse> getWithdrawMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "Withdraw",
+      requestType = com.game_engine.wallet.v1.WithdrawRequest.class,
+      responseType = com.game_engine.wallet.v1.WithdrawResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.wallet.v1.WithdrawRequest,
+      com.game_engine.wallet.v1.WithdrawResponse> getWithdrawMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.wallet.v1.WithdrawRequest, com.game_engine.wallet.v1.WithdrawResponse> getWithdrawMethod;
+    if ((getWithdrawMethod = WalletServiceGrpc.getWithdrawMethod) == null) {
+      synchronized (WalletServiceGrpc.class) {
+        if ((getWithdrawMethod = WalletServiceGrpc.getWithdrawMethod) == null) {
+          WalletServiceGrpc.getWithdrawMethod = getWithdrawMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.wallet.v1.WithdrawRequest, com.game_engine.wallet.v1.WithdrawResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "Withdraw"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.WithdrawRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.WithdrawResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletServiceMethodDescriptorSupplier("Withdraw"))
+              .build();
+        }
+      }
+    }
+    return getWithdrawMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.wallet.v1.AdjustBalanceRequest,
+      com.game_engine.wallet.v1.AdjustBalanceResponse> getAdjustBalanceMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "AdjustBalance",
+      requestType = com.game_engine.wallet.v1.AdjustBalanceRequest.class,
+      responseType = com.game_engine.wallet.v1.AdjustBalanceResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.wallet.v1.AdjustBalanceRequest,
+      com.game_engine.wallet.v1.AdjustBalanceResponse> getAdjustBalanceMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.wallet.v1.AdjustBalanceRequest, com.game_engine.wallet.v1.AdjustBalanceResponse> getAdjustBalanceMethod;
+    if ((getAdjustBalanceMethod = WalletServiceGrpc.getAdjustBalanceMethod) == null) {
+      synchronized (WalletServiceGrpc.class) {
+        if ((getAdjustBalanceMethod = WalletServiceGrpc.getAdjustBalanceMethod) == null) {
+          WalletServiceGrpc.getAdjustBalanceMethod = getAdjustBalanceMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.wallet.v1.AdjustBalanceRequest, com.game_engine.wallet.v1.AdjustBalanceResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "AdjustBalance"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.AdjustBalanceRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.AdjustBalanceResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletServiceMethodDescriptorSupplier("AdjustBalance"))
+              .build();
+        }
+      }
+    }
+    return getAdjustBalanceMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.wallet.v1.GetAllTransactionsRequest,
+      com.game_engine.wallet.v1.GetAllTransactionsResponse> getGetAllTransactionsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAllTransactions",
+      requestType = com.game_engine.wallet.v1.GetAllTransactionsRequest.class,
+      responseType = com.game_engine.wallet.v1.GetAllTransactionsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.wallet.v1.GetAllTransactionsRequest,
+      com.game_engine.wallet.v1.GetAllTransactionsResponse> getGetAllTransactionsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.wallet.v1.GetAllTransactionsRequest, com.game_engine.wallet.v1.GetAllTransactionsResponse> getGetAllTransactionsMethod;
+    if ((getGetAllTransactionsMethod = WalletServiceGrpc.getGetAllTransactionsMethod) == null) {
+      synchronized (WalletServiceGrpc.class) {
+        if ((getGetAllTransactionsMethod = WalletServiceGrpc.getGetAllTransactionsMethod) == null) {
+          WalletServiceGrpc.getGetAllTransactionsMethod = getGetAllTransactionsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.wallet.v1.GetAllTransactionsRequest, com.game_engine.wallet.v1.GetAllTransactionsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAllTransactions"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.GetAllTransactionsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.wallet.v1.GetAllTransactionsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new WalletServiceMethodDescriptorSupplier("GetAllTransactions"))
+              .build();
+        }
+      }
+    }
+    return getGetAllTransactionsMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -574,6 +729,41 @@ public final class WalletServiceGrpc {
         io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetPendingBetsResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPendingBetsMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void getTransactions(com.game_engine.wallet.v1.GetTransactionsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetTransactionsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTransactionsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void deposit(com.game_engine.wallet.v1.DepositRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.DepositResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDepositMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void withdraw(com.game_engine.wallet.v1.WithdrawRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.WithdrawResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getWithdrawMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void adjustBalance(com.game_engine.wallet.v1.AdjustBalanceRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.AdjustBalanceResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getAdjustBalanceMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getAllTransactions(com.game_engine.wallet.v1.GetAllTransactionsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetAllTransactionsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllTransactionsMethod(), responseObserver);
+    }
   }
 
   /**
@@ -712,6 +902,46 @@ public final class WalletServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getGetPendingBetsMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getTransactions(com.game_engine.wallet.v1.GetTransactionsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetTransactionsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetTransactionsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void deposit(com.game_engine.wallet.v1.DepositRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.DepositResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getDepositMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void withdraw(com.game_engine.wallet.v1.WithdrawRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.WithdrawResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getWithdrawMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void adjustBalance(com.game_engine.wallet.v1.AdjustBalanceRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.AdjustBalanceResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getAdjustBalanceMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getAllTransactions(com.game_engine.wallet.v1.GetAllTransactionsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetAllTransactionsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllTransactionsMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -823,6 +1053,41 @@ public final class WalletServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getGetPendingBetsMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.GetTransactionsResponse getTransactions(com.game_engine.wallet.v1.GetTransactionsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetTransactionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.DepositResponse deposit(com.game_engine.wallet.v1.DepositRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getDepositMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.WithdrawResponse withdraw(com.game_engine.wallet.v1.WithdrawRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getWithdrawMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.AdjustBalanceResponse adjustBalance(com.game_engine.wallet.v1.AdjustBalanceRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getAdjustBalanceMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.GetAllTransactionsResponse getAllTransactions(com.game_engine.wallet.v1.GetAllTransactionsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetAllTransactionsMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -933,6 +1198,41 @@ public final class WalletServiceGrpc {
     public com.game_engine.wallet.v1.GetPendingBetsResponse getPendingBets(com.game_engine.wallet.v1.GetPendingBetsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getGetPendingBetsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.GetTransactionsResponse getTransactions(com.game_engine.wallet.v1.GetTransactionsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetTransactionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.DepositResponse deposit(com.game_engine.wallet.v1.DepositRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getDepositMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.WithdrawResponse withdraw(com.game_engine.wallet.v1.WithdrawRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getWithdrawMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.AdjustBalanceResponse adjustBalance(com.game_engine.wallet.v1.AdjustBalanceRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getAdjustBalanceMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.wallet.v1.GetAllTransactionsResponse getAllTransactions(com.game_engine.wallet.v1.GetAllTransactionsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllTransactionsMethod(), getCallOptions(), request);
     }
   }
 
@@ -1058,6 +1358,46 @@ public final class WalletServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getGetPendingBetsMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.wallet.v1.GetTransactionsResponse> getTransactions(
+        com.game_engine.wallet.v1.GetTransactionsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetTransactionsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.wallet.v1.DepositResponse> deposit(
+        com.game_engine.wallet.v1.DepositRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getDepositMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.wallet.v1.WithdrawResponse> withdraw(
+        com.game_engine.wallet.v1.WithdrawRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getWithdrawMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.wallet.v1.AdjustBalanceResponse> adjustBalance(
+        com.game_engine.wallet.v1.AdjustBalanceRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getAdjustBalanceMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.wallet.v1.GetAllTransactionsResponse> getAllTransactions(
+        com.game_engine.wallet.v1.GetAllTransactionsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllTransactionsMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_BALANCE = 0;
@@ -1073,6 +1413,11 @@ public final class WalletServiceGrpc {
   private static final int METHODID_CREATE_BONUS_CREDIT = 10;
   private static final int METHODID_REVERSE_TRANSACTION = 11;
   private static final int METHODID_GET_PENDING_BETS = 12;
+  private static final int METHODID_GET_TRANSACTIONS = 13;
+  private static final int METHODID_DEPOSIT = 14;
+  private static final int METHODID_WITHDRAW = 15;
+  private static final int METHODID_ADJUST_BALANCE = 16;
+  private static final int METHODID_GET_ALL_TRANSACTIONS = 17;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1142,6 +1487,26 @@ public final class WalletServiceGrpc {
         case METHODID_GET_PENDING_BETS:
           serviceImpl.getPendingBets((com.game_engine.wallet.v1.GetPendingBetsRequest) request,
               (io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetPendingBetsResponse>) responseObserver);
+          break;
+        case METHODID_GET_TRANSACTIONS:
+          serviceImpl.getTransactions((com.game_engine.wallet.v1.GetTransactionsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetTransactionsResponse>) responseObserver);
+          break;
+        case METHODID_DEPOSIT:
+          serviceImpl.deposit((com.game_engine.wallet.v1.DepositRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.DepositResponse>) responseObserver);
+          break;
+        case METHODID_WITHDRAW:
+          serviceImpl.withdraw((com.game_engine.wallet.v1.WithdrawRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.WithdrawResponse>) responseObserver);
+          break;
+        case METHODID_ADJUST_BALANCE:
+          serviceImpl.adjustBalance((com.game_engine.wallet.v1.AdjustBalanceRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.AdjustBalanceResponse>) responseObserver);
+          break;
+        case METHODID_GET_ALL_TRANSACTIONS:
+          serviceImpl.getAllTransactions((com.game_engine.wallet.v1.GetAllTransactionsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.wallet.v1.GetAllTransactionsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1252,6 +1617,41 @@ public final class WalletServiceGrpc {
               com.game_engine.wallet.v1.GetPendingBetsRequest,
               com.game_engine.wallet.v1.GetPendingBetsResponse>(
                 service, METHODID_GET_PENDING_BETS)))
+        .addMethod(
+          getGetTransactionsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.wallet.v1.GetTransactionsRequest,
+              com.game_engine.wallet.v1.GetTransactionsResponse>(
+                service, METHODID_GET_TRANSACTIONS)))
+        .addMethod(
+          getDepositMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.wallet.v1.DepositRequest,
+              com.game_engine.wallet.v1.DepositResponse>(
+                service, METHODID_DEPOSIT)))
+        .addMethod(
+          getWithdrawMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.wallet.v1.WithdrawRequest,
+              com.game_engine.wallet.v1.WithdrawResponse>(
+                service, METHODID_WITHDRAW)))
+        .addMethod(
+          getAdjustBalanceMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.wallet.v1.AdjustBalanceRequest,
+              com.game_engine.wallet.v1.AdjustBalanceResponse>(
+                service, METHODID_ADJUST_BALANCE)))
+        .addMethod(
+          getGetAllTransactionsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.wallet.v1.GetAllTransactionsRequest,
+              com.game_engine.wallet.v1.GetAllTransactionsResponse>(
+                service, METHODID_GET_ALL_TRANSACTIONS)))
         .build();
   }
 
@@ -1313,6 +1713,11 @@ public final class WalletServiceGrpc {
               .addMethod(getCreateBonusCreditMethod())
               .addMethod(getReverseTransactionMethod())
               .addMethod(getGetPendingBetsMethod())
+              .addMethod(getGetTransactionsMethod())
+              .addMethod(getDepositMethod())
+              .addMethod(getWithdrawMethod())
+              .addMethod(getAdjustBalanceMethod())
+              .addMethod(getGetAllTransactionsMethod())
               .build();
         }
       }

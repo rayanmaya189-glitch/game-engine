@@ -70,13 +70,6 @@ func (c *GameClient) GetPopularGames(ctx context.Context, req *gamepb.GetPopular
 	return c.client.GetPopularGames(ctx, req)
 }
 
-func (c *GameClient) CreateGame(ctx context.Context, req *gamepb.CreateGameRequest) (*gamepb.CreateGameResponse, error) {
-	return c.client.CreateGame(ctx, req)
-}
-
-func (c *GameClient) UpdateGame(ctx context.Context, req *gamepb.UpdateGameRequest) (*gamepb.UpdateGameResponse, error) {
-	return c.client.UpdateGame(ctx, req)
-}
 
 func (c *GameClient) Close() error {
 	return c.conn.Close()

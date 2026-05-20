@@ -5,7 +5,8 @@ import (
 	"fmt"
 	"time"
 
-	gamesv1 "game_engine/gen/go/game/v1"
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
+	gamesv1 "github.com/game_engine/common-service/proto/gen/go/game/v1"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -121,7 +122,7 @@ func (c *GRPCGameRegistryClient) GetFeaturedGames(ctx context.Context, limit int
 }
 
 // GetCategories fetches game categories from the game-registry service
-func (c *GRPCGameRegistryClient) GetCategories(ctx context.Context) ([]*gamesv1.GameCategoryInfo, error) {
+func (c *GRPCGameRegistryClient) GetCategories(ctx context.Context) ([]*gamesv1.GameCategory, error) {
 	resp, err := c.client.GetCategories(ctx, &gamesv1.GetCategoriesRequest{})
 	if err != nil {
 		return nil, fmt.Errorf("failed to get categories: %w", err)
@@ -171,11 +172,11 @@ func gameToDefinition(g *gamesv1.Game) *GameDefinition {
 }
 
 // statusToString converts a proto Status to a string
-func statusToString(s gamesv1.Status) string {
+func statusToString(s commonv1.Status) string {
 	switch s {
-	case gamesv1.Status_STATUS_ACTIVE:
+	case commonv1.Status_STATUS_ACTIVE:
 		return "active"
-	case gamesv1.Status_STATUS_INACTIVE:
+	case commonv1.Status_STATUS_INACTIVE:
 		return "inactive"
 	default:
 		return "unknown"

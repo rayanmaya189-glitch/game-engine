@@ -5,79 +5,67 @@ package game_engine.bonus.v1;
 import "google/protobuf/timestamp.proto";
 import "common/v1/pagination.proto";
 
-option go_package = "gen/go/bonus/v1;bonusv1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/bonus/v1;bonusv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.bonus.v1";
 
-// Bonus Service - manages bonuses, claims, wagering requirements
 service BonusService {
-  // Bonus management
-  rpc GetActiveBonuses(GetActiveBonusesRequest) returns (GetActiveBonusesResponse);
+  // List available bonuses
+  rpc ListBonuses(ListBonusesRequest) returns (ListBonusesResponse);
+  
+  // Get bonus details
   rpc GetBonus(GetBonusRequest) returns (GetBonusResponse);
-  rpc CreateBonus(CreateBonusRequest) returns (CreateBonusResponse);
+  
+  // Claim a bonus
   rpc ClaimBonus(ClaimBonusRequest) returns (ClaimBonusResponse);
-  rpc CheckEligibility(CheckEligibilityRequest) returns (CheckEligibilityResponse);
-  rpc GetBonusHistory(GetBonusHistoryRequest) returns (GetBonusHistoryResponse);
-  rpc GetActiveBonusClaims(GetActiveBonusClaimsRequest) returns (GetActiveBonusClaimsResponse);
   
-  // Wagering
-  rpc ProcessWageringContribution(ProcessWageringContributionRequest) returns (ProcessWageringContributionResponse);
-  rpc CompleteBonus(CompleteBonusRequest) returns (CompleteBonusResponse);
-  rpc CancelBonus(CancelBonusRequest) returns (CancelBonusResponse);
+  // Get user's claimed bonuses
+  rpc GetUserBonuses(GetUserBonusesRequest) returns (GetUserBonusesResponse);
   
-  // Stats
-  rpc GetBonusStats(GetBonusStatsRequest) returns (GetBonusStatsResponse);
+  // Rebet claim operations
+  rpc CreateRebetClaim(CreateRebetClaimRequest) returns (CreateRebetClaimResponse);
+  rpc GetUserRebetClaims(GetUserRebetClaimsRequest) returns (GetUserRebetClaimsResponse);
+  rpc GetClaimableRebets(GetClaimableRebetsRequest) returns (GetClaimableRebetsResponse);
+  rpc ClaimRebet(ClaimRebetRequest) returns (ClaimRebetResponse);
+  
+  // Insurance claim operations
+  rpc SubmitInsuranceClaim(SubmitInsuranceClaimRequest) returns (SubmitInsuranceClaimResponse);
+  rpc GetUserInsuranceClaims(GetUserInsuranceClaimsRequest) returns (GetUserInsuranceClaimsResponse);
+
+  // Wagering requirements
+  rpc CheckWageringRequirements(CheckWageringRequirementsRequest) returns (CheckWageringRequirementsResponse);
 }
 
-// Bonus message
-message Bonus {
-  string id = 1;
-  string name = 2;
-  string description = 3;
-  string type = 4;              // WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-  string status = 5;            // ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-  double amount = 6;
-  double percentage = 7;         // For percentage-based bonuses
-  double max_amount = 8;
-  double min_deposit = 9;
-  int32 wagering_requirement = 10;
-  double max_bet = 11;
-  string allowed_games = 12;      // Comma-separated game IDs or "ALL"
-  google.protobuf.Timestamp start_date = 13;
-  google.protobuf.Timestamp end_date = 14;
-  int32 max_uses = 15;
-  int32 current_uses = 16;
-  string vip_level = 17;          // ALL, BRONZE, SILVER, GOLD, PLATINUM
-  google.protobuf.Timestamp created_at = 18;
-  google.protobuf.Timestamp updated_at = 19;
+message ListBonusesRequest {
+  string status = 1;
+  string category = 2;
 }
 
-// GetActiveBonuses
-message GetActiveBonusesRequest {}
-
-message GetActiveBonusesResponse {
+message ListBonusesResponse {
   repeated Bonus bonuses = 1;
 }
 
-// GetBonus
+message Bonus {
+  string bonus_id = 1;
+  string name = 2;
+  string description = 3;
+  string bonus_type = 4;
+  double amount = 5;
+  double min_deposit = 6;
+  double max_bonus = 7;
+  double wagering_requirement = 8;
+  int64 expires_at = 9;
+  string status = 10;
+}
+
 message GetBonusRequest {
-  string id = 1;
+  string bonus_id = 1;
 }
 
 message GetBonusResponse {
   Bonus bonus = 1;
 }
 
-// CreateBonus (admin)
-message CreateBonusRequest {
-  Bonus bonus = 1;
-}
-
-message CreateBonusResponse {
-  Bonus bonus = 1;
-}
-
-// ClaimBonus
 message ClaimBonusRequest {
   string bonus_id = 1;
   string user_id = 2;
@@ -85,108 +73,124 @@ message ClaimBonusRequest {
 
 message ClaimBonusResponse {
   bool success = 1;
-  string message = 2;
-  double bonus_amount = 3;
-  map<string, string> details = 4;
+  double bonus_amount = 2;
+  string expires_at = 3;
 }
 
-// CheckEligibility
-message CheckEligibilityRequest {
-  string user_id = 1;
-  string bonus_id = 2;
-}
-
-message CheckEligibilityResponse {
-  bool eligible = 1;
-  map<string, string> details = 2;
-}
-
-// GetBonusHistory
-message GetBonusHistoryRequest {
+message GetUserBonusesRequest {
   string user_id = 1;
 }
 
-message GetBonusHistoryResponse {
-  repeated BonusHistoryEntry entries = 1;
+message GetUserBonusesResponse {
+  repeated UserBonus bonuses = 1;
 }
 
-message BonusHistoryEntry {
+message UserBonus {
   string bonus_id = 1;
-  string bonus_name = 2;
+  string name = 2;
   double amount = 3;
-  string status = 4;           // CLAIMED, IN_PROGRESS, COMPLETED, CANCELLED
-  google.protobuf.Timestamp claimed_at = 5;
-  google.protobuf.Timestamp completed_at = 6;
-}
-
-// GetActiveBonusClaims
-message GetActiveBonusClaimsRequest {
-  string user_id = 1;
-}
-
-message GetActiveBonusClaimsResponse {
-  repeated ActiveBonusClaim claims = 1;
-}
-
-message ActiveBonusClaim {
-  string bonus_id = 1;
-  string bonus_name = 2;
-  double amount = 3;
-  double wagering_progress = 4;
-  double wagering_required = 5;
+  double wagered = 4;
+  double remaining = 5;
   string status = 6;
-  google.protobuf.Timestamp expires_at = 7;
 }
 
-// ProcessWageringContribution
-message ProcessWageringContributionRequest {
+message CreateRebetClaimRequest {
   string user_id = 1;
   string bonus_id = 2;
-  double bet_amount = 3;
-  string game_type = 4;
+  string bonus_code = 3;
+  double bonus_amount = 4;
+  double rebet_requirement = 5;
+  string game_id = 6;
+  string bet_id = 7;
 }
 
-message ProcessWageringContributionResponse {
-  bool success = 1;
-  double wagering_progress = 2;
-  double wagering_required = 3;
-  bool completed = 4;
+message CreateRebetClaimResponse {
+  string rebet_id = 1;
+  string status = 2;
+  double current_rebet = 3;
 }
 
-// CompleteBonus
-message CompleteBonusRequest {
-  string user_id = 1;
-  string bonus_id = 2;
-  double winnings = 3;
-}
-
-message CompleteBonusResponse {
-  bool success = 1;
-  double payout_amount = 2;
-  string message = 3;
-}
-
-// CancelBonus
-message CancelBonusRequest {
-  string user_id = 1;
-  string bonus_id = 2;
-  string reason = 3;
-}
-
-message CancelBonusResponse {
-  bool success = 1;
-  string message = 2;
-}
-
-// GetBonusStats
-message GetBonusStatsRequest {
+message GetUserRebetClaimsRequest {
   string user_id = 1;
 }
 
-message GetBonusStatsResponse {
-  int32 total_bonuses_claimed = 1;
-  double total_bonus_amount = 2;
-  double total_wagered = 3;
-  double total_winnings = 4;
-  map<string, string> stats = 5;
+message GetUserRebetClaimsResponse {
+  repeated RebetClaim claims = 1;
+}
+
+message RebetClaim {
+  string rebet_id = 1;
+  double bonus_amount = 2;
+  double rebet_requirement = 3;
+  double current_rebet = 4;
+  string status = 5;
+}
+
+message GetClaimableRebetsRequest {
+  string user_id = 1;
+}
+
+message GetClaimableRebetsResponse {
+  repeated ClaimableRebet claims = 1;
+}
+
+message ClaimableRebet {
+  string rebet_id = 1;
+  double amount = 2;
+  string game_id = 3;
+}
+
+message ClaimRebetRequest {
+  string rebet_id = 1;
+  string user_id = 2;
+}
+
+message ClaimRebetResponse {
+  bool success = 1;
+  double amount = 2;
+  string transaction_id = 3;
+}
+
+message SubmitInsuranceClaimRequest {
+  string user_id = 1;
+  string game_id = 2;
+  string bet_id = 3;
+  string insurance_policy_id = 4;
+  string claim_type = 5;
+  double insured_amount = 6;
+  double loss_amount = 7;
+  string claim_reason = 8;
+  string evidence_details = 9;
+}
+
+message SubmitInsuranceClaimResponse {
+  string claim_id = 1;
+  string status = 2;
+}
+
+message GetUserInsuranceClaimsRequest {
+  string user_id = 1;
+}
+
+message GetUserInsuranceClaimsResponse {
+  repeated InsuranceClaim claims = 1;
+}
+
+message InsuranceClaim {
+  string claim_id = 1;
+  double insured_amount = 2;
+  double loss_amount = 3;
+  string status = 4;
+  int64 created_at = 5;
+}
+
+message CheckWageringRequirementsRequest {
+  string user_id = 1;
+  double amount = 2;
+}
+
+message CheckWageringRequirementsResponse {
+  bool requirements_met = 1;
+  double wagered_amount = 2;
+  double required_amount = 3;
 }

@@ -7,7 +7,7 @@ import (
 
 	tournamentpb "github.com/game_engine/common-service/proto/gen/go/tournament/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // ListTournaments handles listing tournaments

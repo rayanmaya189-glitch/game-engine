@@ -2,12 +2,13 @@ package main
 
 import (
 	"context"
+	"time"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
 	authpb "github.com/game_engine/common-service/proto/gen/go/auth/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // Register handles user registration
@@ -32,12 +33,11 @@ func (cfg *RouterConfig) Register(ctx context.Context, c *app.RequestContext) {
 	}
 
 	resp, err := cfg.AuthClient.Register(ctx, &authpb.RegisterRequest{
-		Username: req.Username,
-		Email:    req.Email,
-		Password: req.Password,
-		FullName: req.FullName,
-		Phone:    req.Phone,
-		Currency: req.Currency,
+		Identifier:      req.Email,
+		Password:        req.Password,
+		ConfirmPassword: req.Password,
+		Currency:        req.Currency,
+		AcceptTerms:     true,
 	})
 
 	if err != nil {
@@ -69,8 +69,8 @@ func (cfg *RouterConfig) Login(ctx context.Context, c *app.RequestContext) {
 	}
 
 	resp, err := cfg.AuthClient.Login(ctx, &authpb.LoginRequest{
-		Username: req.Username,
-		Password: req.Password,
+		Identifier: req.Username,
+		Password:   req.Password,
 	})
 
 	if err != nil {
@@ -78,10 +78,18 @@ func (cfg *RouterConfig) Login(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
+	expiresIn := int64(0)
+	if resp.ExpiresAt != nil {
+		expiresIn = resp.ExpiresAt.GetSeconds() - time.Now().Unix()
+		if expiresIn < 0 {
+			expiresIn = 0
+		}
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
 		"access_token":  resp.AccessToken,
 		"refresh_token": resp.RefreshToken,
-		"expires_in":    resp.ExpiresIn,
+		"expires_in":    expiresIn,
 		"token_type":    "Bearer",
 	})
 }
@@ -111,10 +119,18 @@ func (cfg *RouterConfig) RefreshToken(ctx context.Context, c *app.RequestContext
 		return
 	}
 
+	expiresIn := int64(0)
+	if resp.ExpiresAt != nil {
+		expiresIn = resp.ExpiresAt.GetSeconds() - time.Now().Unix()
+		if expiresIn < 0 {
+			expiresIn = 0
+		}
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
 		"access_token":  resp.AccessToken,
 		"refresh_token": resp.RefreshToken,
-		"expires_in":    resp.ExpiresIn,
+		"expires_in":    expiresIn,
 		"token_type":    "Bearer",
 	})
 }
@@ -126,10 +142,11 @@ func (cfg *RouterConfig) Logout(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	token := c.GetHeader("Authorization")
-	if token != "" {
-		cfg.AuthClient.Logout(ctx, &authpb.LogoutRequest{
-			Token: token,
+	sessionID := c.GetString("session_id")
+	if sessionID != "" {
+		_, _ = cfg.AuthClient.Logout(ctx, &authpb.LogoutRequest{
+			SessionId:   sessionID,
+			AllSessions: false,
 		})
 	}
 

@@ -2,13 +2,13 @@ package main
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
 	commissionpb "github.com/game_engine/common-service/proto/gen/go/commission/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // SubmitInsuranceClaim handles submitting an insurance claim
@@ -35,15 +35,19 @@ func (cfg *RouterConfig) SubmitInsuranceClaim(ctx context.Context, c *app.Reques
 		return
 	}
 
-	if cfg.BonusClient == nil {
-		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Bonus service unavailable", nil)
+	if cfg.CommissionClient == nil {
+		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Commission service unavailable", nil)
 		return
 	}
 
-	resp, err := cfg.BonusClient.SubmitInsuranceClaim(ctx, &bonuspb.SubmitInsuranceClaimRequest{
-		UserId:            userID,
-		GameId:            req.GameID,
-		BetId:             req.BetID,
+	uID, _ := strconv.ParseInt(userID, 10, 64)
+	gID, _ := strconv.ParseInt(req.GameID, 10, 64)
+	bID, _ := strconv.ParseInt(req.BetID, 10, 64)
+
+	resp, err := cfg.CommissionClient.SubmitInsuranceClaim(ctx, &commissionpb.SubmitInsuranceClaimRequest{
+		UserId:            uID,
+		GameId:            gID,
+		BetId:             bID,
 		InsurancePolicyId: req.InsurancePolicyID,
 		ClaimType:         req.ClaimType,
 		InsuredAmount:     req.InsuredAmount,
@@ -59,8 +63,8 @@ func (cfg *RouterConfig) SubmitInsuranceClaim(ctx context.Context, c *app.Reques
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"message":  "Insurance claim submitted",
-		"claim_id": resp.ClaimId,
-		"status":   resp.Status,
+		"claim_id": resp.Claim.Id,
+		"status":   resp.Claim.Status,
 	})
 }
 
@@ -72,13 +76,15 @@ func (cfg *RouterConfig) GetUserInsuranceClaims(ctx context.Context, c *app.Requ
 		return
 	}
 
-	if cfg.BonusClient == nil {
-		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Bonus service unavailable", nil)
+	if cfg.CommissionClient == nil {
+		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Commission service unavailable", nil)
 		return
 	}
 
-	resp, err := cfg.BonusClient.GetUserInsuranceClaims(ctx, &bonuspb.GetUserInsuranceClaimsRequest{
-		UserId: userID,
+	uID, _ := strconv.ParseInt(userID, 10, 64)
+
+	resp, err := cfg.CommissionClient.GetUserInsuranceClaims(ctx, &commissionpb.GetUserInsuranceClaimsRequest{
+		UserId: uID,
 	})
 
 	if err != nil {
@@ -104,8 +110,10 @@ func (cfg *RouterConfig) GetUserSettlements(ctx context.Context, c *app.RequestC
 		return
 	}
 
+	uID, _ := strconv.ParseInt(userID, 10, 64)
+
 	resp, err := cfg.CommissionClient.GetUserSettlements(ctx, &commissionpb.GetUserSettlementsRequest{
-		UserId: userID,
+		UserId: uID,
 	})
 
 	if err != nil {
@@ -133,9 +141,10 @@ func (cfg *RouterConfig) GetSettlementById(ctx context.Context, c *app.RequestCo
 		return
 	}
 
+	sID, _ := strconv.ParseInt(settlementID, 10, 64)
+
 	resp, err := cfg.CommissionClient.GetSettlementById(ctx, &commissionpb.GetSettlementByIdRequest{
-		SettlementId: settlementID,
-		UserId:       userID,
+		Id: sID,
 	})
 
 	if err != nil {
@@ -161,8 +170,10 @@ func (cfg *RouterConfig) GetUserTotalPending(ctx context.Context, c *app.Request
 		return
 	}
 
-	resp, err := cfg.CommissionClient.GetTotalPending(ctx, &commissionpb.GetTotalPendingRequest{
-		UserId: userID,
+	uID, _ := strconv.ParseInt(userID, 10, 64)
+
+	resp, err := cfg.CommissionClient.GetUserTotalPending(ctx, &commissionpb.GetUserTotalPendingRequest{
+		UserId: uID,
 	})
 
 	if err != nil {
@@ -188,8 +199,10 @@ func (cfg *RouterConfig) GetUserTotalSettled(ctx context.Context, c *app.Request
 		return
 	}
 
-	resp, err := cfg.CommissionClient.GetTotalSettled(ctx, &commissionpb.GetTotalSettledRequest{
-		UserId: userID,
+	uID, _ := strconv.ParseInt(userID, 10, 64)
+
+	resp, err := cfg.CommissionClient.GetUserTotalSettled(ctx, &commissionpb.GetUserTotalSettledRequest{
+		UserId: uID,
 	})
 
 	if err != nil {

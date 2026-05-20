@@ -28,8 +28,7 @@ type RouterConfig struct {
 	AllowedIPs            []string
 }
 
-func NewRouter(cfg *RouterConfig) *route.Router {
-	r := route.New()
+func SetupRoutes(r *route.Engine, cfg *RouterConfig) {
 
 	r.Use(cfg.LoggerMiddleware.RequestID())
 	r.Use(cfg.LoggerMiddleware.StructuredLogger())

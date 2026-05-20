@@ -16,20 +16,20 @@ public final class BonusServiceOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_bonus_v1_ListBonusesRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_bonus_v1_ListBonusesRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_bonus_v1_ListBonusesResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_bonus_v1_ListBonusesResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_engine_bonus_v1_Bonus_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_bonus_v1_Bonus_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetActiveBonusesRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetActiveBonusesRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetActiveBonusesResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetActiveBonusesResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_engine_bonus_v1_GetBonusRequest_descriptor;
   static final 
@@ -41,16 +41,6 @@ public final class BonusServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_bonus_v1_GetBonusResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CreateBonusRequest_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CreateBonusRequest_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CreateBonusResponse_descriptor;
-  static final 
-    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CreateBonusResponse_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
     internal_static_game_engine_bonus_v1_ClaimBonusRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -61,100 +51,105 @@ public final class BonusServiceOuterClass {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_bonus_v1_ClaimBonusResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_ClaimBonusResponse_DetailsEntry_descriptor;
+    internal_static_game_engine_bonus_v1_GetUserBonusesRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_ClaimBonusResponse_DetailsEntry_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetUserBonusesRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CheckEligibilityRequest_descriptor;
+    internal_static_game_engine_bonus_v1_GetUserBonusesResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CheckEligibilityRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetUserBonusesResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CheckEligibilityResponse_descriptor;
+    internal_static_game_engine_bonus_v1_UserBonus_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CheckEligibilityResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_UserBonus_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CheckEligibilityResponse_DetailsEntry_descriptor;
+    internal_static_game_engine_bonus_v1_CreateRebetClaimRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CheckEligibilityResponse_DetailsEntry_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_CreateRebetClaimRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetBonusHistoryRequest_descriptor;
+    internal_static_game_engine_bonus_v1_CreateRebetClaimResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetBonusHistoryRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_CreateRebetClaimResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetBonusHistoryResponse_descriptor;
+    internal_static_game_engine_bonus_v1_GetUserRebetClaimsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetBonusHistoryResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetUserRebetClaimsRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_BonusHistoryEntry_descriptor;
+    internal_static_game_engine_bonus_v1_GetUserRebetClaimsResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_BonusHistoryEntry_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetUserRebetClaimsResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetActiveBonusClaimsRequest_descriptor;
+    internal_static_game_engine_bonus_v1_RebetClaim_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetActiveBonusClaimsRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_RebetClaim_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetActiveBonusClaimsResponse_descriptor;
+    internal_static_game_engine_bonus_v1_GetClaimableRebetsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetActiveBonusClaimsResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetClaimableRebetsRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_ActiveBonusClaim_descriptor;
+    internal_static_game_engine_bonus_v1_GetClaimableRebetsResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_ActiveBonusClaim_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetClaimableRebetsResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_ProcessWageringContributionRequest_descriptor;
+    internal_static_game_engine_bonus_v1_ClaimableRebet_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_ProcessWageringContributionRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_ClaimableRebet_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_ProcessWageringContributionResponse_descriptor;
+    internal_static_game_engine_bonus_v1_ClaimRebetRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_ProcessWageringContributionResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_ClaimRebetRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CompleteBonusRequest_descriptor;
+    internal_static_game_engine_bonus_v1_ClaimRebetResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CompleteBonusRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_ClaimRebetResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CompleteBonusResponse_descriptor;
+    internal_static_game_engine_bonus_v1_SubmitInsuranceClaimRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CompleteBonusResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_SubmitInsuranceClaimRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CancelBonusRequest_descriptor;
+    internal_static_game_engine_bonus_v1_SubmitInsuranceClaimResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CancelBonusRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_SubmitInsuranceClaimResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_CancelBonusResponse_descriptor;
+    internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_CancelBonusResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetBonusStatsRequest_descriptor;
+    internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetBonusStatsRequest_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetBonusStatsResponse_descriptor;
+    internal_static_game_engine_bonus_v1_InsuranceClaim_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetBonusStatsResponse_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_InsuranceClaim_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_game_engine_bonus_v1_GetBonusStatsResponse_StatsEntry_descriptor;
+    internal_static_game_engine_bonus_v1_CheckWageringRequirementsRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_game_engine_bonus_v1_GetBonusStatsResponse_StatsEntry_fieldAccessorTable;
+      internal_static_game_engine_bonus_v1_CheckWageringRequirementsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_bonus_v1_CheckWageringRequirementsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_bonus_v1_CheckWageringRequirementsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -166,129 +161,121 @@ public final class BonusServiceOuterClass {
     java.lang.String[] descriptorData = {
       "\n\034bonus/v1/bonus_service.proto\022\024game_eng" +
       "ine.bonus.v1\032\037google/protobuf/timestamp." +
-      "proto\032\032common/v1/pagination.proto\"\245\005\n\005Bo" +
-      "nus\022\016\n\002id\030\001 \001(\tR\002id\022\022\n\004name\030\002 \001(\tR\004name\022" +
-      " \n\013description\030\003 \001(\tR\013description\022\022\n\004typ" +
-      "e\030\004 \001(\tR\004type\022\026\n\006status\030\005 \001(\tR\006status\022\026\n" +
-      "\006amount\030\006 \001(\001R\006amount\022\036\n\npercentage\030\007 \001(" +
-      "\001R\npercentage\022\035\n\nmax_amount\030\010 \001(\001R\tmaxAm" +
-      "ount\022\037\n\013min_deposit\030\t \001(\001R\nminDeposit\0221\n" +
-      "\024wagering_requirement\030\n \001(\005R\023wageringReq" +
-      "uirement\022\027\n\007max_bet\030\013 \001(\001R\006maxBet\022#\n\rall" +
-      "owed_games\030\014 \001(\tR\014allowedGames\0229\n\nstart_" +
-      "date\030\r \001(\0132\032.google.protobuf.TimestampR\t" +
-      "startDate\0225\n\010end_date\030\016 \001(\0132\032.google.pro" +
-      "tobuf.TimestampR\007endDate\022\031\n\010max_uses\030\017 \001" +
-      "(\005R\007maxUses\022!\n\014current_uses\030\020 \001(\005R\013curre" +
-      "ntUses\022\033\n\tvip_level\030\021 \001(\tR\010vipLevel\0229\n\nc" +
-      "reated_at\030\022 \001(\0132\032.google.protobuf.Timest" +
-      "ampR\tcreatedAt\0229\n\nupdated_at\030\023 \001(\0132\032.goo" +
-      "gle.protobuf.TimestampR\tupdatedAt\"\031\n\027Get" +
-      "ActiveBonusesRequest\"Q\n\030GetActiveBonuses" +
-      "Response\0225\n\007bonuses\030\001 \003(\0132\033.game_engine." +
-      "bonus.v1.BonusR\007bonuses\"!\n\017GetBonusReque" +
-      "st\022\016\n\002id\030\001 \001(\tR\002id\"E\n\020GetBonusResponse\0221" +
-      "\n\005bonus\030\001 \001(\0132\033.game_engine.bonus.v1.Bon" +
-      "usR\005bonus\"G\n\022CreateBonusRequest\0221\n\005bonus" +
-      "\030\001 \001(\0132\033.game_engine.bonus.v1.BonusR\005bon" +
-      "us\"H\n\023CreateBonusResponse\0221\n\005bonus\030\001 \001(\013" +
-      "2\033.game_engine.bonus.v1.BonusR\005bonus\"G\n\021" +
-      "ClaimBonusRequest\022\031\n\010bonus_id\030\001 \001(\tR\007bon" +
-      "usId\022\027\n\007user_id\030\002 \001(\tR\006userId\"\370\001\n\022ClaimB" +
-      "onusResponse\022\030\n\007success\030\001 \001(\010R\007success\022\030" +
-      "\n\007message\030\002 \001(\tR\007message\022!\n\014bonus_amount" +
-      "\030\003 \001(\001R\013bonusAmount\022O\n\007details\030\004 \003(\01325.g" +
-      "ame_engine.bonus.v1.ClaimBonusResponse.D" +
-      "etailsEntryR\007details\032:\n\014DetailsEntry\022\020\n\003" +
-      "key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001" +
-      "\"M\n\027CheckEligibilityRequest\022\027\n\007user_id\030\001" +
-      " \001(\tR\006userId\022\031\n\010bonus_id\030\002 \001(\tR\007bonusId\"" +
-      "\311\001\n\030CheckEligibilityResponse\022\032\n\010eligible" +
-      "\030\001 \001(\010R\010eligible\022U\n\007details\030\002 \003(\0132;.game" +
-      "_engine.bonus.v1.CheckEligibilityRespons" +
-      "e.DetailsEntryR\007details\032:\n\014DetailsEntry\022" +
-      "\020\n\003key\030\001 \001(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:" +
-      "\0028\001\"1\n\026GetBonusHistoryRequest\022\027\n\007user_id" +
-      "\030\001 \001(\tR\006userId\"\\\n\027GetBonusHistoryRespons" +
-      "e\022A\n\007entries\030\001 \003(\0132\'.game_engine.bonus.v" +
-      "1.BonusHistoryEntryR\007entries\"\367\001\n\021BonusHi" +
-      "storyEntry\022\031\n\010bonus_id\030\001 \001(\tR\007bonusId\022\035\n" +
-      "\nbonus_name\030\002 \001(\tR\tbonusName\022\026\n\006amount\030\003" +
-      " \001(\001R\006amount\022\026\n\006status\030\004 \001(\tR\006status\0229\n\n" +
-      "claimed_at\030\005 \001(\0132\032.google.protobuf.Times" +
-      "tampR\tclaimedAt\022=\n\014completed_at\030\006 \001(\0132\032." +
-      "google.protobuf.TimestampR\013completedAt\"6" +
-      "\n\033GetActiveBonusClaimsRequest\022\027\n\007user_id" +
-      "\030\001 \001(\tR\006userId\"^\n\034GetActiveBonusClaimsRe" +
-      "sponse\022>\n\006claims\030\001 \003(\0132&.game_engine.bon" +
-      "us.v1.ActiveBonusClaimR\006claims\"\221\002\n\020Activ" +
-      "eBonusClaim\022\031\n\010bonus_id\030\001 \001(\tR\007bonusId\022\035" +
-      "\n\nbonus_name\030\002 \001(\tR\tbonusName\022\026\n\006amount\030" +
-      "\003 \001(\001R\006amount\022+\n\021wagering_progress\030\004 \001(\001" +
-      "R\020wageringProgress\022+\n\021wagering_required\030" +
-      "\005 \001(\001R\020wageringRequired\022\026\n\006status\030\006 \001(\tR" +
-      "\006status\0229\n\nexpires_at\030\007 \001(\0132\032.google.pro" +
-      "tobuf.TimestampR\texpiresAt\"\224\001\n\"ProcessWa" +
-      "geringContributionRequest\022\027\n\007user_id\030\001 \001" +
-      "(\tR\006userId\022\031\n\010bonus_id\030\002 \001(\tR\007bonusId\022\035\n" +
-      "\nbet_amount\030\003 \001(\001R\tbetAmount\022\033\n\tgame_typ" +
-      "e\030\004 \001(\tR\010gameType\"\267\001\n#ProcessWageringCon" +
-      "tributionResponse\022\030\n\007success\030\001 \001(\010R\007succ" +
-      "ess\022+\n\021wagering_progress\030\002 \001(\001R\020wagering" +
-      "Progress\022+\n\021wagering_required\030\003 \001(\001R\020wag" +
-      "eringRequired\022\034\n\tcompleted\030\004 \001(\010R\tcomple" +
-      "ted\"f\n\024CompleteBonusRequest\022\027\n\007user_id\030\001" +
-      " \001(\tR\006userId\022\031\n\010bonus_id\030\002 \001(\tR\007bonusId\022" +
-      "\032\n\010winnings\030\003 \001(\001R\010winnings\"p\n\025CompleteB" +
-      "onusResponse\022\030\n\007success\030\001 \001(\010R\007success\022#" +
-      "\n\rpayout_amount\030\002 \001(\001R\014payoutAmount\022\030\n\007m" +
-      "essage\030\003 \001(\tR\007message\"`\n\022CancelBonusRequ" +
-      "est\022\027\n\007user_id\030\001 \001(\tR\006userId\022\031\n\010bonus_id" +
-      "\030\002 \001(\tR\007bonusId\022\026\n\006reason\030\003 \001(\tR\006reason\"" +
-      "I\n\023CancelBonusResponse\022\030\n\007success\030\001 \001(\010R" +
-      "\007success\022\030\n\007message\030\002 \001(\tR\007message\"/\n\024Ge" +
-      "tBonusStatsRequest\022\027\n\007user_id\030\001 \001(\tR\006use" +
-      "rId\"\315\002\n\025GetBonusStatsResponse\0222\n\025total_b" +
-      "onuses_claimed\030\001 \001(\005R\023totalBonusesClaime" +
-      "d\022,\n\022total_bonus_amount\030\002 \001(\001R\020totalBonu" +
-      "sAmount\022#\n\rtotal_wagered\030\003 \001(\001R\014totalWag" +
-      "ered\022%\n\016total_winnings\030\004 \001(\001R\rtotalWinni" +
-      "ngs\022L\n\005stats\030\005 \003(\01326.game_engine.bonus.v" +
-      "1.GetBonusStatsResponse.StatsEntryR\005stat" +
-      "s\0328\n\nStatsEntry\022\020\n\003key\030\001 \001(\tR\003key\022\024\n\005val" +
-      "ue\030\002 \001(\tR\005value:\0028\0012\320\t\n\014BonusService\022q\n\020" +
-      "GetActiveBonuses\022-.game_engine.bonus.v1." +
-      "GetActiveBonusesRequest\032..game_engine.bo" +
-      "nus.v1.GetActiveBonusesResponse\022Y\n\010GetBo" +
-      "nus\022%.game_engine.bonus.v1.GetBonusReque" +
-      "st\032&.game_engine.bonus.v1.GetBonusRespon" +
-      "se\022b\n\013CreateBonus\022(.game_engine.bonus.v1" +
-      ".CreateBonusRequest\032).game_engine.bonus." +
-      "v1.CreateBonusResponse\022_\n\nClaimBonus\022\'.g" +
-      "ame_engine.bonus.v1.ClaimBonusRequest\032(." +
-      "game_engine.bonus.v1.ClaimBonusResponse\022" +
-      "q\n\020CheckEligibility\022-.game_engine.bonus." +
-      "v1.CheckEligibilityRequest\032..game_engine" +
-      ".bonus.v1.CheckEligibilityResponse\022n\n\017Ge" +
-      "tBonusHistory\022,.game_engine.bonus.v1.Get" +
-      "BonusHistoryRequest\032-.game_engine.bonus." +
-      "v1.GetBonusHistoryResponse\022}\n\024GetActiveB" +
-      "onusClaims\0221.game_engine.bonus.v1.GetAct" +
-      "iveBonusClaimsRequest\0322.game_engine.bonu" +
-      "s.v1.GetActiveBonusClaimsResponse\022\222\001\n\033Pr" +
-      "ocessWageringContribution\0228.game_engine." +
-      "bonus.v1.ProcessWageringContributionRequ" +
-      "est\0329.game_engine.bonus.v1.ProcessWageri" +
-      "ngContributionResponse\022h\n\rCompleteBonus\022" +
-      "*.game_engine.bonus.v1.CompleteBonusRequ" +
-      "est\032+.game_engine.bonus.v1.CompleteBonus" +
-      "Response\022b\n\013CancelBonus\022(.game_engine.bo" +
-      "nus.v1.CancelBonusRequest\032).game_engine." +
-      "bonus.v1.CancelBonusResponse\022h\n\rGetBonus" +
-      "Stats\022*.game_engine.bonus.v1.GetBonusSta" +
-      "tsRequest\032+.game_engine.bonus.v1.GetBonu" +
-      "sStatsResponseB5\n\030com.game_engine.bonus." +
-      "v1P\001Z\027gen/go/bonus/v1;bonusv1b\006proto3"
+      "proto\032\032common/v1/pagination.proto\"H\n\022Lis" +
+      "tBonusesRequest\022\026\n\006status\030\001 \001(\tR\006status\022" +
+      "\032\n\010category\030\002 \001(\tR\010category\"L\n\023ListBonus" +
+      "esResponse\0225\n\007bonuses\030\001 \003(\0132\033.game_engin" +
+      "e.bonus.v1.BonusR\007bonuses\"\267\002\n\005Bonus\022\031\n\010b" +
+      "onus_id\030\001 \001(\tR\007bonusId\022\022\n\004name\030\002 \001(\tR\004na" +
+      "me\022 \n\013description\030\003 \001(\tR\013description\022\035\n\n" +
+      "bonus_type\030\004 \001(\tR\tbonusType\022\026\n\006amount\030\005 " +
+      "\001(\001R\006amount\022\037\n\013min_deposit\030\006 \001(\001R\nminDep" +
+      "osit\022\033\n\tmax_bonus\030\007 \001(\001R\010maxBonus\0221\n\024wag" +
+      "ering_requirement\030\010 \001(\001R\023wageringRequire" +
+      "ment\022\035\n\nexpires_at\030\t \001(\003R\texpiresAt\022\026\n\006s" +
+      "tatus\030\n \001(\tR\006status\",\n\017GetBonusRequest\022\031" +
+      "\n\010bonus_id\030\001 \001(\tR\007bonusId\"E\n\020GetBonusRes" +
+      "ponse\0221\n\005bonus\030\001 \001(\0132\033.game_engine.bonus" +
+      ".v1.BonusR\005bonus\"G\n\021ClaimBonusRequest\022\031\n" +
+      "\010bonus_id\030\001 \001(\tR\007bonusId\022\027\n\007user_id\030\002 \001(" +
+      "\tR\006userId\"p\n\022ClaimBonusResponse\022\030\n\007succe" +
+      "ss\030\001 \001(\010R\007success\022!\n\014bonus_amount\030\002 \001(\001R" +
+      "\013bonusAmount\022\035\n\nexpires_at\030\003 \001(\tR\texpire" +
+      "sAt\"0\n\025GetUserBonusesRequest\022\027\n\007user_id\030" +
+      "\001 \001(\tR\006userId\"S\n\026GetUserBonusesResponse\022" +
+      "9\n\007bonuses\030\001 \003(\0132\037.game_engine.bonus.v1." +
+      "UserBonusR\007bonuses\"\242\001\n\tUserBonus\022\031\n\010bonu" +
+      "s_id\030\001 \001(\tR\007bonusId\022\022\n\004name\030\002 \001(\tR\004name\022" +
+      "\026\n\006amount\030\003 \001(\001R\006amount\022\030\n\007wagered\030\004 \001(\001" +
+      "R\007wagered\022\034\n\tremaining\030\005 \001(\001R\tremaining\022" +
+      "\026\n\006status\030\006 \001(\tR\006status\"\354\001\n\027CreateRebetC" +
+      "laimRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\022\031\n\010" +
+      "bonus_id\030\002 \001(\tR\007bonusId\022\035\n\nbonus_code\030\003 " +
+      "\001(\tR\tbonusCode\022!\n\014bonus_amount\030\004 \001(\001R\013bo" +
+      "nusAmount\022+\n\021rebet_requirement\030\005 \001(\001R\020re" +
+      "betRequirement\022\027\n\007game_id\030\006 \001(\tR\006gameId\022" +
+      "\025\n\006bet_id\030\007 \001(\tR\005betId\"r\n\030CreateRebetCla" +
+      "imResponse\022\031\n\010rebet_id\030\001 \001(\tR\007rebetId\022\026\n" +
+      "\006status\030\002 \001(\tR\006status\022#\n\rcurrent_rebet\030\003" +
+      " \001(\001R\014currentRebet\"4\n\031GetUserRebetClaims" +
+      "Request\022\027\n\007user_id\030\001 \001(\tR\006userId\"V\n\032GetU" +
+      "serRebetClaimsResponse\0228\n\006claims\030\001 \003(\0132 " +
+      ".game_engine.bonus.v1.RebetClaimR\006claims" +
+      "\"\264\001\n\nRebetClaim\022\031\n\010rebet_id\030\001 \001(\tR\007rebet" +
+      "Id\022!\n\014bonus_amount\030\002 \001(\001R\013bonusAmount\022+\n" +
+      "\021rebet_requirement\030\003 \001(\001R\020rebetRequireme" +
+      "nt\022#\n\rcurrent_rebet\030\004 \001(\001R\014currentRebet\022" +
+      "\026\n\006status\030\005 \001(\tR\006status\"4\n\031GetClaimableR" +
+      "ebetsRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\"Z\n" +
+      "\032GetClaimableRebetsResponse\022<\n\006claims\030\001 " +
+      "\003(\0132$.game_engine.bonus.v1.ClaimableRebe" +
+      "tR\006claims\"\\\n\016ClaimableRebet\022\031\n\010rebet_id\030" +
+      "\001 \001(\tR\007rebetId\022\026\n\006amount\030\002 \001(\001R\006amount\022\027" +
+      "\n\007game_id\030\003 \001(\tR\006gameId\"G\n\021ClaimRebetReq" +
+      "uest\022\031\n\010rebet_id\030\001 \001(\tR\007rebetId\022\027\n\007user_" +
+      "id\030\002 \001(\tR\006userId\"m\n\022ClaimRebetResponse\022\030" +
+      "\n\007success\030\001 \001(\010R\007success\022\026\n\006amount\030\002 \001(\001" +
+      "R\006amount\022%\n\016transaction_id\030\003 \001(\tR\rtransa" +
+      "ctionId\"\313\002\n\033SubmitInsuranceClaimRequest\022" +
+      "\027\n\007user_id\030\001 \001(\tR\006userId\022\027\n\007game_id\030\002 \001(" +
+      "\tR\006gameId\022\025\n\006bet_id\030\003 \001(\tR\005betId\022.\n\023insu" +
+      "rance_policy_id\030\004 \001(\tR\021insurancePolicyId" +
+      "\022\035\n\nclaim_type\030\005 \001(\tR\tclaimType\022%\n\016insur" +
+      "ed_amount\030\006 \001(\001R\rinsuredAmount\022\037\n\013loss_a" +
+      "mount\030\007 \001(\001R\nlossAmount\022!\n\014claim_reason\030" +
+      "\010 \001(\tR\013claimReason\022)\n\020evidence_details\030\t" +
+      " \001(\tR\017evidenceDetails\"Q\n\034SubmitInsurance" +
+      "ClaimResponse\022\031\n\010claim_id\030\001 \001(\tR\007claimId" +
+      "\022\026\n\006status\030\002 \001(\tR\006status\"8\n\035GetUserInsur" +
+      "anceClaimsRequest\022\027\n\007user_id\030\001 \001(\tR\006user" +
+      "Id\"^\n\036GetUserInsuranceClaimsResponse\022<\n\006" +
+      "claims\030\001 \003(\0132$.game_engine.bonus.v1.Insu" +
+      "ranceClaimR\006claims\"\252\001\n\016InsuranceClaim\022\031\n" +
+      "\010claim_id\030\001 \001(\tR\007claimId\022%\n\016insured_amou" +
+      "nt\030\002 \001(\001R\rinsuredAmount\022\037\n\013loss_amount\030\003" +
+      " \001(\001R\nlossAmount\022\026\n\006status\030\004 \001(\tR\006status" +
+      "\022\035\n\ncreated_at\030\005 \001(\003R\tcreatedAt\"S\n Check" +
+      "WageringRequirementsRequest\022\027\n\007user_id\030\001" +
+      " \001(\tR\006userId\022\026\n\006amount\030\002 \001(\001R\006amount\"\236\001\n" +
+      "!CheckWageringRequirementsResponse\022)\n\020re" +
+      "quirements_met\030\001 \001(\010R\017requirementsMet\022%\n" +
+      "\016wagered_amount\030\002 \001(\001R\rwageredAmount\022\'\n\017" +
+      "required_amount\030\003 \001(\001R\016requiredAmount2\365\t" +
+      "\n\014BonusService\022b\n\013ListBonuses\022(.game_eng" +
+      "ine.bonus.v1.ListBonusesRequest\032).game_e" +
+      "ngine.bonus.v1.ListBonusesResponse\022Y\n\010Ge" +
+      "tBonus\022%.game_engine.bonus.v1.GetBonusRe" +
+      "quest\032&.game_engine.bonus.v1.GetBonusRes" +
+      "ponse\022_\n\nClaimBonus\022\'.game_engine.bonus." +
+      "v1.ClaimBonusRequest\032(.game_engine.bonus" +
+      ".v1.ClaimBonusResponse\022k\n\016GetUserBonuses" +
+      "\022+.game_engine.bonus.v1.GetUserBonusesRe" +
+      "quest\032,.game_engine.bonus.v1.GetUserBonu" +
+      "sesResponse\022q\n\020CreateRebetClaim\022-.game_e" +
+      "ngine.bonus.v1.CreateRebetClaimRequest\032." +
+      ".game_engine.bonus.v1.CreateRebetClaimRe" +
+      "sponse\022w\n\022GetUserRebetClaims\022/.game_engi" +
+      "ne.bonus.v1.GetUserRebetClaimsRequest\0320." +
+      "game_engine.bonus.v1.GetUserRebetClaimsR" +
+      "esponse\022w\n\022GetClaimableRebets\022/.game_eng" +
+      "ine.bonus.v1.GetClaimableRebetsRequest\0320" +
+      ".game_engine.bonus.v1.GetClaimableRebets" +
+      "Response\022_\n\nClaimRebet\022\'.game_engine.bon" +
+      "us.v1.ClaimRebetRequest\032(.game_engine.bo" +
+      "nus.v1.ClaimRebetResponse\022}\n\024SubmitInsur" +
+      "anceClaim\0221.game_engine.bonus.v1.SubmitI" +
+      "nsuranceClaimRequest\0322.game_engine.bonus" +
+      ".v1.SubmitInsuranceClaimResponse\022\203\001\n\026Get" +
+      "UserInsuranceClaims\0223.game_engine.bonus." +
+      "v1.GetUserInsuranceClaimsRequest\0324.game_" +
+      "engine.bonus.v1.GetUserInsuranceClaimsRe" +
+      "sponse\022\214\001\n\031CheckWageringRequirements\0226.g" +
+      "ame_engine.bonus.v1.CheckWageringRequire" +
+      "mentsRequest\0327.game_engine.bonus.v1.Chec" +
+      "kWageringRequirementsResponseBa\n\030com.gam" +
+      "e_engine.bonus.v1P\001ZCgithub.com/game_eng" +
+      "ine/common-service/proto/gen/go/bonus/v1" +
+      ";bonusv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -296,174 +283,168 @@ public final class BonusServiceOuterClass {
           com.google.protobuf.TimestampProto.getDescriptor(),
           com.game_engine.common.v1.Pagination.getDescriptor(),
         });
-    internal_static_game_engine_bonus_v1_Bonus_descriptor =
+    internal_static_game_engine_bonus_v1_ListBonusesRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_game_engine_bonus_v1_ListBonusesRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_ListBonusesRequest_descriptor,
+        new java.lang.String[] { "Status", "Category", });
+    internal_static_game_engine_bonus_v1_ListBonusesResponse_descriptor =
+      getDescriptor().getMessageTypes().get(1);
+    internal_static_game_engine_bonus_v1_ListBonusesResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_ListBonusesResponse_descriptor,
+        new java.lang.String[] { "Bonuses", });
+    internal_static_game_engine_bonus_v1_Bonus_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_game_engine_bonus_v1_Bonus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_bonus_v1_Bonus_descriptor,
-        new java.lang.String[] { "Id", "Name", "Description", "Type", "Status", "Amount", "Percentage", "MaxAmount", "MinDeposit", "WageringRequirement", "MaxBet", "AllowedGames", "StartDate", "EndDate", "MaxUses", "CurrentUses", "VipLevel", "CreatedAt", "UpdatedAt", });
-    internal_static_game_engine_bonus_v1_GetActiveBonusesRequest_descriptor =
-      getDescriptor().getMessageTypes().get(1);
-    internal_static_game_engine_bonus_v1_GetActiveBonusesRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetActiveBonusesRequest_descriptor,
-        new java.lang.String[] { });
-    internal_static_game_engine_bonus_v1_GetActiveBonusesResponse_descriptor =
-      getDescriptor().getMessageTypes().get(2);
-    internal_static_game_engine_bonus_v1_GetActiveBonusesResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetActiveBonusesResponse_descriptor,
-        new java.lang.String[] { "Bonuses", });
+        new java.lang.String[] { "BonusId", "Name", "Description", "BonusType", "Amount", "MinDeposit", "MaxBonus", "WageringRequirement", "ExpiresAt", "Status", });
     internal_static_game_engine_bonus_v1_GetBonusRequest_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_game_engine_bonus_v1_GetBonusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_bonus_v1_GetBonusRequest_descriptor,
-        new java.lang.String[] { "Id", });
+        new java.lang.String[] { "BonusId", });
     internal_static_game_engine_bonus_v1_GetBonusResponse_descriptor =
       getDescriptor().getMessageTypes().get(4);
     internal_static_game_engine_bonus_v1_GetBonusResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_bonus_v1_GetBonusResponse_descriptor,
         new java.lang.String[] { "Bonus", });
-    internal_static_game_engine_bonus_v1_CreateBonusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(5);
-    internal_static_game_engine_bonus_v1_CreateBonusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CreateBonusRequest_descriptor,
-        new java.lang.String[] { "Bonus", });
-    internal_static_game_engine_bonus_v1_CreateBonusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(6);
-    internal_static_game_engine_bonus_v1_CreateBonusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CreateBonusResponse_descriptor,
-        new java.lang.String[] { "Bonus", });
     internal_static_game_engine_bonus_v1_ClaimBonusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_game_engine_bonus_v1_ClaimBonusRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_bonus_v1_ClaimBonusRequest_descriptor,
         new java.lang.String[] { "BonusId", "UserId", });
     internal_static_game_engine_bonus_v1_ClaimBonusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_game_engine_bonus_v1_ClaimBonusResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_bonus_v1_ClaimBonusResponse_descriptor,
-        new java.lang.String[] { "Success", "Message", "BonusAmount", "Details", });
-    internal_static_game_engine_bonus_v1_ClaimBonusResponse_DetailsEntry_descriptor =
-      internal_static_game_engine_bonus_v1_ClaimBonusResponse_descriptor.getNestedTypes().get(0);
-    internal_static_game_engine_bonus_v1_ClaimBonusResponse_DetailsEntry_fieldAccessorTable = new
+        new java.lang.String[] { "Success", "BonusAmount", "ExpiresAt", });
+    internal_static_game_engine_bonus_v1_GetUserBonusesRequest_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_game_engine_bonus_v1_GetUserBonusesRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_ClaimBonusResponse_DetailsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_game_engine_bonus_v1_CheckEligibilityRequest_descriptor =
+        internal_static_game_engine_bonus_v1_GetUserBonusesRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_game_engine_bonus_v1_GetUserBonusesResponse_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_game_engine_bonus_v1_GetUserBonusesResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_GetUserBonusesResponse_descriptor,
+        new java.lang.String[] { "Bonuses", });
+    internal_static_game_engine_bonus_v1_UserBonus_descriptor =
       getDescriptor().getMessageTypes().get(9);
-    internal_static_game_engine_bonus_v1_CheckEligibilityRequest_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_UserBonus_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CheckEligibilityRequest_descriptor,
-        new java.lang.String[] { "UserId", "BonusId", });
-    internal_static_game_engine_bonus_v1_CheckEligibilityResponse_descriptor =
+        internal_static_game_engine_bonus_v1_UserBonus_descriptor,
+        new java.lang.String[] { "BonusId", "Name", "Amount", "Wagered", "Remaining", "Status", });
+    internal_static_game_engine_bonus_v1_CreateRebetClaimRequest_descriptor =
       getDescriptor().getMessageTypes().get(10);
-    internal_static_game_engine_bonus_v1_CheckEligibilityResponse_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_CreateRebetClaimRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CheckEligibilityResponse_descriptor,
-        new java.lang.String[] { "Eligible", "Details", });
-    internal_static_game_engine_bonus_v1_CheckEligibilityResponse_DetailsEntry_descriptor =
-      internal_static_game_engine_bonus_v1_CheckEligibilityResponse_descriptor.getNestedTypes().get(0);
-    internal_static_game_engine_bonus_v1_CheckEligibilityResponse_DetailsEntry_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CheckEligibilityResponse_DetailsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_game_engine_bonus_v1_GetBonusHistoryRequest_descriptor =
+        internal_static_game_engine_bonus_v1_CreateRebetClaimRequest_descriptor,
+        new java.lang.String[] { "UserId", "BonusId", "BonusCode", "BonusAmount", "RebetRequirement", "GameId", "BetId", });
+    internal_static_game_engine_bonus_v1_CreateRebetClaimResponse_descriptor =
       getDescriptor().getMessageTypes().get(11);
-    internal_static_game_engine_bonus_v1_GetBonusHistoryRequest_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_CreateRebetClaimResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetBonusHistoryRequest_descriptor,
-        new java.lang.String[] { "UserId", });
-    internal_static_game_engine_bonus_v1_GetBonusHistoryResponse_descriptor =
+        internal_static_game_engine_bonus_v1_CreateRebetClaimResponse_descriptor,
+        new java.lang.String[] { "RebetId", "Status", "CurrentRebet", });
+    internal_static_game_engine_bonus_v1_GetUserRebetClaimsRequest_descriptor =
       getDescriptor().getMessageTypes().get(12);
-    internal_static_game_engine_bonus_v1_GetBonusHistoryResponse_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_GetUserRebetClaimsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetBonusHistoryResponse_descriptor,
-        new java.lang.String[] { "Entries", });
-    internal_static_game_engine_bonus_v1_BonusHistoryEntry_descriptor =
+        internal_static_game_engine_bonus_v1_GetUserRebetClaimsRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_game_engine_bonus_v1_GetUserRebetClaimsResponse_descriptor =
       getDescriptor().getMessageTypes().get(13);
-    internal_static_game_engine_bonus_v1_BonusHistoryEntry_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_GetUserRebetClaimsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_BonusHistoryEntry_descriptor,
-        new java.lang.String[] { "BonusId", "BonusName", "Amount", "Status", "ClaimedAt", "CompletedAt", });
-    internal_static_game_engine_bonus_v1_GetActiveBonusClaimsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(14);
-    internal_static_game_engine_bonus_v1_GetActiveBonusClaimsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetActiveBonusClaimsRequest_descriptor,
-        new java.lang.String[] { "UserId", });
-    internal_static_game_engine_bonus_v1_GetActiveBonusClaimsResponse_descriptor =
-      getDescriptor().getMessageTypes().get(15);
-    internal_static_game_engine_bonus_v1_GetActiveBonusClaimsResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetActiveBonusClaimsResponse_descriptor,
+        internal_static_game_engine_bonus_v1_GetUserRebetClaimsResponse_descriptor,
         new java.lang.String[] { "Claims", });
-    internal_static_game_engine_bonus_v1_ActiveBonusClaim_descriptor =
-      getDescriptor().getMessageTypes().get(16);
-    internal_static_game_engine_bonus_v1_ActiveBonusClaim_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_RebetClaim_descriptor =
+      getDescriptor().getMessageTypes().get(14);
+    internal_static_game_engine_bonus_v1_RebetClaim_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_ActiveBonusClaim_descriptor,
-        new java.lang.String[] { "BonusId", "BonusName", "Amount", "WageringProgress", "WageringRequired", "Status", "ExpiresAt", });
-    internal_static_game_engine_bonus_v1_ProcessWageringContributionRequest_descriptor =
-      getDescriptor().getMessageTypes().get(17);
-    internal_static_game_engine_bonus_v1_ProcessWageringContributionRequest_fieldAccessorTable = new
+        internal_static_game_engine_bonus_v1_RebetClaim_descriptor,
+        new java.lang.String[] { "RebetId", "BonusAmount", "RebetRequirement", "CurrentRebet", "Status", });
+    internal_static_game_engine_bonus_v1_GetClaimableRebetsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(15);
+    internal_static_game_engine_bonus_v1_GetClaimableRebetsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_ProcessWageringContributionRequest_descriptor,
-        new java.lang.String[] { "UserId", "BonusId", "BetAmount", "GameType", });
-    internal_static_game_engine_bonus_v1_ProcessWageringContributionResponse_descriptor =
-      getDescriptor().getMessageTypes().get(18);
-    internal_static_game_engine_bonus_v1_ProcessWageringContributionResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_ProcessWageringContributionResponse_descriptor,
-        new java.lang.String[] { "Success", "WageringProgress", "WageringRequired", "Completed", });
-    internal_static_game_engine_bonus_v1_CompleteBonusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(19);
-    internal_static_game_engine_bonus_v1_CompleteBonusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CompleteBonusRequest_descriptor,
-        new java.lang.String[] { "UserId", "BonusId", "Winnings", });
-    internal_static_game_engine_bonus_v1_CompleteBonusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(20);
-    internal_static_game_engine_bonus_v1_CompleteBonusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CompleteBonusResponse_descriptor,
-        new java.lang.String[] { "Success", "PayoutAmount", "Message", });
-    internal_static_game_engine_bonus_v1_CancelBonusRequest_descriptor =
-      getDescriptor().getMessageTypes().get(21);
-    internal_static_game_engine_bonus_v1_CancelBonusRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CancelBonusRequest_descriptor,
-        new java.lang.String[] { "UserId", "BonusId", "Reason", });
-    internal_static_game_engine_bonus_v1_CancelBonusResponse_descriptor =
-      getDescriptor().getMessageTypes().get(22);
-    internal_static_game_engine_bonus_v1_CancelBonusResponse_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_CancelBonusResponse_descriptor,
-        new java.lang.String[] { "Success", "Message", });
-    internal_static_game_engine_bonus_v1_GetBonusStatsRequest_descriptor =
-      getDescriptor().getMessageTypes().get(23);
-    internal_static_game_engine_bonus_v1_GetBonusStatsRequest_fieldAccessorTable = new
-      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetBonusStatsRequest_descriptor,
+        internal_static_game_engine_bonus_v1_GetClaimableRebetsRequest_descriptor,
         new java.lang.String[] { "UserId", });
-    internal_static_game_engine_bonus_v1_GetBonusStatsResponse_descriptor =
+    internal_static_game_engine_bonus_v1_GetClaimableRebetsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(16);
+    internal_static_game_engine_bonus_v1_GetClaimableRebetsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_GetClaimableRebetsResponse_descriptor,
+        new java.lang.String[] { "Claims", });
+    internal_static_game_engine_bonus_v1_ClaimableRebet_descriptor =
+      getDescriptor().getMessageTypes().get(17);
+    internal_static_game_engine_bonus_v1_ClaimableRebet_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_ClaimableRebet_descriptor,
+        new java.lang.String[] { "RebetId", "Amount", "GameId", });
+    internal_static_game_engine_bonus_v1_ClaimRebetRequest_descriptor =
+      getDescriptor().getMessageTypes().get(18);
+    internal_static_game_engine_bonus_v1_ClaimRebetRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_ClaimRebetRequest_descriptor,
+        new java.lang.String[] { "RebetId", "UserId", });
+    internal_static_game_engine_bonus_v1_ClaimRebetResponse_descriptor =
+      getDescriptor().getMessageTypes().get(19);
+    internal_static_game_engine_bonus_v1_ClaimRebetResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_ClaimRebetResponse_descriptor,
+        new java.lang.String[] { "Success", "Amount", "TransactionId", });
+    internal_static_game_engine_bonus_v1_SubmitInsuranceClaimRequest_descriptor =
+      getDescriptor().getMessageTypes().get(20);
+    internal_static_game_engine_bonus_v1_SubmitInsuranceClaimRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_SubmitInsuranceClaimRequest_descriptor,
+        new java.lang.String[] { "UserId", "GameId", "BetId", "InsurancePolicyId", "ClaimType", "InsuredAmount", "LossAmount", "ClaimReason", "EvidenceDetails", });
+    internal_static_game_engine_bonus_v1_SubmitInsuranceClaimResponse_descriptor =
+      getDescriptor().getMessageTypes().get(21);
+    internal_static_game_engine_bonus_v1_SubmitInsuranceClaimResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_SubmitInsuranceClaimResponse_descriptor,
+        new java.lang.String[] { "ClaimId", "Status", });
+    internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(22);
+    internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(23);
+    internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_GetUserInsuranceClaimsResponse_descriptor,
+        new java.lang.String[] { "Claims", });
+    internal_static_game_engine_bonus_v1_InsuranceClaim_descriptor =
       getDescriptor().getMessageTypes().get(24);
-    internal_static_game_engine_bonus_v1_GetBonusStatsResponse_fieldAccessorTable = new
+    internal_static_game_engine_bonus_v1_InsuranceClaim_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetBonusStatsResponse_descriptor,
-        new java.lang.String[] { "TotalBonusesClaimed", "TotalBonusAmount", "TotalWagered", "TotalWinnings", "Stats", });
-    internal_static_game_engine_bonus_v1_GetBonusStatsResponse_StatsEntry_descriptor =
-      internal_static_game_engine_bonus_v1_GetBonusStatsResponse_descriptor.getNestedTypes().get(0);
-    internal_static_game_engine_bonus_v1_GetBonusStatsResponse_StatsEntry_fieldAccessorTable = new
+        internal_static_game_engine_bonus_v1_InsuranceClaim_descriptor,
+        new java.lang.String[] { "ClaimId", "InsuredAmount", "LossAmount", "Status", "CreatedAt", });
+    internal_static_game_engine_bonus_v1_CheckWageringRequirementsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_game_engine_bonus_v1_CheckWageringRequirementsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_game_engine_bonus_v1_GetBonusStatsResponse_StatsEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        internal_static_game_engine_bonus_v1_CheckWageringRequirementsRequest_descriptor,
+        new java.lang.String[] { "UserId", "Amount", });
+    internal_static_game_engine_bonus_v1_CheckWageringRequirementsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_game_engine_bonus_v1_CheckWageringRequirementsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_bonus_v1_CheckWageringRequirementsResponse_descriptor,
+        new java.lang.String[] { "RequirementsMet", "WageredAmount", "RequiredAmount", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.game_engine.common.v1.Pagination.getDescriptor();
   }

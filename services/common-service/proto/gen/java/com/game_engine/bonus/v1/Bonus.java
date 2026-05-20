@@ -5,10 +5,6 @@
 package com.game_engine.bonus.v1;
 
 /**
- * <pre>
- * Bonus message
- * </pre>
- *
  * Protobuf type {@code game_engine.bonus.v1.Bonus}
  */
 public final class Bonus extends
@@ -21,13 +17,11 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Bonus() {
-    id_ = "";
+    bonusId_ = "";
     name_ = "";
     description_ = "";
-    type_ = "";
+    bonusType_ = "";
     status_ = "";
-    allowedGames_ = "";
-    vipLevel_ = "";
   }
 
   @java.lang.Override
@@ -50,40 +44,39 @@ private static final long serialVersionUID = 0L;
             com.game_engine.bonus.v1.Bonus.class, com.game_engine.bonus.v1.Bonus.Builder.class);
   }
 
-  private int bitField0_;
-  public static final int ID_FIELD_NUMBER = 1;
+  public static final int BONUS_ID_FIELD_NUMBER = 1;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object id_ = "";
+  private volatile java.lang.Object bonusId_ = "";
   /**
-   * <code>string id = 1 [json_name = "id"];</code>
-   * @return The id.
+   * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+   * @return The bonusId.
    */
   @java.lang.Override
-  public java.lang.String getId() {
-    java.lang.Object ref = id_;
+  public java.lang.String getBonusId() {
+    java.lang.Object ref = bonusId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      id_ = s;
+      bonusId_ = s;
       return s;
     }
   }
   /**
-   * <code>string id = 1 [json_name = "id"];</code>
-   * @return The bytes for id.
+   * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+   * @return The bytes for bonusId.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getIdBytes() {
-    java.lang.Object ref = id_;
+      getBonusIdBytes() {
+    java.lang.Object ref = bonusId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      id_ = b;
+      bonusId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -168,62 +161,105 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TYPE_FIELD_NUMBER = 4;
+  public static final int BONUS_TYPE_FIELD_NUMBER = 4;
   @SuppressWarnings("serial")
-  private volatile java.lang.Object type_ = "";
+  private volatile java.lang.Object bonusType_ = "";
   /**
-   * <pre>
-   * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-   * </pre>
-   *
-   * <code>string type = 4 [json_name = "type"];</code>
-   * @return The type.
+   * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+   * @return The bonusType.
    */
   @java.lang.Override
-  public java.lang.String getType() {
-    java.lang.Object ref = type_;
+  public java.lang.String getBonusType() {
+    java.lang.Object ref = bonusType_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      type_ = s;
+      bonusType_ = s;
       return s;
     }
   }
   /**
-   * <pre>
-   * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-   * </pre>
-   *
-   * <code>string type = 4 [json_name = "type"];</code>
-   * @return The bytes for type.
+   * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+   * @return The bytes for bonusType.
    */
   @java.lang.Override
   public com.google.protobuf.ByteString
-      getTypeBytes() {
-    java.lang.Object ref = type_;
+      getBonusTypeBytes() {
+    java.lang.Object ref = bonusType_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      type_ = b;
+      bonusType_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int STATUS_FIELD_NUMBER = 5;
+  public static final int AMOUNT_FIELD_NUMBER = 5;
+  private double amount_ = 0D;
+  /**
+   * <code>double amount = 5 [json_name = "amount"];</code>
+   * @return The amount.
+   */
+  @java.lang.Override
+  public double getAmount() {
+    return amount_;
+  }
+
+  public static final int MIN_DEPOSIT_FIELD_NUMBER = 6;
+  private double minDeposit_ = 0D;
+  /**
+   * <code>double min_deposit = 6 [json_name = "minDeposit"];</code>
+   * @return The minDeposit.
+   */
+  @java.lang.Override
+  public double getMinDeposit() {
+    return minDeposit_;
+  }
+
+  public static final int MAX_BONUS_FIELD_NUMBER = 7;
+  private double maxBonus_ = 0D;
+  /**
+   * <code>double max_bonus = 7 [json_name = "maxBonus"];</code>
+   * @return The maxBonus.
+   */
+  @java.lang.Override
+  public double getMaxBonus() {
+    return maxBonus_;
+  }
+
+  public static final int WAGERING_REQUIREMENT_FIELD_NUMBER = 8;
+  private double wageringRequirement_ = 0D;
+  /**
+   * <code>double wagering_requirement = 8 [json_name = "wageringRequirement"];</code>
+   * @return The wageringRequirement.
+   */
+  @java.lang.Override
+  public double getWageringRequirement() {
+    return wageringRequirement_;
+  }
+
+  public static final int EXPIRES_AT_FIELD_NUMBER = 9;
+  private long expiresAt_ = 0L;
+  /**
+   * <code>int64 expires_at = 9 [json_name = "expiresAt"];</code>
+   * @return The expiresAt.
+   */
+  @java.lang.Override
+  public long getExpiresAt() {
+    return expiresAt_;
+  }
+
+  public static final int STATUS_FIELD_NUMBER = 10;
   @SuppressWarnings("serial")
   private volatile java.lang.Object status_ = "";
   /**
-   * <pre>
-   * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-   * </pre>
-   *
-   * <code>string status = 5 [json_name = "status"];</code>
+   * <code>string status = 10 [json_name = "status"];</code>
    * @return The status.
    */
   @java.lang.Override
@@ -240,11 +276,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <pre>
-   * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-   * </pre>
-   *
-   * <code>string status = 5 [json_name = "status"];</code>
+   * <code>string status = 10 [json_name = "status"];</code>
    * @return The bytes for status.
    */
   @java.lang.Override
@@ -262,296 +294,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int AMOUNT_FIELD_NUMBER = 6;
-  private double amount_ = 0D;
-  /**
-   * <code>double amount = 6 [json_name = "amount"];</code>
-   * @return The amount.
-   */
-  @java.lang.Override
-  public double getAmount() {
-    return amount_;
-  }
-
-  public static final int PERCENTAGE_FIELD_NUMBER = 7;
-  private double percentage_ = 0D;
-  /**
-   * <pre>
-   * For percentage-based bonuses
-   * </pre>
-   *
-   * <code>double percentage = 7 [json_name = "percentage"];</code>
-   * @return The percentage.
-   */
-  @java.lang.Override
-  public double getPercentage() {
-    return percentage_;
-  }
-
-  public static final int MAX_AMOUNT_FIELD_NUMBER = 8;
-  private double maxAmount_ = 0D;
-  /**
-   * <code>double max_amount = 8 [json_name = "maxAmount"];</code>
-   * @return The maxAmount.
-   */
-  @java.lang.Override
-  public double getMaxAmount() {
-    return maxAmount_;
-  }
-
-  public static final int MIN_DEPOSIT_FIELD_NUMBER = 9;
-  private double minDeposit_ = 0D;
-  /**
-   * <code>double min_deposit = 9 [json_name = "minDeposit"];</code>
-   * @return The minDeposit.
-   */
-  @java.lang.Override
-  public double getMinDeposit() {
-    return minDeposit_;
-  }
-
-  public static final int WAGERING_REQUIREMENT_FIELD_NUMBER = 10;
-  private int wageringRequirement_ = 0;
-  /**
-   * <code>int32 wagering_requirement = 10 [json_name = "wageringRequirement"];</code>
-   * @return The wageringRequirement.
-   */
-  @java.lang.Override
-  public int getWageringRequirement() {
-    return wageringRequirement_;
-  }
-
-  public static final int MAX_BET_FIELD_NUMBER = 11;
-  private double maxBet_ = 0D;
-  /**
-   * <code>double max_bet = 11 [json_name = "maxBet"];</code>
-   * @return The maxBet.
-   */
-  @java.lang.Override
-  public double getMaxBet() {
-    return maxBet_;
-  }
-
-  public static final int ALLOWED_GAMES_FIELD_NUMBER = 12;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object allowedGames_ = "";
-  /**
-   * <pre>
-   * Comma-separated game IDs or "ALL"
-   * </pre>
-   *
-   * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-   * @return The allowedGames.
-   */
-  @java.lang.Override
-  public java.lang.String getAllowedGames() {
-    java.lang.Object ref = allowedGames_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      allowedGames_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   * Comma-separated game IDs or "ALL"
-   * </pre>
-   *
-   * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-   * @return The bytes for allowedGames.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getAllowedGamesBytes() {
-    java.lang.Object ref = allowedGames_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      allowedGames_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int START_DATE_FIELD_NUMBER = 13;
-  private com.google.protobuf.Timestamp startDate_;
-  /**
-   * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-   * @return Whether the startDate field is set.
-   */
-  @java.lang.Override
-  public boolean hasStartDate() {
-    return ((bitField0_ & 0x00000001) != 0);
-  }
-  /**
-   * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-   * @return The startDate.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getStartDate() {
-    return startDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : startDate_;
-  }
-  /**
-   * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getStartDateOrBuilder() {
-    return startDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : startDate_;
-  }
-
-  public static final int END_DATE_FIELD_NUMBER = 14;
-  private com.google.protobuf.Timestamp endDate_;
-  /**
-   * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-   * @return Whether the endDate field is set.
-   */
-  @java.lang.Override
-  public boolean hasEndDate() {
-    return ((bitField0_ & 0x00000002) != 0);
-  }
-  /**
-   * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-   * @return The endDate.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getEndDate() {
-    return endDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : endDate_;
-  }
-  /**
-   * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getEndDateOrBuilder() {
-    return endDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : endDate_;
-  }
-
-  public static final int MAX_USES_FIELD_NUMBER = 15;
-  private int maxUses_ = 0;
-  /**
-   * <code>int32 max_uses = 15 [json_name = "maxUses"];</code>
-   * @return The maxUses.
-   */
-  @java.lang.Override
-  public int getMaxUses() {
-    return maxUses_;
-  }
-
-  public static final int CURRENT_USES_FIELD_NUMBER = 16;
-  private int currentUses_ = 0;
-  /**
-   * <code>int32 current_uses = 16 [json_name = "currentUses"];</code>
-   * @return The currentUses.
-   */
-  @java.lang.Override
-  public int getCurrentUses() {
-    return currentUses_;
-  }
-
-  public static final int VIP_LEVEL_FIELD_NUMBER = 17;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object vipLevel_ = "";
-  /**
-   * <pre>
-   * ALL, BRONZE, SILVER, GOLD, PLATINUM
-   * </pre>
-   *
-   * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-   * @return The vipLevel.
-   */
-  @java.lang.Override
-  public java.lang.String getVipLevel() {
-    java.lang.Object ref = vipLevel_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      vipLevel_ = s;
-      return s;
-    }
-  }
-  /**
-   * <pre>
-   * ALL, BRONZE, SILVER, GOLD, PLATINUM
-   * </pre>
-   *
-   * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-   * @return The bytes for vipLevel.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getVipLevelBytes() {
-    java.lang.Object ref = vipLevel_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      vipLevel_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CREATED_AT_FIELD_NUMBER = 18;
-  private com.google.protobuf.Timestamp createdAt_;
-  /**
-   * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-   * @return Whether the createdAt field is set.
-   */
-  @java.lang.Override
-  public boolean hasCreatedAt() {
-    return ((bitField0_ & 0x00000004) != 0);
-  }
-  /**
-   * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-   * @return The createdAt.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getCreatedAt() {
-    return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-  }
-  /**
-   * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
-    return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-  }
-
-  public static final int UPDATED_AT_FIELD_NUMBER = 19;
-  private com.google.protobuf.Timestamp updatedAt_;
-  /**
-   * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-   * @return Whether the updatedAt field is set.
-   */
-  @java.lang.Override
-  public boolean hasUpdatedAt() {
-    return ((bitField0_ & 0x00000008) != 0);
-  }
-  /**
-   * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-   * @return The updatedAt.
-   */
-  @java.lang.Override
-  public com.google.protobuf.Timestamp getUpdatedAt() {
-    return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-  }
-  /**
-   * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-   */
-  @java.lang.Override
-  public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
-    return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -566,8 +308,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bonusId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, bonusId_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
@@ -575,53 +317,26 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, description_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, type_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 5, status_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bonusType_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, bonusType_);
     }
     if (java.lang.Double.doubleToRawLongBits(amount_) != 0) {
-      output.writeDouble(6, amount_);
-    }
-    if (java.lang.Double.doubleToRawLongBits(percentage_) != 0) {
-      output.writeDouble(7, percentage_);
-    }
-    if (java.lang.Double.doubleToRawLongBits(maxAmount_) != 0) {
-      output.writeDouble(8, maxAmount_);
+      output.writeDouble(5, amount_);
     }
     if (java.lang.Double.doubleToRawLongBits(minDeposit_) != 0) {
-      output.writeDouble(9, minDeposit_);
+      output.writeDouble(6, minDeposit_);
     }
-    if (wageringRequirement_ != 0) {
-      output.writeInt32(10, wageringRequirement_);
+    if (java.lang.Double.doubleToRawLongBits(maxBonus_) != 0) {
+      output.writeDouble(7, maxBonus_);
     }
-    if (java.lang.Double.doubleToRawLongBits(maxBet_) != 0) {
-      output.writeDouble(11, maxBet_);
+    if (java.lang.Double.doubleToRawLongBits(wageringRequirement_) != 0) {
+      output.writeDouble(8, wageringRequirement_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(allowedGames_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 12, allowedGames_);
+    if (expiresAt_ != 0L) {
+      output.writeInt64(9, expiresAt_);
     }
-    if (((bitField0_ & 0x00000001) != 0)) {
-      output.writeMessage(13, getStartDate());
-    }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      output.writeMessage(14, getEndDate());
-    }
-    if (maxUses_ != 0) {
-      output.writeInt32(15, maxUses_);
-    }
-    if (currentUses_ != 0) {
-      output.writeInt32(16, currentUses_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vipLevel_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 17, vipLevel_);
-    }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      output.writeMessage(18, getCreatedAt());
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      output.writeMessage(19, getUpdatedAt());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 10, status_);
     }
     getUnknownFields().writeTo(output);
   }
@@ -632,8 +347,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(id_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bonusId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, bonusId_);
     }
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
@@ -641,65 +356,31 @@ private static final long serialVersionUID = 0L;
     if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(description_)) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, description_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(type_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, type_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, status_);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(bonusType_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, bonusType_);
     }
     if (java.lang.Double.doubleToRawLongBits(amount_) != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(6, amount_);
-    }
-    if (java.lang.Double.doubleToRawLongBits(percentage_) != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(7, percentage_);
-    }
-    if (java.lang.Double.doubleToRawLongBits(maxAmount_) != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(8, maxAmount_);
+        .computeDoubleSize(5, amount_);
     }
     if (java.lang.Double.doubleToRawLongBits(minDeposit_) != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(9, minDeposit_);
+        .computeDoubleSize(6, minDeposit_);
     }
-    if (wageringRequirement_ != 0) {
+    if (java.lang.Double.doubleToRawLongBits(maxBonus_) != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(10, wageringRequirement_);
+        .computeDoubleSize(7, maxBonus_);
     }
-    if (java.lang.Double.doubleToRawLongBits(maxBet_) != 0) {
+    if (java.lang.Double.doubleToRawLongBits(wageringRequirement_) != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(11, maxBet_);
+        .computeDoubleSize(8, wageringRequirement_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(allowedGames_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, allowedGames_);
-    }
-    if (((bitField0_ & 0x00000001) != 0)) {
+    if (expiresAt_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(13, getStartDate());
+        .computeInt64Size(9, expiresAt_);
     }
-    if (((bitField0_ & 0x00000002) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(14, getEndDate());
-    }
-    if (maxUses_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(15, maxUses_);
-    }
-    if (currentUses_ != 0) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeInt32Size(16, currentUses_);
-    }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(vipLevel_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(17, vipLevel_);
-    }
-    if (((bitField0_ & 0x00000004) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(18, getCreatedAt());
-    }
-    if (((bitField0_ & 0x00000008) != 0)) {
-      size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(19, getUpdatedAt());
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(status_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(10, status_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -716,61 +397,30 @@ private static final long serialVersionUID = 0L;
     }
     com.game_engine.bonus.v1.Bonus other = (com.game_engine.bonus.v1.Bonus) obj;
 
-    if (!getId()
-        .equals(other.getId())) return false;
+    if (!getBonusId()
+        .equals(other.getBonusId())) return false;
     if (!getName()
         .equals(other.getName())) return false;
     if (!getDescription()
         .equals(other.getDescription())) return false;
-    if (!getType()
-        .equals(other.getType())) return false;
-    if (!getStatus()
-        .equals(other.getStatus())) return false;
+    if (!getBonusType()
+        .equals(other.getBonusType())) return false;
     if (java.lang.Double.doubleToLongBits(getAmount())
         != java.lang.Double.doubleToLongBits(
             other.getAmount())) return false;
-    if (java.lang.Double.doubleToLongBits(getPercentage())
-        != java.lang.Double.doubleToLongBits(
-            other.getPercentage())) return false;
-    if (java.lang.Double.doubleToLongBits(getMaxAmount())
-        != java.lang.Double.doubleToLongBits(
-            other.getMaxAmount())) return false;
     if (java.lang.Double.doubleToLongBits(getMinDeposit())
         != java.lang.Double.doubleToLongBits(
             other.getMinDeposit())) return false;
-    if (getWageringRequirement()
-        != other.getWageringRequirement()) return false;
-    if (java.lang.Double.doubleToLongBits(getMaxBet())
+    if (java.lang.Double.doubleToLongBits(getMaxBonus())
         != java.lang.Double.doubleToLongBits(
-            other.getMaxBet())) return false;
-    if (!getAllowedGames()
-        .equals(other.getAllowedGames())) return false;
-    if (hasStartDate() != other.hasStartDate()) return false;
-    if (hasStartDate()) {
-      if (!getStartDate()
-          .equals(other.getStartDate())) return false;
-    }
-    if (hasEndDate() != other.hasEndDate()) return false;
-    if (hasEndDate()) {
-      if (!getEndDate()
-          .equals(other.getEndDate())) return false;
-    }
-    if (getMaxUses()
-        != other.getMaxUses()) return false;
-    if (getCurrentUses()
-        != other.getCurrentUses()) return false;
-    if (!getVipLevel()
-        .equals(other.getVipLevel())) return false;
-    if (hasCreatedAt() != other.hasCreatedAt()) return false;
-    if (hasCreatedAt()) {
-      if (!getCreatedAt()
-          .equals(other.getCreatedAt())) return false;
-    }
-    if (hasUpdatedAt() != other.hasUpdatedAt()) return false;
-    if (hasUpdatedAt()) {
-      if (!getUpdatedAt()
-          .equals(other.getUpdatedAt())) return false;
-    }
+            other.getMaxBonus())) return false;
+    if (java.lang.Double.doubleToLongBits(getWageringRequirement())
+        != java.lang.Double.doubleToLongBits(
+            other.getWageringRequirement())) return false;
+    if (getExpiresAt()
+        != other.getExpiresAt()) return false;
+    if (!getStatus()
+        .equals(other.getStatus())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -782,57 +432,31 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getId().hashCode();
+    hash = (37 * hash) + BONUS_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getBonusId().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + TYPE_FIELD_NUMBER;
-    hash = (53 * hash) + getType().hashCode();
-    hash = (37 * hash) + STATUS_FIELD_NUMBER;
-    hash = (53 * hash) + getStatus().hashCode();
+    hash = (37 * hash) + BONUS_TYPE_FIELD_NUMBER;
+    hash = (53 * hash) + getBonusType().hashCode();
     hash = (37 * hash) + AMOUNT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         java.lang.Double.doubleToLongBits(getAmount()));
-    hash = (37 * hash) + PERCENTAGE_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getPercentage()));
-    hash = (37 * hash) + MAX_AMOUNT_FIELD_NUMBER;
-    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getMaxAmount()));
     hash = (37 * hash) + MIN_DEPOSIT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         java.lang.Double.doubleToLongBits(getMinDeposit()));
-    hash = (37 * hash) + WAGERING_REQUIREMENT_FIELD_NUMBER;
-    hash = (53 * hash) + getWageringRequirement();
-    hash = (37 * hash) + MAX_BET_FIELD_NUMBER;
+    hash = (37 * hash) + MAX_BONUS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        java.lang.Double.doubleToLongBits(getMaxBet()));
-    hash = (37 * hash) + ALLOWED_GAMES_FIELD_NUMBER;
-    hash = (53 * hash) + getAllowedGames().hashCode();
-    if (hasStartDate()) {
-      hash = (37 * hash) + START_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getStartDate().hashCode();
-    }
-    if (hasEndDate()) {
-      hash = (37 * hash) + END_DATE_FIELD_NUMBER;
-      hash = (53 * hash) + getEndDate().hashCode();
-    }
-    hash = (37 * hash) + MAX_USES_FIELD_NUMBER;
-    hash = (53 * hash) + getMaxUses();
-    hash = (37 * hash) + CURRENT_USES_FIELD_NUMBER;
-    hash = (53 * hash) + getCurrentUses();
-    hash = (37 * hash) + VIP_LEVEL_FIELD_NUMBER;
-    hash = (53 * hash) + getVipLevel().hashCode();
-    if (hasCreatedAt()) {
-      hash = (37 * hash) + CREATED_AT_FIELD_NUMBER;
-      hash = (53 * hash) + getCreatedAt().hashCode();
-    }
-    if (hasUpdatedAt()) {
-      hash = (37 * hash) + UPDATED_AT_FIELD_NUMBER;
-      hash = (53 * hash) + getUpdatedAt().hashCode();
-    }
+        java.lang.Double.doubleToLongBits(getMaxBonus()));
+    hash = (37 * hash) + WAGERING_REQUIREMENT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getWageringRequirement()));
+    hash = (37 * hash) + EXPIRES_AT_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        getExpiresAt());
+    hash = (37 * hash) + STATUS_FIELD_NUMBER;
+    hash = (53 * hash) + getStatus().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -931,10 +555,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Bonus message
-   * </pre>
-   *
    * Protobuf type {@code game_engine.bonus.v1.Bonus}
    */
   public static final class Builder extends
@@ -956,62 +576,28 @@ private static final long serialVersionUID = 0L;
 
     // Construct using com.game_engine.bonus.v1.Bonus.newBuilder()
     private Builder() {
-      maybeForceBuilderInitialization();
+
     }
 
     private Builder(
         com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
       super(parent);
-      maybeForceBuilderInitialization();
-    }
-    private void maybeForceBuilderInitialization() {
-      if (com.google.protobuf.GeneratedMessageV3
-              .alwaysUseFieldBuilders) {
-        getStartDateFieldBuilder();
-        getEndDateFieldBuilder();
-        getCreatedAtFieldBuilder();
-        getUpdatedAtFieldBuilder();
-      }
+
     }
     @java.lang.Override
     public Builder clear() {
       super.clear();
       bitField0_ = 0;
-      id_ = "";
+      bonusId_ = "";
       name_ = "";
       description_ = "";
-      type_ = "";
-      status_ = "";
+      bonusType_ = "";
       amount_ = 0D;
-      percentage_ = 0D;
-      maxAmount_ = 0D;
       minDeposit_ = 0D;
-      wageringRequirement_ = 0;
-      maxBet_ = 0D;
-      allowedGames_ = "";
-      startDate_ = null;
-      if (startDateBuilder_ != null) {
-        startDateBuilder_.dispose();
-        startDateBuilder_ = null;
-      }
-      endDate_ = null;
-      if (endDateBuilder_ != null) {
-        endDateBuilder_.dispose();
-        endDateBuilder_ = null;
-      }
-      maxUses_ = 0;
-      currentUses_ = 0;
-      vipLevel_ = "";
-      createdAt_ = null;
-      if (createdAtBuilder_ != null) {
-        createdAtBuilder_.dispose();
-        createdAtBuilder_ = null;
-      }
-      updatedAt_ = null;
-      if (updatedAtBuilder_ != null) {
-        updatedAtBuilder_.dispose();
-        updatedAtBuilder_ = null;
-      }
+      maxBonus_ = 0D;
+      wageringRequirement_ = 0D;
+      expiresAt_ = 0L;
+      status_ = "";
       return this;
     }
 
@@ -1046,7 +632,7 @@ private static final long serialVersionUID = 0L;
     private void buildPartial0(com.game_engine.bonus.v1.Bonus result) {
       int from_bitField0_ = bitField0_;
       if (((from_bitField0_ & 0x00000001) != 0)) {
-        result.id_ = id_;
+        result.bonusId_ = bonusId_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
         result.name_ = name_;
@@ -1055,67 +641,26 @@ private static final long serialVersionUID = 0L;
         result.description_ = description_;
       }
       if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.type_ = type_;
+        result.bonusType_ = bonusType_;
       }
       if (((from_bitField0_ & 0x00000010) != 0)) {
-        result.status_ = status_;
-      }
-      if (((from_bitField0_ & 0x00000020) != 0)) {
         result.amount_ = amount_;
       }
-      if (((from_bitField0_ & 0x00000040) != 0)) {
-        result.percentage_ = percentage_;
-      }
-      if (((from_bitField0_ & 0x00000080) != 0)) {
-        result.maxAmount_ = maxAmount_;
-      }
-      if (((from_bitField0_ & 0x00000100) != 0)) {
+      if (((from_bitField0_ & 0x00000020) != 0)) {
         result.minDeposit_ = minDeposit_;
       }
-      if (((from_bitField0_ & 0x00000200) != 0)) {
+      if (((from_bitField0_ & 0x00000040) != 0)) {
+        result.maxBonus_ = maxBonus_;
+      }
+      if (((from_bitField0_ & 0x00000080) != 0)) {
         result.wageringRequirement_ = wageringRequirement_;
       }
-      if (((from_bitField0_ & 0x00000400) != 0)) {
-        result.maxBet_ = maxBet_;
+      if (((from_bitField0_ & 0x00000100) != 0)) {
+        result.expiresAt_ = expiresAt_;
       }
-      if (((from_bitField0_ & 0x00000800) != 0)) {
-        result.allowedGames_ = allowedGames_;
+      if (((from_bitField0_ & 0x00000200) != 0)) {
+        result.status_ = status_;
       }
-      int to_bitField0_ = 0;
-      if (((from_bitField0_ & 0x00001000) != 0)) {
-        result.startDate_ = startDateBuilder_ == null
-            ? startDate_
-            : startDateBuilder_.build();
-        to_bitField0_ |= 0x00000001;
-      }
-      if (((from_bitField0_ & 0x00002000) != 0)) {
-        result.endDate_ = endDateBuilder_ == null
-            ? endDate_
-            : endDateBuilder_.build();
-        to_bitField0_ |= 0x00000002;
-      }
-      if (((from_bitField0_ & 0x00004000) != 0)) {
-        result.maxUses_ = maxUses_;
-      }
-      if (((from_bitField0_ & 0x00008000) != 0)) {
-        result.currentUses_ = currentUses_;
-      }
-      if (((from_bitField0_ & 0x00010000) != 0)) {
-        result.vipLevel_ = vipLevel_;
-      }
-      if (((from_bitField0_ & 0x00020000) != 0)) {
-        result.createdAt_ = createdAtBuilder_ == null
-            ? createdAt_
-            : createdAtBuilder_.build();
-        to_bitField0_ |= 0x00000004;
-      }
-      if (((from_bitField0_ & 0x00040000) != 0)) {
-        result.updatedAt_ = updatedAtBuilder_ == null
-            ? updatedAt_
-            : updatedAtBuilder_.build();
-        to_bitField0_ |= 0x00000008;
-      }
-      result.bitField0_ |= to_bitField0_;
     }
 
     @java.lang.Override
@@ -1162,8 +707,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.game_engine.bonus.v1.Bonus other) {
       if (other == com.game_engine.bonus.v1.Bonus.getDefaultInstance()) return this;
-      if (!other.getId().isEmpty()) {
-        id_ = other.id_;
+      if (!other.getBonusId().isEmpty()) {
+        bonusId_ = other.bonusId_;
         bitField0_ |= 0x00000001;
         onChanged();
       }
@@ -1177,61 +722,30 @@ private static final long serialVersionUID = 0L;
         bitField0_ |= 0x00000004;
         onChanged();
       }
-      if (!other.getType().isEmpty()) {
-        type_ = other.type_;
+      if (!other.getBonusType().isEmpty()) {
+        bonusType_ = other.bonusType_;
         bitField0_ |= 0x00000008;
-        onChanged();
-      }
-      if (!other.getStatus().isEmpty()) {
-        status_ = other.status_;
-        bitField0_ |= 0x00000010;
         onChanged();
       }
       if (other.getAmount() != 0D) {
         setAmount(other.getAmount());
       }
-      if (other.getPercentage() != 0D) {
-        setPercentage(other.getPercentage());
-      }
-      if (other.getMaxAmount() != 0D) {
-        setMaxAmount(other.getMaxAmount());
-      }
       if (other.getMinDeposit() != 0D) {
         setMinDeposit(other.getMinDeposit());
       }
-      if (other.getWageringRequirement() != 0) {
+      if (other.getMaxBonus() != 0D) {
+        setMaxBonus(other.getMaxBonus());
+      }
+      if (other.getWageringRequirement() != 0D) {
         setWageringRequirement(other.getWageringRequirement());
       }
-      if (other.getMaxBet() != 0D) {
-        setMaxBet(other.getMaxBet());
+      if (other.getExpiresAt() != 0L) {
+        setExpiresAt(other.getExpiresAt());
       }
-      if (!other.getAllowedGames().isEmpty()) {
-        allowedGames_ = other.allowedGames_;
-        bitField0_ |= 0x00000800;
+      if (!other.getStatus().isEmpty()) {
+        status_ = other.status_;
+        bitField0_ |= 0x00000200;
         onChanged();
-      }
-      if (other.hasStartDate()) {
-        mergeStartDate(other.getStartDate());
-      }
-      if (other.hasEndDate()) {
-        mergeEndDate(other.getEndDate());
-      }
-      if (other.getMaxUses() != 0) {
-        setMaxUses(other.getMaxUses());
-      }
-      if (other.getCurrentUses() != 0) {
-        setCurrentUses(other.getCurrentUses());
-      }
-      if (!other.getVipLevel().isEmpty()) {
-        vipLevel_ = other.vipLevel_;
-        bitField0_ |= 0x00010000;
-        onChanged();
-      }
-      if (other.hasCreatedAt()) {
-        mergeCreatedAt(other.getCreatedAt());
-      }
-      if (other.hasUpdatedAt()) {
-        mergeUpdatedAt(other.getUpdatedAt());
       }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
@@ -1260,7 +774,7 @@ private static final long serialVersionUID = 0L;
               done = true;
               break;
             case 10: {
-              id_ = input.readStringRequireUtf8();
+              bonusId_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000001;
               break;
             } // case 10
@@ -1275,93 +789,40 @@ private static final long serialVersionUID = 0L;
               break;
             } // case 26
             case 34: {
-              type_ = input.readStringRequireUtf8();
+              bonusType_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000008;
               break;
             } // case 34
-            case 42: {
-              status_ = input.readStringRequireUtf8();
+            case 41: {
+              amount_ = input.readDouble();
               bitField0_ |= 0x00000010;
               break;
-            } // case 42
+            } // case 41
             case 49: {
-              amount_ = input.readDouble();
+              minDeposit_ = input.readDouble();
               bitField0_ |= 0x00000020;
               break;
             } // case 49
             case 57: {
-              percentage_ = input.readDouble();
+              maxBonus_ = input.readDouble();
               bitField0_ |= 0x00000040;
               break;
             } // case 57
             case 65: {
-              maxAmount_ = input.readDouble();
+              wageringRequirement_ = input.readDouble();
               bitField0_ |= 0x00000080;
               break;
             } // case 65
-            case 73: {
-              minDeposit_ = input.readDouble();
+            case 72: {
+              expiresAt_ = input.readInt64();
               bitField0_ |= 0x00000100;
               break;
-            } // case 73
-            case 80: {
-              wageringRequirement_ = input.readInt32();
+            } // case 72
+            case 82: {
+              status_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000200;
               break;
-            } // case 80
-            case 89: {
-              maxBet_ = input.readDouble();
-              bitField0_ |= 0x00000400;
-              break;
-            } // case 89
-            case 98: {
-              allowedGames_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00000800;
-              break;
-            } // case 98
-            case 106: {
-              input.readMessage(
-                  getStartDateFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00001000;
-              break;
-            } // case 106
-            case 114: {
-              input.readMessage(
-                  getEndDateFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00002000;
-              break;
-            } // case 114
-            case 120: {
-              maxUses_ = input.readInt32();
-              bitField0_ |= 0x00004000;
-              break;
-            } // case 120
-            case 128: {
-              currentUses_ = input.readInt32();
-              bitField0_ |= 0x00008000;
-              break;
-            } // case 128
-            case 138: {
-              vipLevel_ = input.readStringRequireUtf8();
-              bitField0_ |= 0x00010000;
-              break;
-            } // case 138
-            case 146: {
-              input.readMessage(
-                  getCreatedAtFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00020000;
-              break;
-            } // case 146
-            case 154: {
-              input.readMessage(
-                  getUpdatedAtFieldBuilder().getBuilder(),
-                  extensionRegistry);
-              bitField0_ |= 0x00040000;
-              break;
-            } // case 154
+            } // case 82
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -1379,73 +840,73 @@ private static final long serialVersionUID = 0L;
     }
     private int bitField0_;
 
-    private java.lang.Object id_ = "";
+    private java.lang.Object bonusId_ = "";
     /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @return The id.
+     * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+     * @return The bonusId.
      */
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
+    public java.lang.String getBonusId() {
+      java.lang.Object ref = bonusId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        id_ = s;
+        bonusId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @return The bytes for id.
+     * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+     * @return The bytes for bonusId.
      */
     public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
+        getBonusIdBytes() {
+      java.lang.Object ref = bonusId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        id_ = b;
+        bonusId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @param value The id to set.
+     * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+     * @param value The bonusId to set.
      * @return This builder for chaining.
      */
-    public Builder setId(
+    public Builder setBonusId(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      id_ = value;
+      bonusId_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
     }
     /**
-     * <code>string id = 1 [json_name = "id"];</code>
+     * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
      * @return This builder for chaining.
      */
-    public Builder clearId() {
-      id_ = getDefaultInstance().getId();
+    public Builder clearBonusId() {
+      bonusId_ = getDefaultInstance().getBonusId();
       bitField0_ = (bitField0_ & ~0x00000001);
       onChanged();
       return this;
     }
     /**
-     * <code>string id = 1 [json_name = "id"];</code>
-     * @param value The bytes for id to set.
+     * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+     * @param value The bytes for bonusId to set.
      * @return This builder for chaining.
      */
-    public Builder setIdBytes(
+    public Builder setBonusIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      id_ = value;
+      bonusId_ = value;
       bitField0_ |= 0x00000001;
       onChanged();
       return this;
@@ -1595,105 +1056,241 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object type_ = "";
+    private java.lang.Object bonusType_ = "";
     /**
-     * <pre>
-     * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-     * </pre>
-     *
-     * <code>string type = 4 [json_name = "type"];</code>
-     * @return The type.
+     * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+     * @return The bonusType.
      */
-    public java.lang.String getType() {
-      java.lang.Object ref = type_;
+    public java.lang.String getBonusType() {
+      java.lang.Object ref = bonusType_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        type_ = s;
+        bonusType_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <pre>
-     * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-     * </pre>
-     *
-     * <code>string type = 4 [json_name = "type"];</code>
-     * @return The bytes for type.
+     * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+     * @return The bytes for bonusType.
      */
     public com.google.protobuf.ByteString
-        getTypeBytes() {
-      java.lang.Object ref = type_;
+        getBonusTypeBytes() {
+      java.lang.Object ref = bonusType_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        type_ = b;
+        bonusType_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <pre>
-     * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-     * </pre>
-     *
-     * <code>string type = 4 [json_name = "type"];</code>
-     * @param value The type to set.
+     * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+     * @param value The bonusType to set.
      * @return This builder for chaining.
      */
-    public Builder setType(
+    public Builder setBonusType(
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
-      type_ = value;
+      bonusType_ = value;
       bitField0_ |= 0x00000008;
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-     * </pre>
-     *
-     * <code>string type = 4 [json_name = "type"];</code>
+     * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
      * @return This builder for chaining.
      */
-    public Builder clearType() {
-      type_ = getDefaultInstance().getType();
+    public Builder clearBonusType() {
+      bonusType_ = getDefaultInstance().getBonusType();
       bitField0_ = (bitField0_ & ~0x00000008);
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-     * </pre>
-     *
-     * <code>string type = 4 [json_name = "type"];</code>
-     * @param value The bytes for type to set.
+     * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+     * @param value The bytes for bonusType to set.
      * @return This builder for chaining.
      */
-    public Builder setTypeBytes(
+    public Builder setBonusTypeBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
-      type_ = value;
+      bonusType_ = value;
       bitField0_ |= 0x00000008;
+      onChanged();
+      return this;
+    }
+
+    private double amount_ ;
+    /**
+     * <code>double amount = 5 [json_name = "amount"];</code>
+     * @return The amount.
+     */
+    @java.lang.Override
+    public double getAmount() {
+      return amount_;
+    }
+    /**
+     * <code>double amount = 5 [json_name = "amount"];</code>
+     * @param value The amount to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAmount(double value) {
+
+      amount_ = value;
+      bitField0_ |= 0x00000010;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double amount = 5 [json_name = "amount"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAmount() {
+      bitField0_ = (bitField0_ & ~0x00000010);
+      amount_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double minDeposit_ ;
+    /**
+     * <code>double min_deposit = 6 [json_name = "minDeposit"];</code>
+     * @return The minDeposit.
+     */
+    @java.lang.Override
+    public double getMinDeposit() {
+      return minDeposit_;
+    }
+    /**
+     * <code>double min_deposit = 6 [json_name = "minDeposit"];</code>
+     * @param value The minDeposit to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMinDeposit(double value) {
+
+      minDeposit_ = value;
+      bitField0_ |= 0x00000020;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double min_deposit = 6 [json_name = "minDeposit"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMinDeposit() {
+      bitField0_ = (bitField0_ & ~0x00000020);
+      minDeposit_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double maxBonus_ ;
+    /**
+     * <code>double max_bonus = 7 [json_name = "maxBonus"];</code>
+     * @return The maxBonus.
+     */
+    @java.lang.Override
+    public double getMaxBonus() {
+      return maxBonus_;
+    }
+    /**
+     * <code>double max_bonus = 7 [json_name = "maxBonus"];</code>
+     * @param value The maxBonus to set.
+     * @return This builder for chaining.
+     */
+    public Builder setMaxBonus(double value) {
+
+      maxBonus_ = value;
+      bitField0_ |= 0x00000040;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double max_bonus = 7 [json_name = "maxBonus"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearMaxBonus() {
+      bitField0_ = (bitField0_ & ~0x00000040);
+      maxBonus_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private double wageringRequirement_ ;
+    /**
+     * <code>double wagering_requirement = 8 [json_name = "wageringRequirement"];</code>
+     * @return The wageringRequirement.
+     */
+    @java.lang.Override
+    public double getWageringRequirement() {
+      return wageringRequirement_;
+    }
+    /**
+     * <code>double wagering_requirement = 8 [json_name = "wageringRequirement"];</code>
+     * @param value The wageringRequirement to set.
+     * @return This builder for chaining.
+     */
+    public Builder setWageringRequirement(double value) {
+
+      wageringRequirement_ = value;
+      bitField0_ |= 0x00000080;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double wagering_requirement = 8 [json_name = "wageringRequirement"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearWageringRequirement() {
+      bitField0_ = (bitField0_ & ~0x00000080);
+      wageringRequirement_ = 0D;
+      onChanged();
+      return this;
+    }
+
+    private long expiresAt_ ;
+    /**
+     * <code>int64 expires_at = 9 [json_name = "expiresAt"];</code>
+     * @return The expiresAt.
+     */
+    @java.lang.Override
+    public long getExpiresAt() {
+      return expiresAt_;
+    }
+    /**
+     * <code>int64 expires_at = 9 [json_name = "expiresAt"];</code>
+     * @param value The expiresAt to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpiresAt(long value) {
+
+      expiresAt_ = value;
+      bitField0_ |= 0x00000100;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>int64 expires_at = 9 [json_name = "expiresAt"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearExpiresAt() {
+      bitField0_ = (bitField0_ & ~0x00000100);
+      expiresAt_ = 0L;
       onChanged();
       return this;
     }
 
     private java.lang.Object status_ = "";
     /**
-     * <pre>
-     * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-     * </pre>
-     *
-     * <code>string status = 5 [json_name = "status"];</code>
+     * <code>string status = 10 [json_name = "status"];</code>
      * @return The status.
      */
     public java.lang.String getStatus() {
@@ -1709,11 +1306,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-     * </pre>
-     *
-     * <code>string status = 5 [json_name = "status"];</code>
+     * <code>string status = 10 [json_name = "status"];</code>
      * @return The bytes for status.
      */
     public com.google.protobuf.ByteString
@@ -1730,11 +1323,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <pre>
-     * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-     * </pre>
-     *
-     * <code>string status = 5 [json_name = "status"];</code>
+     * <code>string status = 10 [json_name = "status"];</code>
      * @param value The status to set.
      * @return This builder for chaining.
      */
@@ -1742,30 +1331,22 @@ private static final long serialVersionUID = 0L;
         java.lang.String value) {
       if (value == null) { throw new NullPointerException(); }
       status_ = value;
-      bitField0_ |= 0x00000010;
+      bitField0_ |= 0x00000200;
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-     * </pre>
-     *
-     * <code>string status = 5 [json_name = "status"];</code>
+     * <code>string status = 10 [json_name = "status"];</code>
      * @return This builder for chaining.
      */
     public Builder clearStatus() {
       status_ = getDefaultInstance().getStatus();
-      bitField0_ = (bitField0_ & ~0x00000010);
+      bitField0_ = (bitField0_ & ~0x00000200);
       onChanged();
       return this;
     }
     /**
-     * <pre>
-     * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-     * </pre>
-     *
-     * <code>string status = 5 [json_name = "status"];</code>
+     * <code>string status = 10 [json_name = "status"];</code>
      * @param value The bytes for status to set.
      * @return This builder for chaining.
      */
@@ -1774,945 +1355,9 @@ private static final long serialVersionUID = 0L;
       if (value == null) { throw new NullPointerException(); }
       checkByteStringIsUtf8(value);
       status_ = value;
-      bitField0_ |= 0x00000010;
-      onChanged();
-      return this;
-    }
-
-    private double amount_ ;
-    /**
-     * <code>double amount = 6 [json_name = "amount"];</code>
-     * @return The amount.
-     */
-    @java.lang.Override
-    public double getAmount() {
-      return amount_;
-    }
-    /**
-     * <code>double amount = 6 [json_name = "amount"];</code>
-     * @param value The amount to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAmount(double value) {
-
-      amount_ = value;
-      bitField0_ |= 0x00000020;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>double amount = 6 [json_name = "amount"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAmount() {
-      bitField0_ = (bitField0_ & ~0x00000020);
-      amount_ = 0D;
-      onChanged();
-      return this;
-    }
-
-    private double percentage_ ;
-    /**
-     * <pre>
-     * For percentage-based bonuses
-     * </pre>
-     *
-     * <code>double percentage = 7 [json_name = "percentage"];</code>
-     * @return The percentage.
-     */
-    @java.lang.Override
-    public double getPercentage() {
-      return percentage_;
-    }
-    /**
-     * <pre>
-     * For percentage-based bonuses
-     * </pre>
-     *
-     * <code>double percentage = 7 [json_name = "percentage"];</code>
-     * @param value The percentage to set.
-     * @return This builder for chaining.
-     */
-    public Builder setPercentage(double value) {
-
-      percentage_ = value;
-      bitField0_ |= 0x00000040;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * For percentage-based bonuses
-     * </pre>
-     *
-     * <code>double percentage = 7 [json_name = "percentage"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearPercentage() {
-      bitField0_ = (bitField0_ & ~0x00000040);
-      percentage_ = 0D;
-      onChanged();
-      return this;
-    }
-
-    private double maxAmount_ ;
-    /**
-     * <code>double max_amount = 8 [json_name = "maxAmount"];</code>
-     * @return The maxAmount.
-     */
-    @java.lang.Override
-    public double getMaxAmount() {
-      return maxAmount_;
-    }
-    /**
-     * <code>double max_amount = 8 [json_name = "maxAmount"];</code>
-     * @param value The maxAmount to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMaxAmount(double value) {
-
-      maxAmount_ = value;
-      bitField0_ |= 0x00000080;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>double max_amount = 8 [json_name = "maxAmount"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMaxAmount() {
-      bitField0_ = (bitField0_ & ~0x00000080);
-      maxAmount_ = 0D;
-      onChanged();
-      return this;
-    }
-
-    private double minDeposit_ ;
-    /**
-     * <code>double min_deposit = 9 [json_name = "minDeposit"];</code>
-     * @return The minDeposit.
-     */
-    @java.lang.Override
-    public double getMinDeposit() {
-      return minDeposit_;
-    }
-    /**
-     * <code>double min_deposit = 9 [json_name = "minDeposit"];</code>
-     * @param value The minDeposit to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMinDeposit(double value) {
-
-      minDeposit_ = value;
-      bitField0_ |= 0x00000100;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>double min_deposit = 9 [json_name = "minDeposit"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMinDeposit() {
-      bitField0_ = (bitField0_ & ~0x00000100);
-      minDeposit_ = 0D;
-      onChanged();
-      return this;
-    }
-
-    private int wageringRequirement_ ;
-    /**
-     * <code>int32 wagering_requirement = 10 [json_name = "wageringRequirement"];</code>
-     * @return The wageringRequirement.
-     */
-    @java.lang.Override
-    public int getWageringRequirement() {
-      return wageringRequirement_;
-    }
-    /**
-     * <code>int32 wagering_requirement = 10 [json_name = "wageringRequirement"];</code>
-     * @param value The wageringRequirement to set.
-     * @return This builder for chaining.
-     */
-    public Builder setWageringRequirement(int value) {
-
-      wageringRequirement_ = value;
       bitField0_ |= 0x00000200;
       onChanged();
       return this;
-    }
-    /**
-     * <code>int32 wagering_requirement = 10 [json_name = "wageringRequirement"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearWageringRequirement() {
-      bitField0_ = (bitField0_ & ~0x00000200);
-      wageringRequirement_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private double maxBet_ ;
-    /**
-     * <code>double max_bet = 11 [json_name = "maxBet"];</code>
-     * @return The maxBet.
-     */
-    @java.lang.Override
-    public double getMaxBet() {
-      return maxBet_;
-    }
-    /**
-     * <code>double max_bet = 11 [json_name = "maxBet"];</code>
-     * @param value The maxBet to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMaxBet(double value) {
-
-      maxBet_ = value;
-      bitField0_ |= 0x00000400;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>double max_bet = 11 [json_name = "maxBet"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMaxBet() {
-      bitField0_ = (bitField0_ & ~0x00000400);
-      maxBet_ = 0D;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object allowedGames_ = "";
-    /**
-     * <pre>
-     * Comma-separated game IDs or "ALL"
-     * </pre>
-     *
-     * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-     * @return The allowedGames.
-     */
-    public java.lang.String getAllowedGames() {
-      java.lang.Object ref = allowedGames_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        allowedGames_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     * Comma-separated game IDs or "ALL"
-     * </pre>
-     *
-     * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-     * @return The bytes for allowedGames.
-     */
-    public com.google.protobuf.ByteString
-        getAllowedGamesBytes() {
-      java.lang.Object ref = allowedGames_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        allowedGames_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * Comma-separated game IDs or "ALL"
-     * </pre>
-     *
-     * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-     * @param value The allowedGames to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAllowedGames(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      allowedGames_ = value;
-      bitField0_ |= 0x00000800;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * Comma-separated game IDs or "ALL"
-     * </pre>
-     *
-     * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearAllowedGames() {
-      allowedGames_ = getDefaultInstance().getAllowedGames();
-      bitField0_ = (bitField0_ & ~0x00000800);
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * Comma-separated game IDs or "ALL"
-     * </pre>
-     *
-     * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-     * @param value The bytes for allowedGames to set.
-     * @return This builder for chaining.
-     */
-    public Builder setAllowedGamesBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      allowedGames_ = value;
-      bitField0_ |= 0x00000800;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.Timestamp startDate_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> startDateBuilder_;
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     * @return Whether the startDate field is set.
-     */
-    public boolean hasStartDate() {
-      return ((bitField0_ & 0x00001000) != 0);
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     * @return The startDate.
-     */
-    public com.google.protobuf.Timestamp getStartDate() {
-      if (startDateBuilder_ == null) {
-        return startDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : startDate_;
-      } else {
-        return startDateBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    public Builder setStartDate(com.google.protobuf.Timestamp value) {
-      if (startDateBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        startDate_ = value;
-      } else {
-        startDateBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00001000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    public Builder setStartDate(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (startDateBuilder_ == null) {
-        startDate_ = builderForValue.build();
-      } else {
-        startDateBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00001000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    public Builder mergeStartDate(com.google.protobuf.Timestamp value) {
-      if (startDateBuilder_ == null) {
-        if (((bitField0_ & 0x00001000) != 0) &&
-          startDate_ != null &&
-          startDate_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-          getStartDateBuilder().mergeFrom(value);
-        } else {
-          startDate_ = value;
-        }
-      } else {
-        startDateBuilder_.mergeFrom(value);
-      }
-      if (startDate_ != null) {
-        bitField0_ |= 0x00001000;
-        onChanged();
-      }
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    public Builder clearStartDate() {
-      bitField0_ = (bitField0_ & ~0x00001000);
-      startDate_ = null;
-      if (startDateBuilder_ != null) {
-        startDateBuilder_.dispose();
-        startDateBuilder_ = null;
-      }
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getStartDateBuilder() {
-      bitField0_ |= 0x00001000;
-      onChanged();
-      return getStartDateFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getStartDateOrBuilder() {
-      if (startDateBuilder_ != null) {
-        return startDateBuilder_.getMessageOrBuilder();
-      } else {
-        return startDate_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : startDate_;
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-        getStartDateFieldBuilder() {
-      if (startDateBuilder_ == null) {
-        startDateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getStartDate(),
-                getParentForChildren(),
-                isClean());
-        startDate_ = null;
-      }
-      return startDateBuilder_;
-    }
-
-    private com.google.protobuf.Timestamp endDate_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> endDateBuilder_;
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     * @return Whether the endDate field is set.
-     */
-    public boolean hasEndDate() {
-      return ((bitField0_ & 0x00002000) != 0);
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     * @return The endDate.
-     */
-    public com.google.protobuf.Timestamp getEndDate() {
-      if (endDateBuilder_ == null) {
-        return endDate_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : endDate_;
-      } else {
-        return endDateBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    public Builder setEndDate(com.google.protobuf.Timestamp value) {
-      if (endDateBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        endDate_ = value;
-      } else {
-        endDateBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00002000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    public Builder setEndDate(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (endDateBuilder_ == null) {
-        endDate_ = builderForValue.build();
-      } else {
-        endDateBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00002000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    public Builder mergeEndDate(com.google.protobuf.Timestamp value) {
-      if (endDateBuilder_ == null) {
-        if (((bitField0_ & 0x00002000) != 0) &&
-          endDate_ != null &&
-          endDate_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-          getEndDateBuilder().mergeFrom(value);
-        } else {
-          endDate_ = value;
-        }
-      } else {
-        endDateBuilder_.mergeFrom(value);
-      }
-      if (endDate_ != null) {
-        bitField0_ |= 0x00002000;
-        onChanged();
-      }
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    public Builder clearEndDate() {
-      bitField0_ = (bitField0_ & ~0x00002000);
-      endDate_ = null;
-      if (endDateBuilder_ != null) {
-        endDateBuilder_.dispose();
-        endDateBuilder_ = null;
-      }
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getEndDateBuilder() {
-      bitField0_ |= 0x00002000;
-      onChanged();
-      return getEndDateFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getEndDateOrBuilder() {
-      if (endDateBuilder_ != null) {
-        return endDateBuilder_.getMessageOrBuilder();
-      } else {
-        return endDate_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : endDate_;
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-        getEndDateFieldBuilder() {
-      if (endDateBuilder_ == null) {
-        endDateBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getEndDate(),
-                getParentForChildren(),
-                isClean());
-        endDate_ = null;
-      }
-      return endDateBuilder_;
-    }
-
-    private int maxUses_ ;
-    /**
-     * <code>int32 max_uses = 15 [json_name = "maxUses"];</code>
-     * @return The maxUses.
-     */
-    @java.lang.Override
-    public int getMaxUses() {
-      return maxUses_;
-    }
-    /**
-     * <code>int32 max_uses = 15 [json_name = "maxUses"];</code>
-     * @param value The maxUses to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMaxUses(int value) {
-
-      maxUses_ = value;
-      bitField0_ |= 0x00004000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 max_uses = 15 [json_name = "maxUses"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMaxUses() {
-      bitField0_ = (bitField0_ & ~0x00004000);
-      maxUses_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private int currentUses_ ;
-    /**
-     * <code>int32 current_uses = 16 [json_name = "currentUses"];</code>
-     * @return The currentUses.
-     */
-    @java.lang.Override
-    public int getCurrentUses() {
-      return currentUses_;
-    }
-    /**
-     * <code>int32 current_uses = 16 [json_name = "currentUses"];</code>
-     * @param value The currentUses to set.
-     * @return This builder for chaining.
-     */
-    public Builder setCurrentUses(int value) {
-
-      currentUses_ = value;
-      bitField0_ |= 0x00008000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>int32 current_uses = 16 [json_name = "currentUses"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearCurrentUses() {
-      bitField0_ = (bitField0_ & ~0x00008000);
-      currentUses_ = 0;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object vipLevel_ = "";
-    /**
-     * <pre>
-     * ALL, BRONZE, SILVER, GOLD, PLATINUM
-     * </pre>
-     *
-     * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-     * @return The vipLevel.
-     */
-    public java.lang.String getVipLevel() {
-      java.lang.Object ref = vipLevel_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        vipLevel_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <pre>
-     * ALL, BRONZE, SILVER, GOLD, PLATINUM
-     * </pre>
-     *
-     * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-     * @return The bytes for vipLevel.
-     */
-    public com.google.protobuf.ByteString
-        getVipLevelBytes() {
-      java.lang.Object ref = vipLevel_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        vipLevel_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <pre>
-     * ALL, BRONZE, SILVER, GOLD, PLATINUM
-     * </pre>
-     *
-     * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-     * @param value The vipLevel to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVipLevel(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      vipLevel_ = value;
-      bitField0_ |= 0x00010000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * ALL, BRONZE, SILVER, GOLD, PLATINUM
-     * </pre>
-     *
-     * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearVipLevel() {
-      vipLevel_ = getDefaultInstance().getVipLevel();
-      bitField0_ = (bitField0_ & ~0x00010000);
-      onChanged();
-      return this;
-    }
-    /**
-     * <pre>
-     * ALL, BRONZE, SILVER, GOLD, PLATINUM
-     * </pre>
-     *
-     * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-     * @param value The bytes for vipLevel to set.
-     * @return This builder for chaining.
-     */
-    public Builder setVipLevelBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      vipLevel_ = value;
-      bitField0_ |= 0x00010000;
-      onChanged();
-      return this;
-    }
-
-    private com.google.protobuf.Timestamp createdAt_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> createdAtBuilder_;
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     * @return Whether the createdAt field is set.
-     */
-    public boolean hasCreatedAt() {
-      return ((bitField0_ & 0x00020000) != 0);
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     * @return The createdAt.
-     */
-    public com.google.protobuf.Timestamp getCreatedAt() {
-      if (createdAtBuilder_ == null) {
-        return createdAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-      } else {
-        return createdAtBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    public Builder setCreatedAt(com.google.protobuf.Timestamp value) {
-      if (createdAtBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        createdAt_ = value;
-      } else {
-        createdAtBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00020000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    public Builder setCreatedAt(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (createdAtBuilder_ == null) {
-        createdAt_ = builderForValue.build();
-      } else {
-        createdAtBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00020000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    public Builder mergeCreatedAt(com.google.protobuf.Timestamp value) {
-      if (createdAtBuilder_ == null) {
-        if (((bitField0_ & 0x00020000) != 0) &&
-          createdAt_ != null &&
-          createdAt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-          getCreatedAtBuilder().mergeFrom(value);
-        } else {
-          createdAt_ = value;
-        }
-      } else {
-        createdAtBuilder_.mergeFrom(value);
-      }
-      if (createdAt_ != null) {
-        bitField0_ |= 0x00020000;
-        onChanged();
-      }
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    public Builder clearCreatedAt() {
-      bitField0_ = (bitField0_ & ~0x00020000);
-      createdAt_ = null;
-      if (createdAtBuilder_ != null) {
-        createdAtBuilder_.dispose();
-        createdAtBuilder_ = null;
-      }
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getCreatedAtBuilder() {
-      bitField0_ |= 0x00020000;
-      onChanged();
-      return getCreatedAtFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder() {
-      if (createdAtBuilder_ != null) {
-        return createdAtBuilder_.getMessageOrBuilder();
-      } else {
-        return createdAt_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : createdAt_;
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-        getCreatedAtFieldBuilder() {
-      if (createdAtBuilder_ == null) {
-        createdAtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getCreatedAt(),
-                getParentForChildren(),
-                isClean());
-        createdAt_ = null;
-      }
-      return createdAtBuilder_;
-    }
-
-    private com.google.protobuf.Timestamp updatedAt_;
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     * @return Whether the updatedAt field is set.
-     */
-    public boolean hasUpdatedAt() {
-      return ((bitField0_ & 0x00040000) != 0);
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     * @return The updatedAt.
-     */
-    public com.google.protobuf.Timestamp getUpdatedAt() {
-      if (updatedAtBuilder_ == null) {
-        return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-      } else {
-        return updatedAtBuilder_.getMessage();
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    public Builder setUpdatedAt(com.google.protobuf.Timestamp value) {
-      if (updatedAtBuilder_ == null) {
-        if (value == null) {
-          throw new NullPointerException();
-        }
-        updatedAt_ = value;
-      } else {
-        updatedAtBuilder_.setMessage(value);
-      }
-      bitField0_ |= 0x00040000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    public Builder setUpdatedAt(
-        com.google.protobuf.Timestamp.Builder builderForValue) {
-      if (updatedAtBuilder_ == null) {
-        updatedAt_ = builderForValue.build();
-      } else {
-        updatedAtBuilder_.setMessage(builderForValue.build());
-      }
-      bitField0_ |= 0x00040000;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    public Builder mergeUpdatedAt(com.google.protobuf.Timestamp value) {
-      if (updatedAtBuilder_ == null) {
-        if (((bitField0_ & 0x00040000) != 0) &&
-          updatedAt_ != null &&
-          updatedAt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
-          getUpdatedAtBuilder().mergeFrom(value);
-        } else {
-          updatedAt_ = value;
-        }
-      } else {
-        updatedAtBuilder_.mergeFrom(value);
-      }
-      if (updatedAt_ != null) {
-        bitField0_ |= 0x00040000;
-        onChanged();
-      }
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    public Builder clearUpdatedAt() {
-      bitField0_ = (bitField0_ & ~0x00040000);
-      updatedAt_ = null;
-      if (updatedAtBuilder_ != null) {
-        updatedAtBuilder_.dispose();
-        updatedAtBuilder_ = null;
-      }
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    public com.google.protobuf.Timestamp.Builder getUpdatedAtBuilder() {
-      bitField0_ |= 0x00040000;
-      onChanged();
-      return getUpdatedAtFieldBuilder().getBuilder();
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
-      if (updatedAtBuilder_ != null) {
-        return updatedAtBuilder_.getMessageOrBuilder();
-      } else {
-        return updatedAt_ == null ?
-            com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
-      }
-    }
-    /**
-     * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-     */
-    private com.google.protobuf.SingleFieldBuilderV3<
-        com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
-        getUpdatedAtFieldBuilder() {
-      if (updatedAtBuilder_ == null) {
-        updatedAtBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
-            com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
-                getUpdatedAt(),
-                getParentForChildren(),
-                isClean());
-        updatedAt_ = null;
-      }
-      return updatedAtBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

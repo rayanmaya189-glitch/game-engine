@@ -8,7 +8,7 @@ import "common/v1/enums.proto";
 import "common/v1/pagination.proto";
 import "common/v1/money.proto";
 
-option go_package = "gen/go/wallet/v1;walletsv1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/wallet/v1;walletsv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.wallet.v1";
 
@@ -27,6 +27,12 @@ service WalletService {
   rpc CreateBonusCredit(CreateBonusCreditRequest) returns (CreateBonusCreditResponse);
   rpc ReverseTransaction(ReverseTransactionRequest) returns (ReverseTransactionResponse);
   rpc GetPendingBets(GetPendingBetsRequest) returns (GetPendingBetsResponse);
+
+  rpc GetTransactions(GetTransactionsRequest) returns (GetTransactionsResponse);
+  rpc Deposit(DepositRequest) returns (DepositResponse);
+  rpc Withdraw(WithdrawRequest) returns (WithdrawResponse);
+  rpc AdjustBalance(AdjustBalanceRequest) returns (AdjustBalanceResponse);
+  rpc GetAllTransactions(GetAllTransactionsRequest) returns (GetAllTransactionsResponse);
 }
 
 // Requests/Responses
@@ -243,4 +249,72 @@ enum BonusType {
   BONUS_TYPE_FREE_SPINS = 4;
   BONUS_TYPE_CASHBACK = 5;
   BONUS_TYPE_LOYALTY = 6;
+}
+
+message GetTransactionsRequest {
+  string user_id = 1;
+  string page = 2;
+  string limit = 3;
+  string type = 4;
+  string status = 5;
+}
+
+message WalletTransactionMsg {
+  string id = 1;
+  string type = 2;
+  double amount = 3;
+  string status = 4;
+  string description = 5;
+  int64 created_at = 6;
+}
+
+message GetTransactionsResponse {
+  repeated WalletTransactionMsg transactions = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message DepositRequest {
+  string user_id = 1;
+  double amount = 2;
+  string method = 3;
+  string payment_id = 4;
+}
+
+message DepositResponse {
+  string transaction_id = 1;
+  double new_balance = 2;
+}
+
+message WithdrawRequest {
+  string user_id = 1;
+  double amount = 2;
+  string method = 3;
+  string bank_id = 4;
+}
+
+message WithdrawResponse {
+  string transaction_id = 1;
+}
+
+message AdjustBalanceRequest {
+  string user_id = 1;
+  double amount = 2;
+  string reason = 3;
+}
+
+message AdjustBalanceResponse {
+  string transaction_id = 1;
+  double new_balance = 2;
+}
+
+message GetAllTransactionsRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message GetAllTransactionsResponse {
+  repeated WalletTransactionMsg transactions = 1;
+  int32 total = 2;
 }

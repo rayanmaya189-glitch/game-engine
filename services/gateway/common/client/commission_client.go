@@ -16,8 +16,9 @@ import (
 )
 
 type CommissionClient struct {
-	client commissionpb.CommissionServiceClient
-	conn   *grpc.ClientConn
+	client      commissionpb.CommissionServiceClient
+	claimClient commissionpb.ClaimServiceClient
+	conn        *grpc.ClientConn
 }
 
 type CommissionClientConfig struct {
@@ -50,8 +51,9 @@ func NewCommissionClient(config *CommissionClientConfig) (*CommissionClient, err
 	}
 
 	return &CommissionClient{
-		client: commissionpb.NewCommissionServiceClient(conn),
-		conn:   conn,
+		client:      commissionpb.NewCommissionServiceClient(conn),
+		claimClient: commissionpb.NewClaimServiceClient(conn),
+		conn:        conn,
 	}, nil
 }
 
@@ -72,19 +74,19 @@ func (c *CommissionClient) ClaimCommission(ctx context.Context, req *commissionp
 }
 
 func (c *CommissionClient) GetUserSettlements(ctx context.Context, req *commissionpb.GetUserSettlementsRequest) (*commissionpb.GetUserSettlementsResponse, error) {
-	return c.client.GetUserSettlements(ctx, req)
+	return c.claimClient.GetUserSettlements(ctx, req)
 }
 
 func (c *CommissionClient) GetSettlementById(ctx context.Context, req *commissionpb.GetSettlementByIdRequest) (*commissionpb.GetSettlementByIdResponse, error) {
-	return c.client.GetSettlementById(ctx, req)
+	return c.claimClient.GetSettlementById(ctx, req)
 }
 
-func (c *CommissionClient) GetTotalPending(ctx context.Context, req *commissionpb.GetTotalPendingRequest) (*commissionpb.GetTotalPendingResponse, error) {
-	return c.client.GetTotalPending(ctx, req)
+func (c *CommissionClient) GetUserTotalPending(ctx context.Context, req *commissionpb.GetUserTotalPendingRequest) (*commissionpb.GetUserTotalPendingResponse, error) {
+	return c.claimClient.GetUserTotalPending(ctx, req)
 }
 
-func (c *CommissionClient) GetTotalSettled(ctx context.Context, req *commissionpb.GetTotalSettledRequest) (*commissionpb.GetTotalSettledResponse, error) {
-	return c.client.GetTotalSettled(ctx, req)
+func (c *CommissionClient) GetUserTotalSettled(ctx context.Context, req *commissionpb.GetUserTotalSettledRequest) (*commissionpb.GetUserTotalSettledResponse, error) {
+	return c.claimClient.GetUserTotalSettled(ctx, req)
 }
 
 func (c *CommissionClient) GetAgentCommissions(ctx context.Context, req *commissionpb.GetAgentCommissionsRequest) (*commissionpb.GetAgentCommissionsResponse, error) {
@@ -97,6 +99,30 @@ func (c *CommissionClient) GetPendingCommissions(ctx context.Context, req *commi
 
 func (c *CommissionClient) GetCommissionHistory(ctx context.Context, req *commissionpb.GetCommissionHistoryRequest) (*commissionpb.GetCommissionHistoryResponse, error) {
 	return c.client.GetCommissionHistory(ctx, req)
+}
+
+func (c *CommissionClient) SubmitInsuranceClaim(ctx context.Context, req *commissionpb.SubmitInsuranceClaimRequest) (*commissionpb.SubmitInsuranceClaimResponse, error) {
+	return c.claimClient.SubmitInsuranceClaim(ctx, req)
+}
+
+func (c *CommissionClient) ApproveInsuranceClaim(ctx context.Context, req *commissionpb.ApproveInsuranceClaimRequest) (*commissionpb.ApproveInsuranceClaimResponse, error) {
+	return c.claimClient.ApproveInsuranceClaim(ctx, req)
+}
+
+func (c *CommissionClient) RejectInsuranceClaim(ctx context.Context, req *commissionpb.RejectInsuranceClaimRequest) (*commissionpb.RejectInsuranceClaimResponse, error) {
+	return c.claimClient.RejectInsuranceClaim(ctx, req)
+}
+
+func (c *CommissionClient) PayInsuranceClaim(ctx context.Context, req *commissionpb.PayInsuranceClaimRequest) (*commissionpb.PayInsuranceClaimResponse, error) {
+	return c.claimClient.PayInsuranceClaim(ctx, req)
+}
+
+func (c *CommissionClient) GetUserInsuranceClaims(ctx context.Context, req *commissionpb.GetUserInsuranceClaimsRequest) (*commissionpb.GetUserInsuranceClaimsResponse, error) {
+	return c.claimClient.GetUserInsuranceClaims(ctx, req)
+}
+
+func (c *CommissionClient) GetInsuranceClaimsByStatus(ctx context.Context, req *commissionpb.GetInsuranceClaimsByStatusRequest) (*commissionpb.GetInsuranceClaimsByStatusResponse, error) {
+	return c.claimClient.GetInsuranceClaimsByStatus(ctx, req)
 }
 
 func (c *CommissionClient) Close() error {

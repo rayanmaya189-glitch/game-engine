@@ -3,6 +3,7 @@ package tournament
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 // GetTableStates returns current state of all tables

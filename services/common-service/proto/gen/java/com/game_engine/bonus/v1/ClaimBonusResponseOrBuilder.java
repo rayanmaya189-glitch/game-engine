@@ -15,54 +15,20 @@ public interface ClaimBonusResponseOrBuilder extends
   boolean getSuccess();
 
   /**
-   * <code>string message = 2 [json_name = "message"];</code>
-   * @return The message.
-   */
-  java.lang.String getMessage();
-  /**
-   * <code>string message = 2 [json_name = "message"];</code>
-   * @return The bytes for message.
-   */
-  com.google.protobuf.ByteString
-      getMessageBytes();
-
-  /**
-   * <code>double bonus_amount = 3 [json_name = "bonusAmount"];</code>
+   * <code>double bonus_amount = 2 [json_name = "bonusAmount"];</code>
    * @return The bonusAmount.
    */
   double getBonusAmount();
 
   /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
+   * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+   * @return The expiresAt.
    */
-  int getDetailsCount();
+  java.lang.String getExpiresAt();
   /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
+   * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+   * @return The bytes for expiresAt.
    */
-  boolean containsDetails(
-      java.lang.String key);
-  /**
-   * Use {@link #getDetailsMap()} instead.
-   */
-  @java.lang.Deprecated
-  java.util.Map<java.lang.String, java.lang.String>
-  getDetails();
-  /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-   */
-  java.util.Map<java.lang.String, java.lang.String>
-  getDetailsMap();
-  /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-   */
-  /* nullable */
-java.lang.String getDetailsOrDefault(
-      java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue);
-  /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-   */
-  java.lang.String getDetailsOrThrow(
-      java.lang.String key);
+  com.google.protobuf.ByteString
+      getExpiresAtBytes();
 }

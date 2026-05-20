@@ -43,8 +43,8 @@ func (s *DMService) GetOrCreateDMRoom(ctx context.Context, userID1, userID2 stri
 	}
 
 	// Auto-join both users
-	_ = s.manager.JoinRoom(ctx, dmRoom.RoomID, userID1, "")
-	_ = s.manager.JoinRoom(ctx, dmRoom.RoomID, userID2, "")
+	_ = s.manager.JoinRoom(ctx, dmRoom.ID, userID1, "")
+	_ = s.manager.JoinRoom(ctx, dmRoom.ID, userID2, "")
 
 	return dmRoom, nil
 }
@@ -56,7 +56,7 @@ func (s *DMService) SendDM(ctx context.Context, fromUserID, toUserID, content st
 		return nil, err
 	}
 
-	msg, err := s.manager.SendMessage(ctx, dmRoom.RoomID, fromUserID, fromUserID, content, "text")
+	msg, err := s.manager.SendMessage(ctx, dmRoom.ID, fromUserID, fromUserID, content, "text")
 	if err != nil {
 		return nil, fmt.Errorf("failed to send DM: %w", err)
 	}
@@ -71,7 +71,7 @@ func (s *DMService) GetDMHistory(ctx context.Context, userID1, userID2 string, l
 		return nil, err
 	}
 
-	return s.manager.GetMessages(ctx, dmRoom.RoomID, limit)
+	return s.manager.GetMessages(ctx, dmRoom.ID, limit)
 }
 
 // ListDMConversations lists all DM conversations for a user
@@ -85,7 +85,7 @@ func (s *DMService) ListDMConversations(ctx context.Context, userID string) ([]D
 	for _, r := range rooms {
 		if s.isUserInDMRoom(r, userID) {
 			otherUserID := s.getOtherUser(r, userID)
-			messages, _ := s.manager.GetMessages(ctx, r.RoomID, 1)
+			messages, _ := s.manager.GetMessages(ctx, r.ID, 1)
 
 			var lastMessage *room.Message
 			if len(messages) > 0 {
@@ -93,7 +93,7 @@ func (s *DMService) ListDMConversations(ctx context.Context, userID string) ([]D
 			}
 
 			conversations = append(conversations, DMConversation{
-				RoomID:       r.RoomID,
+				RoomID:       r.ID,
 				OtherUserID:  otherUserID,
 				LastMessage:  lastMessage,
 				UpdatedAt:    r.UpdatedAt,

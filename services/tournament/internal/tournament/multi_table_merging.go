@@ -3,6 +3,7 @@ package tournament
 import (
 	"context"
 	"fmt"
+	"time"
 )
 
 // createFinalTable creates the final table when enough players remain

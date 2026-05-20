@@ -80,6 +80,31 @@ class WalletServiceStub(object):
                 request_serializer=wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.SerializeToString,
                 response_deserializer=wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.FromString,
                 _registered_method=True)
+        self.GetTransactions = channel.unary_unary(
+                '/game_engine.wallet.v1.WalletService/GetTransactions',
+                request_serializer=wallet_dot_v1_dot_wallet__service__pb2.GetTransactionsRequest.SerializeToString,
+                response_deserializer=wallet_dot_v1_dot_wallet__service__pb2.GetTransactionsResponse.FromString,
+                _registered_method=True)
+        self.Deposit = channel.unary_unary(
+                '/game_engine.wallet.v1.WalletService/Deposit',
+                request_serializer=wallet_dot_v1_dot_wallet__service__pb2.DepositRequest.SerializeToString,
+                response_deserializer=wallet_dot_v1_dot_wallet__service__pb2.DepositResponse.FromString,
+                _registered_method=True)
+        self.Withdraw = channel.unary_unary(
+                '/game_engine.wallet.v1.WalletService/Withdraw',
+                request_serializer=wallet_dot_v1_dot_wallet__service__pb2.WithdrawRequest.SerializeToString,
+                response_deserializer=wallet_dot_v1_dot_wallet__service__pb2.WithdrawResponse.FromString,
+                _registered_method=True)
+        self.AdjustBalance = channel.unary_unary(
+                '/game_engine.wallet.v1.WalletService/AdjustBalance',
+                request_serializer=wallet_dot_v1_dot_wallet__service__pb2.AdjustBalanceRequest.SerializeToString,
+                response_deserializer=wallet_dot_v1_dot_wallet__service__pb2.AdjustBalanceResponse.FromString,
+                _registered_method=True)
+        self.GetAllTransactions = channel.unary_unary(
+                '/game_engine.wallet.v1.WalletService/GetAllTransactions',
+                request_serializer=wallet_dot_v1_dot_wallet__service__pb2.GetAllTransactionsRequest.SerializeToString,
+                response_deserializer=wallet_dot_v1_dot_wallet__service__pb2.GetAllTransactionsResponse.FromString,
+                _registered_method=True)
 
 
 class WalletServiceServicer(object):
@@ -164,6 +189,36 @@ class WalletServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetTransactions(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Deposit(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def Withdraw(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def AdjustBalance(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetAllTransactions(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_WalletServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -231,6 +286,31 @@ def add_WalletServiceServicer_to_server(servicer, server):
                     servicer.GetPendingBets,
                     request_deserializer=wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.FromString,
                     response_serializer=wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.SerializeToString,
+            ),
+            'GetTransactions': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetTransactions,
+                    request_deserializer=wallet_dot_v1_dot_wallet__service__pb2.GetTransactionsRequest.FromString,
+                    response_serializer=wallet_dot_v1_dot_wallet__service__pb2.GetTransactionsResponse.SerializeToString,
+            ),
+            'Deposit': grpc.unary_unary_rpc_method_handler(
+                    servicer.Deposit,
+                    request_deserializer=wallet_dot_v1_dot_wallet__service__pb2.DepositRequest.FromString,
+                    response_serializer=wallet_dot_v1_dot_wallet__service__pb2.DepositResponse.SerializeToString,
+            ),
+            'Withdraw': grpc.unary_unary_rpc_method_handler(
+                    servicer.Withdraw,
+                    request_deserializer=wallet_dot_v1_dot_wallet__service__pb2.WithdrawRequest.FromString,
+                    response_serializer=wallet_dot_v1_dot_wallet__service__pb2.WithdrawResponse.SerializeToString,
+            ),
+            'AdjustBalance': grpc.unary_unary_rpc_method_handler(
+                    servicer.AdjustBalance,
+                    request_deserializer=wallet_dot_v1_dot_wallet__service__pb2.AdjustBalanceRequest.FromString,
+                    response_serializer=wallet_dot_v1_dot_wallet__service__pb2.AdjustBalanceResponse.SerializeToString,
+            ),
+            'GetAllTransactions': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAllTransactions,
+                    request_deserializer=wallet_dot_v1_dot_wallet__service__pb2.GetAllTransactionsRequest.FromString,
+                    response_serializer=wallet_dot_v1_dot_wallet__service__pb2.GetAllTransactionsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -585,6 +665,141 @@ class WalletService(object):
             '/game_engine.wallet.v1.WalletService/GetPendingBets',
             wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsRequest.SerializeToString,
             wallet_dot_v1_dot_wallet__service__pb2.GetPendingBetsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetTransactions(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.wallet.v1.WalletService/GetTransactions',
+            wallet_dot_v1_dot_wallet__service__pb2.GetTransactionsRequest.SerializeToString,
+            wallet_dot_v1_dot_wallet__service__pb2.GetTransactionsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Deposit(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.wallet.v1.WalletService/Deposit',
+            wallet_dot_v1_dot_wallet__service__pb2.DepositRequest.SerializeToString,
+            wallet_dot_v1_dot_wallet__service__pb2.DepositResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def Withdraw(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.wallet.v1.WalletService/Withdraw',
+            wallet_dot_v1_dot_wallet__service__pb2.WithdrawRequest.SerializeToString,
+            wallet_dot_v1_dot_wallet__service__pb2.WithdrawResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def AdjustBalance(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.wallet.v1.WalletService/AdjustBalance',
+            wallet_dot_v1_dot_wallet__service__pb2.AdjustBalanceRequest.SerializeToString,
+            wallet_dot_v1_dot_wallet__service__pb2.AdjustBalanceResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAllTransactions(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.wallet.v1.WalletService/GetAllTransactions',
+            wallet_dot_v1_dot_wallet__service__pb2.GetAllTransactionsRequest.SerializeToString,
+            wallet_dot_v1_dot_wallet__service__pb2.GetAllTransactionsResponse.FromString,
             options,
             channel_credentials,
             insecure,

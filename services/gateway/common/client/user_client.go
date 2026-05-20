@@ -54,32 +54,52 @@ func (c *UserClient) UpdateProfile(ctx context.Context, req *userpb.UpdateProfil
 	return c.client.UpdateProfile(ctx, req)
 }
 
-func (c *UserClient) GetUserByID(ctx context.Context, req *userpb.GetUserByIDRequest) (*userpb.GetUserByIDResponse, error) {
-	return c.client.GetUserByID(ctx, req)
+func (c *UserClient) GetKYCStatus(ctx context.Context, req *userpb.GetKYCStatusRequest) (*userpb.GetKYCStatusResponse, error) {
+	return c.client.GetKYCStatus(ctx, req)
 }
 
-func (c *UserClient) ListUsers(ctx context.Context, req *userpb.ListUsersRequest) (*userpb.ListUsersResponse, error) {
-	return c.client.ListUsers(ctx, req)
+func (c *UserClient) SubmitKYC(ctx context.Context, req *userpb.SubmitKYCRequest) (*userpb.SubmitKYCResponse, error) {
+	return c.client.SubmitKYC(ctx, req)
 }
 
-func (c *UserClient) UpdateUserStatus(ctx context.Context, req *userpb.UpdateUserStatusRequest) (*userpb.UpdateUserStatusResponse, error) {
-	return c.client.UpdateUserStatus(ctx, req)
+func (c *UserClient) GetPlayerSettings(ctx context.Context, req *userpb.GetPlayerSettingsRequest) (*userpb.GetPlayerSettingsResponse, error) {
+	return c.client.GetPlayerSettings(ctx, req)
 }
 
-func (c *UserClient) GetUserStats(ctx context.Context, req *userpb.GetUserStatsRequest) (*userpb.GetUserStatsResponse, error) {
-	return c.client.GetUserStats(ctx, req)
+func (c *UserClient) UpdatePlayerSettings(ctx context.Context, req *userpb.UpdatePlayerSettingsRequest) (*userpb.UpdatePlayerSettingsResponse, error) {
+	return c.client.UpdatePlayerSettings(ctx, req)
 }
 
-func (c *UserClient) GetKYCList(ctx context.Context, req *userpb.GetKYCListRequest) (*userpb.GetKYCListResponse, error) {
-	return c.client.GetKYCList(ctx, req)
+func (c *UserClient) GetPlayerByAdmin(ctx context.Context, req *userpb.GetPlayerByAdminRequest) (*userpb.GetPlayerByAdminResponse, error) {
+	return c.client.GetPlayerByAdmin(ctx, req)
 }
 
-func (c *UserClient) ApproveKYC(ctx context.Context, req *userpb.ApproveKYCRequest) (*userpb.ApproveKYCResponse, error) {
-	return c.client.ApproveKYC(ctx, req)
+func (c *UserClient) ListPlayers(ctx context.Context, req *userpb.ListPlayersRequest) (*userpb.ListPlayersResponse, error) {
+	return c.client.ListPlayers(ctx, req)
 }
 
-func (c *UserClient) RejectKYC(ctx context.Context, req *userpb.RejectKYCRequest) (*userpb.RejectKYCResponse, error) {
-	return c.client.RejectKYC(ctx, req)
+func (c *UserClient) UpdatePlayerStatus(ctx context.Context, req *userpb.UpdatePlayerStatusRequest) (*userpb.UpdatePlayerStatusResponse, error) {
+	return c.client.UpdatePlayerStatus(ctx, req)
+}
+
+func (c *UserClient) SetDepositLimit(ctx context.Context, req *userpb.SetDepositLimitRequest) (*userpb.SetDepositLimitResponse, error) {
+	return c.client.SetDepositLimit(ctx, req)
+}
+
+func (c *UserClient) SetBetLimit(ctx context.Context, req *userpb.SetBetLimitRequest) (*userpb.SetBetLimitResponse, error) {
+	return c.client.SetBetLimit(ctx, req)
+}
+
+func (c *UserClient) SetLossLimit(ctx context.Context, req *userpb.SetLossLimitRequest) (*userpb.SetLossLimitResponse, error) {
+	return c.client.SetLossLimit(ctx, req)
+}
+
+func (c *UserClient) GetPlayerLimits(ctx context.Context, req *userpb.GetPlayerLimitsRequest) (*userpb.GetPlayerLimitsResponse, error) {
+	return c.client.GetPlayerLimits(ctx, req)
+}
+
+func (c *UserClient) SelfExclude(ctx context.Context, req *userpb.SelfExcludeRequest) (*userpb.SelfExcludeResponse, error) {
+	return c.client.SelfExclude(ctx, req)
 }
 
 func (c *UserClient) Close() error {

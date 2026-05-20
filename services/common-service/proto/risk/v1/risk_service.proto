@@ -4,7 +4,7 @@ package game_engine.risk.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "gen/go/risk/v1;riskv1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/risk/v1;riskv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.risk.v1";
 

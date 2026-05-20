@@ -135,6 +135,51 @@ public final class TournamentServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_tournament_v1_UserTournament_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_GetTournamentResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_GetTournamentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_JoinTournamentRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_JoinTournamentRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_JoinTournamentResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_JoinTournamentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_LeaveTournamentRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_LeaveTournamentRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_LeaveTournamentResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_LeaveTournamentResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_UpdateScoreRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_UpdateScoreRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_UpdateScoreResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_UpdateScoreResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_GetMyTournamentsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_GetMyTournamentsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_tournament_v1_GetMyTournamentsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_tournament_v1_GetMyTournamentsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -240,43 +285,77 @@ public final class TournamentServiceOuterClass {
       "ore\022\026\n\006status\030\005 \001(\tR\006status\0229\n\nstart_tim" +
       "e\030\006 \001(\0132\032.google.protobuf.TimestampR\tsta" +
       "rtTime\0225\n\010end_time\030\007 \001(\0132\032.google.protob" +
-      "uf.TimestampR\007endTime2\320\n\n\021TournamentServ" +
-      "ice\022u\n\020CreateTournament\0222.game_engine.to" +
-      "urnament.v1.CreateTournamentRequest\032-.ga" +
-      "me_engine.tournament.v1.TournamentRespon" +
-      "se\022o\n\rGetTournament\022/.game_engine.tourna" +
-      "ment.v1.GetTournamentRequest\032-.game_engi" +
-      "ne.tournament.v1.TournamentResponse\022x\n\017L" +
-      "istTournaments\0221.game_engine.tournament." +
-      "v1.ListTournamentsRequest\0322.game_engine." +
-      "tournament.v1.ListTournamentsResponse\022u\n" +
-      "\020UpdateTournament\0222.game_engine.tourname" +
-      "nt.v1.UpdateTournamentRequest\032-.game_eng" +
-      "ine.tournament.v1.TournamentResponse\022{\n\020" +
-      "CancelTournament\0222.game_engine.tournamen" +
-      "t.v1.CancelTournamentRequest\0323.game_engi" +
-      "ne.tournament.v1.CancelTournamentRespons" +
-      "e\022o\n\014RegisterUser\022..game_engine.tourname" +
-      "nt.v1.RegisterUserRequest\032/.game_engine." +
-      "tournament.v1.RegisterUserResponse\022u\n\016Un" +
-      "registerUser\0220.game_engine.tournament.v1" +
-      ".UnregisterUserRequest\0321.game_engine.tou" +
-      "rnament.v1.UnregisterUserResponse\022\201\001\n\022Ge" +
-      "tTournamentUsers\0224.game_engine.tournamen" +
-      "t.v1.GetTournamentUsersRequest\0325.game_en" +
-      "gine.tournament.v1.GetTournamentUsersRes" +
-      "ponse\022u\n\016GetLeaderboard\0220.game_engine.to" +
-      "urnament.v1.GetLeaderboardRequest\0321.game" +
-      "_engine.tournament.v1.GetLeaderboardResp" +
-      "onse\022~\n\021UpdatePlayerScore\0223.game_engine." +
-      "tournament.v1.UpdatePlayerScoreRequest\0324" +
-      ".game_engine.tournament.v1.UpdatePlayerS" +
-      "coreResponse\022\201\001\n\022GetUserTournaments\0224.ga" +
-      "me_engine.tournament.v1.GetUserTournamen" +
-      "tsRequest\0325.game_engine.tournament.v1.Ge" +
-      "tUserTournamentsResponseBD\n\035com.game_eng" +
-      "ine.tournament.v1P\001Z!gen/go/tournament/v" +
-      "1;tournamentv1b\006proto3"
+      "uf.TimestampR\007endTime\"^\n\025GetTournamentRe" +
+      "sponse\022E\n\ntournament\030\001 \001(\0132%.game_engine" +
+      ".tournament.v1.TournamentR\ntournament\"U\n" +
+      "\025JoinTournamentRequest\022#\n\rtournament_id\030" +
+      "\001 \001(\tR\014tournamentId\022\027\n\007user_id\030\002 \001(\tR\006us" +
+      "erId\"h\n\026JoinTournamentResponse\022\030\n\007succes" +
+      "s\030\001 \001(\010R\007success\022\032\n\010position\030\002 \001(\005R\010posi" +
+      "tion\022\030\n\007message\030\003 \001(\tR\007message\"V\n\026LeaveT" +
+      "ournamentRequest\022#\n\rtournament_id\030\001 \001(\tR" +
+      "\014tournamentId\022\027\n\007user_id\030\002 \001(\tR\006userId\"M" +
+      "\n\027LeaveTournamentResponse\022\030\n\007success\030\001 \001" +
+      "(\010R\007success\022\030\n\007message\030\002 \001(\tR\007message\"h\n" +
+      "\022UpdateScoreRequest\022#\n\rtournament_id\030\001 \001" +
+      "(\tR\014tournamentId\022\027\n\007user_id\030\002 \001(\tR\006userI" +
+      "d\022\024\n\005score\030\003 \001(\001R\005score\"L\n\023UpdateScoreRe" +
+      "sponse\022\030\n\007success\030\001 \001(\010R\007success\022\033\n\tnew_" +
+      "score\030\002 \001(\001R\010newScore\"2\n\027GetMyTournament" +
+      "sRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\"}\n\030Get" +
+      "MyTournamentsResponse\022K\n\013tournaments\030\001 \003" +
+      "(\0132).game_engine.tournament.v1.UserTourn" +
+      "amentR\013tournaments\022\024\n\005total\030\002 \001(\005R\005total" +
+      "2\257\016\n\021TournamentService\022u\n\020CreateTourname" +
+      "nt\0222.game_engine.tournament.v1.CreateTou" +
+      "rnamentRequest\032-.game_engine.tournament." +
+      "v1.TournamentResponse\022r\n\rGetTournament\022/" +
+      ".game_engine.tournament.v1.GetTournament" +
+      "Request\0320.game_engine.tournament.v1.GetT" +
+      "ournamentResponse\022x\n\017ListTournaments\0221.g" +
+      "ame_engine.tournament.v1.ListTournaments" +
+      "Request\0322.game_engine.tournament.v1.List" +
+      "TournamentsResponse\022u\n\020UpdateTournament\022" +
+      "2.game_engine.tournament.v1.UpdateTourna" +
+      "mentRequest\032-.game_engine.tournament.v1." +
+      "TournamentResponse\022{\n\020CancelTournament\0222" +
+      ".game_engine.tournament.v1.CancelTournam" +
+      "entRequest\0323.game_engine.tournament.v1.C" +
+      "ancelTournamentResponse\022o\n\014RegisterUser\022" +
+      "..game_engine.tournament.v1.RegisterUser" +
+      "Request\032/.game_engine.tournament.v1.Regi" +
+      "sterUserResponse\022u\n\016UnregisterUser\0220.gam" +
+      "e_engine.tournament.v1.UnregisterUserReq" +
+      "uest\0321.game_engine.tournament.v1.Unregis" +
+      "terUserResponse\022\201\001\n\022GetTournamentUsers\0224" +
+      ".game_engine.tournament.v1.GetTournament" +
+      "UsersRequest\0325.game_engine.tournament.v1" +
+      ".GetTournamentUsersResponse\022u\n\016GetLeader" +
+      "board\0220.game_engine.tournament.v1.GetLea" +
+      "derboardRequest\0321.game_engine.tournament" +
+      ".v1.GetLeaderboardResponse\022~\n\021UpdatePlay" +
+      "erScore\0223.game_engine.tournament.v1.Upda" +
+      "tePlayerScoreRequest\0324.game_engine.tourn" +
+      "ament.v1.UpdatePlayerScoreResponse\022\201\001\n\022G" +
+      "etUserTournaments\0224.game_engine.tourname" +
+      "nt.v1.GetUserTournamentsRequest\0325.game_e" +
+      "ngine.tournament.v1.GetUserTournamentsRe" +
+      "sponse\022u\n\016JoinTournament\0220.game_engine.t" +
+      "ournament.v1.JoinTournamentRequest\0321.gam" +
+      "e_engine.tournament.v1.JoinTournamentRes" +
+      "ponse\022x\n\017LeaveTournament\0221.game_engine.t" +
+      "ournament.v1.LeaveTournamentRequest\0322.ga" +
+      "me_engine.tournament.v1.LeaveTournamentR" +
+      "esponse\022l\n\013UpdateScore\022-.game_engine.tou" +
+      "rnament.v1.UpdateScoreRequest\032..game_eng" +
+      "ine.tournament.v1.UpdateScoreResponse\022{\n" +
+      "\020GetMyTournaments\0222.game_engine.tourname" +
+      "nt.v1.GetMyTournamentsRequest\0323.game_eng" +
+      "ine.tournament.v1.GetMyTournamentsRespon" +
+      "seBp\n\035com.game_engine.tournament.v1P\001ZMg" +
+      "ithub.com/game_engine/common-service/pro" +
+      "to/gen/go/tournament/v1;tournamentv1b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -428,6 +507,60 @@ public final class TournamentServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_tournament_v1_UserTournament_descriptor,
         new java.lang.String[] { "TournamentId", "Name", "Rank", "Score", "Status", "StartTime", "EndTime", });
+    internal_static_game_engine_tournament_v1_GetTournamentResponse_descriptor =
+      getDescriptor().getMessageTypes().get(24);
+    internal_static_game_engine_tournament_v1_GetTournamentResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_GetTournamentResponse_descriptor,
+        new java.lang.String[] { "Tournament", });
+    internal_static_game_engine_tournament_v1_JoinTournamentRequest_descriptor =
+      getDescriptor().getMessageTypes().get(25);
+    internal_static_game_engine_tournament_v1_JoinTournamentRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_JoinTournamentRequest_descriptor,
+        new java.lang.String[] { "TournamentId", "UserId", });
+    internal_static_game_engine_tournament_v1_JoinTournamentResponse_descriptor =
+      getDescriptor().getMessageTypes().get(26);
+    internal_static_game_engine_tournament_v1_JoinTournamentResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_JoinTournamentResponse_descriptor,
+        new java.lang.String[] { "Success", "Position", "Message", });
+    internal_static_game_engine_tournament_v1_LeaveTournamentRequest_descriptor =
+      getDescriptor().getMessageTypes().get(27);
+    internal_static_game_engine_tournament_v1_LeaveTournamentRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_LeaveTournamentRequest_descriptor,
+        new java.lang.String[] { "TournamentId", "UserId", });
+    internal_static_game_engine_tournament_v1_LeaveTournamentResponse_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_game_engine_tournament_v1_LeaveTournamentResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_LeaveTournamentResponse_descriptor,
+        new java.lang.String[] { "Success", "Message", });
+    internal_static_game_engine_tournament_v1_UpdateScoreRequest_descriptor =
+      getDescriptor().getMessageTypes().get(29);
+    internal_static_game_engine_tournament_v1_UpdateScoreRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_UpdateScoreRequest_descriptor,
+        new java.lang.String[] { "TournamentId", "UserId", "Score", });
+    internal_static_game_engine_tournament_v1_UpdateScoreResponse_descriptor =
+      getDescriptor().getMessageTypes().get(30);
+    internal_static_game_engine_tournament_v1_UpdateScoreResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_UpdateScoreResponse_descriptor,
+        new java.lang.String[] { "Success", "NewScore", });
+    internal_static_game_engine_tournament_v1_GetMyTournamentsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(31);
+    internal_static_game_engine_tournament_v1_GetMyTournamentsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_GetMyTournamentsRequest_descriptor,
+        new java.lang.String[] { "UserId", });
+    internal_static_game_engine_tournament_v1_GetMyTournamentsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(32);
+    internal_static_game_engine_tournament_v1_GetMyTournamentsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_tournament_v1_GetMyTournamentsResponse_descriptor,
+        new java.lang.String[] { "Tournaments", "Total", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.game_engine.common.v1.Pagination.getDescriptor();
   }

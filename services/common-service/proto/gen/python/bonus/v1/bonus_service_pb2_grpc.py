@@ -6,8 +6,7 @@ from bonus.v1 import bonus_service_pb2 as bonus_dot_v1_dot_bonus__service__pb2
 
 
 class BonusServiceStub(object):
-    """Bonus Service - manages bonuses, claims, wagering requirements
-    """
+    """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
         """Constructor.
@@ -15,131 +14,134 @@ class BonusServiceStub(object):
         Args:
             channel: A grpc.Channel.
         """
-        self.GetActiveBonuses = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/GetActiveBonuses',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusesRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusesResponse.FromString,
+        self.ListBonuses = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/ListBonuses',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.FromString,
                 _registered_method=True)
         self.GetBonus = channel.unary_unary(
                 '/game_engine.bonus.v1.BonusService/GetBonus',
                 request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.SerializeToString,
                 response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.FromString,
                 _registered_method=True)
-        self.CreateBonus = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/CreateBonus',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.CreateBonusRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CreateBonusResponse.FromString,
-                _registered_method=True)
         self.ClaimBonus = channel.unary_unary(
                 '/game_engine.bonus.v1.BonusService/ClaimBonus',
                 request_serializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.SerializeToString,
                 response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.FromString,
                 _registered_method=True)
-        self.CheckEligibility = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/CheckEligibility',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.CheckEligibilityRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CheckEligibilityResponse.FromString,
+        self.GetUserBonuses = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/GetUserBonuses',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.FromString,
                 _registered_method=True)
-        self.GetBonusHistory = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/GetBonusHistory',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusHistoryRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusHistoryResponse.FromString,
+        self.CreateRebetClaim = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/CreateRebetClaim',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.FromString,
                 _registered_method=True)
-        self.GetActiveBonusClaims = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/GetActiveBonusClaims',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusClaimsRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusClaimsResponse.FromString,
+        self.GetUserRebetClaims = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/GetUserRebetClaims',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.FromString,
                 _registered_method=True)
-        self.ProcessWageringContribution = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/ProcessWageringContribution',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.ProcessWageringContributionRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ProcessWageringContributionResponse.FromString,
+        self.GetClaimableRebets = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/GetClaimableRebets',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.FromString,
                 _registered_method=True)
-        self.CompleteBonus = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/CompleteBonus',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.CompleteBonusRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CompleteBonusResponse.FromString,
+        self.ClaimRebet = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/ClaimRebet',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.FromString,
                 _registered_method=True)
-        self.CancelBonus = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/CancelBonus',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.CancelBonusRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CancelBonusResponse.FromString,
+        self.SubmitInsuranceClaim = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/SubmitInsuranceClaim',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.FromString,
                 _registered_method=True)
-        self.GetBonusStats = channel.unary_unary(
-                '/game_engine.bonus.v1.BonusService/GetBonusStats',
-                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusStatsRequest.SerializeToString,
-                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusStatsResponse.FromString,
+        self.GetUserInsuranceClaims = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/GetUserInsuranceClaims',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.FromString,
+                _registered_method=True)
+        self.CheckWageringRequirements = channel.unary_unary(
+                '/game_engine.bonus.v1.BonusService/CheckWageringRequirements',
+                request_serializer=bonus_dot_v1_dot_bonus__service__pb2.CheckWageringRequirementsRequest.SerializeToString,
+                response_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CheckWageringRequirementsResponse.FromString,
                 _registered_method=True)
 
 
 class BonusServiceServicer(object):
-    """Bonus Service - manages bonuses, claims, wagering requirements
-    """
+    """Missing associated documentation comment in .proto file."""
 
-    def GetActiveBonuses(self, request, context):
-        """Bonus management
+    def ListBonuses(self, request, context):
+        """List available bonuses
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
     def GetBonus(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def CreateBonus(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ClaimBonus(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def CheckEligibility(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetBonusHistory(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def GetActiveBonusClaims(self, request, context):
-        """Missing associated documentation comment in .proto file."""
-        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
-
-    def ProcessWageringContribution(self, request, context):
-        """Wagering
+        """Get bonus details
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def CompleteBonus(self, request, context):
+    def ClaimBonus(self, request, context):
+        """Claim a bonus
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetUserBonuses(self, request, context):
+        """Get user's claimed bonuses
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateRebetClaim(self, request, context):
+        """Rebet claim operations
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetUserRebetClaims(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def CancelBonus(self, request, context):
+    def GetClaimableRebets(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
-    def GetBonusStats(self, request, context):
-        """Stats
+    def ClaimRebet(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def SubmitInsuranceClaim(self, request, context):
+        """Insurance claim operations
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetUserInsuranceClaims(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CheckWageringRequirements(self, request, context):
+        """Wagering requirements
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
@@ -148,60 +150,60 @@ class BonusServiceServicer(object):
 
 def add_BonusServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetActiveBonuses': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetActiveBonuses,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusesRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusesResponse.SerializeToString,
+            'ListBonuses': grpc.unary_unary_rpc_method_handler(
+                    servicer.ListBonuses,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.SerializeToString,
             ),
             'GetBonus': grpc.unary_unary_rpc_method_handler(
                     servicer.GetBonus,
                     request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusRequest.FromString,
                     response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusResponse.SerializeToString,
             ),
-            'CreateBonus': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateBonus,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CreateBonusRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.CreateBonusResponse.SerializeToString,
-            ),
             'ClaimBonus': grpc.unary_unary_rpc_method_handler(
                     servicer.ClaimBonus,
                     request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusRequest.FromString,
                     response_serializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimBonusResponse.SerializeToString,
             ),
-            'CheckEligibility': grpc.unary_unary_rpc_method_handler(
-                    servicer.CheckEligibility,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CheckEligibilityRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.CheckEligibilityResponse.SerializeToString,
+            'GetUserBonuses': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUserBonuses,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.SerializeToString,
             ),
-            'GetBonusHistory': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetBonusHistory,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusHistoryRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusHistoryResponse.SerializeToString,
+            'CreateRebetClaim': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateRebetClaim,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.SerializeToString,
             ),
-            'GetActiveBonusClaims': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetActiveBonusClaims,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusClaimsRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusClaimsResponse.SerializeToString,
+            'GetUserRebetClaims': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUserRebetClaims,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.SerializeToString,
             ),
-            'ProcessWageringContribution': grpc.unary_unary_rpc_method_handler(
-                    servicer.ProcessWageringContribution,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ProcessWageringContributionRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.ProcessWageringContributionResponse.SerializeToString,
+            'GetClaimableRebets': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetClaimableRebets,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.SerializeToString,
             ),
-            'CompleteBonus': grpc.unary_unary_rpc_method_handler(
-                    servicer.CompleteBonus,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CompleteBonusRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.CompleteBonusResponse.SerializeToString,
+            'ClaimRebet': grpc.unary_unary_rpc_method_handler(
+                    servicer.ClaimRebet,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.SerializeToString,
             ),
-            'CancelBonus': grpc.unary_unary_rpc_method_handler(
-                    servicer.CancelBonus,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CancelBonusRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.CancelBonusResponse.SerializeToString,
+            'SubmitInsuranceClaim': grpc.unary_unary_rpc_method_handler(
+                    servicer.SubmitInsuranceClaim,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.SerializeToString,
             ),
-            'GetBonusStats': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetBonusStats,
-                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusStatsRequest.FromString,
-                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetBonusStatsResponse.SerializeToString,
+            'GetUserInsuranceClaims': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUserInsuranceClaims,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.SerializeToString,
+            ),
+            'CheckWageringRequirements': grpc.unary_unary_rpc_method_handler(
+                    servicer.CheckWageringRequirements,
+                    request_deserializer=bonus_dot_v1_dot_bonus__service__pb2.CheckWageringRequirementsRequest.FromString,
+                    response_serializer=bonus_dot_v1_dot_bonus__service__pb2.CheckWageringRequirementsResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -212,11 +214,10 @@ def add_BonusServiceServicer_to_server(servicer, server):
 
  # This class is part of an EXPERIMENTAL API.
 class BonusService(object):
-    """Bonus Service - manages bonuses, claims, wagering requirements
-    """
+    """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def GetActiveBonuses(request,
+    def ListBonuses(request,
             target,
             options=(),
             channel_credentials=None,
@@ -229,9 +230,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/GetActiveBonuses',
-            bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusesRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusesResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/ListBonuses',
+            bonus_dot_v1_dot_bonus__service__pb2.ListBonusesRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.ListBonusesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -270,33 +271,6 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def CreateBonus(request,
-            target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            insecure=False,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(
-            request,
-            target,
-            '/game_engine.bonus.v1.BonusService/CreateBonus',
-            bonus_dot_v1_dot_bonus__service__pb2.CreateBonusRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.CreateBonusResponse.FromString,
-            options,
-            channel_credentials,
-            insecure,
-            call_credentials,
-            compression,
-            wait_for_ready,
-            timeout,
-            metadata,
-            _registered_method=True)
-
-    @staticmethod
     def ClaimBonus(request,
             target,
             options=(),
@@ -324,7 +298,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def CheckEligibility(request,
+    def GetUserBonuses(request,
             target,
             options=(),
             channel_credentials=None,
@@ -337,9 +311,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/CheckEligibility',
-            bonus_dot_v1_dot_bonus__service__pb2.CheckEligibilityRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.CheckEligibilityResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/GetUserBonuses',
+            bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.GetUserBonusesResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -351,7 +325,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def GetBonusHistory(request,
+    def CreateRebetClaim(request,
             target,
             options=(),
             channel_credentials=None,
@@ -364,9 +338,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/GetBonusHistory',
-            bonus_dot_v1_dot_bonus__service__pb2.GetBonusHistoryRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.GetBonusHistoryResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/CreateRebetClaim',
+            bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.CreateRebetClaimResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -378,7 +352,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def GetActiveBonusClaims(request,
+    def GetUserRebetClaims(request,
             target,
             options=(),
             channel_credentials=None,
@@ -391,9 +365,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/GetActiveBonusClaims',
-            bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusClaimsRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.GetActiveBonusClaimsResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/GetUserRebetClaims',
+            bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.GetUserRebetClaimsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -405,7 +379,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def ProcessWageringContribution(request,
+    def GetClaimableRebets(request,
             target,
             options=(),
             channel_credentials=None,
@@ -418,9 +392,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/ProcessWageringContribution',
-            bonus_dot_v1_dot_bonus__service__pb2.ProcessWageringContributionRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.ProcessWageringContributionResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/GetClaimableRebets',
+            bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.GetClaimableRebetsResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -432,7 +406,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def CompleteBonus(request,
+    def ClaimRebet(request,
             target,
             options=(),
             channel_credentials=None,
@@ -445,9 +419,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/CompleteBonus',
-            bonus_dot_v1_dot_bonus__service__pb2.CompleteBonusRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.CompleteBonusResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/ClaimRebet',
+            bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.ClaimRebetResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -459,7 +433,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def CancelBonus(request,
+    def SubmitInsuranceClaim(request,
             target,
             options=(),
             channel_credentials=None,
@@ -472,9 +446,9 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/CancelBonus',
-            bonus_dot_v1_dot_bonus__service__pb2.CancelBonusRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.CancelBonusResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/SubmitInsuranceClaim',
+            bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.SubmitInsuranceClaimResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -486,7 +460,7 @@ class BonusService(object):
             _registered_method=True)
 
     @staticmethod
-    def GetBonusStats(request,
+    def GetUserInsuranceClaims(request,
             target,
             options=(),
             channel_credentials=None,
@@ -499,9 +473,36 @@ class BonusService(object):
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/game_engine.bonus.v1.BonusService/GetBonusStats',
-            bonus_dot_v1_dot_bonus__service__pb2.GetBonusStatsRequest.SerializeToString,
-            bonus_dot_v1_dot_bonus__service__pb2.GetBonusStatsResponse.FromString,
+            '/game_engine.bonus.v1.BonusService/GetUserInsuranceClaims',
+            bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.GetUserInsuranceClaimsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CheckWageringRequirements(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.bonus.v1.BonusService/CheckWageringRequirements',
+            bonus_dot_v1_dot_bonus__service__pb2.CheckWageringRequirementsRequest.SerializeToString,
+            bonus_dot_v1_dot_bonus__service__pb2.CheckWageringRequirementsResponse.FromString,
             options,
             channel_credentials,
             insecure,

@@ -55,32 +55,52 @@ func NewPaymentClient(config *PaymentClientConfig) (*PaymentClient, error) {
 	}, nil
 }
 
-func (c *PaymentClient) CreatePayment(ctx context.Context, req *paymentpb.CreatePaymentRequest) (*paymentpb.CreatePaymentResponse, error) {
-	return c.client.CreatePayment(ctx, req)
+func (c *PaymentClient) CreateDeposit(ctx context.Context, req *paymentpb.CreateDepositRequest) (*paymentpb.CreateDepositResponse, error) {
+	return c.client.CreateDeposit(ctx, req)
+}
+
+func (c *PaymentClient) ProcessDeposit(ctx context.Context, req *paymentpb.ProcessDepositRequest) (*paymentpb.ProcessDepositResponse, error) {
+	return c.client.ProcessDeposit(ctx, req)
+}
+
+func (c *PaymentClient) CreateWithdrawal(ctx context.Context, req *paymentpb.CreateWithdrawalRequest) (*paymentpb.CreateWithdrawalResponse, error) {
+	return c.client.CreateWithdrawal(ctx, req)
+}
+
+func (c *PaymentClient) ProcessWithdrawal(ctx context.Context, req *paymentpb.ProcessWithdrawalRequest) (*paymentpb.ProcessWithdrawalResponse, error) {
+	return c.client.ProcessWithdrawal(ctx, req)
+}
+
+func (c *PaymentClient) RefundPayment(ctx context.Context, req *paymentpb.RefundPaymentRequest) (*paymentpb.RefundPaymentResponse, error) {
+	return c.client.RefundPayment(ctx, req)
 }
 
 func (c *PaymentClient) GetPayment(ctx context.Context, req *paymentpb.GetPaymentRequest) (*paymentpb.GetPaymentResponse, error) {
 	return c.client.GetPayment(ctx, req)
 }
 
-func (c *PaymentClient) ApprovePayment(ctx context.Context, req *paymentpb.ApprovePaymentRequest) (*paymentpb.ApprovePaymentResponse, error) {
-	return c.client.ApprovePayment(ctx, req)
+func (c *PaymentClient) GetPaymentByExternalId(ctx context.Context, req *paymentpb.GetPaymentByExternalIdRequest) (*paymentpb.GetPaymentByExternalIdResponse, error) {
+	return c.client.GetPaymentByExternalId(ctx, req)
 }
 
-func (c *PaymentClient) RejectPayment(ctx context.Context, req *paymentpb.RejectPaymentRequest) (*paymentpb.RejectPaymentResponse, error) {
-	return c.client.RejectPayment(ctx, req)
+func (c *PaymentClient) GetUserPayments(ctx context.Context, req *paymentpb.GetUserPaymentsRequest) (*paymentpb.GetUserPaymentsResponse, error) {
+	return c.client.GetUserPayments(ctx, req)
 }
 
-func (c *PaymentClient) ProcessPayment(ctx context.Context, req *paymentpb.ProcessPaymentRequest) (*paymentpb.ProcessPaymentResponse, error) {
-	return c.client.ProcessPayment(ctx, req)
+func (c *PaymentClient) GetUserPaymentSummary(ctx context.Context, req *paymentpb.GetUserPaymentSummaryRequest) (*paymentpb.GetUserPaymentSummaryResponse, error) {
+	return c.client.GetUserPaymentSummary(ctx, req)
 }
 
-func (c *PaymentClient) ListPayments(ctx context.Context, req *paymentpb.ListPaymentsRequest) (*paymentpb.ListPaymentsResponse, error) {
-	return c.client.ListPayments(ctx, req)
+func (c *PaymentClient) GetSupportedMethods(ctx context.Context, req *paymentpb.GetSupportedMethodsRequest) (*paymentpb.GetSupportedMethodsResponse, error) {
+	return c.client.GetSupportedMethods(ctx, req)
 }
 
-func (c *PaymentClient) GetPaymentMethods(ctx context.Context, req *paymentpb.GetPaymentMethodsRequest) (*paymentpb.GetPaymentMethodsResponse, error) {
-	return c.client.GetPaymentMethods(ctx, req)
+func (c *PaymentClient) GetSupportedCurrencies(ctx context.Context, req *paymentpb.GetSupportedCurrenciesRequest) (*paymentpb.GetSupportedCurrenciesResponse, error) {
+	return c.client.GetSupportedCurrencies(ctx, req)
+}
+
+func (c *PaymentClient) CancelPayment(ctx context.Context, req *paymentpb.CancelPaymentRequest) (*paymentpb.CancelPaymentResponse, error) {
+	return c.client.CancelPayment(ctx, req)
 }
 
 func (c *PaymentClient) Close() error {

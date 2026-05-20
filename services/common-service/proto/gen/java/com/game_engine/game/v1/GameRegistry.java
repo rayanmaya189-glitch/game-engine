@@ -319,9 +319,10 @@ public final class GameRegistry {
       "t\032,.game_engine.game.v1.GetPopularGamesR" +
       "esponse\022`\n\013GetNewGames\022\'.game_engine.gam" +
       "e.v1.GetNewGamesRequest\032(.game_engine.ga" +
-      "me.v1.GetNewGamesResponseB3\n\027com.game_en" +
-      "gine.game.v1P\001Z\026gen/go/game/v1;gamesv1b\006" +
-      "proto3"
+      "me.v1.GetNewGamesResponseB_\n\027com.game_en" +
+      "gine.game.v1P\001ZBgithub.com/game_engine/c" +
+      "ommon-service/proto/gen/go/game/v1;games" +
+      "v1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -17,7 +17,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private ClaimBonusResponse() {
-    message_ = "";
+    expiresAt_ = "";
   }
 
   @java.lang.Override
@@ -32,18 +32,6 @@ private static final long serialVersionUID = 0L;
     return com.game_engine.bonus.v1.BonusServiceOuterClass.internal_static_game_engine_bonus_v1_ClaimBonusResponse_descriptor;
   }
 
-  @SuppressWarnings({"rawtypes"})
-  @java.lang.Override
-  protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
-      int number) {
-    switch (number) {
-      case 4:
-        return internalGetDetails();
-      default:
-        throw new RuntimeException(
-            "Invalid map field number: " + number);
-    }
-  }
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
@@ -63,49 +51,10 @@ private static final long serialVersionUID = 0L;
     return success_;
   }
 
-  public static final int MESSAGE_FIELD_NUMBER = 2;
-  @SuppressWarnings("serial")
-  private volatile java.lang.Object message_ = "";
-  /**
-   * <code>string message = 2 [json_name = "message"];</code>
-   * @return The message.
-   */
-  @java.lang.Override
-  public java.lang.String getMessage() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      message_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string message = 2 [json_name = "message"];</code>
-   * @return The bytes for message.
-   */
-  @java.lang.Override
-  public com.google.protobuf.ByteString
-      getMessageBytes() {
-    java.lang.Object ref = message_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      message_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int BONUS_AMOUNT_FIELD_NUMBER = 3;
+  public static final int BONUS_AMOUNT_FIELD_NUMBER = 2;
   private double bonusAmount_ = 0D;
   /**
-   * <code>double bonus_amount = 3 [json_name = "bonusAmount"];</code>
+   * <code>double bonus_amount = 2 [json_name = "bonusAmount"];</code>
    * @return The bonusAmount.
    */
   @java.lang.Override
@@ -113,83 +62,43 @@ private static final long serialVersionUID = 0L;
     return bonusAmount_;
   }
 
-  public static final int DETAILS_FIELD_NUMBER = 4;
-  private static final class DetailsDefaultEntryHolder {
-    static final com.google.protobuf.MapEntry<
-        java.lang.String, java.lang.String> defaultEntry =
-            com.google.protobuf.MapEntry
-            .<java.lang.String, java.lang.String>newDefaultInstance(
-                com.game_engine.bonus.v1.BonusServiceOuterClass.internal_static_game_engine_bonus_v1_ClaimBonusResponse_DetailsEntry_descriptor, 
-                com.google.protobuf.WireFormat.FieldType.STRING,
-                "",
-                com.google.protobuf.WireFormat.FieldType.STRING,
-                "");
-  }
+  public static final int EXPIRES_AT_FIELD_NUMBER = 3;
   @SuppressWarnings("serial")
-  private com.google.protobuf.MapField<
-      java.lang.String, java.lang.String> details_;
-  private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-  internalGetDetails() {
-    if (details_ == null) {
-      return com.google.protobuf.MapField.emptyMapField(
-          DetailsDefaultEntryHolder.defaultEntry);
+  private volatile java.lang.Object expiresAt_ = "";
+  /**
+   * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+   * @return The expiresAt.
+   */
+  @java.lang.Override
+  public java.lang.String getExpiresAt() {
+    java.lang.Object ref = expiresAt_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      expiresAt_ = s;
+      return s;
     }
-    return details_;
-  }
-  public int getDetailsCount() {
-    return internalGetDetails().getMap().size();
   }
   /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
+   * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+   * @return The bytes for expiresAt.
    */
   @java.lang.Override
-  public boolean containsDetails(
-      java.lang.String key) {
-    if (key == null) { throw new NullPointerException("map key"); }
-    return internalGetDetails().getMap().containsKey(key);
-  }
-  /**
-   * Use {@link #getDetailsMap()} instead.
-   */
-  @java.lang.Override
-  @java.lang.Deprecated
-  public java.util.Map<java.lang.String, java.lang.String> getDetails() {
-    return getDetailsMap();
-  }
-  /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-   */
-  @java.lang.Override
-  public java.util.Map<java.lang.String, java.lang.String> getDetailsMap() {
-    return internalGetDetails().getMap();
-  }
-  /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-   */
-  @java.lang.Override
-  public /* nullable */
-java.lang.String getDetailsOrDefault(
-      java.lang.String key,
-      /* nullable */
-java.lang.String defaultValue) {
-    if (key == null) { throw new NullPointerException("map key"); }
-    java.util.Map<java.lang.String, java.lang.String> map =
-        internalGetDetails().getMap();
-    return map.containsKey(key) ? map.get(key) : defaultValue;
-  }
-  /**
-   * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-   */
-  @java.lang.Override
-  public java.lang.String getDetailsOrThrow(
-      java.lang.String key) {
-    if (key == null) { throw new NullPointerException("map key"); }
-    java.util.Map<java.lang.String, java.lang.String> map =
-        internalGetDetails().getMap();
-    if (!map.containsKey(key)) {
-      throw new java.lang.IllegalArgumentException();
+  public com.google.protobuf.ByteString
+      getExpiresAtBytes() {
+    java.lang.Object ref = expiresAt_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      expiresAt_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
     }
-    return map.get(key);
   }
 
   private byte memoizedIsInitialized = -1;
@@ -209,18 +118,12 @@ java.lang.String defaultValue) {
     if (success_ != false) {
       output.writeBool(1, success_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, message_);
-    }
     if (java.lang.Double.doubleToRawLongBits(bonusAmount_) != 0) {
-      output.writeDouble(3, bonusAmount_);
+      output.writeDouble(2, bonusAmount_);
     }
-    com.google.protobuf.GeneratedMessageV3
-      .serializeStringMapTo(
-        output,
-        internalGetDetails(),
-        DetailsDefaultEntryHolder.defaultEntry,
-        4);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expiresAt_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, expiresAt_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -234,22 +137,12 @@ java.lang.String defaultValue) {
       size += com.google.protobuf.CodedOutputStream
         .computeBoolSize(1, success_);
     }
-    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, message_);
-    }
     if (java.lang.Double.doubleToRawLongBits(bonusAmount_) != 0) {
       size += com.google.protobuf.CodedOutputStream
-        .computeDoubleSize(3, bonusAmount_);
+        .computeDoubleSize(2, bonusAmount_);
     }
-    for (java.util.Map.Entry<java.lang.String, java.lang.String> entry
-         : internalGetDetails().getMap().entrySet()) {
-      com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
-      details__ = DetailsDefaultEntryHolder.defaultEntry.newBuilderForType()
-          .setKey(entry.getKey())
-          .setValue(entry.getValue())
-          .build();
-      size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, details__);
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(expiresAt_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, expiresAt_);
     }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
@@ -268,13 +161,11 @@ java.lang.String defaultValue) {
 
     if (getSuccess()
         != other.getSuccess()) return false;
-    if (!getMessage()
-        .equals(other.getMessage())) return false;
     if (java.lang.Double.doubleToLongBits(getBonusAmount())
         != java.lang.Double.doubleToLongBits(
             other.getBonusAmount())) return false;
-    if (!internalGetDetails().equals(
-        other.internalGetDetails())) return false;
+    if (!getExpiresAt()
+        .equals(other.getExpiresAt())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -289,15 +180,11 @@ java.lang.String defaultValue) {
     hash = (37 * hash) + SUCCESS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getSuccess());
-    hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
-    hash = (53 * hash) + getMessage().hashCode();
     hash = (37 * hash) + BONUS_AMOUNT_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         java.lang.Double.doubleToLongBits(getBonusAmount()));
-    if (!internalGetDetails().getMap().isEmpty()) {
-      hash = (37 * hash) + DETAILS_FIELD_NUMBER;
-      hash = (53 * hash) + internalGetDetails().hashCode();
-    }
+    hash = (37 * hash) + EXPIRES_AT_FIELD_NUMBER;
+    hash = (53 * hash) + getExpiresAt().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -407,28 +294,6 @@ java.lang.String defaultValue) {
       return com.game_engine.bonus.v1.BonusServiceOuterClass.internal_static_game_engine_bonus_v1_ClaimBonusResponse_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
-        int number) {
-      switch (number) {
-        case 4:
-          return internalGetDetails();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
-    @SuppressWarnings({"rawtypes"})
-    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(
-        int number) {
-      switch (number) {
-        case 4:
-          return internalGetMutableDetails();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -452,9 +317,8 @@ java.lang.String defaultValue) {
       super.clear();
       bitField0_ = 0;
       success_ = false;
-      message_ = "";
       bonusAmount_ = 0D;
-      internalGetMutableDetails().clear();
+      expiresAt_ = "";
       return this;
     }
 
@@ -492,14 +356,10 @@ java.lang.String defaultValue) {
         result.success_ = success_;
       }
       if (((from_bitField0_ & 0x00000002) != 0)) {
-        result.message_ = message_;
-      }
-      if (((from_bitField0_ & 0x00000004) != 0)) {
         result.bonusAmount_ = bonusAmount_;
       }
-      if (((from_bitField0_ & 0x00000008) != 0)) {
-        result.details_ = internalGetDetails();
-        result.details_.makeImmutable();
+      if (((from_bitField0_ & 0x00000004) != 0)) {
+        result.expiresAt_ = expiresAt_;
       }
     }
 
@@ -550,17 +410,14 @@ java.lang.String defaultValue) {
       if (other.getSuccess() != false) {
         setSuccess(other.getSuccess());
       }
-      if (!other.getMessage().isEmpty()) {
-        message_ = other.message_;
-        bitField0_ |= 0x00000002;
-        onChanged();
-      }
       if (other.getBonusAmount() != 0D) {
         setBonusAmount(other.getBonusAmount());
       }
-      internalGetMutableDetails().mergeFrom(
-          other.internalGetDetails());
-      bitField0_ |= 0x00000008;
+      if (!other.getExpiresAt().isEmpty()) {
+        expiresAt_ = other.expiresAt_;
+        bitField0_ |= 0x00000004;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -592,25 +449,16 @@ java.lang.String defaultValue) {
               bitField0_ |= 0x00000001;
               break;
             } // case 8
-            case 18: {
-              message_ = input.readStringRequireUtf8();
+            case 17: {
+              bonusAmount_ = input.readDouble();
               bitField0_ |= 0x00000002;
               break;
-            } // case 18
-            case 25: {
-              bonusAmount_ = input.readDouble();
+            } // case 17
+            case 26: {
+              expiresAt_ = input.readStringRequireUtf8();
               bitField0_ |= 0x00000004;
               break;
-            } // case 25
-            case 34: {
-              com.google.protobuf.MapEntry<java.lang.String, java.lang.String>
-              details__ = input.readMessage(
-                  DetailsDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-              internalGetMutableDetails().getMutableMap().put(
-                  details__.getKey(), details__.getValue());
-              bitField0_ |= 0x00000008;
-              break;
-            } // case 34
+            } // case 26
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -660,81 +508,9 @@ java.lang.String defaultValue) {
       return this;
     }
 
-    private java.lang.Object message_ = "";
-    /**
-     * <code>string message = 2 [json_name = "message"];</code>
-     * @return The message.
-     */
-    public java.lang.String getMessage() {
-      java.lang.Object ref = message_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        message_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string message = 2 [json_name = "message"];</code>
-     * @return The bytes for message.
-     */
-    public com.google.protobuf.ByteString
-        getMessageBytes() {
-      java.lang.Object ref = message_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        message_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string message = 2 [json_name = "message"];</code>
-     * @param value The message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessage(
-        java.lang.String value) {
-      if (value == null) { throw new NullPointerException(); }
-      message_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 2 [json_name = "message"];</code>
-     * @return This builder for chaining.
-     */
-    public Builder clearMessage() {
-      message_ = getDefaultInstance().getMessage();
-      bitField0_ = (bitField0_ & ~0x00000002);
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string message = 2 [json_name = "message"];</code>
-     * @param value The bytes for message to set.
-     * @return This builder for chaining.
-     */
-    public Builder setMessageBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) { throw new NullPointerException(); }
-      checkByteStringIsUtf8(value);
-      message_ = value;
-      bitField0_ |= 0x00000002;
-      onChanged();
-      return this;
-    }
-
     private double bonusAmount_ ;
     /**
-     * <code>double bonus_amount = 3 [json_name = "bonusAmount"];</code>
+     * <code>double bonus_amount = 2 [json_name = "bonusAmount"];</code>
      * @return The bonusAmount.
      */
     @java.lang.Override
@@ -742,152 +518,97 @@ java.lang.String defaultValue) {
       return bonusAmount_;
     }
     /**
-     * <code>double bonus_amount = 3 [json_name = "bonusAmount"];</code>
+     * <code>double bonus_amount = 2 [json_name = "bonusAmount"];</code>
      * @param value The bonusAmount to set.
      * @return This builder for chaining.
      */
     public Builder setBonusAmount(double value) {
 
       bonusAmount_ = value;
-      bitField0_ |= 0x00000004;
+      bitField0_ |= 0x00000002;
       onChanged();
       return this;
     }
     /**
-     * <code>double bonus_amount = 3 [json_name = "bonusAmount"];</code>
+     * <code>double bonus_amount = 2 [json_name = "bonusAmount"];</code>
      * @return This builder for chaining.
      */
     public Builder clearBonusAmount() {
-      bitField0_ = (bitField0_ & ~0x00000004);
+      bitField0_ = (bitField0_ & ~0x00000002);
       bonusAmount_ = 0D;
       onChanged();
       return this;
     }
 
-    private com.google.protobuf.MapField<
-        java.lang.String, java.lang.String> details_;
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetDetails() {
-      if (details_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            DetailsDefaultEntryHolder.defaultEntry);
+    private java.lang.Object expiresAt_ = "";
+    /**
+     * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+     * @return The expiresAt.
+     */
+    public java.lang.String getExpiresAt() {
+      java.lang.Object ref = expiresAt_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        expiresAt_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
       }
-      return details_;
     }
-    private com.google.protobuf.MapField<java.lang.String, java.lang.String>
-        internalGetMutableDetails() {
-      if (details_ == null) {
-        details_ = com.google.protobuf.MapField.newMapField(
-            DetailsDefaultEntryHolder.defaultEntry);
+    /**
+     * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+     * @return The bytes for expiresAt.
+     */
+    public com.google.protobuf.ByteString
+        getExpiresAtBytes() {
+      java.lang.Object ref = expiresAt_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        expiresAt_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
       }
-      if (!details_.isMutable()) {
-        details_ = details_.copy();
-      }
-      bitField0_ |= 0x00000008;
-      onChanged();
-      return details_;
-    }
-    public int getDetailsCount() {
-      return internalGetDetails().getMap().size();
     }
     /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
+     * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+     * @param value The expiresAt to set.
+     * @return This builder for chaining.
      */
-    @java.lang.Override
-    public boolean containsDetails(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      return internalGetDetails().getMap().containsKey(key);
-    }
-    /**
-     * Use {@link #getDetailsMap()} instead.
-     */
-    @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String> getDetails() {
-      return getDetailsMap();
-    }
-    /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-     */
-    @java.lang.Override
-    public java.util.Map<java.lang.String, java.lang.String> getDetailsMap() {
-      return internalGetDetails().getMap();
-    }
-    /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-     */
-    @java.lang.Override
-    public /* nullable */
-java.lang.String getDetailsOrDefault(
-        java.lang.String key,
-        /* nullable */
-java.lang.String defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.String> map =
-          internalGetDetails().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
-    }
-    /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-     */
-    @java.lang.Override
-    public java.lang.String getDetailsOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, java.lang.String> map =
-          internalGetDetails().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
-    }
-    public Builder clearDetails() {
-      bitField0_ = (bitField0_ & ~0x00000008);
-      internalGetMutableDetails().getMutableMap()
-          .clear();
-      return this;
-    }
-    /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-     */
-    public Builder removeDetails(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      internalGetMutableDetails().getMutableMap()
-          .remove(key);
-      return this;
-    }
-    /**
-     * Use alternate mutation accessors instead.
-     */
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, java.lang.String>
-        getMutableDetails() {
-      bitField0_ |= 0x00000008;
-      return internalGetMutableDetails().getMutableMap();
-    }
-    /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
-     */
-    public Builder putDetails(
-        java.lang.String key,
+    public Builder setExpiresAt(
         java.lang.String value) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      if (value == null) { throw new NullPointerException("map value"); }
-      internalGetMutableDetails().getMutableMap()
-          .put(key, value);
-      bitField0_ |= 0x00000008;
+      if (value == null) { throw new NullPointerException(); }
+      expiresAt_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     /**
-     * <code>map&lt;string, string&gt; details = 4 [json_name = "details"];</code>
+     * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+     * @return This builder for chaining.
      */
-    public Builder putAllDetails(
-        java.util.Map<java.lang.String, java.lang.String> values) {
-      internalGetMutableDetails().getMutableMap()
-          .putAll(values);
-      bitField0_ |= 0x00000008;
+    public Builder clearExpiresAt() {
+      expiresAt_ = getDefaultInstance().getExpiresAt();
+      bitField0_ = (bitField0_ & ~0x00000004);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string expires_at = 3 [json_name = "expiresAt"];</code>
+     * @param value The bytes for expiresAt to set.
+     * @return This builder for chaining.
+     */
+    public Builder setExpiresAtBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      expiresAt_ = value;
+      bitField0_ |= 0x00000004;
+      onChanged();
       return this;
     }
     @java.lang.Override

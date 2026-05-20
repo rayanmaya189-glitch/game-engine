@@ -4,7 +4,7 @@ package game_engine.leaderboard.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "gen/go/leaderboard/v1;leaderv1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/leaderboard/v1;leaderv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.leaderboard.v1";
 

@@ -252,9 +252,10 @@ public final class AuthServiceOuterClass {
       ".ValidateTokenRequest\032*.game_engine.auth" +
       ".v1.ValidateTokenResponse\022T\n\016ChangePassw" +
       "ord\022*.game_engine.auth.v1.ChangePassword" +
-      "Request\032\026.google.protobuf.EmptyB2\n\027com.g" +
-      "ame_engine.auth.v1P\001Z\025gen/go/auth/v1;aut" +
-      "hv1b\006proto3"
+      "Request\032\026.google.protobuf.EmptyB^\n\027com.g" +
+      "ame_engine.auth.v1P\001ZAgithub.com/game_en" +
+      "gine/common-service/proto/gen/go/auth/v1" +
+      ";authv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

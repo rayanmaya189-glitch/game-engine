@@ -3,7 +3,7 @@ package handler
 import (
 	"context"
 
-	winnersv1 "github.com/game_engine/winners-showcase-service/gen/go/winners/v1"
+	winnersv1 "github.com/game_engine/common-service/proto/gen/go/winners/v1"
 	"github.com/game_engine/winners-showcase-service/internal/model"
 	"github.com/game_engine/winners-showcase-service/internal/service"
 	"google.golang.org/grpc/codes"

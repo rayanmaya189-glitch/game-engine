@@ -7,7 +7,7 @@ import (
 
 	gamepb "github.com/game_engine/common-service/proto/gen/go/game/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // ListGames handles listing games

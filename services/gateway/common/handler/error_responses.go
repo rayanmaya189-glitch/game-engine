@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -9,7 +10,7 @@ import (
 )
 
 // NotFoundHandler handles 404 Not Found
-func (h *ErrorHandler) NotFoundHandler(ctx *app.RequestContext) {
+func (h *ErrorHandler) NotFoundHandler(c context.Context, ctx *app.RequestContext) {
 	requestID := ctx.GetString("request_id")
 	ctx.JSON(consts.StatusNotFound, NewErrorResponse(
 		ErrCodeNotFound,
@@ -18,7 +19,7 @@ func (h *ErrorHandler) NotFoundHandler(ctx *app.RequestContext) {
 }
 
 // MethodNotAllowedHandler handles 405 Method Not Allowed
-func (h *ErrorHandler) MethodNotAllowedHandler(ctx *app.RequestContext) {
+func (h *ErrorHandler) MethodNotAllowedHandler(c context.Context, ctx *app.RequestContext) {
 	requestID := ctx.GetString("request_id")
 	ctx.JSON(consts.StatusMethodNotAllowed, NewErrorResponse(
 		ErrCodeBadRequest,

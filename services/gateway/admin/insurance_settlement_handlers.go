@@ -3,18 +3,18 @@ package main
 import (
 	"context"
 	"fmt"
+	"strconv"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 
-	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
 	commissionpb "github.com/game_engine/common-service/proto/gen/go/commission/v1"
 )
 
 // Insurance Claims Handlers
 func (cfg *RouterConfig) ListInsuranceClaims(ctx context.Context, c *app.RequestContext) {
-	if cfg.BonusClient == nil {
+	if cfg.CommissionClient == nil {
 		handler.SendSuccess(c, map[string]interface{}{
 			"claims": []interface{}{},
 			"total":  0,
@@ -22,7 +22,14 @@ func (cfg *RouterConfig) ListInsuranceClaims(ctx context.Context, c *app.Request
 		return
 	}
 
-	resp, err := cfg.BonusClient.GetUserInsuranceClaims(ctx, &bonuspb.GetUserInsuranceClaimsRequest{})
+	status := c.Query("status")
+	if status == "" {
+		status = "PENDING"
+	}
+
+	resp, err := cfg.CommissionClient.GetInsuranceClaimsByStatus(ctx, &commissionpb.GetInsuranceClaimsByStatusRequest{
+		Status: status,
+	})
 	if err != nil {
 		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to list insurance claims: %v", err))
 		return
@@ -30,14 +37,15 @@ func (cfg *RouterConfig) ListInsuranceClaims(ctx context.Context, c *app.Request
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"claims": resp.Claims,
-		"total":  resp.Total,
+		"total":  len(resp.Claims),
 	})
 }
 
 func (cfg *RouterConfig) GetInsuranceClaim(ctx context.Context, c *app.RequestContext) {
 	claimID := c.Param("id")
+	id, _ := strconv.ParseInt(claimID, 10, 64)
 
-	if cfg.BonusClient == nil {
+	if cfg.CommissionClient == nil {
 		handler.SendSuccess(c, map[string]interface{}{
 			"id":          claimID,
 			"claimType":   "GAME_LOSS",
@@ -47,16 +55,31 @@ func (cfg *RouterConfig) GetInsuranceClaim(ctx context.Context, c *app.RequestCo
 		return
 	}
 
-	resp, err := cfg.BonusClient.GetUserInsuranceClaims(ctx, &bonuspb.GetUserInsuranceClaimsRequest{})
-	if err != nil {
-		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to get insurance claim: %v", err))
-		return
+	// Try pending first
+	resp, err := cfg.CommissionClient.GetInsuranceClaimsByStatus(ctx, &commissionpb.GetInsuranceClaimsByStatusRequest{
+		Status: "PENDING",
+	})
+	if err == nil {
+		for _, claim := range resp.Claims {
+			if claim.Id == id {
+				handler.SendSuccess(c, claim)
+				return
+			}
+		}
 	}
 
-	for _, claim := range resp.Claims {
-		if claim.Id == claimID {
-			handler.SendSuccess(c, claim)
-			return
+	// Try other statuses
+	for _, status := range []string{"APPROVED", "PAID", "REJECTED"} {
+		r, e := cfg.CommissionClient.GetInsuranceClaimsByStatus(ctx, &commissionpb.GetInsuranceClaimsByStatusRequest{
+			Status: status,
+		})
+		if e == nil {
+			for _, claim := range r.Claims {
+				if claim.Id == id {
+					handler.SendSuccess(c, claim)
+					return
+				}
+			}
 		}
 	}
 
@@ -65,14 +88,21 @@ func (cfg *RouterConfig) GetInsuranceClaim(ctx context.Context, c *app.RequestCo
 
 func (cfg *RouterConfig) ApproveInsuranceClaim(ctx context.Context, c *app.RequestContext) {
 	claimID := c.Param("id")
+	id, _ := strconv.ParseInt(claimID, 10, 64)
 
-	if cfg.BonusClient == nil {
-		handler.SendJSONError(c, 503, handler.ErrCodeServiceUnavailable, "bonus service unavailable")
+	if cfg.CommissionClient == nil {
+		handler.SendJSONError(c, 503, handler.ErrCodeServiceUnavailable, "commission service unavailable")
 		return
 	}
 
-	resp, err := cfg.BonusClient.SubmitInsuranceClaim(ctx, &bonuspb.SubmitInsuranceClaimRequest{
-		ClaimId: claimID,
+	adminNote := c.Query("admin_note")
+	reviewedByStr := c.Query("reviewed_by")
+	reviewedBy, _ := strconv.ParseInt(reviewedByStr, 10, 64)
+
+	resp, err := cfg.CommissionClient.ApproveInsuranceClaim(ctx, &commissionpb.ApproveInsuranceClaimRequest{
+		Id:         id,
+		ReviewedBy: reviewedBy,
+		AdminNote:  adminNote,
 	})
 	if err != nil {
 		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to approve insurance claim: %v", err))
@@ -82,25 +112,64 @@ func (cfg *RouterConfig) ApproveInsuranceClaim(ctx context.Context, c *app.Reque
 	handler.SendSuccess(c, map[string]interface{}{
 		"id":      claimID,
 		"status":  "APPROVED",
-		"message": resp.Message,
+		"message": "Insurance claim approved",
+		"claim":   resp.Claim,
 	})
 }
 
 func (cfg *RouterConfig) RejectInsuranceClaim(ctx context.Context, c *app.RequestContext) {
 	claimID := c.Param("id")
+	id, _ := strconv.ParseInt(claimID, 10, 64)
+
+	if cfg.CommissionClient == nil {
+		handler.SendJSONError(c, 503, handler.ErrCodeServiceUnavailable, "commission service unavailable")
+		return
+	}
+
+	adminNote := c.Query("admin_note")
+	reviewedByStr := c.Query("reviewed_by")
+	reviewedBy, _ := strconv.ParseInt(reviewedByStr, 10, 64)
+
+	resp, err := cfg.CommissionClient.RejectInsuranceClaim(ctx, &commissionpb.RejectInsuranceClaimRequest{
+		Id:         id,
+		ReviewedBy: reviewedBy,
+		AdminNote:  adminNote,
+	})
+	if err != nil {
+		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to reject insurance claim: %v", err))
+		return
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
 		"id":      claimID,
 		"status":  "REJECTED",
 		"message": "Insurance claim rejected",
+		"claim":   resp.Claim,
 	})
 }
 
 func (cfg *RouterConfig) PayInsuranceClaim(ctx context.Context, c *app.RequestContext) {
 	claimID := c.Param("id")
+	id, _ := strconv.ParseInt(claimID, 10, 64)
+
+	if cfg.CommissionClient == nil {
+		handler.SendJSONError(c, 503, handler.ErrCodeServiceUnavailable, "commission service unavailable")
+		return
+	}
+
+	resp, err := cfg.CommissionClient.PayInsuranceClaim(ctx, &commissionpb.PayInsuranceClaimRequest{
+		Id: id,
+	})
+	if err != nil {
+		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to pay insurance claim: %v", err))
+		return
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
 		"id":      claimID,
 		"status":  "PAID",
 		"message": "Insurance claim paid",
+		"claim":   resp.Claim,
 	})
 }
 
@@ -122,12 +191,13 @@ func (cfg *RouterConfig) ListSettlements(ctx context.Context, c *app.RequestCont
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"settlements": resp.Settlements,
-		"total":       resp.Total,
+		"total":       len(resp.Settlements),
 	})
 }
 
 func (cfg *RouterConfig) GetSettlement(ctx context.Context, c *app.RequestContext) {
 	settlementID := c.Param("id")
+	id, _ := strconv.ParseInt(settlementID, 10, 64)
 
 	if cfg.CommissionClient == nil {
 		handler.SendSuccess(c, map[string]interface{}{
@@ -140,7 +210,7 @@ func (cfg *RouterConfig) GetSettlement(ctx context.Context, c *app.RequestContex
 	}
 
 	resp, err := cfg.CommissionClient.GetSettlementById(ctx, &commissionpb.GetSettlementByIdRequest{
-		SettlementId: settlementID,
+		Id: id,
 	})
 	if err != nil {
 		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to get settlement: %v", err))
@@ -163,8 +233,8 @@ func (cfg *RouterConfig) GetClaimStatistics(ctx context.Context, c *app.RequestC
 		return
 	}
 
-	pendingResp, pendingErr := cfg.CommissionClient.GetTotalPending(ctx, &commissionpb.GetTotalPendingRequest{})
-	settledResp, settledErr := cfg.CommissionClient.GetTotalSettled(ctx, &commissionpb.GetTotalSettledRequest{})
+	pendingResp, pendingErr := cfg.CommissionClient.GetUserTotalPending(ctx, &commissionpb.GetUserTotalPendingRequest{})
+	settledResp, settledErr := cfg.CommissionClient.GetUserTotalSettled(ctx, &commissionpb.GetUserTotalSettledRequest{})
 
 	statistics := map[string]interface{}{
 		"totalPending":    0,
@@ -177,7 +247,6 @@ func (cfg *RouterConfig) GetClaimStatistics(ctx context.Context, c *app.RequestC
 
 	if pendingErr == nil && pendingResp != nil {
 		statistics["totalPending"] = pendingResp.TotalPending
-		statistics["totalAmount"] = pendingResp.TotalAmount
 	}
 
 	if settledErr == nil && settledResp != nil {

@@ -5,8 +5,8 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	"common/handler"
-	"common/middleware"
+	"github.com/game_engine/gateway/common/handler"
+	"github.com/game_engine/gateway/common/middleware"
 )
 
 // ListPermissions returns all available permissions

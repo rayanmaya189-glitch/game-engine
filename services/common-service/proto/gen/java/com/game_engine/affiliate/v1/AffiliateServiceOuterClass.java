@@ -185,6 +185,71 @@ public final class AffiliateServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_affiliate_v1_RedirectToRegistrationResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetPerformanceReportRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetPerformanceReportRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetPerformanceReportResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetPerformanceReportResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetClickReportsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetClickReportsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetClickReportsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetClickReportsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_ClickReport_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_ClickReport_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetConversionReportsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetConversionReportsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetConversionReportsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetConversionReportsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_ConversionReport_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_ConversionReport_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetAffiliateLinksRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetAffiliateLinksRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_GetAffiliateLinksResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_GetAffiliateLinksResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_AffiliateLink_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_AffiliateLink_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_CreateAffiliateLinkRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_affiliate_v1_CreateAffiliateLinkResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_affiliate_v1_CreateAffiliateLinkResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -301,61 +366,123 @@ public final class AffiliateServiceOuterClass {
       "\001R\017totalCommission\"D\n\035RedirectToRegistra" +
       "tionRequest\022#\n\rreferral_code\030\001 \001(\tR\014refe" +
       "rralCode\"C\n\036RedirectToRegistrationRespon" +
-      "se\022!\n\014redirect_url\030\001 \001(\tR\013redirectUrl2\227\020" +
-      "\n\020AffiliateService\022|\n\021RegisterAffiliate\022" +
-      "2.game_engine.affiliate.v1.RegisterAffil" +
-      "iateRequest\0323.game_engine.affiliate.v1.R" +
-      "egisterAffiliateResponse\022\177\n\022GetAffiliate" +
-      "ByCode\0223.game_engine.affiliate.v1.GetAff" +
-      "iliateByCodeRequest\0324.game_engine.affili" +
-      "ate.v1.GetAffiliateByCodeResponse\022\216\001\n\027Ge" +
-      "tAffiliatesByMerchant\0228.game_engine.affi" +
-      "liate.v1.GetAffiliatesByMerchantRequest\032" +
-      "9.game_engine.affiliate.v1.GetAffiliates" +
-      "ByMerchantResponse\022\202\001\n\023GetActiveAffiliat" +
-      "es\0224.game_engine.affiliate.v1.GetActiveA" +
-      "ffiliatesRequest\0325.game_engine.affiliate" +
-      ".v1.GetActiveAffiliatesResponse\022\202\001\n\023Upda" +
-      "teAffiliateTier\0224.game_engine.affiliate." +
-      "v1.UpdateAffiliateTierRequest\0325.game_eng" +
-      "ine.affiliate.v1.UpdateAffiliateTierResp" +
-      "onse\022\210\001\n\025UpdateAffiliateStatus\0226.game_en" +
-      "gine.affiliate.v1.UpdateAffiliateStatusR" +
-      "equest\0327.game_engine.affiliate.v1.Update" +
-      "AffiliateStatusResponse\022g\n\nTrackClick\022+." +
-      "game_engine.affiliate.v1.TrackClickReque" +
-      "st\032,.game_engine.affiliate.v1.TrackClick" +
-      "Response\022|\n\021TrackRegistration\0222.game_eng" +
-      "ine.affiliate.v1.TrackRegistrationReques" +
-      "t\0323.game_engine.affiliate.v1.TrackRegist" +
-      "rationResponse\022|\n\021TrackFirstDeposit\0222.ga" +
-      "me_engine.affiliate.v1.TrackFirstDeposit" +
-      "Request\0323.game_engine.affiliate.v1.Track" +
-      "FirstDepositResponse\022m\n\014GetReferrals\022-.g" +
-      "ame_engine.affiliate.v1.GetReferralsRequ" +
-      "est\032..game_engine.affiliate.v1.GetReferr" +
-      "alsResponse\022\205\001\n\024GetCampaignReferrals\0225.g" +
-      "ame_engine.affiliate.v1.GetCampaignRefer" +
-      "ralsRequest\0326.game_engine.affiliate.v1.G" +
-      "etCampaignReferralsResponse\022\202\001\n\023Calculat" +
-      "eCommission\0224.game_engine.affiliate.v1.C" +
-      "alculateCommissionRequest\0325.game_engine." +
-      "affiliate.v1.CalculateCommissionResponse" +
-      "\022v\n\017AddSubAffiliate\0220.game_engine.affili" +
-      "ate.v1.AddSubAffiliateRequest\0321.game_eng" +
-      "ine.affiliate.v1.AddSubAffiliateResponse" +
-      "\022y\n\020GetSubAffiliates\0221.game_engine.affil" +
-      "iate.v1.GetSubAffiliatesRequest\0322.game_e" +
-      "ngine.affiliate.v1.GetSubAffiliatesRespo" +
-      "nse\022|\n\021GetAffiliateStats\0222.game_engine.a" +
-      "ffiliate.v1.GetAffiliateStatsRequest\0323.g" +
-      "ame_engine.affiliate.v1.GetAffiliateStat" +
-      "sResponse\022\213\001\n\026RedirectToRegistration\0227.g" +
-      "ame_engine.affiliate.v1.RedirectToRegist" +
-      "rationRequest\0328.game_engine.affiliate.v1" +
-      ".RedirectToRegistrationResponseBA\n\034com.g" +
-      "ame_engine.affiliate.v1P\001Z\037gen/go/affili" +
-      "ate/v1;affiliatev1b\006proto3"
+      "se\022!\n\014redirect_url\030\001 \001(\tR\013redirectUrl\"z\n" +
+      "\033GetPerformanceReportRequest\022!\n\014affiliat" +
+      "e_id\030\001 \001(\tR\013affiliateId\022\035\n\nstart_date\030\002 " +
+      "\001(\tR\tstartDate\022\031\n\010end_date\030\003 \001(\tR\007endDat" +
+      "e\"\334\001\n\034GetPerformanceReportResponse\022!\n\014to" +
+      "tal_clicks\030\001 \001(\003R\013totalClicks\022+\n\021total_c" +
+      "onversions\030\002 \001(\003R\020totalConversions\022\'\n\017co" +
+      "nversion_rate\030\003 \001(\001R\016conversionRate\022#\n\rt" +
+      "otal_revenue\030\004 \001(\001R\014totalRevenue\022\036\n\ncomm" +
+      "ission\030\005 \001(\001R\ncommission\"\237\001\n\026GetClickRep" +
+      "ortsRequest\022!\n\014affiliate_id\030\001 \001(\tR\013affil" +
+      "iateId\022\035\n\nstart_date\030\002 \001(\tR\tstartDate\022\031\n" +
+      "\010end_date\030\003 \001(\tR\007endDate\022\022\n\004page\030\004 \001(\005R\004" +
+      "page\022\024\n\005limit\030\005 \001(\005R\005limit\"n\n\027GetClickRe" +
+      "portsResponse\022=\n\006clicks\030\001 \003(\0132%.game_eng" +
+      "ine.affiliate.v1.ClickReportR\006clicks\022\024\n\005" +
+      "total\030\002 \001(\005R\005total\"\242\001\n\013ClickReport\022\031\n\010cl" +
+      "ick_id\030\001 \001(\tR\007clickId\022\035\n\nip_address\030\002 \001(" +
+      "\tR\tipAddress\022\035\n\nuser_agent\030\003 \001(\tR\tuserAg" +
+      "ent\022\034\n\ttimestamp\030\004 \001(\003R\ttimestamp\022\034\n\tcon" +
+      "verted\030\005 \001(\010R\tconverted\"\244\001\n\033GetConversio" +
+      "nReportsRequest\022!\n\014affiliate_id\030\001 \001(\tR\013a" +
+      "ffiliateId\022\035\n\nstart_date\030\002 \001(\tR\tstartDat" +
+      "e\022\031\n\010end_date\030\003 \001(\tR\007endDate\022\022\n\004page\030\004 \001" +
+      "(\005R\004page\022\024\n\005limit\030\005 \001(\005R\005limit\"\202\001\n\034GetCo" +
+      "nversionReportsResponse\022L\n\013conversions\030\001" +
+      " \003(\0132*.game_engine.affiliate.v1.Conversi" +
+      "onReportR\013conversions\022\024\n\005total\030\002 \001(\005R\005to" +
+      "tal\"\307\001\n\020ConversionReport\022#\n\rconversion_i" +
+      "d\030\001 \001(\tR\014conversionId\022\031\n\010click_id\030\002 \001(\tR" +
+      "\007clickId\022\033\n\tplayer_id\030\003 \001(\tR\010playerId\022\030\n" +
+      "\007revenue\030\004 \001(\001R\007revenue\022\036\n\ncommission\030\005 " +
+      "\001(\001R\ncommission\022\034\n\ttimestamp\030\006 \001(\003R\ttime" +
+      "stamp\"=\n\030GetAffiliateLinksRequest\022!\n\014aff" +
+      "iliate_id\030\001 \001(\tR\013affiliateId\"Z\n\031GetAffil" +
+      "iateLinksResponse\022=\n\005links\030\001 \003(\0132\'.game_" +
+      "engine.affiliate.v1.AffiliateLinkR\005links" +
+      "\"j\n\rAffiliateLink\022\027\n\007link_id\030\001 \001(\tR\006link" +
+      "Id\022\022\n\004code\030\002 \001(\tR\004code\022\020\n\003url\030\003 \001(\tR\003url" +
+      "\022\032\n\010campaign\030\004 \001(\tR\010campaign\"~\n\032CreateAf" +
+      "filiateLinkRequest\022!\n\014affiliate_id\030\001 \001(\t" +
+      "R\013affiliateId\022\032\n\010campaign\030\002 \001(\tR\010campaig" +
+      "n\022!\n\014url_template\030\003 \001(\tR\013urlTemplate\"\\\n\033" +
+      "CreateAffiliateLinkResponse\022\027\n\007link_id\030\001" +
+      " \001(\tR\006linkId\022\022\n\004code\030\002 \001(\tR\004code\022\020\n\003url\030" +
+      "\003 \001(\tR\003url2\242\025\n\020AffiliateService\022|\n\021Regis" +
+      "terAffiliate\0222.game_engine.affiliate.v1." +
+      "RegisterAffiliateRequest\0323.game_engine.a" +
+      "ffiliate.v1.RegisterAffiliateResponse\022\177\n" +
+      "\022GetAffiliateByCode\0223.game_engine.affili" +
+      "ate.v1.GetAffiliateByCodeRequest\0324.game_" +
+      "engine.affiliate.v1.GetAffiliateByCodeRe" +
+      "sponse\022\216\001\n\027GetAffiliatesByMerchant\0228.gam" +
+      "e_engine.affiliate.v1.GetAffiliatesByMer" +
+      "chantRequest\0329.game_engine.affiliate.v1." +
+      "GetAffiliatesByMerchantResponse\022\202\001\n\023GetA" +
+      "ctiveAffiliates\0224.game_engine.affiliate." +
+      "v1.GetActiveAffiliatesRequest\0325.game_eng" +
+      "ine.affiliate.v1.GetActiveAffiliatesResp" +
+      "onse\022\202\001\n\023UpdateAffiliateTier\0224.game_engi" +
+      "ne.affiliate.v1.UpdateAffiliateTierReque" +
+      "st\0325.game_engine.affiliate.v1.UpdateAffi" +
+      "liateTierResponse\022\210\001\n\025UpdateAffiliateSta" +
+      "tus\0226.game_engine.affiliate.v1.UpdateAff" +
+      "iliateStatusRequest\0327.game_engine.affili" +
+      "ate.v1.UpdateAffiliateStatusResponse\022g\n\n" +
+      "TrackClick\022+.game_engine.affiliate.v1.Tr" +
+      "ackClickRequest\032,.game_engine.affiliate." +
+      "v1.TrackClickResponse\022|\n\021TrackRegistrati" +
+      "on\0222.game_engine.affiliate.v1.TrackRegis" +
+      "trationRequest\0323.game_engine.affiliate.v" +
+      "1.TrackRegistrationResponse\022|\n\021TrackFirs" +
+      "tDeposit\0222.game_engine.affiliate.v1.Trac" +
+      "kFirstDepositRequest\0323.game_engine.affil" +
+      "iate.v1.TrackFirstDepositResponse\022m\n\014Get" +
+      "Referrals\022-.game_engine.affiliate.v1.Get" +
+      "ReferralsRequest\032..game_engine.affiliate" +
+      ".v1.GetReferralsResponse\022\205\001\n\024GetCampaign" +
+      "Referrals\0225.game_engine.affiliate.v1.Get" +
+      "CampaignReferralsRequest\0326.game_engine.a" +
+      "ffiliate.v1.GetCampaignReferralsResponse" +
+      "\022\202\001\n\023CalculateCommission\0224.game_engine.a" +
+      "ffiliate.v1.CalculateCommissionRequest\0325" +
+      ".game_engine.affiliate.v1.CalculateCommi" +
+      "ssionResponse\022v\n\017AddSubAffiliate\0220.game_" +
+      "engine.affiliate.v1.AddSubAffiliateReque" +
+      "st\0321.game_engine.affiliate.v1.AddSubAffi" +
+      "liateResponse\022y\n\020GetSubAffiliates\0221.game" +
+      "_engine.affiliate.v1.GetSubAffiliatesReq" +
+      "uest\0322.game_engine.affiliate.v1.GetSubAf" +
+      "filiatesResponse\022|\n\021GetAffiliateStats\0222." +
+      "game_engine.affiliate.v1.GetAffiliateSta" +
+      "tsRequest\0323.game_engine.affiliate.v1.Get" +
+      "AffiliateStatsResponse\022\213\001\n\026RedirectToReg" +
+      "istration\0227.game_engine.affiliate.v1.Red" +
+      "irectToRegistrationRequest\0328.game_engine" +
+      ".affiliate.v1.RedirectToRegistrationResp" +
+      "onse\022\205\001\n\024GetPerformanceReport\0225.game_eng" +
+      "ine.affiliate.v1.GetPerformanceReportReq" +
+      "uest\0326.game_engine.affiliate.v1.GetPerfo" +
+      "rmanceReportResponse\022v\n\017GetClickReports\022" +
+      "0.game_engine.affiliate.v1.GetClickRepor" +
+      "tsRequest\0321.game_engine.affiliate.v1.Get" +
+      "ClickReportsResponse\022\205\001\n\024GetConversionRe" +
+      "ports\0225.game_engine.affiliate.v1.GetConv" +
+      "ersionReportsRequest\0326.game_engine.affil" +
+      "iate.v1.GetConversionReportsResponse\022|\n\021" +
+      "GetAffiliateLinks\0222.game_engine.affiliat" +
+      "e.v1.GetAffiliateLinksRequest\0323.game_eng" +
+      "ine.affiliate.v1.GetAffiliateLinksRespon" +
+      "se\022\202\001\n\023CreateAffiliateLink\0224.game_engine" +
+      ".affiliate.v1.CreateAffiliateLinkRequest" +
+      "\0325.game_engine.affiliate.v1.CreateAffili" +
+      "ateLinkResponseBm\n\034com.game_engine.affil" +
+      "iate.v1P\001ZKgithub.com/game_engine/common" +
+      "-service/proto/gen/go/affiliate/v1;affil" +
+      "iatev1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -567,6 +694,84 @@ public final class AffiliateServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_affiliate_v1_RedirectToRegistrationResponse_descriptor,
         new java.lang.String[] { "RedirectUrl", });
+    internal_static_game_engine_affiliate_v1_GetPerformanceReportRequest_descriptor =
+      getDescriptor().getMessageTypes().get(34);
+    internal_static_game_engine_affiliate_v1_GetPerformanceReportRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetPerformanceReportRequest_descriptor,
+        new java.lang.String[] { "AffiliateId", "StartDate", "EndDate", });
+    internal_static_game_engine_affiliate_v1_GetPerformanceReportResponse_descriptor =
+      getDescriptor().getMessageTypes().get(35);
+    internal_static_game_engine_affiliate_v1_GetPerformanceReportResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetPerformanceReportResponse_descriptor,
+        new java.lang.String[] { "TotalClicks", "TotalConversions", "ConversionRate", "TotalRevenue", "Commission", });
+    internal_static_game_engine_affiliate_v1_GetClickReportsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(36);
+    internal_static_game_engine_affiliate_v1_GetClickReportsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetClickReportsRequest_descriptor,
+        new java.lang.String[] { "AffiliateId", "StartDate", "EndDate", "Page", "Limit", });
+    internal_static_game_engine_affiliate_v1_GetClickReportsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_game_engine_affiliate_v1_GetClickReportsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetClickReportsResponse_descriptor,
+        new java.lang.String[] { "Clicks", "Total", });
+    internal_static_game_engine_affiliate_v1_ClickReport_descriptor =
+      getDescriptor().getMessageTypes().get(38);
+    internal_static_game_engine_affiliate_v1_ClickReport_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_ClickReport_descriptor,
+        new java.lang.String[] { "ClickId", "IpAddress", "UserAgent", "Timestamp", "Converted", });
+    internal_static_game_engine_affiliate_v1_GetConversionReportsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(39);
+    internal_static_game_engine_affiliate_v1_GetConversionReportsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetConversionReportsRequest_descriptor,
+        new java.lang.String[] { "AffiliateId", "StartDate", "EndDate", "Page", "Limit", });
+    internal_static_game_engine_affiliate_v1_GetConversionReportsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(40);
+    internal_static_game_engine_affiliate_v1_GetConversionReportsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetConversionReportsResponse_descriptor,
+        new java.lang.String[] { "Conversions", "Total", });
+    internal_static_game_engine_affiliate_v1_ConversionReport_descriptor =
+      getDescriptor().getMessageTypes().get(41);
+    internal_static_game_engine_affiliate_v1_ConversionReport_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_ConversionReport_descriptor,
+        new java.lang.String[] { "ConversionId", "ClickId", "PlayerId", "Revenue", "Commission", "Timestamp", });
+    internal_static_game_engine_affiliate_v1_GetAffiliateLinksRequest_descriptor =
+      getDescriptor().getMessageTypes().get(42);
+    internal_static_game_engine_affiliate_v1_GetAffiliateLinksRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetAffiliateLinksRequest_descriptor,
+        new java.lang.String[] { "AffiliateId", });
+    internal_static_game_engine_affiliate_v1_GetAffiliateLinksResponse_descriptor =
+      getDescriptor().getMessageTypes().get(43);
+    internal_static_game_engine_affiliate_v1_GetAffiliateLinksResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_GetAffiliateLinksResponse_descriptor,
+        new java.lang.String[] { "Links", });
+    internal_static_game_engine_affiliate_v1_AffiliateLink_descriptor =
+      getDescriptor().getMessageTypes().get(44);
+    internal_static_game_engine_affiliate_v1_AffiliateLink_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_AffiliateLink_descriptor,
+        new java.lang.String[] { "LinkId", "Code", "Url", "Campaign", });
+    internal_static_game_engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor =
+      getDescriptor().getMessageTypes().get(45);
+    internal_static_game_engine_affiliate_v1_CreateAffiliateLinkRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_CreateAffiliateLinkRequest_descriptor,
+        new java.lang.String[] { "AffiliateId", "Campaign", "UrlTemplate", });
+    internal_static_game_engine_affiliate_v1_CreateAffiliateLinkResponse_descriptor =
+      getDescriptor().getMessageTypes().get(46);
+    internal_static_game_engine_affiliate_v1_CreateAffiliateLinkResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_affiliate_v1_CreateAffiliateLinkResponse_descriptor,
+        new java.lang.String[] { "LinkId", "Code", "Url", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.game_engine.common.v1.Pagination.getDescriptor();
   }

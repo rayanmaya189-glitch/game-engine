@@ -10,6 +10,7 @@ import (
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/protobuf/types/known/emptypb"
 
 	authpb "github.com/game_engine/common-service/proto/gen/go/auth/v1"
 )
@@ -55,7 +56,7 @@ func (c *AuthClient) Login(ctx context.Context, req *authpb.LoginRequest) (*auth
 	return c.client.Login(ctx, req)
 }
 
-func (c *AuthClient) Logout(ctx context.Context, req *authpb.LogoutRequest) (*authpb.LogoutResponse, error) {
+func (c *AuthClient) Logout(ctx context.Context, req *authpb.LogoutRequest) (*emptypb.Empty, error) {
 	return c.client.Logout(ctx, req)
 }
 
@@ -67,7 +68,7 @@ func (c *AuthClient) ValidateToken(ctx context.Context, req *authpb.ValidateToke
 	return c.client.ValidateToken(ctx, req)
 }
 
-func (c *AuthClient) ChangePassword(ctx context.Context, req *authpb.ChangePasswordRequest) (*authpb.ChangePasswordResponse, error) {
+func (c *AuthClient) ChangePassword(ctx context.Context, req *authpb.ChangePasswordRequest) (*emptypb.Empty, error) {
 	return c.client.ChangePassword(ctx, req)
 }
 
@@ -87,7 +88,7 @@ func (c *AuthClient) VerifyPhone(ctx context.Context, req *authpb.VerifyPhoneReq
 	return c.client.VerifyPhone(ctx, req)
 }
 
-func (c *AuthClient) ResetPassword(ctx context.Context, req *authpb.ResetPasswordRequest) (*authpb.ResetPasswordResponse, error) {
+func (c *AuthClient) ResetPassword(ctx context.Context, req *authpb.ResetPasswordRequest) (*emptypb.Empty, error) {
 	return c.client.ResetPassword(ctx, req)
 }
 

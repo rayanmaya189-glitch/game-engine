@@ -9,14 +9,14 @@ public interface GetBonusRequestOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1 [json_name = "id"];</code>
-   * @return The id.
+   * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+   * @return The bonusId.
    */
-  java.lang.String getId();
+  java.lang.String getBonusId();
   /**
-   * <code>string id = 1 [json_name = "id"];</code>
-   * @return The bytes for id.
+   * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+   * @return The bytes for bonusId.
    */
   com.google.protobuf.ByteString
-      getIdBytes();
+      getBonusIdBytes();
 }

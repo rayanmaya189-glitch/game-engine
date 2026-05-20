@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"context"
 	"strings"
 
 	"github.com/cloudwego/hertz/pkg/app"
@@ -49,7 +50,7 @@ func NewCORSMiddleware(config *CORSConfig) *CORSMiddleware {
 
 // CORS returns a CORS middleware
 func (m *CORSMiddleware) CORS() app.HandlerFunc {
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		origin := string(ctx.Request.Header.Get("Origin"))
 
 		// Check if origin is allowed
@@ -81,7 +82,7 @@ func (m *CORSMiddleware) CORS() app.HandlerFunc {
 		}
 
 		// Handle preflight requests
-		if string(ctx.Request.Method) == "OPTIONS" {
+		if string(ctx.Request.Method()) == "OPTIONS" {
 			ctx.Response.SetStatusCode(consts.StatusNoContent)
 			ctx.Abort()
 			return
@@ -118,7 +119,7 @@ func (m *CORSMiddleware) isOriginAllowed(origin string) bool {
 
 // AdminCORS returns a CORS middleware for admin gateway (stricter)
 func (m *CORSMiddleware) AdminCORS(allowedDomains []string) app.HandlerFunc {
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		origin := string(ctx.Request.Header.Get("Origin"))
 
 		// Strict origin check for admin
@@ -136,7 +137,7 @@ func (m *CORSMiddleware) AdminCORS(allowedDomains []string) app.HandlerFunc {
 		ctx.Response.Header.Set("Access-Control-Allow-Headers", strings.Join(m.config.AllowHeaders, ", "))
 		ctx.Response.Header.Set("Access-Control-Allow-Credentials", "true")
 
-		if string(ctx.Request.Method) == "OPTIONS" {
+		if string(ctx.Request.Method()) == "OPTIONS" {
 			ctx.Response.SetStatusCode(consts.StatusNoContent)
 			ctx.Abort()
 			return

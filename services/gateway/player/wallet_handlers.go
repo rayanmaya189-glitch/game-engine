@@ -7,7 +7,7 @@ import (
 
 	walletpb "github.com/game_engine/common-service/proto/gen/go/wallet/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // GetBalance handles getting wallet balance

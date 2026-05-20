@@ -6,7 +6,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 
 	tournamentpb "github.com/game_engine/common-service/proto/gen/go/tournament/v1"
 )
@@ -29,7 +29,7 @@ func (cfg *RouterConfig) ListTournaments(ctx context.Context, c *app.RequestCont
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"tournaments": resp.Tournaments,
-		"total":       resp.Total,
+		"total":       len(resp.Tournaments),
 	})
 }
 
@@ -46,7 +46,7 @@ func (cfg *RouterConfig) GetTournament(ctx context.Context, c *app.RequestContex
 	}
 
 	resp, err := cfg.TournamentClient.GetTournament(ctx, &tournamentpb.GetTournamentRequest{
-		TournamentId: tournamentID,
+		Id: tournamentID,
 	})
 	if err != nil {
 		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to get tournament: %v", err))
@@ -74,8 +74,8 @@ func (cfg *RouterConfig) CreateTournament(ctx context.Context, c *app.RequestCon
 		return
 	}
 
-	resp, err := cfg.TournamentClient.JoinTournament(ctx, &tournamentpb.JoinTournamentRequest{
-		TournamentId: req.GameID,
+	resp, err := cfg.TournamentClient.CreateTournament(ctx, &tournamentpb.CreateTournamentRequest{
+		Name: req.Name,
 	})
 	if err != nil {
 		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to create tournament: %v", err))
@@ -83,7 +83,7 @@ func (cfg *RouterConfig) CreateTournament(ctx context.Context, c *app.RequestCon
 	}
 
 	handler.SendSuccess(c, map[string]interface{}{
-		"id":      resp.TournamentId,
+		"id":      resp.Tournament.Id,
 		"message": "Tournament created successfully",
 	})
 }

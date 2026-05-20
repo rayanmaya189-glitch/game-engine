@@ -17,6 +17,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private GetPendingCommissionsRequest() {
+    agentId_ = "";
   }
 
   @java.lang.Override
@@ -39,6 +40,45 @@ private static final long serialVersionUID = 0L;
             com.game_engine.commission.v1.GetPendingCommissionsRequest.class, com.game_engine.commission.v1.GetPendingCommissionsRequest.Builder.class);
   }
 
+  public static final int AGENT_ID_FIELD_NUMBER = 1;
+  @SuppressWarnings("serial")
+  private volatile java.lang.Object agentId_ = "";
+  /**
+   * <code>string agent_id = 1 [json_name = "agentId"];</code>
+   * @return The agentId.
+   */
+  @java.lang.Override
+  public java.lang.String getAgentId() {
+    java.lang.Object ref = agentId_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      agentId_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string agent_id = 1 [json_name = "agentId"];</code>
+   * @return The bytes for agentId.
+   */
+  @java.lang.Override
+  public com.google.protobuf.ByteString
+      getAgentIdBytes() {
+    java.lang.Object ref = agentId_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      agentId_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -53,6 +93,9 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(agentId_)) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, agentId_);
+    }
     getUnknownFields().writeTo(output);
   }
 
@@ -62,6 +105,9 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
+    if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(agentId_)) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, agentId_);
+    }
     size += getUnknownFields().getSerializedSize();
     memoizedSize = size;
     return size;
@@ -77,6 +123,8 @@ private static final long serialVersionUID = 0L;
     }
     com.game_engine.commission.v1.GetPendingCommissionsRequest other = (com.game_engine.commission.v1.GetPendingCommissionsRequest) obj;
 
+    if (!getAgentId()
+        .equals(other.getAgentId())) return false;
     if (!getUnknownFields().equals(other.getUnknownFields())) return false;
     return true;
   }
@@ -88,6 +136,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
+    hash = (37 * hash) + AGENT_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getAgentId().hashCode();
     hash = (29 * hash) + getUnknownFields().hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -218,6 +268,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
+      bitField0_ = 0;
+      agentId_ = "";
       return this;
     }
 
@@ -244,8 +296,16 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.game_engine.commission.v1.GetPendingCommissionsRequest buildPartial() {
       com.game_engine.commission.v1.GetPendingCommissionsRequest result = new com.game_engine.commission.v1.GetPendingCommissionsRequest(this);
+      if (bitField0_ != 0) { buildPartial0(result); }
       onBuilt();
       return result;
+    }
+
+    private void buildPartial0(com.game_engine.commission.v1.GetPendingCommissionsRequest result) {
+      int from_bitField0_ = bitField0_;
+      if (((from_bitField0_ & 0x00000001) != 0)) {
+        result.agentId_ = agentId_;
+      }
     }
 
     @java.lang.Override
@@ -292,6 +352,11 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(com.game_engine.commission.v1.GetPendingCommissionsRequest other) {
       if (other == com.game_engine.commission.v1.GetPendingCommissionsRequest.getDefaultInstance()) return this;
+      if (!other.getAgentId().isEmpty()) {
+        agentId_ = other.agentId_;
+        bitField0_ |= 0x00000001;
+        onChanged();
+      }
       this.mergeUnknownFields(other.getUnknownFields());
       onChanged();
       return this;
@@ -318,6 +383,11 @@ private static final long serialVersionUID = 0L;
             case 0:
               done = true;
               break;
+            case 10: {
+              agentId_ = input.readStringRequireUtf8();
+              bitField0_ |= 0x00000001;
+              break;
+            } // case 10
             default: {
               if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                 done = true; // was an endgroup tag
@@ -331,6 +401,79 @@ private static final long serialVersionUID = 0L;
       } finally {
         onChanged();
       } // finally
+      return this;
+    }
+    private int bitField0_;
+
+    private java.lang.Object agentId_ = "";
+    /**
+     * <code>string agent_id = 1 [json_name = "agentId"];</code>
+     * @return The agentId.
+     */
+    public java.lang.String getAgentId() {
+      java.lang.Object ref = agentId_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        agentId_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string agent_id = 1 [json_name = "agentId"];</code>
+     * @return The bytes for agentId.
+     */
+    public com.google.protobuf.ByteString
+        getAgentIdBytes() {
+      java.lang.Object ref = agentId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        agentId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string agent_id = 1 [json_name = "agentId"];</code>
+     * @param value The agentId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAgentId(
+        java.lang.String value) {
+      if (value == null) { throw new NullPointerException(); }
+      agentId_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string agent_id = 1 [json_name = "agentId"];</code>
+     * @return This builder for chaining.
+     */
+    public Builder clearAgentId() {
+      agentId_ = getDefaultInstance().getAgentId();
+      bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string agent_id = 1 [json_name = "agentId"];</code>
+     * @param value The bytes for agentId to set.
+     * @return This builder for chaining.
+     */
+    public Builder setAgentIdBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) { throw new NullPointerException(); }
+      checkByteStringIsUtf8(value);
+      agentId_ = value;
+      bitField0_ |= 0x00000001;
+      onChanged();
       return this;
     }
     @java.lang.Override

@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"context"
 	"strconv"
 	"strings"
 
@@ -136,7 +137,7 @@ func ValidateRequestBody(ctx *app.RequestContext, target interface{}) error {
 
 // PathParamValidator validates path parameters
 func PathParamValidator(paramName, paramType string) app.HandlerFunc {
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		value := ctx.Param(paramName)
 
 		switch paramType {
@@ -175,7 +176,7 @@ func PathParamValidator(paramName, paramType string) app.HandlerFunc {
 
 // QueryParamValidator validates query parameters
 func QueryParamValidator(paramName, paramType string, required bool) app.HandlerFunc {
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		value := string(ctx.Request.URI().QueryArgs().Peek(paramName))
 
 		if required && value == "" {
@@ -222,7 +223,7 @@ func QueryParamValidator(paramName, paramType string, required bool) app.Handler
 
 // QueryParamEnumValidator validates that a query parameter value is within allowed values
 func QueryParamEnumValidator(paramName string, allowedValues []string, required bool) app.HandlerFunc {
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		value := string(ctx.Request.URI().QueryArgs().Peek(paramName))
 
 		if required && value == "" {

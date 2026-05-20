@@ -7,7 +7,7 @@ import (
 
 	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // CreateRebetClaim handles creating a rebet claim

@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 func (cfg *RouterConfig) ListAdminGames(ctx context.Context, c *app.RequestContext) {

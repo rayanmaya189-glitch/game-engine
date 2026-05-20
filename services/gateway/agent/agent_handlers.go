@@ -7,7 +7,7 @@ import (
 
 	agentpb "github.com/game_engine/common-service/proto/gen/go/agent/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 func (cfg *RouterConfig) ListAgentPlayers(ctx context.Context, c *app.RequestContext) {

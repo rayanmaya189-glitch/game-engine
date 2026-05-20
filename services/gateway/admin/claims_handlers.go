@@ -6,7 +6,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 
 	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
 	commissionpb "github.com/game_engine/common-service/proto/gen/go/commission/v1"
@@ -159,7 +159,7 @@ func (cfg *RouterConfig) ListRebetClaims(ctx context.Context, c *app.RequestCont
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"claims": resp.Claims,
-		"total":  resp.Total,
+		"total":  len(resp.Claims),
 	})
 }
 
@@ -182,7 +182,7 @@ func (cfg *RouterConfig) GetRebetClaim(ctx context.Context, c *app.RequestContex
 	}
 
 	for _, claim := range resp.Claims {
-		if claim.Id == claimID {
+		if claim.RebetId == claimID {
 			handler.SendSuccess(c, claim)
 			return
 		}
@@ -200,7 +200,7 @@ func (cfg *RouterConfig) ApproveRebetClaim(ctx context.Context, c *app.RequestCo
 	}
 
 	resp, err := cfg.BonusClient.ClaimRebet(ctx, &bonuspb.ClaimRebetRequest{
-		ClaimId: claimID,
+		RebetId: claimID,
 	})
 	if err != nil {
 		handler.SendJSONError(c, 500, handler.ErrCodeServiceUnavailable, fmt.Sprintf("failed to approve rebet claim: %v", err))
@@ -210,7 +210,8 @@ func (cfg *RouterConfig) ApproveRebetClaim(ctx context.Context, c *app.RequestCo
 	handler.SendSuccess(c, map[string]interface{}{
 		"id":      claimID,
 		"status":  "APPROVED",
-		"message": resp.Message,
+		"message": "Rebet claim approved",
+		"success": resp.Success,
 	})
 }
 

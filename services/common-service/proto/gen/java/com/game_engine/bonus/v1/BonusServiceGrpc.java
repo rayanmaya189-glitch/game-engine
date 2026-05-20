@@ -3,9 +3,6 @@ package com.game_engine.bonus.v1;
 import static io.grpc.MethodDescriptor.generateFullMethodName;
 
 /**
- * <pre>
- * Bonus Service - manages bonuses, claims, wagering requirements
- * </pre>
  */
 @io.grpc.stub.annotations.GrpcGenerated
 public final class BonusServiceGrpc {
@@ -15,35 +12,35 @@ public final class BonusServiceGrpc {
   public static final java.lang.String SERVICE_NAME = "game_engine.bonus.v1.BonusService";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetActiveBonusesRequest,
-      com.game_engine.bonus.v1.GetActiveBonusesResponse> getGetActiveBonusesMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ListBonusesRequest,
+      com.game_engine.bonus.v1.ListBonusesResponse> getListBonusesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetActiveBonuses",
-      requestType = com.game_engine.bonus.v1.GetActiveBonusesRequest.class,
-      responseType = com.game_engine.bonus.v1.GetActiveBonusesResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "ListBonuses",
+      requestType = com.game_engine.bonus.v1.ListBonusesRequest.class,
+      responseType = com.game_engine.bonus.v1.ListBonusesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetActiveBonusesRequest,
-      com.game_engine.bonus.v1.GetActiveBonusesResponse> getGetActiveBonusesMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetActiveBonusesRequest, com.game_engine.bonus.v1.GetActiveBonusesResponse> getGetActiveBonusesMethod;
-    if ((getGetActiveBonusesMethod = BonusServiceGrpc.getGetActiveBonusesMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ListBonusesRequest,
+      com.game_engine.bonus.v1.ListBonusesResponse> getListBonusesMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ListBonusesRequest, com.game_engine.bonus.v1.ListBonusesResponse> getListBonusesMethod;
+    if ((getListBonusesMethod = BonusServiceGrpc.getListBonusesMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getGetActiveBonusesMethod = BonusServiceGrpc.getGetActiveBonusesMethod) == null) {
-          BonusServiceGrpc.getGetActiveBonusesMethod = getGetActiveBonusesMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetActiveBonusesRequest, com.game_engine.bonus.v1.GetActiveBonusesResponse>newBuilder()
+        if ((getListBonusesMethod = BonusServiceGrpc.getListBonusesMethod) == null) {
+          BonusServiceGrpc.getListBonusesMethod = getListBonusesMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.ListBonusesRequest, com.game_engine.bonus.v1.ListBonusesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetActiveBonuses"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ListBonuses"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetActiveBonusesRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.ListBonusesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetActiveBonusesResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetActiveBonuses"))
+                  com.game_engine.bonus.v1.ListBonusesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("ListBonuses"))
               .build();
         }
       }
     }
-    return getGetActiveBonusesMethod;
+    return getListBonusesMethod;
   }
 
   private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusRequest,
@@ -77,37 +74,6 @@ public final class BonusServiceGrpc {
     return getGetBonusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CreateBonusRequest,
-      com.game_engine.bonus.v1.CreateBonusResponse> getCreateBonusMethod;
-
-  @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CreateBonus",
-      requestType = com.game_engine.bonus.v1.CreateBonusRequest.class,
-      responseType = com.game_engine.bonus.v1.CreateBonusResponse.class,
-      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CreateBonusRequest,
-      com.game_engine.bonus.v1.CreateBonusResponse> getCreateBonusMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CreateBonusRequest, com.game_engine.bonus.v1.CreateBonusResponse> getCreateBonusMethod;
-    if ((getCreateBonusMethod = BonusServiceGrpc.getCreateBonusMethod) == null) {
-      synchronized (BonusServiceGrpc.class) {
-        if ((getCreateBonusMethod = BonusServiceGrpc.getCreateBonusMethod) == null) {
-          BonusServiceGrpc.getCreateBonusMethod = getCreateBonusMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.CreateBonusRequest, com.game_engine.bonus.v1.CreateBonusResponse>newBuilder()
-              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateBonus"))
-              .setSampledToLocalTracing(true)
-              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CreateBonusRequest.getDefaultInstance()))
-              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CreateBonusResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("CreateBonus"))
-              .build();
-        }
-      }
-    }
-    return getCreateBonusMethod;
-  }
-
   private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ClaimBonusRequest,
       com.game_engine.bonus.v1.ClaimBonusResponse> getClaimBonusMethod;
 
@@ -139,221 +105,252 @@ public final class BonusServiceGrpc {
     return getClaimBonusMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CheckEligibilityRequest,
-      com.game_engine.bonus.v1.CheckEligibilityResponse> getCheckEligibilityMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserBonusesRequest,
+      com.game_engine.bonus.v1.GetUserBonusesResponse> getGetUserBonusesMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CheckEligibility",
-      requestType = com.game_engine.bonus.v1.CheckEligibilityRequest.class,
-      responseType = com.game_engine.bonus.v1.CheckEligibilityResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetUserBonuses",
+      requestType = com.game_engine.bonus.v1.GetUserBonusesRequest.class,
+      responseType = com.game_engine.bonus.v1.GetUserBonusesResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CheckEligibilityRequest,
-      com.game_engine.bonus.v1.CheckEligibilityResponse> getCheckEligibilityMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CheckEligibilityRequest, com.game_engine.bonus.v1.CheckEligibilityResponse> getCheckEligibilityMethod;
-    if ((getCheckEligibilityMethod = BonusServiceGrpc.getCheckEligibilityMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserBonusesRequest,
+      com.game_engine.bonus.v1.GetUserBonusesResponse> getGetUserBonusesMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserBonusesRequest, com.game_engine.bonus.v1.GetUserBonusesResponse> getGetUserBonusesMethod;
+    if ((getGetUserBonusesMethod = BonusServiceGrpc.getGetUserBonusesMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getCheckEligibilityMethod = BonusServiceGrpc.getCheckEligibilityMethod) == null) {
-          BonusServiceGrpc.getCheckEligibilityMethod = getCheckEligibilityMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.CheckEligibilityRequest, com.game_engine.bonus.v1.CheckEligibilityResponse>newBuilder()
+        if ((getGetUserBonusesMethod = BonusServiceGrpc.getGetUserBonusesMethod) == null) {
+          BonusServiceGrpc.getGetUserBonusesMethod = getGetUserBonusesMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetUserBonusesRequest, com.game_engine.bonus.v1.GetUserBonusesResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckEligibility"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserBonuses"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CheckEligibilityRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.GetUserBonusesRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CheckEligibilityResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("CheckEligibility"))
+                  com.game_engine.bonus.v1.GetUserBonusesResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetUserBonuses"))
               .build();
         }
       }
     }
-    return getCheckEligibilityMethod;
+    return getGetUserBonusesMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusHistoryRequest,
-      com.game_engine.bonus.v1.GetBonusHistoryResponse> getGetBonusHistoryMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CreateRebetClaimRequest,
+      com.game_engine.bonus.v1.CreateRebetClaimResponse> getCreateRebetClaimMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetBonusHistory",
-      requestType = com.game_engine.bonus.v1.GetBonusHistoryRequest.class,
-      responseType = com.game_engine.bonus.v1.GetBonusHistoryResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "CreateRebetClaim",
+      requestType = com.game_engine.bonus.v1.CreateRebetClaimRequest.class,
+      responseType = com.game_engine.bonus.v1.CreateRebetClaimResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusHistoryRequest,
-      com.game_engine.bonus.v1.GetBonusHistoryResponse> getGetBonusHistoryMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusHistoryRequest, com.game_engine.bonus.v1.GetBonusHistoryResponse> getGetBonusHistoryMethod;
-    if ((getGetBonusHistoryMethod = BonusServiceGrpc.getGetBonusHistoryMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CreateRebetClaimRequest,
+      com.game_engine.bonus.v1.CreateRebetClaimResponse> getCreateRebetClaimMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CreateRebetClaimRequest, com.game_engine.bonus.v1.CreateRebetClaimResponse> getCreateRebetClaimMethod;
+    if ((getCreateRebetClaimMethod = BonusServiceGrpc.getCreateRebetClaimMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getGetBonusHistoryMethod = BonusServiceGrpc.getGetBonusHistoryMethod) == null) {
-          BonusServiceGrpc.getGetBonusHistoryMethod = getGetBonusHistoryMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetBonusHistoryRequest, com.game_engine.bonus.v1.GetBonusHistoryResponse>newBuilder()
+        if ((getCreateRebetClaimMethod = BonusServiceGrpc.getCreateRebetClaimMethod) == null) {
+          BonusServiceGrpc.getCreateRebetClaimMethod = getCreateRebetClaimMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.CreateRebetClaimRequest, com.game_engine.bonus.v1.CreateRebetClaimResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetBonusHistory"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateRebetClaim"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetBonusHistoryRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.CreateRebetClaimRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetBonusHistoryResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetBonusHistory"))
+                  com.game_engine.bonus.v1.CreateRebetClaimResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("CreateRebetClaim"))
               .build();
         }
       }
     }
-    return getGetBonusHistoryMethod;
+    return getCreateRebetClaimMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetActiveBonusClaimsRequest,
-      com.game_engine.bonus.v1.GetActiveBonusClaimsResponse> getGetActiveBonusClaimsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserRebetClaimsRequest,
+      com.game_engine.bonus.v1.GetUserRebetClaimsResponse> getGetUserRebetClaimsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetActiveBonusClaims",
-      requestType = com.game_engine.bonus.v1.GetActiveBonusClaimsRequest.class,
-      responseType = com.game_engine.bonus.v1.GetActiveBonusClaimsResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetUserRebetClaims",
+      requestType = com.game_engine.bonus.v1.GetUserRebetClaimsRequest.class,
+      responseType = com.game_engine.bonus.v1.GetUserRebetClaimsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetActiveBonusClaimsRequest,
-      com.game_engine.bonus.v1.GetActiveBonusClaimsResponse> getGetActiveBonusClaimsMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetActiveBonusClaimsRequest, com.game_engine.bonus.v1.GetActiveBonusClaimsResponse> getGetActiveBonusClaimsMethod;
-    if ((getGetActiveBonusClaimsMethod = BonusServiceGrpc.getGetActiveBonusClaimsMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserRebetClaimsRequest,
+      com.game_engine.bonus.v1.GetUserRebetClaimsResponse> getGetUserRebetClaimsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserRebetClaimsRequest, com.game_engine.bonus.v1.GetUserRebetClaimsResponse> getGetUserRebetClaimsMethod;
+    if ((getGetUserRebetClaimsMethod = BonusServiceGrpc.getGetUserRebetClaimsMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getGetActiveBonusClaimsMethod = BonusServiceGrpc.getGetActiveBonusClaimsMethod) == null) {
-          BonusServiceGrpc.getGetActiveBonusClaimsMethod = getGetActiveBonusClaimsMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetActiveBonusClaimsRequest, com.game_engine.bonus.v1.GetActiveBonusClaimsResponse>newBuilder()
+        if ((getGetUserRebetClaimsMethod = BonusServiceGrpc.getGetUserRebetClaimsMethod) == null) {
+          BonusServiceGrpc.getGetUserRebetClaimsMethod = getGetUserRebetClaimsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetUserRebetClaimsRequest, com.game_engine.bonus.v1.GetUserRebetClaimsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetActiveBonusClaims"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserRebetClaims"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetActiveBonusClaimsRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.GetUserRebetClaimsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetActiveBonusClaimsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetActiveBonusClaims"))
+                  com.game_engine.bonus.v1.GetUserRebetClaimsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetUserRebetClaims"))
               .build();
         }
       }
     }
-    return getGetActiveBonusClaimsMethod;
+    return getGetUserRebetClaimsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ProcessWageringContributionRequest,
-      com.game_engine.bonus.v1.ProcessWageringContributionResponse> getProcessWageringContributionMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetClaimableRebetsRequest,
+      com.game_engine.bonus.v1.GetClaimableRebetsResponse> getGetClaimableRebetsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "ProcessWageringContribution",
-      requestType = com.game_engine.bonus.v1.ProcessWageringContributionRequest.class,
-      responseType = com.game_engine.bonus.v1.ProcessWageringContributionResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetClaimableRebets",
+      requestType = com.game_engine.bonus.v1.GetClaimableRebetsRequest.class,
+      responseType = com.game_engine.bonus.v1.GetClaimableRebetsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ProcessWageringContributionRequest,
-      com.game_engine.bonus.v1.ProcessWageringContributionResponse> getProcessWageringContributionMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ProcessWageringContributionRequest, com.game_engine.bonus.v1.ProcessWageringContributionResponse> getProcessWageringContributionMethod;
-    if ((getProcessWageringContributionMethod = BonusServiceGrpc.getProcessWageringContributionMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetClaimableRebetsRequest,
+      com.game_engine.bonus.v1.GetClaimableRebetsResponse> getGetClaimableRebetsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetClaimableRebetsRequest, com.game_engine.bonus.v1.GetClaimableRebetsResponse> getGetClaimableRebetsMethod;
+    if ((getGetClaimableRebetsMethod = BonusServiceGrpc.getGetClaimableRebetsMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getProcessWageringContributionMethod = BonusServiceGrpc.getProcessWageringContributionMethod) == null) {
-          BonusServiceGrpc.getProcessWageringContributionMethod = getProcessWageringContributionMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.ProcessWageringContributionRequest, com.game_engine.bonus.v1.ProcessWageringContributionResponse>newBuilder()
+        if ((getGetClaimableRebetsMethod = BonusServiceGrpc.getGetClaimableRebetsMethod) == null) {
+          BonusServiceGrpc.getGetClaimableRebetsMethod = getGetClaimableRebetsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetClaimableRebetsRequest, com.game_engine.bonus.v1.GetClaimableRebetsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ProcessWageringContribution"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetClaimableRebets"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.ProcessWageringContributionRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.GetClaimableRebetsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.ProcessWageringContributionResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("ProcessWageringContribution"))
+                  com.game_engine.bonus.v1.GetClaimableRebetsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetClaimableRebets"))
               .build();
         }
       }
     }
-    return getProcessWageringContributionMethod;
+    return getGetClaimableRebetsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CompleteBonusRequest,
-      com.game_engine.bonus.v1.CompleteBonusResponse> getCompleteBonusMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ClaimRebetRequest,
+      com.game_engine.bonus.v1.ClaimRebetResponse> getClaimRebetMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CompleteBonus",
-      requestType = com.game_engine.bonus.v1.CompleteBonusRequest.class,
-      responseType = com.game_engine.bonus.v1.CompleteBonusResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "ClaimRebet",
+      requestType = com.game_engine.bonus.v1.ClaimRebetRequest.class,
+      responseType = com.game_engine.bonus.v1.ClaimRebetResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CompleteBonusRequest,
-      com.game_engine.bonus.v1.CompleteBonusResponse> getCompleteBonusMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CompleteBonusRequest, com.game_engine.bonus.v1.CompleteBonusResponse> getCompleteBonusMethod;
-    if ((getCompleteBonusMethod = BonusServiceGrpc.getCompleteBonusMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ClaimRebetRequest,
+      com.game_engine.bonus.v1.ClaimRebetResponse> getClaimRebetMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.ClaimRebetRequest, com.game_engine.bonus.v1.ClaimRebetResponse> getClaimRebetMethod;
+    if ((getClaimRebetMethod = BonusServiceGrpc.getClaimRebetMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getCompleteBonusMethod = BonusServiceGrpc.getCompleteBonusMethod) == null) {
-          BonusServiceGrpc.getCompleteBonusMethod = getCompleteBonusMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.CompleteBonusRequest, com.game_engine.bonus.v1.CompleteBonusResponse>newBuilder()
+        if ((getClaimRebetMethod = BonusServiceGrpc.getClaimRebetMethod) == null) {
+          BonusServiceGrpc.getClaimRebetMethod = getClaimRebetMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.ClaimRebetRequest, com.game_engine.bonus.v1.ClaimRebetResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CompleteBonus"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ClaimRebet"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CompleteBonusRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.ClaimRebetRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CompleteBonusResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("CompleteBonus"))
+                  com.game_engine.bonus.v1.ClaimRebetResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("ClaimRebet"))
               .build();
         }
       }
     }
-    return getCompleteBonusMethod;
+    return getClaimRebetMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CancelBonusRequest,
-      com.game_engine.bonus.v1.CancelBonusResponse> getCancelBonusMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.SubmitInsuranceClaimRequest,
+      com.game_engine.bonus.v1.SubmitInsuranceClaimResponse> getSubmitInsuranceClaimMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "CancelBonus",
-      requestType = com.game_engine.bonus.v1.CancelBonusRequest.class,
-      responseType = com.game_engine.bonus.v1.CancelBonusResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "SubmitInsuranceClaim",
+      requestType = com.game_engine.bonus.v1.SubmitInsuranceClaimRequest.class,
+      responseType = com.game_engine.bonus.v1.SubmitInsuranceClaimResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CancelBonusRequest,
-      com.game_engine.bonus.v1.CancelBonusResponse> getCancelBonusMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CancelBonusRequest, com.game_engine.bonus.v1.CancelBonusResponse> getCancelBonusMethod;
-    if ((getCancelBonusMethod = BonusServiceGrpc.getCancelBonusMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.SubmitInsuranceClaimRequest,
+      com.game_engine.bonus.v1.SubmitInsuranceClaimResponse> getSubmitInsuranceClaimMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.SubmitInsuranceClaimRequest, com.game_engine.bonus.v1.SubmitInsuranceClaimResponse> getSubmitInsuranceClaimMethod;
+    if ((getSubmitInsuranceClaimMethod = BonusServiceGrpc.getSubmitInsuranceClaimMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getCancelBonusMethod = BonusServiceGrpc.getCancelBonusMethod) == null) {
-          BonusServiceGrpc.getCancelBonusMethod = getCancelBonusMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.CancelBonusRequest, com.game_engine.bonus.v1.CancelBonusResponse>newBuilder()
+        if ((getSubmitInsuranceClaimMethod = BonusServiceGrpc.getSubmitInsuranceClaimMethod) == null) {
+          BonusServiceGrpc.getSubmitInsuranceClaimMethod = getSubmitInsuranceClaimMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.SubmitInsuranceClaimRequest, com.game_engine.bonus.v1.SubmitInsuranceClaimResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CancelBonus"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubmitInsuranceClaim"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CancelBonusRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.SubmitInsuranceClaimRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.CancelBonusResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("CancelBonus"))
+                  com.game_engine.bonus.v1.SubmitInsuranceClaimResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("SubmitInsuranceClaim"))
               .build();
         }
       }
     }
-    return getCancelBonusMethod;
+    return getSubmitInsuranceClaimMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusStatsRequest,
-      com.game_engine.bonus.v1.GetBonusStatsResponse> getGetBonusStatsMethod;
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest,
+      com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse> getGetUserInsuranceClaimsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "GetBonusStats",
-      requestType = com.game_engine.bonus.v1.GetBonusStatsRequest.class,
-      responseType = com.game_engine.bonus.v1.GetBonusStatsResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "GetUserInsuranceClaims",
+      requestType = com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest.class,
+      responseType = com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusStatsRequest,
-      com.game_engine.bonus.v1.GetBonusStatsResponse> getGetBonusStatsMethod() {
-    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetBonusStatsRequest, com.game_engine.bonus.v1.GetBonusStatsResponse> getGetBonusStatsMethod;
-    if ((getGetBonusStatsMethod = BonusServiceGrpc.getGetBonusStatsMethod) == null) {
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest,
+      com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse> getGetUserInsuranceClaimsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest, com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse> getGetUserInsuranceClaimsMethod;
+    if ((getGetUserInsuranceClaimsMethod = BonusServiceGrpc.getGetUserInsuranceClaimsMethod) == null) {
       synchronized (BonusServiceGrpc.class) {
-        if ((getGetBonusStatsMethod = BonusServiceGrpc.getGetBonusStatsMethod) == null) {
-          BonusServiceGrpc.getGetBonusStatsMethod = getGetBonusStatsMethod =
-              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetBonusStatsRequest, com.game_engine.bonus.v1.GetBonusStatsResponse>newBuilder()
+        if ((getGetUserInsuranceClaimsMethod = BonusServiceGrpc.getGetUserInsuranceClaimsMethod) == null) {
+          BonusServiceGrpc.getGetUserInsuranceClaimsMethod = getGetUserInsuranceClaimsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest, com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
-              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetBonusStats"))
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserInsuranceClaims"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetBonusStatsRequest.getDefaultInstance()))
+                  com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.game_engine.bonus.v1.GetBonusStatsResponse.getDefaultInstance()))
-              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetBonusStats"))
+                  com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("GetUserInsuranceClaims"))
               .build();
         }
       }
     }
-    return getGetBonusStatsMethod;
+    return getGetUserInsuranceClaimsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CheckWageringRequirementsRequest,
+      com.game_engine.bonus.v1.CheckWageringRequirementsResponse> getCheckWageringRequirementsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CheckWageringRequirements",
+      requestType = com.game_engine.bonus.v1.CheckWageringRequirementsRequest.class,
+      responseType = com.game_engine.bonus.v1.CheckWageringRequirementsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CheckWageringRequirementsRequest,
+      com.game_engine.bonus.v1.CheckWageringRequirementsResponse> getCheckWageringRequirementsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.bonus.v1.CheckWageringRequirementsRequest, com.game_engine.bonus.v1.CheckWageringRequirementsResponse> getCheckWageringRequirementsMethod;
+    if ((getCheckWageringRequirementsMethod = BonusServiceGrpc.getCheckWageringRequirementsMethod) == null) {
+      synchronized (BonusServiceGrpc.class) {
+        if ((getCheckWageringRequirementsMethod = BonusServiceGrpc.getCheckWageringRequirementsMethod) == null) {
+          BonusServiceGrpc.getCheckWageringRequirementsMethod = getCheckWageringRequirementsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.bonus.v1.CheckWageringRequirementsRequest, com.game_engine.bonus.v1.CheckWageringRequirementsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CheckWageringRequirements"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.bonus.v1.CheckWageringRequirementsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.bonus.v1.CheckWageringRequirementsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new BonusServiceMethodDescriptorSupplier("CheckWageringRequirements"))
+              .build();
+        }
+      }
+    }
+    return getCheckWageringRequirementsMethod;
   }
 
   /**
@@ -416,23 +413,23 @@ public final class BonusServiceGrpc {
   }
 
   /**
-   * <pre>
-   * Bonus Service - manages bonuses, claims, wagering requirements
-   * </pre>
    */
   public interface AsyncService {
 
     /**
      * <pre>
-     * Bonus management
+     * List available bonuses
      * </pre>
      */
-    default void getActiveBonuses(com.game_engine.bonus.v1.GetActiveBonusesRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetActiveBonusesResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetActiveBonusesMethod(), responseObserver);
+    default void listBonuses(com.game_engine.bonus.v1.ListBonusesRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ListBonusesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getListBonusesMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Get bonus details
+     * </pre>
      */
     default void getBonus(com.game_engine.bonus.v1.GetBonusRequest request,
         io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusResponse> responseObserver) {
@@ -440,13 +437,9 @@ public final class BonusServiceGrpc {
     }
 
     /**
-     */
-    default void createBonus(com.game_engine.bonus.v1.CreateBonusRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CreateBonusResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateBonusMethod(), responseObserver);
-    }
-
-    /**
+     * <pre>
+     * Claim a bonus
+     * </pre>
      */
     default void claimBonus(com.game_engine.bonus.v1.ClaimBonusRequest request,
         io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ClaimBonusResponse> responseObserver) {
@@ -454,66 +447,76 @@ public final class BonusServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Get user's claimed bonuses
+     * </pre>
      */
-    default void checkEligibility(com.game_engine.bonus.v1.CheckEligibilityRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CheckEligibilityResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckEligibilityMethod(), responseObserver);
-    }
-
-    /**
-     */
-    default void getBonusHistory(com.game_engine.bonus.v1.GetBonusHistoryRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusHistoryResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBonusHistoryMethod(), responseObserver);
-    }
-
-    /**
-     */
-    default void getActiveBonusClaims(com.game_engine.bonus.v1.GetActiveBonusClaimsRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetActiveBonusClaimsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetActiveBonusClaimsMethod(), responseObserver);
+    default void getUserBonuses(com.game_engine.bonus.v1.GetUserBonusesRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserBonusesResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserBonusesMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     * Wagering
+     * Rebet claim operations
      * </pre>
      */
-    default void processWageringContribution(com.game_engine.bonus.v1.ProcessWageringContributionRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ProcessWageringContributionResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getProcessWageringContributionMethod(), responseObserver);
+    default void createRebetClaim(com.game_engine.bonus.v1.CreateRebetClaimRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CreateRebetClaimResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateRebetClaimMethod(), responseObserver);
     }
 
     /**
      */
-    default void completeBonus(com.game_engine.bonus.v1.CompleteBonusRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CompleteBonusResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCompleteBonusMethod(), responseObserver);
+    default void getUserRebetClaims(com.game_engine.bonus.v1.GetUserRebetClaimsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserRebetClaimsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserRebetClaimsMethod(), responseObserver);
     }
 
     /**
      */
-    default void cancelBonus(com.game_engine.bonus.v1.CancelBonusRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CancelBonusResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCancelBonusMethod(), responseObserver);
+    default void getClaimableRebets(com.game_engine.bonus.v1.GetClaimableRebetsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetClaimableRebetsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetClaimableRebetsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void claimRebet(com.game_engine.bonus.v1.ClaimRebetRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ClaimRebetResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getClaimRebetMethod(), responseObserver);
     }
 
     /**
      * <pre>
-     * Stats
+     * Insurance claim operations
      * </pre>
      */
-    default void getBonusStats(com.game_engine.bonus.v1.GetBonusStatsRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusStatsResponse> responseObserver) {
-      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetBonusStatsMethod(), responseObserver);
+    default void submitInsuranceClaim(com.game_engine.bonus.v1.SubmitInsuranceClaimRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.SubmitInsuranceClaimResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubmitInsuranceClaimMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getUserInsuranceClaims(com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserInsuranceClaimsMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Wagering requirements
+     * </pre>
+     */
+    default void checkWageringRequirements(com.game_engine.bonus.v1.CheckWageringRequirementsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CheckWageringRequirementsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCheckWageringRequirementsMethod(), responseObserver);
     }
   }
 
   /**
    * Base class for the server implementation of the service BonusService.
-   * <pre>
-   * Bonus Service - manages bonuses, claims, wagering requirements
-   * </pre>
    */
   public static abstract class BonusServiceImplBase
       implements io.grpc.BindableService, AsyncService {
@@ -525,9 +528,6 @@ public final class BonusServiceGrpc {
 
   /**
    * A stub to allow clients to do asynchronous rpc calls to service BonusService.
-   * <pre>
-   * Bonus Service - manages bonuses, claims, wagering requirements
-   * </pre>
    */
   public static final class BonusServiceStub
       extends io.grpc.stub.AbstractAsyncStub<BonusServiceStub> {
@@ -544,16 +544,19 @@ public final class BonusServiceGrpc {
 
     /**
      * <pre>
-     * Bonus management
+     * List available bonuses
      * </pre>
      */
-    public void getActiveBonuses(com.game_engine.bonus.v1.GetActiveBonusesRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetActiveBonusesResponse> responseObserver) {
+    public void listBonuses(com.game_engine.bonus.v1.ListBonusesRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ListBonusesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetActiveBonusesMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getListBonusesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Get bonus details
+     * </pre>
      */
     public void getBonus(com.game_engine.bonus.v1.GetBonusRequest request,
         io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusResponse> responseObserver) {
@@ -562,14 +565,9 @@ public final class BonusServiceGrpc {
     }
 
     /**
-     */
-    public void createBonus(com.game_engine.bonus.v1.CreateBonusRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CreateBonusResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCreateBonusMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
+     * <pre>
+     * Claim a bonus
+     * </pre>
      */
     public void claimBonus(com.game_engine.bonus.v1.ClaimBonusRequest request,
         io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ClaimBonusResponse> responseObserver) {
@@ -578,73 +576,84 @@ public final class BonusServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Get user's claimed bonuses
+     * </pre>
      */
-    public void checkEligibility(com.game_engine.bonus.v1.CheckEligibilityRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CheckEligibilityResponse> responseObserver) {
+    public void getUserBonuses(com.game_engine.bonus.v1.GetUserBonusesRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserBonusesResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCheckEligibilityMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getBonusHistory(com.game_engine.bonus.v1.GetBonusHistoryRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusHistoryResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetBonusHistoryMethod(), getCallOptions()), request, responseObserver);
-    }
-
-    /**
-     */
-    public void getActiveBonusClaims(com.game_engine.bonus.v1.GetActiveBonusClaimsRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetActiveBonusClaimsResponse> responseObserver) {
-      io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetActiveBonusClaimsMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetUserBonusesMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      * <pre>
-     * Wagering
+     * Rebet claim operations
      * </pre>
      */
-    public void processWageringContribution(com.game_engine.bonus.v1.ProcessWageringContributionRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ProcessWageringContributionResponse> responseObserver) {
+    public void createRebetClaim(com.game_engine.bonus.v1.CreateRebetClaimRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CreateRebetClaimResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getProcessWageringContributionMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getCreateRebetClaimMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void completeBonus(com.game_engine.bonus.v1.CompleteBonusRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CompleteBonusResponse> responseObserver) {
+    public void getUserRebetClaims(com.game_engine.bonus.v1.GetUserRebetClaimsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserRebetClaimsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCompleteBonusMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetUserRebetClaimsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      */
-    public void cancelBonus(com.game_engine.bonus.v1.CancelBonusRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CancelBonusResponse> responseObserver) {
+    public void getClaimableRebets(com.game_engine.bonus.v1.GetClaimableRebetsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetClaimableRebetsResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getCancelBonusMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getGetClaimableRebetsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void claimRebet(com.game_engine.bonus.v1.ClaimRebetRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ClaimRebetResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getClaimRebetMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
      * <pre>
-     * Stats
+     * Insurance claim operations
      * </pre>
      */
-    public void getBonusStats(com.game_engine.bonus.v1.GetBonusStatsRequest request,
-        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusStatsResponse> responseObserver) {
+    public void submitInsuranceClaim(com.game_engine.bonus.v1.SubmitInsuranceClaimRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.SubmitInsuranceClaimResponse> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
-          getChannel().newCall(getGetBonusStatsMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getSubmitInsuranceClaimMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getUserInsuranceClaims(com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetUserInsuranceClaimsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     * Wagering requirements
+     * </pre>
+     */
+    public void checkWageringRequirements(com.game_engine.bonus.v1.CheckWageringRequirementsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CheckWageringRequirementsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCheckWageringRequirementsMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
   /**
    * A stub to allow clients to do synchronous rpc calls to service BonusService.
-   * <pre>
-   * Bonus Service - manages bonuses, claims, wagering requirements
-   * </pre>
    */
   public static final class BonusServiceBlockingV2Stub
       extends io.grpc.stub.AbstractBlockingStub<BonusServiceBlockingV2Stub> {
@@ -661,15 +670,18 @@ public final class BonusServiceGrpc {
 
     /**
      * <pre>
-     * Bonus management
+     * List available bonuses
      * </pre>
      */
-    public com.game_engine.bonus.v1.GetActiveBonusesResponse getActiveBonuses(com.game_engine.bonus.v1.GetActiveBonusesRequest request) throws io.grpc.StatusException {
+    public com.game_engine.bonus.v1.ListBonusesResponse listBonuses(com.game_engine.bonus.v1.ListBonusesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetActiveBonusesMethod(), getCallOptions(), request);
+          getChannel(), getListBonusesMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Get bonus details
+     * </pre>
      */
     public com.game_engine.bonus.v1.GetBonusResponse getBonus(com.game_engine.bonus.v1.GetBonusRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
@@ -677,13 +689,9 @@ public final class BonusServiceGrpc {
     }
 
     /**
-     */
-    public com.game_engine.bonus.v1.CreateBonusResponse createBonus(com.game_engine.bonus.v1.CreateBonusRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCreateBonusMethod(), getCallOptions(), request);
-    }
-
-    /**
+     * <pre>
+     * Claim a bonus
+     * </pre>
      */
     public com.game_engine.bonus.v1.ClaimBonusResponse claimBonus(com.game_engine.bonus.v1.ClaimBonusRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
@@ -691,66 +699,76 @@ public final class BonusServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Get user's claimed bonuses
+     * </pre>
      */
-    public com.game_engine.bonus.v1.CheckEligibilityResponse checkEligibility(com.game_engine.bonus.v1.CheckEligibilityRequest request) throws io.grpc.StatusException {
+    public com.game_engine.bonus.v1.GetUserBonusesResponse getUserBonuses(com.game_engine.bonus.v1.GetUserBonusesRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCheckEligibilityMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public com.game_engine.bonus.v1.GetBonusHistoryResponse getBonusHistory(com.game_engine.bonus.v1.GetBonusHistoryRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetBonusHistoryMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public com.game_engine.bonus.v1.GetActiveBonusClaimsResponse getActiveBonusClaims(com.game_engine.bonus.v1.GetActiveBonusClaimsRequest request) throws io.grpc.StatusException {
-      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetActiveBonusClaimsMethod(), getCallOptions(), request);
+          getChannel(), getGetUserBonusesMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * Wagering
+     * Rebet claim operations
      * </pre>
      */
-    public com.game_engine.bonus.v1.ProcessWageringContributionResponse processWageringContribution(com.game_engine.bonus.v1.ProcessWageringContributionRequest request) throws io.grpc.StatusException {
+    public com.game_engine.bonus.v1.CreateRebetClaimResponse createRebetClaim(com.game_engine.bonus.v1.CreateRebetClaimRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getProcessWageringContributionMethod(), getCallOptions(), request);
+          getChannel(), getCreateRebetClaimMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game_engine.bonus.v1.CompleteBonusResponse completeBonus(com.game_engine.bonus.v1.CompleteBonusRequest request) throws io.grpc.StatusException {
+    public com.game_engine.bonus.v1.GetUserRebetClaimsResponse getUserRebetClaims(com.game_engine.bonus.v1.GetUserRebetClaimsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCompleteBonusMethod(), getCallOptions(), request);
+          getChannel(), getGetUserRebetClaimsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game_engine.bonus.v1.CancelBonusResponse cancelBonus(com.game_engine.bonus.v1.CancelBonusRequest request) throws io.grpc.StatusException {
+    public com.game_engine.bonus.v1.GetClaimableRebetsResponse getClaimableRebets(com.game_engine.bonus.v1.GetClaimableRebetsRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getCancelBonusMethod(), getCallOptions(), request);
+          getChannel(), getGetClaimableRebetsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.bonus.v1.ClaimRebetResponse claimRebet(com.game_engine.bonus.v1.ClaimRebetRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getClaimRebetMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * Stats
+     * Insurance claim operations
      * </pre>
      */
-    public com.game_engine.bonus.v1.GetBonusStatsResponse getBonusStats(com.game_engine.bonus.v1.GetBonusStatsRequest request) throws io.grpc.StatusException {
+    public com.game_engine.bonus.v1.SubmitInsuranceClaimResponse submitInsuranceClaim(com.game_engine.bonus.v1.SubmitInsuranceClaimRequest request) throws io.grpc.StatusException {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
-          getChannel(), getGetBonusStatsMethod(), getCallOptions(), request);
+          getChannel(), getSubmitInsuranceClaimMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse getUserInsuranceClaims(com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetUserInsuranceClaimsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Wagering requirements
+     * </pre>
+     */
+    public com.game_engine.bonus.v1.CheckWageringRequirementsResponse checkWageringRequirements(com.game_engine.bonus.v1.CheckWageringRequirementsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getCheckWageringRequirementsMethod(), getCallOptions(), request);
     }
   }
 
   /**
    * A stub to allow clients to do limited synchronous rpc calls to service BonusService.
-   * <pre>
-   * Bonus Service - manages bonuses, claims, wagering requirements
-   * </pre>
    */
   public static final class BonusServiceBlockingStub
       extends io.grpc.stub.AbstractBlockingStub<BonusServiceBlockingStub> {
@@ -767,15 +785,18 @@ public final class BonusServiceGrpc {
 
     /**
      * <pre>
-     * Bonus management
+     * List available bonuses
      * </pre>
      */
-    public com.game_engine.bonus.v1.GetActiveBonusesResponse getActiveBonuses(com.game_engine.bonus.v1.GetActiveBonusesRequest request) {
+    public com.game_engine.bonus.v1.ListBonusesResponse listBonuses(com.game_engine.bonus.v1.ListBonusesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetActiveBonusesMethod(), getCallOptions(), request);
+          getChannel(), getListBonusesMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Get bonus details
+     * </pre>
      */
     public com.game_engine.bonus.v1.GetBonusResponse getBonus(com.game_engine.bonus.v1.GetBonusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -783,13 +804,9 @@ public final class BonusServiceGrpc {
     }
 
     /**
-     */
-    public com.game_engine.bonus.v1.CreateBonusResponse createBonus(com.game_engine.bonus.v1.CreateBonusRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCreateBonusMethod(), getCallOptions(), request);
-    }
-
-    /**
+     * <pre>
+     * Claim a bonus
+     * </pre>
      */
     public com.game_engine.bonus.v1.ClaimBonusResponse claimBonus(com.game_engine.bonus.v1.ClaimBonusRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -797,66 +814,76 @@ public final class BonusServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Get user's claimed bonuses
+     * </pre>
      */
-    public com.game_engine.bonus.v1.CheckEligibilityResponse checkEligibility(com.game_engine.bonus.v1.CheckEligibilityRequest request) {
+    public com.game_engine.bonus.v1.GetUserBonusesResponse getUserBonuses(com.game_engine.bonus.v1.GetUserBonusesRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCheckEligibilityMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public com.game_engine.bonus.v1.GetBonusHistoryResponse getBonusHistory(com.game_engine.bonus.v1.GetBonusHistoryRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetBonusHistoryMethod(), getCallOptions(), request);
-    }
-
-    /**
-     */
-    public com.game_engine.bonus.v1.GetActiveBonusClaimsResponse getActiveBonusClaims(com.game_engine.bonus.v1.GetActiveBonusClaimsRequest request) {
-      return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetActiveBonusClaimsMethod(), getCallOptions(), request);
+          getChannel(), getGetUserBonusesMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * Wagering
+     * Rebet claim operations
      * </pre>
      */
-    public com.game_engine.bonus.v1.ProcessWageringContributionResponse processWageringContribution(com.game_engine.bonus.v1.ProcessWageringContributionRequest request) {
+    public com.game_engine.bonus.v1.CreateRebetClaimResponse createRebetClaim(com.game_engine.bonus.v1.CreateRebetClaimRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getProcessWageringContributionMethod(), getCallOptions(), request);
+          getChannel(), getCreateRebetClaimMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game_engine.bonus.v1.CompleteBonusResponse completeBonus(com.game_engine.bonus.v1.CompleteBonusRequest request) {
+    public com.game_engine.bonus.v1.GetUserRebetClaimsResponse getUserRebetClaims(com.game_engine.bonus.v1.GetUserRebetClaimsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCompleteBonusMethod(), getCallOptions(), request);
+          getChannel(), getGetUserRebetClaimsMethod(), getCallOptions(), request);
     }
 
     /**
      */
-    public com.game_engine.bonus.v1.CancelBonusResponse cancelBonus(com.game_engine.bonus.v1.CancelBonusRequest request) {
+    public com.game_engine.bonus.v1.GetClaimableRebetsResponse getClaimableRebets(com.game_engine.bonus.v1.GetClaimableRebetsRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getCancelBonusMethod(), getCallOptions(), request);
+          getChannel(), getGetClaimableRebetsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.bonus.v1.ClaimRebetResponse claimRebet(com.game_engine.bonus.v1.ClaimRebetRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getClaimRebetMethod(), getCallOptions(), request);
     }
 
     /**
      * <pre>
-     * Stats
+     * Insurance claim operations
      * </pre>
      */
-    public com.game_engine.bonus.v1.GetBonusStatsResponse getBonusStats(com.game_engine.bonus.v1.GetBonusStatsRequest request) {
+    public com.game_engine.bonus.v1.SubmitInsuranceClaimResponse submitInsuranceClaim(com.game_engine.bonus.v1.SubmitInsuranceClaimRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
-          getChannel(), getGetBonusStatsMethod(), getCallOptions(), request);
+          getChannel(), getSubmitInsuranceClaimMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse getUserInsuranceClaims(com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetUserInsuranceClaimsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Wagering requirements
+     * </pre>
+     */
+    public com.game_engine.bonus.v1.CheckWageringRequirementsResponse checkWageringRequirements(com.game_engine.bonus.v1.CheckWageringRequirementsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCheckWageringRequirementsMethod(), getCallOptions(), request);
     }
   }
 
   /**
    * A stub to allow clients to do ListenableFuture-style rpc calls to service BonusService.
-   * <pre>
-   * Bonus Service - manages bonuses, claims, wagering requirements
-   * </pre>
    */
   public static final class BonusServiceFutureStub
       extends io.grpc.stub.AbstractFutureStub<BonusServiceFutureStub> {
@@ -873,16 +900,19 @@ public final class BonusServiceGrpc {
 
     /**
      * <pre>
-     * Bonus management
+     * List available bonuses
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetActiveBonusesResponse> getActiveBonuses(
-        com.game_engine.bonus.v1.GetActiveBonusesRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.ListBonusesResponse> listBonuses(
+        com.game_engine.bonus.v1.ListBonusesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetActiveBonusesMethod(), getCallOptions()), request);
+          getChannel().newCall(getListBonusesMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Get bonus details
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetBonusResponse> getBonus(
         com.game_engine.bonus.v1.GetBonusRequest request) {
@@ -891,14 +921,9 @@ public final class BonusServiceGrpc {
     }
 
     /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.CreateBonusResponse> createBonus(
-        com.game_engine.bonus.v1.CreateBonusRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCreateBonusMethod(), getCallOptions()), request);
-    }
-
-    /**
+     * <pre>
+     * Claim a bonus
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.ClaimBonusResponse> claimBonus(
         com.game_engine.bonus.v1.ClaimBonusRequest request) {
@@ -907,79 +932,93 @@ public final class BonusServiceGrpc {
     }
 
     /**
+     * <pre>
+     * Get user's claimed bonuses
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.CheckEligibilityResponse> checkEligibility(
-        com.game_engine.bonus.v1.CheckEligibilityRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetUserBonusesResponse> getUserBonuses(
+        com.game_engine.bonus.v1.GetUserBonusesRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCheckEligibilityMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetBonusHistoryResponse> getBonusHistory(
-        com.game_engine.bonus.v1.GetBonusHistoryRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetBonusHistoryMethod(), getCallOptions()), request);
-    }
-
-    /**
-     */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetActiveBonusClaimsResponse> getActiveBonusClaims(
-        com.game_engine.bonus.v1.GetActiveBonusClaimsRequest request) {
-      return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetActiveBonusClaimsMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetUserBonusesMethod(), getCallOptions()), request);
     }
 
     /**
      * <pre>
-     * Wagering
+     * Rebet claim operations
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.ProcessWageringContributionResponse> processWageringContribution(
-        com.game_engine.bonus.v1.ProcessWageringContributionRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.CreateRebetClaimResponse> createRebetClaim(
+        com.game_engine.bonus.v1.CreateRebetClaimRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getProcessWageringContributionMethod(), getCallOptions()), request);
+          getChannel().newCall(getCreateRebetClaimMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.CompleteBonusResponse> completeBonus(
-        com.game_engine.bonus.v1.CompleteBonusRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetUserRebetClaimsResponse> getUserRebetClaims(
+        com.game_engine.bonus.v1.GetUserRebetClaimsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCompleteBonusMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetUserRebetClaimsMethod(), getCallOptions()), request);
     }
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.CancelBonusResponse> cancelBonus(
-        com.game_engine.bonus.v1.CancelBonusRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetClaimableRebetsResponse> getClaimableRebets(
+        com.game_engine.bonus.v1.GetClaimableRebetsRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getCancelBonusMethod(), getCallOptions()), request);
+          getChannel().newCall(getGetClaimableRebetsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.ClaimRebetResponse> claimRebet(
+        com.game_engine.bonus.v1.ClaimRebetRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getClaimRebetMethod(), getCallOptions()), request);
     }
 
     /**
      * <pre>
-     * Stats
+     * Insurance claim operations
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetBonusStatsResponse> getBonusStats(
-        com.game_engine.bonus.v1.GetBonusStatsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.SubmitInsuranceClaimResponse> submitInsuranceClaim(
+        com.game_engine.bonus.v1.SubmitInsuranceClaimRequest request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
-          getChannel().newCall(getGetBonusStatsMethod(), getCallOptions()), request);
+          getChannel().newCall(getSubmitInsuranceClaimMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse> getUserInsuranceClaims(
+        com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetUserInsuranceClaimsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     * <pre>
+     * Wagering requirements
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.bonus.v1.CheckWageringRequirementsResponse> checkWageringRequirements(
+        com.game_engine.bonus.v1.CheckWageringRequirementsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCheckWageringRequirementsMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_GET_ACTIVE_BONUSES = 0;
+  private static final int METHODID_LIST_BONUSES = 0;
   private static final int METHODID_GET_BONUS = 1;
-  private static final int METHODID_CREATE_BONUS = 2;
-  private static final int METHODID_CLAIM_BONUS = 3;
-  private static final int METHODID_CHECK_ELIGIBILITY = 4;
-  private static final int METHODID_GET_BONUS_HISTORY = 5;
-  private static final int METHODID_GET_ACTIVE_BONUS_CLAIMS = 6;
-  private static final int METHODID_PROCESS_WAGERING_CONTRIBUTION = 7;
-  private static final int METHODID_COMPLETE_BONUS = 8;
-  private static final int METHODID_CANCEL_BONUS = 9;
-  private static final int METHODID_GET_BONUS_STATS = 10;
+  private static final int METHODID_CLAIM_BONUS = 2;
+  private static final int METHODID_GET_USER_BONUSES = 3;
+  private static final int METHODID_CREATE_REBET_CLAIM = 4;
+  private static final int METHODID_GET_USER_REBET_CLAIMS = 5;
+  private static final int METHODID_GET_CLAIMABLE_REBETS = 6;
+  private static final int METHODID_CLAIM_REBET = 7;
+  private static final int METHODID_SUBMIT_INSURANCE_CLAIM = 8;
+  private static final int METHODID_GET_USER_INSURANCE_CLAIMS = 9;
+  private static final int METHODID_CHECK_WAGERING_REQUIREMENTS = 10;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -998,49 +1037,49 @@ public final class BonusServiceGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_GET_ACTIVE_BONUSES:
-          serviceImpl.getActiveBonuses((com.game_engine.bonus.v1.GetActiveBonusesRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetActiveBonusesResponse>) responseObserver);
+        case METHODID_LIST_BONUSES:
+          serviceImpl.listBonuses((com.game_engine.bonus.v1.ListBonusesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ListBonusesResponse>) responseObserver);
           break;
         case METHODID_GET_BONUS:
           serviceImpl.getBonus((com.game_engine.bonus.v1.GetBonusRequest) request,
               (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusResponse>) responseObserver);
           break;
-        case METHODID_CREATE_BONUS:
-          serviceImpl.createBonus((com.game_engine.bonus.v1.CreateBonusRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CreateBonusResponse>) responseObserver);
-          break;
         case METHODID_CLAIM_BONUS:
           serviceImpl.claimBonus((com.game_engine.bonus.v1.ClaimBonusRequest) request,
               (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ClaimBonusResponse>) responseObserver);
           break;
-        case METHODID_CHECK_ELIGIBILITY:
-          serviceImpl.checkEligibility((com.game_engine.bonus.v1.CheckEligibilityRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CheckEligibilityResponse>) responseObserver);
+        case METHODID_GET_USER_BONUSES:
+          serviceImpl.getUserBonuses((com.game_engine.bonus.v1.GetUserBonusesRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserBonusesResponse>) responseObserver);
           break;
-        case METHODID_GET_BONUS_HISTORY:
-          serviceImpl.getBonusHistory((com.game_engine.bonus.v1.GetBonusHistoryRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusHistoryResponse>) responseObserver);
+        case METHODID_CREATE_REBET_CLAIM:
+          serviceImpl.createRebetClaim((com.game_engine.bonus.v1.CreateRebetClaimRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CreateRebetClaimResponse>) responseObserver);
           break;
-        case METHODID_GET_ACTIVE_BONUS_CLAIMS:
-          serviceImpl.getActiveBonusClaims((com.game_engine.bonus.v1.GetActiveBonusClaimsRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetActiveBonusClaimsResponse>) responseObserver);
+        case METHODID_GET_USER_REBET_CLAIMS:
+          serviceImpl.getUserRebetClaims((com.game_engine.bonus.v1.GetUserRebetClaimsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserRebetClaimsResponse>) responseObserver);
           break;
-        case METHODID_PROCESS_WAGERING_CONTRIBUTION:
-          serviceImpl.processWageringContribution((com.game_engine.bonus.v1.ProcessWageringContributionRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ProcessWageringContributionResponse>) responseObserver);
+        case METHODID_GET_CLAIMABLE_REBETS:
+          serviceImpl.getClaimableRebets((com.game_engine.bonus.v1.GetClaimableRebetsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetClaimableRebetsResponse>) responseObserver);
           break;
-        case METHODID_COMPLETE_BONUS:
-          serviceImpl.completeBonus((com.game_engine.bonus.v1.CompleteBonusRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CompleteBonusResponse>) responseObserver);
+        case METHODID_CLAIM_REBET:
+          serviceImpl.claimRebet((com.game_engine.bonus.v1.ClaimRebetRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.ClaimRebetResponse>) responseObserver);
           break;
-        case METHODID_CANCEL_BONUS:
-          serviceImpl.cancelBonus((com.game_engine.bonus.v1.CancelBonusRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CancelBonusResponse>) responseObserver);
+        case METHODID_SUBMIT_INSURANCE_CLAIM:
+          serviceImpl.submitInsuranceClaim((com.game_engine.bonus.v1.SubmitInsuranceClaimRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.SubmitInsuranceClaimResponse>) responseObserver);
           break;
-        case METHODID_GET_BONUS_STATS:
-          serviceImpl.getBonusStats((com.game_engine.bonus.v1.GetBonusStatsRequest) request,
-              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetBonusStatsResponse>) responseObserver);
+        case METHODID_GET_USER_INSURANCE_CLAIMS:
+          serviceImpl.getUserInsuranceClaims((com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse>) responseObserver);
+          break;
+        case METHODID_CHECK_WAGERING_REQUIREMENTS:
+          serviceImpl.checkWageringRequirements((com.game_engine.bonus.v1.CheckWageringRequirementsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.bonus.v1.CheckWageringRequirementsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1061,12 +1100,12 @@ public final class BonusServiceGrpc {
   public static final io.grpc.ServerServiceDefinition bindService(AsyncService service) {
     return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
         .addMethod(
-          getGetActiveBonusesMethod(),
+          getListBonusesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.GetActiveBonusesRequest,
-              com.game_engine.bonus.v1.GetActiveBonusesResponse>(
-                service, METHODID_GET_ACTIVE_BONUSES)))
+              com.game_engine.bonus.v1.ListBonusesRequest,
+              com.game_engine.bonus.v1.ListBonusesResponse>(
+                service, METHODID_LIST_BONUSES)))
         .addMethod(
           getGetBonusMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
@@ -1075,13 +1114,6 @@ public final class BonusServiceGrpc {
               com.game_engine.bonus.v1.GetBonusResponse>(
                 service, METHODID_GET_BONUS)))
         .addMethod(
-          getCreateBonusMethod(),
-          io.grpc.stub.ServerCalls.asyncUnaryCall(
-            new MethodHandlers<
-              com.game_engine.bonus.v1.CreateBonusRequest,
-              com.game_engine.bonus.v1.CreateBonusResponse>(
-                service, METHODID_CREATE_BONUS)))
-        .addMethod(
           getClaimBonusMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
@@ -1089,54 +1121,61 @@ public final class BonusServiceGrpc {
               com.game_engine.bonus.v1.ClaimBonusResponse>(
                 service, METHODID_CLAIM_BONUS)))
         .addMethod(
-          getCheckEligibilityMethod(),
+          getGetUserBonusesMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.CheckEligibilityRequest,
-              com.game_engine.bonus.v1.CheckEligibilityResponse>(
-                service, METHODID_CHECK_ELIGIBILITY)))
+              com.game_engine.bonus.v1.GetUserBonusesRequest,
+              com.game_engine.bonus.v1.GetUserBonusesResponse>(
+                service, METHODID_GET_USER_BONUSES)))
         .addMethod(
-          getGetBonusHistoryMethod(),
+          getCreateRebetClaimMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.GetBonusHistoryRequest,
-              com.game_engine.bonus.v1.GetBonusHistoryResponse>(
-                service, METHODID_GET_BONUS_HISTORY)))
+              com.game_engine.bonus.v1.CreateRebetClaimRequest,
+              com.game_engine.bonus.v1.CreateRebetClaimResponse>(
+                service, METHODID_CREATE_REBET_CLAIM)))
         .addMethod(
-          getGetActiveBonusClaimsMethod(),
+          getGetUserRebetClaimsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.GetActiveBonusClaimsRequest,
-              com.game_engine.bonus.v1.GetActiveBonusClaimsResponse>(
-                service, METHODID_GET_ACTIVE_BONUS_CLAIMS)))
+              com.game_engine.bonus.v1.GetUserRebetClaimsRequest,
+              com.game_engine.bonus.v1.GetUserRebetClaimsResponse>(
+                service, METHODID_GET_USER_REBET_CLAIMS)))
         .addMethod(
-          getProcessWageringContributionMethod(),
+          getGetClaimableRebetsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.ProcessWageringContributionRequest,
-              com.game_engine.bonus.v1.ProcessWageringContributionResponse>(
-                service, METHODID_PROCESS_WAGERING_CONTRIBUTION)))
+              com.game_engine.bonus.v1.GetClaimableRebetsRequest,
+              com.game_engine.bonus.v1.GetClaimableRebetsResponse>(
+                service, METHODID_GET_CLAIMABLE_REBETS)))
         .addMethod(
-          getCompleteBonusMethod(),
+          getClaimRebetMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.CompleteBonusRequest,
-              com.game_engine.bonus.v1.CompleteBonusResponse>(
-                service, METHODID_COMPLETE_BONUS)))
+              com.game_engine.bonus.v1.ClaimRebetRequest,
+              com.game_engine.bonus.v1.ClaimRebetResponse>(
+                service, METHODID_CLAIM_REBET)))
         .addMethod(
-          getCancelBonusMethod(),
+          getSubmitInsuranceClaimMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.CancelBonusRequest,
-              com.game_engine.bonus.v1.CancelBonusResponse>(
-                service, METHODID_CANCEL_BONUS)))
+              com.game_engine.bonus.v1.SubmitInsuranceClaimRequest,
+              com.game_engine.bonus.v1.SubmitInsuranceClaimResponse>(
+                service, METHODID_SUBMIT_INSURANCE_CLAIM)))
         .addMethod(
-          getGetBonusStatsMethod(),
+          getGetUserInsuranceClaimsMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.game_engine.bonus.v1.GetBonusStatsRequest,
-              com.game_engine.bonus.v1.GetBonusStatsResponse>(
-                service, METHODID_GET_BONUS_STATS)))
+              com.game_engine.bonus.v1.GetUserInsuranceClaimsRequest,
+              com.game_engine.bonus.v1.GetUserInsuranceClaimsResponse>(
+                service, METHODID_GET_USER_INSURANCE_CLAIMS)))
+        .addMethod(
+          getCheckWageringRequirementsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.bonus.v1.CheckWageringRequirementsRequest,
+              com.game_engine.bonus.v1.CheckWageringRequirementsResponse>(
+                service, METHODID_CHECK_WAGERING_REQUIREMENTS)))
         .build();
   }
 
@@ -1185,17 +1224,17 @@ public final class BonusServiceGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new BonusServiceFileDescriptorSupplier())
-              .addMethod(getGetActiveBonusesMethod())
+              .addMethod(getListBonusesMethod())
               .addMethod(getGetBonusMethod())
-              .addMethod(getCreateBonusMethod())
               .addMethod(getClaimBonusMethod())
-              .addMethod(getCheckEligibilityMethod())
-              .addMethod(getGetBonusHistoryMethod())
-              .addMethod(getGetActiveBonusClaimsMethod())
-              .addMethod(getProcessWageringContributionMethod())
-              .addMethod(getCompleteBonusMethod())
-              .addMethod(getCancelBonusMethod())
-              .addMethod(getGetBonusStatsMethod())
+              .addMethod(getGetUserBonusesMethod())
+              .addMethod(getCreateRebetClaimMethod())
+              .addMethod(getGetUserRebetClaimsMethod())
+              .addMethod(getGetClaimableRebetsMethod())
+              .addMethod(getClaimRebetMethod())
+              .addMethod(getSubmitInsuranceClaimMethod())
+              .addMethod(getGetUserInsuranceClaimsMethod())
+              .addMethod(getCheckWageringRequirementsMethod())
               .build();
         }
       }

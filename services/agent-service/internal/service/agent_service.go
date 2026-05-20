@@ -6,6 +6,7 @@ import (
 	"github.com/game_engine/agent-service/internal/config"
 	"github.com/game_engine/agent-service/internal/repository"
 	agentpb "github.com/game_engine/common-service/proto/gen/go/agent/v1"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type AgentService struct {
@@ -45,7 +46,7 @@ func (s *AgentService) ListPlayers(ctx context.Context, req *agentpb.ListPlayers
 			TotalDeposits: p.TotalDeposits,
 			TotalBets:     p.TotalBets,
 			Balance:       p.Balance,
-			CreatedAt:     p.CreatedAt.Unix(),
+			CreatedAt:     timestamppb.New(p.CreatedAt),
 		}
 	}
 
@@ -71,7 +72,7 @@ func (s *AgentService) GetPlayer(ctx context.Context, req *agentpb.GetPlayerRequ
 			TotalDeposits: player.TotalDeposits,
 			TotalBets:     player.TotalBets,
 			Balance:       player.Balance,
-			CreatedAt:     player.CreatedAt.Unix(),
+			CreatedAt:     timestamppb.New(player.CreatedAt),
 		},
 	}, nil
 }

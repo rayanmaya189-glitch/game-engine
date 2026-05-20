@@ -155,6 +155,61 @@ public final class WalletServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_wallet_v1_Bet_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_GetTransactionsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_GetTransactionsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_WalletTransactionMsg_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_WalletTransactionMsg_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_GetTransactionsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_GetTransactionsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_DepositRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_DepositRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_DepositResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_DepositResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_WithdrawRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_WithdrawRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_WithdrawResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_WithdrawResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_AdjustBalanceRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_AdjustBalanceRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_AdjustBalanceResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_AdjustBalanceResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_GetAllTransactionsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_GetAllTransactionsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_wallet_v1_GetAllTransactionsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_wallet_v1_GetAllTransactionsResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -314,55 +369,101 @@ public final class WalletServiceOuterClass {
       "SettlementTypeR\016settlementType\022@\n\006status" +
       "\030\013 \001(\0162(.game_engine.common.v1.Transacti" +
       "onStatusR\006status\0227\n\tplaced_at\030\014 \001(\0132\032.go" +
-      "ogle.protobuf.TimestampR\010placedAt*\267\001\n\021Be" +
-      "tSettlementType\022#\n\037BET_SETTLEMENT_TYPE_U" +
-      "NSPECIFIED\020\000\022\037\n\033BET_SETTLEMENT_TYPE_PEND" +
-      "ING\020\001\022\033\n\027BET_SETTLEMENT_TYPE_WON\020\002\022\034\n\030BE" +
-      "T_SETTLEMENT_TYPE_LOST\020\003\022!\n\035BET_SETTLEME" +
-      "NT_TYPE_CANCELLED\020\004*\276\001\n\tBonusType\022\032\n\026BON" +
-      "US_TYPE_UNSPECIFIED\020\000\022\026\n\022BONUS_TYPE_WELC" +
-      "OME\020\001\022\026\n\022BONUS_TYPE_DEPOSIT\020\002\022\031\n\025BONUS_T" +
-      "YPE_NO_DEPOSIT\020\003\022\031\n\025BONUS_TYPE_FREE_SPIN" +
-      "S\020\004\022\027\n\023BONUS_TYPE_CASHBACK\020\005\022\026\n\022BONUS_TY" +
-      "PE_LOYALTY\020\0062\255\013\n\rWalletService\022a\n\nGetBal" +
-      "ance\022(.game_engine.wallet.v1.GetBalanceR" +
-      "equest\032).game_engine.wallet.v1.GetBalanc" +
-      "eResponse\022m\n\016GetAllBalances\022,.game_engin" +
-      "e.wallet.v1.GetAllBalancesRequest\032-.game" +
-      "_engine.wallet.v1.GetAllBalancesResponse" +
-      "\022\202\001\n\025GetTransactionHistory\0223.game_engine" +
-      ".wallet.v1.GetTransactionHistoryRequest\032" +
-      "4.game_engine.wallet.v1.GetTransactionHi" +
-      "storyResponse\022j\n\rCreateDeposit\022+.game_en" +
-      "gine.wallet.v1.CreateDepositRequest\032,.ga" +
-      "me_engine.wallet.v1.CreateDepositRespons" +
-      "e\022m\n\016ConfirmDeposit\022,.game_engine.wallet" +
-      ".v1.ConfirmDepositRequest\032-.game_engine." +
-      "wallet.v1.ConfirmDepositResponse\022s\n\020Crea" +
-      "teWithdrawal\022..game_engine.wallet.v1.Cre" +
-      "ateWithdrawalRequest\032/.game_engine.walle" +
-      "t.v1.CreateWithdrawalResponse\022v\n\021Confirm" +
-      "Withdrawal\022/.game_engine.wallet.v1.Confi" +
-      "rmWithdrawalRequest\0320.game_engine.wallet" +
-      ".v1.ConfirmWithdrawalResponse\022[\n\010PlaceBe" +
-      "t\022&.game_engine.wallet.v1.PlaceBetReques" +
-      "t\032\'.game_engine.wallet.v1.PlaceBetRespon" +
-      "se\022^\n\tSettleBet\022\'.game_engine.wallet.v1." +
-      "SettleBetRequest\032(.game_engine.wallet.v1" +
-      ".SettleBetResponse\022^\n\tCancelBet\022\'.game_e" +
-      "ngine.wallet.v1.CancelBetRequest\032(.game_" +
-      "engine.wallet.v1.CancelBetResponse\022v\n\021Cr" +
-      "eateBonusCredit\022/.game_engine.wallet.v1." +
-      "CreateBonusCreditRequest\0320.game_engine.w" +
-      "allet.v1.CreateBonusCreditResponse\022y\n\022Re" +
-      "verseTransaction\0220.game_engine.wallet.v1" +
-      ".ReverseTransactionRequest\0321.game_engine" +
-      ".wallet.v1.ReverseTransactionResponse\022m\n" +
-      "\016GetPendingBets\022,.game_engine.wallet.v1." +
-      "GetPendingBetsRequest\032-.game_engine.wall" +
-      "et.v1.GetPendingBetsResponseB9\n\031com.game" +
-      "_engine.wallet.v1P\001Z\032gen/go/wallet/v1;wa" +
-      "lletsv1b\006proto3"
+      "ogle.protobuf.TimestampR\010placedAt\"\207\001\n\026Ge" +
+      "tTransactionsRequest\022\027\n\007user_id\030\001 \001(\tR\006u" +
+      "serId\022\022\n\004page\030\002 \001(\tR\004page\022\024\n\005limit\030\003 \001(\t" +
+      "R\005limit\022\022\n\004type\030\004 \001(\tR\004type\022\026\n\006status\030\005 " +
+      "\001(\tR\006status\"\253\001\n\024WalletTransactionMsg\022\016\n\002" +
+      "id\030\001 \001(\tR\002id\022\022\n\004type\030\002 \001(\tR\004type\022\026\n\006amou" +
+      "nt\030\003 \001(\001R\006amount\022\026\n\006status\030\004 \001(\tR\006status" +
+      "\022 \n\013description\030\005 \001(\tR\013description\022\035\n\ncr" +
+      "eated_at\030\006 \001(\003R\tcreatedAt\"\252\001\n\027GetTransac" +
+      "tionsResponse\022O\n\014transactions\030\001 \003(\0132+.ga" +
+      "me_engine.wallet.v1.WalletTransactionMsg" +
+      "R\014transactions\022\024\n\005total\030\002 \001(\005R\005total\022\022\n\004" +
+      "page\030\003 \001(\005R\004page\022\024\n\005limit\030\004 \001(\005R\005limit\"x" +
+      "\n\016DepositRequest\022\027\n\007user_id\030\001 \001(\tR\006userI" +
+      "d\022\026\n\006amount\030\002 \001(\001R\006amount\022\026\n\006method\030\003 \001(" +
+      "\tR\006method\022\035\n\npayment_id\030\004 \001(\tR\tpaymentId" +
+      "\"Y\n\017DepositResponse\022%\n\016transaction_id\030\001 " +
+      "\001(\tR\rtransactionId\022\037\n\013new_balance\030\002 \001(\001R" +
+      "\nnewBalance\"s\n\017WithdrawRequest\022\027\n\007user_i" +
+      "d\030\001 \001(\tR\006userId\022\026\n\006amount\030\002 \001(\001R\006amount\022" +
+      "\026\n\006method\030\003 \001(\tR\006method\022\027\n\007bank_id\030\004 \001(\t" +
+      "R\006bankId\"9\n\020WithdrawResponse\022%\n\016transact" +
+      "ion_id\030\001 \001(\tR\rtransactionId\"_\n\024AdjustBal" +
+      "anceRequest\022\027\n\007user_id\030\001 \001(\tR\006userId\022\026\n\006" +
+      "amount\030\002 \001(\001R\006amount\022\026\n\006reason\030\003 \001(\tR\006re" +
+      "ason\"_\n\025AdjustBalanceResponse\022%\n\016transac" +
+      "tion_id\030\001 \001(\tR\rtransactionId\022\037\n\013new_bala" +
+      "nce\030\002 \001(\001R\nnewBalance\"E\n\031GetAllTransacti" +
+      "onsRequest\022\022\n\004page\030\001 \001(\005R\004page\022\024\n\005limit\030" +
+      "\002 \001(\005R\005limit\"\203\001\n\032GetAllTransactionsRespo" +
+      "nse\022O\n\014transactions\030\001 \003(\0132+.game_engine." +
+      "wallet.v1.WalletTransactionMsgR\014transact" +
+      "ions\022\024\n\005total\030\002 \001(\005R\005total*\267\001\n\021BetSettle" +
+      "mentType\022#\n\037BET_SETTLEMENT_TYPE_UNSPECIF" +
+      "IED\020\000\022\037\n\033BET_SETTLEMENT_TYPE_PENDING\020\001\022\033" +
+      "\n\027BET_SETTLEMENT_TYPE_WON\020\002\022\034\n\030BET_SETTL" +
+      "EMENT_TYPE_LOST\020\003\022!\n\035BET_SETTLEMENT_TYPE" +
+      "_CANCELLED\020\004*\276\001\n\tBonusType\022\032\n\026BONUS_TYPE" +
+      "_UNSPECIFIED\020\000\022\026\n\022BONUS_TYPE_WELCOME\020\001\022\026" +
+      "\n\022BONUS_TYPE_DEPOSIT\020\002\022\031\n\025BONUS_TYPE_NO_" +
+      "DEPOSIT\020\003\022\031\n\025BONUS_TYPE_FREE_SPINS\020\004\022\027\n\023" +
+      "BONUS_TYPE_CASHBACK\020\005\022\026\n\022BONUS_TYPE_LOYA" +
+      "LTY\020\0062\275\017\n\rWalletService\022a\n\nGetBalance\022(." +
+      "game_engine.wallet.v1.GetBalanceRequest\032" +
+      ").game_engine.wallet.v1.GetBalanceRespon" +
+      "se\022m\n\016GetAllBalances\022,.game_engine.walle" +
+      "t.v1.GetAllBalancesRequest\032-.game_engine" +
+      ".wallet.v1.GetAllBalancesResponse\022\202\001\n\025Ge" +
+      "tTransactionHistory\0223.game_engine.wallet" +
+      ".v1.GetTransactionHistoryRequest\0324.game_" +
+      "engine.wallet.v1.GetTransactionHistoryRe" +
+      "sponse\022j\n\rCreateDeposit\022+.game_engine.wa" +
+      "llet.v1.CreateDepositRequest\032,.game_engi" +
+      "ne.wallet.v1.CreateDepositResponse\022m\n\016Co" +
+      "nfirmDeposit\022,.game_engine.wallet.v1.Con" +
+      "firmDepositRequest\032-.game_engine.wallet." +
+      "v1.ConfirmDepositResponse\022s\n\020CreateWithd" +
+      "rawal\022..game_engine.wallet.v1.CreateWith" +
+      "drawalRequest\032/.game_engine.wallet.v1.Cr" +
+      "eateWithdrawalResponse\022v\n\021ConfirmWithdra" +
+      "wal\022/.game_engine.wallet.v1.ConfirmWithd" +
+      "rawalRequest\0320.game_engine.wallet.v1.Con" +
+      "firmWithdrawalResponse\022[\n\010PlaceBet\022&.gam" +
+      "e_engine.wallet.v1.PlaceBetRequest\032\'.gam" +
+      "e_engine.wallet.v1.PlaceBetResponse\022^\n\tS" +
+      "ettleBet\022\'.game_engine.wallet.v1.SettleB" +
+      "etRequest\032(.game_engine.wallet.v1.Settle" +
+      "BetResponse\022^\n\tCancelBet\022\'.game_engine.w" +
+      "allet.v1.CancelBetRequest\032(.game_engine." +
+      "wallet.v1.CancelBetResponse\022v\n\021CreateBon" +
+      "usCredit\022/.game_engine.wallet.v1.CreateB" +
+      "onusCreditRequest\0320.game_engine.wallet.v" +
+      "1.CreateBonusCreditResponse\022y\n\022ReverseTr" +
+      "ansaction\0220.game_engine.wallet.v1.Revers" +
+      "eTransactionRequest\0321.game_engine.wallet" +
+      ".v1.ReverseTransactionResponse\022m\n\016GetPen" +
+      "dingBets\022,.game_engine.wallet.v1.GetPend" +
+      "ingBetsRequest\032-.game_engine.wallet.v1.G" +
+      "etPendingBetsResponse\022p\n\017GetTransactions" +
+      "\022-.game_engine.wallet.v1.GetTransactions" +
+      "Request\032..game_engine.wallet.v1.GetTrans" +
+      "actionsResponse\022X\n\007Deposit\022%.game_engine" +
+      ".wallet.v1.DepositRequest\032&.game_engine." +
+      "wallet.v1.DepositResponse\022[\n\010Withdraw\022&." +
+      "game_engine.wallet.v1.WithdrawRequest\032\'." +
+      "game_engine.wallet.v1.WithdrawResponse\022j" +
+      "\n\rAdjustBalance\022+.game_engine.wallet.v1." +
+      "AdjustBalanceRequest\032,.game_engine.walle" +
+      "t.v1.AdjustBalanceResponse\022y\n\022GetAllTran" +
+      "sactions\0220.game_engine.wallet.v1.GetAllT" +
+      "ransactionsRequest\0321.game_engine.wallet." +
+      "v1.GetAllTransactionsResponseBe\n\031com.gam" +
+      "e_engine.wallet.v1P\001ZFgithub.com/game_en" +
+      "gine/common-service/proto/gen/go/wallet/" +
+      "v1;walletsv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -541,6 +642,72 @@ public final class WalletServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_wallet_v1_Bet_descriptor,
         new java.lang.String[] { "BetId", "UserId", "GameId", "BetType", "Selection", "Odds", "Stake", "PotentialWin", "ActualWin", "SettlementType", "Status", "PlacedAt", });
+    internal_static_game_engine_wallet_v1_GetTransactionsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(28);
+    internal_static_game_engine_wallet_v1_GetTransactionsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_GetTransactionsRequest_descriptor,
+        new java.lang.String[] { "UserId", "Page", "Limit", "Type", "Status", });
+    internal_static_game_engine_wallet_v1_WalletTransactionMsg_descriptor =
+      getDescriptor().getMessageTypes().get(29);
+    internal_static_game_engine_wallet_v1_WalletTransactionMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_WalletTransactionMsg_descriptor,
+        new java.lang.String[] { "Id", "Type", "Amount", "Status", "Description", "CreatedAt", });
+    internal_static_game_engine_wallet_v1_GetTransactionsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(30);
+    internal_static_game_engine_wallet_v1_GetTransactionsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_GetTransactionsResponse_descriptor,
+        new java.lang.String[] { "Transactions", "Total", "Page", "Limit", });
+    internal_static_game_engine_wallet_v1_DepositRequest_descriptor =
+      getDescriptor().getMessageTypes().get(31);
+    internal_static_game_engine_wallet_v1_DepositRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_DepositRequest_descriptor,
+        new java.lang.String[] { "UserId", "Amount", "Method", "PaymentId", });
+    internal_static_game_engine_wallet_v1_DepositResponse_descriptor =
+      getDescriptor().getMessageTypes().get(32);
+    internal_static_game_engine_wallet_v1_DepositResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_DepositResponse_descriptor,
+        new java.lang.String[] { "TransactionId", "NewBalance", });
+    internal_static_game_engine_wallet_v1_WithdrawRequest_descriptor =
+      getDescriptor().getMessageTypes().get(33);
+    internal_static_game_engine_wallet_v1_WithdrawRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_WithdrawRequest_descriptor,
+        new java.lang.String[] { "UserId", "Amount", "Method", "BankId", });
+    internal_static_game_engine_wallet_v1_WithdrawResponse_descriptor =
+      getDescriptor().getMessageTypes().get(34);
+    internal_static_game_engine_wallet_v1_WithdrawResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_WithdrawResponse_descriptor,
+        new java.lang.String[] { "TransactionId", });
+    internal_static_game_engine_wallet_v1_AdjustBalanceRequest_descriptor =
+      getDescriptor().getMessageTypes().get(35);
+    internal_static_game_engine_wallet_v1_AdjustBalanceRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_AdjustBalanceRequest_descriptor,
+        new java.lang.String[] { "UserId", "Amount", "Reason", });
+    internal_static_game_engine_wallet_v1_AdjustBalanceResponse_descriptor =
+      getDescriptor().getMessageTypes().get(36);
+    internal_static_game_engine_wallet_v1_AdjustBalanceResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_AdjustBalanceResponse_descriptor,
+        new java.lang.String[] { "TransactionId", "NewBalance", });
+    internal_static_game_engine_wallet_v1_GetAllTransactionsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(37);
+    internal_static_game_engine_wallet_v1_GetAllTransactionsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_GetAllTransactionsRequest_descriptor,
+        new java.lang.String[] { "Page", "Limit", });
+    internal_static_game_engine_wallet_v1_GetAllTransactionsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(38);
+    internal_static_game_engine_wallet_v1_GetAllTransactionsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_wallet_v1_GetAllTransactionsResponse_descriptor,
+        new java.lang.String[] { "Transactions", "Total", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.google.protobuf.EmptyProto.getDescriptor();
     com.game_engine.common.v1.Enums.getDescriptor();

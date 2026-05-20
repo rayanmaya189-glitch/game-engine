@@ -5,10 +5,6 @@
 package com.game_engine.bonus.v1;
 
 /**
- * <pre>
- * ClaimBonus
- * </pre>
- *
  * Protobuf type {@code game_engine.bonus.v1.ClaimBonusRequest}
  */
 public final class ClaimBonusRequest extends
@@ -290,10 +286,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * ClaimBonus
-   * </pre>
-   *
    * Protobuf type {@code game_engine.bonus.v1.ClaimBonusRequest}
    */
   public static final class Builder extends

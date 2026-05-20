@@ -106,8 +106,8 @@ func (m *LoggerMiddleware) StructuredLogger() app.HandlerFunc {
 			UserAgent:    userAgent,
 			StatusCode:   statusCode,
 			Latency:      float64(latency),
-			RequestSize:  ctx.Request.Header.ContentLength(),
-			ResponseSize: ctx.Response.Header.ContentLength(),
+			RequestSize:  int64(ctx.Request.Header.ContentLength()),
+			ResponseSize: int64(ctx.Response.Header.ContentLength()),
 			UserID:       userID,
 			Role:         role,
 		}

@@ -35,6 +35,11 @@ const (
 	AffiliateService_GetSubAffiliates_FullMethodName        = "/game_engine.affiliate.v1.AffiliateService/GetSubAffiliates"
 	AffiliateService_GetAffiliateStats_FullMethodName       = "/game_engine.affiliate.v1.AffiliateService/GetAffiliateStats"
 	AffiliateService_RedirectToRegistration_FullMethodName  = "/game_engine.affiliate.v1.AffiliateService/RedirectToRegistration"
+	AffiliateService_GetPerformanceReport_FullMethodName    = "/game_engine.affiliate.v1.AffiliateService/GetPerformanceReport"
+	AffiliateService_GetClickReports_FullMethodName         = "/game_engine.affiliate.v1.AffiliateService/GetClickReports"
+	AffiliateService_GetConversionReports_FullMethodName    = "/game_engine.affiliate.v1.AffiliateService/GetConversionReports"
+	AffiliateService_GetAffiliateLinks_FullMethodName       = "/game_engine.affiliate.v1.AffiliateService/GetAffiliateLinks"
+	AffiliateService_CreateAffiliateLink_FullMethodName     = "/game_engine.affiliate.v1.AffiliateService/CreateAffiliateLink"
 )
 
 // AffiliateServiceClient is the client API for AffiliateService service.
@@ -66,6 +71,12 @@ type AffiliateServiceClient interface {
 	GetAffiliateStats(ctx context.Context, in *GetAffiliateStatsRequest, opts ...grpc.CallOption) (*GetAffiliateStatsResponse, error)
 	// Redirect
 	RedirectToRegistration(ctx context.Context, in *RedirectToRegistrationRequest, opts ...grpc.CallOption) (*RedirectToRegistrationResponse, error)
+	// Reporting and link management
+	GetPerformanceReport(ctx context.Context, in *GetPerformanceReportRequest, opts ...grpc.CallOption) (*GetPerformanceReportResponse, error)
+	GetClickReports(ctx context.Context, in *GetClickReportsRequest, opts ...grpc.CallOption) (*GetClickReportsResponse, error)
+	GetConversionReports(ctx context.Context, in *GetConversionReportsRequest, opts ...grpc.CallOption) (*GetConversionReportsResponse, error)
+	GetAffiliateLinks(ctx context.Context, in *GetAffiliateLinksRequest, opts ...grpc.CallOption) (*GetAffiliateLinksResponse, error)
+	CreateAffiliateLink(ctx context.Context, in *CreateAffiliateLinkRequest, opts ...grpc.CallOption) (*CreateAffiliateLinkResponse, error)
 }
 
 type affiliateServiceClient struct {
@@ -236,6 +247,56 @@ func (c *affiliateServiceClient) RedirectToRegistration(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *affiliateServiceClient) GetPerformanceReport(ctx context.Context, in *GetPerformanceReportRequest, opts ...grpc.CallOption) (*GetPerformanceReportResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetPerformanceReportResponse)
+	err := c.cc.Invoke(ctx, AffiliateService_GetPerformanceReport_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *affiliateServiceClient) GetClickReports(ctx context.Context, in *GetClickReportsRequest, opts ...grpc.CallOption) (*GetClickReportsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetClickReportsResponse)
+	err := c.cc.Invoke(ctx, AffiliateService_GetClickReports_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *affiliateServiceClient) GetConversionReports(ctx context.Context, in *GetConversionReportsRequest, opts ...grpc.CallOption) (*GetConversionReportsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetConversionReportsResponse)
+	err := c.cc.Invoke(ctx, AffiliateService_GetConversionReports_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *affiliateServiceClient) GetAffiliateLinks(ctx context.Context, in *GetAffiliateLinksRequest, opts ...grpc.CallOption) (*GetAffiliateLinksResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAffiliateLinksResponse)
+	err := c.cc.Invoke(ctx, AffiliateService_GetAffiliateLinks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *affiliateServiceClient) CreateAffiliateLink(ctx context.Context, in *CreateAffiliateLinkRequest, opts ...grpc.CallOption) (*CreateAffiliateLinkResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CreateAffiliateLinkResponse)
+	err := c.cc.Invoke(ctx, AffiliateService_CreateAffiliateLink_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // AffiliateServiceServer is the server API for AffiliateService service.
 // All implementations must embed UnimplementedAffiliateServiceServer
 // for forward compatibility
@@ -265,6 +326,12 @@ type AffiliateServiceServer interface {
 	GetAffiliateStats(context.Context, *GetAffiliateStatsRequest) (*GetAffiliateStatsResponse, error)
 	// Redirect
 	RedirectToRegistration(context.Context, *RedirectToRegistrationRequest) (*RedirectToRegistrationResponse, error)
+	// Reporting and link management
+	GetPerformanceReport(context.Context, *GetPerformanceReportRequest) (*GetPerformanceReportResponse, error)
+	GetClickReports(context.Context, *GetClickReportsRequest) (*GetClickReportsResponse, error)
+	GetConversionReports(context.Context, *GetConversionReportsRequest) (*GetConversionReportsResponse, error)
+	GetAffiliateLinks(context.Context, *GetAffiliateLinksRequest) (*GetAffiliateLinksResponse, error)
+	CreateAffiliateLink(context.Context, *CreateAffiliateLinkRequest) (*CreateAffiliateLinkResponse, error)
 	mustEmbedUnimplementedAffiliateServiceServer()
 }
 
@@ -319,6 +386,21 @@ func (UnimplementedAffiliateServiceServer) GetAffiliateStats(context.Context, *G
 }
 func (UnimplementedAffiliateServiceServer) RedirectToRegistration(context.Context, *RedirectToRegistrationRequest) (*RedirectToRegistrationResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RedirectToRegistration not implemented")
+}
+func (UnimplementedAffiliateServiceServer) GetPerformanceReport(context.Context, *GetPerformanceReportRequest) (*GetPerformanceReportResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPerformanceReport not implemented")
+}
+func (UnimplementedAffiliateServiceServer) GetClickReports(context.Context, *GetClickReportsRequest) (*GetClickReportsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClickReports not implemented")
+}
+func (UnimplementedAffiliateServiceServer) GetConversionReports(context.Context, *GetConversionReportsRequest) (*GetConversionReportsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetConversionReports not implemented")
+}
+func (UnimplementedAffiliateServiceServer) GetAffiliateLinks(context.Context, *GetAffiliateLinksRequest) (*GetAffiliateLinksResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAffiliateLinks not implemented")
+}
+func (UnimplementedAffiliateServiceServer) CreateAffiliateLink(context.Context, *CreateAffiliateLinkRequest) (*CreateAffiliateLinkResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateAffiliateLink not implemented")
 }
 func (UnimplementedAffiliateServiceServer) mustEmbedUnimplementedAffiliateServiceServer() {}
 
@@ -621,6 +703,96 @@ func _AffiliateService_RedirectToRegistration_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _AffiliateService_GetPerformanceReport_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPerformanceReportRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AffiliateServiceServer).GetPerformanceReport(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AffiliateService_GetPerformanceReport_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AffiliateServiceServer).GetPerformanceReport(ctx, req.(*GetPerformanceReportRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AffiliateService_GetClickReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetClickReportsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AffiliateServiceServer).GetClickReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AffiliateService_GetClickReports_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AffiliateServiceServer).GetClickReports(ctx, req.(*GetClickReportsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AffiliateService_GetConversionReports_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetConversionReportsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AffiliateServiceServer).GetConversionReports(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AffiliateService_GetConversionReports_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AffiliateServiceServer).GetConversionReports(ctx, req.(*GetConversionReportsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AffiliateService_GetAffiliateLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAffiliateLinksRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AffiliateServiceServer).GetAffiliateLinks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AffiliateService_GetAffiliateLinks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AffiliateServiceServer).GetAffiliateLinks(ctx, req.(*GetAffiliateLinksRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _AffiliateService_CreateAffiliateLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateAffiliateLinkRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AffiliateServiceServer).CreateAffiliateLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: AffiliateService_CreateAffiliateLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AffiliateServiceServer).CreateAffiliateLink(ctx, req.(*CreateAffiliateLinkRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // AffiliateService_ServiceDesc is the grpc.ServiceDesc for AffiliateService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -691,6 +863,26 @@ var AffiliateService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RedirectToRegistration",
 			Handler:    _AffiliateService_RedirectToRegistration_Handler,
+		},
+		{
+			MethodName: "GetPerformanceReport",
+			Handler:    _AffiliateService_GetPerformanceReport_Handler,
+		},
+		{
+			MethodName: "GetClickReports",
+			Handler:    _AffiliateService_GetClickReports_Handler,
+		},
+		{
+			MethodName: "GetConversionReports",
+			Handler:    _AffiliateService_GetConversionReports_Handler,
+		},
+		{
+			MethodName: "GetAffiliateLinks",
+			Handler:    _AffiliateService_GetAffiliateLinks_Handler,
+		},
+		{
+			MethodName: "CreateAffiliateLink",
+			Handler:    _AffiliateService_CreateAffiliateLink_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

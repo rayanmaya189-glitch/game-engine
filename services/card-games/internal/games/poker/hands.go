@@ -1,8 +1,6 @@
 package poker
 
 import (
-	"sort"
-
 	"github.com/game_engine/card-games/internal/games/common"
 )
 

@@ -32,6 +32,11 @@ const (
 	WalletService_CreateBonusCredit_FullMethodName     = "/game_engine.wallet.v1.WalletService/CreateBonusCredit"
 	WalletService_ReverseTransaction_FullMethodName    = "/game_engine.wallet.v1.WalletService/ReverseTransaction"
 	WalletService_GetPendingBets_FullMethodName        = "/game_engine.wallet.v1.WalletService/GetPendingBets"
+	WalletService_GetTransactions_FullMethodName       = "/game_engine.wallet.v1.WalletService/GetTransactions"
+	WalletService_Deposit_FullMethodName               = "/game_engine.wallet.v1.WalletService/Deposit"
+	WalletService_Withdraw_FullMethodName              = "/game_engine.wallet.v1.WalletService/Withdraw"
+	WalletService_AdjustBalance_FullMethodName         = "/game_engine.wallet.v1.WalletService/AdjustBalance"
+	WalletService_GetAllTransactions_FullMethodName    = "/game_engine.wallet.v1.WalletService/GetAllTransactions"
 )
 
 // WalletServiceClient is the client API for WalletService service.
@@ -53,6 +58,11 @@ type WalletServiceClient interface {
 	CreateBonusCredit(ctx context.Context, in *CreateBonusCreditRequest, opts ...grpc.CallOption) (*CreateBonusCreditResponse, error)
 	ReverseTransaction(ctx context.Context, in *ReverseTransactionRequest, opts ...grpc.CallOption) (*ReverseTransactionResponse, error)
 	GetPendingBets(ctx context.Context, in *GetPendingBetsRequest, opts ...grpc.CallOption) (*GetPendingBetsResponse, error)
+	GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error)
+	Deposit(ctx context.Context, in *DepositRequest, opts ...grpc.CallOption) (*DepositResponse, error)
+	Withdraw(ctx context.Context, in *WithdrawRequest, opts ...grpc.CallOption) (*WithdrawResponse, error)
+	AdjustBalance(ctx context.Context, in *AdjustBalanceRequest, opts ...grpc.CallOption) (*AdjustBalanceResponse, error)
+	GetAllTransactions(ctx context.Context, in *GetAllTransactionsRequest, opts ...grpc.CallOption) (*GetAllTransactionsResponse, error)
 }
 
 type walletServiceClient struct {
@@ -193,6 +203,56 @@ func (c *walletServiceClient) GetPendingBets(ctx context.Context, in *GetPending
 	return out, nil
 }
 
+func (c *walletServiceClient) GetTransactions(ctx context.Context, in *GetTransactionsRequest, opts ...grpc.CallOption) (*GetTransactionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetTransactionsResponse)
+	err := c.cc.Invoke(ctx, WalletService_GetTransactions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletServiceClient) Deposit(ctx context.Context, in *DepositRequest, opts ...grpc.CallOption) (*DepositResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DepositResponse)
+	err := c.cc.Invoke(ctx, WalletService_Deposit_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletServiceClient) Withdraw(ctx context.Context, in *WithdrawRequest, opts ...grpc.CallOption) (*WithdrawResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(WithdrawResponse)
+	err := c.cc.Invoke(ctx, WalletService_Withdraw_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletServiceClient) AdjustBalance(ctx context.Context, in *AdjustBalanceRequest, opts ...grpc.CallOption) (*AdjustBalanceResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(AdjustBalanceResponse)
+	err := c.cc.Invoke(ctx, WalletService_AdjustBalance_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *walletServiceClient) GetAllTransactions(ctx context.Context, in *GetAllTransactionsRequest, opts ...grpc.CallOption) (*GetAllTransactionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAllTransactionsResponse)
+	err := c.cc.Invoke(ctx, WalletService_GetAllTransactions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // WalletServiceServer is the server API for WalletService service.
 // All implementations must embed UnimplementedWalletServiceServer
 // for forward compatibility
@@ -212,6 +272,11 @@ type WalletServiceServer interface {
 	CreateBonusCredit(context.Context, *CreateBonusCreditRequest) (*CreateBonusCreditResponse, error)
 	ReverseTransaction(context.Context, *ReverseTransactionRequest) (*ReverseTransactionResponse, error)
 	GetPendingBets(context.Context, *GetPendingBetsRequest) (*GetPendingBetsResponse, error)
+	GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error)
+	Deposit(context.Context, *DepositRequest) (*DepositResponse, error)
+	Withdraw(context.Context, *WithdrawRequest) (*WithdrawResponse, error)
+	AdjustBalance(context.Context, *AdjustBalanceRequest) (*AdjustBalanceResponse, error)
+	GetAllTransactions(context.Context, *GetAllTransactionsRequest) (*GetAllTransactionsResponse, error)
 	mustEmbedUnimplementedWalletServiceServer()
 }
 
@@ -257,6 +322,21 @@ func (UnimplementedWalletServiceServer) ReverseTransaction(context.Context, *Rev
 }
 func (UnimplementedWalletServiceServer) GetPendingBets(context.Context, *GetPendingBetsRequest) (*GetPendingBetsResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPendingBets not implemented")
+}
+func (UnimplementedWalletServiceServer) GetTransactions(context.Context, *GetTransactionsRequest) (*GetTransactionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetTransactions not implemented")
+}
+func (UnimplementedWalletServiceServer) Deposit(context.Context, *DepositRequest) (*DepositResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Deposit not implemented")
+}
+func (UnimplementedWalletServiceServer) Withdraw(context.Context, *WithdrawRequest) (*WithdrawResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Withdraw not implemented")
+}
+func (UnimplementedWalletServiceServer) AdjustBalance(context.Context, *AdjustBalanceRequest) (*AdjustBalanceResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AdjustBalance not implemented")
+}
+func (UnimplementedWalletServiceServer) GetAllTransactions(context.Context, *GetAllTransactionsRequest) (*GetAllTransactionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAllTransactions not implemented")
 }
 func (UnimplementedWalletServiceServer) mustEmbedUnimplementedWalletServiceServer() {}
 
@@ -505,6 +585,96 @@ func _WalletService_GetPendingBets_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _WalletService_GetTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetTransactionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletServiceServer).GetTransactions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletService_GetTransactions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletServiceServer).GetTransactions(ctx, req.(*GetTransactionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletService_Deposit_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DepositRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletServiceServer).Deposit(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletService_Deposit_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletServiceServer).Deposit(ctx, req.(*DepositRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletService_Withdraw_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(WithdrawRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletServiceServer).Withdraw(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletService_Withdraw_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletServiceServer).Withdraw(ctx, req.(*WithdrawRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletService_AdjustBalance_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(AdjustBalanceRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletServiceServer).AdjustBalance(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletService_AdjustBalance_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletServiceServer).AdjustBalance(ctx, req.(*AdjustBalanceRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _WalletService_GetAllTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAllTransactionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(WalletServiceServer).GetAllTransactions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: WalletService_GetAllTransactions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(WalletServiceServer).GetAllTransactions(ctx, req.(*GetAllTransactionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // WalletService_ServiceDesc is the grpc.ServiceDesc for WalletService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -563,6 +733,26 @@ var WalletService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetPendingBets",
 			Handler:    _WalletService_GetPendingBets_Handler,
+		},
+		{
+			MethodName: "GetTransactions",
+			Handler:    _WalletService_GetTransactions_Handler,
+		},
+		{
+			MethodName: "Deposit",
+			Handler:    _WalletService_Deposit_Handler,
+		},
+		{
+			MethodName: "Withdraw",
+			Handler:    _WalletService_Withdraw_Handler,
+		},
+		{
+			MethodName: "AdjustBalance",
+			Handler:    _WalletService_AdjustBalance_Handler,
+		},
+		{
+			MethodName: "GetAllTransactions",
+			Handler:    _WalletService_GetAllTransactions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

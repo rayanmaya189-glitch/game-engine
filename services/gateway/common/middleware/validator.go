@@ -1,6 +1,7 @@
 package middleware
 
 import (
+	"context"
 	"regexp"
 	"strconv"
 	"strings"
@@ -32,12 +33,12 @@ func (m *ValidatorMiddleware) Validate(path string) app.HandlerFunc {
 	rules, exists := m.rules[path]
 	if !exists {
 		// No rules defined, skip validation
-		return func(c interface{}, ctx *app.RequestContext) {
+		return func(c context.Context, ctx *app.RequestContext) {
 			ctx.Next(c)
 		}
 	}
 
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		for _, rule := range rules {
 			var fieldValue string
 
@@ -167,7 +168,7 @@ func isAlphanumeric(s string) bool {
 
 // SanitizeInput sanitizes user input to prevent injection attacks
 func SanitizeInput() app.HandlerFunc {
-	return func(c interface{}, ctx *app.RequestContext) {
+	return func(c context.Context, ctx *app.RequestContext) {
 		// Remove null bytes and other potentially dangerous characters
 		body := string(ctx.Request.Body())
 		body = strings.ReplaceAll(body, "\x00", "")

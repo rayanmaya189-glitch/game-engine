@@ -6,6 +6,7 @@ import (
 	jackpotpb "github.com/game_engine/common-service/proto/gen/go/jackpot/v1"
 	"github.com/game_engine/jackpot-service/internal/config"
 	"github.com/game_engine/jackpot-service/internal/repository"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type JackpotService struct {
@@ -33,8 +34,8 @@ func (s *JackpotService) ListJackpots(ctx context.Context, req *jackpotpb.ListJa
 			MinBet:        j.MinBet,
 			MaxBet:        j.MaxBet,
 			Status:        j.Status,
-			StartsAt:      j.StartsAt.Unix(),
-			EndsAt:        j.EndsAt.Unix(),
+			StartsAt:      timestamppb.New(j.StartsAt),
+			EndsAt:        timestamppb.New(j.EndsAt),
 		}
 	}
 	return &jackpotpb.ListJackpotsResponse{Jackpots: pbJackpots}, nil
@@ -54,8 +55,8 @@ func (s *JackpotService) GetJackpot(ctx context.Context, req *jackpotpb.GetJackp
 			MinBet:        j.MinBet,
 			MaxBet:        j.MaxBet,
 			Status:        j.Status,
-			StartsAt:      j.StartsAt.Unix(),
-			EndsAt:        j.EndsAt.Unix(),
+			StartsAt:      timestamppb.New(j.StartsAt),
+			EndsAt:        timestamppb.New(j.EndsAt),
 		},
 	}, nil
 }
@@ -71,7 +72,7 @@ func (s *JackpotService) GetWinners(ctx context.Context, req *jackpotpb.GetWinne
 			WinnerId: w.WinnerID,
 			Username: w.Username,
 			Amount:   w.Amount,
-			WonAt:    w.WonAt.Unix(),
+			WonAt:    timestamppb.New(w.WonAt),
 		}
 	}
 	return &jackpotpb.GetWinnersResponse{Winners: pbWinners}, nil
@@ -97,7 +98,7 @@ func (s *JackpotService) GetJackpotHistory(ctx context.Context, req *jackpotpb.G
 			JackpotName: e.JackpotName,
 			Amount:      e.Amount,
 			Result:      e.Result,
-			PlayedAt:    e.PlayedAt.Unix(),
+			PlayedAt:    timestamppb.New(e.PlayedAt),
 		}
 	}
 	return &jackpotpb.GetJackpotHistoryResponse{Entries: pbEntries, Total: int32(total)}, nil

@@ -63,8 +63,9 @@ public final class Pagination {
       "nationResponse\022\024\n\005items\030\001 \003(\014R\005items\022\037\n\013" +
       "next_cursor\030\002 \001(\tR\nnextCursor\022\031\n\010has_mor" +
       "e\030\003 \001(\010R\007hasMore\022\037\n\013total_count\030\004 \001(\005R\nt" +
-      "otalCountB8\n\031com.game_engine.common.v1P\001" +
-      "Z\031gen/go/common/v1;commonv1b\006proto3"
+      "otalCountBd\n\031com.game_engine.common.v1P\001" +
+      "ZEgithub.com/game_engine/common-service/" +
+      "proto/gen/go/common/v1;commonv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

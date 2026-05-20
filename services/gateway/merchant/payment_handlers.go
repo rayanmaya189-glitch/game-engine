@@ -7,7 +7,7 @@ import (
 
 	merchantpb "github.com/game_engine/common-service/proto/gen/go/merchant/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 func (cfg *RouterConfig) GetMerchantConfig(ctx context.Context, c *app.RequestContext) {

@@ -256,9 +256,10 @@ public final class PaymentServiceOuterClass {
       "ine.payment.v1.GetSupportedCurrenciesRes" +
       "ponse\022l\n\rCancelPayment\022,.game_engine.pay" +
       "ment.v1.CancelPaymentRequest\032-.game_engi" +
-      "ne.payment.v1.CancelPaymentResponseB;\n\032c" +
-      "om.game_engine.payment.v1P\001Z\033gen/go/paym" +
-      "ent/v1;paymentv1b\006proto3"
+      "ne.payment.v1.CancelPaymentResponseBg\n\032c" +
+      "om.game_engine.payment.v1P\001ZGgithub.com/" +
+      "game_engine/common-service/proto/gen/go/" +
+      "payment/v1;paymentv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

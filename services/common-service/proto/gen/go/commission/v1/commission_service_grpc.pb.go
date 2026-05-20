@@ -36,6 +36,12 @@ const (
 	CommissionService_GetPendingCommissions_FullMethodName             = "/game_engine.commission.v1.CommissionService/GetPendingCommissions"
 	CommissionService_GetAllCommissions_FullMethodName                 = "/game_engine.commission.v1.CommissionService/GetAllCommissions"
 	CommissionService_DeleteCommission_FullMethodName                  = "/game_engine.commission.v1.CommissionService/DeleteCommission"
+	CommissionService_SubmitClaim_FullMethodName                       = "/game_engine.commission.v1.CommissionService/SubmitClaim"
+	CommissionService_GetUserClaims_FullMethodName                     = "/game_engine.commission.v1.CommissionService/GetUserClaims"
+	CommissionService_GetClaimsByStatus_FullMethodName                 = "/game_engine.commission.v1.CommissionService/GetClaimsByStatus"
+	CommissionService_ClaimCommission_FullMethodName                   = "/game_engine.commission.v1.CommissionService/ClaimCommission"
+	CommissionService_GetAgentCommissions_FullMethodName               = "/game_engine.commission.v1.CommissionService/GetAgentCommissions"
+	CommissionService_GetCommissionHistory_FullMethodName              = "/game_engine.commission.v1.CommissionService/GetCommissionHistory"
 )
 
 // CommissionServiceClient is the client API for CommissionService service.
@@ -67,6 +73,12 @@ type CommissionServiceClient interface {
 	GetPendingCommissions(ctx context.Context, in *GetPendingCommissionsRequest, opts ...grpc.CallOption) (*GetPendingCommissionsResponse, error)
 	GetAllCommissions(ctx context.Context, in *GetAllCommissionsRequest, opts ...grpc.CallOption) (*GetAllCommissionsResponse, error)
 	DeleteCommission(ctx context.Context, in *DeleteCommissionRequest, opts ...grpc.CallOption) (*DeleteCommissionResponse, error)
+	SubmitClaim(ctx context.Context, in *SubmitClaimRequest, opts ...grpc.CallOption) (*SubmitClaimResponse, error)
+	GetUserClaims(ctx context.Context, in *GetUserClaimsRequest, opts ...grpc.CallOption) (*GetUserClaimsResponse, error)
+	GetClaimsByStatus(ctx context.Context, in *GetClaimsByStatusRequest, opts ...grpc.CallOption) (*GetClaimsByStatusResponse, error)
+	ClaimCommission(ctx context.Context, in *ClaimCommissionRequest, opts ...grpc.CallOption) (*ClaimCommissionResponse, error)
+	GetAgentCommissions(ctx context.Context, in *GetAgentCommissionsRequest, opts ...grpc.CallOption) (*GetAgentCommissionsResponse, error)
+	GetCommissionHistory(ctx context.Context, in *GetCommissionHistoryRequest, opts ...grpc.CallOption) (*GetCommissionHistoryResponse, error)
 }
 
 type commissionServiceClient struct {
@@ -247,6 +259,66 @@ func (c *commissionServiceClient) DeleteCommission(ctx context.Context, in *Dele
 	return out, nil
 }
 
+func (c *commissionServiceClient) SubmitClaim(ctx context.Context, in *SubmitClaimRequest, opts ...grpc.CallOption) (*SubmitClaimResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SubmitClaimResponse)
+	err := c.cc.Invoke(ctx, CommissionService_SubmitClaim_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commissionServiceClient) GetUserClaims(ctx context.Context, in *GetUserClaimsRequest, opts ...grpc.CallOption) (*GetUserClaimsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetUserClaimsResponse)
+	err := c.cc.Invoke(ctx, CommissionService_GetUserClaims_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commissionServiceClient) GetClaimsByStatus(ctx context.Context, in *GetClaimsByStatusRequest, opts ...grpc.CallOption) (*GetClaimsByStatusResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetClaimsByStatusResponse)
+	err := c.cc.Invoke(ctx, CommissionService_GetClaimsByStatus_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commissionServiceClient) ClaimCommission(ctx context.Context, in *ClaimCommissionRequest, opts ...grpc.CallOption) (*ClaimCommissionResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(ClaimCommissionResponse)
+	err := c.cc.Invoke(ctx, CommissionService_ClaimCommission_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commissionServiceClient) GetAgentCommissions(ctx context.Context, in *GetAgentCommissionsRequest, opts ...grpc.CallOption) (*GetAgentCommissionsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetAgentCommissionsResponse)
+	err := c.cc.Invoke(ctx, CommissionService_GetAgentCommissions_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *commissionServiceClient) GetCommissionHistory(ctx context.Context, in *GetCommissionHistoryRequest, opts ...grpc.CallOption) (*GetCommissionHistoryResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(GetCommissionHistoryResponse)
+	err := c.cc.Invoke(ctx, CommissionService_GetCommissionHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // CommissionServiceServer is the server API for CommissionService service.
 // All implementations must embed UnimplementedCommissionServiceServer
 // for forward compatibility
@@ -276,6 +348,12 @@ type CommissionServiceServer interface {
 	GetPendingCommissions(context.Context, *GetPendingCommissionsRequest) (*GetPendingCommissionsResponse, error)
 	GetAllCommissions(context.Context, *GetAllCommissionsRequest) (*GetAllCommissionsResponse, error)
 	DeleteCommission(context.Context, *DeleteCommissionRequest) (*DeleteCommissionResponse, error)
+	SubmitClaim(context.Context, *SubmitClaimRequest) (*SubmitClaimResponse, error)
+	GetUserClaims(context.Context, *GetUserClaimsRequest) (*GetUserClaimsResponse, error)
+	GetClaimsByStatus(context.Context, *GetClaimsByStatusRequest) (*GetClaimsByStatusResponse, error)
+	ClaimCommission(context.Context, *ClaimCommissionRequest) (*ClaimCommissionResponse, error)
+	GetAgentCommissions(context.Context, *GetAgentCommissionsRequest) (*GetAgentCommissionsResponse, error)
+	GetCommissionHistory(context.Context, *GetCommissionHistoryRequest) (*GetCommissionHistoryResponse, error)
 	mustEmbedUnimplementedCommissionServiceServer()
 }
 
@@ -333,6 +411,24 @@ func (UnimplementedCommissionServiceServer) GetAllCommissions(context.Context, *
 }
 func (UnimplementedCommissionServiceServer) DeleteCommission(context.Context, *DeleteCommissionRequest) (*DeleteCommissionResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteCommission not implemented")
+}
+func (UnimplementedCommissionServiceServer) SubmitClaim(context.Context, *SubmitClaimRequest) (*SubmitClaimResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitClaim not implemented")
+}
+func (UnimplementedCommissionServiceServer) GetUserClaims(context.Context, *GetUserClaimsRequest) (*GetUserClaimsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserClaims not implemented")
+}
+func (UnimplementedCommissionServiceServer) GetClaimsByStatus(context.Context, *GetClaimsByStatusRequest) (*GetClaimsByStatusResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClaimsByStatus not implemented")
+}
+func (UnimplementedCommissionServiceServer) ClaimCommission(context.Context, *ClaimCommissionRequest) (*ClaimCommissionResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClaimCommission not implemented")
+}
+func (UnimplementedCommissionServiceServer) GetAgentCommissions(context.Context, *GetAgentCommissionsRequest) (*GetAgentCommissionsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetAgentCommissions not implemented")
+}
+func (UnimplementedCommissionServiceServer) GetCommissionHistory(context.Context, *GetCommissionHistoryRequest) (*GetCommissionHistoryResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetCommissionHistory not implemented")
 }
 func (UnimplementedCommissionServiceServer) mustEmbedUnimplementedCommissionServiceServer() {}
 
@@ -653,6 +749,114 @@ func _CommissionService_DeleteCommission_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _CommissionService_SubmitClaim_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitClaimRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommissionServiceServer).SubmitClaim(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommissionService_SubmitClaim_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommissionServiceServer).SubmitClaim(ctx, req.(*SubmitClaimRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommissionService_GetUserClaims_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserClaimsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommissionServiceServer).GetUserClaims(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommissionService_GetUserClaims_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommissionServiceServer).GetUserClaims(ctx, req.(*GetUserClaimsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommissionService_GetClaimsByStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetClaimsByStatusRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommissionServiceServer).GetClaimsByStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommissionService_GetClaimsByStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommissionServiceServer).GetClaimsByStatus(ctx, req.(*GetClaimsByStatusRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommissionService_ClaimCommission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ClaimCommissionRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommissionServiceServer).ClaimCommission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommissionService_ClaimCommission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommissionServiceServer).ClaimCommission(ctx, req.(*ClaimCommissionRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommissionService_GetAgentCommissions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetAgentCommissionsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommissionServiceServer).GetAgentCommissions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommissionService_GetAgentCommissions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommissionServiceServer).GetAgentCommissions(ctx, req.(*GetAgentCommissionsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _CommissionService_GetCommissionHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetCommissionHistoryRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(CommissionServiceServer).GetCommissionHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: CommissionService_GetCommissionHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(CommissionServiceServer).GetCommissionHistory(ctx, req.(*GetCommissionHistoryRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // CommissionService_ServiceDesc is the grpc.ServiceDesc for CommissionService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -727,6 +931,30 @@ var CommissionService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "DeleteCommission",
 			Handler:    _CommissionService_DeleteCommission_Handler,
+		},
+		{
+			MethodName: "SubmitClaim",
+			Handler:    _CommissionService_SubmitClaim_Handler,
+		},
+		{
+			MethodName: "GetUserClaims",
+			Handler:    _CommissionService_GetUserClaims_Handler,
+		},
+		{
+			MethodName: "GetClaimsByStatus",
+			Handler:    _CommissionService_GetClaimsByStatus_Handler,
+		},
+		{
+			MethodName: "ClaimCommission",
+			Handler:    _CommissionService_ClaimCommission_Handler,
+		},
+		{
+			MethodName: "GetAgentCommissions",
+			Handler:    _CommissionService_GetAgentCommissions_Handler,
+		},
+		{
+			MethodName: "GetCommissionHistory",
+			Handler:    _CommissionService_GetCommissionHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

@@ -36,6 +36,7 @@ func main() {
 
 	// Initialize handler
 	rngHandler := handler.NewRNGHandler(rngService)
+	_ = rngHandler
 
 	// Create gRPC server
 	grpcServer := grpc.NewServer()

@@ -3,11 +3,12 @@ package service
 import (
 	"context"
 	"crypto/rand"
-	"encoding/hex"
 	"fmt"
 	"math/big"
 	"time"
 )
+
+type RNGService struct{}
 
 // GameMode represents the current game execution mode
 type GameMode string

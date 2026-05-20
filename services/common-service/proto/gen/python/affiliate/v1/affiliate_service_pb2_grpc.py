@@ -95,6 +95,31 @@ class AffiliateServiceStub(object):
                 request_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.RedirectToRegistrationRequest.SerializeToString,
                 response_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.RedirectToRegistrationResponse.FromString,
                 _registered_method=True)
+        self.GetPerformanceReport = channel.unary_unary(
+                '/game_engine.affiliate.v1.AffiliateService/GetPerformanceReport',
+                request_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.SerializeToString,
+                response_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.FromString,
+                _registered_method=True)
+        self.GetClickReports = channel.unary_unary(
+                '/game_engine.affiliate.v1.AffiliateService/GetClickReports',
+                request_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.SerializeToString,
+                response_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.FromString,
+                _registered_method=True)
+        self.GetConversionReports = channel.unary_unary(
+                '/game_engine.affiliate.v1.AffiliateService/GetConversionReports',
+                request_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.SerializeToString,
+                response_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.FromString,
+                _registered_method=True)
+        self.GetAffiliateLinks = channel.unary_unary(
+                '/game_engine.affiliate.v1.AffiliateService/GetAffiliateLinks',
+                request_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.SerializeToString,
+                response_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.FromString,
+                _registered_method=True)
+        self.CreateAffiliateLink = channel.unary_unary(
+                '/game_engine.affiliate.v1.AffiliateService/CreateAffiliateLink',
+                request_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.SerializeToString,
+                response_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.FromString,
+                _registered_method=True)
 
 
 class AffiliateServiceServicer(object):
@@ -204,6 +229,37 @@ class AffiliateServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def GetPerformanceReport(self, request, context):
+        """Reporting and link management
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetClickReports(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetConversionReports(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetAffiliateLinks(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def CreateAffiliateLink(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_AffiliateServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -286,6 +342,31 @@ def add_AffiliateServiceServicer_to_server(servicer, server):
                     servicer.RedirectToRegistration,
                     request_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.RedirectToRegistrationRequest.FromString,
                     response_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.RedirectToRegistrationResponse.SerializeToString,
+            ),
+            'GetPerformanceReport': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetPerformanceReport,
+                    request_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.FromString,
+                    response_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.SerializeToString,
+            ),
+            'GetClickReports': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetClickReports,
+                    request_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.FromString,
+                    response_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.SerializeToString,
+            ),
+            'GetConversionReports': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetConversionReports,
+                    request_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.FromString,
+                    response_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.SerializeToString,
+            ),
+            'GetAffiliateLinks': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAffiliateLinks,
+                    request_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.FromString,
+                    response_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.SerializeToString,
+            ),
+            'CreateAffiliateLink': grpc.unary_unary_rpc_method_handler(
+                    servicer.CreateAffiliateLink,
+                    request_deserializer=affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.FromString,
+                    response_serializer=affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -721,6 +802,141 @@ class AffiliateService(object):
             '/game_engine.affiliate.v1.AffiliateService/RedirectToRegistration',
             affiliate_dot_v1_dot_affiliate__service__pb2.RedirectToRegistrationRequest.SerializeToString,
             affiliate_dot_v1_dot_affiliate__service__pb2.RedirectToRegistrationResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetPerformanceReport(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.affiliate.v1.AffiliateService/GetPerformanceReport',
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportRequest.SerializeToString,
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetPerformanceReportResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetClickReports(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.affiliate.v1.AffiliateService/GetClickReports',
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsRequest.SerializeToString,
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetClickReportsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetConversionReports(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.affiliate.v1.AffiliateService/GetConversionReports',
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsRequest.SerializeToString,
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetConversionReportsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAffiliateLinks(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.affiliate.v1.AffiliateService/GetAffiliateLinks',
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksRequest.SerializeToString,
+            affiliate_dot_v1_dot_affiliate__service__pb2.GetAffiliateLinksResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def CreateAffiliateLink(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.affiliate.v1.AffiliateService/CreateAffiliateLink',
+            affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkRequest.SerializeToString,
+            affiliate_dot_v1_dot_affiliate__service__pb2.CreateAffiliateLinkResponse.FromString,
             options,
             channel_credentials,
             insecure,

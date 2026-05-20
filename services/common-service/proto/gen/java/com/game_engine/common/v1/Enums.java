@@ -158,9 +158,10 @@ public final class Enums {
       "RENCY_USDT\020\\*\216\001\n\013BalanceType\022\034\n\030BALANCE_" +
       "TYPE_UNSPECIFIED\020\000\022\025\n\021BALANCE_TYPE_REAL\020" +
       "\001\022\026\n\022BALANCE_TYPE_BONUS\020\002\022\034\n\030BALANCE_TYP" +
-      "E_PROMOTIONAL\020\003\022\024\n\020BALANCE_TYPE_ALL\020\004B8\n" +
-      "\031com.game_engine.common.v1P\001Z\031gen/go/com" +
-      "mon/v1;commonv1b\006proto3"
+      "E_PROMOTIONAL\020\003\022\024\n\020BALANCE_TYPE_ALL\020\004Bd\n" +
+      "\031com.game_engine.common.v1P\001ZEgithub.com" +
+      "/game_engine/common-service/proto/gen/go" +
+      "/common/v1;commonv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -6,7 +6,7 @@ import (
 
 	"github.com/cloudwego/hertz/pkg/app"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 
 	bonuspb "github.com/game_engine/common-service/proto/gen/go/bonus/v1"
 	jackpotpb "github.com/game_engine/common-service/proto/gen/go/jackpot/v1"
@@ -30,7 +30,7 @@ func (cfg *RouterConfig) ListJackpots(ctx context.Context, c *app.RequestContext
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"jackpots": resp.Jackpots,
-		"total":    resp.Total,
+		"total":    len(resp.Jackpots),
 	})
 }
 
@@ -112,7 +112,7 @@ func (cfg *RouterConfig) GetJackpotHits(ctx context.Context, c *app.RequestConte
 	handler.SendSuccess(c, map[string]interface{}{
 		"jackpotId": jackpotID,
 		"hits":      resp.Winners,
-		"total":     resp.Total,
+		"total":     len(resp.Winners),
 	})
 }
 
@@ -134,7 +134,7 @@ func (cfg *RouterConfig) ListBonuses(ctx context.Context, c *app.RequestContext)
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"bonuses": resp.Bonuses,
-		"total":   resp.Total,
+		"total":   len(resp.Bonuses),
 	})
 }
 

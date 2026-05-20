@@ -5,7 +5,7 @@ package game_engine.tournament.v1;
 import "google/protobuf/timestamp.proto";
 import "common/v1/pagination.proto";
 
-option go_package = "gen/go/tournament/v1;tournamentv1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/tournament/v1;tournamentv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.tournament.v1";
 
@@ -13,7 +13,7 @@ option java_package = "com.game_engine.tournament.v1";
 service TournamentService {
   // Tournament management
   rpc CreateTournament(CreateTournamentRequest) returns (TournamentResponse);
-  rpc GetTournament(GetTournamentRequest) returns (TournamentResponse);
+  rpc GetTournament(GetTournamentRequest) returns (GetTournamentResponse);
   rpc ListTournaments(ListTournamentsRequest) returns (ListTournamentsResponse);
   rpc UpdateTournament(UpdateTournamentRequest) returns (TournamentResponse);
   rpc CancelTournament(CancelTournamentRequest) returns (CancelTournamentResponse);
@@ -29,6 +29,11 @@ service TournamentService {
   
   // User tournaments
   rpc GetUserTournaments(GetUserTournamentsRequest) returns (GetUserTournamentsResponse);
+
+  rpc JoinTournament(JoinTournamentRequest) returns (JoinTournamentResponse);
+  rpc LeaveTournament(LeaveTournamentRequest) returns (LeaveTournamentResponse);
+  rpc UpdateScore(UpdateScoreRequest) returns (UpdateScoreResponse);
+  rpc GetMyTournaments(GetMyTournamentsRequest) returns (GetMyTournamentsResponse);
 }
 
 // Tournament message
@@ -199,4 +204,49 @@ message UserTournament {
   string status = 5;
   google.protobuf.Timestamp start_time = 6;
   google.protobuf.Timestamp end_time = 7;
+}
+
+message GetTournamentResponse {
+  Tournament tournament = 1;
+}
+
+message JoinTournamentRequest {
+  string tournament_id = 1;
+  string user_id = 2;
+}
+
+message JoinTournamentResponse {
+  bool success = 1;
+  int32 position = 2;
+  string message = 3;
+}
+
+message LeaveTournamentRequest {
+  string tournament_id = 1;
+  string user_id = 2;
+}
+
+message LeaveTournamentResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message UpdateScoreRequest {
+  string tournament_id = 1;
+  string user_id = 2;
+  double score = 3;
+}
+
+message UpdateScoreResponse {
+  bool success = 1;
+  double new_score = 2;
+}
+
+message GetMyTournamentsRequest {
+  string user_id = 1;
+}
+
+message GetMyTournamentsResponse {
+  repeated UserTournament tournaments = 1;
+  int32 total = 2;
 }

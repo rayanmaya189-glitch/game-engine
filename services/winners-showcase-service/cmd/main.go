@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	winnersv1 "github.com/game_engine/winners-showcase-service/gen/go/winners/v1"
+	winnersv1 "github.com/game_engine/common-service/proto/gen/go/winners/v1"
 	"github.com/game_engine/winners-showcase-service/internal/config"
 	"github.com/game_engine/winners-showcase-service/internal/handler"
 	"github.com/game_engine/winners-showcase-service/internal/repository"

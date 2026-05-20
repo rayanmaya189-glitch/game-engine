@@ -5,7 +5,7 @@ package game_engine.affiliate.v1;
 import "google/protobuf/timestamp.proto";
 import "common/v1/pagination.proto";
 
-option go_package = "gen/go/affiliate/v1;affiliatev1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/affiliate/v1;affiliatev1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.affiliate.v1";
 
@@ -40,6 +40,13 @@ service AffiliateService {
   
   // Redirect
   rpc RedirectToRegistration(RedirectToRegistrationRequest) returns (RedirectToRegistrationResponse);
+
+  // Reporting and link management
+  rpc GetPerformanceReport(GetPerformanceReportRequest) returns (GetPerformanceReportResponse);
+  rpc GetClickReports(GetClickReportsRequest) returns (GetClickReportsResponse);
+  rpc GetConversionReports(GetConversionReportsRequest) returns (GetConversionReportsResponse);
+  rpc GetAffiliateLinks(GetAffiliateLinksRequest) returns (GetAffiliateLinksResponse);
+  rpc CreateAffiliateLink(CreateAffiliateLinkRequest) returns (CreateAffiliateLinkResponse);
 }
 
 // Affiliate message
@@ -241,3 +248,93 @@ message RedirectToRegistrationRequest {
 message RedirectToRegistrationResponse {
   string redirect_url = 1;
 }
+
+// GetPerformanceReport
+message GetPerformanceReportRequest {
+  string affiliate_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+
+message GetPerformanceReportResponse {
+  int64 total_clicks = 1;
+  int64 total_conversions = 2;
+  double conversion_rate = 3;
+  double total_revenue = 4;
+  double commission = 5;
+}
+
+// GetClickReports
+message GetClickReportsRequest {
+  string affiliate_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+  int32 page = 4;
+  int32 limit = 5;
+}
+
+message GetClickReportsResponse {
+  repeated ClickReport clicks = 1;
+  int32 total = 2;
+}
+
+message ClickReport {
+  string click_id = 1;
+  string ip_address = 2;
+  string user_agent = 3;
+  int64 timestamp = 4;
+  bool converted = 5;
+}
+
+// GetConversionReports
+message GetConversionReportsRequest {
+  string affiliate_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+  int32 page = 4;
+  int32 limit = 5;
+}
+
+message GetConversionReportsResponse {
+  repeated ConversionReport conversions = 1;
+  int32 total = 2;
+}
+
+message ConversionReport {
+  string conversion_id = 1;
+  string click_id = 2;
+  string player_id = 3;
+  double revenue = 4;
+  double commission = 5;
+  int64 timestamp = 6;
+}
+
+// GetAffiliateLinks
+message GetAffiliateLinksRequest {
+  string affiliate_id = 1;
+}
+
+message GetAffiliateLinksResponse {
+  repeated AffiliateLink links = 1;
+}
+
+message AffiliateLink {
+  string link_id = 1;
+  string code = 2;
+  string url = 3;
+  string campaign = 4;
+}
+
+// CreateAffiliateLink
+message CreateAffiliateLinkRequest {
+  string affiliate_id = 1;
+  string campaign = 2;
+  string url_template = 3;
+}
+
+message CreateAffiliateLinkResponse {
+  string link_id = 1;
+  string code = 2;
+  string url = 3;
+}
+

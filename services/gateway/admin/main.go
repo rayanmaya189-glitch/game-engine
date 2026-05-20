@@ -159,7 +159,7 @@ func main() {
 		server.WithWriteTimeout(time.Duration(cfg.Server.WriteTimeout)*time.Second),
 	)
 
-	router := NewRouter(&RouterConfig{
+	SetupRoutes(h.Engine, &RouterConfig{
 		AuthMiddleware:        authMiddleware,
 		LoggerMiddleware:      loggerMiddleware,
 		RateLimiterMiddleware: rateLimiterMiddleware,
@@ -176,17 +176,15 @@ func main() {
 		JackpotClient:         jackpotClient,
 		AllowedIPs:            cfg.Admin.AllowedIPs,
 	})
-
-	h.SetRouter(router)
-	h.SetNotFoundHandler(errorHandler.NotFoundHandler)
-	h.SetMethodNotAllowedHandler(errorHandler.MethodNotAllowedHandler)
+	h.NoRoute(errorHandler.NotFoundHandler)
+	h.NoMethod(errorHandler.MethodNotAllowedHandler)
 
 	go func() {
 		sigChan := make(chan os.Signal, 1)
 		signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 		<-sigChan
 		log.Println("Shutting down server...")
-		h.Shutdown()
+		h.Shutdown(context.Background())
 	}()
 
 	log.Printf("Admin Gateway starting on %s:%d", cfg.Server.Host, cfg.Server.Port)

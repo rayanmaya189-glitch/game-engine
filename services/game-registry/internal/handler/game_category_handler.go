@@ -3,6 +3,7 @@ package handler
 import (
 	"context"
 
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
 	gamesv1 "github.com/game_engine/common-service/proto/gen/go/game/v1"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
@@ -25,7 +26,7 @@ func (h *GameHandler) GetCategories(ctx context.Context, req *gamesv1.GetCategor
 			BannerUrl:   c.BannerURL,
 			ParentId:    c.ParentID,
 			SortOrder:   int32(c.SortOrder),
-			Status:      gamesv1.Status(c.Status),
+			Status:      commonv1.Status(c.Status),
 			IsFeatured:  c.IsFeatured,
 			GamesCount:  int32(c.GamesCount),
 			Slug:        c.Slug,
@@ -52,7 +53,7 @@ func (h *GameHandler) GetProviders(ctx context.Context, req *gamesv1.GetProvider
 			Description: p.Description,
 			LogoUrl:     p.LogoURL,
 			WebsiteUrl:  p.WebsiteURL,
-			Status:      gamesv1.Status(p.Status),
+			Status:      commonv1.Status(p.Status),
 			GamesCount:  int32(p.GamesCount),
 			License:     p.License,
 			Established: int32(p.Established),

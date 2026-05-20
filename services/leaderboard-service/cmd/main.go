@@ -8,7 +8,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	leaderv1 "github.com/game_engine/leaderboard-service/gen/go/leaderboard/v1"
+	leaderv1 "github.com/game_engine/common-service/proto/gen/go/leaderboard/v1"
 	"github.com/game_engine/leaderboard-service/internal/config"
 	"github.com/game_engine/leaderboard-service/internal/handler"
 	"github.com/game_engine/leaderboard-service/internal/repository"

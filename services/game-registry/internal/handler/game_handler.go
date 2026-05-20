@@ -2,7 +2,9 @@ package handler
 
 import (
 	"context"
+	"strings"
 
+	commonv1 "github.com/game_engine/common-service/proto/gen/go/common/v1"
 	gamesv1 "github.com/game_engine/common-service/proto/gen/go/game/v1"
 
 	"github.com/game_engine/game-registry/internal/enums"
@@ -61,12 +63,12 @@ func (h *GameHandler) ListGames(ctx context.Context, req *gamesv1.ListGamesReque
 		games[i] = gameSummaryToProto(&g)
 	}
 
-	var pagination *gamesv1.PaginationResponse
+	var pagination *commonv1.PaginationResponse
 	if resp.Pagination != nil {
-		pagination = &gamesv1.PaginationResponse{
+		pagination = &commonv1.PaginationResponse{
 			Page:       resp.Pagination.Page,
 			PageSize:   resp.Pagination.PageSize,
-			TotalCount: resp.Pagination.TotalCount,
+			TotalItems: resp.Pagination.TotalCount,
 			TotalPages: resp.Pagination.TotalPages,
 		}
 	}
@@ -121,7 +123,7 @@ func (h *GameHandler) GetGameConfig(ctx context.Context, req *gamesv1.GetGameCon
 			GameUrl:      config.GameURL,
 			PlayerId:     config.PlayerID,
 			Currency:     config.Currency,
-			Language:     config.Language,
+			Language:     toProtoLanguage(config.Language),
 		},
 		GameUrl:      config.GameURL,
 		SessionToken: config.SessionToken,
@@ -233,8 +235,8 @@ func gameSummaryToProto(g *model.GameSummary) *gamesv1.GameSummary {
 		ProviderName:    g.ProviderName,
 		CategoryId:      g.CategoryID,
 		CategoryName:    g.CategoryName,
-		Type:            gamesv1.GameCategoryEnum(g.Type),
-		Status:          gamesv1.Status(g.Status),
+		Type:            commonv1.GameCategory(g.Type),
+		Status:          commonv1.Status(g.Status),
 		ThumbnailUrl:    g.ThumbnailURL,
 		BannerUrl:       g.BannerURL,
 		Rtp:             g.RTP,
@@ -259,8 +261,8 @@ func gameModelToProto(g *model.Game) *gamesv1.Game {
 		ProviderName: g.ProviderName,
 		CategoryId:   g.CategoryID,
 		CategoryName: g.CategoryName,
-		Type:         gamesv1.GameCategoryEnum(g.Type),
-		Status:       gamesv1.Status(g.Status),
+		Type:         commonv1.GameCategory(g.Type),
+		Status:       commonv1.Status(g.Status),
 		ThumbnailUrl: g.ThumbnailURL,
 		BannerUrl:    g.BannerURL,
 		Rtp:          g.RTP,
@@ -272,4 +274,12 @@ func gameModelToProto(g *model.Game) *gamesv1.Game {
 		IsJackpot:    g.IsJackpot,
 		LaunchUrl:    g.LaunchURL,
 	}
+}
+
+func toProtoLanguage(langStr string) commonv1.Language {
+	val, ok := commonv1.Language_value["LANGUAGE_"+strings.ToUpper(langStr)]
+	if !ok {
+		return commonv1.Language_LANGUAGE_UNSPECIFIED
+	}
+	return commonv1.Language(val)
 }

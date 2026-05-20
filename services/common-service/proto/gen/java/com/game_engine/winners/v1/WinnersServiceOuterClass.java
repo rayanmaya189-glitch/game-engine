@@ -159,9 +159,10 @@ public final class WinnersServiceOuterClass {
       "ttingsResponse\022\204\001\n\025UpdatePrivacySettings" +
       "\0224.game_engine.winners.v1.UpdatePrivacyS" +
       "ettingsRequest\0325.game_engine.winners.v1." +
-      "UpdatePrivacySettingsResponseB;\n\032com.gam" +
-      "e_engine.winners.v1P\001Z\033gen/go/winners/v1" +
-      ";winnersv1b\006proto3"
+      "UpdatePrivacySettingsResponseBg\n\032com.gam" +
+      "e_engine.winners.v1P\001ZGgithub.com/game_e" +
+      "ngine/common-service/proto/gen/go/winner" +
+      "s/v1;winnersv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -7,7 +7,7 @@ import (
 
 	jackpotpb "github.com/game_engine/common-service/proto/gen/go/jackpot/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // ListJackpots handles listing jackpots

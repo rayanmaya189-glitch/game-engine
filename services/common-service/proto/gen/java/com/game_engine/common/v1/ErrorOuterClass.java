@@ -95,8 +95,9 @@ public final class ErrorOuterClass {
       "\020\026\022#\n\037ERROR_CODE_INSUFFICIENT_BALANCE\020\027\022" +
       "\031\n\025ERROR_CODE_BET_FAILED\020\030\022\035\n\031ERROR_CODE" +
       "_GAME_NOT_FOUND\020\031\022\037\n\033ERROR_CODE_GAME_UNA" +
-      "VAILABLE\020\032B8\n\031com.game_engine.common.v1P" +
-      "\001Z\031gen/go/common/v1;commonv1b\006proto3"
+      "VAILABLE\020\032Bd\n\031com.game_engine.common.v1P" +
+      "\001ZEgithub.com/game_engine/common-service" +
+      "/proto/gen/go/common/v1;commonv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

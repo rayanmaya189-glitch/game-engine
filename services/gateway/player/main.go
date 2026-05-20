@@ -12,9 +12,9 @@ import (
 	"github.com/cloudwego/hertz/pkg/app/server"
 	"github.com/redis/go-redis/v9"
 
-	"client"
-	"handler"
-	"middleware"
+	"github.com/game_engine/gateway/common/client"
+	"github.com/game_engine/gateway/common/handler"
+	"github.com/game_engine/gateway/common/middleware"
 )
 
 type Config struct {

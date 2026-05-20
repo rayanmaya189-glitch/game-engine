@@ -7,4 +7,16 @@ package com.game_engine.commission.v1;
 public interface GetPendingCommissionsRequestOrBuilder extends
     // @@protoc_insertion_point(interface_extends:game_engine.commission.v1.GetPendingCommissionsRequest)
     com.google.protobuf.MessageOrBuilder {
+
+  /**
+   * <code>string agent_id = 1 [json_name = "agentId"];</code>
+   * @return The agentId.
+   */
+  java.lang.String getAgentId();
+  /**
+   * <code>string agent_id = 1 [json_name = "agentId"];</code>
+   * @return The bytes for agentId.
+   */
+  com.google.protobuf.ByteString
+      getAgentIdBytes();
 }

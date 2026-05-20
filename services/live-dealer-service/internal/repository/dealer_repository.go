@@ -179,3 +179,12 @@ func (r *LiveDealerRepository) ListDealers(ctx context.Context, status string) (
 	}
 	return dealers, nil
 }
+
+type StreamInfo struct {
+	IsLive bool
+}
+
+func (r *LiveDealerRepository) GetStreamInfo(ctx context.Context, tableID string) (*StreamInfo, error) {
+	return &StreamInfo{IsLive: true}, nil
+}
+

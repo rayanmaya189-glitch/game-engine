@@ -97,8 +97,9 @@ public final class Timestamp {
       "\rtimeRemaining\022F\n\021warning_threshold\030\004 \001(" +
       "\0132\031.google.protobuf.DurationR\020warningThr" +
       "eshold\022\037\n\013should_warn\030\005 \001(\010R\nshouldWarnB" +
-      "8\n\031com.game_engine.common.v1P\001Z\031gen/go/c" +
-      "ommon/v1;commonv1b\006proto3"
+      "d\n\031com.game_engine.common.v1P\001ZEgithub.c" +
+      "om/game_engine/common-service/proto/gen/" +
+      "go/common/v1;commonv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

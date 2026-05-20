@@ -2,9 +2,9 @@ package main
 
 import (
 	"github.com/cloudwego/hertz/pkg/route"
-	"common/client"
-	"common/handler"
-	"common/middleware"
+	"github.com/game_engine/gateway/common/client"
+	"github.com/game_engine/gateway/common/handler"
+	"github.com/game_engine/gateway/common/middleware"
 )
 
 type RouterConfig struct {
@@ -25,7 +25,7 @@ type RouterConfig struct {
 	PaymentClient         *client.PaymentClient
 }
 
-func NewRouter(cfg *RouterConfig) *route.Router {
+func NewRouter(cfg *RouterConfig) *route.Engine {
 	r := route.New()
 
 	r.Use(cfg.LoggerMiddleware.RequestID())

@@ -5,7 +5,7 @@ package game_engine.commission.v1;
 import "google/protobuf/timestamp.proto";
 import "common/v1/pagination.proto";
 
-option go_package = "gen/go/commission/v1;commissionv1";
+option go_package = "github.com/game_engine/common-service/proto/gen/go/commission/v1;commissionv1";
 option java_multiple_files = true;
 option java_package = "com.game_engine.commission.v1";
 
@@ -37,6 +37,13 @@ service CommissionService {
   rpc GetPendingCommissions(GetPendingCommissionsRequest) returns (GetPendingCommissionsResponse);
   rpc GetAllCommissions(GetAllCommissionsRequest) returns (GetAllCommissionsResponse);
   rpc DeleteCommission(DeleteCommissionRequest) returns (DeleteCommissionResponse);
+
+  rpc SubmitClaim(SubmitClaimRequest) returns (SubmitClaimResponse);
+  rpc GetUserClaims(GetUserClaimsRequest) returns (GetUserClaimsResponse);
+  rpc GetClaimsByStatus(GetClaimsByStatusRequest) returns (GetClaimsByStatusResponse);
+  rpc ClaimCommission(ClaimCommissionRequest) returns (ClaimCommissionResponse);
+  rpc GetAgentCommissions(GetAgentCommissionsRequest) returns (GetAgentCommissionsResponse);
+  rpc GetCommissionHistory(GetCommissionHistoryRequest) returns (GetCommissionHistoryResponse);
 }
 
 // =============================================================================
@@ -245,10 +252,13 @@ message PayCommissionResponse {
   Commission commission = 1;
 }
 
-message GetPendingCommissionsRequest {}
+message GetPendingCommissionsRequest {
+  string agent_id = 1;
+}
 
 message GetPendingCommissionsResponse {
   repeated Commission commissions = 1;
+  repeated Commission pending = 2;
 }
 
 message GetAllCommissionsRequest {}
@@ -676,3 +686,78 @@ message GetUserTotalSettledRequest {
 message GetUserTotalSettledResponse {
   double total_settled = 1;
 }
+
+message SubmitClaimRequest {
+  string user_id = 1;
+  string affiliate_id = 2;
+  string commission_id = 3;
+  double amount = 4;
+  string claim_reason = 5;
+}
+
+message SubmitClaimResponse {
+  string claim_id = 1;
+  string status = 2;
+}
+
+message GetUserClaimsRequest {
+  string user_id = 1;
+  string claim_id = 2;
+}
+
+message GetUserClaimsResponse {
+  repeated CommissionClaimMsg claims = 1;
+}
+
+message GetClaimsByStatusRequest {
+  string user_id = 1;
+  string status = 2;
+  int32 page = 3;
+  int32 limit = 4;
+}
+
+message GetClaimsByStatusResponse {
+  repeated CommissionClaimMsg claims = 1;
+  int32 total = 2;
+  int32 page = 3;
+  int32 total_pages = 4;
+}
+
+message ClaimCommissionRequest {
+  string claim_id = 1;
+  string user_id = 2;
+  string agent_id = 3;
+  string commission_id = 4;
+  double amount = 5;
+}
+
+message ClaimCommissionResponse {
+  string transaction_id = 1;
+  double amount = 2;
+  string message = 3;
+}
+
+
+
+message GetAgentCommissionsRequest {
+  string agent_id = 1;
+  string start_date = 2;
+  string end_date = 3;
+}
+
+message GetAgentCommissionsResponse {
+  repeated Commission commissions = 1;
+  int32 total = 2;
+}
+
+message GetCommissionHistoryRequest {
+  string agent_id = 1;
+  string page = 2;
+  string limit = 3;
+}
+
+message GetCommissionHistoryResponse {
+  repeated Commission history = 1;
+  int32 total = 2;
+}
+

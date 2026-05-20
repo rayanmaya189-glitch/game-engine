@@ -440,9 +440,10 @@ public final class UserServiceOuterClass {
       "t\032,.game_engine.user.v1.GetPlayerLimitsR" +
       "esponse\022`\n\013SelfExclude\022\'.game_engine.use" +
       "r.v1.SelfExcludeRequest\032(.game_engine.us" +
-      "er.v1.SelfExcludeResponseB2\n\027com.game_en" +
-      "gine.user.v1P\001Z\025gen/go/user/v1;userv1b\006p" +
-      "roto3"
+      "er.v1.SelfExcludeResponseB^\n\027com.game_en" +
+      "gine.user.v1P\001ZAgithub.com/game_engine/c" +
+      "ommon-service/proto/gen/go/user/v1;userv" +
+      "1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

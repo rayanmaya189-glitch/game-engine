@@ -159,9 +159,10 @@ public final class RiskServiceOuterClass {
       "_engine.risk.v1.GetRiskScoreResponse\022l\n\017" +
       "UpdateRiskScore\022+.game_engine.risk.v1.Up" +
       "dateRiskScoreRequest\032,.game_engine.risk." +
-      "v1.UpdateRiskScoreResponseB2\n\027com.game_e" +
-      "ngine.risk.v1P\001Z\025gen/go/risk/v1;riskv1b\006" +
-      "proto3"
+      "v1.UpdateRiskScoreResponseB^\n\027com.game_e" +
+      "ngine.risk.v1P\001ZAgithub.com/game_engine/" +
+      "common-service/proto/gen/go/risk/v1;risk" +
+      "v1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

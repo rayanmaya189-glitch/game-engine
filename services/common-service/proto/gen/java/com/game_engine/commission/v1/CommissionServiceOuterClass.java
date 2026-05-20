@@ -575,6 +575,66 @@ public final class CommissionServiceOuterClass {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_game_engine_commission_v1_GetUserTotalSettledResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_SubmitClaimRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_SubmitClaimRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_SubmitClaimResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_SubmitClaimResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetUserClaimsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetUserClaimsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetUserClaimsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetUserClaimsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetClaimsByStatusRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetClaimsByStatusRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetClaimsByStatusResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetClaimsByStatusResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_ClaimCommissionRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_ClaimCommissionRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_ClaimCommissionResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_ClaimCommissionResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetAgentCommissionsRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetAgentCommissionsRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetAgentCommissionsResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetAgentCommissionsResponse_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetCommissionHistoryRequest_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetCommissionHistoryRequest_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_game_engine_commission_v1_GetCommissionHistoryResponse_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_game_engine_commission_v1_GetCommissionHistoryResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -669,437 +729,496 @@ public final class CommissionServiceOuterClass {
       "mmission\"&\n\024PayCommissionRequest\022\016\n\002id\030\001" +
       " \001(\003R\002id\"^\n\025PayCommissionResponse\022E\n\ncom" +
       "mission\030\001 \001(\0132%.game_engine.commission.v" +
-      "1.CommissionR\ncommission\"\036\n\034GetPendingCo" +
-      "mmissionsRequest\"h\n\035GetPendingCommission" +
-      "sResponse\022G\n\013commissions\030\001 \003(\0132%.game_en" +
-      "gine.commission.v1.CommissionR\013commissio" +
-      "ns\"\032\n\030GetAllCommissionsRequest\"d\n\031GetAll" +
-      "CommissionsResponse\022G\n\013commissions\030\001 \003(\013" +
-      "2%.game_engine.commission.v1.CommissionR" +
-      "\013commissions\")\n\027DeleteCommissionRequest\022" +
-      "\016\n\002id\030\001 \001(\003R\002id\"4\n\030DeleteCommissionRespo" +
-      "nse\022\030\n\007success\030\001 \001(\010R\007success\"\322\004\n\020Commis" +
-      "sionConfig\022\016\n\002id\030\001 \001(\003R\002id\022\037\n\013merchant_i" +
-      "d\030\002 \001(\003R\nmerchantId\022!\n\014affiliate_id\030\003 \001(" +
-      "\003R\013affiliateId\022\'\n\017commission_type\030\004 \001(\tR" +
-      "\016commissionType\022,\n\022revenue_share_rate\030\005 " +
-      "\001(\001R\020revenueShareRate\022\031\n\010cpa_rate\030\006 \001(\001R" +
-      "\007cpaRate\022\037\n\013min_players\030\007 \001(\005R\nminPlayer" +
-      "s\022\033\n\ttier_rate\030\010 \001(\001R\010tierRate\022%\n\016tier_t" +
-      "hreshold\030\t \001(\005R\rtierThreshold\022\033\n\tis_acti" +
-      "ve\030\n \001(\010R\010isActive\022A\n\016effective_from\030\013 \001" +
-      "(\0132\032.google.protobuf.TimestampR\reffectiv" +
-      "eFrom\022=\n\014effective_to\030\014 \001(\0132\032.google.pro" +
-      "tobuf.TimestampR\013effectiveTo\0229\n\ncreated_" +
-      "at\030\r \001(\0132\032.google.protobuf.TimestampR\tcr" +
-      "eatedAt\0229\n\nupdated_at\030\016 \001(\0132\032.google.pro" +
-      "tobuf.TimestampR\tupdatedAt\"d\n\035CreateComm" +
-      "issionConfigRequest\022C\n\006config\030\001 \001(\0132+.ga" +
-      "me_engine.commission.v1.CommissionConfig" +
-      "R\006config\"e\n\036CreateCommissionConfigRespon" +
-      "se\022C\n\006config\030\001 \001(\0132+.game_engine.commiss" +
-      "ion.v1.CommissionConfigR\006config\"&\n\024GetCo" +
-      "nfigByIdRequest\022\016\n\002id\030\001 \001(\003R\002id\"r\n\025GetCo" +
-      "nfigByIdResponse\022C\n\006config\030\001 \001(\0132+.game_" +
-      "engine.commission.v1.CommissionConfigR\006c" +
-      "onfig\022\024\n\005found\030\002 \001(\010R\005found\"A\n\034GetConfig" +
-      "sByAffiliateRequest\022!\n\014affiliate_id\030\001 \001(" +
-      "\003R\013affiliateId\"f\n\035GetConfigsByAffiliateR" +
-      "esponse\022E\n\007configs\030\001 \003(\0132+.game_engine.c" +
-      "ommission.v1.CommissionConfigR\007configs\">" +
-      "\n\033GetConfigsByMerchantRequest\022\037\n\013merchan" +
-      "t_id\030\001 \001(\003R\nmerchantId\"e\n\034GetConfigsByMe" +
-      "rchantResponse\022E\n\007configs\030\001 \003(\0132+.game_e" +
-      "ngine.commission.v1.CommissionConfigR\007co" +
-      "nfigs\"G\n\"GetActiveConfigsByAffiliateRequ" +
-      "est\022!\n\014affiliate_id\030\001 \001(\003R\013affiliateId\"l" +
-      "\n#GetActiveConfigsByAffiliateResponse\022E\n" +
-      "\007configs\030\001 \003(\0132+.game_engine.commission." +
-      "v1.CommissionConfigR\007configs\"s\n-GetActiv" +
-      "eConfigsByAffiliateAndMerchantRequest\022!\n" +
-      "\014affiliate_id\030\001 \001(\003R\013affiliateId\022\037\n\013merc" +
-      "hant_id\030\002 \001(\003R\nmerchantId\"w\n.GetActiveCo" +
-      "nfigsByAffiliateAndMerchantResponse\022E\n\007c" +
-      "onfigs\030\001 \003(\0132+.game_engine.commission.v1" +
-      ".CommissionConfigR\007configs\"\207\001\n-GetConfig" +
-      "ByAffiliateAndMerchantAndTypeRequest\022!\n\014" +
-      "affiliate_id\030\001 \001(\003R\013affiliateId\022\037\n\013merch" +
-      "ant_id\030\002 \001(\003R\nmerchantId\022\022\n\004type\030\003 \001(\tR\004" +
-      "type\"\213\001\n.GetConfigByAffiliateAndMerchant" +
-      "AndTypeResponse\022C\n\006config\030\001 \001(\0132+.game_e" +
+      "1.CommissionR\ncommission\"9\n\034GetPendingCo" +
+      "mmissionsRequest\022\031\n\010agent_id\030\001 \001(\tR\007agen" +
+      "tId\"\251\001\n\035GetPendingCommissionsResponse\022G\n" +
+      "\013commissions\030\001 \003(\0132%.game_engine.commiss" +
+      "ion.v1.CommissionR\013commissions\022?\n\007pendin" +
+      "g\030\002 \003(\0132%.game_engine.commission.v1.Comm" +
+      "issionR\007pending\"\032\n\030GetAllCommissionsRequ" +
+      "est\"d\n\031GetAllCommissionsResponse\022G\n\013comm" +
+      "issions\030\001 \003(\0132%.game_engine.commission.v" +
+      "1.CommissionR\013commissions\")\n\027DeleteCommi" +
+      "ssionRequest\022\016\n\002id\030\001 \001(\003R\002id\"4\n\030DeleteCo" +
+      "mmissionResponse\022\030\n\007success\030\001 \001(\010R\007succe" +
+      "ss\"\322\004\n\020CommissionConfig\022\016\n\002id\030\001 \001(\003R\002id\022" +
+      "\037\n\013merchant_id\030\002 \001(\003R\nmerchantId\022!\n\014affi" +
+      "liate_id\030\003 \001(\003R\013affiliateId\022\'\n\017commissio" +
+      "n_type\030\004 \001(\tR\016commissionType\022,\n\022revenue_" +
+      "share_rate\030\005 \001(\001R\020revenueShareRate\022\031\n\010cp" +
+      "a_rate\030\006 \001(\001R\007cpaRate\022\037\n\013min_players\030\007 \001" +
+      "(\005R\nminPlayers\022\033\n\ttier_rate\030\010 \001(\001R\010tierR" +
+      "ate\022%\n\016tier_threshold\030\t \001(\005R\rtierThresho" +
+      "ld\022\033\n\tis_active\030\n \001(\010R\010isActive\022A\n\016effec" +
+      "tive_from\030\013 \001(\0132\032.google.protobuf.Timest" +
+      "ampR\reffectiveFrom\022=\n\014effective_to\030\014 \001(\013" +
+      "2\032.google.protobuf.TimestampR\013effectiveT" +
+      "o\0229\n\ncreated_at\030\r \001(\0132\032.google.protobuf." +
+      "TimestampR\tcreatedAt\0229\n\nupdated_at\030\016 \001(\013" +
+      "2\032.google.protobuf.TimestampR\tupdatedAt\"" +
+      "d\n\035CreateCommissionConfigRequest\022C\n\006conf" +
+      "ig\030\001 \001(\0132+.game_engine.commission.v1.Com" +
+      "missionConfigR\006config\"e\n\036CreateCommissio" +
+      "nConfigResponse\022C\n\006config\030\001 \001(\0132+.game_e" +
       "ngine.commission.v1.CommissionConfigR\006co" +
-      "nfig\022\024\n\005found\030\002 \001(\010R\005found\"t\n\035UpdateComm" +
-      "issionConfigRequest\022\016\n\002id\030\001 \001(\003R\002id\022C\n\006c" +
-      "onfig\030\002 \001(\0132+.game_engine.commission.v1." +
-      "CommissionConfigR\006config\"e\n\036UpdateCommis" +
-      "sionConfigResponse\022C\n\006config\030\001 \001(\0132+.gam" +
-      "e_engine.commission.v1.CommissionConfigR" +
-      "\006config\"\'\n\025ActivateConfigRequest\022\016\n\002id\030\001" +
-      " \001(\003R\002id\"]\n\026ActivateConfigResponse\022C\n\006co" +
-      "nfig\030\001 \001(\0132+.game_engine.commission.v1.C" +
-      "ommissionConfigR\006config\")\n\027DeactivateCon" +
-      "figRequest\022\016\n\002id\030\001 \001(\003R\002id\"_\n\030Deactivate" +
-      "ConfigResponse\022C\n\006config\030\001 \001(\0132+.game_en" +
-      "gine.commission.v1.CommissionConfigR\006con" +
-      "fig\"%\n\023DeleteConfigRequest\022\016\n\002id\030\001 \001(\003R\002" +
-      "id\"0\n\024DeleteConfigResponse\022\030\n\007success\030\001 " +
-      "\001(\010R\007success\"\026\n\024GetAllConfigsRequest\"^\n\025" +
-      "GetAllConfigsResponse\022E\n\007configs\030\001 \003(\0132+" +
-      ".game_engine.commission.v1.CommissionCon" +
-      "figR\007configs\"\360\003\n\022CommissionClaimMsg\022\016\n\002i" +
-      "d\030\001 \001(\003R\002id\022\027\n\007user_id\030\002 \001(\003R\006userId\022!\n\014" +
-      "affiliate_id\030\003 \001(\003R\013affiliateId\022#\n\rcommi" +
-      "ssion_id\030\004 \001(\003R\014commissionId\022\035\n\nclaim_ty" +
-      "pe\030\005 \001(\tR\tclaimType\022\026\n\006amount\030\006 \001(\001R\006amo" +
-      "unt\022\026\n\006status\030\007 \001(\tR\006status\022!\n\014claim_rea" +
-      "son\030\010 \001(\tR\013claimReason\022\035\n\nadmin_note\030\t \001" +
-      "(\tR\tadminNote\022=\n\014requested_at\030\n \001(\0132\032.go" +
-      "ogle.protobuf.TimestampR\013requestedAt\022=\n\014" +
-      "processed_at\030\013 \001(\0132\032.google.protobuf.Tim" +
-      "estampR\013processedAt\0223\n\007paid_at\030\014 \001(\0132\032.g" +
-      "oogle.protobuf.TimestampR\006paidAt\022%\n\016tran" +
-      "saction_id\030\r \001(\tR\rtransactionId\"\253\004\n\rRebe" +
-      "tClaimMsg\022\016\n\002id\030\001 \001(\003R\002id\022\027\n\007user_id\030\002 \001" +
-      "(\003R\006userId\022\031\n\010bonus_id\030\003 \001(\003R\007bonusId\022\035\n" +
-      "\nbonus_code\030\004 \001(\tR\tbonusCode\022\027\n\007game_id\030" +
-      "\005 \001(\003R\006gameId\022\025\n\006bet_id\030\006 \001(\003R\005betId\0222\n\025" +
-      "original_bonus_amount\030\007 \001(\001R\023originalBon" +
-      "usAmount\022+\n\021rebet_requirement\030\010 \001(\001R\020reb" +
-      "etRequirement\0220\n\024current_rebet_amount\030\t " +
-      "\001(\001R\022currentRebetAmount\022!\n\014claim_amount\030" +
-      "\n \001(\001R\013claimAmount\022\026\n\006status\030\013 \001(\tR\006stat" +
-      "us\0229\n\nexpires_at\030\014 \001(\0132\032.google.protobuf" +
-      ".TimestampR\texpiresAt\0229\n\nclaimed_at\030\r \001(" +
-      "\0132\032.google.protobuf.TimestampR\tclaimedAt" +
-      "\022%\n\016transaction_id\030\016 \001(\tR\rtransactionId\022" +
-      "\034\n\tclaimable\030\017 \001(\010R\tclaimable\"\244\005\n\021Insura" +
-      "nceClaimMsg\022\016\n\002id\030\001 \001(\003R\002id\022\027\n\007user_id\030\002" +
-      " \001(\003R\006userId\022\027\n\007game_id\030\003 \001(\003R\006gameId\022\025\n" +
-      "\006bet_id\030\004 \001(\003R\005betId\022.\n\023insurance_policy" +
-      "_id\030\005 \001(\tR\021insurancePolicyId\022\035\n\nclaim_ty" +
-      "pe\030\006 \001(\tR\tclaimType\022%\n\016insured_amount\030\007 " +
-      "\001(\001R\rinsuredAmount\022\037\n\013loss_amount\030\010 \001(\001R" +
-      "\nlossAmount\022!\n\014claim_amount\030\t \001(\001R\013claim" +
-      "Amount\022\026\n\006status\030\n \001(\tR\006status\022!\n\014claim_" +
-      "reason\030\013 \001(\tR\013claimReason\022)\n\020evidence_de" +
-      "tails\030\014 \001(\tR\017evidenceDetails\022\035\n\nadmin_no" +
-      "te\030\r \001(\tR\tadminNote\022\037\n\013reviewed_by\030\016 \001(\003" +
-      "R\nreviewedBy\022=\n\014requested_at\030\017 \001(\0132\032.goo" +
-      "gle.protobuf.TimestampR\013requestedAt\022;\n\013r" +
-      "eviewed_at\030\020 \001(\0132\032.google.protobuf.Times" +
-      "tampR\nreviewedAt\0223\n\007paid_at\030\021 \001(\0132\032.goog" +
-      "le.protobuf.TimestampR\006paidAt\022%\n\016transac" +
-      "tion_id\030\022 \001(\tR\rtransactionId\"\234\003\n\rSettlem" +
-      "entMsg\022\016\n\002id\030\001 \001(\003R\002id\022\027\n\007user_id\030\002 \001(\003R" +
-      "\006userId\022\'\n\017settlement_type\030\003 \001(\tR\016settle" +
-      "mentType\022\031\n\010claim_id\030\004 \001(\003R\007claimId\022\026\n\006a" +
-      "mount\030\005 \001(\001R\006amount\022!\n\014bonus_amount\030\006 \001(" +
-      "\001R\013bonusAmount\022\037\n\013rake_amount\030\007 \001(\001R\nrak" +
-      "eAmount\022\035\n\nnet_amount\030\010 \001(\001R\tnetAmount\022\026" +
-      "\n\006status\030\t \001(\tR\006status\022%\n\016payment_method" +
-      "\030\n \001(\tR\rpaymentMethod\022%\n\016transaction_id\030" +
-      "\013 \001(\tR\rtransactionId\022=\n\014completed_at\030\014 \001" +
-      "(\0132\032.google.protobuf.TimestampR\013complete" +
-      "dAt\"\272\001\n\034SubmitCommissionClaimRequest\022\027\n\007" +
-      "user_id\030\001 \001(\003R\006userId\022!\n\014affiliate_id\030\002 " +
-      "\001(\003R\013affiliateId\022#\n\rcommission_id\030\003 \001(\003R" +
-      "\014commissionId\022\026\n\006amount\030\004 \001(\001R\006amount\022!\n" +
-      "\014claim_reason\030\005 \001(\tR\013claimReason\"d\n\035Subm" +
-      "itCommissionClaimResponse\022C\n\005claim\030\001 \001(\013" +
-      "2-.game_engine.commission.v1.CommissionC" +
-      "laimMsgR\005claim\"9\n\036GetUserCommissionClaim" +
-      "sRequest\022\027\n\007user_id\030\001 \001(\003R\006userId\"h\n\037Get" +
-      "UserCommissionClaimsResponse\022E\n\006claims\030\001" +
-      " \003(\0132-.game_engine.commission.v1.Commiss" +
-      "ionClaimMsgR\006claims\"<\n\"GetCommissionClai" +
-      "msByStatusRequest\022\026\n\006status\030\001 \001(\tR\006statu" +
-      "s\"l\n#GetCommissionClaimsByStatusResponse" +
-      "\022E\n\006claims\030\001 \003(\0132-.game_engine.commissio" +
-      "n.v1.CommissionClaimMsgR\006claims\"/\n\035GetCo" +
-      "mmissionClaimByIdRequest\022\016\n\002id\030\001 \001(\003R\002id" +
-      "\"{\n\036GetCommissionClaimByIdResponse\022C\n\005cl" +
-      "aim\030\001 \001(\0132-.game_engine.commission.v1.Co" +
-      "mmissionClaimMsgR\005claim\022\024\n\005found\030\002 \001(\010R\005" +
-      "found\"N\n\035ApproveCommissionClaimRequest\022\016" +
-      "\n\002id\030\001 \001(\003R\002id\022\035\n\nadmin_note\030\002 \001(\tR\tadmi" +
-      "nNote\"e\n\036ApproveCommissionClaimResponse\022" +
-      "C\n\005claim\030\001 \001(\0132-.game_engine.commission." +
-      "v1.CommissionClaimMsgR\005claim\"M\n\034RejectCo" +
-      "mmissionClaimRequest\022\016\n\002id\030\001 \001(\003R\002id\022\035\n\n" +
-      "admin_note\030\002 \001(\tR\tadminNote\"d\n\035RejectCom" +
-      "missionClaimResponse\022C\n\005claim\030\001 \001(\0132-.ga" +
-      "me_engine.commission.v1.CommissionClaimM" +
-      "sgR\005claim\"+\n\031PayCommissionClaimRequest\022\016" +
-      "\n\002id\030\001 \001(\003R\002id\"a\n\032PayCommissionClaimResp" +
-      "onse\022C\n\005claim\030\001 \001(\0132-.game_engine.commis" +
-      "sion.v1.CommissionClaimMsgR\005claim\"\354\001\n\027Cr" +
-      "eateRebetClaimRequest\022\027\n\007user_id\030\001 \001(\003R\006" +
-      "userId\022\031\n\010bonus_id\030\002 \001(\003R\007bonusId\022\035\n\nbon" +
-      "us_code\030\003 \001(\tR\tbonusCode\022!\n\014bonus_amount" +
-      "\030\004 \001(\001R\013bonusAmount\022+\n\021rebet_requirement" +
-      "\030\005 \001(\001R\020rebetRequirement\022\027\n\007game_id\030\006 \001(" +
-      "\003R\006gameId\022\025\n\006bet_id\030\007 \001(\003R\005betId\"Z\n\030Crea" +
-      "teRebetClaimResponse\022>\n\005claim\030\001 \001(\0132(.ga" +
-      "me_engine.commission.v1.RebetClaimMsgR\005c" +
-      "laim\"`\n\032UpdateRebetProgressRequest\022\016\n\002id" +
-      "\030\001 \001(\003R\002id\0222\n\025additional_bet_amount\030\002 \001(" +
-      "\001R\023additionalBetAmount\"]\n\033UpdateRebetPro" +
-      "gressResponse\022>\n\005claim\030\001 \001(\0132(.game_engi" +
-      "ne.commission.v1.RebetClaimMsgR\005claim\"#\n" +
-      "\021ClaimRebetRequest\022\016\n\002id\030\001 \001(\003R\002id\"T\n\022Cl" +
-      "aimRebetResponse\022>\n\005claim\030\001 \001(\0132(.game_e" +
-      "ngine.commission.v1.RebetClaimMsgR\005claim" +
-      "\"4\n\031GetUserRebetClaimsRequest\022\027\n\007user_id" +
-      "\030\001 \001(\003R\006userId\"^\n\032GetUserRebetClaimsResp" +
-      "onse\022@\n\006claims\030\001 \003(\0132(.game_engine.commi" +
-      "ssion.v1.RebetClaimMsgR\006claims\"4\n\031GetCla" +
-      "imableRebetsRequest\022\027\n\007user_id\030\001 \001(\003R\006us" +
-      "erId\"^\n\032GetClaimableRebetsResponse\022@\n\006cl" +
-      "aims\030\001 \003(\0132(.game_engine.commission.v1.R" +
-      "ebetClaimMsgR\006claims\"\313\002\n\033SubmitInsurance" +
-      "ClaimRequest\022\027\n\007user_id\030\001 \001(\003R\006userId\022\027\n" +
-      "\007game_id\030\002 \001(\003R\006gameId\022\025\n\006bet_id\030\003 \001(\003R\005" +
-      "betId\022.\n\023insurance_policy_id\030\004 \001(\tR\021insu" +
-      "rancePolicyId\022\035\n\nclaim_type\030\005 \001(\tR\tclaim" +
-      "Type\022%\n\016insured_amount\030\006 \001(\001R\rinsuredAmo" +
-      "unt\022\037\n\013loss_amount\030\007 \001(\001R\nlossAmount\022!\n\014" +
-      "claim_reason\030\010 \001(\tR\013claimReason\022)\n\020evide" +
-      "nce_details\030\t \001(\tR\017evidenceDetails\"b\n\034Su" +
-      "bmitInsuranceClaimResponse\022B\n\005claim\030\001 \001(" +
-      "\0132,.game_engine.commission.v1.InsuranceC" +
-      "laimMsgR\005claim\"n\n\034ApproveInsuranceClaimR" +
-      "equest\022\016\n\002id\030\001 \001(\003R\002id\022\037\n\013reviewed_by\030\002 " +
-      "\001(\003R\nreviewedBy\022\035\n\nadmin_note\030\003 \001(\tR\tadm" +
-      "inNote\"c\n\035ApproveInsuranceClaimResponse\022" +
+      "nfig\"&\n\024GetConfigByIdRequest\022\016\n\002id\030\001 \001(\003" +
+      "R\002id\"r\n\025GetConfigByIdResponse\022C\n\006config\030" +
+      "\001 \001(\0132+.game_engine.commission.v1.Commis" +
+      "sionConfigR\006config\022\024\n\005found\030\002 \001(\010R\005found" +
+      "\"A\n\034GetConfigsByAffiliateRequest\022!\n\014affi" +
+      "liate_id\030\001 \001(\003R\013affiliateId\"f\n\035GetConfig" +
+      "sByAffiliateResponse\022E\n\007configs\030\001 \003(\0132+." +
+      "game_engine.commission.v1.CommissionConf" +
+      "igR\007configs\">\n\033GetConfigsByMerchantReque" +
+      "st\022\037\n\013merchant_id\030\001 \001(\003R\nmerchantId\"e\n\034G" +
+      "etConfigsByMerchantResponse\022E\n\007configs\030\001" +
+      " \003(\0132+.game_engine.commission.v1.Commiss" +
+      "ionConfigR\007configs\"G\n\"GetActiveConfigsBy" +
+      "AffiliateRequest\022!\n\014affiliate_id\030\001 \001(\003R\013" +
+      "affiliateId\"l\n#GetActiveConfigsByAffilia" +
+      "teResponse\022E\n\007configs\030\001 \003(\0132+.game_engin" +
+      "e.commission.v1.CommissionConfigR\007config" +
+      "s\"s\n-GetActiveConfigsByAffiliateAndMerch" +
+      "antRequest\022!\n\014affiliate_id\030\001 \001(\003R\013affili" +
+      "ateId\022\037\n\013merchant_id\030\002 \001(\003R\nmerchantId\"w" +
+      "\n.GetActiveConfigsByAffiliateAndMerchant" +
+      "Response\022E\n\007configs\030\001 \003(\0132+.game_engine." +
+      "commission.v1.CommissionConfigR\007configs\"" +
+      "\207\001\n-GetConfigByAffiliateAndMerchantAndTy" +
+      "peRequest\022!\n\014affiliate_id\030\001 \001(\003R\013affilia" +
+      "teId\022\037\n\013merchant_id\030\002 \001(\003R\nmerchantId\022\022\n" +
+      "\004type\030\003 \001(\tR\004type\"\213\001\n.GetConfigByAffilia" +
+      "teAndMerchantAndTypeResponse\022C\n\006config\030\001" +
+      " \001(\0132+.game_engine.commission.v1.Commiss" +
+      "ionConfigR\006config\022\024\n\005found\030\002 \001(\010R\005found\"" +
+      "t\n\035UpdateCommissionConfigRequest\022\016\n\002id\030\001" +
+      " \001(\003R\002id\022C\n\006config\030\002 \001(\0132+.game_engine.c" +
+      "ommission.v1.CommissionConfigR\006config\"e\n" +
+      "\036UpdateCommissionConfigResponse\022C\n\006confi" +
+      "g\030\001 \001(\0132+.game_engine.commission.v1.Comm" +
+      "issionConfigR\006config\"\'\n\025ActivateConfigRe" +
+      "quest\022\016\n\002id\030\001 \001(\003R\002id\"]\n\026ActivateConfigR" +
+      "esponse\022C\n\006config\030\001 \001(\0132+.game_engine.co" +
+      "mmission.v1.CommissionConfigR\006config\")\n\027" +
+      "DeactivateConfigRequest\022\016\n\002id\030\001 \001(\003R\002id\"" +
+      "_\n\030DeactivateConfigResponse\022C\n\006config\030\001 " +
+      "\001(\0132+.game_engine.commission.v1.Commissi" +
+      "onConfigR\006config\"%\n\023DeleteConfigRequest\022" +
+      "\016\n\002id\030\001 \001(\003R\002id\"0\n\024DeleteConfigResponse\022" +
+      "\030\n\007success\030\001 \001(\010R\007success\"\026\n\024GetAllConfi" +
+      "gsRequest\"^\n\025GetAllConfigsResponse\022E\n\007co" +
+      "nfigs\030\001 \003(\0132+.game_engine.commission.v1." +
+      "CommissionConfigR\007configs\"\360\003\n\022Commission" +
+      "ClaimMsg\022\016\n\002id\030\001 \001(\003R\002id\022\027\n\007user_id\030\002 \001(" +
+      "\003R\006userId\022!\n\014affiliate_id\030\003 \001(\003R\013affilia" +
+      "teId\022#\n\rcommission_id\030\004 \001(\003R\014commissionI" +
+      "d\022\035\n\nclaim_type\030\005 \001(\tR\tclaimType\022\026\n\006amou" +
+      "nt\030\006 \001(\001R\006amount\022\026\n\006status\030\007 \001(\tR\006status" +
+      "\022!\n\014claim_reason\030\010 \001(\tR\013claimReason\022\035\n\na" +
+      "dmin_note\030\t \001(\tR\tadminNote\022=\n\014requested_" +
+      "at\030\n \001(\0132\032.google.protobuf.TimestampR\013re" +
+      "questedAt\022=\n\014processed_at\030\013 \001(\0132\032.google" +
+      ".protobuf.TimestampR\013processedAt\0223\n\007paid" +
+      "_at\030\014 \001(\0132\032.google.protobuf.TimestampR\006p" +
+      "aidAt\022%\n\016transaction_id\030\r \001(\tR\rtransacti" +
+      "onId\"\253\004\n\rRebetClaimMsg\022\016\n\002id\030\001 \001(\003R\002id\022\027" +
+      "\n\007user_id\030\002 \001(\003R\006userId\022\031\n\010bonus_id\030\003 \001(" +
+      "\003R\007bonusId\022\035\n\nbonus_code\030\004 \001(\tR\tbonusCod" +
+      "e\022\027\n\007game_id\030\005 \001(\003R\006gameId\022\025\n\006bet_id\030\006 \001" +
+      "(\003R\005betId\0222\n\025original_bonus_amount\030\007 \001(\001" +
+      "R\023originalBonusAmount\022+\n\021rebet_requireme" +
+      "nt\030\010 \001(\001R\020rebetRequirement\0220\n\024current_re" +
+      "bet_amount\030\t \001(\001R\022currentRebetAmount\022!\n\014" +
+      "claim_amount\030\n \001(\001R\013claimAmount\022\026\n\006statu" +
+      "s\030\013 \001(\tR\006status\0229\n\nexpires_at\030\014 \001(\0132\032.go" +
+      "ogle.protobuf.TimestampR\texpiresAt\0229\n\ncl" +
+      "aimed_at\030\r \001(\0132\032.google.protobuf.Timesta" +
+      "mpR\tclaimedAt\022%\n\016transaction_id\030\016 \001(\tR\rt" +
+      "ransactionId\022\034\n\tclaimable\030\017 \001(\010R\tclaimab" +
+      "le\"\244\005\n\021InsuranceClaimMsg\022\016\n\002id\030\001 \001(\003R\002id" +
+      "\022\027\n\007user_id\030\002 \001(\003R\006userId\022\027\n\007game_id\030\003 \001" +
+      "(\003R\006gameId\022\025\n\006bet_id\030\004 \001(\003R\005betId\022.\n\023ins" +
+      "urance_policy_id\030\005 \001(\tR\021insurancePolicyI" +
+      "d\022\035\n\nclaim_type\030\006 \001(\tR\tclaimType\022%\n\016insu" +
+      "red_amount\030\007 \001(\001R\rinsuredAmount\022\037\n\013loss_" +
+      "amount\030\010 \001(\001R\nlossAmount\022!\n\014claim_amount" +
+      "\030\t \001(\001R\013claimAmount\022\026\n\006status\030\n \001(\tR\006sta" +
+      "tus\022!\n\014claim_reason\030\013 \001(\tR\013claimReason\022)" +
+      "\n\020evidence_details\030\014 \001(\tR\017evidenceDetail" +
+      "s\022\035\n\nadmin_note\030\r \001(\tR\tadminNote\022\037\n\013revi" +
+      "ewed_by\030\016 \001(\003R\nreviewedBy\022=\n\014requested_a" +
+      "t\030\017 \001(\0132\032.google.protobuf.TimestampR\013req" +
+      "uestedAt\022;\n\013reviewed_at\030\020 \001(\0132\032.google.p" +
+      "rotobuf.TimestampR\nreviewedAt\0223\n\007paid_at" +
+      "\030\021 \001(\0132\032.google.protobuf.TimestampR\006paid" +
+      "At\022%\n\016transaction_id\030\022 \001(\tR\rtransactionI" +
+      "d\"\234\003\n\rSettlementMsg\022\016\n\002id\030\001 \001(\003R\002id\022\027\n\007u" +
+      "ser_id\030\002 \001(\003R\006userId\022\'\n\017settlement_type\030" +
+      "\003 \001(\tR\016settlementType\022\031\n\010claim_id\030\004 \001(\003R" +
+      "\007claimId\022\026\n\006amount\030\005 \001(\001R\006amount\022!\n\014bonu" +
+      "s_amount\030\006 \001(\001R\013bonusAmount\022\037\n\013rake_amou" +
+      "nt\030\007 \001(\001R\nrakeAmount\022\035\n\nnet_amount\030\010 \001(\001" +
+      "R\tnetAmount\022\026\n\006status\030\t \001(\tR\006status\022%\n\016p" +
+      "ayment_method\030\n \001(\tR\rpaymentMethod\022%\n\016tr" +
+      "ansaction_id\030\013 \001(\tR\rtransactionId\022=\n\014com" +
+      "pleted_at\030\014 \001(\0132\032.google.protobuf.Timest" +
+      "ampR\013completedAt\"\272\001\n\034SubmitCommissionCla" +
+      "imRequest\022\027\n\007user_id\030\001 \001(\003R\006userId\022!\n\014af" +
+      "filiate_id\030\002 \001(\003R\013affiliateId\022#\n\rcommiss" +
+      "ion_id\030\003 \001(\003R\014commissionId\022\026\n\006amount\030\004 \001" +
+      "(\001R\006amount\022!\n\014claim_reason\030\005 \001(\tR\013claimR" +
+      "eason\"d\n\035SubmitCommissionClaimResponse\022C" +
+      "\n\005claim\030\001 \001(\0132-.game_engine.commission.v" +
+      "1.CommissionClaimMsgR\005claim\"9\n\036GetUserCo" +
+      "mmissionClaimsRequest\022\027\n\007user_id\030\001 \001(\003R\006" +
+      "userId\"h\n\037GetUserCommissionClaimsRespons" +
+      "e\022E\n\006claims\030\001 \003(\0132-.game_engine.commissi" +
+      "on.v1.CommissionClaimMsgR\006claims\"<\n\"GetC" +
+      "ommissionClaimsByStatusRequest\022\026\n\006status" +
+      "\030\001 \001(\tR\006status\"l\n#GetCommissionClaimsByS" +
+      "tatusResponse\022E\n\006claims\030\001 \003(\0132-.game_eng" +
+      "ine.commission.v1.CommissionClaimMsgR\006cl" +
+      "aims\"/\n\035GetCommissionClaimByIdRequest\022\016\n" +
+      "\002id\030\001 \001(\003R\002id\"{\n\036GetCommissionClaimByIdR" +
+      "esponse\022C\n\005claim\030\001 \001(\0132-.game_engine.com" +
+      "mission.v1.CommissionClaimMsgR\005claim\022\024\n\005" +
+      "found\030\002 \001(\010R\005found\"N\n\035ApproveCommissionC" +
+      "laimRequest\022\016\n\002id\030\001 \001(\003R\002id\022\035\n\nadmin_not" +
+      "e\030\002 \001(\tR\tadminNote\"e\n\036ApproveCommissionC" +
+      "laimResponse\022C\n\005claim\030\001 \001(\0132-.game_engin" +
+      "e.commission.v1.CommissionClaimMsgR\005clai" +
+      "m\"M\n\034RejectCommissionClaimRequest\022\016\n\002id\030" +
+      "\001 \001(\003R\002id\022\035\n\nadmin_note\030\002 \001(\tR\tadminNote" +
+      "\"d\n\035RejectCommissionClaimResponse\022C\n\005cla" +
+      "im\030\001 \001(\0132-.game_engine.commission.v1.Com" +
+      "missionClaimMsgR\005claim\"+\n\031PayCommissionC" +
+      "laimRequest\022\016\n\002id\030\001 \001(\003R\002id\"a\n\032PayCommis" +
+      "sionClaimResponse\022C\n\005claim\030\001 \001(\0132-.game_" +
+      "engine.commission.v1.CommissionClaimMsgR" +
+      "\005claim\"\354\001\n\027CreateRebetClaimRequest\022\027\n\007us" +
+      "er_id\030\001 \001(\003R\006userId\022\031\n\010bonus_id\030\002 \001(\003R\007b" +
+      "onusId\022\035\n\nbonus_code\030\003 \001(\tR\tbonusCode\022!\n" +
+      "\014bonus_amount\030\004 \001(\001R\013bonusAmount\022+\n\021rebe" +
+      "t_requirement\030\005 \001(\001R\020rebetRequirement\022\027\n" +
+      "\007game_id\030\006 \001(\003R\006gameId\022\025\n\006bet_id\030\007 \001(\003R\005" +
+      "betId\"Z\n\030CreateRebetClaimResponse\022>\n\005cla" +
+      "im\030\001 \001(\0132(.game_engine.commission.v1.Reb" +
+      "etClaimMsgR\005claim\"`\n\032UpdateRebetProgress" +
+      "Request\022\016\n\002id\030\001 \001(\003R\002id\0222\n\025additional_be" +
+      "t_amount\030\002 \001(\001R\023additionalBetAmount\"]\n\033U" +
+      "pdateRebetProgressResponse\022>\n\005claim\030\001 \001(" +
+      "\0132(.game_engine.commission.v1.RebetClaim" +
+      "MsgR\005claim\"#\n\021ClaimRebetRequest\022\016\n\002id\030\001 " +
+      "\001(\003R\002id\"T\n\022ClaimRebetResponse\022>\n\005claim\030\001" +
+      " \001(\0132(.game_engine.commission.v1.RebetCl" +
+      "aimMsgR\005claim\"4\n\031GetUserRebetClaimsReque" +
+      "st\022\027\n\007user_id\030\001 \001(\003R\006userId\"^\n\032GetUserRe" +
+      "betClaimsResponse\022@\n\006claims\030\001 \003(\0132(.game" +
+      "_engine.commission.v1.RebetClaimMsgR\006cla" +
+      "ims\"4\n\031GetClaimableRebetsRequest\022\027\n\007user" +
+      "_id\030\001 \001(\003R\006userId\"^\n\032GetClaimableRebetsR" +
+      "esponse\022@\n\006claims\030\001 \003(\0132(.game_engine.co" +
+      "mmission.v1.RebetClaimMsgR\006claims\"\313\002\n\033Su" +
+      "bmitInsuranceClaimRequest\022\027\n\007user_id\030\001 \001" +
+      "(\003R\006userId\022\027\n\007game_id\030\002 \001(\003R\006gameId\022\025\n\006b" +
+      "et_id\030\003 \001(\003R\005betId\022.\n\023insurance_policy_i" +
+      "d\030\004 \001(\tR\021insurancePolicyId\022\035\n\nclaim_type" +
+      "\030\005 \001(\tR\tclaimType\022%\n\016insured_amount\030\006 \001(" +
+      "\001R\rinsuredAmount\022\037\n\013loss_amount\030\007 \001(\001R\nl" +
+      "ossAmount\022!\n\014claim_reason\030\010 \001(\tR\013claimRe" +
+      "ason\022)\n\020evidence_details\030\t \001(\tR\017evidence" +
+      "Details\"b\n\034SubmitInsuranceClaimResponse\022" +
       "B\n\005claim\030\001 \001(\0132,.game_engine.commission." +
-      "v1.InsuranceClaimMsgR\005claim\"m\n\033RejectIns" +
-      "uranceClaimRequest\022\016\n\002id\030\001 \001(\003R\002id\022\037\n\013re" +
-      "viewed_by\030\002 \001(\003R\nreviewedBy\022\035\n\nadmin_not" +
-      "e\030\003 \001(\tR\tadminNote\"b\n\034RejectInsuranceCla" +
-      "imResponse\022B\n\005claim\030\001 \001(\0132,.game_engine." +
-      "commission.v1.InsuranceClaimMsgR\005claim\"*" +
-      "\n\030PayInsuranceClaimRequest\022\016\n\002id\030\001 \001(\003R\002" +
-      "id\"_\n\031PayInsuranceClaimResponse\022B\n\005claim" +
-      "\030\001 \001(\0132,.game_engine.commission.v1.Insur" +
-      "anceClaimMsgR\005claim\"8\n\035GetUserInsuranceC" +
-      "laimsRequest\022\027\n\007user_id\030\001 \001(\003R\006userId\"f\n" +
-      "\036GetUserInsuranceClaimsResponse\022D\n\006claim" +
-      "s\030\001 \003(\0132,.game_engine.commission.v1.Insu" +
-      "ranceClaimMsgR\006claims\";\n!GetInsuranceCla" +
-      "imsByStatusRequest\022\026\n\006status\030\001 \001(\tR\006stat" +
-      "us\"j\n\"GetInsuranceClaimsByStatusResponse" +
-      "\022D\n\006claims\030\001 \003(\0132,.game_engine.commissio" +
-      "n.v1.InsuranceClaimMsgR\006claims\"4\n\031GetUse" +
-      "rSettlementsRequest\022\027\n\007user_id\030\001 \001(\003R\006us" +
-      "erId\"h\n\032GetUserSettlementsResponse\022J\n\013se" +
-      "ttlements\030\001 \003(\0132(.game_engine.commission" +
-      ".v1.SettlementMsgR\013settlements\"7\n\035GetSet" +
-      "tlementsByStatusRequest\022\026\n\006status\030\001 \001(\tR" +
-      "\006status\"l\n\036GetSettlementsByStatusRespons" +
-      "e\022J\n\013settlements\030\001 \003(\0132(.game_engine.com" +
-      "mission.v1.SettlementMsgR\013settlements\"1\n" +
-      "\033GetSettlementsByTypeRequest\022\022\n\004type\030\001 \001" +
-      "(\tR\004type\"j\n\034GetSettlementsByTypeResponse" +
-      "\022J\n\013settlements\030\001 \003(\0132(.game_engine.comm" +
-      "ission.v1.SettlementMsgR\013settlements\"*\n\030" +
-      "GetSettlementByIdRequest\022\016\n\002id\030\001 \001(\003R\002id" +
-      "\"{\n\031GetSettlementByIdResponse\022H\n\nsettlem" +
-      "ent\030\001 \001(\0132(.game_engine.commission.v1.Se" +
-      "ttlementMsgR\nsettlement\022\024\n\005found\030\002 \001(\010R\005" +
-      "found\"5\n\032GetUserTotalPendingRequest\022\027\n\007u" +
-      "ser_id\030\001 \001(\003R\006userId\"B\n\033GetUserTotalPend" +
-      "ingResponse\022#\n\rtotal_pending\030\001 \001(\001R\014tota" +
-      "lPending\"5\n\032GetUserTotalSettledRequest\022\027" +
-      "\n\007user_id\030\001 \001(\003R\006userId\"B\n\033GetUserTotalS" +
-      "ettledResponse\022#\n\rtotal_settled\030\001 \001(\001R\014t" +
-      "otalSettled2\273\022\n\021CommissionService\022{\n\020Cre" +
-      "ateCommission\0222.game_engine.commission.v" +
-      "1.CreateCommissionRequest\0323.game_engine." +
-      "commission.v1.CreateCommissionResponse\022~" +
-      "\n\021GetCommissionById\0223.game_engine.commis" +
-      "sion.v1.GetCommissionByIdRequest\0324.game_" +
-      "engine.commission.v1.GetCommissionByIdRe" +
-      "sponse\022\226\001\n\031GetCommissionsByAffiliate\022;.g" +
-      "ame_engine.commission.v1.GetCommissionsB" +
-      "yAffiliateRequest\032<.game_engine.commissi" +
-      "on.v1.GetCommissionsByAffiliateResponse\022" +
-      "\223\001\n\030GetCommissionsByMerchant\022:.game_engi" +
-      "ne.commission.v1.GetCommissionsByMerchan" +
-      "tRequest\032;.game_engine.commission.v1.Get" +
-      "CommissionsByMerchantResponse\022\215\001\n\026GetCom" +
-      "missionsByPeriod\0228.game_engine.commissio" +
-      "n.v1.GetCommissionsByPeriodRequest\0329.gam" +
-      "e_engine.commission.v1.GetCommissionsByP" +
-      "eriodResponse\022\256\001\n!GetCommissionByAffilia" +
-      "teAndPeriod\022C.game_engine.commission.v1." +
-      "GetCommissionByAffiliateAndPeriodRequest" +
-      "\032D.game_engine.commission.v1.GetCommissi" +
-      "onByAffiliateAndPeriodResponse\022\215\001\n\026GetTo" +
-      "talPaidCommission\0228.game_engine.commissi" +
-      "on.v1.GetTotalPaidCommissionRequest\0329.ga" +
-      "me_engine.commission.v1.GetTotalPaidComm" +
-      "issionResponse\022\226\001\n\031GetTotalPendingCommis" +
-      "sion\022;.game_engine.commission.v1.GetTota" +
-      "lPendingCommissionRequest\032<.game_engine." +
-      "commission.v1.GetTotalPendingCommissionR" +
-      "esponse\022\226\001\n\031GetTotalRevenueByMerchant\022;." +
-      "game_engine.commission.v1.GetTotalRevenu" +
-      "eByMerchantRequest\032<.game_engine.commiss" +
-      "ion.v1.GetTotalRevenueByMerchantResponse" +
-      "\022\212\001\n\025CalculateRevenueShare\0227.game_engine" +
-      ".commission.v1.CalculateRevenueShareRequ" +
-      "est\0328.game_engine.commission.v1.Calculat" +
-      "eRevenueShareResponse\022o\n\014CalculateCPA\022.." +
-      "game_engine.commission.v1.CalculateCPARe" +
-      "quest\032/.game_engine.commission.v1.Calcul" +
-      "ateCPAResponse\022~\n\021ApproveCommission\0223.ga" +
-      "me_engine.commission.v1.ApproveCommissio" +
-      "nRequest\0324.game_engine.commission.v1.App" +
-      "roveCommissionResponse\022{\n\020RejectCommissi" +
-      "on\0222.game_engine.commission.v1.RejectCom" +
-      "missionRequest\0323.game_engine.commission." +
-      "v1.RejectCommissionResponse\022r\n\rPayCommis" +
-      "sion\022/.game_engine.commission.v1.PayComm" +
-      "issionRequest\0320.game_engine.commission.v" +
-      "1.PayCommissionResponse\022\212\001\n\025GetPendingCo" +
-      "mmissions\0227.game_engine.commission.v1.Ge" +
-      "tPendingCommissionsRequest\0328.game_engine" +
-      ".commission.v1.GetPendingCommissionsResp" +
-      "onse\022~\n\021GetAllCommissions\0223.game_engine." +
-      "commission.v1.GetAllCommissionsRequest\0324" +
-      ".game_engine.commission.v1.GetAllCommiss" +
-      "ionsResponse\022{\n\020DeleteCommission\0222.game_" +
-      "engine.commission.v1.DeleteCommissionReq" +
-      "uest\0323.game_engine.commission.v1.DeleteC" +
-      "ommissionResponse2\274\r\n\027CommissionConfigSe" +
-      "rvice\022\215\001\n\026CreateCommissionConfig\0228.game_" +
-      "engine.commission.v1.CreateCommissionCon" +
-      "figRequest\0329.game_engine.commission.v1.C" +
-      "reateCommissionConfigResponse\022r\n\rGetConf" +
-      "igById\022/.game_engine.commission.v1.GetCo" +
-      "nfigByIdRequest\0320.game_engine.commission" +
-      ".v1.GetConfigByIdResponse\022\212\001\n\025GetConfigs" +
-      "ByAffiliate\0227.game_engine.commission.v1." +
-      "GetConfigsByAffiliateRequest\0328.game_engi" +
-      "ne.commission.v1.GetConfigsByAffiliateRe" +
-      "sponse\022\207\001\n\024GetConfigsByMerchant\0226.game_e" +
-      "ngine.commission.v1.GetConfigsByMerchant",
-      "Request\0327.game_engine.commission.v1.GetC" +
-      "onfigsByMerchantResponse\022\234\001\n\033GetActiveCo" +
-      "nfigsByAffiliate\022=.game_engine.commissio" +
-      "n.v1.GetActiveConfigsByAffiliateRequest\032" +
-      ">.game_engine.commission.v1.GetActiveCon" +
-      "figsByAffiliateResponse\022\275\001\n&GetActiveCon" +
-      "figsByAffiliateAndMerchant\022H.game_engine" +
-      ".commission.v1.GetActiveConfigsByAffilia" +
-      "teAndMerchantRequest\032I.game_engine.commi" +
-      "ssion.v1.GetActiveConfigsByAffiliateAndM" +
-      "erchantResponse\022\275\001\n&GetConfigByAffiliate" +
-      "AndMerchantAndType\022H.game_engine.commiss" +
-      "ion.v1.GetConfigByAffiliateAndMerchantAn" +
-      "dTypeRequest\032I.game_engine.commission.v1" +
-      ".GetConfigByAffiliateAndMerchantAndTypeR" +
-      "esponse\022\215\001\n\026UpdateCommissionConfig\0228.gam" +
-      "e_engine.commission.v1.UpdateCommissionC" +
-      "onfigRequest\0329.game_engine.commission.v1" +
-      ".UpdateCommissionConfigResponse\022u\n\016Activ" +
-      "ateConfig\0220.game_engine.commission.v1.Ac" +
-      "tivateConfigRequest\0321.game_engine.commis" +
-      "sion.v1.ActivateConfigResponse\022{\n\020Deacti" +
-      "vateConfig\0222.game_engine.commission.v1.D" +
-      "eactivateConfigRequest\0323.game_engine.com" +
-      "mission.v1.DeactivateConfigResponse\022o\n\014D" +
-      "eleteConfig\022..game_engine.commission.v1." +
-      "DeleteConfigRequest\032/.game_engine.commis" +
-      "sion.v1.DeleteConfigResponse\022r\n\rGetAllCo" +
-      "nfigs\022/.game_engine.commission.v1.GetAll" +
-      "ConfigsRequest\0320.game_engine.commission." +
-      "v1.GetAllConfigsResponse2\356\031\n\014ClaimServic" +
-      "e\022\212\001\n\025SubmitCommissionClaim\0227.game_engin" +
-      "e.commission.v1.SubmitCommissionClaimReq" +
-      "uest\0328.game_engine.commission.v1.SubmitC" +
-      "ommissionClaimResponse\022\220\001\n\027GetUserCommis" +
-      "sionClaims\0229.game_engine.commission.v1.G" +
-      "etUserCommissionClaimsRequest\032:.game_eng" +
-      "ine.commission.v1.GetUserCommissionClaim" +
-      "sResponse\022\234\001\n\033GetCommissionClaimsByStatu" +
-      "s\022=.game_engine.commission.v1.GetCommiss" +
-      "ionClaimsByStatusRequest\032>.game_engine.c" +
-      "ommission.v1.GetCommissionClaimsByStatus" +
-      "Response\022\215\001\n\026GetCommissionClaimById\0228.ga" +
-      "me_engine.commission.v1.GetCommissionCla" +
-      "imByIdRequest\0329.game_engine.commission.v" +
-      "1.GetCommissionClaimByIdResponse\022\215\001\n\026App" +
-      "roveCommissionClaim\0228.game_engine.commis" +
-      "sion.v1.ApproveCommissionClaimRequest\0329." +
-      "game_engine.commission.v1.ApproveCommiss" +
-      "ionClaimResponse\022\212\001\n\025RejectCommissionCla" +
-      "im\0227.game_engine.commission.v1.RejectCom" +
-      "missionClaimRequest\0328.game_engine.commis" +
-      "sion.v1.RejectCommissionClaimResponse\022\201\001" +
-      "\n\022PayCommissionClaim\0224.game_engine.commi" +
-      "ssion.v1.PayCommissionClaimRequest\0325.gam" +
-      "e_engine.commission.v1.PayCommissionClai" +
-      "mResponse\022{\n\020CreateRebetClaim\0222.game_eng" +
-      "ine.commission.v1.CreateRebetClaimReques" +
-      "t\0323.game_engine.commission.v1.CreateRebe" +
-      "tClaimResponse\022\204\001\n\023UpdateRebetProgress\0225" +
+      "v1.InsuranceClaimMsgR\005claim\"n\n\034ApproveIn" +
+      "suranceClaimRequest\022\016\n\002id\030\001 \001(\003R\002id\022\037\n\013r" +
+      "eviewed_by\030\002 \001(\003R\nreviewedBy\022\035\n\nadmin_no" +
+      "te\030\003 \001(\tR\tadminNote\"c\n\035ApproveInsuranceC" +
+      "laimResponse\022B\n\005claim\030\001 \001(\0132,.game_engin" +
+      "e.commission.v1.InsuranceClaimMsgR\005claim" +
+      "\"m\n\033RejectInsuranceClaimRequest\022\016\n\002id\030\001 " +
+      "\001(\003R\002id\022\037\n\013reviewed_by\030\002 \001(\003R\nreviewedBy" +
+      "\022\035\n\nadmin_note\030\003 \001(\tR\tadminNote\"b\n\034Rejec" +
+      "tInsuranceClaimResponse\022B\n\005claim\030\001 \001(\0132," +
+      ".game_engine.commission.v1.InsuranceClai" +
+      "mMsgR\005claim\"*\n\030PayInsuranceClaimRequest\022" +
+      "\016\n\002id\030\001 \001(\003R\002id\"_\n\031PayInsuranceClaimResp" +
+      "onse\022B\n\005claim\030\001 \001(\0132,.game_engine.commis" +
+      "sion.v1.InsuranceClaimMsgR\005claim\"8\n\035GetU" +
+      "serInsuranceClaimsRequest\022\027\n\007user_id\030\001 \001" +
+      "(\003R\006userId\"f\n\036GetUserInsuranceClaimsResp" +
+      "onse\022D\n\006claims\030\001 \003(\0132,.game_engine.commi" +
+      "ssion.v1.InsuranceClaimMsgR\006claims\";\n!Ge" +
+      "tInsuranceClaimsByStatusRequest\022\026\n\006statu" +
+      "s\030\001 \001(\tR\006status\"j\n\"GetInsuranceClaimsByS" +
+      "tatusResponse\022D\n\006claims\030\001 \003(\0132,.game_eng" +
+      "ine.commission.v1.InsuranceClaimMsgR\006cla" +
+      "ims\"4\n\031GetUserSettlementsRequest\022\027\n\007user" +
+      "_id\030\001 \001(\003R\006userId\"h\n\032GetUserSettlementsR" +
+      "esponse\022J\n\013settlements\030\001 \003(\0132(.game_engi" +
+      "ne.commission.v1.SettlementMsgR\013settleme" +
+      "nts\"7\n\035GetSettlementsByStatusRequest\022\026\n\006" +
+      "status\030\001 \001(\tR\006status\"l\n\036GetSettlementsBy" +
+      "StatusResponse\022J\n\013settlements\030\001 \003(\0132(.ga" +
+      "me_engine.commission.v1.SettlementMsgR\013s" +
+      "ettlements\"1\n\033GetSettlementsByTypeReques" +
+      "t\022\022\n\004type\030\001 \001(\tR\004type\"j\n\034GetSettlementsB" +
+      "yTypeResponse\022J\n\013settlements\030\001 \003(\0132(.gam" +
+      "e_engine.commission.v1.SettlementMsgR\013se" +
+      "ttlements\"*\n\030GetSettlementByIdRequest\022\016\n" +
+      "\002id\030\001 \001(\003R\002id\"{\n\031GetSettlementByIdRespon" +
+      "se\022H\n\nsettlement\030\001 \001(\0132(.game_engine.com" +
+      "mission.v1.SettlementMsgR\nsettlement\022\024\n\005" +
+      "found\030\002 \001(\010R\005found\"5\n\032GetUserTotalPendin" +
+      "gRequest\022\027\n\007user_id\030\001 \001(\003R\006userId\"B\n\033Get" +
+      "UserTotalPendingResponse\022#\n\rtotal_pendin" +
+      "g\030\001 \001(\001R\014totalPending\"5\n\032GetUserTotalSet" +
+      "tledRequest\022\027\n\007user_id\030\001 \001(\003R\006userId\"B\n\033" +
+      "GetUserTotalSettledResponse\022#\n\rtotal_set" +
+      "tled\030\001 \001(\001R\014totalSettled\"\260\001\n\022SubmitClaim" +
+      "Request\022\027\n\007user_id\030\001 \001(\tR\006userId\022!\n\014affi" +
+      "liate_id\030\002 \001(\tR\013affiliateId\022#\n\rcommissio" +
+      "n_id\030\003 \001(\tR\014commissionId\022\026\n\006amount\030\004 \001(\001" +
+      "R\006amount\022!\n\014claim_reason\030\005 \001(\tR\013claimRea" +
+      "son\"H\n\023SubmitClaimResponse\022\031\n\010claim_id\030\001" +
+      " \001(\tR\007claimId\022\026\n\006status\030\002 \001(\tR\006status\"J\n" +
+      "\024GetUserClaimsRequest\022\027\n\007user_id\030\001 \001(\tR\006" +
+      "userId\022\031\n\010claim_id\030\002 \001(\tR\007claimId\"^\n\025Get" +
+      "UserClaimsResponse\022E\n\006claims\030\001 \003(\0132-.gam" +
+      "e_engine.commission.v1.CommissionClaimMs" +
+      "gR\006claims\"u\n\030GetClaimsByStatusRequest\022\027\n" +
+      "\007user_id\030\001 \001(\tR\006userId\022\026\n\006status\030\002 \001(\tR\006" +
+      "status\022\022\n\004page\030\003 \001(\005R\004page\022\024\n\005limit\030\004 \001(" +
+      "\005R\005limit\"\255\001\n\031GetClaimsByStatusResponse\022E" +
+      "\n\006claims\030\001 \003(\0132-.game_engine.commission." +
+      "v1.CommissionClaimMsgR\006claims\022\024\n\005total\030\002" +
+      " \001(\005R\005total\022\022\n\004page\030\003 \001(\005R\004page\022\037\n\013total" +
+      "_pages\030\004 \001(\005R\ntotalPages\"\244\001\n\026ClaimCommis" +
+      "sionRequest\022\031\n\010claim_id\030\001 \001(\tR\007claimId\022\027" +
+      "\n\007user_id\030\002 \001(\tR\006userId\022\031\n\010agent_id\030\003 \001(" +
+      "\tR\007agentId\022#\n\rcommission_id\030\004 \001(\tR\014commi" +
+      "ssionId\022\026\n\006amount\030\005 \001(\001R\006amount\"r\n\027Claim" +
+      "CommissionResponse\022%\n\016transaction_id\030\001 \001" +
+      "(\tR\rtransactionId\022\026\n\006amount\030\002 \001(\001R\006amoun" +
+      "t\022\030\n\007message\030\003 \001(\tR\007message\"q\n\032GetAgentC" +
+      "ommissionsRequest\022\031\n\010agent_id\030\001 \001(\tR\007age" +
+      "ntId\022\035\n\nstart_date\030\002 \001(\tR\tstartDate\022\031\n\010e" +
+      "nd_date\030\003 \001(\tR\007endDate\"|\n\033GetAgentCommis" +
+      "sionsResponse\022G\n\013commissions\030\001 \003(\0132%.gam" +
+      "e_engine.commission.v1.CommissionR\013commi" +
+      "ssions\022\024\n\005total\030\002 \001(\005R\005total\"b\n\033GetCommi" +
+      "ssionHistoryRequest\022\031\n\010agent_id\030\001 \001(\tR\007a" +
+      "gentId\022\022\n\004page\030\002 \001(\tR\004page\022\024\n\005limit\030\003 \001(" +
+      "\tR\005limit\"u\n\034GetCommissionHistoryResponse" +
+      "\022?\n\007history\030\001 \003(\0132%.game_engine.commissi" +
+      "on.v1.CommissionR\007history\022\024\n\005total\030\002 \001(\005" +
+      "R\005total2\250\030\n\021CommissionService\022{\n\020CreateC" +
+      "ommission\0222.game_engine.commission.v1.Cr" +
+      "eateCommissionRequest\0323.game_engine.comm" +
+      "ission.v1.CreateCommissionResponse\022~\n\021Ge" +
+      "tCommissionById\0223.game_engine.commission" +
+      ".v1.GetCommissionByIdRequest\0324.game_engi" +
+      "ne.commission.v1.GetCommissionByIdRespon" +
+      "se\022\226\001\n\031GetCommissionsByAffiliate\022;.game_" +
+      "engine.commission.v1.GetCommissionsByAff" +
+      "iliateRequest\032<.game_engine.commission.v" +
+      "1.GetCommissionsByAffiliateResponse\022\223\001\n\030" +
+      "GetCommissionsByMerchant\022:.game_engine.c" +
+      "ommission.v1.GetCommissionsByMerchantReq" +
+      "uest\032;.game_engine.commission.v1.GetComm" +
+      "issionsByMerchantResponse\022\215\001\n\026GetCommiss" +
+      "ionsByPeriod\0228.game_engine.commission.v1" +
+      ".GetCommissionsByPeriodRequest\0329.game_en" +
+      "gine.commission.v1.GetCommissionsByPerio" +
+      "dResponse\022\256\001\n!GetCommissionByAffiliateAn" +
+      "dPeriod\022C.game_engine.commission.v1.GetC" +
+      "ommissionByAffiliateAndPeriodRequest\032D.g" +
+      "ame_engine.commission.v1.GetCommissionBy" +
+      "AffiliateAndPeriodResponse\022\215\001\n\026GetTotalP" +
+      "aidCommission\0228.game_engine.commission.v" +
+      "1.GetTotalPaidCommissionRequest\0329.game_e" +
+      "ngine.commission.v1.GetTotalPaidCommissi" +
+      "onResponse\022\226\001\n\031GetTotalPendingCommission" +
+      "\022;.game_engine.commission.v1.GetTotalPen" +
+      "dingCommissionRequest\032<.game_engine.comm" +
+      "ission.v1.GetTotalPendingCommissionRespo" +
+      "nse\022\226\001\n\031GetTotalRevenueByMerchant\022;.game" +
+      "_engine.commission.v1.GetTotalRevenueByM" +
+      "erchantRequest\032<.game_engine.commission.",
+      "v1.GetTotalRevenueByMerchantResponse\022\212\001\n" +
+      "\025CalculateRevenueShare\0227.game_engine.com" +
+      "mission.v1.CalculateRevenueShareRequest\032" +
+      "8.game_engine.commission.v1.CalculateRev" +
+      "enueShareResponse\022o\n\014CalculateCPA\022..game" +
+      "_engine.commission.v1.CalculateCPAReques" +
+      "t\032/.game_engine.commission.v1.CalculateC" +
+      "PAResponse\022~\n\021ApproveCommission\0223.game_e" +
+      "ngine.commission.v1.ApproveCommissionReq" +
+      "uest\0324.game_engine.commission.v1.Approve" +
+      "CommissionResponse\022{\n\020RejectCommission\0222" +
+      ".game_engine.commission.v1.RejectCommiss" +
+      "ionRequest\0323.game_engine.commission.v1.R" +
+      "ejectCommissionResponse\022r\n\rPayCommission" +
+      "\022/.game_engine.commission.v1.PayCommissi" +
+      "onRequest\0320.game_engine.commission.v1.Pa" +
+      "yCommissionResponse\022\212\001\n\025GetPendingCommis" +
+      "sions\0227.game_engine.commission.v1.GetPen" +
+      "dingCommissionsRequest\0328.game_engine.com" +
+      "mission.v1.GetPendingCommissionsResponse" +
+      "\022~\n\021GetAllCommissions\0223.game_engine.comm" +
+      "ission.v1.GetAllCommissionsRequest\0324.gam" +
+      "e_engine.commission.v1.GetAllCommissions" +
+      "Response\022{\n\020DeleteCommission\0222.game_engi" +
+      "ne.commission.v1.DeleteCommissionRequest" +
+      "\0323.game_engine.commission.v1.DeleteCommi" +
+      "ssionResponse\022l\n\013SubmitClaim\022-.game_engi" +
+      "ne.commission.v1.SubmitClaimRequest\032..ga" +
+      "me_engine.commission.v1.SubmitClaimRespo" +
+      "nse\022r\n\rGetUserClaims\022/.game_engine.commi" +
+      "ssion.v1.GetUserClaimsRequest\0320.game_eng" +
+      "ine.commission.v1.GetUserClaimsResponse\022" +
+      "~\n\021GetClaimsByStatus\0223.game_engine.commi" +
+      "ssion.v1.GetClaimsByStatusRequest\0324.game" +
+      "_engine.commission.v1.GetClaimsByStatusR" +
+      "esponse\022x\n\017ClaimCommission\0221.game_engine" +
+      ".commission.v1.ClaimCommissionRequest\0322." +
+      "game_engine.commission.v1.ClaimCommissio" +
+      "nResponse\022\204\001\n\023GetAgentCommissions\0225.game" +
+      "_engine.commission.v1.GetAgentCommission" +
+      "sRequest\0326.game_engine.commission.v1.Get" +
+      "AgentCommissionsResponse\022\207\001\n\024GetCommissi" +
+      "onHistory\0226.game_engine.commission.v1.Ge" +
+      "tCommissionHistoryRequest\0327.game_engine." +
+      "commission.v1.GetCommissionHistoryRespon" +
+      "se2\274\r\n\027CommissionConfigService\022\215\001\n\026Creat" +
+      "eCommissionConfig\0228.game_engine.commissi" +
+      "on.v1.CreateCommissionConfigRequest\0329.ga" +
+      "me_engine.commission.v1.CreateCommission" +
+      "ConfigResponse\022r\n\rGetConfigById\022/.game_e" +
+      "ngine.commission.v1.GetConfigByIdRequest" +
+      "\0320.game_engine.commission.v1.GetConfigBy" +
+      "IdResponse\022\212\001\n\025GetConfigsByAffiliate\0227.g" +
+      "ame_engine.commission.v1.GetConfigsByAff" +
+      "iliateRequest\0328.game_engine.commission.v" +
+      "1.GetConfigsByAffiliateResponse\022\207\001\n\024GetC" +
+      "onfigsByMerchant\0226.game_engine.commissio" +
+      "n.v1.GetConfigsByMerchantRequest\0327.game_" +
+      "engine.commission.v1.GetConfigsByMerchan" +
+      "tResponse\022\234\001\n\033GetActiveConfigsByAffiliat" +
+      "e\022=.game_engine.commission.v1.GetActiveC" +
+      "onfigsByAffiliateRequest\032>.game_engine.c" +
+      "ommission.v1.GetActiveConfigsByAffiliate" +
+      "Response\022\275\001\n&GetActiveConfigsByAffiliate" +
+      "AndMerchant\022H.game_engine.commission.v1." +
+      "GetActiveConfigsByAffiliateAndMerchantRe" +
+      "quest\032I.game_engine.commission.v1.GetAct" +
+      "iveConfigsByAffiliateAndMerchantResponse" +
+      "\022\275\001\n&GetConfigByAffiliateAndMerchantAndT" +
+      "ype\022H.game_engine.commission.v1.GetConfi" +
+      "gByAffiliateAndMerchantAndTypeRequest\032I." +
+      "game_engine.commission.v1.GetConfigByAff" +
+      "iliateAndMerchantAndTypeResponse\022\215\001\n\026Upd" +
+      "ateCommissionConfig\0228.game_engine.commis" +
+      "sion.v1.UpdateCommissionConfigRequest\0329." +
+      "game_engine.commission.v1.UpdateCommissi" +
+      "onConfigResponse\022u\n\016ActivateConfig\0220.gam" +
+      "e_engine.commission.v1.ActivateConfigReq" +
+      "uest\0321.game_engine.commission.v1.Activat" +
+      "eConfigResponse\022{\n\020DeactivateConfig\0222.ga" +
+      "me_engine.commission.v1.DeactivateConfig" +
+      "Request\0323.game_engine.commission.v1.Deac" +
+      "tivateConfigResponse\022o\n\014DeleteConfig\022..g" +
+      "ame_engine.commission.v1.DeleteConfigReq" +
+      "uest\032/.game_engine.commission.v1.DeleteC" +
+      "onfigResponse\022r\n\rGetAllConfigs\022/.game_en" +
+      "gine.commission.v1.GetAllConfigsRequest\032" +
+      "0.game_engine.commission.v1.GetAllConfig" +
+      "sResponse2\356\031\n\014ClaimService\022\212\001\n\025SubmitCom" +
+      "missionClaim\0227.game_engine.commission.v1" +
+      ".SubmitCommissionClaimRequest\0328.game_eng" +
+      "ine.commission.v1.SubmitCommissionClaimR" +
+      "esponse\022\220\001\n\027GetUserCommissionClaims\0229.ga" +
+      "me_engine.commission.v1.GetUserCommissio" +
+      "nClaimsRequest\032:.game_engine.commission." +
+      "v1.GetUserCommissionClaimsResponse\022\234\001\n\033G" +
+      "etCommissionClaimsByStatus\022=.game_engine" +
+      ".commission.v1.GetCommissionClaimsByStat" +
+      "usRequest\032>.game_engine.commission.v1.Ge" +
+      "tCommissionClaimsByStatusResponse\022\215\001\n\026Ge" +
+      "tCommissionClaimById\0228.game_engine.commi" +
+      "ssion.v1.GetCommissionClaimByIdRequest\0329" +
+      ".game_engine.commission.v1.GetCommission" +
+      "ClaimByIdResponse\022\215\001\n\026ApproveCommissionC" +
+      "laim\0228.game_engine.commission.v1.Approve" +
+      "CommissionClaimRequest\0329.game_engine.com" +
+      "mission.v1.ApproveCommissionClaimRespons" +
+      "e\022\212\001\n\025RejectCommissionClaim\0227.game_engin" +
+      "e.commission.v1.RejectCommissionClaimReq" +
+      "uest\0328.game_engine.commission.v1.RejectC" +
+      "ommissionClaimResponse\022\201\001\n\022PayCommission" +
+      "Claim\0224.game_engine.commission.v1.PayCom" +
+      "missionClaimRequest\0325.game_engine.commis" +
+      "sion.v1.PayCommissionClaimResponse\022{\n\020Cr" +
+      "eateRebetClaim\0222.game_engine.commission." +
+      "v1.CreateRebetClaimRequest\0323.game_engine" +
+      ".commission.v1.CreateRebetClaimResponse\022" +
+      "\204\001\n\023UpdateRebetProgress\0225.game_engine.co" +
+      "mmission.v1.UpdateRebetProgressRequest\0326" +
       ".game_engine.commission.v1.UpdateRebetPr" +
-      "ogressRequest\0326.game_engine.commission.v" +
-      "1.UpdateRebetProgressResponse\022i\n\nClaimRe" +
-      "bet\022,.game_engine.commission.v1.ClaimReb" +
-      "etRequest\032-.game_engine.commission.v1.Cl" +
-      "aimRebetResponse\022\201\001\n\022GetUserRebetClaims\022" +
-      "4.game_engine.commission.v1.GetUserRebet" +
-      "ClaimsRequest\0325.game_engine.commission.v" +
-      "1.GetUserRebetClaimsResponse\022\201\001\n\022GetClai" +
-      "mableRebets\0224.game_engine.commission.v1." +
-      "GetClaimableRebetsRequest\0325.game_engine." +
-      "commission.v1.GetClaimableRebetsResponse" +
-      "\022\207\001\n\024SubmitInsuranceClaim\0226.game_engine." +
-      "commission.v1.SubmitInsuranceClaimReques" +
-      "t\0327.game_engine.commission.v1.SubmitInsu" +
-      "ranceClaimResponse\022\212\001\n\025ApproveInsuranceC" +
-      "laim\0227.game_engine.commission.v1.Approve" +
-      "InsuranceClaimRequest\0328.game_engine.comm" +
-      "ission.v1.ApproveInsuranceClaimResponse\022" +
-      "\207\001\n\024RejectInsuranceClaim\0226.game_engine.c" +
-      "ommission.v1.RejectInsuranceClaimRequest" +
-      "\0327.game_engine.commission.v1.RejectInsur" +
-      "anceClaimResponse\022~\n\021PayInsuranceClaim\0223" +
-      ".game_engine.commission.v1.PayInsuranceC" +
-      "laimRequest\0324.game_engine.commission.v1." +
-      "PayInsuranceClaimResponse\022\215\001\n\026GetUserIns" +
-      "uranceClaims\0228.game_engine.commission.v1" +
-      ".GetUserInsuranceClaimsRequest\0329.game_en" +
-      "gine.commission.v1.GetUserInsuranceClaim" +
-      "sResponse\022\231\001\n\032GetInsuranceClaimsByStatus" +
-      "\022<.game_engine.commission.v1.GetInsuranc" +
-      "eClaimsByStatusRequest\032=.game_engine.com" +
-      "mission.v1.GetInsuranceClaimsByStatusRes" +
-      "ponse\022\201\001\n\022GetUserSettlements\0224.game_engi" +
-      "ne.commission.v1.GetUserSettlementsReque" +
-      "st\0325.game_engine.commission.v1.GetUserSe" +
-      "ttlementsResponse\022\215\001\n\026GetSettlementsBySt" +
-      "atus\0228.game_engine.commission.v1.GetSett" +
-      "lementsByStatusRequest\0329.game_engine.com" +
-      "mission.v1.GetSettlementsByStatusRespons" +
-      "e\022\207\001\n\024GetSettlementsByType\0226.game_engine" +
-      ".commission.v1.GetSettlementsByTypeReque" +
-      "st\0327.game_engine.commission.v1.GetSettle" +
-      "mentsByTypeResponse\022~\n\021GetSettlementById" +
-      "\0223.game_engine.commission.v1.GetSettleme" +
-      "ntByIdRequest\0324.game_engine.commission.v" +
-      "1.GetSettlementByIdResponse\022\204\001\n\023GetUserT" +
-      "otalPending\0225.game_engine.commission.v1." +
-      "GetUserTotalPendingRequest\0326.game_engine" +
-      ".commission.v1.GetUserTotalPendingRespon" +
-      "se\022\204\001\n\023GetUserTotalSettled\0225.game_engine" +
-      ".commission.v1.GetUserTotalSettledReques" +
-      "t\0326.game_engine.commission.v1.GetUserTot" +
-      "alSettledResponseBD\n\035com.game_engine.com" +
-      "mission.v1P\001Z!gen/go/commission/v1;commi" +
-      "ssionv1b\006proto3"
+      "ogressResponse\022i\n\nClaimRebet\022,.game_engi" +
+      "ne.commission.v1.ClaimRebetRequest\032-.gam" +
+      "e_engine.commission.v1.ClaimRebetRespons" +
+      "e\022\201\001\n\022GetUserRebetClaims\0224.game_engine.c" +
+      "ommission.v1.GetUserRebetClaimsRequest\0325" +
+      ".game_engine.commission.v1.GetUserRebetC" +
+      "laimsResponse\022\201\001\n\022GetClaimableRebets\0224.g" +
+      "ame_engine.commission.v1.GetClaimableReb" +
+      "etsRequest\0325.game_engine.commission.v1.G" +
+      "etClaimableRebetsResponse\022\207\001\n\024SubmitInsu" +
+      "ranceClaim\0226.game_engine.commission.v1.S" +
+      "ubmitInsuranceClaimRequest\0327.game_engine" +
+      ".commission.v1.SubmitInsuranceClaimRespo" +
+      "nse\022\212\001\n\025ApproveInsuranceClaim\0227.game_eng" +
+      "ine.commission.v1.ApproveInsuranceClaimR" +
+      "equest\0328.game_engine.commission.v1.Appro" +
+      "veInsuranceClaimResponse\022\207\001\n\024RejectInsur" +
+      "anceClaim\0226.game_engine.commission.v1.Re" +
+      "jectInsuranceClaimRequest\0327.game_engine." +
+      "commission.v1.RejectInsuranceClaimRespon" +
+      "se\022~\n\021PayInsuranceClaim\0223.game_engine.co" +
+      "mmission.v1.PayInsuranceClaimRequest\0324.g" +
+      "ame_engine.commission.v1.PayInsuranceCla" +
+      "imResponse\022\215\001\n\026GetUserInsuranceClaims\0228." +
+      "game_engine.commission.v1.GetUserInsuran" +
+      "ceClaimsRequest\0329.game_engine.commission" +
+      ".v1.GetUserInsuranceClaimsResponse\022\231\001\n\032G" +
+      "etInsuranceClaimsByStatus\022<.game_engine." +
+      "commission.v1.GetInsuranceClaimsByStatus" +
+      "Request\032=.game_engine.commission.v1.GetI" +
+      "nsuranceClaimsByStatusResponse\022\201\001\n\022GetUs" +
+      "erSettlements\0224.game_engine.commission.v" +
+      "1.GetUserSettlementsRequest\0325.game_engin" +
+      "e.commission.v1.GetUserSettlementsRespon" +
+      "se\022\215\001\n\026GetSettlementsByStatus\0228.game_eng" +
+      "ine.commission.v1.GetSettlementsByStatus" +
+      "Request\0329.game_engine.commission.v1.GetS" +
+      "ettlementsByStatusResponse\022\207\001\n\024GetSettle" +
+      "mentsByType\0226.game_engine.commission.v1." +
+      "GetSettlementsByTypeRequest\0327.game_engin" +
+      "e.commission.v1.GetSettlementsByTypeResp" +
+      "onse\022~\n\021GetSettlementById\0223.game_engine." +
+      "commission.v1.GetSettlementByIdRequest\0324" +
+      ".game_engine.commission.v1.GetSettlement" +
+      "ByIdResponse\022\204\001\n\023GetUserTotalPending\0225.g" +
+      "ame_engine.commission.v1.GetUserTotalPen" +
+      "dingRequest\0326.game_engine.commission.v1." +
+      "GetUserTotalPendingResponse\022\204\001\n\023GetUserT" +
+      "otalSettled\0225.game_engine.commission.v1." +
+      "GetUserTotalSettledRequest\0326.game_engine" +
+      ".commission.v1.GetUserTotalSettledRespon" +
+      "seBp\n\035com.game_engine.commission.v1P\001ZMg" +
+      "ithub.com/game_engine/common-service/pro" +
+      "to/gen/go/commission/v1;commissionv1b\006pr" +
+      "oto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1286,13 +1405,13 @@ public final class CommissionServiceOuterClass {
     internal_static_game_engine_commission_v1_GetPendingCommissionsRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_commission_v1_GetPendingCommissionsRequest_descriptor,
-        new java.lang.String[] { });
+        new java.lang.String[] { "AgentId", });
     internal_static_game_engine_commission_v1_GetPendingCommissionsResponse_descriptor =
       getDescriptor().getMessageTypes().get(30);
     internal_static_game_engine_commission_v1_GetPendingCommissionsResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_commission_v1_GetPendingCommissionsResponse_descriptor,
-        new java.lang.String[] { "Commissions", });
+        new java.lang.String[] { "Commissions", "Pending", });
     internal_static_game_engine_commission_v1_GetAllCommissionsRequest_descriptor =
       getDescriptor().getMessageTypes().get(31);
     internal_static_game_engine_commission_v1_GetAllCommissionsRequest_fieldAccessorTable = new
@@ -1779,6 +1898,78 @@ public final class CommissionServiceOuterClass {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_game_engine_commission_v1_GetUserTotalSettledResponse_descriptor,
         new java.lang.String[] { "TotalSettled", });
+    internal_static_game_engine_commission_v1_SubmitClaimRequest_descriptor =
+      getDescriptor().getMessageTypes().get(112);
+    internal_static_game_engine_commission_v1_SubmitClaimRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_SubmitClaimRequest_descriptor,
+        new java.lang.String[] { "UserId", "AffiliateId", "CommissionId", "Amount", "ClaimReason", });
+    internal_static_game_engine_commission_v1_SubmitClaimResponse_descriptor =
+      getDescriptor().getMessageTypes().get(113);
+    internal_static_game_engine_commission_v1_SubmitClaimResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_SubmitClaimResponse_descriptor,
+        new java.lang.String[] { "ClaimId", "Status", });
+    internal_static_game_engine_commission_v1_GetUserClaimsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(114);
+    internal_static_game_engine_commission_v1_GetUserClaimsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetUserClaimsRequest_descriptor,
+        new java.lang.String[] { "UserId", "ClaimId", });
+    internal_static_game_engine_commission_v1_GetUserClaimsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(115);
+    internal_static_game_engine_commission_v1_GetUserClaimsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetUserClaimsResponse_descriptor,
+        new java.lang.String[] { "Claims", });
+    internal_static_game_engine_commission_v1_GetClaimsByStatusRequest_descriptor =
+      getDescriptor().getMessageTypes().get(116);
+    internal_static_game_engine_commission_v1_GetClaimsByStatusRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetClaimsByStatusRequest_descriptor,
+        new java.lang.String[] { "UserId", "Status", "Page", "Limit", });
+    internal_static_game_engine_commission_v1_GetClaimsByStatusResponse_descriptor =
+      getDescriptor().getMessageTypes().get(117);
+    internal_static_game_engine_commission_v1_GetClaimsByStatusResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetClaimsByStatusResponse_descriptor,
+        new java.lang.String[] { "Claims", "Total", "Page", "TotalPages", });
+    internal_static_game_engine_commission_v1_ClaimCommissionRequest_descriptor =
+      getDescriptor().getMessageTypes().get(118);
+    internal_static_game_engine_commission_v1_ClaimCommissionRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_ClaimCommissionRequest_descriptor,
+        new java.lang.String[] { "ClaimId", "UserId", "AgentId", "CommissionId", "Amount", });
+    internal_static_game_engine_commission_v1_ClaimCommissionResponse_descriptor =
+      getDescriptor().getMessageTypes().get(119);
+    internal_static_game_engine_commission_v1_ClaimCommissionResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_ClaimCommissionResponse_descriptor,
+        new java.lang.String[] { "TransactionId", "Amount", "Message", });
+    internal_static_game_engine_commission_v1_GetAgentCommissionsRequest_descriptor =
+      getDescriptor().getMessageTypes().get(120);
+    internal_static_game_engine_commission_v1_GetAgentCommissionsRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetAgentCommissionsRequest_descriptor,
+        new java.lang.String[] { "AgentId", "StartDate", "EndDate", });
+    internal_static_game_engine_commission_v1_GetAgentCommissionsResponse_descriptor =
+      getDescriptor().getMessageTypes().get(121);
+    internal_static_game_engine_commission_v1_GetAgentCommissionsResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetAgentCommissionsResponse_descriptor,
+        new java.lang.String[] { "Commissions", "Total", });
+    internal_static_game_engine_commission_v1_GetCommissionHistoryRequest_descriptor =
+      getDescriptor().getMessageTypes().get(122);
+    internal_static_game_engine_commission_v1_GetCommissionHistoryRequest_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetCommissionHistoryRequest_descriptor,
+        new java.lang.String[] { "AgentId", "Page", "Limit", });
+    internal_static_game_engine_commission_v1_GetCommissionHistoryResponse_descriptor =
+      getDescriptor().getMessageTypes().get(123);
+    internal_static_game_engine_commission_v1_GetCommissionHistoryResponse_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_game_engine_commission_v1_GetCommissionHistoryResponse_descriptor,
+        new java.lang.String[] { "History", "Total", });
     com.google.protobuf.TimestampProto.getDescriptor();
     com.game_engine.common.v1.Pagination.getDescriptor();
   }

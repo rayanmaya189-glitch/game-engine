@@ -9,16 +9,16 @@ public interface BonusOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string id = 1 [json_name = "id"];</code>
-   * @return The id.
+   * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+   * @return The bonusId.
    */
-  java.lang.String getId();
+  java.lang.String getBonusId();
   /**
-   * <code>string id = 1 [json_name = "id"];</code>
-   * @return The bytes for id.
+   * <code>string bonus_id = 1 [json_name = "bonusId"];</code>
+   * @return The bytes for bonusId.
    */
   com.google.protobuf.ByteString
-      getIdBytes();
+      getBonusIdBytes();
 
   /**
    * <code>string name = 2 [json_name = "name"];</code>
@@ -45,194 +45,56 @@ public interface BonusOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <pre>
-   * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-   * </pre>
-   *
-   * <code>string type = 4 [json_name = "type"];</code>
-   * @return The type.
+   * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+   * @return The bonusType.
    */
-  java.lang.String getType();
+  java.lang.String getBonusType();
   /**
-   * <pre>
-   * WELCOME, DEPOSIT, NO_DEPOSIT, FREE_SPINS, CASHBACK, LOYALTY
-   * </pre>
-   *
-   * <code>string type = 4 [json_name = "type"];</code>
-   * @return The bytes for type.
+   * <code>string bonus_type = 4 [json_name = "bonusType"];</code>
+   * @return The bytes for bonusType.
    */
   com.google.protobuf.ByteString
-      getTypeBytes();
+      getBonusTypeBytes();
 
   /**
-   * <pre>
-   * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-   * </pre>
-   *
-   * <code>string status = 5 [json_name = "status"];</code>
-   * @return The status.
-   */
-  java.lang.String getStatus();
-  /**
-   * <pre>
-   * ACTIVE, INACTIVE, EXPIRED, EXHAUSTED
-   * </pre>
-   *
-   * <code>string status = 5 [json_name = "status"];</code>
-   * @return The bytes for status.
-   */
-  com.google.protobuf.ByteString
-      getStatusBytes();
-
-  /**
-   * <code>double amount = 6 [json_name = "amount"];</code>
+   * <code>double amount = 5 [json_name = "amount"];</code>
    * @return The amount.
    */
   double getAmount();
 
   /**
-   * <pre>
-   * For percentage-based bonuses
-   * </pre>
-   *
-   * <code>double percentage = 7 [json_name = "percentage"];</code>
-   * @return The percentage.
-   */
-  double getPercentage();
-
-  /**
-   * <code>double max_amount = 8 [json_name = "maxAmount"];</code>
-   * @return The maxAmount.
-   */
-  double getMaxAmount();
-
-  /**
-   * <code>double min_deposit = 9 [json_name = "minDeposit"];</code>
+   * <code>double min_deposit = 6 [json_name = "minDeposit"];</code>
    * @return The minDeposit.
    */
   double getMinDeposit();
 
   /**
-   * <code>int32 wagering_requirement = 10 [json_name = "wageringRequirement"];</code>
+   * <code>double max_bonus = 7 [json_name = "maxBonus"];</code>
+   * @return The maxBonus.
+   */
+  double getMaxBonus();
+
+  /**
+   * <code>double wagering_requirement = 8 [json_name = "wageringRequirement"];</code>
    * @return The wageringRequirement.
    */
-  int getWageringRequirement();
+  double getWageringRequirement();
 
   /**
-   * <code>double max_bet = 11 [json_name = "maxBet"];</code>
-   * @return The maxBet.
+   * <code>int64 expires_at = 9 [json_name = "expiresAt"];</code>
+   * @return The expiresAt.
    */
-  double getMaxBet();
+  long getExpiresAt();
 
   /**
-   * <pre>
-   * Comma-separated game IDs or "ALL"
-   * </pre>
-   *
-   * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-   * @return The allowedGames.
+   * <code>string status = 10 [json_name = "status"];</code>
+   * @return The status.
    */
-  java.lang.String getAllowedGames();
+  java.lang.String getStatus();
   /**
-   * <pre>
-   * Comma-separated game IDs or "ALL"
-   * </pre>
-   *
-   * <code>string allowed_games = 12 [json_name = "allowedGames"];</code>
-   * @return The bytes for allowedGames.
+   * <code>string status = 10 [json_name = "status"];</code>
+   * @return The bytes for status.
    */
   com.google.protobuf.ByteString
-      getAllowedGamesBytes();
-
-  /**
-   * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-   * @return Whether the startDate field is set.
-   */
-  boolean hasStartDate();
-  /**
-   * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-   * @return The startDate.
-   */
-  com.google.protobuf.Timestamp getStartDate();
-  /**
-   * <code>.google.protobuf.Timestamp start_date = 13 [json_name = "startDate"];</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getStartDateOrBuilder();
-
-  /**
-   * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-   * @return Whether the endDate field is set.
-   */
-  boolean hasEndDate();
-  /**
-   * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-   * @return The endDate.
-   */
-  com.google.protobuf.Timestamp getEndDate();
-  /**
-   * <code>.google.protobuf.Timestamp end_date = 14 [json_name = "endDate"];</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getEndDateOrBuilder();
-
-  /**
-   * <code>int32 max_uses = 15 [json_name = "maxUses"];</code>
-   * @return The maxUses.
-   */
-  int getMaxUses();
-
-  /**
-   * <code>int32 current_uses = 16 [json_name = "currentUses"];</code>
-   * @return The currentUses.
-   */
-  int getCurrentUses();
-
-  /**
-   * <pre>
-   * ALL, BRONZE, SILVER, GOLD, PLATINUM
-   * </pre>
-   *
-   * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-   * @return The vipLevel.
-   */
-  java.lang.String getVipLevel();
-  /**
-   * <pre>
-   * ALL, BRONZE, SILVER, GOLD, PLATINUM
-   * </pre>
-   *
-   * <code>string vip_level = 17 [json_name = "vipLevel"];</code>
-   * @return The bytes for vipLevel.
-   */
-  com.google.protobuf.ByteString
-      getVipLevelBytes();
-
-  /**
-   * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-   * @return Whether the createdAt field is set.
-   */
-  boolean hasCreatedAt();
-  /**
-   * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-   * @return The createdAt.
-   */
-  com.google.protobuf.Timestamp getCreatedAt();
-  /**
-   * <code>.google.protobuf.Timestamp created_at = 18 [json_name = "createdAt"];</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getCreatedAtOrBuilder();
-
-  /**
-   * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-   * @return Whether the updatedAt field is set.
-   */
-  boolean hasUpdatedAt();
-  /**
-   * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-   * @return The updatedAt.
-   */
-  com.google.protobuf.Timestamp getUpdatedAt();
-  /**
-   * <code>.google.protobuf.Timestamp updated_at = 19 [json_name = "updatedAt"];</code>
-   */
-  com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
+      getStatusBytes();
 }

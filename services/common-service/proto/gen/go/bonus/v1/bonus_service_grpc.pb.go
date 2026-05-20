@@ -19,39 +19,41 @@ import (
 const _ = grpc.SupportPackageIsVersion8
 
 const (
-	BonusService_GetActiveBonuses_FullMethodName            = "/game_engine.bonus.v1.BonusService/GetActiveBonuses"
-	BonusService_GetBonus_FullMethodName                    = "/game_engine.bonus.v1.BonusService/GetBonus"
-	BonusService_CreateBonus_FullMethodName                 = "/game_engine.bonus.v1.BonusService/CreateBonus"
-	BonusService_ClaimBonus_FullMethodName                  = "/game_engine.bonus.v1.BonusService/ClaimBonus"
-	BonusService_CheckEligibility_FullMethodName            = "/game_engine.bonus.v1.BonusService/CheckEligibility"
-	BonusService_GetBonusHistory_FullMethodName             = "/game_engine.bonus.v1.BonusService/GetBonusHistory"
-	BonusService_GetActiveBonusClaims_FullMethodName        = "/game_engine.bonus.v1.BonusService/GetActiveBonusClaims"
-	BonusService_ProcessWageringContribution_FullMethodName = "/game_engine.bonus.v1.BonusService/ProcessWageringContribution"
-	BonusService_CompleteBonus_FullMethodName               = "/game_engine.bonus.v1.BonusService/CompleteBonus"
-	BonusService_CancelBonus_FullMethodName                 = "/game_engine.bonus.v1.BonusService/CancelBonus"
-	BonusService_GetBonusStats_FullMethodName               = "/game_engine.bonus.v1.BonusService/GetBonusStats"
+	BonusService_ListBonuses_FullMethodName               = "/game_engine.bonus.v1.BonusService/ListBonuses"
+	BonusService_GetBonus_FullMethodName                  = "/game_engine.bonus.v1.BonusService/GetBonus"
+	BonusService_ClaimBonus_FullMethodName                = "/game_engine.bonus.v1.BonusService/ClaimBonus"
+	BonusService_GetUserBonuses_FullMethodName            = "/game_engine.bonus.v1.BonusService/GetUserBonuses"
+	BonusService_CreateRebetClaim_FullMethodName          = "/game_engine.bonus.v1.BonusService/CreateRebetClaim"
+	BonusService_GetUserRebetClaims_FullMethodName        = "/game_engine.bonus.v1.BonusService/GetUserRebetClaims"
+	BonusService_GetClaimableRebets_FullMethodName        = "/game_engine.bonus.v1.BonusService/GetClaimableRebets"
+	BonusService_ClaimRebet_FullMethodName                = "/game_engine.bonus.v1.BonusService/ClaimRebet"
+	BonusService_SubmitInsuranceClaim_FullMethodName      = "/game_engine.bonus.v1.BonusService/SubmitInsuranceClaim"
+	BonusService_GetUserInsuranceClaims_FullMethodName    = "/game_engine.bonus.v1.BonusService/GetUserInsuranceClaims"
+	BonusService_CheckWageringRequirements_FullMethodName = "/game_engine.bonus.v1.BonusService/CheckWageringRequirements"
 )
 
 // BonusServiceClient is the client API for BonusService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-//
-// Bonus Service - manages bonuses, claims, wagering requirements
 type BonusServiceClient interface {
-	// Bonus management
-	GetActiveBonuses(ctx context.Context, in *GetActiveBonusesRequest, opts ...grpc.CallOption) (*GetActiveBonusesResponse, error)
+	// List available bonuses
+	ListBonuses(ctx context.Context, in *ListBonusesRequest, opts ...grpc.CallOption) (*ListBonusesResponse, error)
+	// Get bonus details
 	GetBonus(ctx context.Context, in *GetBonusRequest, opts ...grpc.CallOption) (*GetBonusResponse, error)
-	CreateBonus(ctx context.Context, in *CreateBonusRequest, opts ...grpc.CallOption) (*CreateBonusResponse, error)
+	// Claim a bonus
 	ClaimBonus(ctx context.Context, in *ClaimBonusRequest, opts ...grpc.CallOption) (*ClaimBonusResponse, error)
-	CheckEligibility(ctx context.Context, in *CheckEligibilityRequest, opts ...grpc.CallOption) (*CheckEligibilityResponse, error)
-	GetBonusHistory(ctx context.Context, in *GetBonusHistoryRequest, opts ...grpc.CallOption) (*GetBonusHistoryResponse, error)
-	GetActiveBonusClaims(ctx context.Context, in *GetActiveBonusClaimsRequest, opts ...grpc.CallOption) (*GetActiveBonusClaimsResponse, error)
-	// Wagering
-	ProcessWageringContribution(ctx context.Context, in *ProcessWageringContributionRequest, opts ...grpc.CallOption) (*ProcessWageringContributionResponse, error)
-	CompleteBonus(ctx context.Context, in *CompleteBonusRequest, opts ...grpc.CallOption) (*CompleteBonusResponse, error)
-	CancelBonus(ctx context.Context, in *CancelBonusRequest, opts ...grpc.CallOption) (*CancelBonusResponse, error)
-	// Stats
-	GetBonusStats(ctx context.Context, in *GetBonusStatsRequest, opts ...grpc.CallOption) (*GetBonusStatsResponse, error)
+	// Get user's claimed bonuses
+	GetUserBonuses(ctx context.Context, in *GetUserBonusesRequest, opts ...grpc.CallOption) (*GetUserBonusesResponse, error)
+	// Rebet claim operations
+	CreateRebetClaim(ctx context.Context, in *CreateRebetClaimRequest, opts ...grpc.CallOption) (*CreateRebetClaimResponse, error)
+	GetUserRebetClaims(ctx context.Context, in *GetUserRebetClaimsRequest, opts ...grpc.CallOption) (*GetUserRebetClaimsResponse, error)
+	GetClaimableRebets(ctx context.Context, in *GetClaimableRebetsRequest, opts ...grpc.CallOption) (*GetClaimableRebetsResponse, error)
+	ClaimRebet(ctx context.Context, in *ClaimRebetRequest, opts ...grpc.CallOption) (*ClaimRebetResponse, error)
+	// Insurance claim operations
+	SubmitInsuranceClaim(ctx context.Context, in *SubmitInsuranceClaimRequest, opts ...grpc.CallOption) (*SubmitInsuranceClaimResponse, error)
+	GetUserInsuranceClaims(ctx context.Context, in *GetUserInsuranceClaimsRequest, opts ...grpc.CallOption) (*GetUserInsuranceClaimsResponse, error)
+	// Wagering requirements
+	CheckWageringRequirements(ctx context.Context, in *CheckWageringRequirementsRequest, opts ...grpc.CallOption) (*CheckWageringRequirementsResponse, error)
 }
 
 type bonusServiceClient struct {
@@ -62,10 +64,10 @@ func NewBonusServiceClient(cc grpc.ClientConnInterface) BonusServiceClient {
 	return &bonusServiceClient{cc}
 }
 
-func (c *bonusServiceClient) GetActiveBonuses(ctx context.Context, in *GetActiveBonusesRequest, opts ...grpc.CallOption) (*GetActiveBonusesResponse, error) {
+func (c *bonusServiceClient) ListBonuses(ctx context.Context, in *ListBonusesRequest, opts ...grpc.CallOption) (*ListBonusesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetActiveBonusesResponse)
-	err := c.cc.Invoke(ctx, BonusService_GetActiveBonuses_FullMethodName, in, out, cOpts...)
+	out := new(ListBonusesResponse)
+	err := c.cc.Invoke(ctx, BonusService_ListBonuses_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -82,16 +84,6 @@ func (c *bonusServiceClient) GetBonus(ctx context.Context, in *GetBonusRequest, 
 	return out, nil
 }
 
-func (c *bonusServiceClient) CreateBonus(ctx context.Context, in *CreateBonusRequest, opts ...grpc.CallOption) (*CreateBonusResponse, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CreateBonusResponse)
-	err := c.cc.Invoke(ctx, BonusService_CreateBonus_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *bonusServiceClient) ClaimBonus(ctx context.Context, in *ClaimBonusRequest, opts ...grpc.CallOption) (*ClaimBonusResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(ClaimBonusResponse)
@@ -102,70 +94,80 @@ func (c *bonusServiceClient) ClaimBonus(ctx context.Context, in *ClaimBonusReque
 	return out, nil
 }
 
-func (c *bonusServiceClient) CheckEligibility(ctx context.Context, in *CheckEligibilityRequest, opts ...grpc.CallOption) (*CheckEligibilityResponse, error) {
+func (c *bonusServiceClient) GetUserBonuses(ctx context.Context, in *GetUserBonusesRequest, opts ...grpc.CallOption) (*GetUserBonusesResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CheckEligibilityResponse)
-	err := c.cc.Invoke(ctx, BonusService_CheckEligibility_FullMethodName, in, out, cOpts...)
+	out := new(GetUserBonusesResponse)
+	err := c.cc.Invoke(ctx, BonusService_GetUserBonuses_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bonusServiceClient) GetBonusHistory(ctx context.Context, in *GetBonusHistoryRequest, opts ...grpc.CallOption) (*GetBonusHistoryResponse, error) {
+func (c *bonusServiceClient) CreateRebetClaim(ctx context.Context, in *CreateRebetClaimRequest, opts ...grpc.CallOption) (*CreateRebetClaimResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetBonusHistoryResponse)
-	err := c.cc.Invoke(ctx, BonusService_GetBonusHistory_FullMethodName, in, out, cOpts...)
+	out := new(CreateRebetClaimResponse)
+	err := c.cc.Invoke(ctx, BonusService_CreateRebetClaim_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bonusServiceClient) GetActiveBonusClaims(ctx context.Context, in *GetActiveBonusClaimsRequest, opts ...grpc.CallOption) (*GetActiveBonusClaimsResponse, error) {
+func (c *bonusServiceClient) GetUserRebetClaims(ctx context.Context, in *GetUserRebetClaimsRequest, opts ...grpc.CallOption) (*GetUserRebetClaimsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetActiveBonusClaimsResponse)
-	err := c.cc.Invoke(ctx, BonusService_GetActiveBonusClaims_FullMethodName, in, out, cOpts...)
+	out := new(GetUserRebetClaimsResponse)
+	err := c.cc.Invoke(ctx, BonusService_GetUserRebetClaims_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bonusServiceClient) ProcessWageringContribution(ctx context.Context, in *ProcessWageringContributionRequest, opts ...grpc.CallOption) (*ProcessWageringContributionResponse, error) {
+func (c *bonusServiceClient) GetClaimableRebets(ctx context.Context, in *GetClaimableRebetsRequest, opts ...grpc.CallOption) (*GetClaimableRebetsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(ProcessWageringContributionResponse)
-	err := c.cc.Invoke(ctx, BonusService_ProcessWageringContribution_FullMethodName, in, out, cOpts...)
+	out := new(GetClaimableRebetsResponse)
+	err := c.cc.Invoke(ctx, BonusService_GetClaimableRebets_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bonusServiceClient) CompleteBonus(ctx context.Context, in *CompleteBonusRequest, opts ...grpc.CallOption) (*CompleteBonusResponse, error) {
+func (c *bonusServiceClient) ClaimRebet(ctx context.Context, in *ClaimRebetRequest, opts ...grpc.CallOption) (*ClaimRebetResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CompleteBonusResponse)
-	err := c.cc.Invoke(ctx, BonusService_CompleteBonus_FullMethodName, in, out, cOpts...)
+	out := new(ClaimRebetResponse)
+	err := c.cc.Invoke(ctx, BonusService_ClaimRebet_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bonusServiceClient) CancelBonus(ctx context.Context, in *CancelBonusRequest, opts ...grpc.CallOption) (*CancelBonusResponse, error) {
+func (c *bonusServiceClient) SubmitInsuranceClaim(ctx context.Context, in *SubmitInsuranceClaimRequest, opts ...grpc.CallOption) (*SubmitInsuranceClaimResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(CancelBonusResponse)
-	err := c.cc.Invoke(ctx, BonusService_CancelBonus_FullMethodName, in, out, cOpts...)
+	out := new(SubmitInsuranceClaimResponse)
+	err := c.cc.Invoke(ctx, BonusService_SubmitInsuranceClaim_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *bonusServiceClient) GetBonusStats(ctx context.Context, in *GetBonusStatsRequest, opts ...grpc.CallOption) (*GetBonusStatsResponse, error) {
+func (c *bonusServiceClient) GetUserInsuranceClaims(ctx context.Context, in *GetUserInsuranceClaimsRequest, opts ...grpc.CallOption) (*GetUserInsuranceClaimsResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(GetBonusStatsResponse)
-	err := c.cc.Invoke(ctx, BonusService_GetBonusStats_FullMethodName, in, out, cOpts...)
+	out := new(GetUserInsuranceClaimsResponse)
+	err := c.cc.Invoke(ctx, BonusService_GetUserInsuranceClaims_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *bonusServiceClient) CheckWageringRequirements(ctx context.Context, in *CheckWageringRequirementsRequest, opts ...grpc.CallOption) (*CheckWageringRequirementsResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(CheckWageringRequirementsResponse)
+	err := c.cc.Invoke(ctx, BonusService_CheckWageringRequirements_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -175,23 +177,25 @@ func (c *bonusServiceClient) GetBonusStats(ctx context.Context, in *GetBonusStat
 // BonusServiceServer is the server API for BonusService service.
 // All implementations must embed UnimplementedBonusServiceServer
 // for forward compatibility
-//
-// Bonus Service - manages bonuses, claims, wagering requirements
 type BonusServiceServer interface {
-	// Bonus management
-	GetActiveBonuses(context.Context, *GetActiveBonusesRequest) (*GetActiveBonusesResponse, error)
+	// List available bonuses
+	ListBonuses(context.Context, *ListBonusesRequest) (*ListBonusesResponse, error)
+	// Get bonus details
 	GetBonus(context.Context, *GetBonusRequest) (*GetBonusResponse, error)
-	CreateBonus(context.Context, *CreateBonusRequest) (*CreateBonusResponse, error)
+	// Claim a bonus
 	ClaimBonus(context.Context, *ClaimBonusRequest) (*ClaimBonusResponse, error)
-	CheckEligibility(context.Context, *CheckEligibilityRequest) (*CheckEligibilityResponse, error)
-	GetBonusHistory(context.Context, *GetBonusHistoryRequest) (*GetBonusHistoryResponse, error)
-	GetActiveBonusClaims(context.Context, *GetActiveBonusClaimsRequest) (*GetActiveBonusClaimsResponse, error)
-	// Wagering
-	ProcessWageringContribution(context.Context, *ProcessWageringContributionRequest) (*ProcessWageringContributionResponse, error)
-	CompleteBonus(context.Context, *CompleteBonusRequest) (*CompleteBonusResponse, error)
-	CancelBonus(context.Context, *CancelBonusRequest) (*CancelBonusResponse, error)
-	// Stats
-	GetBonusStats(context.Context, *GetBonusStatsRequest) (*GetBonusStatsResponse, error)
+	// Get user's claimed bonuses
+	GetUserBonuses(context.Context, *GetUserBonusesRequest) (*GetUserBonusesResponse, error)
+	// Rebet claim operations
+	CreateRebetClaim(context.Context, *CreateRebetClaimRequest) (*CreateRebetClaimResponse, error)
+	GetUserRebetClaims(context.Context, *GetUserRebetClaimsRequest) (*GetUserRebetClaimsResponse, error)
+	GetClaimableRebets(context.Context, *GetClaimableRebetsRequest) (*GetClaimableRebetsResponse, error)
+	ClaimRebet(context.Context, *ClaimRebetRequest) (*ClaimRebetResponse, error)
+	// Insurance claim operations
+	SubmitInsuranceClaim(context.Context, *SubmitInsuranceClaimRequest) (*SubmitInsuranceClaimResponse, error)
+	GetUserInsuranceClaims(context.Context, *GetUserInsuranceClaimsRequest) (*GetUserInsuranceClaimsResponse, error)
+	// Wagering requirements
+	CheckWageringRequirements(context.Context, *CheckWageringRequirementsRequest) (*CheckWageringRequirementsResponse, error)
 	mustEmbedUnimplementedBonusServiceServer()
 }
 
@@ -199,38 +203,38 @@ type BonusServiceServer interface {
 type UnimplementedBonusServiceServer struct {
 }
 
-func (UnimplementedBonusServiceServer) GetActiveBonuses(context.Context, *GetActiveBonusesRequest) (*GetActiveBonusesResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetActiveBonuses not implemented")
+func (UnimplementedBonusServiceServer) ListBonuses(context.Context, *ListBonusesRequest) (*ListBonusesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListBonuses not implemented")
 }
 func (UnimplementedBonusServiceServer) GetBonus(context.Context, *GetBonusRequest) (*GetBonusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetBonus not implemented")
 }
-func (UnimplementedBonusServiceServer) CreateBonus(context.Context, *CreateBonusRequest) (*CreateBonusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateBonus not implemented")
-}
 func (UnimplementedBonusServiceServer) ClaimBonus(context.Context, *ClaimBonusRequest) (*ClaimBonusResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ClaimBonus not implemented")
 }
-func (UnimplementedBonusServiceServer) CheckEligibility(context.Context, *CheckEligibilityRequest) (*CheckEligibilityResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CheckEligibility not implemented")
+func (UnimplementedBonusServiceServer) GetUserBonuses(context.Context, *GetUserBonusesRequest) (*GetUserBonusesResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserBonuses not implemented")
 }
-func (UnimplementedBonusServiceServer) GetBonusHistory(context.Context, *GetBonusHistoryRequest) (*GetBonusHistoryResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBonusHistory not implemented")
+func (UnimplementedBonusServiceServer) CreateRebetClaim(context.Context, *CreateRebetClaimRequest) (*CreateRebetClaimResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateRebetClaim not implemented")
 }
-func (UnimplementedBonusServiceServer) GetActiveBonusClaims(context.Context, *GetActiveBonusClaimsRequest) (*GetActiveBonusClaimsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetActiveBonusClaims not implemented")
+func (UnimplementedBonusServiceServer) GetUserRebetClaims(context.Context, *GetUserRebetClaimsRequest) (*GetUserRebetClaimsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserRebetClaims not implemented")
 }
-func (UnimplementedBonusServiceServer) ProcessWageringContribution(context.Context, *ProcessWageringContributionRequest) (*ProcessWageringContributionResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ProcessWageringContribution not implemented")
+func (UnimplementedBonusServiceServer) GetClaimableRebets(context.Context, *GetClaimableRebetsRequest) (*GetClaimableRebetsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetClaimableRebets not implemented")
 }
-func (UnimplementedBonusServiceServer) CompleteBonus(context.Context, *CompleteBonusRequest) (*CompleteBonusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CompleteBonus not implemented")
+func (UnimplementedBonusServiceServer) ClaimRebet(context.Context, *ClaimRebetRequest) (*ClaimRebetResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ClaimRebet not implemented")
 }
-func (UnimplementedBonusServiceServer) CancelBonus(context.Context, *CancelBonusRequest) (*CancelBonusResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CancelBonus not implemented")
+func (UnimplementedBonusServiceServer) SubmitInsuranceClaim(context.Context, *SubmitInsuranceClaimRequest) (*SubmitInsuranceClaimResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SubmitInsuranceClaim not implemented")
 }
-func (UnimplementedBonusServiceServer) GetBonusStats(context.Context, *GetBonusStatsRequest) (*GetBonusStatsResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetBonusStats not implemented")
+func (UnimplementedBonusServiceServer) GetUserInsuranceClaims(context.Context, *GetUserInsuranceClaimsRequest) (*GetUserInsuranceClaimsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetUserInsuranceClaims not implemented")
+}
+func (UnimplementedBonusServiceServer) CheckWageringRequirements(context.Context, *CheckWageringRequirementsRequest) (*CheckWageringRequirementsResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CheckWageringRequirements not implemented")
 }
 func (UnimplementedBonusServiceServer) mustEmbedUnimplementedBonusServiceServer() {}
 
@@ -245,20 +249,20 @@ func RegisterBonusServiceServer(s grpc.ServiceRegistrar, srv BonusServiceServer)
 	s.RegisterService(&BonusService_ServiceDesc, srv)
 }
 
-func _BonusService_GetActiveBonuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetActiveBonusesRequest)
+func _BonusService_ListBonuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ListBonusesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).GetActiveBonuses(ctx, in)
+		return srv.(BonusServiceServer).ListBonuses(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_GetActiveBonuses_FullMethodName,
+		FullMethod: BonusService_ListBonuses_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).GetActiveBonuses(ctx, req.(*GetActiveBonusesRequest))
+		return srv.(BonusServiceServer).ListBonuses(ctx, req.(*ListBonusesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -281,24 +285,6 @@ func _BonusService_GetBonus_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_CreateBonus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CreateBonusRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(BonusServiceServer).CreateBonus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: BonusService_CreateBonus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).CreateBonus(ctx, req.(*CreateBonusRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _BonusService_ClaimBonus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ClaimBonusRequest)
 	if err := dec(in); err != nil {
@@ -317,128 +303,146 @@ func _BonusService_ClaimBonus_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_CheckEligibility_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckEligibilityRequest)
+func _BonusService_GetUserBonuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserBonusesRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).CheckEligibility(ctx, in)
+		return srv.(BonusServiceServer).GetUserBonuses(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_CheckEligibility_FullMethodName,
+		FullMethod: BonusService_GetUserBonuses_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).CheckEligibility(ctx, req.(*CheckEligibilityRequest))
+		return srv.(BonusServiceServer).GetUserBonuses(ctx, req.(*GetUserBonusesRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_GetBonusHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBonusHistoryRequest)
+func _BonusService_CreateRebetClaim_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CreateRebetClaimRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).GetBonusHistory(ctx, in)
+		return srv.(BonusServiceServer).CreateRebetClaim(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_GetBonusHistory_FullMethodName,
+		FullMethod: BonusService_CreateRebetClaim_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).GetBonusHistory(ctx, req.(*GetBonusHistoryRequest))
+		return srv.(BonusServiceServer).CreateRebetClaim(ctx, req.(*CreateRebetClaimRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_GetActiveBonusClaims_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetActiveBonusClaimsRequest)
+func _BonusService_GetUserRebetClaims_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserRebetClaimsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).GetActiveBonusClaims(ctx, in)
+		return srv.(BonusServiceServer).GetUserRebetClaims(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_GetActiveBonusClaims_FullMethodName,
+		FullMethod: BonusService_GetUserRebetClaims_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).GetActiveBonusClaims(ctx, req.(*GetActiveBonusClaimsRequest))
+		return srv.(BonusServiceServer).GetUserRebetClaims(ctx, req.(*GetUserRebetClaimsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_ProcessWageringContribution_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ProcessWageringContributionRequest)
+func _BonusService_GetClaimableRebets_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetClaimableRebetsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).ProcessWageringContribution(ctx, in)
+		return srv.(BonusServiceServer).GetClaimableRebets(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_ProcessWageringContribution_FullMethodName,
+		FullMethod: BonusService_GetClaimableRebets_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).ProcessWageringContribution(ctx, req.(*ProcessWageringContributionRequest))
+		return srv.(BonusServiceServer).GetClaimableRebets(ctx, req.(*GetClaimableRebetsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_CompleteBonus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CompleteBonusRequest)
+func _BonusService_ClaimRebet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(ClaimRebetRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).CompleteBonus(ctx, in)
+		return srv.(BonusServiceServer).ClaimRebet(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_CompleteBonus_FullMethodName,
+		FullMethod: BonusService_ClaimRebet_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).CompleteBonus(ctx, req.(*CompleteBonusRequest))
+		return srv.(BonusServiceServer).ClaimRebet(ctx, req.(*ClaimRebetRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_CancelBonus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CancelBonusRequest)
+func _BonusService_SubmitInsuranceClaim_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SubmitInsuranceClaimRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).CancelBonus(ctx, in)
+		return srv.(BonusServiceServer).SubmitInsuranceClaim(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_CancelBonus_FullMethodName,
+		FullMethod: BonusService_SubmitInsuranceClaim_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).CancelBonus(ctx, req.(*CancelBonusRequest))
+		return srv.(BonusServiceServer).SubmitInsuranceClaim(ctx, req.(*SubmitInsuranceClaimRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _BonusService_GetBonusStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetBonusStatsRequest)
+func _BonusService_GetUserInsuranceClaims_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetUserInsuranceClaimsRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(BonusServiceServer).GetBonusStats(ctx, in)
+		return srv.(BonusServiceServer).GetUserInsuranceClaims(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: BonusService_GetBonusStats_FullMethodName,
+		FullMethod: BonusService_GetUserInsuranceClaims_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(BonusServiceServer).GetBonusStats(ctx, req.(*GetBonusStatsRequest))
+		return srv.(BonusServiceServer).GetUserInsuranceClaims(ctx, req.(*GetUserInsuranceClaimsRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _BonusService_CheckWageringRequirements_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(CheckWageringRequirementsRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(BonusServiceServer).CheckWageringRequirements(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: BonusService_CheckWageringRequirements_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(BonusServiceServer).CheckWageringRequirements(ctx, req.(*CheckWageringRequirementsRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -451,48 +455,48 @@ var BonusService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*BonusServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "GetActiveBonuses",
-			Handler:    _BonusService_GetActiveBonuses_Handler,
+			MethodName: "ListBonuses",
+			Handler:    _BonusService_ListBonuses_Handler,
 		},
 		{
 			MethodName: "GetBonus",
 			Handler:    _BonusService_GetBonus_Handler,
 		},
 		{
-			MethodName: "CreateBonus",
-			Handler:    _BonusService_CreateBonus_Handler,
-		},
-		{
 			MethodName: "ClaimBonus",
 			Handler:    _BonusService_ClaimBonus_Handler,
 		},
 		{
-			MethodName: "CheckEligibility",
-			Handler:    _BonusService_CheckEligibility_Handler,
+			MethodName: "GetUserBonuses",
+			Handler:    _BonusService_GetUserBonuses_Handler,
 		},
 		{
-			MethodName: "GetBonusHistory",
-			Handler:    _BonusService_GetBonusHistory_Handler,
+			MethodName: "CreateRebetClaim",
+			Handler:    _BonusService_CreateRebetClaim_Handler,
 		},
 		{
-			MethodName: "GetActiveBonusClaims",
-			Handler:    _BonusService_GetActiveBonusClaims_Handler,
+			MethodName: "GetUserRebetClaims",
+			Handler:    _BonusService_GetUserRebetClaims_Handler,
 		},
 		{
-			MethodName: "ProcessWageringContribution",
-			Handler:    _BonusService_ProcessWageringContribution_Handler,
+			MethodName: "GetClaimableRebets",
+			Handler:    _BonusService_GetClaimableRebets_Handler,
 		},
 		{
-			MethodName: "CompleteBonus",
-			Handler:    _BonusService_CompleteBonus_Handler,
+			MethodName: "ClaimRebet",
+			Handler:    _BonusService_ClaimRebet_Handler,
 		},
 		{
-			MethodName: "CancelBonus",
-			Handler:    _BonusService_CancelBonus_Handler,
+			MethodName: "SubmitInsuranceClaim",
+			Handler:    _BonusService_SubmitInsuranceClaim_Handler,
 		},
 		{
-			MethodName: "GetBonusStats",
-			Handler:    _BonusService_GetBonusStats_Handler,
+			MethodName: "GetUserInsuranceClaims",
+			Handler:    _BonusService_GetUserInsuranceClaims_Handler,
+		},
+		{
+			MethodName: "CheckWageringRequirements",
+			Handler:    _BonusService_CheckWageringRequirements_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

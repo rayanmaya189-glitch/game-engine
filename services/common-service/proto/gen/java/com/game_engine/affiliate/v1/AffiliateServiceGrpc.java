@@ -511,6 +511,161 @@ public final class AffiliateServiceGrpc {
     return getRedirectToRegistrationMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetPerformanceReportRequest,
+      com.game_engine.affiliate.v1.GetPerformanceReportResponse> getGetPerformanceReportMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetPerformanceReport",
+      requestType = com.game_engine.affiliate.v1.GetPerformanceReportRequest.class,
+      responseType = com.game_engine.affiliate.v1.GetPerformanceReportResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetPerformanceReportRequest,
+      com.game_engine.affiliate.v1.GetPerformanceReportResponse> getGetPerformanceReportMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetPerformanceReportRequest, com.game_engine.affiliate.v1.GetPerformanceReportResponse> getGetPerformanceReportMethod;
+    if ((getGetPerformanceReportMethod = AffiliateServiceGrpc.getGetPerformanceReportMethod) == null) {
+      synchronized (AffiliateServiceGrpc.class) {
+        if ((getGetPerformanceReportMethod = AffiliateServiceGrpc.getGetPerformanceReportMethod) == null) {
+          AffiliateServiceGrpc.getGetPerformanceReportMethod = getGetPerformanceReportMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.affiliate.v1.GetPerformanceReportRequest, com.game_engine.affiliate.v1.GetPerformanceReportResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetPerformanceReport"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetPerformanceReportRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetPerformanceReportResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AffiliateServiceMethodDescriptorSupplier("GetPerformanceReport"))
+              .build();
+        }
+      }
+    }
+    return getGetPerformanceReportMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetClickReportsRequest,
+      com.game_engine.affiliate.v1.GetClickReportsResponse> getGetClickReportsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetClickReports",
+      requestType = com.game_engine.affiliate.v1.GetClickReportsRequest.class,
+      responseType = com.game_engine.affiliate.v1.GetClickReportsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetClickReportsRequest,
+      com.game_engine.affiliate.v1.GetClickReportsResponse> getGetClickReportsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetClickReportsRequest, com.game_engine.affiliate.v1.GetClickReportsResponse> getGetClickReportsMethod;
+    if ((getGetClickReportsMethod = AffiliateServiceGrpc.getGetClickReportsMethod) == null) {
+      synchronized (AffiliateServiceGrpc.class) {
+        if ((getGetClickReportsMethod = AffiliateServiceGrpc.getGetClickReportsMethod) == null) {
+          AffiliateServiceGrpc.getGetClickReportsMethod = getGetClickReportsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.affiliate.v1.GetClickReportsRequest, com.game_engine.affiliate.v1.GetClickReportsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetClickReports"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetClickReportsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetClickReportsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AffiliateServiceMethodDescriptorSupplier("GetClickReports"))
+              .build();
+        }
+      }
+    }
+    return getGetClickReportsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetConversionReportsRequest,
+      com.game_engine.affiliate.v1.GetConversionReportsResponse> getGetConversionReportsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetConversionReports",
+      requestType = com.game_engine.affiliate.v1.GetConversionReportsRequest.class,
+      responseType = com.game_engine.affiliate.v1.GetConversionReportsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetConversionReportsRequest,
+      com.game_engine.affiliate.v1.GetConversionReportsResponse> getGetConversionReportsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetConversionReportsRequest, com.game_engine.affiliate.v1.GetConversionReportsResponse> getGetConversionReportsMethod;
+    if ((getGetConversionReportsMethod = AffiliateServiceGrpc.getGetConversionReportsMethod) == null) {
+      synchronized (AffiliateServiceGrpc.class) {
+        if ((getGetConversionReportsMethod = AffiliateServiceGrpc.getGetConversionReportsMethod) == null) {
+          AffiliateServiceGrpc.getGetConversionReportsMethod = getGetConversionReportsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.affiliate.v1.GetConversionReportsRequest, com.game_engine.affiliate.v1.GetConversionReportsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetConversionReports"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetConversionReportsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetConversionReportsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AffiliateServiceMethodDescriptorSupplier("GetConversionReports"))
+              .build();
+        }
+      }
+    }
+    return getGetConversionReportsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetAffiliateLinksRequest,
+      com.game_engine.affiliate.v1.GetAffiliateLinksResponse> getGetAffiliateLinksMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAffiliateLinks",
+      requestType = com.game_engine.affiliate.v1.GetAffiliateLinksRequest.class,
+      responseType = com.game_engine.affiliate.v1.GetAffiliateLinksResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetAffiliateLinksRequest,
+      com.game_engine.affiliate.v1.GetAffiliateLinksResponse> getGetAffiliateLinksMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.GetAffiliateLinksRequest, com.game_engine.affiliate.v1.GetAffiliateLinksResponse> getGetAffiliateLinksMethod;
+    if ((getGetAffiliateLinksMethod = AffiliateServiceGrpc.getGetAffiliateLinksMethod) == null) {
+      synchronized (AffiliateServiceGrpc.class) {
+        if ((getGetAffiliateLinksMethod = AffiliateServiceGrpc.getGetAffiliateLinksMethod) == null) {
+          AffiliateServiceGrpc.getGetAffiliateLinksMethod = getGetAffiliateLinksMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.affiliate.v1.GetAffiliateLinksRequest, com.game_engine.affiliate.v1.GetAffiliateLinksResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAffiliateLinks"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetAffiliateLinksRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.GetAffiliateLinksResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AffiliateServiceMethodDescriptorSupplier("GetAffiliateLinks"))
+              .build();
+        }
+      }
+    }
+    return getGetAffiliateLinksMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.CreateAffiliateLinkRequest,
+      com.game_engine.affiliate.v1.CreateAffiliateLinkResponse> getCreateAffiliateLinkMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "CreateAffiliateLink",
+      requestType = com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.class,
+      responseType = com.game_engine.affiliate.v1.CreateAffiliateLinkResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.CreateAffiliateLinkRequest,
+      com.game_engine.affiliate.v1.CreateAffiliateLinkResponse> getCreateAffiliateLinkMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.affiliate.v1.CreateAffiliateLinkRequest, com.game_engine.affiliate.v1.CreateAffiliateLinkResponse> getCreateAffiliateLinkMethod;
+    if ((getCreateAffiliateLinkMethod = AffiliateServiceGrpc.getCreateAffiliateLinkMethod) == null) {
+      synchronized (AffiliateServiceGrpc.class) {
+        if ((getCreateAffiliateLinkMethod = AffiliateServiceGrpc.getCreateAffiliateLinkMethod) == null) {
+          AffiliateServiceGrpc.getCreateAffiliateLinkMethod = getCreateAffiliateLinkMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.affiliate.v1.CreateAffiliateLinkRequest, com.game_engine.affiliate.v1.CreateAffiliateLinkResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "CreateAffiliateLink"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.CreateAffiliateLinkRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.affiliate.v1.CreateAffiliateLinkResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new AffiliateServiceMethodDescriptorSupplier("CreateAffiliateLink"))
+              .build();
+        }
+      }
+    }
+    return getCreateAffiliateLinkMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -709,6 +864,44 @@ public final class AffiliateServiceGrpc {
         io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.RedirectToRegistrationResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRedirectToRegistrationMethod(), responseObserver);
     }
+
+    /**
+     * <pre>
+     * Reporting and link management
+     * </pre>
+     */
+    default void getPerformanceReport(com.game_engine.affiliate.v1.GetPerformanceReportRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetPerformanceReportResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetPerformanceReportMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getClickReports(com.game_engine.affiliate.v1.GetClickReportsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetClickReportsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetClickReportsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getConversionReports(com.game_engine.affiliate.v1.GetConversionReportsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetConversionReportsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetConversionReportsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getAffiliateLinks(com.game_engine.affiliate.v1.GetAffiliateLinksRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetAffiliateLinksResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAffiliateLinksMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void createAffiliateLink(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.CreateAffiliateLinkResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getCreateAffiliateLinkMethod(), responseObserver);
+    }
   }
 
   /**
@@ -892,6 +1085,49 @@ public final class AffiliateServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRedirectToRegistrationMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     * Reporting and link management
+     * </pre>
+     */
+    public void getPerformanceReport(com.game_engine.affiliate.v1.GetPerformanceReportRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetPerformanceReportResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetPerformanceReportMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getClickReports(com.game_engine.affiliate.v1.GetClickReportsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetClickReportsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetClickReportsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getConversionReports(com.game_engine.affiliate.v1.GetConversionReportsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetConversionReportsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetConversionReportsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getAffiliateLinks(com.game_engine.affiliate.v1.GetAffiliateLinksRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetAffiliateLinksResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAffiliateLinksMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void createAffiliateLink(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.CreateAffiliateLinkResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getCreateAffiliateLinkMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1045,6 +1281,44 @@ public final class AffiliateServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getRedirectToRegistrationMethod(), getCallOptions(), request);
     }
+
+    /**
+     * <pre>
+     * Reporting and link management
+     * </pre>
+     */
+    public com.game_engine.affiliate.v1.GetPerformanceReportResponse getPerformanceReport(com.game_engine.affiliate.v1.GetPerformanceReportRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetPerformanceReportMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.GetClickReportsResponse getClickReports(com.game_engine.affiliate.v1.GetClickReportsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetClickReportsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.GetConversionReportsResponse getConversionReports(com.game_engine.affiliate.v1.GetConversionReportsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetConversionReportsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.GetAffiliateLinksResponse getAffiliateLinks(com.game_engine.affiliate.v1.GetAffiliateLinksRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetAffiliateLinksMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.CreateAffiliateLinkResponse createAffiliateLink(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getCreateAffiliateLinkMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1197,6 +1471,44 @@ public final class AffiliateServiceGrpc {
     public com.game_engine.affiliate.v1.RedirectToRegistrationResponse redirectToRegistration(com.game_engine.affiliate.v1.RedirectToRegistrationRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRedirectToRegistrationMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     * Reporting and link management
+     * </pre>
+     */
+    public com.game_engine.affiliate.v1.GetPerformanceReportResponse getPerformanceReport(com.game_engine.affiliate.v1.GetPerformanceReportRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetPerformanceReportMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.GetClickReportsResponse getClickReports(com.game_engine.affiliate.v1.GetClickReportsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetClickReportsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.GetConversionReportsResponse getConversionReports(com.game_engine.affiliate.v1.GetConversionReportsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetConversionReportsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.GetAffiliateLinksResponse getAffiliateLinks(com.game_engine.affiliate.v1.GetAffiliateLinksRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAffiliateLinksMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.affiliate.v1.CreateAffiliateLinkResponse createAffiliateLink(com.game_engine.affiliate.v1.CreateAffiliateLinkRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getCreateAffiliateLinkMethod(), getCallOptions(), request);
     }
   }
 
@@ -1367,6 +1679,49 @@ public final class AffiliateServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRedirectToRegistrationMethod(), getCallOptions()), request);
     }
+
+    /**
+     * <pre>
+     * Reporting and link management
+     * </pre>
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.affiliate.v1.GetPerformanceReportResponse> getPerformanceReport(
+        com.game_engine.affiliate.v1.GetPerformanceReportRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetPerformanceReportMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.affiliate.v1.GetClickReportsResponse> getClickReports(
+        com.game_engine.affiliate.v1.GetClickReportsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetClickReportsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.affiliate.v1.GetConversionReportsResponse> getConversionReports(
+        com.game_engine.affiliate.v1.GetConversionReportsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetConversionReportsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.affiliate.v1.GetAffiliateLinksResponse> getAffiliateLinks(
+        com.game_engine.affiliate.v1.GetAffiliateLinksRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAffiliateLinksMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.affiliate.v1.CreateAffiliateLinkResponse> createAffiliateLink(
+        com.game_engine.affiliate.v1.CreateAffiliateLinkRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getCreateAffiliateLinkMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_REGISTER_AFFILIATE = 0;
@@ -1385,6 +1740,11 @@ public final class AffiliateServiceGrpc {
   private static final int METHODID_GET_SUB_AFFILIATES = 13;
   private static final int METHODID_GET_AFFILIATE_STATS = 14;
   private static final int METHODID_REDIRECT_TO_REGISTRATION = 15;
+  private static final int METHODID_GET_PERFORMANCE_REPORT = 16;
+  private static final int METHODID_GET_CLICK_REPORTS = 17;
+  private static final int METHODID_GET_CONVERSION_REPORTS = 18;
+  private static final int METHODID_GET_AFFILIATE_LINKS = 19;
+  private static final int METHODID_CREATE_AFFILIATE_LINK = 20;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1466,6 +1826,26 @@ public final class AffiliateServiceGrpc {
         case METHODID_REDIRECT_TO_REGISTRATION:
           serviceImpl.redirectToRegistration((com.game_engine.affiliate.v1.RedirectToRegistrationRequest) request,
               (io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.RedirectToRegistrationResponse>) responseObserver);
+          break;
+        case METHODID_GET_PERFORMANCE_REPORT:
+          serviceImpl.getPerformanceReport((com.game_engine.affiliate.v1.GetPerformanceReportRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetPerformanceReportResponse>) responseObserver);
+          break;
+        case METHODID_GET_CLICK_REPORTS:
+          serviceImpl.getClickReports((com.game_engine.affiliate.v1.GetClickReportsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetClickReportsResponse>) responseObserver);
+          break;
+        case METHODID_GET_CONVERSION_REPORTS:
+          serviceImpl.getConversionReports((com.game_engine.affiliate.v1.GetConversionReportsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetConversionReportsResponse>) responseObserver);
+          break;
+        case METHODID_GET_AFFILIATE_LINKS:
+          serviceImpl.getAffiliateLinks((com.game_engine.affiliate.v1.GetAffiliateLinksRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.GetAffiliateLinksResponse>) responseObserver);
+          break;
+        case METHODID_CREATE_AFFILIATE_LINK:
+          serviceImpl.createAffiliateLink((com.game_engine.affiliate.v1.CreateAffiliateLinkRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.affiliate.v1.CreateAffiliateLinkResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1597,6 +1977,41 @@ public final class AffiliateServiceGrpc {
               com.game_engine.affiliate.v1.RedirectToRegistrationRequest,
               com.game_engine.affiliate.v1.RedirectToRegistrationResponse>(
                 service, METHODID_REDIRECT_TO_REGISTRATION)))
+        .addMethod(
+          getGetPerformanceReportMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.affiliate.v1.GetPerformanceReportRequest,
+              com.game_engine.affiliate.v1.GetPerformanceReportResponse>(
+                service, METHODID_GET_PERFORMANCE_REPORT)))
+        .addMethod(
+          getGetClickReportsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.affiliate.v1.GetClickReportsRequest,
+              com.game_engine.affiliate.v1.GetClickReportsResponse>(
+                service, METHODID_GET_CLICK_REPORTS)))
+        .addMethod(
+          getGetConversionReportsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.affiliate.v1.GetConversionReportsRequest,
+              com.game_engine.affiliate.v1.GetConversionReportsResponse>(
+                service, METHODID_GET_CONVERSION_REPORTS)))
+        .addMethod(
+          getGetAffiliateLinksMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.affiliate.v1.GetAffiliateLinksRequest,
+              com.game_engine.affiliate.v1.GetAffiliateLinksResponse>(
+                service, METHODID_GET_AFFILIATE_LINKS)))
+        .addMethod(
+          getCreateAffiliateLinkMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.affiliate.v1.CreateAffiliateLinkRequest,
+              com.game_engine.affiliate.v1.CreateAffiliateLinkResponse>(
+                service, METHODID_CREATE_AFFILIATE_LINK)))
         .build();
   }
 
@@ -1661,6 +2076,11 @@ public final class AffiliateServiceGrpc {
               .addMethod(getGetSubAffiliatesMethod())
               .addMethod(getGetAffiliateStatsMethod())
               .addMethod(getRedirectToRegistrationMethod())
+              .addMethod(getGetPerformanceReportMethod())
+              .addMethod(getGetClickReportsMethod())
+              .addMethod(getGetConversionReportsMethod())
+              .addMethod(getGetAffiliateLinksMethod())
+              .addMethod(getCreateAffiliateLinkMethod())
               .build();
         }
       }

@@ -102,6 +102,36 @@ class CommissionServiceStub(object):
                 request_serializer=commission_dot_v1_dot_commission__service__pb2.DeleteCommissionRequest.SerializeToString,
                 response_deserializer=commission_dot_v1_dot_commission__service__pb2.DeleteCommissionResponse.FromString,
                 _registered_method=True)
+        self.SubmitClaim = channel.unary_unary(
+                '/game_engine.commission.v1.CommissionService/SubmitClaim',
+                request_serializer=commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.SerializeToString,
+                response_deserializer=commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.FromString,
+                _registered_method=True)
+        self.GetUserClaims = channel.unary_unary(
+                '/game_engine.commission.v1.CommissionService/GetUserClaims',
+                request_serializer=commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.SerializeToString,
+                response_deserializer=commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.FromString,
+                _registered_method=True)
+        self.GetClaimsByStatus = channel.unary_unary(
+                '/game_engine.commission.v1.CommissionService/GetClaimsByStatus',
+                request_serializer=commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.SerializeToString,
+                response_deserializer=commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.FromString,
+                _registered_method=True)
+        self.ClaimCommission = channel.unary_unary(
+                '/game_engine.commission.v1.CommissionService/ClaimCommission',
+                request_serializer=commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.SerializeToString,
+                response_deserializer=commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.FromString,
+                _registered_method=True)
+        self.GetAgentCommissions = channel.unary_unary(
+                '/game_engine.commission.v1.CommissionService/GetAgentCommissions',
+                request_serializer=commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.SerializeToString,
+                response_deserializer=commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.FromString,
+                _registered_method=True)
+        self.GetCommissionHistory = channel.unary_unary(
+                '/game_engine.commission.v1.CommissionService/GetCommissionHistory',
+                request_serializer=commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.SerializeToString,
+                response_deserializer=commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.FromString,
+                _registered_method=True)
 
 
 class CommissionServiceServicer(object):
@@ -216,6 +246,42 @@ class CommissionServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def SubmitClaim(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetUserClaims(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetClaimsByStatus(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def ClaimCommission(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetAgentCommissions(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def GetCommissionHistory(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_CommissionServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -303,6 +369,36 @@ def add_CommissionServiceServicer_to_server(servicer, server):
                     servicer.DeleteCommission,
                     request_deserializer=commission_dot_v1_dot_commission__service__pb2.DeleteCommissionRequest.FromString,
                     response_serializer=commission_dot_v1_dot_commission__service__pb2.DeleteCommissionResponse.SerializeToString,
+            ),
+            'SubmitClaim': grpc.unary_unary_rpc_method_handler(
+                    servicer.SubmitClaim,
+                    request_deserializer=commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.FromString,
+                    response_serializer=commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.SerializeToString,
+            ),
+            'GetUserClaims': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetUserClaims,
+                    request_deserializer=commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.FromString,
+                    response_serializer=commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.SerializeToString,
+            ),
+            'GetClaimsByStatus': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetClaimsByStatus,
+                    request_deserializer=commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.FromString,
+                    response_serializer=commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.SerializeToString,
+            ),
+            'ClaimCommission': grpc.unary_unary_rpc_method_handler(
+                    servicer.ClaimCommission,
+                    request_deserializer=commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.FromString,
+                    response_serializer=commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.SerializeToString,
+            ),
+            'GetAgentCommissions': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetAgentCommissions,
+                    request_deserializer=commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.FromString,
+                    response_serializer=commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.SerializeToString,
+            ),
+            'GetCommissionHistory': grpc.unary_unary_rpc_method_handler(
+                    servicer.GetCommissionHistory,
+                    request_deserializer=commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.FromString,
+                    response_serializer=commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -767,6 +863,168 @@ class CommissionService(object):
             '/game_engine.commission.v1.CommissionService/DeleteCommission',
             commission_dot_v1_dot_commission__service__pb2.DeleteCommissionRequest.SerializeToString,
             commission_dot_v1_dot_commission__service__pb2.DeleteCommissionResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def SubmitClaim(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.commission.v1.CommissionService/SubmitClaim',
+            commission_dot_v1_dot_commission__service__pb2.SubmitClaimRequest.SerializeToString,
+            commission_dot_v1_dot_commission__service__pb2.SubmitClaimResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetUserClaims(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.commission.v1.CommissionService/GetUserClaims',
+            commission_dot_v1_dot_commission__service__pb2.GetUserClaimsRequest.SerializeToString,
+            commission_dot_v1_dot_commission__service__pb2.GetUserClaimsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetClaimsByStatus(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.commission.v1.CommissionService/GetClaimsByStatus',
+            commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusRequest.SerializeToString,
+            commission_dot_v1_dot_commission__service__pb2.GetClaimsByStatusResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ClaimCommission(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.commission.v1.CommissionService/ClaimCommission',
+            commission_dot_v1_dot_commission__service__pb2.ClaimCommissionRequest.SerializeToString,
+            commission_dot_v1_dot_commission__service__pb2.ClaimCommissionResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetAgentCommissions(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.commission.v1.CommissionService/GetAgentCommissions',
+            commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsRequest.SerializeToString,
+            commission_dot_v1_dot_commission__service__pb2.GetAgentCommissionsResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def GetCommissionHistory(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/game_engine.commission.v1.CommissionService/GetCommissionHistory',
+            commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryRequest.SerializeToString,
+            commission_dot_v1_dot_commission__service__pb2.GetCommissionHistoryResponse.FromString,
             options,
             channel_credentials,
             insecure,

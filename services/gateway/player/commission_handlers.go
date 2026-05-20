@@ -7,7 +7,7 @@ import (
 
 	commissionpb "github.com/game_engine/common-service/proto/gen/go/commission/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // SubmitCommissionClaim handles submitting a commission claim

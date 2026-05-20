@@ -544,6 +544,192 @@ public final class CommissionServiceGrpc {
     return getDeleteCommissionMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.commission.v1.SubmitClaimRequest,
+      com.game_engine.commission.v1.SubmitClaimResponse> getSubmitClaimMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "SubmitClaim",
+      requestType = com.game_engine.commission.v1.SubmitClaimRequest.class,
+      responseType = com.game_engine.commission.v1.SubmitClaimResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.commission.v1.SubmitClaimRequest,
+      com.game_engine.commission.v1.SubmitClaimResponse> getSubmitClaimMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.commission.v1.SubmitClaimRequest, com.game_engine.commission.v1.SubmitClaimResponse> getSubmitClaimMethod;
+    if ((getSubmitClaimMethod = CommissionServiceGrpc.getSubmitClaimMethod) == null) {
+      synchronized (CommissionServiceGrpc.class) {
+        if ((getSubmitClaimMethod = CommissionServiceGrpc.getSubmitClaimMethod) == null) {
+          CommissionServiceGrpc.getSubmitClaimMethod = getSubmitClaimMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.commission.v1.SubmitClaimRequest, com.game_engine.commission.v1.SubmitClaimResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "SubmitClaim"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.SubmitClaimRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.SubmitClaimResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommissionServiceMethodDescriptorSupplier("SubmitClaim"))
+              .build();
+        }
+      }
+    }
+    return getSubmitClaimMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetUserClaimsRequest,
+      com.game_engine.commission.v1.GetUserClaimsResponse> getGetUserClaimsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetUserClaims",
+      requestType = com.game_engine.commission.v1.GetUserClaimsRequest.class,
+      responseType = com.game_engine.commission.v1.GetUserClaimsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetUserClaimsRequest,
+      com.game_engine.commission.v1.GetUserClaimsResponse> getGetUserClaimsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetUserClaimsRequest, com.game_engine.commission.v1.GetUserClaimsResponse> getGetUserClaimsMethod;
+    if ((getGetUserClaimsMethod = CommissionServiceGrpc.getGetUserClaimsMethod) == null) {
+      synchronized (CommissionServiceGrpc.class) {
+        if ((getGetUserClaimsMethod = CommissionServiceGrpc.getGetUserClaimsMethod) == null) {
+          CommissionServiceGrpc.getGetUserClaimsMethod = getGetUserClaimsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.commission.v1.GetUserClaimsRequest, com.game_engine.commission.v1.GetUserClaimsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetUserClaims"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetUserClaimsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetUserClaimsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommissionServiceMethodDescriptorSupplier("GetUserClaims"))
+              .build();
+        }
+      }
+    }
+    return getGetUserClaimsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetClaimsByStatusRequest,
+      com.game_engine.commission.v1.GetClaimsByStatusResponse> getGetClaimsByStatusMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetClaimsByStatus",
+      requestType = com.game_engine.commission.v1.GetClaimsByStatusRequest.class,
+      responseType = com.game_engine.commission.v1.GetClaimsByStatusResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetClaimsByStatusRequest,
+      com.game_engine.commission.v1.GetClaimsByStatusResponse> getGetClaimsByStatusMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetClaimsByStatusRequest, com.game_engine.commission.v1.GetClaimsByStatusResponse> getGetClaimsByStatusMethod;
+    if ((getGetClaimsByStatusMethod = CommissionServiceGrpc.getGetClaimsByStatusMethod) == null) {
+      synchronized (CommissionServiceGrpc.class) {
+        if ((getGetClaimsByStatusMethod = CommissionServiceGrpc.getGetClaimsByStatusMethod) == null) {
+          CommissionServiceGrpc.getGetClaimsByStatusMethod = getGetClaimsByStatusMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.commission.v1.GetClaimsByStatusRequest, com.game_engine.commission.v1.GetClaimsByStatusResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetClaimsByStatus"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetClaimsByStatusRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetClaimsByStatusResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommissionServiceMethodDescriptorSupplier("GetClaimsByStatus"))
+              .build();
+        }
+      }
+    }
+    return getGetClaimsByStatusMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.commission.v1.ClaimCommissionRequest,
+      com.game_engine.commission.v1.ClaimCommissionResponse> getClaimCommissionMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "ClaimCommission",
+      requestType = com.game_engine.commission.v1.ClaimCommissionRequest.class,
+      responseType = com.game_engine.commission.v1.ClaimCommissionResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.commission.v1.ClaimCommissionRequest,
+      com.game_engine.commission.v1.ClaimCommissionResponse> getClaimCommissionMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.commission.v1.ClaimCommissionRequest, com.game_engine.commission.v1.ClaimCommissionResponse> getClaimCommissionMethod;
+    if ((getClaimCommissionMethod = CommissionServiceGrpc.getClaimCommissionMethod) == null) {
+      synchronized (CommissionServiceGrpc.class) {
+        if ((getClaimCommissionMethod = CommissionServiceGrpc.getClaimCommissionMethod) == null) {
+          CommissionServiceGrpc.getClaimCommissionMethod = getClaimCommissionMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.commission.v1.ClaimCommissionRequest, com.game_engine.commission.v1.ClaimCommissionResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "ClaimCommission"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.ClaimCommissionRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.ClaimCommissionResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommissionServiceMethodDescriptorSupplier("ClaimCommission"))
+              .build();
+        }
+      }
+    }
+    return getClaimCommissionMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetAgentCommissionsRequest,
+      com.game_engine.commission.v1.GetAgentCommissionsResponse> getGetAgentCommissionsMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetAgentCommissions",
+      requestType = com.game_engine.commission.v1.GetAgentCommissionsRequest.class,
+      responseType = com.game_engine.commission.v1.GetAgentCommissionsResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetAgentCommissionsRequest,
+      com.game_engine.commission.v1.GetAgentCommissionsResponse> getGetAgentCommissionsMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetAgentCommissionsRequest, com.game_engine.commission.v1.GetAgentCommissionsResponse> getGetAgentCommissionsMethod;
+    if ((getGetAgentCommissionsMethod = CommissionServiceGrpc.getGetAgentCommissionsMethod) == null) {
+      synchronized (CommissionServiceGrpc.class) {
+        if ((getGetAgentCommissionsMethod = CommissionServiceGrpc.getGetAgentCommissionsMethod) == null) {
+          CommissionServiceGrpc.getGetAgentCommissionsMethod = getGetAgentCommissionsMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.commission.v1.GetAgentCommissionsRequest, com.game_engine.commission.v1.GetAgentCommissionsResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetAgentCommissions"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetAgentCommissionsRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetAgentCommissionsResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommissionServiceMethodDescriptorSupplier("GetAgentCommissions"))
+              .build();
+        }
+      }
+    }
+    return getGetAgentCommissionsMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetCommissionHistoryRequest,
+      com.game_engine.commission.v1.GetCommissionHistoryResponse> getGetCommissionHistoryMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "GetCommissionHistory",
+      requestType = com.game_engine.commission.v1.GetCommissionHistoryRequest.class,
+      responseType = com.game_engine.commission.v1.GetCommissionHistoryResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetCommissionHistoryRequest,
+      com.game_engine.commission.v1.GetCommissionHistoryResponse> getGetCommissionHistoryMethod() {
+    io.grpc.MethodDescriptor<com.game_engine.commission.v1.GetCommissionHistoryRequest, com.game_engine.commission.v1.GetCommissionHistoryResponse> getGetCommissionHistoryMethod;
+    if ((getGetCommissionHistoryMethod = CommissionServiceGrpc.getGetCommissionHistoryMethod) == null) {
+      synchronized (CommissionServiceGrpc.class) {
+        if ((getGetCommissionHistoryMethod = CommissionServiceGrpc.getGetCommissionHistoryMethod) == null) {
+          CommissionServiceGrpc.getGetCommissionHistoryMethod = getGetCommissionHistoryMethod =
+              io.grpc.MethodDescriptor.<com.game_engine.commission.v1.GetCommissionHistoryRequest, com.game_engine.commission.v1.GetCommissionHistoryResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "GetCommissionHistory"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetCommissionHistoryRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.game_engine.commission.v1.GetCommissionHistoryResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CommissionServiceMethodDescriptorSupplier("GetCommissionHistory"))
+              .build();
+        }
+      }
+    }
+    return getGetCommissionHistoryMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -742,6 +928,48 @@ public final class CommissionServiceGrpc {
         io.grpc.stub.StreamObserver<com.game_engine.commission.v1.DeleteCommissionResponse> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDeleteCommissionMethod(), responseObserver);
     }
+
+    /**
+     */
+    default void submitClaim(com.game_engine.commission.v1.SubmitClaimRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.SubmitClaimResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSubmitClaimMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getUserClaims(com.game_engine.commission.v1.GetUserClaimsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetUserClaimsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetUserClaimsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getClaimsByStatus(com.game_engine.commission.v1.GetClaimsByStatusRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetClaimsByStatusResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetClaimsByStatusMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void claimCommission(com.game_engine.commission.v1.ClaimCommissionRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.ClaimCommissionResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getClaimCommissionMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getAgentCommissions(com.game_engine.commission.v1.GetAgentCommissionsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetAgentCommissionsResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAgentCommissionsMethod(), responseObserver);
+    }
+
+    /**
+     */
+    default void getCommissionHistory(com.game_engine.commission.v1.GetCommissionHistoryRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetCommissionHistoryResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetCommissionHistoryMethod(), responseObserver);
+    }
   }
 
   /**
@@ -928,6 +1156,54 @@ public final class CommissionServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDeleteCommissionMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void submitClaim(com.game_engine.commission.v1.SubmitClaimRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.SubmitClaimResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getSubmitClaimMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getUserClaims(com.game_engine.commission.v1.GetUserClaimsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetUserClaimsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetUserClaimsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getClaimsByStatus(com.game_engine.commission.v1.GetClaimsByStatusRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetClaimsByStatusResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetClaimsByStatusMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void claimCommission(com.game_engine.commission.v1.ClaimCommissionRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.ClaimCommissionResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getClaimCommissionMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getAgentCommissions(com.game_engine.commission.v1.GetAgentCommissionsRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetAgentCommissionsResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAgentCommissionsMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     */
+    public void getCommissionHistory(com.game_engine.commission.v1.GetCommissionHistoryRequest request,
+        io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetCommissionHistoryResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetCommissionHistoryMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -1081,6 +1357,48 @@ public final class CommissionServiceGrpc {
       return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
           getChannel(), getDeleteCommissionMethod(), getCallOptions(), request);
     }
+
+    /**
+     */
+    public com.game_engine.commission.v1.SubmitClaimResponse submitClaim(com.game_engine.commission.v1.SubmitClaimRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getSubmitClaimMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetUserClaimsResponse getUserClaims(com.game_engine.commission.v1.GetUserClaimsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetUserClaimsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetClaimsByStatusResponse getClaimsByStatus(com.game_engine.commission.v1.GetClaimsByStatusRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetClaimsByStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.ClaimCommissionResponse claimCommission(com.game_engine.commission.v1.ClaimCommissionRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getClaimCommissionMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetAgentCommissionsResponse getAgentCommissions(com.game_engine.commission.v1.GetAgentCommissionsRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetAgentCommissionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetCommissionHistoryResponse getCommissionHistory(com.game_engine.commission.v1.GetCommissionHistoryRequest request) throws io.grpc.StatusException {
+      return io.grpc.stub.ClientCalls.blockingV2UnaryCall(
+          getChannel(), getGetCommissionHistoryMethod(), getCallOptions(), request);
+    }
   }
 
   /**
@@ -1233,6 +1551,48 @@ public final class CommissionServiceGrpc {
     public com.game_engine.commission.v1.DeleteCommissionResponse deleteCommission(com.game_engine.commission.v1.DeleteCommissionRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDeleteCommissionMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.SubmitClaimResponse submitClaim(com.game_engine.commission.v1.SubmitClaimRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getSubmitClaimMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetUserClaimsResponse getUserClaims(com.game_engine.commission.v1.GetUserClaimsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetUserClaimsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetClaimsByStatusResponse getClaimsByStatus(com.game_engine.commission.v1.GetClaimsByStatusRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetClaimsByStatusMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.ClaimCommissionResponse claimCommission(com.game_engine.commission.v1.ClaimCommissionRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getClaimCommissionMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetAgentCommissionsResponse getAgentCommissions(com.game_engine.commission.v1.GetAgentCommissionsRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAgentCommissionsMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.game_engine.commission.v1.GetCommissionHistoryResponse getCommissionHistory(com.game_engine.commission.v1.GetCommissionHistoryRequest request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetCommissionHistoryMethod(), getCallOptions(), request);
     }
   }
 
@@ -1404,6 +1764,54 @@ public final class CommissionServiceGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDeleteCommissionMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.commission.v1.SubmitClaimResponse> submitClaim(
+        com.game_engine.commission.v1.SubmitClaimRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getSubmitClaimMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.commission.v1.GetUserClaimsResponse> getUserClaims(
+        com.game_engine.commission.v1.GetUserClaimsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetUserClaimsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.commission.v1.GetClaimsByStatusResponse> getClaimsByStatus(
+        com.game_engine.commission.v1.GetClaimsByStatusRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetClaimsByStatusMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.commission.v1.ClaimCommissionResponse> claimCommission(
+        com.game_engine.commission.v1.ClaimCommissionRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getClaimCommissionMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.commission.v1.GetAgentCommissionsResponse> getAgentCommissions(
+        com.game_engine.commission.v1.GetAgentCommissionsRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAgentCommissionsMethod(), getCallOptions()), request);
+    }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.game_engine.commission.v1.GetCommissionHistoryResponse> getCommissionHistory(
+        com.game_engine.commission.v1.GetCommissionHistoryRequest request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetCommissionHistoryMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_CREATE_COMMISSION = 0;
@@ -1423,6 +1831,12 @@ public final class CommissionServiceGrpc {
   private static final int METHODID_GET_PENDING_COMMISSIONS = 14;
   private static final int METHODID_GET_ALL_COMMISSIONS = 15;
   private static final int METHODID_DELETE_COMMISSION = 16;
+  private static final int METHODID_SUBMIT_CLAIM = 17;
+  private static final int METHODID_GET_USER_CLAIMS = 18;
+  private static final int METHODID_GET_CLAIMS_BY_STATUS = 19;
+  private static final int METHODID_CLAIM_COMMISSION = 20;
+  private static final int METHODID_GET_AGENT_COMMISSIONS = 21;
+  private static final int METHODID_GET_COMMISSION_HISTORY = 22;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -1508,6 +1922,30 @@ public final class CommissionServiceGrpc {
         case METHODID_DELETE_COMMISSION:
           serviceImpl.deleteCommission((com.game_engine.commission.v1.DeleteCommissionRequest) request,
               (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.DeleteCommissionResponse>) responseObserver);
+          break;
+        case METHODID_SUBMIT_CLAIM:
+          serviceImpl.submitClaim((com.game_engine.commission.v1.SubmitClaimRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.SubmitClaimResponse>) responseObserver);
+          break;
+        case METHODID_GET_USER_CLAIMS:
+          serviceImpl.getUserClaims((com.game_engine.commission.v1.GetUserClaimsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetUserClaimsResponse>) responseObserver);
+          break;
+        case METHODID_GET_CLAIMS_BY_STATUS:
+          serviceImpl.getClaimsByStatus((com.game_engine.commission.v1.GetClaimsByStatusRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetClaimsByStatusResponse>) responseObserver);
+          break;
+        case METHODID_CLAIM_COMMISSION:
+          serviceImpl.claimCommission((com.game_engine.commission.v1.ClaimCommissionRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.ClaimCommissionResponse>) responseObserver);
+          break;
+        case METHODID_GET_AGENT_COMMISSIONS:
+          serviceImpl.getAgentCommissions((com.game_engine.commission.v1.GetAgentCommissionsRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetAgentCommissionsResponse>) responseObserver);
+          break;
+        case METHODID_GET_COMMISSION_HISTORY:
+          serviceImpl.getCommissionHistory((com.game_engine.commission.v1.GetCommissionHistoryRequest) request,
+              (io.grpc.stub.StreamObserver<com.game_engine.commission.v1.GetCommissionHistoryResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -1646,6 +2084,48 @@ public final class CommissionServiceGrpc {
               com.game_engine.commission.v1.DeleteCommissionRequest,
               com.game_engine.commission.v1.DeleteCommissionResponse>(
                 service, METHODID_DELETE_COMMISSION)))
+        .addMethod(
+          getSubmitClaimMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.commission.v1.SubmitClaimRequest,
+              com.game_engine.commission.v1.SubmitClaimResponse>(
+                service, METHODID_SUBMIT_CLAIM)))
+        .addMethod(
+          getGetUserClaimsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.commission.v1.GetUserClaimsRequest,
+              com.game_engine.commission.v1.GetUserClaimsResponse>(
+                service, METHODID_GET_USER_CLAIMS)))
+        .addMethod(
+          getGetClaimsByStatusMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.commission.v1.GetClaimsByStatusRequest,
+              com.game_engine.commission.v1.GetClaimsByStatusResponse>(
+                service, METHODID_GET_CLAIMS_BY_STATUS)))
+        .addMethod(
+          getClaimCommissionMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.commission.v1.ClaimCommissionRequest,
+              com.game_engine.commission.v1.ClaimCommissionResponse>(
+                service, METHODID_CLAIM_COMMISSION)))
+        .addMethod(
+          getGetAgentCommissionsMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.commission.v1.GetAgentCommissionsRequest,
+              com.game_engine.commission.v1.GetAgentCommissionsResponse>(
+                service, METHODID_GET_AGENT_COMMISSIONS)))
+        .addMethod(
+          getGetCommissionHistoryMethod(),
+          io.grpc.stub.ServerCalls.asyncUnaryCall(
+            new MethodHandlers<
+              com.game_engine.commission.v1.GetCommissionHistoryRequest,
+              com.game_engine.commission.v1.GetCommissionHistoryResponse>(
+                service, METHODID_GET_COMMISSION_HISTORY)))
         .build();
   }
 
@@ -1711,6 +2191,12 @@ public final class CommissionServiceGrpc {
               .addMethod(getGetPendingCommissionsMethod())
               .addMethod(getGetAllCommissionsMethod())
               .addMethod(getDeleteCommissionMethod())
+              .addMethod(getSubmitClaimMethod())
+              .addMethod(getGetUserClaimsMethod())
+              .addMethod(getGetClaimsByStatusMethod())
+              .addMethod(getClaimCommissionMethod())
+              .addMethod(getGetAgentCommissionsMethod())
+              .addMethod(getGetCommissionHistoryMethod())
               .build();
         }
       }

@@ -176,9 +176,10 @@ public final class LeaderboardServiceOuterClass {
       "derboardResponse\022}\n\020ResetLeaderboard\0223.g" +
       "ame_engine.leaderboard.v1.ResetLeaderboa" +
       "rdRequest\0324.game_engine.leaderboard.v1.R" +
-      "esetLeaderboardResponseBB\n\036com.game_engi" +
-      "ne.leaderboard.v1P\001Z\036gen/go/leaderboard/" +
-      "v1;leaderv1b\006proto3"
+      "esetLeaderboardResponseBn\n\036com.game_engi" +
+      "ne.leaderboard.v1P\001ZJgithub.com/game_eng" +
+      "ine/common-service/proto/gen/go/leaderbo" +
+      "ard/v1;leaderv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

@@ -142,8 +142,9 @@ public final class JackpotServiceOuterClass {
       "e\022x\n\021GetJackpotHistory\0220.game_engine.jac" +
       "kpot.v1.GetJackpotHistoryRequest\0321.game_" +
       "engine.jackpot.v1.GetJackpotHistoryRespo" +
-      "nseB;\n\032com.game_engine.jackpot.v1P\001Z\033gen" +
-      "/go/jackpot/v1;jackpotv1b\006proto3"
+      "nseBg\n\032com.game_engine.jackpot.v1P\001ZGgit" +
+      "hub.com/game_engine/common-service/proto" +
+      "/gen/go/jackpot/v1;jackpotv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

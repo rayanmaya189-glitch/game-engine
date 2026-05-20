@@ -113,8 +113,9 @@ public final class MoneyOuterClass {
       "oneyR\017availableAmount\022?\n\014bonus_amount\030\005 " +
       "\001(\0132\034.game_engine.common.v1.MoneyR\013bonus" +
       "Amount\022!\n\014last_updated\030\006 \001(\tR\013lastUpdate" +
-      "dB8\n\031com.game_engine.common.v1P\001Z\031gen/go" +
-      "/common/v1;commonv1b\006proto3"
+      "dBd\n\031com.game_engine.common.v1P\001ZEgithub" +
+      ".com/game_engine/common-service/proto/ge" +
+      "n/go/common/v1;commonv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

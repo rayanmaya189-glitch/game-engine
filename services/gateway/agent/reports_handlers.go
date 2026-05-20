@@ -7,7 +7,7 @@ import (
 
 	affiliatepb "github.com/game_engine/common-service/proto/gen/go/affiliate/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 func (cfg *RouterConfig) GetPerformanceReports(ctx context.Context, c *app.RequestContext) {

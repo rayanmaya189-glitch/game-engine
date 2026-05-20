@@ -111,9 +111,10 @@ public final class AgentServiceOuterClass {
       "e.agent.v1.UpdatePlayerLimitResponse\022e\n\014" +
       "GetDashboard\022).game_engine.agent.v1.GetD" +
       "ashboardRequest\032*.game_engine.agent.v1.G" +
-      "etDashboardResponseB5\n\030com.game_engine.a" +
-      "gent.v1P\001Z\027gen/go/agent/v1;agentv1b\006prot" +
-      "o3"
+      "etDashboardResponseBa\n\030com.game_engine.a" +
+      "gent.v1P\001ZCgithub.com/game_engine/common" +
+      "-service/proto/gen/go/agent/v1;agentv1b\006" +
+      "proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

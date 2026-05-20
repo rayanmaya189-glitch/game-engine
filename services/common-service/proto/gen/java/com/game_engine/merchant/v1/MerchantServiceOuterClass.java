@@ -330,8 +330,9 @@ public final class MerchantServiceOuterClass {
       "\022z\n\021UpdateAgentStatus\0221.game_engine.merc" +
       "hant.v1.UpdateAgentStatusRequest\0322.game_" +
       "engine.merchant.v1.UpdateAgentStatusResp" +
-      "onseB>\n\033com.game_engine.merchant.v1P\001Z\035g" +
-      "en/go/merchant/v1;merchantv1b\006proto3"
+      "onseBj\n\033com.game_engine.merchant.v1P\001ZIg" +
+      "ithub.com/game_engine/common-service/pro" +
+      "to/gen/go/merchant/v1;merchantv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

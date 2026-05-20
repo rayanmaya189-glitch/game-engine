@@ -3,11 +3,12 @@ package handler
 import (
 	"context"
 
-	leaderv1 "github.com/game_engine/leaderboard-service/gen/go/leaderboard/v1"
+	leaderv1 "github.com/game_engine/common-service/proto/gen/go/leaderboard/v1"
 	"github.com/game_engine/leaderboard-service/internal/model"
 	"github.com/game_engine/leaderboard-service/internal/service"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 type LeaderboardHandler struct {
@@ -133,7 +134,7 @@ func (h *LeaderboardHandler) DistributePrizes(ctx context.Context, req *leaderv1
 		Period:          result.Period,
 		Prizes:          prizes,
 		TotalValue:      result.TotalValue,
-		DistributedAt:   &result.DistributedAt,
+		DistributedAt:   timestamppb.New(result.DistributedAt),
 	}, nil
 }
 
@@ -173,7 +174,7 @@ func leaderboardResponseToProto(resp *model.LeaderboardResponse) *leaderv1.GetLe
 			Wins:      int32(e.Wins),
 			WinAmount: e.WinAmount,
 			GameType:  e.GameType,
-			UpdatedAt: &updatedAt,
+			UpdatedAt: timestamppb.New(updatedAt),
 		}
 	}
 
@@ -183,6 +184,6 @@ func leaderboardResponseToProto(resp *model.LeaderboardResponse) *leaderv1.GetLe
 		Period:    resp.Period,
 		Entries:   entries,
 		Total:     int32(resp.Total),
-		UpdatedAt: &updatedAt,
+		UpdatedAt: timestamppb.New(updatedAt),
 	}
 }

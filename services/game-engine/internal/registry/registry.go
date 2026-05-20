@@ -193,3 +193,24 @@ func (r *GameRegistry) ReloadGames(ctx context.Context) error {
 func (r *GameRegistry) GetClient() GameRegistryClient {
 	return r.client
 }
+
+// GetGame retrieves a game, checking registry client if not found locally
+func (r *GameRegistry) GetGame(id string) (*GameDefinition, error) {
+	r.mu.RLock()
+	game, ok := r.games[id]
+	r.mu.RUnlock()
+	if ok {
+		return game, nil
+	}
+	if r.client != nil {
+		ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+		defer cancel()
+		gameDef, err := r.client.GetGame(ctx, id)
+		if err == nil {
+			r.Register(gameDef)
+			return gameDef, nil
+		}
+	}
+	return nil, errors.New("game not found")
+}
+

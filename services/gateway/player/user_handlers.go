@@ -7,7 +7,7 @@ import (
 
 	userpb "github.com/game_engine/common-service/proto/gen/go/user/v1"
 
-	"common/handler"
+	"github.com/game_engine/gateway/common/handler"
 )
 
 // GetProfile handles getting user profile
