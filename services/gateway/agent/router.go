@@ -20,9 +20,7 @@ type RouterConfig struct {
 	CommissionClient      *client.CommissionClient
 }
 
-func NewRouter(cfg *RouterConfig) *route.Engine {
-	r := route.New()
-
+func SetupRoutes(r *route.Engine, cfg *RouterConfig) {
 	r.Use(cfg.LoggerMiddleware.RequestID())
 	r.Use(cfg.LoggerMiddleware.StructuredLogger())
 	r.Use(cfg.LoggerMiddleware.PanicRecovery())
@@ -63,5 +61,4 @@ func NewRouter(cfg *RouterConfig) *route.Engine {
 	affiliateReports.GET("/clicks", cfg.GetClickReports)
 	affiliateReports.GET("/conversions", cfg.GetConversionReports)
 
-	return r
 }

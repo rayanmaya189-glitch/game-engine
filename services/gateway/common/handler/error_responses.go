@@ -55,7 +55,7 @@ func SendNoContent(ctx *app.RequestContext) {
 }
 
 // HandleHealthCheck handles health check requests
-func HandleHealthCheck(ctx *app.RequestContext) {
+func HandleHealthCheck(c context.Context, ctx *app.RequestContext) {
 	ctx.JSON(consts.StatusOK, map[string]interface{}{
 		"status":    "healthy",
 		"timestamp": time.Now().UTC().Format(time.RFC3339),
@@ -63,7 +63,7 @@ func HandleHealthCheck(ctx *app.RequestContext) {
 }
 
 // HandleReadinessCheck handles readiness check requests
-func HandleReadinessCheck(ctx *app.RequestContext) {
+func HandleReadinessCheck(c context.Context, ctx *app.RequestContext) {
 	ctx.JSON(consts.StatusOK, map[string]interface{}{
 		"status":    "ready",
 		"timestamp": time.Now().UTC().Format(time.RFC3339),

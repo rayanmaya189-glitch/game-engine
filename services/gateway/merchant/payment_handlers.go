@@ -2,6 +2,8 @@ package main
 
 import (
 	"context"
+	"fmt"
+	"strings"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
@@ -52,11 +54,18 @@ func (cfg *RouterConfig) UpdateMerchantConfig(ctx context.Context, c *app.Reques
 		return
 	}
 
+	configMap := map[string]string{
+		"commission_rate": fmt.Sprintf("%f", req.CommissionRate),
+		"theme":           req.Theme,
+	}
+	
+	for k, v := range req.Settings {
+		configMap[k] = fmt.Sprintf("%v", v)
+	}
+
 	_, err := cfg.MerchantClient.UpdateConfig(ctx, &merchantpb.UpdateConfigRequest{
-		MerchantId:     merchantID,
-		CommissionRate: req.CommissionRate,
-		Theme:          req.Theme,
-		Settings:       req.Settings,
+		MerchantId: merchantID,
+		Config:     configMap,
 	})
 
 	if err != nil {
@@ -76,7 +85,6 @@ func (cfg *RouterConfig) RegisterWebhook(ctx context.Context, c *app.RequestCont
 	var req struct {
 		URL    string   `json:"url"`
 		Events []string `json:"events"`
-		Secret string   `json:"secret"`
 	}
 
 	if err := c.Bind(&req); err != nil {
@@ -92,8 +100,7 @@ func (cfg *RouterConfig) RegisterWebhook(ctx context.Context, c *app.RequestCont
 	resp, err := cfg.MerchantClient.RegisterWebhook(ctx, &merchantpb.RegisterWebhookRequest{
 		MerchantId: merchantID,
 		Url:        req.URL,
-		Events:     req.Events,
-		Secret:     req.Secret,
+		Events:     strings.Join(req.Events, ","),
 	})
 
 	if err != nil {

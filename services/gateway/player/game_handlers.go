@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
+	commonpb "github.com/game_engine/common-service/proto/gen/go/common/v1"
 	gamepb "github.com/game_engine/common-service/proto/gen/go/game/v1"
 
 	"github.com/game_engine/gateway/common/handler"
@@ -17,18 +19,23 @@ func (cfg *RouterConfig) ListGames(ctx context.Context, c *app.RequestContext) {
 		return
 	}
 
-	page := c.DefaultQuery("page", "1")
-	limit := c.DefaultQuery("limit", "20")
+	pageStr := c.DefaultQuery("page", "1")
+	limitStr := c.DefaultQuery("limit", "20")
+	page, _ := strconv.ParseInt(pageStr, 10, 32)
+	limit, _ := strconv.ParseInt(limitStr, 10, 32)
+
 	category := c.Query("category")
 	provider := c.Query("provider")
 	search := c.Query("search")
 
 	resp, err := cfg.GameClient.ListGames(ctx, &gamepb.ListGamesRequest{
-		Page:     page,
-		Limit:    limit,
-		Category: category,
-		Provider: provider,
-		Search:   search,
+		Pagination: &commonpb.PaginationRequest{
+			Page:     int32(page),
+			PageSize: int32(limit),
+		},
+		CategoryId: category,
+		ProviderId: provider,
+		Query:      search,
 	})
 
 	if err != nil {
@@ -39,11 +46,11 @@ func (cfg *RouterConfig) ListGames(ctx context.Context, c *app.RequestContext) {
 	games := make([]map[string]interface{}, len(resp.Games))
 	for i, game := range resp.Games {
 		games[i] = map[string]interface{}{
-			"id":          game.Id,
+			"id":          game.GameId,
 			"name":        game.Name,
-			"provider":    game.Provider,
-			"category":    game.Category,
-			"thumbnail":   game.Thumbnail,
+			"provider":    game.ProviderName,
+			"category":    game.CategoryName,
+			"thumbnail":   game.ThumbnailUrl,
 			"rtp":         game.Rtp,
 			"min_bet":     game.MinBet,
 			"max_bet":     game.MaxBet,
@@ -54,10 +61,15 @@ func (cfg *RouterConfig) ListGames(ctx context.Context, c *app.RequestContext) {
 		}
 	}
 
+	total := int32(0)
+	if resp.Pagination != nil {
+		total = resp.Pagination.TotalItems
+	}
+
 	handler.SendSuccess(c, map[string]interface{}{
 		"games": games,
-		"total": resp.Total,
-		"page":  resp.Page,
+		"total": total,
+		"page":  page,
 	})
 }
 
@@ -82,20 +94,17 @@ func (cfg *RouterConfig) GetGame(ctx context.Context, c *app.RequestContext) {
 	game := resp.Game
 	handler.SendSuccess(c, map[string]interface{}{
 		"game": map[string]interface{}{
-			"id":          game.Id,
+			"id":          game.GameId,
 			"name":        game.Name,
-			"provider":    game.Provider,
-			"category":    game.Category,
+			"provider":    game.ProviderId,
+			"category":    game.CategoryId,
 			"description": game.Description,
-			"thumbnail":   game.Thumbnail,
-			"images":      game.Images,
+			"thumbnail":   game.ThumbnailUrl,
 			"rtp":         game.Rtp,
 			"min_bet":     game.MinBet,
 			"max_bet":     game.MaxBet,
 			"volatility":  game.Volatility,
 			"features":    game.Features,
-			"paylines":    game.Paylines,
-			"reels":       game.Reels,
 			"status":      game.Status,
 		},
 	})
@@ -128,8 +137,8 @@ func (cfg *RouterConfig) PlayGame(ctx context.Context, c *app.RequestContext) {
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"game_id": gameID,
-		"url":     resp.Url,
-		"token":   resp.Token,
+		"url":     resp.GameUrl,
+		"token":   resp.SessionToken,
 	})
 }
 
@@ -150,11 +159,11 @@ func (cfg *RouterConfig) GetCategories(ctx context.Context, c *app.RequestContex
 	categories := make([]map[string]interface{}, len(resp.Categories))
 	for i, cat := range resp.Categories {
 		categories[i] = map[string]interface{}{
-			"id":         cat.Id,
+			"id":         cat.CategoryId,
 			"name":       cat.Name,
 			"slug":       cat.Slug,
-			"icon":       cat.Icon,
-			"game_count": cat.GameCount,
+			"icon":       cat.IconUrl,
+			"game_count": cat.GamesCount,
 		}
 	}
 
@@ -182,11 +191,11 @@ func (cfg *RouterConfig) GetFeaturedGames(ctx context.Context, c *app.RequestCon
 	games := make([]map[string]interface{}, len(resp.Games))
 	for i, game := range resp.Games {
 		games[i] = map[string]interface{}{
-			"id":        game.Id,
+			"id":        game.GameId,
 			"name":      game.Name,
-			"provider":  game.Provider,
-			"category":  game.Category,
-			"thumbnail": game.Thumbnail,
+			"provider":  game.ProviderName,
+			"category":  game.CategoryName,
+			"thumbnail": game.ThumbnailUrl,
 			"rtp":       game.Rtp,
 		}
 	}
@@ -215,12 +224,12 @@ func (cfg *RouterConfig) GetPopularGames(ctx context.Context, c *app.RequestCont
 	games := make([]map[string]interface{}, len(resp.Games))
 	for i, game := range resp.Games {
 		games[i] = map[string]interface{}{
-			"id":         game.Id,
+			"id":         game.GameId,
 			"name":       game.Name,
-			"provider":   game.Provider,
-			"category":   game.Category,
-			"thumbnail":  game.Thumbnail,
-			"play_count": game.PlayCount,
+			"provider":   game.ProviderName,
+			"category":   game.CategoryName,
+			"thumbnail":  game.ThumbnailUrl,
+			"play_count": 0, // Fallback
 		}
 	}
 

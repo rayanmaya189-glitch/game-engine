@@ -55,6 +55,10 @@ func NewTournamentClient(config *TournamentClientConfig) (*TournamentClient, err
 	}, nil
 }
 
+func (c *TournamentClient) CreateTournament(ctx context.Context, req *tournamentpb.CreateTournamentRequest) (*tournamentpb.TournamentResponse, error) {
+	return c.client.CreateTournament(ctx, req)
+}
+
 func (c *TournamentClient) ListTournaments(ctx context.Context, req *tournamentpb.ListTournamentsRequest) (*tournamentpb.ListTournamentsResponse, error) {
 	return c.client.ListTournaments(ctx, req)
 }

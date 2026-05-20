@@ -141,8 +141,7 @@ func main() {
 		server.WithWriteTimeout(time.Duration(cfg.Server.WriteTimeout)*time.Second),
 	)
 
-	// Setup routes
-	router := NewRouter(&RouterConfig{
+	SetupRoutes(h.Engine, &RouterConfig{
 		AuthMiddleware:        authMiddleware,
 		LoggerMiddleware:      loggerMiddleware,
 		RateLimiterMiddleware: rateLimiterMiddleware,
@@ -155,11 +154,9 @@ func main() {
 		GameClient:            gameClient,
 	})
 
-	h.SetRouter(router)
-
 	// Handle errors
-	h.SetNotFoundHandler(errorHandler.NotFoundHandler)
-	h.SetMethodNotAllowedHandler(errorHandler.MethodNotAllowedHandler)
+	h.NoRoute(errorHandler.NotFoundHandler)
+	h.NoMethod(errorHandler.MethodNotAllowedHandler)
 
 	// Graceful shutdown
 	go func() {
@@ -167,7 +164,7 @@ func main() {
 		signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 		<-sigChan
 		log.Println("Shutting down server...")
-		h.Shutdown()
+		h.Shutdown(context.Background())
 	}()
 
 	log.Printf("Player Gateway starting on %s:%d", cfg.Server.Host, cfg.Server.Port)

@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
@@ -12,10 +13,11 @@ import (
 
 func (cfg *RouterConfig) ListMerchantPlayers(ctx context.Context, c *app.RequestContext) {
 	merchantID := c.GetString("merchant_id")
-	page := c.DefaultQuery("page", "1")
-	limit := c.DefaultQuery("limit", "20")
+	pageStr := c.DefaultQuery("page", "1")
+	limitStr := c.DefaultQuery("limit", "20")
+	page, _ := strconv.ParseInt(pageStr, 10, 32)
+	limit, _ := strconv.ParseInt(limitStr, 10, 32)
 	search := c.Query("search")
-	status := c.Query("status")
 
 	if cfg.MerchantClient == nil {
 		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Merchant service unavailable", nil)
@@ -24,10 +26,9 @@ func (cfg *RouterConfig) ListMerchantPlayers(ctx context.Context, c *app.Request
 
 	resp, err := cfg.MerchantClient.ListPlayers(ctx, &merchantpb.ListPlayersRequest{
 		MerchantId: merchantID,
-		Page:       page,
-		Limit:      limit,
+		Page:       int32(page),
+		Limit:      int32(limit),
 		Search:     search,
-		Status:     status,
 	})
 
 	if err != nil {
@@ -38,7 +39,7 @@ func (cfg *RouterConfig) ListMerchantPlayers(ctx context.Context, c *app.Request
 	handler.SendSuccess(c, map[string]interface{}{
 		"players":     resp.Players,
 		"total":       resp.Total,
-		"page":        resp.Page,
+		"page":        page,
 		"merchant_id": merchantID,
 	})
 }
@@ -70,6 +71,10 @@ func (cfg *RouterConfig) GetMerchantPlayer(ctx context.Context, c *app.RequestCo
 
 func (cfg *RouterConfig) ListSubAgents(ctx context.Context, c *app.RequestContext) {
 	merchantID := c.GetString("merchant_id")
+	pageStr := c.DefaultQuery("page", "1")
+	limitStr := c.DefaultQuery("limit", "20")
+	page, _ := strconv.ParseInt(pageStr, 10, 32)
+	limit, _ := strconv.ParseInt(limitStr, 10, 32)
 
 	if cfg.MerchantClient == nil {
 		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Merchant service unavailable", nil)
@@ -78,6 +83,8 @@ func (cfg *RouterConfig) ListSubAgents(ctx context.Context, c *app.RequestContex
 
 	resp, err := cfg.MerchantClient.ListAgents(ctx, &merchantpb.ListAgentsRequest{
 		MerchantId: merchantID,
+		Page:       int32(page),
+		Limit:      int32(limit),
 	})
 
 	if err != nil {
@@ -88,6 +95,7 @@ func (cfg *RouterConfig) ListSubAgents(ctx context.Context, c *app.RequestContex
 	handler.SendSuccess(c, map[string]interface{}{
 		"agents":      resp.Agents,
 		"total":       resp.Total,
+		"page":        page,
 		"merchant_id": merchantID,
 	})
 }
@@ -123,10 +131,7 @@ func (cfg *RouterConfig) CreateSubAgent(ctx context.Context, c *app.RequestConte
 	var req struct {
 		Username       string  `json:"username"`
 		Email          string  `json:"email"`
-		Password       string  `json:"password"`
-		FullName       string  `json:"fullName"`
-		Phone          string  `json:"phone"`
-		CommissionRate float64 `json:"commissionRate"`
+		SendInvitation bool    `json:"sendInvitation"`
 	}
 
 	if err := c.Bind(&req); err != nil {
@@ -143,10 +148,7 @@ func (cfg *RouterConfig) CreateSubAgent(ctx context.Context, c *app.RequestConte
 		MerchantId:     merchantID,
 		Username:       req.Username,
 		Email:          req.Email,
-		Password:       req.Password,
-		FullName:       req.FullName,
-		Phone:          req.Phone,
-		CommissionRate: req.CommissionRate,
+		SendInvitation: req.SendInvitation,
 	})
 
 	if err != nil {
@@ -166,10 +168,8 @@ func (cfg *RouterConfig) UpdateSubAgent(ctx context.Context, c *app.RequestConte
 	agentID := c.Param("id")
 
 	var req struct {
-		Email          string  `json:"email"`
-		FullName       string  `json:"fullName"`
-		Phone          string  `json:"phone"`
-		CommissionRate float64 `json:"commissionRate"`
+		Username string `json:"username"`
+		Email    string `json:"email"`
 	}
 
 	if err := c.Bind(&req); err != nil {
@@ -183,12 +183,10 @@ func (cfg *RouterConfig) UpdateSubAgent(ctx context.Context, c *app.RequestConte
 	}
 
 	_, err := cfg.MerchantClient.UpdateAgent(ctx, &merchantpb.UpdateAgentRequest{
-		MerchantId:     merchantID,
-		AgentId:        agentID,
-		Email:          req.Email,
-		FullName:       req.FullName,
-		Phone:          req.Phone,
-		CommissionRate: req.CommissionRate,
+		MerchantId: merchantID,
+		AgentId:    agentID,
+		Username:   req.Username,
+		Email:      req.Email,
 	})
 
 	if err != nil {

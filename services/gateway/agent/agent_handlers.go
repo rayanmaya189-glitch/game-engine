@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
+	affiliatepb "github.com/game_engine/common-service/proto/gen/go/affiliate/v1"
 	agentpb "github.com/game_engine/common-service/proto/gen/go/agent/v1"
 
 	"github.com/game_engine/gateway/common/handler"
@@ -12,8 +14,10 @@ import (
 
 func (cfg *RouterConfig) ListAgentPlayers(ctx context.Context, c *app.RequestContext) {
 	agentID := c.GetString("user_id")
-	page := c.DefaultQuery("page", "1")
-	limit := c.DefaultQuery("limit", "20")
+	pageStr := c.DefaultQuery("page", "1")
+	limitStr := c.DefaultQuery("limit", "20")
+	page, _ := strconv.ParseInt(pageStr, 10, 32)
+	limit, _ := strconv.ParseInt(limitStr, 10, 32)
 	search := c.Query("search")
 	status := c.Query("status")
 
@@ -24,8 +28,8 @@ func (cfg *RouterConfig) ListAgentPlayers(ctx context.Context, c *app.RequestCon
 
 	resp, err := cfg.AgentClient.ListPlayers(ctx, &agentpb.ListPlayersRequest{
 		AgentId: agentID,
-		Page:    page,
-		Limit:   limit,
+		Page:    int32(page),
+		Limit:   int32(limit),
 		Search:  search,
 		Status:  status,
 	})
@@ -38,7 +42,7 @@ func (cfg *RouterConfig) ListAgentPlayers(ctx context.Context, c *app.RequestCon
 	handler.SendSuccess(c, map[string]interface{}{
 		"players":  resp.Players,
 		"total":    resp.Total,
-		"page":     resp.Page,
+		"page":     page,
 		"agent_id": agentID,
 	})
 }
@@ -156,7 +160,7 @@ func (cfg *RouterConfig) TrackClick(ctx context.Context, c *app.RequestContext) 
 	handler.SendSuccess(c, map[string]interface{}{
 		"code":     code,
 		"message":  "Click tracked successfully",
-		"click_id": resp.ClickId,
+		"click_id": resp.Referral.Id,
 	})
 }
 

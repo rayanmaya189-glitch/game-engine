@@ -33,14 +33,15 @@ func (cfg *RouterConfig) GetProfile(ctx context.Context, c *app.RequestContext) 
 	}
 
 	handler.SendSuccess(c, map[string]interface{}{
-		"user_id":    resp.User.Id,
-		"username":   resp.User.Username,
-		"email":      resp.User.Email,
-		"full_name":  resp.User.FullName,
-		"phone":      resp.User.Phone,
-		"status":     resp.User.Status,
-		"kyc_status": resp.User.KycStatus,
-		"created_at": resp.User.CreatedAt,
+		"user_id":    resp.Profile.UserId,
+		"username":   resp.Profile.Username,
+		"email":      resp.Profile.Email,
+		"first_name": resp.Profile.FirstName,
+		"last_name":  resp.Profile.LastName,
+		"phone":      resp.Profile.Phone,
+		"status":     resp.Profile.Status,
+		"kyc_level":  resp.Profile.KycLevel,
+		"created_at": resp.Profile.CreatedAt,
 	})
 }
 
@@ -58,9 +59,8 @@ func (cfg *RouterConfig) UpdateProfile(ctx context.Context, c *app.RequestContex
 	}
 
 	var req struct {
-		FullName string `json:"fullName"`
-		Phone    string `json:"phone"`
-		Email    string `json:"email"`
+		FirstName string `json:"firstName"`
+		LastName  string `json:"lastName"`
 	}
 
 	if err := c.Bind(&req); err != nil {
@@ -69,10 +69,8 @@ func (cfg *RouterConfig) UpdateProfile(ctx context.Context, c *app.RequestContex
 	}
 
 	_, err := cfg.UserClient.UpdateProfile(ctx, &userpb.UpdateProfileRequest{
-		UserId:   userID,
-		FullName: req.FullName,
-		Phone:    req.Phone,
-		Email:    req.Email,
+		FirstName: req.FirstName,
+		LastName:  req.LastName,
 	})
 
 	if err != nil {

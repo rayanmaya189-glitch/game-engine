@@ -34,9 +34,8 @@ func (cfg *RouterConfig) GetBalance(ctx context.Context, c *app.RequestContext) 
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"balance": map[string]interface{}{
-			"main":     resp.MainBalance,
-			"bonus":    resp.BonusBalance,
-			"currency": resp.Currency,
+			"main":     resp.Balance,
+			"bonus":    resp.BonusAmount,
 		},
 	})
 }

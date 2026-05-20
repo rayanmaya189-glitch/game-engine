@@ -68,7 +68,7 @@ func (h *GameHandler) ListGames(ctx context.Context, req *gamesv1.ListGamesReque
 		pagination = &commonv1.PaginationResponse{
 			Page:       resp.Pagination.Page,
 			PageSize:   resp.Pagination.PageSize,
-			TotalItems: resp.Pagination.TotalCount,
+			TotalItems: int32(resp.Pagination.TotalCount),
 			TotalPages: resp.Pagination.TotalPages,
 		}
 	}

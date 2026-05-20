@@ -14,7 +14,6 @@ func (cfg *RouterConfig) GetRevenueReports(ctx context.Context, c *app.RequestCo
 	merchantID := c.GetString("merchant_id")
 	startDate := c.Query("start_date")
 	endDate := c.Query("end_date")
-	groupBy := c.DefaultQuery("group_by", "day")
 
 	if cfg.MerchantClient == nil {
 		handler.SendErrorResponse(c, 503, handler.ErrCodeServiceUnavailable, "Merchant service unavailable", nil)
@@ -25,7 +24,6 @@ func (cfg *RouterConfig) GetRevenueReports(ctx context.Context, c *app.RequestCo
 		MerchantId: merchantID,
 		StartDate:  startDate,
 		EndDate:    endDate,
-		GroupBy:    groupBy,
 	})
 
 	if err != nil {
@@ -34,11 +32,10 @@ func (cfg *RouterConfig) GetRevenueReports(ctx context.Context, c *app.RequestCo
 	}
 
 	handler.SendSuccess(c, map[string]interface{}{
-		"revenue":    resp.Revenue,
-		"currency":   resp.Currency,
-		"start_date": startDate,
-		"end_date":   endDate,
-		"breakdown":  resp.Breakdown,
+		"total_revenue":    resp.TotalRevenue,
+		"total_deposits":   resp.TotalDeposits,
+		"total_withdrawals": resp.TotalWithdrawals,
+		"total_players":    resp.TotalPlayers,
 	})
 }
 
@@ -64,10 +61,10 @@ func (cfg *RouterConfig) GetPlayerReports(ctx context.Context, c *app.RequestCon
 	}
 
 	handler.SendSuccess(c, map[string]interface{}{
-		"total_players":  resp.TotalPlayers,
-		"active_players": resp.ActivePlayers,
-		"new_players":    resp.NewPlayers,
-		"merchant_id":    merchantID,
+		"total_bets":   resp.TotalBets,
+		"total_wins":   resp.TotalWins,
+		"net_revenue":  resp.NetRevenue,
+		"games_played": resp.GamesPlayed,
 	})
 }
 
@@ -93,7 +90,9 @@ func (cfg *RouterConfig) GetGameReports(ctx context.Context, c *app.RequestConte
 	}
 
 	handler.SendSuccess(c, map[string]interface{}{
-		"games": resp.Games,
-		"total": resp.Total,
+		"total_bets":    resp.TotalBets,
+		"total_wins":    resp.TotalWins,
+		"total_players": resp.TotalPlayers,
+		"plays":         resp.Plays,
 	})
 }

@@ -25,9 +25,7 @@ type RouterConfig struct {
 	PaymentClient         *client.PaymentClient
 }
 
-func NewRouter(cfg *RouterConfig) *route.Engine {
-	r := route.New()
-
+func SetupRoutes(r *route.Engine, cfg *RouterConfig) {
 	r.Use(cfg.LoggerMiddleware.RequestID())
 	r.Use(cfg.LoggerMiddleware.StructuredLogger())
 	r.Use(cfg.LoggerMiddleware.PanicRecovery())
@@ -124,5 +122,4 @@ func NewRouter(cfg *RouterConfig) *route.Engine {
 		}
 	}
 
-	return r
 }

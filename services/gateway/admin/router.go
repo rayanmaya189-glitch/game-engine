@@ -156,6 +156,4 @@ func SetupRoutes(r *route.Engine, cfg *RouterConfig) {
 	admin.POST("/admin-users", cfg.CreateAdminUser)
 	admin.PUT("/admin-users/:id", cfg.UpdateAdminUser)
 	admin.DELETE("/admin-users/:id", cfg.DeleteAdminUser)
-
-	return r
 }

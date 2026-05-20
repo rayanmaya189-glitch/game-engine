@@ -97,7 +97,7 @@ func main() {
 		server.WithWriteTimeout(time.Duration(cfg.Server.WriteTimeout)*time.Second),
 	)
 
-	router := NewRouter(&RouterConfig{
+	SetupRoutes(h.Engine, &RouterConfig{
 		AuthMiddleware:        authMiddleware,
 		LoggerMiddleware:      loggerMiddleware,
 		RateLimiterMiddleware: rateLimiterMiddleware,
@@ -108,15 +108,14 @@ func main() {
 		WalletClient:          walletClient,
 	})
 
-	h.SetRouter(router)
-	h.SetNotFoundHandler(errorHandler.NotFoundHandler)
+	h.NoRoute(errorHandler.NotFoundHandler)
 
 	go func() {
 		sigChan := make(chan os.Signal, 1)
 		signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 		<-sigChan
 		log.Println("Shutting down server...")
-		h.Shutdown()
+		h.Shutdown(context.Background())
 	}()
 
 	log.Printf("Merchant Gateway starting on %s:%d", cfg.Server.Host, cfg.Server.Port)

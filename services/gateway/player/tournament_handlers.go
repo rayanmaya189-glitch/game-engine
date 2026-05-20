@@ -2,9 +2,11 @@ package main
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/cloudwego/hertz/pkg/app"
 
+	commonpb "github.com/game_engine/common-service/proto/gen/go/common/v1"
 	tournamentpb "github.com/game_engine/common-service/proto/gen/go/tournament/v1"
 
 	"github.com/game_engine/gateway/common/handler"
@@ -17,10 +19,17 @@ func (cfg *RouterConfig) ListTournaments(ctx context.Context, c *app.RequestCont
 		return
 	}
 
+	pageStr := c.DefaultQuery("page", "1")
+	limitStr := c.DefaultQuery("limit", "20")
+	page, _ := strconv.ParseInt(pageStr, 10, 32)
+	limit, _ := strconv.ParseInt(limitStr, 10, 32)
+
 	resp, err := cfg.TournamentClient.ListTournaments(ctx, &tournamentpb.ListTournamentsRequest{
 		Status: c.Query("status"),
-		Page:   c.DefaultQuery("page", "1"),
-		Limit:  c.DefaultQuery("limit", "20"),
+		Pagination: &commonpb.PaginationRequest{
+			Page:     int32(page),
+			PageSize: int32(limit),
+		},
 	})
 
 	if err != nil {
@@ -30,7 +39,7 @@ func (cfg *RouterConfig) ListTournaments(ctx context.Context, c *app.RequestCont
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"tournaments": resp.Tournaments,
-		"total":       resp.Total,
+		"total":       len(resp.Tournaments),
 	})
 }
 
@@ -44,7 +53,7 @@ func (cfg *RouterConfig) GetTournament(ctx context.Context, c *app.RequestContex
 	}
 
 	resp, err := cfg.TournamentClient.GetTournament(ctx, &tournamentpb.GetTournamentRequest{
-		TournamentId: tournamentID,
+		Id: tournamentID,
 	})
 
 	if err != nil {
@@ -100,7 +109,6 @@ func (cfg *RouterConfig) GetTournamentLeaderboard(ctx context.Context, c *app.Re
 
 	resp, err := cfg.TournamentClient.GetLeaderboard(ctx, &tournamentpb.GetLeaderboardRequest{
 		TournamentId: tournamentID,
-		Limit:        50,
 	})
 
 	if err != nil {

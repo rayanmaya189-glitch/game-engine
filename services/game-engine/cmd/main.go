@@ -27,7 +27,7 @@ func main() {
 		log.Fatalf("Failed to initialize RNG: %v", err)
 	}
 
-	gameRegistry := registry.NewGameRegistry(cfg.Games)
+	gameRegistry := registry.NewGameRegistry()
 
 	gameEngineHandler := handler.NewGameEngineHandler(rngService, gameRegistry, cfg.GameEngine)
 

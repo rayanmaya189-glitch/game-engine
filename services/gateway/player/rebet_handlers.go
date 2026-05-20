@@ -56,7 +56,7 @@ func (cfg *RouterConfig) CreateRebetClaim(ctx context.Context, c *app.RequestCon
 		"message":           "Rebet claim created",
 		"rebet_id":          resp.RebetId,
 		"status":            resp.Status,
-		"rebet_requirement": resp.RebetRequirement,
+		"rebet_requirement": req.RebetRequirement,
 		"current_rebet":     resp.CurrentRebet,
 	})
 }

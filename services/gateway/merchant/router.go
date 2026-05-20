@@ -20,9 +20,7 @@ type RouterConfig struct {
 	CommissionClient      *client.CommissionClient
 }
 
-func NewRouter(cfg *RouterConfig) *route.Engine {
-	r := route.New()
-
+func SetupRoutes(r *route.Engine, cfg *RouterConfig) {
 	r.Use(cfg.LoggerMiddleware.RequestID())
 	r.Use(cfg.LoggerMiddleware.StructuredLogger())
 	r.Use(cfg.LoggerMiddleware.PanicRecovery())
@@ -62,5 +60,4 @@ func NewRouter(cfg *RouterConfig) *route.Engine {
 	merchant.PUT("/agents/:id", cfg.UpdateSubAgent)
 	merchant.PUT("/agents/:id/status", cfg.UpdateSubAgentStatus)
 
-	return r
 }

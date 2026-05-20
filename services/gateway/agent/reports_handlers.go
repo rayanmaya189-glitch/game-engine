@@ -33,9 +33,9 @@ func (cfg *RouterConfig) GetPerformanceReports(ctx context.Context, c *app.Reque
 
 	handler.SendSuccess(c, map[string]interface{}{
 		"total_clicks":  resp.TotalClicks,
-		"total_signups": resp.TotalSignups,
-		"conversion":    resp.Conversion,
-		"revenue":       resp.Revenue,
+		"total_signups": resp.TotalConversions,
+		"conversion":    resp.ConversionRate,
+		"revenue":       resp.TotalRevenue,
 		"affiliate_id":  agentID,
 	})
 }
