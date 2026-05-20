@@ -15,7 +15,8 @@ public interface CommissionConfigRepository extends JpaRepository<CommissionConf
 
     List<CommissionConfig> findByAgentIdAndIsActive(Long agentId, Boolean isActive);
 
-    List<CommissionConfig> findByAffiliateIdAndIsActive(Long affiliateId, Boolean isActive);
+    List<com.game_engine.commission.model.CommissionConfig> findByAffiliateIdAndIsActive(Long affiliateId,
+            Boolean isActive);
 
     List<CommissionConfig> findByAgentIdAndAffiliateIdAndIsActive(Long agentId, Long affiliateId, Boolean isActive);
 }

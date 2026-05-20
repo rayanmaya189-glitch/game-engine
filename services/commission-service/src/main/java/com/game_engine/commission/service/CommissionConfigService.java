@@ -1,6 +1,6 @@
 package com.game_engine.commission.service;
 
-import com.game_engine.commission.model.CommissionConfig;
+import com.game_engine.commission.v1.*;
 import com.game_engine.commission.repository.CommissionConfigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,43 +13,44 @@ import java.util.Optional;
 @Service
 @Transactional
 public class CommissionConfigService {
-    
+
     @Autowired
     private CommissionConfigRepository commissionConfigRepository;
-    
+
     public CommissionConfig createCommissionConfig(CommissionConfig config) {
         config.setCreatedAt(LocalDateTime.now());
         return commissionConfigRepository.save(config);
     }
-    
-    public Optional<CommissionConfig> getConfigById(Long id) {
+
+    public Optional<com.game_engine.commission.entity.CommissionConfig> getConfigById(Long id) {
         return commissionConfigRepository.findById(id);
     }
-    
-    public List<CommissionConfig> getConfigsByAffiliate(Long affiliateId) {
+
+    public List<com.game_engine.commission.entity.CommissionConfig> getConfigsByAffiliate(Long affiliateId) {
         return commissionConfigRepository.findByAffiliateId(affiliateId);
     }
-    
+
     public List<CommissionConfig> getConfigsByMerchant(Long merchantId) {
         return commissionConfigRepository.findByMerchantId(merchantId);
     }
-    
+
     public List<CommissionConfig> getActiveConfigsByAffiliate(Long affiliateId) {
         return commissionConfigRepository.findByAffiliateIdAndIsActive(affiliateId, true);
     }
-    
+
     public List<CommissionConfig> getActiveConfigsByAffiliateAndMerchant(Long affiliateId, Long merchantId) {
         return commissionConfigRepository.findActiveByAffiliateAndMerchant(affiliateId, merchantId);
     }
-    
-    public Optional<CommissionConfig> getConfigByAffiliateAndMerchantAndType(Long affiliateId, Long merchantId, String type) {
+
+    public Optional<CommissionConfig> getConfigByAffiliateAndMerchantAndType(Long affiliateId, Long merchantId,
+            String type) {
         return commissionConfigRepository.findByAffiliateAndMerchantAndType(affiliateId, merchantId, type);
     }
-    
+
     public CommissionConfig updateCommissionConfig(Long id, CommissionConfig updatedConfig) {
-        CommissionConfig existing = commissionConfigRepository.findById(id)
+        com.game_engine.commission.entity.CommissionConfig existing = commissionConfigRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Commission config not found"));
-        
+
         existing.setCommissionType(updatedConfig.getCommissionType());
         existing.setRevenueShareRate(updatedConfig.getRevenueShareRate());
         existing.setCpaRate(updatedConfig.getCpaRate());
@@ -60,32 +61,32 @@ public class CommissionConfigService {
         existing.setEffectiveFrom(updatedConfig.getEffectiveFrom());
         existing.setEffectiveTo(updatedConfig.getEffectiveTo());
         existing.setUpdatedAt(LocalDateTime.now());
-        
+
         return commissionConfigRepository.save(existing);
     }
-    
+
     public CommissionConfig activateConfig(Long id) {
         CommissionConfig config = commissionConfigRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Commission config not found"));
-        
+
         config.setIsActive(true);
         config.setUpdatedAt(LocalDateTime.now());
         return commissionConfigRepository.save(config);
     }
-    
+
     public CommissionConfig deactivateConfig(Long id) {
         CommissionConfig config = commissionConfigRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Commission config not found"));
-        
+
         config.setIsActive(false);
         config.setUpdatedAt(LocalDateTime.now());
         return commissionConfigRepository.save(config);
     }
-    
+
     public void deleteConfig(Long id) {
         commissionConfigRepository.deleteById(id);
     }
-    
+
     public List<CommissionConfig> getAllConfigs() {
         return commissionConfigRepository.findAll();
     }

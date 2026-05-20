@@ -1,8 +1,8 @@
 package com.game_engine.kyc.service;
 
-import com.game_engine.kyc.entity.KycStatus;
-import com.game_engine.kyc.entity.KycVerification;
-import com.game_engine.kyc.entity.VerificationLevel;
+import com.game_engine.kyc.model.KycVerification;
+import com.game_engine.kyc.model.KycVerification.KycStatus;
+import com.game_engine.kyc.model.KycVerification.VerificationLevel;
 
 public class KycLevelHelper {
 
@@ -46,7 +46,7 @@ public class KycLevelHelper {
                 break;
             case LEVEL_2:
                 if (Boolean.TRUE.equals(verification.getAddressVerified()) &&
-                    Boolean.TRUE.equals(verification.getSourceOfFundsVerified())) {
+                        Boolean.TRUE.equals(verification.getSourceOfFundsVerified())) {
                     verification.setLevel(VerificationLevel.LEVEL_3);
                 }
                 break;
