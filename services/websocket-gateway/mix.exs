@@ -42,7 +42,6 @@ defmodule WebsocketGateway.MixProject do
       # Phoenix framework
       {:phoenix, "~> 1.7.0"},
       {:phoenix_pubsub, "~> 2.1.3"},
-      {:phoenix_presence_tracking, "~> 0.1.0"},
       {:phoenix_html, "~> 3.3.0"},
 
       # WebSocket
@@ -57,8 +56,8 @@ defmodule WebsocketGateway.MixProject do
       {:redix, ">= 0.0.0"},
 
       # JWT
-      {:jose, "~> 1.jwt_ver11"},
-      {:ifier, "~> 0.2.0"},
+      {:jose, "~> 1.11"},
+      {:jason, "~> 1.2"},
 
       # NATS
       {:gnat, "~> 1.5"},
@@ -72,12 +71,10 @@ defmodule WebsocketGateway.MixProject do
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
 
-      # UUID
-      {:uuid, "~> 2.0"},
+      {:uuid, "~> 1.1"},
 
       # Config
       {:distillery, "~> 2.1", runtime: false},
-      {:config_parser_ex, "~> 4.0"}
     ]
   end
 

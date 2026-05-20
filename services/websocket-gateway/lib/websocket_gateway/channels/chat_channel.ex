@@ -120,9 +120,9 @@ defmodule WebsocketGateway.Channels.ChatChannel do
   # Moderator actions (admin/moderator only)
   def handle_in("mute_user", %{"user_id" => target_user_id, "duration" => duration}, socket) do
     if is_moderator(socket) do
-      mute_duration = duration || Application.get_env(:channels, [])
+      mute_duration = duration || Application.get_env(:websocket_gateway, :channels, [])
         |> Keyword.get(:chat, [])
-        |> Keyword.get(:mute_duration, websocket_gateway, :300)
+        |> Keyword.get(:mute_duration, 300)
 
       RoomManager.mute_user(socket.assigns.chat_room_id, target_user_id, mute_duration)
 

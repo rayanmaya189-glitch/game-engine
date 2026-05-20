@@ -43,7 +43,7 @@ config :websocket_gateway, :jwt,
   algorithm: "HS256",
   issuer: "game_engine",
   audience: "game_engine",
-  expiration: 86_400, # 24 hours in seconds
+  expiration: 86_400 # 24 hours in seconds
 
 # WebSocket configuration
 config :websocket_gateway, :websocket,
@@ -134,7 +134,7 @@ config :websocket_gateway, :channels,
 # Presence tracking
 config :websocket_gateway, :presence,
   pubsub_server: WebsocketGateway.PubSub,
-  timeout: 25_000, # Heartbeat timeout (should be less than heartbeat_interval)
+  timeout: 25_000 # Heartbeat timeout (should be less than heartbeat_interval)
 
 # Room management
 config :websocket_gateway, :room_manager,
