@@ -2,7 +2,33 @@ package com.game_engine.payment.grpc;
 
 import com.game_engine.payment.model.Payment;
 import com.game_engine.payment.service.PaymentService;
-import com.game_engine.payment.v1.*;
+import com.game_engine.payment.v1.CancelPaymentRequest;
+import com.game_engine.payment.v1.CancelPaymentResponse;
+import com.game_engine.payment.v1.CreateDepositRequest;
+import com.game_engine.payment.v1.CreateDepositResponse;
+import com.game_engine.payment.v1.CreateWithdrawalRequest;
+import com.game_engine.payment.v1.CreateWithdrawalResponse;
+import com.game_engine.payment.v1.GetPaymentByExternalIdRequest;
+import com.game_engine.payment.v1.GetPaymentByExternalIdResponse;
+import com.game_engine.payment.v1.GetPaymentRequest;
+import com.game_engine.payment.v1.GetPaymentResponse;
+import com.game_engine.payment.v1.GetSupportedCurrenciesRequest;
+import com.game_engine.payment.v1.GetSupportedCurrenciesResponse;
+import com.game_engine.payment.v1.GetSupportedMethodsRequest;
+import com.game_engine.payment.v1.GetSupportedMethodsResponse;
+import com.game_engine.payment.v1.GetUserPaymentSummaryRequest;
+import com.game_engine.payment.v1.GetUserPaymentSummaryResponse;
+import com.game_engine.payment.v1.GetUserPaymentsRequest;
+import com.game_engine.payment.v1.GetUserPaymentsResponse;
+import com.game_engine.payment.v1.PaymentServiceGrpc;
+import com.game_engine.payment.v1.ProcessDepositRequest;
+import com.game_engine.payment.v1.ProcessDepositResponse;
+import com.game_engine.payment.v1.ProcessWithdrawalRequest;
+import com.game_engine.payment.v1.ProcessWithdrawalResponse;
+import com.game_engine.payment.v1.RefundPaymentRequest;
+import com.game_engine.payment.v1.RefundPaymentResponse;
+import com.google.protobuf.Timestamp;
+
 import io.grpc.stub.StreamObserver;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -57,7 +83,8 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void createWithdrawal(CreateWithdrawalRequest request, StreamObserver<CreateWithdrawalResponse> responseObserver) {
+    public void createWithdrawal(CreateWithdrawalRequest request,
+            StreamObserver<CreateWithdrawalResponse> responseObserver) {
         try {
             Payment.PaymentMethod method = Payment.PaymentMethod.valueOf(request.getMethod());
             Payment payment = paymentService.createWithdrawal(
@@ -74,7 +101,8 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void processWithdrawal(ProcessWithdrawalRequest request, StreamObserver<ProcessWithdrawalResponse> responseObserver) {
+    public void processWithdrawal(ProcessWithdrawalRequest request,
+            StreamObserver<ProcessWithdrawalResponse> responseObserver) {
         try {
             UUID paymentId = UUID.fromString(request.getPaymentId());
             Payment payment = paymentService.processWithdrawal(paymentId);
@@ -121,11 +149,13 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void getPaymentByExternalId(GetPaymentByExternalIdRequest request, StreamObserver<GetPaymentByExternalIdResponse> responseObserver) {
+    public void getPaymentByExternalId(GetPaymentByExternalIdRequest request,
+            StreamObserver<GetPaymentByExternalIdResponse> responseObserver) {
         try {
             var payment = paymentService.getPaymentByExternalId(request.getExternalId());
 
-            GetPaymentByExternalIdResponse.Builder response = GetPaymentByExternalIdResponse.newBuilder().setFound(payment.isPresent());
+            GetPaymentByExternalIdResponse.Builder response = GetPaymentByExternalIdResponse.newBuilder()
+                    .setFound(payment.isPresent());
             payment.ifPresent(p -> response.setPayment(toProtoPayment(p)));
 
             responseObserver.onNext(response.build());
@@ -137,7 +167,8 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void getUserPayments(GetUserPaymentsRequest request, StreamObserver<GetUserPaymentsResponse> responseObserver) {
+    public void getUserPayments(GetUserPaymentsRequest request,
+            StreamObserver<GetUserPaymentsResponse> responseObserver) {
         try {
             Sort sort = request.getSortDir().equalsIgnoreCase("asc")
                     ? Sort.by(request.getSortBy()).ascending()
@@ -161,13 +192,15 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void getUserPaymentSummary(GetUserPaymentSummaryRequest request, StreamObserver<GetUserPaymentSummaryResponse> responseObserver) {
+    public void getUserPaymentSummary(GetUserPaymentSummaryRequest request,
+            StreamObserver<GetUserPaymentSummaryResponse> responseObserver) {
         try {
             Instant startDate = Instant.now().minus(request.getDays(), ChronoUnit.DAYS);
             Instant endDate = Instant.now();
 
             BigDecimal totalDeposits = paymentService.getUserTotalDeposits(request.getUserId(), startDate, endDate);
-            BigDecimal totalWithdrawals = paymentService.getUserTotalWithdrawals(request.getUserId(), startDate, endDate);
+            BigDecimal totalWithdrawals = paymentService.getUserTotalWithdrawals(request.getUserId(), startDate,
+                    endDate);
 
             GetUserPaymentSummaryResponse response = GetUserPaymentSummaryResponse.newBuilder()
                     .setTotalDeposits(totalDeposits.doubleValue())
@@ -184,10 +217,13 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void getSupportedMethods(GetSupportedMethodsRequest request, StreamObserver<GetSupportedMethodsResponse> responseObserver) {
+    public void getSupportedMethods(GetSupportedMethodsRequest request,
+            StreamObserver<GetSupportedMethodsResponse> responseObserver) {
         try {
-            List<Payment.PaymentMethod> depositMethods = paymentService.getSupportedMethods(Payment.PaymentType.DEPOSIT);
-            List<Payment.PaymentMethod> withdrawalMethods = paymentService.getSupportedMethods(Payment.PaymentType.WITHDRAWAL);
+            List<Payment.PaymentMethod> depositMethods = paymentService
+                    .getSupportedMethods(Payment.PaymentType.DEPOSIT);
+            List<Payment.PaymentMethod> withdrawalMethods = paymentService
+                    .getSupportedMethods(Payment.PaymentType.WITHDRAWAL);
 
             GetSupportedMethodsResponse response = GetSupportedMethodsResponse.newBuilder()
                     .addAllDepositMethods(depositMethods.stream().map(Enum::name).toList())
@@ -203,7 +239,8 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
     }
 
     @Override
-    public void getSupportedCurrencies(GetSupportedCurrenciesRequest request, StreamObserver<GetSupportedCurrenciesResponse> responseObserver) {
+    public void getSupportedCurrencies(GetSupportedCurrenciesRequest request,
+            StreamObserver<GetSupportedCurrenciesResponse> responseObserver) {
         try {
             List<String> currencies = paymentService.getSupportedCurrencies();
             GetSupportedCurrenciesResponse response = GetSupportedCurrenciesResponse.newBuilder()
@@ -224,7 +261,8 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
             var paymentOpt = paymentService.getPayment(paymentId);
 
             if (paymentOpt.isEmpty()) {
-                responseObserver.onError(io.grpc.Status.NOT_FOUND.withDescription("Payment not found").asRuntimeException());
+                responseObserver
+                        .onError(io.grpc.Status.NOT_FOUND.withDescription("Payment not found").asRuntimeException());
                 return;
             }
 
@@ -246,8 +284,8 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
         }
     }
 
-    private PaymentServiceProto.Payment toProtoPayment(Payment p) {
-        PaymentServiceProto.Payment.Builder builder = PaymentServiceProto.Payment.newBuilder()
+    private com.game_engine.payment.v1.Payment toProtoPayment(Payment p) {
+        com.game_engine.payment.v1.Payment.Builder builder = com.game_engine.payment.v1.Payment.newBuilder()
                 .setId(p.getId().toString())
                 .setUserId(p.getUserId() != null ? p.getUserId() : "")
                 .setExternalId(p.getExternalId() != null ? p.getExternalId() : "")
@@ -255,13 +293,32 @@ public class GrpcPaymentService extends PaymentServiceGrpc.PaymentServiceImplBas
                 .setMethod(p.getMethod() != null ? p.getMethod().name() : "")
                 .setStatus(p.getStatus() != null ? p.getStatus().name() : "");
 
-        if (p.getAmount() != null) builder.setAmount(p.getAmount().doubleValue());
-        if (p.getCurrency() != null) builder.setCurrency(p.getCurrency());
-        if (p.getDescription() != null) builder.setDescription(p.getDescription());
-        if (p.getCreatedAt() != null) builder.setCreatedAt(p.getCreatedAt().toEpochMilli());
-        if (p.getProcessedAt() != null) builder.setProcessedAt(p.getProcessedAt().toEpochMilli());
-        if (p.getCompletedAt() != null) builder.setCompletedAt(p.getCompletedAt().toEpochMilli());
-        if (p.getFailureReason() != null) builder.setFailureReason(p.getFailureReason());
+        if (p.getAmount() != null)
+            builder.setAmount(p.getAmount().doubleValue());
+        if (p.getCurrency() != null)
+            builder.setCurrency(p.getCurrency());
+        if (p.getDescription() != null)
+            builder.setDescription(p.getDescription());
+        if (p.getCreatedAt() != null)
+            builder.setCreatedAt(
+                    Timestamp.newBuilder()
+                            .setSeconds(p.getCreatedAt().getEpochSecond())
+                            .setNanos(p.getCreatedAt().getNano())
+                            .build());
+        if (p.getProcessedAt() != null)
+            builder.setProcessedAt(
+                    Timestamp.newBuilder()
+                            .setSeconds(p.getProcessedAt().getEpochSecond())
+                            .setNanos(p.getProcessedAt().getNano())
+                            .build());
+        if (p.getCompletedAt() != null)
+            builder.setCompletedAt(
+                    Timestamp.newBuilder()
+                            .setSeconds(p.getCompletedAt().getEpochSecond())
+                            .setNanos(p.getCompletedAt().getNano())
+                            .build());
+        if (p.getFailureReason() != null)
+            builder.setFailureReason(p.getFailureReason());
 
         return builder.build();
     }

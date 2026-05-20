@@ -55,7 +55,7 @@ public class WalletGrpcClient {
     }
 
     public void creditBalance(UUID userId, BigDecimal amount, String currency,
-                              String transactionType, String referenceId) {
+            String transactionType, String referenceId) {
         log.info("Crediting {} {} to user {} via gRPC - type: {} ref: {}",
                 amount, currency, userId, transactionType, referenceId);
 
@@ -96,7 +96,7 @@ public class WalletGrpcClient {
     }
 
     public void debitBalance(UUID userId, BigDecimal amount, String currency,
-                             String transactionType, String referenceId) {
+            String transactionType, String referenceId) {
         log.info("Debiting {} {} from user {} via gRPC - type: {} ref: {}",
                 amount, currency, userId, transactionType, referenceId);
 
@@ -179,7 +179,8 @@ public class WalletGrpcClient {
     }
 
     private int getCurrencyExponent(String currency) {
-        if (currency == null) return 2;
+        if (currency == null)
+            return 2;
         return switch (currency.toUpperCase()) {
             case "JPY", "KRW", "VND" -> 0;
             case "BTC", "ETH", "USDT" -> 8;
@@ -188,7 +189,8 @@ public class WalletGrpcClient {
     }
 
     private com.game_engine.common.v1.Currency mapCurrency(String currency) {
-        if (currency == null) return com.game_engine.common.v1.Currency.CURRENCY_UNSPECIFIED;
+        if (currency == null)
+            return com.game_engine.common.v1.Currency.CURRENCY_UNSPECIFIED;
         return switch (currency.toUpperCase()) {
             case "USD" -> com.game_engine.common.v1.Currency.CURRENCY_USD;
             case "EUR" -> com.game_engine.common.v1.Currency.CURRENCY_EUR;

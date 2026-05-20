@@ -29,7 +29,7 @@ public class DocumentStorageService {
     public DocumentStorageService(
             @Value("${kyc.document.s3.bucket:}") String bucketName,
             @Value("${kyc.document.s3.region:us-east-1}") String region) {
-        
+
         if (bucketName != null && !bucketName.isEmpty()) {
             this.s3Client = S3Client.builder()
                     .region(Region.of(region))
@@ -46,7 +46,7 @@ public class DocumentStorageService {
      * Store a document in S3 with encryption
      */
     public String storeDocument(UUID userId, String documentType, byte[] data) {
-        String key = String.format("users/%s/%s/%s-%s.pdf", 
+        String key = String.format("users/%s/%s/%s-%s.pdf",
                 userId, documentType, documentType, System.currentTimeMillis());
 
         if (s3Client == null) {

@@ -65,7 +65,8 @@ public class RiskGrpcClient {
                     .withDeadlineAfter(timeoutSeconds, TimeUnit.SECONDS)
                     .getRiskScore(request);
 
-            log.debug("Risk score for user {}: score={}, level={}", userId, response.getScore(), response.getRiskLevel());
+            log.debug("Risk score for user {}: score={}, level={}", userId, response.getScore(),
+                    response.getRiskLevel());
             return response.getScore();
         } catch (StatusRuntimeException e) {
             log.error("gRPC error getting risk score for user {}: {}", userId, e.getStatus());
