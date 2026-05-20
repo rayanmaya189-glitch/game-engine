@@ -22,7 +22,8 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
     private final BonusRepository bonusRepository;
 
     @Override
-    public void getActiveBonuses(GetActiveBonusesRequest request, StreamObserver<GetActiveBonusesResponse> responseObserver) {
+    public void getActiveBonuses(GetActiveBonusesRequest request,
+            StreamObserver<GetActiveBonusesResponse> responseObserver) {
         try {
             List<Bonus> bonuses = bonusRepository.findAll().stream()
                     .filter(b -> b.getStatus() == Bonus.BonusStatus.ACTIVE)
@@ -63,7 +64,7 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
     public void createBonus(CreateBonusRequest request, StreamObserver<CreateBonusResponse> responseObserver) {
         try {
             Bonus bonus = new Bonus();
-            BonusServiceProto.Bonus reqBonus = request.getBonus();
+            com.game_engine.bonus.v1.Bonus reqBonus = request.getBonus();
             bonus.setName(reqBonus.getName());
             bonus.setDescription(reqBonus.getDescription());
             bonus.setType(Bonus.BonusType.valueOf(reqBonus.getType()));
@@ -114,7 +115,8 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
     }
 
     @Override
-    public void checkEligibility(CheckEligibilityRequest request, StreamObserver<CheckEligibilityResponse> responseObserver) {
+    public void checkEligibility(CheckEligibilityRequest request,
+            StreamObserver<CheckEligibilityResponse> responseObserver) {
         try {
             UUID userId = UUID.fromString(request.getUserId());
             Map<String, Object> eligibility = bonusService.checkEligibility(userId);
@@ -133,7 +135,8 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
     }
 
     @Override
-    public void getBonusHistory(GetBonusHistoryRequest request, StreamObserver<GetBonusHistoryResponse> responseObserver) {
+    public void getBonusHistory(GetBonusHistoryRequest request,
+            StreamObserver<GetBonusHistoryResponse> responseObserver) {
         try {
             UUID userId = UUID.fromString(request.getUserId());
             List<Map<String, Object>> history = bonusService.getBonusHistory(userId);
@@ -160,7 +163,8 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
     }
 
     @Override
-    public void getActiveBonusClaims(GetActiveBonusClaimsRequest request, StreamObserver<GetActiveBonusClaimsResponse> responseObserver) {
+    public void getActiveBonusClaims(GetActiveBonusClaimsRequest request,
+            StreamObserver<GetActiveBonusClaimsResponse> responseObserver) {
         try {
             UUID userId = UUID.fromString(request.getUserId());
             List<Map<String, Object>> activeClaims = bonusService.getActiveBonusClaims(userId);
@@ -171,9 +175,12 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
                         .setBonusId(String.valueOf(claim.getOrDefault("bonusId", "")))
                         .setBonusName(String.valueOf(claim.getOrDefault("bonusName", "")))
                         .setStatus(String.valueOf(claim.getOrDefault("status", "")));
-                if (claim.containsKey("amount")) claimBuilder.setAmount(((Number) claim.get("amount")).doubleValue());
-                if (claim.containsKey("wageringProgress")) claimBuilder.setWageringProgress(((Number) claim.get("wageringProgress")).doubleValue());
-                if (claim.containsKey("wageringRequired")) claimBuilder.setWageringRequired(((Number) claim.get("wageringRequired")).doubleValue());
+                if (claim.containsKey("amount"))
+                    claimBuilder.setAmount(((Number) claim.get("amount")).doubleValue());
+                if (claim.containsKey("wageringProgress"))
+                    claimBuilder.setWageringProgress(((Number) claim.get("wageringProgress")).doubleValue());
+                if (claim.containsKey("wageringRequired"))
+                    claimBuilder.setWageringRequired(((Number) claim.get("wageringRequired")).doubleValue());
                 response.addClaims(claimBuilder.build());
             }
 
@@ -204,28 +211,42 @@ public class GrpcBonusService extends BonusServiceGrpc.BonusServiceImplBase {
         }
     }
 
-    private BonusServiceProto.Bonus toProtoBonus(Bonus bonus) {
-        BonusServiceProto.Bonus.Builder builder = BonusServiceProto.Bonus.newBuilder()
+    private com.game_engine.bonus.v1.Bonus toProtoBonus(Bonus bonus) {
+        com.game_engine.bonus.v1.Bonus.Builder builder = com.game_engine.bonus.v1.Bonus.newBuilder()
                 .setId(bonus.getId().toString())
                 .setName(bonus.getName() != null ? bonus.getName() : "")
                 .setDescription(bonus.getDescription() != null ? bonus.getDescription() : "")
                 .setType(bonus.getType() != null ? bonus.getType().name() : "")
                 .setStatus(bonus.getStatus() != null ? bonus.getStatus().name() : "");
 
-        if (bonus.getAmount() != null) builder.setAmount(bonus.getAmount().doubleValue());
-        if (bonus.getPercentage() != null) builder.setPercentage(bonus.getPercentage().doubleValue());
-        if (bonus.getMaxAmount() != null) builder.setMaxAmount(bonus.getMaxAmount().doubleValue());
-        if (bonus.getMinDeposit() != null) builder.setMinDeposit(bonus.getMinDeposit().doubleValue());
-        if (bonus.getWageringRequirement() != null) builder.setWageringRequirement(bonus.getWageringRequirement());
-        if (bonus.getMaxBet() != null) builder.setMaxBet(bonus.getMaxBet().doubleValue());
-        if (bonus.getAllowedGames() != null) builder.setAllowedGames(bonus.getAllowedGames());
-        if (bonus.getStartDate() != null) builder.setStartDate(bonus.getStartDate().toEpochMilli());
-        if (bonus.getEndDate() != null) builder.setEndDate(bonus.getEndDate().toEpochMilli());
-        if (bonus.getMaxUses() != null) builder.setMaxUses(bonus.getMaxUses());
-        if (bonus.getCurrentUses() != null) builder.setCurrentUses(bonus.getCurrentUses());
-        if (bonus.getVipLevel() != null) builder.setVipLevel(bonus.getVipLevel().name());
-        if (bonus.getCreatedAt() != null) builder.setCreatedAt(bonus.getCreatedAt().toEpochMilli());
-        if (bonus.getUpdatedAt() != null) builder.setUpdatedAt(bonus.getUpdatedAt().toEpochMilli());
+        if (bonus.getAmount() != null)
+            builder.setAmount(bonus.getAmount().doubleValue());
+        if (bonus.getPercentage() != null)
+            builder.setPercentage(bonus.getPercentage().doubleValue());
+        if (bonus.getMaxAmount() != null)
+            builder.setMaxAmount(bonus.getMaxAmount().doubleValue());
+        if (bonus.getMinDeposit() != null)
+            builder.setMinDeposit(bonus.getMinDeposit().doubleValue());
+        if (bonus.getWageringRequirement() != null)
+            builder.setWageringRequirement(bonus.getWageringRequirement());
+        if (bonus.getMaxBet() != null)
+            builder.setMaxBet(bonus.getMaxBet().doubleValue());
+        if (bonus.getAllowedGames() != null)
+            builder.setAllowedGames(bonus.getAllowedGames());
+        if (bonus.getStartDate() != null)
+            builder.setStartDate(bonus.getStartDate().toEpochMilli());
+        if (bonus.getEndDate() != null)
+            builder.setEndDate(bonus.getEndDate().toEpochMilli());
+        if (bonus.getMaxUses() != null)
+            builder.setMaxUses(bonus.getMaxUses());
+        if (bonus.getCurrentUses() != null)
+            builder.setCurrentUses(bonus.getCurrentUses());
+        if (bonus.getVipLevel() != null)
+            builder.setVipLevel(bonus.getVipLevel().name());
+        if (bonus.getCreatedAt() != null)
+            builder.setCreatedAt(bonus.getCreatedAt().toEpochMilli());
+        if (bonus.getUpdatedAt() != null)
+            builder.setUpdatedAt(bonus.getUpdatedAt().toEpochMilli());
 
         return builder.build();
     }

@@ -4,6 +4,8 @@ import com.game_engine.affiliate.entity.Affiliate;
 import com.game_engine.affiliate.entity.Referral;
 import com.game_engine.affiliate.service.AffiliateService;
 import com.game_engine.affiliate.v1.*;
+import com.google.protobuf.Timestamp;
+
 import io.grpc.stub.StreamObserver;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.server.service.GrpcService;
@@ -22,7 +24,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     private AffiliateService affiliateService;
 
     @Override
-    public void registerAffiliate(RegisterAffiliateRequest request, StreamObserver<RegisterAffiliateResponse> responseObserver) {
+    public void registerAffiliate(RegisterAffiliateRequest request,
+            StreamObserver<RegisterAffiliateResponse> responseObserver) {
         try {
             Affiliate affiliate = affiliateService.registerAffiliate(request.getName(), request.getEmail());
             responseObserver.onNext(RegisterAffiliateResponse.newBuilder()
@@ -36,7 +39,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void getAffiliateByCode(GetAffiliateByCodeRequest request, StreamObserver<GetAffiliateByCodeResponse> responseObserver) {
+    public void getAffiliateByCode(GetAffiliateByCodeRequest request,
+            StreamObserver<GetAffiliateByCodeResponse> responseObserver) {
         try {
             Optional<Affiliate> affiliate = affiliateService.getAffiliateByCode(request.getAffiliateCode());
             GetAffiliateByCodeResponse.Builder response = GetAffiliateByCodeResponse.newBuilder()
@@ -51,7 +55,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void getAffiliatesByMerchant(GetAffiliatesByMerchantRequest request, StreamObserver<GetAffiliatesByMerchantResponse> responseObserver) {
+    public void getAffiliatesByMerchant(GetAffiliatesByMerchantRequest request,
+            StreamObserver<GetAffiliatesByMerchantResponse> responseObserver) {
         try {
             List<Affiliate> affiliates = affiliateService.getAllAffiliates();
             GetAffiliatesByMerchantResponse.Builder response = GetAffiliatesByMerchantResponse.newBuilder();
@@ -65,7 +70,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void getActiveAffiliates(GetActiveAffiliatesRequest request, StreamObserver<GetActiveAffiliatesResponse> responseObserver) {
+    public void getActiveAffiliates(GetActiveAffiliatesRequest request,
+            StreamObserver<GetActiveAffiliatesResponse> responseObserver) {
         try {
             List<Affiliate> affiliates = affiliateService.getAffiliatesByStatus("ACTIVE");
             GetActiveAffiliatesResponse.Builder response = GetActiveAffiliatesResponse.newBuilder();
@@ -79,7 +85,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void updateAffiliateTier(UpdateAffiliateTierRequest request, StreamObserver<UpdateAffiliateTierResponse> responseObserver) {
+    public void updateAffiliateTier(UpdateAffiliateTierRequest request,
+            StreamObserver<UpdateAffiliateTierResponse> responseObserver) {
         try {
             Affiliate affiliate = affiliateService.updateAffiliateTier(request.getAffiliateId(), request.getTier());
             responseObserver.onNext(UpdateAffiliateTierResponse.newBuilder()
@@ -93,7 +100,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void updateAffiliateStatus(UpdateAffiliateStatusRequest request, StreamObserver<UpdateAffiliateStatusResponse> responseObserver) {
+    public void updateAffiliateStatus(UpdateAffiliateStatusRequest request,
+            StreamObserver<UpdateAffiliateStatusResponse> responseObserver) {
         try {
             Affiliate affiliate = affiliateService.updateAffiliateStatus(request.getAffiliateId(), request.getStatus());
             responseObserver.onNext(UpdateAffiliateStatusResponse.newBuilder()
@@ -122,7 +130,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void trackRegistration(TrackRegistrationRequest request, StreamObserver<TrackRegistrationResponse> responseObserver) {
+    public void trackRegistration(TrackRegistrationRequest request,
+            StreamObserver<TrackRegistrationResponse> responseObserver) {
         try {
             List<Referral> referrals = affiliateService.getReferralsByAffiliateCode("");
             Optional<Referral> match = referrals.stream().findFirst();
@@ -137,7 +146,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void trackFirstDeposit(TrackFirstDepositRequest request, StreamObserver<TrackFirstDepositResponse> responseObserver) {
+    public void trackFirstDeposit(TrackFirstDepositRequest request,
+            StreamObserver<TrackFirstDepositResponse> responseObserver) {
         try {
             List<Referral> referrals = affiliateService.getReferralsByAffiliateCode(request.getReferralCode());
             Optional<Referral> match = referrals.stream().findFirst();
@@ -174,7 +184,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void getCampaignReferrals(GetCampaignReferralsRequest request, StreamObserver<GetCampaignReferralsResponse> responseObserver) {
+    public void getCampaignReferrals(GetCampaignReferralsRequest request,
+            StreamObserver<GetCampaignReferralsResponse> responseObserver) {
         try {
             GetCampaignReferralsResponse.Builder response = GetCampaignReferralsResponse.newBuilder();
             responseObserver.onNext(response.build());
@@ -186,7 +197,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void calculateCommission(CalculateCommissionRequest request, StreamObserver<CalculateCommissionResponse> responseObserver) {
+    public void calculateCommission(CalculateCommissionRequest request,
+            StreamObserver<CalculateCommissionResponse> responseObserver) {
         try {
             BigDecimal revenue = BigDecimal.valueOf(request.getRevenue());
             BigDecimal commission = affiliateService.calculateCommissions(request.getAffiliateId());
@@ -202,7 +214,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void addSubAffiliate(AddSubAffiliateRequest request, StreamObserver<AddSubAffiliateResponse> responseObserver) {
+    public void addSubAffiliate(AddSubAffiliateRequest request,
+            StreamObserver<AddSubAffiliateResponse> responseObserver) {
         try {
             Affiliate subAffiliate = affiliateService.registerAffiliate(request.getName(), request.getEmail());
             subAffiliate.setCommissionRate(new BigDecimal("0.1000"));
@@ -218,7 +231,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void getSubAffiliates(GetSubAffiliatesRequest request, StreamObserver<GetSubAffiliatesResponse> responseObserver) {
+    public void getSubAffiliates(GetSubAffiliatesRequest request,
+            StreamObserver<GetSubAffiliatesResponse> responseObserver) {
         try {
             GetSubAffiliatesResponse.Builder response = GetSubAffiliatesResponse.newBuilder();
             responseObserver.onNext(response.build());
@@ -230,7 +244,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void getAffiliateStats(GetAffiliateStatsRequest request, StreamObserver<GetAffiliateStatsResponse> responseObserver) {
+    public void getAffiliateStats(GetAffiliateStatsRequest request,
+            StreamObserver<GetAffiliateStatsResponse> responseObserver) {
         try {
             AffiliateService.AffiliateStats stats = affiliateService.getAffiliateStats(request.getAffiliateId());
             GetAffiliateStatsResponse response = GetAffiliateStatsResponse.newBuilder()
@@ -249,7 +264,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
     }
 
     @Override
-    public void redirectToRegistration(RedirectToRegistrationRequest request, StreamObserver<RedirectToRegistrationResponse> responseObserver) {
+    public void redirectToRegistration(RedirectToRegistrationRequest request,
+            StreamObserver<RedirectToRegistrationResponse> responseObserver) {
         try {
             RedirectToRegistrationResponse response = RedirectToRegistrationResponse.newBuilder()
                     .setRedirectUrl("/register?ref=" + request.getReferralCode())
@@ -262,8 +278,8 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
         }
     }
 
-    private AffiliateServiceProto.Affiliate toProtoAffiliate(Affiliate affiliate) {
-        AffiliateServiceProto.Affiliate.Builder builder = AffiliateServiceProto.Affiliate.newBuilder()
+    private com.game_engine.affiliate.v1.Affiliate toProtoAffiliate(Affiliate affiliate) {
+        com.game_engine.affiliate.v1.Affiliate.Builder builder = com.game_engine.affiliate.v1.Affiliate.newBuilder()
                 .setId(affiliate.getId())
                 .setAffiliateCode(affiliate.getAffiliateCode() != null ? affiliate.getAffiliateCode() : "")
                 .setName(affiliate.getName() != null ? affiliate.getName() : "")
@@ -272,24 +288,34 @@ public class GrpcAffiliateService extends AffiliateServiceGrpc.AffiliateServiceI
                 .setAffiliateTier(affiliate.getTier() != null ? affiliate.getTier() : "");
 
         if (affiliate.getCommissionRate() != null)
-            builder.setRevenueSharePercentage(affiliate.getCommissionRate().multiply(new BigDecimal("100")).doubleValue());
-        if (affiliate.getTotalReferrals() != null) builder.setTotalRegistrations(affiliate.getTotalReferrals());
-        if (affiliate.getTotalRevenue() != null) builder.setTotalRevenue(affiliate.getTotalRevenue().doubleValue());
-        if (affiliate.getCreatedAt() != null) builder.setCreatedAt(affiliate.getCreatedAt().toEpochSecond(ZoneOffset.UTC));
-
+            builder.setRevenueSharePercentage(
+                    affiliate.getCommissionRate().multiply(new BigDecimal("100")).doubleValue());
+        if (affiliate.getTotalReferrals() != null)
+            builder.setTotalRegistrations(affiliate.getTotalReferrals());
+        if (affiliate.getTotalRevenue() != null)
+            builder.setTotalRevenue(affiliate.getTotalRevenue().doubleValue());
+        if (affiliate.getCreatedAt() != null)
+            builder.setCreatedAt(
+                    Timestamp.newBuilder().setSeconds(affiliate.getCreatedAt().toEpochSecond(ZoneOffset.UTC))
+                            .build());
         return builder.build();
     }
 
-    private AffiliateServiceProto.Referral toProtoReferral(Referral referral) {
-        AffiliateServiceProto.Referral.Builder builder = AffiliateServiceProto.Referral.newBuilder()
+    private com.game_engine.affiliate.v1.Referral toProtoReferral(Referral referral) {
+        com.game_engine.affiliate.v1.Referral.Builder builder = com.game_engine.affiliate.v1.Referral.newBuilder()
                 .setId(referral.getId())
                 .setReferralCode(referral.getAffiliateCode() != null ? referral.getAffiliateCode() : "")
                 .setSource(referral.getSource() != null ? referral.getSource() : "")
                 .setStatus(referral.getStatus() != null ? referral.getStatus() : "");
 
-        if (referral.getPlayerId() != null) builder.setAffiliateId(referral.getPlayerId());
-        if (referral.getFirstDepositAt() != null) builder.setFirstDepositAt(referral.getFirstDepositAt().toEpochSecond(ZoneOffset.UTC));
-        if (referral.getTotalDeposits() != null) builder.setFirstDepositAmount(referral.getTotalDeposits().doubleValue());
+        if (referral.getPlayerId() != null)
+            builder.setAffiliateId(referral.getPlayerId());
+        if (referral.getFirstDepositAt() != null)
+            builder.setFirstDepositAt(
+                    Timestamp.newBuilder().setSeconds(referral.getFirstDepositAt().toEpochSecond(ZoneOffset.UTC))
+                            .build());
+        if (referral.getTotalDeposits() != null)
+            builder.setFirstDepositAmount(referral.getTotalDeposits().doubleValue());
 
         return builder.build();
     }

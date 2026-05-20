@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -38,12 +39,13 @@ public class BonusCashbackService {
             return BigDecimal.ZERO;
         }
 
-        BonusCampaign cashbackCampaign = campaignRepository
+        Optional<BonusCampaign> cashbackCampaignOpt = campaignRepository
                 .findActiveCashbackCampaign(LocalDateTime.now());
 
-        if (cashbackCampaign == null) {
+        if (cashbackCampaignOpt.isEmpty()) {
             return BigDecimal.ZERO;
         }
+        BonusCampaign cashbackCampaign = cashbackCampaignOpt.get();
 
         BigDecimal percentage = cashbackCampaign.getCashbackPercentage()
                 .divide(BigDecimal.valueOf(100), 4, RoundingMode.HALF_UP);
@@ -62,19 +64,23 @@ public class BonusCashbackService {
      */
     @Transactional
     public PlayerBonus claimCashback(UUID userId) {
-        BonusCampaign campaign = campaignRepository.findActiveCashbackCampaign(LocalDateTime.now());
-        if (campaign == null) {
+        Optional<BonusCampaign> cashbackCampaignOpt = campaignRepository
+                .findActiveCashbackCampaign(LocalDateTime.now());
+
+        if (cashbackCampaignOpt.isEmpty()) {
             throw new IllegalStateException("No active cashback campaign");
         }
+        BonusCampaign cashbackCampaign = cashbackCampaignOpt.get();
 
-        int periodDays = campaign.getCashbackPeriodDays() != null ? campaign.getCashbackPeriodDays() : 7;
+        int periodDays = cashbackCampaign.getCashbackPeriodDays() != null ? cashbackCampaign.getCashbackPeriodDays()
+                : 7;
         BigDecimal cashbackAmount = calculateCashback(userId, periodDays);
 
         if (cashbackAmount.compareTo(BigDecimal.ZERO) <= 0) {
             throw new IllegalStateException("No cashback available");
         }
 
-        PlayerBonus bonus = eligibilityService.awardBonus(userId, campaign.getId(), "cashback", null);
+        PlayerBonus bonus = eligibilityService.awardBonus(userId, cashbackCampaign.getId(), "cashback", null);
         bonus.setBonusAmount(cashbackAmount);
         bonus.setBonusAmountCredited(cashbackAmount);
         bonus.setStatus(BonusStatus.CLAIMED);
