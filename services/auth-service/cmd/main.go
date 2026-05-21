@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
 	"log"
@@ -70,6 +71,17 @@ func main() {
 	authService, err := service.NewAuthService(repo, redisClient, cfg)
 	if err != nil {
 		log.Fatalf("Failed to initialize auth service: %v", err)
+	}
+
+	// Run migrations and seed
+	ctx := context.Background()
+	log.Println("Running migrations...")
+	if err := authService.Migrate(ctx); err != nil {
+		log.Printf("Warning: Migration failed: %v", err)
+	}
+	log.Println("Seeding initial data...")
+	if err := authService.Seed(ctx); err != nil {
+		log.Printf("Warning: Seeding failed: %v", err)
 	}
 
 	// Initialize handler

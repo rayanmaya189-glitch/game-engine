@@ -39,6 +39,22 @@ type User struct {
 	CreatedAt        time.Time  `json:"created_at" db:"created_at"`
 	UpdatedAt        time.Time  `json:"updated_at" db:"updated_at"`
 	LastLoginAt      *time.Time `json:"last_login_at,omitempty" db:"last_login_at"`
+	Roles            []UserRole `json:"roles" db:"-"`
+}
+
+// Role represents a user role
+type Role struct {
+	ID          uuid.UUID    `json:"id"`
+	Name        string       `json:"name"`
+	Description string       `json:"description"`
+	Permissions []Permission `json:"permissions"`
+}
+
+// Permission represents a user permission
+type Permission struct {
+	ID          uuid.UUID `json:"id"`
+	Name        string    `json:"name"`
+	Description string    `json:"description"`
 }
 
 // Session represents an active user session
@@ -101,9 +117,10 @@ type EmailVerificationToken struct {
 type UserRole string
 
 const (
-	RolePlayer  UserRole = "player"
-	RoleAdmin   UserRole = "admin"
-	RoleSupport UserRole = "support"
+	RolePlayer     UserRole = "player"
+	RoleAdmin      UserRole = "admin"
+	RoleSuperAdmin UserRole = "superadmin"
+	RoleSupport    UserRole = "support"
 )
 
 // TokenClaims represents JWT token claims

@@ -281,3 +281,13 @@ func (s *AuthService) SubscribeToEvents(subject string, handler func(*nats.Msg))
 	}
 	return s.nats.Subscribe(subject, handler)
 }
+
+// Migrate runs database migrations
+func (s *AuthService) Migrate(ctx context.Context) error {
+	return s.repo.Migrate(ctx)
+}
+
+// Seed seeds initial data
+func (s *AuthService) Seed(ctx context.Context) error {
+	return s.repo.Seed(ctx)
+}

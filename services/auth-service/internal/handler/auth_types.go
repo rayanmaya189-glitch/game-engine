@@ -70,6 +70,8 @@ func convertRoles(roles []model.UserRole) []commonv1.UserRole {
 	result := make([]commonv1.UserRole, len(roles))
 	for i, r := range roles {
 		switch r {
+		case model.RoleSuperAdmin:
+			result[i] = commonv1.UserRole_USER_ROLE_SUPER_ADMIN
 		case model.RoleAdmin:
 			result[i] = commonv1.UserRole_USER_ROLE_ADMIN
 		case model.RoleSupport:

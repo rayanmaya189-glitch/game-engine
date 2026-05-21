@@ -4,6 +4,7 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
+	"os"
 	"time"
 
 	"github.com/game_engine/auth-service/internal/model"
@@ -65,7 +66,17 @@ func (r *AuthRepository) GetUserByEmail(ctx context.Context, email string) (*mod
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
-	return user, err
+	if err != nil {
+		return nil, err
+	}
+
+	roles, err := r.GetUserRoles(ctx, user.ID)
+	if err != nil {
+		return nil, err
+	}
+	user.Roles = roles
+
+	return user, nil
 }
 
 // GetUserByPhone retrieves a user by phone
@@ -91,7 +102,17 @@ func (r *AuthRepository) GetUserByPhone(ctx context.Context, phone string) (*mod
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
-	return user, err
+	if err != nil {
+		return nil, err
+	}
+
+	roles, err := r.GetUserRoles(ctx, user.ID)
+	if err != nil {
+		return nil, err
+	}
+	user.Roles = roles
+
+	return user, nil
 }
 
 // GetUserByID retrieves a user by ID
@@ -117,7 +138,129 @@ func (r *AuthRepository) GetUserByID(ctx context.Context, id uuid.UUID) (*model.
 	if err == sql.ErrNoRows {
 		return nil, nil
 	}
-	return user, err
+	if err != nil {
+		return nil, err
+	}
+
+	roles, err := r.GetUserRoles(ctx, user.ID)
+	if err != nil {
+		return nil, err
+	}
+	user.Roles = roles
+
+	return user, nil
+}
+
+// GetUserRoles retrieves roles for a user
+func (r *AuthRepository) GetUserRoles(ctx context.Context, userID uuid.UUID) ([]model.UserRole, error) {
+	query := `
+		SELECT r.name FROM roles r
+		JOIN user_roles ur ON r.id = ur.role_id
+		WHERE ur.user_id = $1
+	`
+
+	rows, err := r.db.QueryContext(ctx, query, userID)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var roles []model.UserRole
+	for rows.Next() {
+		var roleName string
+		if err := rows.Scan(&roleName); err != nil {
+			return nil, err
+		}
+		roles = append(roles, model.UserRole(roleName))
+	}
+
+	// Default to player if no roles found
+	if len(roles) == 0 {
+		roles = append(roles, model.RolePlayer)
+	}
+
+	return roles, nil
+}
+
+// Seed basic roles, permissions and superadmin user
+func (r *AuthRepository) Seed(ctx context.Context) error {
+	query := `
+-- Seed basic roles
+INSERT INTO roles (name, description) VALUES 
+('superadmin', 'System Super Administrator with full access'),
+('admin', 'Administrator with management access'),
+('support', 'Support staff with read and limited write access'),
+('player', 'Regular player')
+ON CONFLICT (name) DO NOTHING;
+
+-- Seed basic permissions
+INSERT INTO permissions (name, description) VALUES 
+('all', 'Global permission for all actions'),
+('user.read', 'Read user profiles'),
+('user.write', 'Modify user profiles'),
+('user.delete', 'Delete users'),
+('game.manage', 'Manage games and settings'),
+('finance.manage', 'Manage payments and wallets')
+ON CONFLICT (name) DO NOTHING;
+
+-- Assign 'all' permission to 'superadmin'
+INSERT INTO role_permissions (role_id, permission_id)
+SELECT r.id, p.id FROM roles r, permissions p 
+WHERE r.name = 'superadmin' AND p.name = 'all'
+ON CONFLICT DO NOTHING;
+
+-- Create superadmin user
+INSERT INTO users (
+    email, 
+    password_hash, 
+    status, 
+    email_verified, 
+    marketing_consent, 
+    accept_terms,
+    created_at,
+    updated_at
+) VALUES (
+    'admin@game-engine.com', 
+    '$2a$12$A6Ae/bdusqjinL0zx/8CCOR50/aMbfEf6uLGU2sJDYD2TvrLgo1ga', 
+    'active', 
+    true, 
+    true, 
+    true,
+    NOW(),
+    NOW()
+) ON CONFLICT (email) DO NOTHING;
+
+-- Assign superadmin role to superadmin user
+INSERT INTO user_roles (user_id, role_id)
+SELECT u.id, r.id FROM users u, roles r
+WHERE u.email = 'admin@game-engine.com' AND r.name = 'superadmin'
+ON CONFLICT DO NOTHING;
+	`
+	_, err := r.db.ExecContext(ctx, query)
+	return err
+}
+
+// Migrate executes all migration files in the migrations directory
+func (r *AuthRepository) Migrate(ctx context.Context) error {
+	// Simple migration runner that executes SQL files in order
+	migrations := []string{
+		"auth-service/migrations/001_init_schema.sql",
+		"auth-service/migrations/002_add_roles_and_permissions.sql",
+	}
+
+	for _, file := range migrations {
+		content, err := os.ReadFile(file)
+		if err != nil {
+			return fmt.Errorf("failed to read migration file %s: %w", file, err)
+		}
+
+		_, err = r.db.ExecContext(ctx, string(content))
+		if err != nil {
+			return fmt.Errorf("failed to execute migration %s: %w", file, err)
+		}
+	}
+
+	return nil
 }
 
 // UpdateUser updates a user in the database
