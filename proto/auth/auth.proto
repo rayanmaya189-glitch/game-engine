@@ -1,0 +1,222 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "github.com/royalplatform/proto/auth";
+
+import "common/common.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+// Authentication Service - Handles user registration, login, sessions, and security
+
+message RegisterRequest {
+  string email = 1 [(validate.rules).string.email = true];
+  string password = 2 [(validate.rules).string.min_len = 8, (validate.rules).string.max_len = 128];
+  string username = 3 [(validate.rules).string.min_len = 3, (validate.rules).string.max_len = 50];
+  string referral_code = 4;
+  common.GeoLocation geo_location = 5;
+  common.DeviceInfo device_info = 6;
+  bool accept_terms = 7 [(validate.rules).bool.const = true];
+  bool accept_marketing = 8;
+}
+
+message RegisterResponse {
+  string user_id = 1;
+  string email = 2;
+  string username = 3;
+  string access_token = 4;
+  string refresh_token = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  bool requires_email_verification = 7;
+  bool requires_kyc = 8;
+}
+
+message LoginRequest {
+  string email = 1 [(validate.rules).string.email = true];
+  string password = 2 [(validate.rules).string.min_len = 1];
+  common.DeviceInfo device_info = 3;
+  string otp_code = 4;
+  bool remember_me = 5;
+}
+
+message LoginResponse {
+  string user_id = 1;
+  string email = 2;
+  string username = 3;
+  string access_token = 4;
+  string refresh_token = 5;
+  google.protobuf.Timestamp expires_at = 6;
+  bool requires_2fa = 7;
+  string session_id = 8;
+}
+
+message RefreshTokenRequest {
+  string refresh_token = 1 [(validate.rules).string.min_len = 1];
+}
+
+message RefreshTokenResponse {
+  string access_token = 1;
+  string refresh_token = 2;
+  google.protobuf.Timestamp expires_at = 3;
+}
+
+message VerifyEmailRequest {
+  string token = 1 [(validate.rules).string.min_len = 1];
+}
+
+message VerifyEmailResponse {
+  bool verified = 1;
+  string user_id = 2;
+}
+
+message ResendVerificationEmailRequest {
+  string email = 1 [(validate.rules).string.email = true];
+}
+
+message ForgotPasswordRequest {
+  string email = 1 [(validate.rules).string.email = true];
+}
+
+message ForgotPasswordResponse {
+  bool sent = 1;
+  string message = 2;
+}
+
+message ResetPasswordRequest {
+  string token = 1 [(validate.rules).string.min_len = 1];
+  string new_password = 2 [(validate.rules).string.min_len = 8, (validate.rules).string.max_len = 128];
+}
+
+message ResetPasswordResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message ChangePasswordRequest {
+  string current_password = 1 [(validate.rules).string.min_len = 1];
+  string new_password = 2 [(validate.rules).string.min_len = 8, (validate.rules).string.max_len = 128];
+}
+
+message ChangePasswordResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message Enable2FARequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message Enable2FAResponse {
+  string secret = 1;
+  string qr_code_url = 2;
+  string backup_codes = 3; // JSON array of backup codes
+}
+
+message Verify2FARequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  string otp_code = 2 [(validate.rules).string.len = 6];
+}
+
+message Verify2FAResponse {
+  bool verified = 1;
+  string message = 2;
+}
+
+message Disable2FARequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  string otp_code = 2 [(validate.rules).string.len = 6];
+}
+
+message Disable2FAResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message LogoutRequest {
+  string session_id = 1;
+  bool logout_all_devices = 2;
+}
+
+message LogoutResponse {
+  bool success = 1;
+}
+
+message Session {
+  string id = 1;
+  string user_id = 2;
+  string device_id = 3;
+  string ip_address = 4;
+  string user_agent = 5;
+  common.DeviceInfo device_info = 6;
+  google.protobuf.Timestamp created_at = 7;
+  google.protobuf.Timestamp last_active_at = 8;
+  google.protobuf.Timestamp expires_at = 9;
+  bool is_current = 10;
+}
+
+message ListSessionsRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message ListSessionsResponse {
+  repeated Session sessions = 1;
+}
+
+message RevokeSessionRequest {
+  string session_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message RevokeSessionResponse {
+  bool success = 1;
+}
+
+// Admin messages
+message AdminGetUserAuthInfoRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message AdminGetUserAuthInfoResponse {
+  string user_id = 1;
+  string email = 2;
+  bool email_verified = 3;
+  bool two_factor_enabled = 4;
+  repeated Session active_sessions = 5;
+  google.protobuf.Timestamp last_login_at = 6;
+  int32 failed_login_attempts = 7;
+  google.protobuf.Timestamp locked_until = 8;
+  string status = 9;
+}
+
+message AdminSuspendUserRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  string reason = 2;
+  int64 duration_seconds = 3; // 0 for permanent
+}
+
+message AdminSuspendUserResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Service definition
+service AuthService {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Login(LoginRequest) returns (LoginResponse);
+  rpc RefreshToken(RefreshTokenRequest) returns (RefreshTokenResponse);
+  rpc VerifyEmail(VerifyEmailRequest) returns (VerifyEmailResponse);
+  rpc ResendVerificationEmail(ResendVerificationEmailRequest) returns (common.Empty);
+  rpc ForgotPassword(ForgotPasswordRequest) returns (ForgotPasswordResponse);
+  rpc ResetPassword(ResetPasswordRequest) returns (ResetPasswordResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
+  rpc Enable2FA(Enable2FARequest) returns (Enable2FAResponse);
+  rpc Verify2FA(Verify2FARequest) returns (Verify2FAResponse);
+  rpc Disable2FA(Disable2FARequest) returns (Disable2FAResponse);
+  rpc Logout(LogoutRequest) returns (LogoutResponse);
+  rpc ListSessions(ListSessionsRequest) returns (ListSessionsResponse);
+  rpc RevokeSession(RevokeSessionRequest) returns (RevokeSessionResponse);
+  
+  // Admin RPCs
+  rpc AdminGetUserAuthInfo(AdminGetUserAuthInfoRequest) returns (AdminGetUserAuthInfoResponse);
+  rpc AdminSuspendUser(AdminSuspendUserRequest) returns (AdminSuspendUserResponse);
+}

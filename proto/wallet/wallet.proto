@@ -1,0 +1,335 @@
+syntax = "proto3";
+
+package wallet;
+
+option go_package = "github.com/royalplatform/proto/wallet";
+
+import "common/common.proto";
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+// Wallet Service - Handles multi-currency wallets, transactions, and balance management
+
+message CreateWalletRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  common.Currency currency = 2;
+  string wallet_type = 3; // main, bonus, sports, casino
+}
+
+message CreateWalletResponse {
+  string wallet_id = 1;
+  string user_id = 2;
+  common.Currency currency = 3;
+  string wallet_type = 4;
+  int64 balance = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message GetWalletRequest {
+  string wallet_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message GetWalletResponse {
+  string wallet_id = 1;
+  string user_id = 2;
+  common.Currency currency = 3;
+  string wallet_type = 4;
+  int64 balance = 5;
+  int64 locked_balance = 6;
+  int64 pending_balance = 7;
+  google.protobuf.Timestamp created_at = 8;
+  google.protobuf.Timestamp updated_at = 9;
+  common.Status status = 10;
+}
+
+message ListWalletsRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  common.Pagination pagination = 2;
+}
+
+message ListWalletsResponse {
+  repeated GetWalletResponse wallets = 1;
+  common.PaginatedResponse pagination = 2;
+}
+
+message CreditRequest {
+  string wallet_id = 1 [(validate.rules).string.uuid = true];
+  int64 amount = 2 [(validate.rules).int64.gt = 0];
+  string transaction_type = 3; // deposit, win, bonus, refund
+  string reference_id = 4; // bet_id, deposit_id, etc.
+  string description = 5;
+  map<string, string> metadata = 6;
+}
+
+message CreditResponse {
+  string transaction_id = 1;
+  string wallet_id = 2;
+  int64 amount = 3;
+  int64 new_balance = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+message DebitRequest {
+  string wallet_id = 1 [(validate.rules).string.uuid = true];
+  int64 amount = 2 [(validate.rules).int64.gt = 0];
+  string transaction_type = 3; // bet, withdrawal, fee
+  string reference_id = 4;
+  string description = 5;
+  map<string, string> metadata = 6;
+  bool allow_negative = 7; // For credit systems
+}
+
+message DebitResponse {
+  string transaction_id = 1;
+  string wallet_id = 2;
+  int64 amount = 3;
+  int64 new_balance = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+message TransferRequest {
+  string from_wallet_id = 1 [(validate.rules).string.uuid = true];
+  string to_wallet_id = 2 [(validate.rules).string.uuid = true];
+  int64 amount = 3 [(validate.rules).int64.gt = 0];
+  string transfer_type = 4; // internal, bonus_to_main
+  string description = 5;
+}
+
+message TransferResponse {
+  string transaction_id = 1;
+  string from_wallet_id = 2;
+  string to_wallet_id = 3;
+  int64 amount = 4;
+  google.protobuf.Timestamp created_at = 5;
+}
+
+message LockFundsRequest {
+  string wallet_id = 1 [(validate.rules).string.uuid = true];
+  int64 amount = 2 [(validate.rules).int64.gt = 0];
+  string lock_reason = 3; // bet_placed, tournament_entry
+  string reference_id = 4;
+}
+
+message LockFundsResponse {
+  string lock_id = 1;
+  string wallet_id = 2;
+  int64 locked_amount = 3;
+  google.protobuf.Timestamp created_at = 4;
+}
+
+message UnlockFundsRequest {
+  string lock_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message UnlockFundsResponse {
+  bool success = 1;
+  string wallet_id = 2;
+  int64 unlocked_amount = 3;
+}
+
+message Transaction {
+  string id = 1;
+  string wallet_id = 2;
+  string type = 3; // credit, debit, transfer
+  int64 amount = 4;
+  int64 balance_before = 5;
+  int64 balance_after = 6;
+  string transaction_type = 7;
+  string reference_id = 8;
+  string description = 9;
+  map<string, string> metadata = 10;
+  google.protobuf.Timestamp created_at = 11;
+  string status = 12;
+}
+
+message ListTransactionsRequest {
+  string wallet_id = 1;
+  string user_id = 2;
+  string transaction_type = 3;
+  common.DateRange date_range = 4;
+  common.Pagination pagination = 5;
+}
+
+message ListTransactionsResponse {
+  repeated Transaction transactions = 1;
+  common.PaginatedResponse pagination = 2;
+}
+
+message GetTransactionRequest {
+  string transaction_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message GetTransactionResponse {
+  Transaction transaction = 1;
+}
+
+// Withdrawal messages
+message CreateWithdrawalRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  string wallet_id = 2 [(validate.rules).string.uuid = true];
+  int64 amount = 3 [(validate.rules).int64.gt = 0];
+  string method = 4; // bank_transfer, crypto, e_wallet
+  string destination = 5; // account number, crypto address
+  map<string, string> metadata = 6;
+}
+
+message CreateWithdrawalResponse {
+  string withdrawal_id = 1;
+  string user_id = 2;
+  int64 amount = 3;
+  string fee = 4;
+  string status = 5;
+  google.protobuf.Timestamp created_at = 6;
+}
+
+message Withdrawal {
+  string id = 1;
+  string user_id = 2;
+  string wallet_id = 3;
+  int64 amount = 4;
+  int64 fee = 5;
+  int64 net_amount = 6;
+  string method = 7;
+  string destination = 8;
+  map<string, string> metadata = 9;
+  string status = 10;
+  string rejection_reason = 11;
+  google.protobuf.Timestamp created_at = 12;
+  google.protobuf.Timestamp processed_at = 13;
+  string processed_by = 14; // admin_id if manual
+}
+
+message ListWithdrawalsRequest {
+  string user_id = 1;
+  string status = 2;
+  common.DateRange date_range = 3;
+  common.Pagination pagination = 4;
+}
+
+message ListWithdrawalsResponse {
+  repeated Withdrawal withdrawals = 1;
+  common.PaginatedResponse pagination = 2;
+}
+
+message ApproveWithdrawalRequest {
+  string withdrawal_id = 1 [(validate.rules).string.uuid = true];
+  string admin_id = 2;
+  string notes = 3;
+}
+
+message ApproveWithdrawalResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+message RejectWithdrawalRequest {
+  string withdrawal_id = 1 [(validate.rules).string.uuid = true];
+  string admin_id = 2;
+  string reason = 3;
+  string notes = 4;
+}
+
+message RejectWithdrawalResponse {
+  bool success = 1;
+  string message = 2;
+}
+
+// Deposit messages
+message Deposit {
+  string id = 1;
+  string user_id = 2;
+  string wallet_id = 3;
+  int64 amount = 4;
+  string method = 5;
+  string provider = 6; // stripe, adyen, coinbase
+  string provider_transaction_id = 7;
+  string status = 8;
+  map<string, string> metadata = 9;
+  google.protobuf.Timestamp created_at = 10;
+  google.protobuf.Timestamp completed_at = 11;
+  string failure_reason = 12;
+}
+
+message ProcessDepositRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+  string wallet_id = 2 [(validate.rules).string.uuid = true];
+  int64 amount = 3 [(validate.rules).int64.gt = 0];
+  string method = 4;
+  string provider = 5;
+  map<string, string> metadata = 6;
+}
+
+message ProcessDepositResponse {
+  string deposit_id = 1;
+  string redirect_url = 2; // For redirect-based payments
+  string client_secret = 3; // For Stripe-like payments
+  string status = 4;
+}
+
+message ConfirmDepositRequest {
+  string deposit_id = 1 [(validate.rules).string.uuid = true];
+  string provider_transaction_id = 2;
+  map<string, string> metadata = 3;
+}
+
+message ConfirmDepositResponse {
+  bool success = 1;
+  string deposit_id = 2;
+}
+
+// Admin messages
+message AdminGetWalletSummaryRequest {
+  string user_id = 1 [(validate.rules).string.uuid = true];
+}
+
+message AdminGetWalletSummaryResponse {
+  string user_id = 1;
+  repeated GetWalletResponse wallets = 2;
+  int64 total_balance_usd = 3;
+  int64 total_deposits = 4;
+  int64 total_withdrawals = 5;
+  int64 total_wagered = 6;
+  int64 total_won = 7;
+  google.protobuf.Timestamp last_deposit_at = 8;
+  google.protobuf.Timestamp last_withdrawal_at = 9;
+}
+
+message AdminAdjustBalanceRequest {
+  string wallet_id = 1 [(validate.rules).string.uuid = true];
+  int64 amount = 2; // Can be negative
+  string reason = 3;
+  string admin_id = 4;
+}
+
+message AdminAdjustBalanceResponse {
+  string transaction_id = 1;
+  int64 new_balance = 2;
+}
+
+// Service definition
+service WalletService {
+  rpc CreateWallet(CreateWalletRequest) returns (CreateWalletResponse);
+  rpc GetWallet(GetWalletRequest) returns (GetWalletResponse);
+  rpc ListWallets(ListWalletsRequest) returns (ListWalletsResponse);
+  rpc Credit(CreditRequest) returns (CreditResponse);
+  rpc Debit(DebitRequest) returns (DebitResponse);
+  rpc Transfer(TransferRequest) returns (TransferResponse);
+  rpc LockFunds(LockFundsRequest) returns (LockFundsResponse);
+  rpc UnlockFunds(UnlockFundsRequest) returns (UnlockFundsResponse);
+  rpc ListTransactions(ListTransactionsRequest) returns (ListTransactionsResponse);
+  rpc GetTransaction(GetTransactionRequest) returns (GetTransactionResponse);
+  
+  // Withdrawals
+  rpc CreateWithdrawal(CreateWithdrawalRequest) returns (CreateWithdrawalResponse);
+  rpc ListWithdrawals(ListWithdrawalsRequest) returns (ListWithdrawalsResponse);
+  rpc ApproveWithdrawal(ApproveWithdrawalRequest) returns (ApproveWithdrawalResponse);
+  rpc RejectWithdrawal(RejectWithdrawalRequest) returns (RejectWithdrawalResponse);
+  
+  // Deposits
+  rpc ProcessDeposit(ProcessDepositRequest) returns (ProcessDepositResponse);
+  rpc ConfirmDeposit(ConfirmDepositRequest) returns (ConfirmDepositResponse);
+  
+  // Admin RPCs
+  rpc AdminGetWalletSummary(AdminGetWalletSummaryRequest) returns (AdminGetWalletSummaryResponse);
+  rpc AdminAdjustBalance(AdminAdjustBalanceRequest) returns (AdminAdjustBalanceResponse);
+}

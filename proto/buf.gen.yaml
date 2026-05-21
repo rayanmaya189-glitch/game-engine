@@ -1,0 +1,18 @@
+version: "1.1"
+
+plugins:
+  - plugin: go
+    out: ../go
+    opt: paths=source_relative
+  - plugin: go-grpc
+    out: ../go
+    opt: paths=source_relative,require_unimplemented_servers=false
+  - plugin: grpc-gateway
+    out: ../go
+    opt: paths=source_relative
+  - plugin: openapi
+    out: ../openapi
+    opt: logtostderr=true
+  - plugin: validate
+    out: ../go
+    opt: lang=go,paths=source_relative
