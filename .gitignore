@@ -1,1 +1,40 @@
-Nothing should be ignored in this case, as the only change is adding a markdown report file (PROTO_ANALYSIS_REPORT.md), which is a source document that should be tracked in version control. There are no build artifacts, dependencies, or temporary files in the change list.
+```
+# Generated protobuf files
+services/common-service/proto/gen/python/
+
+# Python compiled files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Dependencies
+venv/
+.venv/
+.env
+.env.local
+*.env.*
+
+# Logs
+*.log
+
+# Coverage
+.coverage
+coverage/
+htmlcov/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+```
