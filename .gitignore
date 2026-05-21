@@ -1,77 +1,46 @@
 ```
-# Dependencies
-node_modules/
-vendor/
+# Generated from existing proto files
+proto/
 
-# Build artifacts
+# Dependencies and build artifacts
+node_modules/
 dist/
 build/
 target/
-bin/
-
-# Go specific
-*.a
+__pycache__/
+*.pyc
+*.class
 *.o
-*.so
+*.obj
 *.exe
 *.dll
+*.so
+*.a
 *.out
-go.mod
-go.sum
-go.work.sum
 
-# Protocol buffers
-*_pb2.py
-*_pb2_grpc.py
-*.pb.go
-
-# Environment
+# Virtual environments
+venv/
+.venv/
 .env
 .env.local
-.env.*
+*.env.*
 
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Editors
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
 
-# Cache directories
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-pip-log.txt
-pip-delete-this-directory.txt
+# System files
+.DS_Store
+Thumbs.db
 
-# Testing
-.coverage
+# Logs and coverage
+*.log
+coverage/
 htmlcov/
-.coverage.*
-.nyc_output
-coverage-final.json
-
-# CI/CD
-.github/
-.gitlab/
-
-# Documentation builds
-_site/
-_sass-cache/
-.jekyll-metadata
+.coverage
 
 # Compressed files
 *.zip
