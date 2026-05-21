@@ -1,40 +1,34 @@
 ```
-# Generated protobuf files
-services/common-service/proto/gen/python/
-
-# Python compiled files
-*.pyc
-__pycache__/
-*.pyo
-*.pyd
-
 # Dependencies
-venv/
-.venv/
+node_modules/
+
+# Build outputs
+dist/
+build/
+coverage/
+htmlcov/
+
+# Environment variables
 .env
 .env.local
 *.env.*
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Logs
 *.log
 
 # Coverage
 .coverage
-coverage/
-htmlcov/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Build artifacts
-build/
-dist/
-*.egg-info/
 ```
