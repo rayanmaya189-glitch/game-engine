@@ -1,0 +1,123 @@
+syntax = "proto3";
+
+package common;
+
+option go_package = "github.com/royalplatform/proto/common";
+
+import "google/protobuf/timestamp.proto";
+import "validate/validate.proto";
+
+// Common message types used across all services
+
+message Empty {}
+
+message ID {
+  string id = 1 [(validate.rules).string.uuid = true];
+}
+
+message IDs {
+  repeated string ids = 1;
+}
+
+message Pagination {
+  int32 page = 1 [(validate.rules).int32.gte = 1];
+  int32 page_size = 2 [(validate.rules).int32.gte = 1, (validate.rules).int32.lte = 100];
+  string sort_by = 3;
+  bool sort_desc = 4;
+}
+
+message PaginatedResponse {
+  int32 total_count = 1;
+  int32 page = 2;
+  int32 page_size = 3;
+  int32 total_pages = 4;
+}
+
+message Money {
+  string currency = 1 [(validate.rules).string.len = 3];
+  int64 amount = 2 [(validate.rules).int64.gte = 0]; // Amount in smallest unit (cents/satoshis)
+}
+
+message TimeInterval {
+  int64 seconds = 1 [(validate.rules).int64.gte = 0];
+}
+
+message DateRange {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}
+
+message GeoLocation {
+  double latitude = 1 [(validate.rules).double.gte = -90, (validate.rules).double.lte = 90];
+  double longitude = 2 [(validate.rules).double.gte = -180, (validate.rules).double.lte = 180];
+  string country_code = 3 [(validate.rules).string.len = 2];
+  string city = 4;
+  string ip_address = 5;
+}
+
+message DeviceInfo {
+  string device_id = 1;
+  string device_type = 2; // mobile, tablet, desktop
+  string os = 3;
+  string os_version = 4;
+  string browser = 5;
+  string browser_version = 6;
+  string app_version = 7;
+  string platform = 8; // ios, android, web
+}
+
+message AuditLog {
+  string id = 1;
+  string service = 2;
+  string action = 3;
+  string entity_type = 4;
+  string entity_id = 5;
+  string user_id = 6;
+  string admin_id = 7;
+  map<string, string> metadata = 8;
+  google.protobuf.Timestamp created_at = 9;
+  string ip_address = 10;
+  string user_agent = 11;
+}
+
+enum Status {
+  STATUS_UNSPECIFIED = 0;
+  STATUS_PENDING = 1;
+  STATUS_ACTIVE = 2;
+  STATUS_SUSPENDED = 3;
+  STATUS_CLOSED = 4;
+  STATUS_CANCELLED = 5;
+  STATUS_COMPLETED = 6;
+  STATUS_FAILED = 7;
+}
+
+enum Currency {
+  CURRENCY_UNSPECIFIED = 0;
+  CURRENCY_USD = 1;
+  CURRENCY_EUR = 2;
+  CURRENCY_GBP = 3;
+  CURRENCY_CAD = 4;
+  CURRENCY_AUD = 5;
+  CURRENCY_JPY = 6;
+  CURRENCY_INR = 7;
+  CURRENCY_BRL = 8;
+  CURRENCY_BTC = 9;
+  CURRENCY_ETH = 10;
+  CURRENCY_USDT = 11;
+}
+
+enum CountryCode {
+  COUNTRY_UNSPECIFIED = 0;
+  COUNTRY_US = 1;
+  COUNTRY_GB = 2;
+  COUNTRY_CA = 3;
+  COUNTRY_AU = 4;
+  COUNTRY_DE = 5;
+  COUNTRY_FR = 6;
+  COUNTRY_IN = 7;
+  COUNTRY_BR = 8;
+  COUNTRY_JP = 9;
+  COUNTRY_SG = 10;
+  COUNTRY_MT = 11;
+  COUNTRY_CURACAO = 12;
+}

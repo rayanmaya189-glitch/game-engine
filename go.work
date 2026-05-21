@@ -1,0 +1,33 @@
+go 1.21
+
+use (
+    ./go/services/auth-service
+    ./go/services/user-service
+    ./go/services/wallet-service
+    ./go/services/game-engine-service
+    ./go/services/card-games-service
+    ./go/services/dice-games-service
+    ./go/services/slot-games-service
+    ./go/services/betting-service
+    ./go/services/multiplayer-service
+    ./go/services/tournament-service
+    ./go/services/jackpot-service
+    ./go/services/leaderboard-service
+    ./go/services/game-registry-service
+    ./go/services/rng-service
+    ./go/services/notification-service
+    ./go/services/chat-service
+    ./go/services/live-dealer-service
+    ./go/services/loyalty-service
+    ./go/services/referral-service
+    ./go/services/banner-service
+    ./go/services/winners-showcase-service
+    ./go/services/sports-betting-service
+    ./go/services/merchant-service
+    ./go/services/agent-service
+    ./go/services/common-service
+    ./go/gateways/player-api-gateway
+    ./go/gateways/admin-api-gateway
+    ./go/gateways/merchant-api-gateway
+    ./go/gateways/agent-api-gateway
+)
