@@ -12,8 +12,10 @@ const navigation = [
   { name: 'Transactions', href: '/transactions' },
   { name: 'Tournaments', href: '/tournaments' },
   { name: 'Bonuses', href: '/bonuses' },
+  { name: 'Jackpots', href: '/jackpots' },
   { name: 'Merchants', href: '/merchants' },
   { name: 'Agents', href: '/agents' },
+  { name: 'Compliance', href: '/compliance' },
   { name: 'Reports', href: '/reports' },
 ];
 

@@ -9,6 +9,9 @@ import { TournamentsPage } from './components/tournaments/TournamentsPage';
 import { BonusesPage } from './components/bonuses/BonusesPage';
 import { MerchantsPage } from './components/merchants/MerchantsPage';
 import { AgentsPage } from './components/agents/AgentsPage';
+import { CompliancePage } from './components/compliance/CompliancePage';
+import { JackpotsPage } from './components/jackpots/JackpotsPage';
+import { ReportsPage } from './components/reports/ReportsPage';
 import { LoginPage } from './components/auth/LoginPage';
 import { useAuthStore } from './context/authStore';
 
@@ -93,6 +96,30 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <AgentsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/compliance"
+        element={
+          <ProtectedRoute>
+            <CompliancePage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/jackpots"
+        element={
+          <ProtectedRoute>
+            <JackpotsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/reports"
+        element={
+          <ProtectedRoute>
+            <ReportsPage />
           </ProtectedRoute>
         }
       />
