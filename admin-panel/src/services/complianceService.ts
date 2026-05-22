@@ -15,6 +15,20 @@ export interface ComplianceAlert {
   metadata: Record<string, any>;
 }
 
+export interface KYCApplication {
+  id: string;
+  playerId: string;
+  playerName: string;
+  playerEmail: string;
+  kycLevel: 'LEVEL_1' | 'LEVEL_2' | 'LEVEL_3';
+  status: 'PENDING' | 'UNDER_REVIEW' | 'APPROVED' | 'REJECTED';
+  documents: { type: string; status: string }[];
+  submittedAt: string;
+  reviewedAt?: string;
+  reviewedBy?: string;
+  notes?: string;
+}
+
 export interface ComplianceCase {
   id: string;
   caseNumber: string;
@@ -181,6 +195,24 @@ export const complianceService = {
 
   runSanctionsScreening: async (userId: string) => {
     const response = await apiClient.post(`/admin/compliance/sanctions/${userId}/screen`);
+    return response.data;
+  },
+
+  // KYC Management
+  getKYCList: async (page = 1, limit = 20, status?: string) => {
+    const params = new URLSearchParams({ page: String(page), limit: String(limit) });
+    if (status) params.append('status', status);
+    const response = await apiClient.get(`/admin/kyc?${params}`);
+    return response.data;
+  },
+
+  approveKYC: async (kycId: string) => {
+    const response = await apiClient.put(`/admin/kyc/${kycId}/approve`);
+    return response.data;
+  },
+
+  rejectKYC: async (kycId: string, reason: string) => {
+    const response = await apiClient.put(`/admin/kyc/${kycId}/reject`, { reason });
     return response.data;
   },
 };
