@@ -5,6 +5,10 @@ import { Dashboard } from './components/dashboard/Dashboard';
 import { UsersPage } from './components/users/UsersPage';
 import { GamesPage } from './components/games/GamesPage';
 import { TransactionsPage } from './components/financials/TransactionsPage';
+import { TournamentsPage } from './components/tournaments/TournamentsPage';
+import { BonusesPage } from './components/bonuses/BonusesPage';
+import { MerchantsPage } from './components/merchants/MerchantsPage';
+import { AgentsPage } from './components/agents/AgentsPage';
 import { LoginPage } from './components/auth/LoginPage';
 import { useAuthStore } from './context/authStore';
 
@@ -57,6 +61,38 @@ function AppRoutes() {
         element={
           <ProtectedRoute>
             <TransactionsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/tournaments"
+        element={
+          <ProtectedRoute>
+            <TournamentsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/bonuses"
+        element={
+          <ProtectedRoute>
+            <BonusesPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/merchants"
+        element={
+          <ProtectedRoute>
+            <MerchantsPage />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/agents"
+        element={
+          <ProtectedRoute>
+            <AgentsPage />
           </ProtectedRoute>
         }
       />
