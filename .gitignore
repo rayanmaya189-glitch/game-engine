@@ -39,4 +39,7 @@ __pycache__/
 # TypeScript/JavaScript specific
 *.nyc_output
 .nyc_output/
+
+.gradle/
+
 ```
